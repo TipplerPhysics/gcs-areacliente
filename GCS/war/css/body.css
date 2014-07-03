@@ -1,0 +1,14 @@
+.body-layout{
+	padding: 0px;
+	background-color:white;
+	text-align:center;	
+	margin-top: 20px;
+}
+
+.body-container{	
+	display:inline-block;
+	width:960px;
+	margin-right:auto;
+	margin-left:auto;
+	text-align:left;	
+}

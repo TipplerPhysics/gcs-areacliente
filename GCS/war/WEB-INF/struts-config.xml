@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="clientsForm" type="com.gcs.actionForms.ClientsForm" />
+		<form-bean name="usersForm" type="com.gcs.actionForms.UsersForm" />
+	</form-beans>
+	
+	
+
+	<global-forwards>
+		<forward name="clients" path="/clients.do" />
+		<forward name="users" path="/admin/users.do" />
+	</global-forwards>
+
+	
+
+	<action-mappings>	
+		<action path="/clients" type="com.gcs.actions.ClientsAction"
+			name="clientsForm">
+			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
+		</action>
+		
+		<action path="/admin/users" type="com.gcs.actions.UsersAction"
+			name="usersForm">
+			<forward name="ok" path="/jsp/skeletons/users-skeleton.jsp" />
+		</action>
+		
+		<action path="/dashboard/newClient" type="com.gcs.actions.NewClientAction">
+			<forward name="ok" path="/jsp/skeletons/newCLient-skeleton.jsp" />
+		</action>
+	</action-mappings>
+	
+	
+	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
+		<set-property property="definitions-config"
+		value="/WEB-INF/tiles-defs.xml"/>
+	</plug-in>
+
+</struts-config>
