@@ -3,6 +3,8 @@ var cap1="";
 var cap2="";
 var cemail="";
 var cpermiso="";
+var areas;
+var dto;
 
 
 function generateRow(data,id,permiso){
@@ -139,7 +141,10 @@ $('#confirm-delete').on('show.bs.modal', function(e) {
 });
 
 $('.papelera').on('click', function(e) {
-	$('#deleteUser').attr('name',$(this).attr('name'));
+
+		$('#deleteUser').attr('name',$(this).attr('name'));
+	
+	
 });
 
 $('#deleteUser').on('click', function(e) {
@@ -164,25 +169,28 @@ $('#deleteUser').on('click', function(e) {
 $('.lapiz').on('click', function(e) {
 	
 	var id= $(this).attr('name');
-	if ($('.editing')[0] != undefined)
+	if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
 	{
 		var rowid = $('.editing').attr('id').split("w")[1];
 		undoEditRow(rowid);
 		editRow(id);
-	}else{
+	}else if (!$(this).hasClass('inactive')){
+		
 		editRow(id);
+		
 	}
 	
 		
 });
 
-$('.return').on('click', function(e) {
-	var id= $(this).attr('name');
+$('.table_results').on('click', '.cancelar-ext', function (e) {
+	var id= $('.editing').attr('name');
 	var arr = [cnombre,cap1,cap2,cemail,cpermiso];
 	undoRow(id,arr);
 });
 
 function undoRow(id,arr){
+	$('#papelera'+id).attr('data-toggle');
 	$('#row'+id).removeClass('editing');
 	$('.extended-row').remove();
 	var celdas = $('#row'+id).children();
@@ -194,14 +202,19 @@ function undoRow(id,arr){
 	}
 	
 	
-	$('#return'+id).css('display','none');
+/*	$('#return'+id).css('display','none');
 	$('#guardar'+id).css('display','none');
 	$('#papelera'+id).css('display','inline-block');
-	$('#lapiz'+id).css('display','inline-block');
+	$('#lapiz'+id).css('display','inline-block'); */
+	
+	$('#lapiz'+id).removeClass('inactive');
+	$('#papelera'+id).removeClass('inactive');
 }
 
 function undoEditRow(id){
+	$('#papelera'+id).attr('data-toggle','modal');
 	$('#row'+id).removeClass('editing');
+	
 	
 	$('.extended-row').remove();
 	
@@ -218,27 +231,52 @@ function undoEditRow(id){
 	$celda.children().remove();
 	$celda.prepend("<span>"+span+"</span>");
 	
-	$('#return'+id).css('display','none');
-	$('#guardar'+id).css('display','none');
-	$('#papelera'+id).css('display','inline-block');
-	$('#lapiz'+id).css('display','inline-block');
+	//$('#return'+id).css('display','none');
+	//$('#guardar'+id).css('display','none');
+	//$('#papelera'+id).css('display','inline-block');
+	//$('#lapiz'+id).css('display','inline-block');
+	
+	$('#lapiz'+id).removeClass('inactive');
+	$('#papelera'+id).removeClass('inactive');
 	
 }
 
-function loadHtml(html,content){
-	$.get('../html/'+html,null,function(result) {
-	    $("."+content).html(result); // Or whatever you need to insert the result
+function generateRow(pagina,destino){
+	$.get('../html/'+pagina,null,function(result) {
+	    $(".extended-div").html(result); // Or whatever you need to insert the result
+	    for (var e=0; e<areas.length; e++){
+			if (areas[e].contains("Onboarding")){
+				$('#onboarding').attr('checked',"true");
+			}else if (areas[e].contains("Servicing")){
+				$('#servicing').attr('checked',"true");
+			}else if (areas[e].contains("ITCIB")){
+				$('#itcib').attr('checked',"true");
+			}else if (areas[e].contains("Customer")){
+				$('#gcs').attr('checked',"true");
+			}else if (areas[e].contains("Product")){
+				$('#global-product').attr('checked',"true");
+			}else if (areas[e].contains("Clientes")){
+				$('#clientes').attr('checked',"true");
+			}
+		}
 	},'html');
 }
 
 
 function editRow(id){
+	$('#papelera'+id).removeAttr('data-toggle');
 	$('#row'+id).addClass('editing');
+	$('#row'+id).attr('name',id);
+	
+	
+	areas= $('#row'+id).attr('data-area').split("-");
+	dto= $('#row'+id).attr('data-dto');
+	
 	
 	
 	$('#row'+id).after("<tr class='extended-row'><td><div class='extended-div'></div></td><td></td><td></td><td></td><td></td><td></td></tr>");
 	
-	loadHtml("extended-user.html","extended-div")
+	generateRow("extended-user.html","extended-div");
 	
 	var celdas = $('#row'+id).children();
 	cnombre = $(celdas[0]).children().html();
@@ -283,11 +321,17 @@ function editRow(id){
 		value="1";
 	}
 	
-	$('#papelera'+id).css('display','none');
+	/* $('#papelera'+id).css('display','none');
 	$('#lapiz'+id).css('display','none');
 	$('#return'+id).css('display','inline-block');
-	$('#guardar'+id).css('display','inline-block');
+	$('#guardar'+id).css('display','inline-block'); */
+	
+	$('#lapiz'+id).addClass('inactive');
+	$('#papelera'+id).addClass('inactive');
+	
+	
 	
 	$('#permiso_ed').val(value);
+	$('#dtos_select').val(dto);
 }
 
