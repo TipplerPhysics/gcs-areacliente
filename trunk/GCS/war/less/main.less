@@ -216,6 +216,10 @@ hr{
 			.extended-div{
 				width:900px;
 				
+				button{
+					margin-left:20px;
+				}
+				
 				>.area-div{
 					> span {
 						vertical-align:top;
@@ -224,8 +228,11 @@ hr{
 				
 				> .dtos-div{
 					
-					margin-top:20px;
-				
+					 display: inline-block;
+				    margin-top: 20px;
+				    width: 500px;
+					margin-right: 220px;
+									
 					select {
 						margin-left:40px;
 					}
@@ -299,6 +306,7 @@ hr{
 		td{
 			padding:20px;
 			padding-right:1px;
+			padding-left:13px;
 			font-weight:bold;
 			font-size:12px;
 			color:#434A58;
@@ -320,6 +328,10 @@ hr{
 			
 			.papelera:active{
 				background-image:url(../img/delete-active.png);
+			}
+			
+			.papelera.inactive{
+				background-image:url(../img/delete-inactive.png);
 			}
 			
 			.return{
@@ -354,11 +366,16 @@ hr{
 				margin-left:10px;
 				height:30px;
 				width:30px;
-				display:inline-block;				
+				display:inline-block;	
+				margin-right:10px;			
 				}
 			
 			.lapiz:active{
 				background-image:url(../img/edit-active.png);
+			}
+			
+			.lapiz.inactive{
+				background-image:url(../img/edit-inactive.png);
 			}
 			
 			.vs{
@@ -383,7 +400,7 @@ hr{
 		border-bottom: 2px solid #DCDCDC;
 		
 		.editing, .extended-row{
-			background-color: #fffff5;
+			background-color: #FBF1D0;
 		}
 	}
 }

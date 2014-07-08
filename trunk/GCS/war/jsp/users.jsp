@@ -32,7 +32,7 @@
 		
 		      <c:otherwise>
 		      	<c:forEach items="${userList}" var="user">		            	
-		            <tr id="row${user.key.id}">
+		            <tr id="row${user.key.id}" data-area="${user.areas}" data-dto="${user.departamento}">
 						<td><span>${user.nombre}</span></td>
 						<td><span>${user.apellido1}</span></td>
 						<td><span>${user.apellido2}</span></td>
@@ -80,16 +80,16 @@
 							<option value="Negocio - Global Customer Service (Incluye HDR)">Negocio - Global Customer Service (Incluye HDR)</option>
 							<option value="Negocio - Global Product">Negocio - Global Product</option>
 							<option value="Negocio - Global Sales">Negocio - Global Sales</option>
-							<option value="IT C&IB - CTO - Soluciones Técnicas">IT C&IB - CTO - Soluciones Técnicas</option>
+							<option value="IT C&IB - CTO - Soluciones T&eacute;cnicas">IT C&IB - CTO - Soluciones T&eacute;cnicas</option>
 							<option value="IT C&IB - CTO - Arquitectura Funcional">IT C&IB - CTO - Arquitectura Funcional</option>
 							<option value="IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)">IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>
-							<option value="IT C&IB - Control y Gestión">IT C&IB - Control y Gestión</option>
+							<option value="IT C&IB - Control y Gesti&oacute;n">IT C&IB - Control y Gesti&oacute;n</option>
 							<option value="IT C&IB - E- commerce C&IB">IT C&IB - E- commerce C&IB</option>
 							<option value="IT C&IB - GCC Lending GTB & CFO">IT C&IB - GCC Lending GTB & CFO</option>
 							
 							<option value="IT C&IB - GTB - Global Customer Solutions">IT C&IB - GTB - Global Customer Solutions</option>	
-							<option value="IT C&IB – Global Transactional Product">IT C&IB – Global Transactional Product</option>							
-							<option value="IT C&IB – B2B Global Support">IT C&IB – B2B Global Support</option>							
+							<option value="IT C&IB – Global Transactional Product">IT C&IB - Global Transactional Product</option>							
+							<option value="IT C&IB – B2B Global Support">IT C&IB - B2B Global Support</option>							
 						
 						</select>
 					</div>
@@ -149,7 +149,7 @@
 	                <hr/>
 	            </div>
 	            <div class="">
-	                <p>¿Está seguro que desea eliminar al usuario?
+	                <p>¿Est&aacuote; seguro que desea eliminar al usuario?
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="" data-dismiss="modal">Cancelar</button>
