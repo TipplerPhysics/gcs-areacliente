@@ -56,6 +56,8 @@ public class UserServlet extends HttpServlet {
 		String ap1 = req.getParameter("ap1");
 		String ap2 = req.getParameter("ap2");
 		String email = req.getParameter("email");
+		String areas = req.getParameter("areas");
+		areas = areas.substring(0, areas.length()-1);
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
 		
@@ -73,7 +75,7 @@ public class UserServlet extends HttpServlet {
 			json.append("error", "No tienes los permisos para realizar esta operación");
 		}else{
 			
-            User u = new User(nombre,ap1,ap2,email,permiso,permisoStr);	
+            User u = new User(nombre,ap1,ap2,email,permiso,permisoStr,areas);	
 			
 			uDao.createUser(u);
 			

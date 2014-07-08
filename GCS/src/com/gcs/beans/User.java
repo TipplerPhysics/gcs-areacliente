@@ -26,6 +26,17 @@ public class User {
 	@Persistent
 	private String email;
 	
+	@Persistent
+	private String areas;
+	
+	public String getAreas() {
+		return areas;
+	}
+
+	public void setAreas(String areas) {
+		this.areas = areas;
+	}
+
 	public String getPermisoStr() {
 		return permisoStr;
 	}
@@ -41,7 +52,7 @@ public class User {
 	private String permisoStr;
 	
 		public User(String nombre, String apellido1, String apellido2,
-			String email, int permiso, String permisoStr) {
+			String email, int permiso, String permisoStr, String areas) {
 		super();
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -49,6 +60,7 @@ public class User {
 		this.email = email;
 		this.permiso = permiso;
 		this.permisoStr = permisoStr;
+		this.areas = areas;
 	}
 		
 		public User() {
