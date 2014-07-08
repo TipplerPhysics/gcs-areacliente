@@ -105,7 +105,7 @@
 						</select>
 					</div>
 					<div class="form-fieldset">
-						<span class="fieldset-title">Áreas:</span>
+						<span class="fieldset-title">&Aacute;reas:</span>
 						<fieldset>
 							
 							<div class="radio-container">
@@ -149,7 +149,7 @@
 	                <hr/>
 	            </div>
 	            <div class="">
-	                <p>¿Est&aacuote; seguro que desea eliminar al usuario?
+	                <p>&iquest;Est&aacute; seguro que desea eliminar al usuario?
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="" data-dismiss="modal">Cancelar</button>

@@ -42,7 +42,7 @@ $('#newUserButton').click(function(e){
 		$('#newUserButton').addClass('white-btn');
 		$('.user_span').addClass('blue');
 		$('.newUser-form').css('display','inline-block');
-		$('.newUser-form').animate({height: "372px"}, 500);
+		$('.newUser-form').animate({height: "385px"}, 500);
 	}	
 });
 
@@ -189,6 +189,23 @@ $('.table_results').on('click', '.cancelar-ext', function (e) {
 	undoRow(id,arr);
 });
 
+$('.table_results').on('click', '.guardar-ext', function (e) {
+	var id= $('.editing').attr('name');
+	var campo = $('.col'+id);
+	var areas =  $('.dtos').find('input');
+	
+	var nombre = campo[0];
+	var ap1 = campo[1];
+	var ap2 = campo[2];
+	var email = campo[3];
+	var permiso = $('#permiso_ed').val();
+	
+	
+	
+	
+	
+});
+
 function undoRow(id,arr){
 	$('#papelera'+id).attr('data-toggle');
 	$('#row'+id).removeClass('editing');
@@ -289,7 +306,7 @@ function editRow(id){
 		var $celda = $(celdas[a]);
 		var span = $celda.children().html();
 		$celda.children().remove();
-		$celda.prepend("<input type='text' class='edit_input' id='col"+id+"' value=" + span +">");
+		$celda.prepend("<input type='text' class='edit_input col"+id+"' value=" + span +">");
 	}
 	
 	
