@@ -40,8 +40,10 @@
 						<td><span>${user.permisoStr}</span></td>
 						<td>
 							<img class="vs" src="../img/vs.png">
-							<a class="papelera" name="${user.key.id}"  data-toggle="modal" data-target="#confirm-delete"> </a>
-							<a class="lapiz" name="${user.key.id}"></a>									
+							<a class="papelera" name="${user.key.id}"  data-toggle="modal" data-target="#confirm-delete" id="papelera${user.key.id}"> </a>
+							<a class="lapiz" name="${user.key.id}" id="lapiz${user.key.id}"></a>	
+							<a class="return" name="${user.key.id}" id="return${user.key.id}"></a>	
+							<a class="guardar" name="${user.key.id}" id="guardar${user.key.id}"></a>									
 						</td>
 					</tr>
 			    </c:forEach>
@@ -59,22 +61,40 @@
 			<form id="user_form" name="user_form" action="/usersServlet" method="POST">
 				<div class="form-container">				
 					<div class="form-field">
-						<span for="nombre">Nombre</span><input class="long required" type="text" name="nombre" id="nombre">
+						<span for="nombre">Nombre:</span><input class="long required" type="text" name="nombre" id="nombre">
 					</div>
 					<div class="form-field">
-						<span>Apellido 1</span><input class="long" type="text" name="ap1" id="ap1">
+						<span>Apellido 1:</span><input class="long" type="text" name="ap1" id="ap1">
 					</div>
 					<div class="form-field">
-						<span>Apellido 2</span><input class="long" type="text" name="ap2" id="ap2">
+						<span>Apellido 2:</span><input class="long" type="text" name="ap2" id="ap2">
 					</div>
 					<div class="form-field">
-						<span>E-mail</span><input class="long" type="text" name="email" id="email">
+						<span>E-mail:</span><input class="long" type="text" name="email" id="email">
 					</div>
 						<div class="form-field">
-						<span>Departamento</span><input class="long" type="text" name="dto" id="dto">
+						<span>Departamento:</span>
+						<select class="long" name="dto">
+							<option selected value="0">Seleccionar</option>
+							
+							<option value="Negocio - Global Customer Service (Incluye HDR)">Negocio - Global Customer Service (Incluye HDR)</option>
+							<option value="Negocio - Global Product">Negocio - Global Product</option>
+							<option value="Negocio - Global Sales">Negocio - Global Sales</option>
+							<option value="IT C&IB - CTO - Soluciones Técnicas">IT C&IB - CTO - Soluciones Técnicas</option>
+							<option value="IT C&IB - CTO - Arquitectura Funcional">IT C&IB - CTO - Arquitectura Funcional</option>
+							<option value="IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)">IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>
+							<option value="IT C&IB - Control y Gestión">IT C&IB - Control y Gestión</option>
+							<option value="IT C&IB - E- commerce C&IB">IT C&IB - E- commerce C&IB</option>
+							<option value="IT C&IB - GCC Lending GTB & CFO">IT C&IB - GCC Lending GTB & CFO</option>
+							
+							<option value="IT C&IB - GTB - Global Customer Solutions">IT C&IB - GTB - Global Customer Solutions</option>	
+							<option value="IT C&IB – Global Transactional Product">IT C&IB – Global Transactional Product</option>							
+							<option value="IT C&IB – B2B Global Support">IT C&IB – B2B Global Support</option>							
+						
+						</select>
 					</div>
 					<div class="form-field">
-						<span>Permisos</span>
+						<span>Permisos:</span>
 						<select class="long" name="permiso">
 							<option selected value="0">Seleccionar</option>
 							<option value="5">Gestor IT</option>
@@ -83,6 +103,30 @@
 							<option value="2">App Admin</option>
 							<option value="1">Super</option>
 						</select>
+					</div>
+					<div class="form-fieldset">
+						<span class="fieldset-title">Áreas:</span>
+						<fieldset>
+							
+							<div class="radio-container">
+								<input type="checkbox" value="Onboarding" id="onboarding"><label for="onboarding"><span></span>Onboarding</label>	
+							</div>
+							<div class="radio-container">
+								<input type="checkbox" value="Servicing" id="servicing"><label for="servicing"><span></span>Servicing</label>
+							</div>
+							<div class="radio-container">
+								<input type="checkbox" value="ITCIB" id="itcib"><label for="itcib"><span></span>ITCIB</label>
+							</div>
+							<div class="radio-container">
+								<input type="checkbox" value=">Global Customer Service" id="gcs"><label for="gcs"><span></span>Global Customer Service</label>
+							</div>
+							<div class="radio-container">
+								<input type="checkbox" value="Global Product" id="global-product"><label for="global-product"><span></span>Global Product</label>
+							</div>
+							<div class="radio-container">
+								<input type="checkbox" value="Clientes" id="clientes"><label for="clientes"><span></span>Clientes</label>
+							</div>
+						</fieldset>
 					</div>
 					<div id="message_div"><span id="span_message"></span>
 					</div>
@@ -105,7 +149,7 @@
 	                <hr/>
 	            </div>
 	            <div class="">
-	                <p>�Est� seguro que desea eliminar al usuario?
+	                <p>¿Está seguro que desea eliminar al usuario?
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="" data-dismiss="modal">Cancelar</button>

@@ -1,3 +1,10 @@
+var cnombre = "";
+var cap1="";
+var cap2="";
+var cemail="";
+var cpermiso="";
+
+
 function generateRow(data,id,permiso){
 	
 	var a = data.split('&');
@@ -33,36 +40,40 @@ $('#newUserButton').click(function(e){
 		$('#newUserButton').addClass('white-btn');
 		$('.user_span').addClass('blue');
 		$('.newUser-form').css('display','inline-block');
-		$('.newUser-form').animate({height: "260px"}, 500);
+		$('.newUser-form').animate({height: "372px"}, 500);
 	}	
 });
 
 
 $('#submit_user_form').click(function(e){
 	
-	$('#submit_user_form').validate({
-		rules: {
-			email: {
-	              required: true,
-	              email: true
-	            },
-	            
-            nombre: {
-	              required: true,
-	            }
-		},
-		messages: {
-	        email:{
-	            required: "Please enter name!"
-	        }
-		}
-	});
-	
-	$('#submit_user_form').valid();
-	
+		
 	$("#user_form").submit(function(e)
 			{
-			    var postData = $(this).serialize() + "&accion=new";
+		
+				var areas = "";
+				 if ($('#onboarding')[0].checked==true){
+					 areas += "Onboarding-"
+				 }
+				 if ($('#servicing')[0].checked==true){
+					 areas += "Servicing-"
+				 }
+				 if ($('#itcib')[0].checked==true){
+					 areas += "ITCIB-"
+				 }
+				 if ($('#gcs')[0].checked==true){
+					 areas += "Global Customer Service-"
+				 }
+				 if ($('#global-product')[0].checked==true){
+					 areas += "Global product-"
+				 }
+				 if ($('#servicing')[0].checked==true){
+					 areas += "Clientes-"
+				 }
+				 
+				var servicing = $('#servicing').val();
+				
+			    var postData = $(this).serialize() + "&accion=new&areas="+areas;
 			    var formURL = $(this).attr("action");
 			    $.ajax(
 			    {
@@ -165,8 +176,35 @@ $('.lapiz').on('click', function(e) {
 		
 });
 
+$('.return').on('click', function(e) {
+	var id= $(this).attr('name');
+	var arr = [cnombre,cap1,cap2,cemail,cpermiso];
+	undoRow(id,arr);
+});
+
+function undoRow(id,arr){
+	$('#row'+id).removeClass('editing');
+	$('.extended-row').remove();
+	var celdas = $('#row'+id).children();
+	for (var a =0; celdas.length-2 >= a;a++){
+		var $celda = $(celdas[a]);
+		var span = $celda.children().val();
+		$celda.children().remove();
+		$celda.prepend("<span>"+arr[a]+"</span>");
+	}
+	
+	
+	$('#return'+id).css('display','none');
+	$('#guardar'+id).css('display','none');
+	$('#papelera'+id).css('display','inline-block');
+	$('#lapiz'+id).css('display','inline-block');
+}
+
 function undoEditRow(id){
 	$('#row'+id).removeClass('editing');
+	
+	$('.extended-row').remove();
+	
 	var celdas = $('#row'+id).children();
 	for (var a =0; celdas.length-3 >= a;a++){
 		var $celda = $(celdas[a]);
@@ -180,19 +218,44 @@ function undoEditRow(id){
 	$celda.children().remove();
 	$celda.prepend("<span>"+span+"</span>");
 	
+	$('#return'+id).css('display','none');
+	$('#guardar'+id).css('display','none');
+	$('#papelera'+id).css('display','inline-block');
+	$('#lapiz'+id).css('display','inline-block');
 	
+}
+
+function loadHtml(html,content){
+	$.get('../html/'+html,null,function(result) {
+	    $("."+content).html(result); // Or whatever you need to insert the result
+	},'html');
 }
 
 
 function editRow(id){
 	$('#row'+id).addClass('editing');
+	
+	
+	$('#row'+id).after("<tr class='extended-row'><td><div class='extended-div'></div></td><td></td><td></td><td></td><td></td><td></td></tr>");
+	
+	loadHtml("extended-user.html","extended-div")
+	
 	var celdas = $('#row'+id).children();
+	cnombre = $(celdas[0]).children().html();
+	cap1 = $(celdas[1]).children().html();
+	cap2 = $(celdas[2]).children().html();
+	cemail = $(celdas[3]).children().html();
+	cpermiso = $(celdas[4]).children().html();
+	
 	for (var a =0; celdas.length-3 >= a;a++){
 		var $celda = $(celdas[a]);
 		var span = $celda.children().html();
 		$celda.children().remove();
 		$celda.prepend("<input type='text' class='edit_input' id='col"+id+"' value=" + span +">");
 	}
+	
+	
+	
 	
 	var $celda = $(celdas[4]);
 	var span = $celda.children().html();
@@ -220,5 +283,11 @@ function editRow(id){
 		value="1";
 	}
 	
+	$('#papelera'+id).css('display','none');
+	$('#lapiz'+id).css('display','none');
+	$('#return'+id).css('display','inline-block');
+	$('#guardar'+id).css('display','inline-block');
+	
 	$('#permiso_ed').val(value);
 }
+
