@@ -32,6 +32,8 @@ public class UserServlet extends HttpServlet {
 				json = createUser(req);
 			}else if (accion.equals("delete")){
 				json = deleteUser(req);
+			}else if (accion.equals("update")){
+				json = updateUser(req);
 			}
 			
 	        
@@ -47,6 +49,44 @@ public class UserServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
+	}
+	
+	private JSONObject updateUser(HttpServletRequest req) throws JSONException{
+		JSONObject json = new JSONObject();
+		
+		String nombre = req.getParameter("nombre");
+		String ap1 = req.getParameter("ap1");
+		String ap2 = req.getParameter("ap2");
+		String email = req.getParameter("email");
+		String areas = req.getParameter("areas");
+		String dto = req.getParameter("dto");
+		dto = dto.replace('#', '&');
+		
+		String id = req.getParameter("id");
+		if (!areas.equals("")){
+			areas = areas.substring(0, areas.length()-1);
+		}
+		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
+		String permisoStr = Utils.getPermisoStr(permiso);
+		
+		UserDao uDao = UserDao.getInstance();
+		User u = uDao.getUserbyId(Long.parseLong(id));
+		
+		u.setNombre(nombre);
+		u.setApellido1(ap1);
+		u.setApellido2(ap2);
+		u.setEmail(email);
+		u.setAreas(areas);
+		u.setDepartamento(dto);
+		u.setPermisoStr(permisoStr);
+		
+		uDao.createUser(u);
+		
+		json.append("success", "true");
+		json.append("id", u.getKey().getId());
+		json.append("permiso", u.getPermisoStr());
+		
+		return json;
 	}
 	
 	private JSONObject createUser(HttpServletRequest req) throws JSONException{
