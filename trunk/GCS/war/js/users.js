@@ -194,17 +194,65 @@ $('.table_results').on('click', '.guardar-ext', function (e) {
 	var campo = $('.col'+id);
 	var areas =  $('.dtos').find('input');
 	
-	var nombre = campo[0];
-	var ap1 = campo[1];
-	var ap2 = campo[2];
-	var email = campo[3];
+	var nombre = $(campo[0]).val();
+	var ap1 = $(campo[1]).val();
+	var ap2 = $(campo[2]).val();
+	var email = $(campo[3]).val();
 	var permiso = $('#permiso_ed').val();
+	var dto = $('#dtos_select option:selected').text();
+	
+	dto = dto.replace('&','#');
+	
+	var areascont = $('.dtos').children();
+	var areas="";
+	
+	for (var i=0; i<areascont.length;i++){
+		var $item = $($(areascont[i]).children()[0]);
+		if ($item[0].checked==true){
+			areas += $item.val() + "-";
+		}		
+	}
 	
 	
 	
+	var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
+    var formURL = "/usersServlet";
 	
-	
+	 $.ajax({
+		        url : formURL,
+		        type: "POST",
+		        data : postData,
+		        success:function(data, textStatus, jqXHR) 
+		        {
+		            //data: return data from server
+		        	if (data.success==("true")){
+		        		$('.extended-row').remove();
+		        		$('#row'+id).removeClass('editing');
+		        		
+		        		updateRow(id);
+		        	}
+		        }
+		    });
 });
+
+function updateRow(id){
+	var celdas = $('#row'+id).children();
+	for (var a =0; celdas.length-3 >= a;a++){
+		var $celda = $(celdas[a]);
+		var span = $celda.children().val();
+		$celda.children().remove();
+		$celda.prepend("<span>"+span+"</span>");
+	}
+	
+	var $celda = $(celdas[4]);
+	var span = $celda.children().find(":selected").text();
+	$celda.children().remove();
+	$celda.prepend("<span>"+span+"</span>");
+	
+		        		
+	$('#lapiz'+id).removeClass('inactive');
+	$('#papelera'+id).removeClass('inactive');
+}
 
 function undoRow(id,arr){
 	$('#papelera'+id).attr('data-toggle');
@@ -235,26 +283,9 @@ function undoEditRow(id){
 	
 	$('.extended-row').remove();
 	
-	var celdas = $('#row'+id).children();
-	for (var a =0; celdas.length-3 >= a;a++){
-		var $celda = $(celdas[a]);
-		var span = $celda.children().val();
-		$celda.children().remove();
-		$celda.prepend("<span>"+span+"</span>");
-	}
+	updateRow(id);
 	
-	var $celda = $(celdas[4]);
-	var span = $celda.children().find(":selected").text();
-	$celda.children().remove();
-	$celda.prepend("<span>"+span+"</span>");
 	
-	//$('#return'+id).css('display','none');
-	//$('#guardar'+id).css('display','none');
-	//$('#papelera'+id).css('display','inline-block');
-	//$('#lapiz'+id).css('display','inline-block');
-	
-	$('#lapiz'+id).removeClass('inactive');
-	$('#papelera'+id).removeClass('inactive');
 	
 }
 
@@ -286,7 +317,18 @@ function editRow(id){
 	$('#row'+id).attr('name',id);
 	
 	
-	areas= $('#row'+id).attr('data-area').split("-");
+	areas= $('#row'+id).attr('data-area');
+	
+	
+	if (areas.contains("Global Customer Service")){
+		areas= areas.replace("Global Customer Service","gcs");
+	}
+	
+	if (areas.contains("Global Product")){
+		areas = areas.replace("Global Product","globalproduct");
+	}
+	
+	areas= areas.split("-");
 	dto= $('#row'+id).attr('data-dto');
 	
 	
@@ -348,7 +390,27 @@ function editRow(id){
 	
 	
 	
-	$('#permiso_ed').val(value);
+	$('#permiso_ed option:selected').val(value);
 	$('#dtos_select').val(dto);
+	
+	
+	
+	var lng = areas.length;
+	
+	if (lng==1 && areas[0]==""){
+		lng=0;
+	}
+	
+	if (lng>0){
+		for (var n=0; n<lng;n++){
+			console.log(areas);
+			console.log("n= " + n + " lng=" + lng);
+			var name = areas[n];
+			console.log(name);
+			console.log($('#e-'+name));
+			$('#e-'+name)[0].setAttribute("checked", "checked");
+		}
+	}
+	
 }
 
