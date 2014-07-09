@@ -320,11 +320,11 @@ function editRow(id){
 	areas= $('#row'+id).attr('data-area');
 	
 	
-	if (areas.contains("Global Customer Service")){
+	if (areas.indexOf("Global Customer Service")!=-1){
 		areas= areas.replace("Global Customer Service","gcs");
 	}
 	
-	if (areas.contains("Global Product")){
+	if (areas.indexOf("Global Product")!=-1){
 		areas = areas.replace("Global Product","globalproduct");
 	}
 	
