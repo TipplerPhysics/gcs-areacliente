@@ -7,7 +7,7 @@
 	<head>
 		<title>Portal GCS</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-      	<script src="../tools/jquery-2.1.1.min.js" type="text/javascript"></script>
+      	<script src="../tools/jquery-1.11.1.min.js" type="text/javascript"></script>
       	<script src="../tools/jquery.validate.js" type="text/javascript"></script> 
       	<script src="../tools/datetimepicker.js" type="text/javascript"></script>      
       		     
