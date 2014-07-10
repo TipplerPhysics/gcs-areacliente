@@ -10,6 +10,16 @@ module.exports = function(grunt) {
             files: [{"war/css/main.css": "war/less/main.less"},{"war/css/users.css": "war/less/users.less"}]
         }
     },
+    cssmin: {
+      add_banner: {
+        options: {
+          banner: '/* BBVA Global Customer Solutions minified css file */'
+        },
+        files: {
+          'war/css/main.css': ['war/css/main.css']
+        }
+      }
+    },
     watch: {
       grunt: { files: ['Gruntfile.js'] },
 
@@ -27,7 +37,8 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['less','watch']);
+  grunt.registerTask('default', ['less','cssmin','watch']);
 }
