@@ -76,7 +76,11 @@ body {
   margin-left: auto;
   text-align: left;
 }
-input {
+.align-top {
+  vertical-align: top;
+}
+input,
+textarea {
   border: 1px solid #e8e8e6;
   border-radius: 2px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset;
@@ -522,24 +526,24 @@ hr {
   width: 245px;
 }
 /* NUEVO CLIENTE  */
-.newClient #newuser_form > hr {
+.gestion_demanda #newuser_form > hr {
   margin-top: 10px;
 }
-.newClient #newuser_form > button {
+.gestion_demanda #newuser_form > button {
   float: right;
   margin-right: 133px;
   margin-top: 10px;
 }
-.newClient #newuser_form .form-container {
+.gestion_demanda #newuser_form .form-container {
   display: inline-block;
   width: 44%;
   vertical-align: text-top;
 }
-.newClient #newuser_form .form-container > .form-field {
+.gestion_demanda #newuser_form .form-container > .form-field {
   height: 40px;
   padding-right: 20px;
 }
-.newClient #newuser_form .form-container > .form-field > span {
+.gestion_demanda #newuser_form .form-container > .form-field > span {
   font-family: BBVA Web Book;
   font-size: 12px;
   color: #434A58;
@@ -547,14 +551,22 @@ hr {
   top: 8px;
   padding-left: 35px;
 }
-.newClient #newuser_form .form-container > .form-field > select {
+.gestion_demanda #newuser_form .form-container > .form-field textarea {
+  margin-left: 5px;
+  width: 175px;
+  float: right;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > select {
   float: right;
   width: 175px;
 }
-.newClient #newuser_form .form-container > .form-field > input {
+.gestion_demanda #newuser_form .form-container > .form-field > input {
   position: relative;
   float: right;
   width: 175px;
+}
+.gestion_demanda #newuser_form .form-container .form-field.textarea {
+  height: 80px;
 }
 /* CLIENTES */
 .clients > .abc {
