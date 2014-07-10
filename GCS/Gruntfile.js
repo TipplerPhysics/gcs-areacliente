@@ -8,13 +8,6 @@ module.exports = function(grunt) {
                 paths: ["war/less"]
             },
             files: [{"war/css/main.css": "war/less/main.less"},{"war/css/users.css": "war/less/users.less"}]
-        },
-        production: {
-            options: {
-                paths: ["war/less"],
-                cleancss: true
-            },
-            files: [{"war/css/main.css": "war/less/main.less"},{"war/css/users.css": "war/less/users.less"}]
         }
     },
     watch: {
@@ -24,6 +17,12 @@ module.exports = function(grunt) {
         files: 'war/less/*.less',
         tasks: ['less']
       },
+      livereload: {
+        // Here we watch the files the less task will compile to
+        // These files are sent to the live reload server after less compiles to them
+        options: { livereload: true },
+        files: ['war/less/**/*.less', 'war/jsp/**/*.jsp', 'war/js/**/*.js'],
+      }
     }
   });
 
