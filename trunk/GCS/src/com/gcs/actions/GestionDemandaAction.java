@@ -19,8 +19,10 @@ public class GestionDemandaAction extends Action {
 		
 		UserDao uDao = UserDao.getInstance();
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
+		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
 			
 		req.setAttribute("gestores_demanda", gestores_demanda);
+		req.setAttribute("gestores_it", gestores_it);
 		
 		 return mapping.findForward("ok");
 	 }
