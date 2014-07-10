@@ -31,8 +31,8 @@
 			<forward name="ok" path="/jsp/skeletons/users-skeleton.jsp" />
 		</action>
 		
-		<action path="/dashboard/newClient" type="com.gcs.actions.NewClientAction">
-			<forward name="ok" path="/jsp/skeletons/newCLient-skeleton.jsp" />
+		<action path="/dashboard/gestionDemanda" type="com.gcs.actions.GestionDemandaAction">
+			<forward name="ok" path="/jsp/skeletons/gestionDemanda-skeleton.jsp" />
 		</action>
 	</action-mappings>
 	
