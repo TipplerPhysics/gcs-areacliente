@@ -216,6 +216,87 @@ hr {
 .modal-content > .modal-footer > button {
   margin-right: 15px;
 }
+#sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  background-color: transparent;
+  overflow: hidden;
+  right: -95px;
+  -webkit-transition: right 0.5s;
+  /* For Safari 3.1 to 6.0 */
+  transition: right 0.5s;
+}
+#sidebar.hovering {
+  right: -5px;
+}
+#sidebar .side-menu {
+  background: #0079c1;
+  background: -moz-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0079c1), color-stop(100%, #00529b));
+  background: -webkit-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: -o-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: -ms-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: linear-gradient(to bottom, #0079c1 0%, #00529b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0079c1, endColorstr=#00529b, GradientType=0);
+  border-radius: 5px 0 0 5px;
+}
+#sidebar .side-menu ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+#sidebar .side-menu ul li a {
+  border-radius: 5px 0 0 5px;
+  display: block;
+  padding: 10px 10px 10px 0;
+  list-style-type: none;
+  font-family: BBVA Web Light;
+  font-size: 15px;
+  text-decoration: none;
+  color: #FFF;
+}
+#sidebar .side-menu ul li a:hover {
+  background-color: #005098;
+}
+#sidebar .side-menu ul li a span {
+  display: block;
+  margin: 0 20px;
+  padding: 5px 0px 5px 40px;
+  font-weight: bolder;
+  background-repeat: no-repeat;
+}
+#sidebar .side-menu ul li a span.usuarios {
+  background-position: left center;
+  background-image: url('../img/user-white20.png');
+}
+#sidebar .side-menu ul li a span.informes {
+  background-position: left center;
+  background-image: url('../img/informe-white.png');
+}
+#sidebar .side-menu ul li a span.logs {
+  background-position: 2px center;
+  background-image: url('../img/logs-white.png');
+}
+.newUser-form {
+  border: 1px solid grey;
+  padding: 20px;
+  background-color: #F4F7F5;
+}
+.newUser-form .form-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFF;
+}
+.newUser-form .form-container .form-field {
+  width: 49%;
+  display: inline-block;
+}
 /* USERS */
 .users_title_icon {
   margin-right: 10px;
@@ -632,85 +713,4 @@ hr {
 }
 .clients .leyenda_clientes .baja {
   background-color: #86C82D;
-}
-#sidebar {
-  position: fixed;
-  top: 50%;
-  right: 0%;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  background-color: transparent;
-  overflow: hidden;
-  right: -95px;
-  -webkit-transition: right 0.5s;
-  /* For Safari 3.1 to 6.0 */
-  transition: right 0.5s;
-}
-#sidebar.hovering {
-  right: -5px;
-}
-#sidebar .side-menu {
-  background: #0079c1;
-  background: -moz-linear-gradient(top, #0079c1 0%, #00529b 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0079c1), color-stop(100%, #00529b));
-  background: -webkit-linear-gradient(top, #0079c1 0%, #00529b 100%);
-  background: -o-linear-gradient(top, #0079c1 0%, #00529b 100%);
-  background: -ms-linear-gradient(top, #0079c1 0%, #00529b 100%);
-  background: linear-gradient(to bottom, #0079c1 0%, #00529b 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0079c1, endColorstr=#00529b, GradientType=0);
-  border-radius: 5px 0 0 5px;
-}
-#sidebar .side-menu ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-}
-#sidebar .side-menu ul li a {
-  border-radius: 5px 0 0 5px;
-  display: block;
-  padding: 10px 10px 10px 0;
-  list-style-type: none;
-  font-family: BBVA Web Light;
-  font-size: 15px;
-  text-decoration: none;
-  color: #FFF;
-}
-#sidebar .side-menu ul li a:hover {
-  background-color: #005098;
-}
-#sidebar .side-menu ul li a span {
-  display: block;
-  margin: 0 20px;
-  padding: 5px 0px 5px 40px;
-  font-weight: bolder;
-  background-repeat: no-repeat;
-}
-#sidebar .side-menu ul li a span.usuarios {
-  background-position: left center;
-  background-image: url('../img/user-white20.png');
-}
-#sidebar .side-menu ul li a span.informes {
-  background-position: left center;
-  background-image: url('../img/informe-white.png');
-}
-#sidebar .side-menu ul li a span.logs {
-  background-position: 2px center;
-  background-image: url('../img/logs-white.png');
-}
-.newUser-form {
-  border: 1px solid grey;
-  padding: 20px;
-  background-color: #F4F7F5;
-}
-.newUser-form .form-container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #FFF;
-}
-.newUser-form .form-container .form-field {
-  width: 49%;
-  display: inline-block;
 }

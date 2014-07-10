@@ -53,3 +53,14 @@
   top: 50%; right: 0%; 
   .translate(0, -50%);
 }
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
