@@ -54,6 +54,12 @@ public class UserFilter implements Filter {
 				 com.gcs.beans.User usuario = uDao.getUserByMail(email);
 				 HttpSession sesion = request.getSession();
 				 
+				 if (url.contains("localhost")){
+					 req.setAttribute("entorno", "http://localhost:8888");
+				 }else{
+					 req.setAttribute("entorno", "https://gcs-areacliente.appspot.com");
+				 }
+				 
 				 if (usuario!=null){
 					 Integer permiso = usuario.getPermiso();
 				 	 sesion.setAttribute("permiso", permiso);					 
