@@ -577,13 +577,18 @@ hr {
 }
 .newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container {
   display: inline-block;
-  width: 165px;
-  margin-left: 20px;
+  width: 33.333%;
+  padding: 0 20px;
+  margin: 5px 0;
   height: 30px;
-  margin-right: 45px;
 }
-.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container :last-child {
-  margin-right: 0px;
+.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container:before,
+.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container:after {
+  content: " ";
+  display: table;
+}
+.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container:after {
+  clear: both;
 }
 .newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container input {
   float: right;
