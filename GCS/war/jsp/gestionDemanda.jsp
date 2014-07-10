@@ -45,7 +45,19 @@
 				<div class="form-field">
 					<span>Devolución de petición</span><input class="long" type="text" >
 				</div>
+				
 				<div class="form-field">
+				</div>
+				
+				<div class="form-field">
+					<span>Nombre Gestor IT asignado</span>
+					<select>					
+					    <option value="0" selected>Seleccionar</option>
+						<c:forEach items="${gestores_it}" var="user">	
+							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
+						</c:forEach>					
+				
+					</select>
 				</div>
 			</div>
 			<div class="form-container">	
@@ -68,48 +80,28 @@
 				<div class="form-field textarea">
 					<span class="align-top">Motivo de devolución de petición</span><textarea class="long"></textarea>
 				</div>
+				<div class="form-field datetime">
+					<span>Fecha/Hora petición</span>
+					<div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+				</div>
 			</div>				
 		</div>
-		<h2>Proyecto</h2>
-		<div>
-			<div class="form-container">				
-				<div class="form-field">
-					<span>Nombre</span><input class="long" type="text" >
-				</div>
-				<div class="form-field">
-					<span>Producto</span><input class="long" type="text" >
-				</div>
-				<div class="form-field">
-					<span>Conectividad</span><input class="long" type="text" >
-				</div>
-				<div class="form-field">
-					<span>Formato Fichero</span>
-					<select>
-						<option value="0" selected>Seleccionar</option>
-					</select>
-				</div>
-				<div class="form-field">
-					<span>Servicio</span><input class="long" type="text" >
-				</div>
-			</div>
-			<div class="form-container">				
-				<div class="form-field">
-					<span>Código de Proyecto</span><input class="long" type="text" >
-				</div>
-				<div class="form-field">
-					<span>Estado de petición</span><input class="long" type="text" >
-				</div>
-				<div class="form-field">
-					<span>Fecha implantación</span><input class="long" type="text" >
-				</div>
-				<div class="form-field">
-					<span>Descripción</span><input class="long" type="text" >
-				</div>
-			</div>
-		</div>
-		<hr/>
+		
+		
 		
 		<button id="newUser_submit">Guardar</button>
 	</form>
 	
 </div>
+
+<script type="text/javascript">
+
+console.log($('#datetimepicker1'));
+$(document).ready(function(){
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>

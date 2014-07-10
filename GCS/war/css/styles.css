@@ -599,6 +599,11 @@ hr {
   width: 47%;
   height: 40px;
 }
+.newUserbox .newUser-form .form-container .form-field > .date {
+  float: right;
+  position: relative;
+  width: 44%;
+}
 .newUserbox .newUser-form .form-container .form-field > span {
   width: 70px;
   display: inline-block;
