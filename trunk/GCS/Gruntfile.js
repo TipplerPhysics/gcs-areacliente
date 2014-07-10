@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'war/js/prod/output.min.js': ['war/js/*.js']
+          'war/js/prod/scripts.min.js': ['war/js/*.js']
         }
       }
     },
@@ -37,11 +37,7 @@ module.exports = function(grunt) {
 
       less: {
         files: 'war/less/**/*.less',
-        tasks: ['less']
-      },
-      cssmin: {
-        files: 'war/css/**/*.css',
-        tasks: ['cssmin']
+        tasks: ['less', 'cssmin']
       },
       uglify: {
         files: 'war/js/*.js',
