@@ -107,23 +107,17 @@
 					<div class="form-fieldset">
 						<span class="fieldset-title">&Aacute;reas:</span>
 						<fieldset>
-							
 							<div class="radio-container">
 								<input type="checkbox" value="Onboarding" id="onboarding"><label for="onboarding"><span></span>Onboarding</label>	
-							</div>
-							<div class="radio-container">
+							</div><div class="radio-container">
 								<input type="checkbox" value="Servicing" id="servicing"><label for="servicing"><span></span>Servicing</label>
-							</div>
-							<div class="radio-container">
+							</div><div class="radio-container">
 								<input type="checkbox" value="ITCIB" id="itcib"><label for="itcib"><span></span>ITCIB</label>
-							</div>
-							<div class="radio-container">
+							</div><div class="radio-container">
 								<input type="checkbox" value=">Global Customer Service" id="gcs"><label for="gcs"><span></span>Global Customer Service</label>
-							</div>
-							<div class="radio-container">
+							</div><div class="radio-container">
 								<input type="checkbox" value="Global Product" id="global-product"><label for="global-product"><span></span>Global Product</label>
-							</div>
-							<div class="radio-container">
+							</div><div class="radio-container">
 								<input type="checkbox" value="Clientes" id="clientes"><label for="clientes"><span></span>Clientes</label>
 							</div>
 						</fieldset>
