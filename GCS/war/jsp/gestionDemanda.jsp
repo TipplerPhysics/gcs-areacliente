@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="newClient">
+<div class="gestion_demanda">
 
-	<img class="users_title_icon" src="../img/user.png"><h1>Nuevo cliente</h1>
+	<img class="users_title_icon" src="../img/user.png"><h1>Alta solicitud gestión de demanda</h1>
 	<hr/>
 	<form id="newuser_form" name="user_form" action="/usersServlet" method="POST">
 	
@@ -38,10 +38,12 @@
 					</select>
 				</div>
 				<div class="form-field">
-					<span>Estado de petición</span><input class="long" type="text" >
+					<span>Catalogación de petición</span><input class="long" type="text" >
 				</div>
 				<div class="form-field">
-					<span>Catalogación de petición</span><input class="long" type="text" >
+				</div>
+				<div class="form-field">
+					<span>Devolución de petición</span><input class="long" type="text" >
 				</div>
 			</div>
 			<div class="form-container">	
@@ -56,15 +58,18 @@
 					</select>
 				</div>
 				<div class="form-field">
-					<span>Estado</span><input class="long" type="text" >
+					<span>Estado de la petición</span><input class="long" type="text" >
 				</div>
-				<div class="form-field">
-					<span>Paises</span><input class="long" type="text" >
+				<div class="form-field textarea">
+					<span class="align-top">Motivo de catalogación de petición</span><textarea class="long"></textarea>
+				</div>
+				<div class="form-field textarea">
+					<span class="align-top">Motivo de devolución de petición</span><textarea class="long"></textarea>
 				</div>
 			</div>				
 		</div>
 		<h2>Proyecto</h2>
-		<div class="newUser-form">
+		<div>
 			<div class="form-container">				
 				<div class="form-field">
 					<span>Nombre</span><input class="long" type="text" >
@@ -90,7 +95,7 @@
 					<span>Código de Proyecto</span><input class="long" type="text" >
 				</div>
 				<div class="form-field">
-					<span>Estado</span><input class="long" type="text" >
+					<span>Estado de petición</span><input class="long" type="text" >
 				</div>
 				<div class="form-field">
 					<span>Fecha implantación</span><input class="long" type="text" >

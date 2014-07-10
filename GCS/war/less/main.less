@@ -17,7 +17,11 @@ body{
 	text-align:left;	
 }
 
-input {
+.align-top{
+	vertical-align:top;
+}
+
+input , textarea {
     border: 1px solid #e8e8e6;
     border-radius: 2px;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset;
@@ -532,12 +536,14 @@ hr{
 					width:245px;
 				}
 			}	
+			
+			
 		}	
 	}	
 }
 /* NUEVO CLIENTE  */
 
-.newClient{
+.gestion_demanda{
 	#newuser_form{
 	
 		> hr{
@@ -557,6 +563,8 @@ hr{
 			width:44%;
 			vertical-align:text-top;
 			
+			
+			
 			> .form-field{
 			
 				height:40px;
@@ -571,6 +579,12 @@ hr{
 					padding-left:35px;
 				}
 				
+				textarea{
+					margin-left:5px;
+					width:175px;
+					float:right;
+				}
+				
 				> select{
 					float: right;
 					width:175px;
@@ -582,6 +596,10 @@ hr{
 					width:175px;
 					
 				}
+			}
+			
+			.form-field.textarea{
+				height:80px;
 			}
 		}
 	}
