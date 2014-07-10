@@ -293,17 +293,17 @@ function generateRow(pagina,destino){
 	$.get('../html/'+pagina,null,function(result) {
 	    $(".extended-div").html(result); // Or whatever you need to insert the result
 	    for (var e=0; e<areas.length; e++){
-			if (areas[e].contains("Onboarding")){
+			if (areas[e].indexOf("Onboarding")!=-1){
 				$('#onboarding').attr('checked',"true");
-			}else if (areas[e].contains("Servicing")){
+			}else if (areas[e].indexOf("Servicing")!=-1){
 				$('#servicing').attr('checked',"true");
-			}else if (areas[e].contains("ITCIB")){
+			}else if (areas[e].indexOf("ITCIB")!=-1){
 				$('#itcib').attr('checked',"true");
-			}else if (areas[e].contains("Customer")){
+			}else if (areas[e].indexOf("Customer")!=-1){
 				$('#gcs').attr('checked',"true");
-			}else if (areas[e].contains("Product")){
+			}else if (areas[e].indexOf("Product")!=-1){
 				$('#global-product').attr('checked',"true");
-			}else if (areas[e].contains("Clientes")){
+			}else if (areas[e].indexOf("Clientes")!=-1){
 				$('#clientes').attr('checked',"true");
 			}
 		}
@@ -380,10 +380,7 @@ function editRow(id){
 		value="1";
 	}
 	
-	/* $('#papelera'+id).css('display','none');
-	$('#lapiz'+id).css('display','none');
-	$('#return'+id).css('display','inline-block');
-	$('#guardar'+id).css('display','inline-block'); */
+	
 	
 	$('#lapiz'+id).addClass('inactive');
 	$('#papelera'+id).addClass('inactive');
@@ -407,6 +404,7 @@ function editRow(id){
 			console.log("n= " + n + " lng=" + lng);
 			var name = areas[n];
 			console.log(name);
+			console.log("$('#e-"+name+"')");
 			console.log($('#e-'+name));
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}

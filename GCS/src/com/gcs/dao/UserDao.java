@@ -9,6 +9,7 @@ import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Key;
 
 public class UserDao {
 	
@@ -83,6 +84,24 @@ public class UserDao {
           
            return user;
    }
+	   
+	     public List<User> getUsersByPermisoStr (int permiso){
+             PersistenceManager pManager = PMF.get().getPersistenceManager();
+             Transaction transaction = pManager.currentTransaction();
+             transaction.begin();
+            
+             String queryStr = "select from " + User.class.getName() + " WHERE permiso == :permiso";
+            
+             List<User> agrupations = (List<User>) pManager.newQuery(queryStr).execute(permiso);
+            
+             transaction.commit();
+            
+              pManager.close();
+            
+             return agrupations;
+            
+     }
+
 
 
 }
