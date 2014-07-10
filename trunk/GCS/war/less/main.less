@@ -1,3 +1,5 @@
+@import 'functions';
+
 @font-face {
     font-family: "BBVA Web Book";
     src: url(../fonts/WebBook/bbvaweb-book-ttf.ttf);
@@ -11,8 +13,6 @@
 
     font-weight: normal;
 }
-
-
 
 input {
     border: 1px solid #e8e8e6;
@@ -64,7 +64,7 @@ select{
 
 
 button {
-    background: linear-gradient(to bottom, #0079C1 0px, #00559D 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	.linear-gradient(#0079C1, #00559D);
     border: 1px solid #00559D;
     border-radius: 4px;
     color: #FFFFFF;
@@ -80,7 +80,7 @@ button {
 }
 
 .white-btn{
-    background: linear-gradient(to bottom, #F4F7F5 0px, #F4F7F5 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background-color: #F4F7F5;
 	border: 1px solid #dcdcdc;
 	border-bottom:0px;
 	background-color: #F4F7F5;
@@ -91,9 +91,8 @@ button {
 }
 
 .pink-btn{
-	background: linear-gradient(to bottom, #CC0966 0px, #9D004A 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	.linear-gradient(#CC0966, #9D004A);
 	border: 1px solid #8E0043;
-	
 	border-radius:4px;
 	color:#FFFFFF;
 	z-index:1
@@ -171,19 +170,12 @@ hr{
 	}
 
 .usersTable{
-
-	
-
 	> table{
-	
-	
 		width:100%;
 		background-color:#FFF;
 		text-align:left;
 		border-collapse: collapse;
    		border-spacing: 0;
-	
-	
 		th{	
 			background-color: #F8F8F5;
 		    border-bottom: 1px solid #DCDCDC;
@@ -194,21 +186,11 @@ hr{
 		    font-weight: bold;
 		    padding: 4px 10px;
 		    text-transform: uppercase;
-		    
-		   
-
 		}
-		
-		
-		
 		th:first-child{
 			 border-left: 1px solid #DCDCDC;
-			 
 		}
-		
-		
 		.table_results{
-		
 			.extended-row{
 				width:100%;
 			}
@@ -284,20 +266,12 @@ hr{
 			width:305px;
 			max-width:305px;
 		}
-		
-		
+
 		td:nth-child(5){
 			width:175px;
 			max-width:175px;
-		}
-		
-		th:nth-child(5){
-			
 			border-right:0px;
 		}
-		
-		
-		
 		 th:last-child{
 			width:122px;
 			max-width:122px;
@@ -559,58 +533,54 @@ hr{
 	}	
 }
 
-#sidebar_content{
-	position:fixed;
-	width:140px;
-	right:0px;
-	top:0px;
-	height:100%;
-	background-color:white;
+#sidebar{
+	.right-middle();
+	background-color:transparent;
 	overflow:hidden;
-	
-	
+	right: -95px;
+	-webkit-transition: right 0.5s; /* For Safari 3.1 to 6.0 */
+	transition: right 0.5s;
+	&.hovering {
+		right: -5px;
+	}
 	.side-menu{
-		vertical-align:middle;
-		background: linear-gradient(to bottom, #0079c1 0%, #00529b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-		position:relative;
-		height:170px;
-		width:154px;
-		top:42%;
-		border-radius:5px;
-		padding:5px;
-		overflow:hidden;
-		direction: ltr;
-		left:95px;
-		
-		
+		.linear-gradient(#0079c1, #00529b);
+		border-radius:5px 0 0 5px;
 		ul {
+			list-style-type:none;
 			margin:0px;
 			padding:0px;
-		
-			> li {
-				height:50px;
-				list-style-type: none;
-				font-family: BBVA Web Light;
-				font-size:15px;
-				color:#FFF;
-				position:relative;
-				left:-7px;
-				padding-top:8px;
-				
-				:hover{
-					background-color:#005098;
-				}
-				
-				> a{
+			li {
+				a{
+					border-radius:5px 0 0 5px;
+					display: block;
+					padding: 10px 10px 10px 0;
+					list-style-type: none;
+					font-family: BBVA Web Light;
+					font-size:15px;
 					text-decoration:none;
-					vertical-align:super;
 					color:#FFF;
-					padding-left:15px;
-					
-					> span{
-						margin-left:20px;
-						vertical-align:super;
+					&:hover {
+						background-color:#005098;
+					}
+					span{
+						display: block;
+						margin: 0 20px;
+						padding:5px 0px 5px 40px;
 						font-weight: bolder;
+						background-repeat: no-repeat;
+						&.usuarios {
+							background-position: left center;
+							background-image: url('../img/user-white20.png');
+						}
+						&.informes {
+							background-position: left center;
+							background-image: url('../img/informe-white.png');
+						}
+						&.logs {
+							background-position: 2px center;
+							background-image: url('../img/logs-white.png');
+						}
 					}
 				}
 			}
