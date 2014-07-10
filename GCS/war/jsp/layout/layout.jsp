@@ -6,26 +6,15 @@
 <html>
 	<head>
 		<title>Portal GCS</title>
-	
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	
-      <script src="../tools/jquery-2.1.1.min.js" type="text/javascript"></script>
-      <script src="../tools/jquery.validate.js" type="text/javascript"></script>      
-	  <script src="../components/bootstrap/js/bootstrap.js" type="text/javascript"></script>	
-	  <link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css" />
-	   <link rel="stylesheet" type="text/css" href="../css/main.css" /> 
-	  
-	  
-	  
-		
-      <script src="../js/common.js" type="text/javascript"></script>
-		
-		<link rel="stylesheet" type="text/css" href="../css/layout.css">
-		<link rel="stylesheet" type="text/css" href="../css/body.css">
-		
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      	<script src="../tools/jquery-2.1.1.min.js" type="text/javascript"></script>
+      	<script src="../tools/jquery.validate.js" type="text/javascript"></script>      
+	  	<script src="../components/bootstrap/js/bootstrap.js" type="text/javascript"></script>	
+	  	<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css" />
+	  	<link rel="stylesheet" type="text/css" href="../css/styles.min.css" /> 
+	  	<script src="../js/common.js" type="text/javascript"></script>
 	</head>
 	<body>
-	
 		<tiles:insert attribute="header"/>
 		<div class="body-layout">
 			<div class="body-container"> 

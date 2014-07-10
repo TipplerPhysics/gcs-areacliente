@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             options: {
                 paths: ["war/less"]
             },
-            files: [{"war/css/main.css": "war/less/main.less"},{"war/css/users.css": "war/less/users.less"}]
+            files: [{"war/css/styles.css": "war/less/styles.less"}]
         }
     },
     cssmin: {
@@ -16,7 +16,19 @@ module.exports = function(grunt) {
           banner: '/* BBVA Global Customer Solutions minified css file */'
         },
         files: {
-          'war/css/main.css': ['war/css/main.css']
+          'war/css/styles.min.css': ['war/css/styles.css']
+        }
+      }
+    },
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %> */',
+        mangle: false
+      },
+      my_target: {
+        files: {
+          'war/js/prod/output.min.js': ['war/js/*.js']
         }
       }
     },
@@ -24,8 +36,16 @@ module.exports = function(grunt) {
       grunt: { files: ['Gruntfile.js'] },
 
       less: {
-        files: 'war/less/*.less',
+        files: 'war/less/**/*.less',
         tasks: ['less']
+      },
+      cssmin: {
+        files: 'war/css/**/*.css',
+        tasks: ['cssmin']
+      },
+      uglify: {
+        files: 'war/js/*.js',
+        tasks: ['uglify']
       },
       livereload: {
         // Here we watch the files the less task will compile to
@@ -38,7 +58,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['less','cssmin','watch']);
+  grunt.registerTask('default', ['less','cssmin','uglify','watch']);
 }

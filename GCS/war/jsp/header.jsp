@@ -1,8 +1,3 @@
-
-	
-	
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-
 <div class="header-layout">
 	<div class="header-container">
 		<img class="main-logo" src="../img/gcs-logo.png"/>	
