@@ -102,6 +102,6 @@
 
 console.log($('#datetimepicker1'));
 $(document).ready(function(){
-                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker1').datepicker();
             });
         </script>
