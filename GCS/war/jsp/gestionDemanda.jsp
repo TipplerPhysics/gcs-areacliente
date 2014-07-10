@@ -16,6 +16,7 @@
 				<div class="form-field">
 					<span>Tipo de petición</span>
 					<select>
+						<option value="0">Seleccionar</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 						<option value="P-950 en confección">P-950 en confección</option>
 						<option value="PDTE Valoración IT">PDTE Valoración IT</option>
