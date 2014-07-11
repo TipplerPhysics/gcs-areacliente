@@ -84,6 +84,7 @@ $('.lapiz').on('click', function(e) {
 $('.table_results').on('click', '.cancelar-ext', function (e) {
 	var id= $('.editing').attr('name');
 	var arr = [cnombre,cap1,cap2,cemail,cpermiso];
+	$('#papelera'+id).attr("data-toggle","modal");
 	undoRow(id,arr);
 });
 
