@@ -464,7 +464,7 @@ function editRow(id){
 		lng=0;
 	}
 	
-	if (lng>0){
+	setTimeout(function(){if (lng>0){
 		for (var n=0; n<lng;n++){
 			console.log(areas);
 			console.log("n= " + n + " lng=" + lng);
@@ -474,7 +474,9 @@ function editRow(id){
 			console.log($('#e-'+name));
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}
-	}
+	}},500);
+	
+	
 	
 }
 
