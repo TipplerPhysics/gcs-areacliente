@@ -290,18 +290,18 @@ hr {
   background-position: 2px center;
   background-image: url('../img/logs-white.png');
 }
-.newUser-form {
+.new-user-form-holder {
   border: 1px solid grey;
   padding: 20px;
   background-color: #F4F7F5;
 }
-.newUser-form .form-container {
+.new-user-form-holder .form-container {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: #FFF;
 }
-.newUser-form .form-container .form-field {
+.new-user-form-holder .form-container .form-field {
   width: 49%;
   display: inline-block;
 }
@@ -394,6 +394,9 @@ hr {
 .usersTable > table td:nth-child(5) {
   width: 175px;
   max-width: 175px;
+  border-right: 0px;
+}
+.usersTable > table th:nth-child(5) {
   border-right: 0px;
 }
 .usersTable > table th:last-child {
@@ -494,7 +497,7 @@ hr {
   position: relative;
   left: 20px;
 }
-.newUserbox .newUser-form {
+.newUserbox .new-user-form-holder {
   border: 1px solid #DCDCDC;
   background-color: #F4F7F5;
   border-radius: 2px;
@@ -506,12 +509,12 @@ hr {
   top: -1px;
   height: 260px;
 }
-.newUserbox .newUser-form button#submit_user_form {
+.newUserbox .new-user-form-holder button#submit_user_form {
   left: 825px;
   position: relative;
   top: 10px;
 }
-.newUserbox .newUser-form .form-container {
+.newUserbox .new-user-form-holder .form-container {
   width: 93%;
   margin-left: auto;
   margin-right: auto;
@@ -520,7 +523,7 @@ hr {
   border: 1px solid #dcdcdc;
   border-radius: 2px;
 }
-.newUserbox .newUser-form .form-container #message_div {
+.newUserbox .new-user-form-holder .form-container #message_div {
   border: 1px solid black;
   border-radius: 2px;
   display: none;
@@ -535,32 +538,32 @@ hr {
   border-radius: 4px;
   padding-left: 5px;
 }
-.newUserbox .newUser-form .form-container #message_div.error {
+.newUserbox .new-user-form-holder .form-container #message_div.error {
   background-color: #F7E9E9;
   border: 1px solid #CA0161;
 }
-.newUserbox .newUser-form .form-container #message_div.error > span {
+.newUserbox .new-user-form-holder .form-container #message_div.error > span {
   color: #C4136C;
 }
-.newUserbox .newUser-form .form-container #message_div.success {
+.newUserbox .new-user-form-holder .form-container #message_div.success {
   background-color: #E2FAFE;
   border: 1px solid #c8e1e6;
 }
-.newUserbox .newUser-form .form-container #message_div.success > span {
+.newUserbox .new-user-form-holder .form-container #message_div.success > span {
   color: #0065b7;
 }
-.newUserbox .newUser-form .form-container .form-fieldset {
+.newUserbox .new-user-form-holder .form-container .form-fieldset {
   display: inline-block;
   text-align: left;
   height: 40px;
   margin-top: 10px;
 }
-.newUserbox .newUser-form .form-container .form-fieldset > .fieldset-title {
+.newUserbox .new-user-form-holder .form-container .form-fieldset > .fieldset-title {
   margin-left: 9px;
   display: block;
   margin-bottom: 10px;
 }
-.newUserbox .newUser-form .form-container .form-fieldset label {
+.newUserbox .new-user-form-holder .form-container .form-fieldset label {
   display: inline-block;
   font-family: "BBVA Web Light";
   font-size: 12px;
@@ -568,7 +571,7 @@ hr {
   text-align: left;
   font-weight: 100;
 }
-.newUserbox .newUser-form .form-container .form-fieldset span {
+.newUserbox .new-user-form-holder .form-container .form-fieldset span {
   display: inline-block;
   font-family: "BBVA Web Light";
   font-size: 12px;
@@ -576,38 +579,38 @@ hr {
   text-align: left;
   margin-right: 10px !important;
 }
-.newUserbox .newUser-form .form-container .form-fieldset fieldset {
+.newUserbox .new-user-form-holder .form-container .form-fieldset fieldset {
   border: 1px solid #dcdcdc;
   border-radius: 4px;
   display: inline-block;
   padding: 15px 20px 10px 20px;
   width: 745px;
 }
-.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container {
+.newUserbox .new-user-form-holder .form-container .form-fieldset fieldset .radio-container {
   display: inline-block;
   width: 33.333%;
   padding: 0 20px;
   margin: 5px 0;
   height: 30px;
 }
-.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container:before,
-.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container:after {
+.newUserbox .new-user-form-holder .form-container .form-fieldset fieldset .radio-container:before,
+.newUserbox .new-user-form-holder .form-container .form-fieldset fieldset .radio-container:after {
   content: " ";
   display: table;
 }
-.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container:after {
+.newUserbox .new-user-form-holder .form-container .form-fieldset fieldset .radio-container:after {
   clear: both;
 }
-.newUserbox .newUser-form .form-container .form-fieldset fieldset .radio-container input {
+.newUserbox .new-user-form-holder .form-container .form-fieldset fieldset .radio-container input {
   float: right;
 }
-.newUserbox .newUser-form .form-container .form-field {
+.newUserbox .new-user-form-holder .form-container .form-field {
   display: inline-block;
   text-align: center;
   width: 47%;
   height: 40px;
 }
-.newUserbox .newUser-form .form-container .form-field > span {
+.newUserbox .new-user-form-holder .form-container .form-field > span {
   width: 70px;
   display: inline-block;
   margin-right: 40px;
@@ -616,56 +619,8 @@ hr {
   color: #434A58;
   text-align: left;
 }
-.newUserbox .newUser-form .form-container .form-field .long {
+.newUserbox .new-user-form-holder .form-container .form-field .long {
   width: 245px;
-}
-/* NUEVO CLIENTE  */
-.gestion_demanda #newuser_form > hr {
-  margin-top: 10px;
-}
-.gestion_demanda #newuser_form > button {
-  float: right;
-  margin-right: 133px;
-  margin-top: 10px;
-}
-.gestion_demanda #newuser_form .form-container {
-  display: inline-block;
-  width: 44%;
-  vertical-align: text-top;
-}
-.gestion_demanda #newuser_form .form-container > .form-field {
-  height: 40px;
-  padding-right: 20px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > span {
-  font-family: BBVA Web Book;
-  font-size: 12px;
-  color: #434A58;
-  position: relative;
-  top: 8px;
-  padding-left: 35px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > .date {
-  float: right;
-  position: relative;
-  width: 44%;
-}
-.gestion_demanda #newuser_form .form-container > .form-field textarea {
-  margin-left: 5px;
-  width: 175px;
-  float: right;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > select {
-  float: right;
-  width: 175px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > input {
-  position: relative;
-  float: right;
-  width: 175px;
-}
-.gestion_demanda #newuser_form .form-container .form-field.textarea {
-  height: 80px;
 }
 /* CLIENTES */
 .clients > .abc {
