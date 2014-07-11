@@ -9,15 +9,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
       	<script src="../tools/jquery-1.11.1.min.js" type="text/javascript"></script>
       	<script src="../tools/jquery.validate.js" type="text/javascript"></script> 
-      		     
-	  	<script src="../components/bootstrap/js/bootstrap.js" type="text/javascript"></script>	
+	  	<script src="../components/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+	  	<script src="../js/dev/scripts.js" type="text/javascript"></script>
+
 	  	<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css" />
 	  	<link rel="stylesheet" type="text/css" href="../css/styles.min.css" /> 
-	  	<script src="../js/common.js" type="text/javascript"></script>
-	  	<script src="../components/bootstrap/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>	
-	  	<link rel="stylesheet" type="text/css" href="../components/bootstrap/datetimepicker/css/bootstrap-datetimepicker.min.css" /> 
-	  	
-	  	
 	</head>
 	<body>
 		<tiles:insert attribute="header"/>
@@ -32,5 +28,8 @@
 		</c:if>
 		
 		<!--   <tiles:insert attribute="footer"/>  -->
+		
+		<!-- TODO: REMOVE THIS IS FOR DEV -->
+		<script src="//localhost:35729/livereload.js" type="text/javascript"></script>
 	</body>
 </html>

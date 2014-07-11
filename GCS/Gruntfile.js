@@ -16,10 +16,18 @@ module.exports = function(grunt) {
           banner: '/* BBVA Global Customer Solutions minified css file */'
         },
         files: {
-          // output : input
           'war/css/styles.min.css': ['war/css/styles.css']
         }
       }
+    },
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['war/js/*.js'],
+        dest: 'war/js/dev/scripts.js',
+      },
     },
     uglify: {
       options: {
@@ -29,7 +37,7 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'war/js/prod/scripts.min.js': ['war/js/*.js']
+          'war/js/prod/scripts.min.js': ['war/js/dev/scripts.js']
         }
       }
     },
@@ -38,9 +46,9 @@ module.exports = function(grunt) {
         files: 'war/less/**/*.less',
         tasks: ['less', 'cssmin']
       },
-      uglify: {
+      concat: {
         files: 'war/js/*.js',
-        tasks: ['uglify']
+        tasks: ['concat','uglify']
       },
       livereload: {
         // Here we watch the files the less task will compile to
@@ -53,6 +61,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 

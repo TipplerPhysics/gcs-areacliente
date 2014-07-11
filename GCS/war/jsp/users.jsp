@@ -61,23 +61,18 @@
 			<form id="new-user-form" name="new-user-form" action="/usersServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">				
 					<div class="form-field">
-						<span for="nombre">Nombre:</span><input class="long required" type="text" name="nombre" id="nombre" required aria-required="true">
-					</div>
-					<div class="form-field">
+						<span for="nombre">Nombre:</span><input class="long" type="text" name="nombre" id="nombre" required aria-required="true">
+					</div><div class="form-field">
 						<span>Apellido 1:</span><input class="long" type="text" name="ap1" id="ap1" required aria-required="true">
-					</div>
-					<div class="form-field">
+					</div><div class="form-field">
 						<span>Apellido 2:</span><input class="long" type="text" name="ap2" id="ap2" required aria-required="true">
-					</div>
-					<div class="form-field">
-						<span>E-mail:</span><input class="long" type="text" name="email" id="email" required aria-required="true">
-					</div>
-						<div class="form-field">
+					</div><div class="form-field">
+						<span>E-mail:</span><input class="long email" type="text" name="email" id="email" required aria-required="true" data-type="email">
+					</div><div class="form-field">
 						<span>Departamento:</span>
-						<select class="long" name="dto">
-							<option selected value="0">Seleccionar</option>
-							
-							<option value="Negocio - Global Customer Service (Incluye HDR)">Negocio - Global Customer Service (Incluye HDR)</option>
+						<select class="long validateSelect" name="dto" required>
+							<option selected value="default">Seleccionar</option>
+ 							<option value="Negocio - Global Customer Service (Incluye HDR)">Negocio - Global Customer Service (Incluye HDR)</option>
 							<option value="Negocio - Global Product">Negocio - Global Product</option>
 							<option value="Negocio - Global Sales">Negocio - Global Sales</option>
 							<option value="IT C&IB - CTO - Soluciones T&eacute;cnicas">IT C&IB - CTO - Soluciones T&eacute;cnicas</option>
@@ -89,14 +84,12 @@
 							
 							<option value="IT C&IB - GTB - Global Customer Solutions">IT C&IB - GTB - Global Customer Solutions</option>	
 							<option value="IT C&IB – Global Transactional Product">IT C&IB - Global Transactional Product</option>							
-							<option value="IT C&IB – B2B Global Support">IT C&IB - B2B Global Support</option>							
-						
+							<option value="IT C&IB – B2B Global Support">IT C&IB - B2B Global Support</option>
 						</select>
-					</div>
-					<div class="form-field">
+					</div><div class="form-field">
 						<span>Permisos:</span>
-						<select class="long" name="permiso">
-							<option selected value="0">Seleccionar</option>
+						<select class="long validateSelect" name="permiso" required>
+							<option selected value="default">Seleccionar</option>
 							<option value="5">Gestor IT</option>
 							<option value="4">Gestor Demanda</option>
 							<option value="3">User Admin</option>
@@ -106,33 +99,29 @@
 					</div>
 					<div class="form-fieldset">
 						<span class="fieldset-title">&Aacute;reas:</span>
-						<fieldset>
+						<fieldset class='radio-container-holder'>
 							<div class="radio-container">
-								<input type="checkbox" value="Onboarding" id="onboarding"><label for="onboarding"><span></span>Onboarding</label>	
+								<input class="require-one" type="checkbox" name='areas' value="Onboarding" id="onboarding"><label for="onboarding"><span></span>Onboarding</label>	
 							</div><div class="radio-container">
-								<input type="checkbox" value="Servicing" id="servicing"><label for="servicing"><span></span>Servicing</label>
+								<input type="checkbox" name='areas' value="Servicing" id="servicing"><label for="servicing"><span></span>Servicing</label>
 							</div><div class="radio-container">
-								<input type="checkbox" value="ITCIB" id="itcib"><label for="itcib"><span></span>ITCIB</label>
+								<input type="checkbox" name='areas' value="ITCIB" id="itcib"><label for="itcib"><span></span>ITCIB</label>
 							</div><div class="radio-container">
-								<input type="checkbox" value=">Global Customer Service" id="gcs"><label for="gcs"><span></span>Global Customer Service</label>
+								<input type="checkbox" name='areas' value=">Global Customer Service" id="gcs"><label for="gcs"><span></span>Global Customer Service</label>
 							</div><div class="radio-container">
-								<input type="checkbox" value="Global Product" id="global-product"><label for="global-product"><span></span>Global Product</label>
+								<input type="checkbox" name='areas' value="Global Product" id="global-product"><label for="global-product"><span></span>Global Product</label>
 							</div><div class="radio-container">
-								<input type="checkbox" value="Clientes" id="clientes"><label for="clientes"><span></span>Clientes</label>
+								<input type="checkbox" name='areas' value="Clientes" id="clientes"><label for="clientes"><span></span>Clientes</label>
 							</div>
 						</fieldset>
 					</div>
 					<div id="message_div"><span id="span_message"></span></div>
 				</div>
-				<button id="submit_user_form">Aceptar</button>
+				<button type="submit" id="submit_user_form">Aceptar</button>
 			</form>
 		</div>
 	</div>
-	
-	
-	
-	
-	
+
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-dialog">
 	        <div class="modal-content">
@@ -151,8 +140,3 @@
 	        </div>
 	    </div>
 	</div>
-
-
-	
-		<script src="../js/users.js" type="text/javascript"></script>
-	
