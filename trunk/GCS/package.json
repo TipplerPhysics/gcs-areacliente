@@ -1,5 +1,5 @@
 {
-  "test": "bbva global customer solutions",
+  "name": "bbva-global-customer-solutions",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {

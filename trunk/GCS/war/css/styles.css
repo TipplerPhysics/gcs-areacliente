@@ -145,6 +145,14 @@ button {
   height: 35px;
 }
 .white-btn {
+  background: #f4f7f5;
+  background: -moz-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f7f5), color-stop(100%, #f4f7f5));
+  background: -webkit-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
+  background: -o-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
+  background: -ms-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
+  background: linear-gradient(to bottom, #f4f7f5 0%, #f4f7f5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f4f7f5, endColorstr=#f4f7f5, GradientType=0);
   border: 1px solid #dcdcdc;
   border-bottom: 0px;
   background-color: #F4F7F5;
@@ -723,4 +731,52 @@ hr {
 }
 .clients .leyenda_clientes .baja {
   background-color: #86C82D;
+}
+/* NUEVO CLIENTE  */
+.gestion_demanda #newuser_form > hr {
+  margin-top: 10px;
+}
+.gestion_demanda #newuser_form > button {
+  float: right;
+  margin-right: 133px;
+  margin-top: 10px;
+}
+.gestion_demanda #newuser_form .form-container {
+  display: inline-block;
+  width: 44%;
+  vertical-align: text-top;
+}
+.gestion_demanda #newuser_form .form-container > .form-field {
+  height: 40px;
+  padding-right: 20px;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > span {
+  font-family: BBVA Web Book;
+  font-size: 12px;
+  color: #434A58;
+  position: relative;
+  top: 8px;
+  padding-left: 35px;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > .date {
+  float: right;
+  position: relative;
+  width: 44%;
+}
+.gestion_demanda #newuser_form .form-container > .form-field textarea {
+  margin-left: 5px;
+  width: 175px;
+  float: right;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > select {
+  float: right;
+  width: 175px;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > input {
+  position: relative;
+  float: right;
+  width: 175px;
+}
+.gestion_demanda #newuser_form .form-container .form-field.textarea {
+  height: 80px;
 }
