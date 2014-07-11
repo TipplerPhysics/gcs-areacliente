@@ -1,10 +1,11 @@
-var isAnimatingOpen=false;
-var isAnimatingClose=false;
-
-$('#sidebar').hover(
-	function() {
-		$(this).addClass('hovering');
-	}, function() {
-		$(this).removeClass('hovering');
-	}
-);
+$(function() {
+	$('#sidebar').hover(
+		function() {
+			// mouse on
+			$(this).addClass('hovering');
+		}, function() {
+			// mouse out
+			$(this).removeClass('hovering');
+		}
+	);
+});
