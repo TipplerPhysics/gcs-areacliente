@@ -735,3 +735,14 @@ hr {
 .gestion_demanda #newuser_form .form-container .form-field.textarea {
   height: 80px;
 }
+.gestion_demanda #newuser_form .form-container .form-field.datetime > .date > input {
+  width: 146px;
+  max-height: 30px;
+}
+.gestion_demanda #newuser_form .form-container .form-field.datetime > .date > .add-on {
+  display: inline-block;
+  left: 140px;
+  position: relative;
+  top: -30px;
+  width: 40px;
+}
