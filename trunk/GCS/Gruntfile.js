@@ -16,6 +16,7 @@ module.exports = function(grunt) {
           banner: '/* BBVA Global Customer Solutions minified css file */'
         },
         files: {
+          // output : input
           'war/css/styles.min.css': ['war/css/styles.css']
         }
       }
@@ -33,8 +34,6 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      grunt: { files: ['Gruntfile.js'] },
-
       less: {
         files: 'war/less/**/*.less',
         tasks: ['less', 'cssmin']

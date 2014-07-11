@@ -57,20 +57,20 @@
 			Nuevo Usuario<a class="user_span"></a>			
 		</button>
 		
-		<div class="newUser-form">
-			<form id="user_form" name="user_form" action="/usersServlet" method="POST" novalidate="novalidate">
+		<div class="new-user-form-holder">
+			<form id="new-user-form" name="new-user-form" action="/usersServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">				
 					<div class="form-field">
-						<span for="nombre">Nombre:</span><input class="long" type="text" name="nombre" id="nombre" required aria-requiered="true">
+						<span for="nombre">Nombre:</span><input class="long required" type="text" name="nombre" id="nombre" required aria-required="true">
 					</div>
 					<div class="form-field">
-						<span>Apellido 1:</span><input class="long" type="text" name="ap1" id="ap1" required aria-requiered="true">
+						<span>Apellido 1:</span><input class="long" type="text" name="ap1" id="ap1" required aria-required="true">
 					</div>
 					<div class="form-field">
-						<span>Apellido 2:</span><input class="long" type="text" name="ap2" id="ap2" required aria-requiered="true">
+						<span>Apellido 2:</span><input class="long" type="text" name="ap2" id="ap2" required aria-required="true">
 					</div>
 					<div class="form-field">
-						<span>E-mail:</span><input class="long" type="text" name="email" id="email" required aria-requiered="true">
+						<span>E-mail:</span><input class="long" type="text" name="email" id="email" required aria-required="true">
 					</div>
 						<div class="form-field">
 						<span>Departamento:</span>
