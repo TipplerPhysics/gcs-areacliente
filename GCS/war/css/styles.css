@@ -721,6 +721,14 @@ hr {
   border: 1px solid #e8e8e6;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset;
 }
+.gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select.time {
+  width: 100px;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > span.time-span {
+  float: right;
+  padding: 5px;
+  padding: 0 5px 10px;
+}
 .gestion_demanda #newuser_form .form-container > .form-field > span {
   font-family: BBVA Web Book;
   font-size: 12px;
