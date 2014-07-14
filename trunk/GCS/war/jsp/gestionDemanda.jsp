@@ -63,7 +63,7 @@
 				
 				<div class="form-field datetime">
 					<span>Fecha petición</span>
-					<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp3" class="input-append date">
+					<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
 						<input type="text" readonly="" value="" size="16" class="span2">
 						<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
@@ -72,7 +72,7 @@
 				
 				<div class="form-field datetime">
 					<span>Fecha solicitud asignación</span>
-					<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp3" class="input-append date">
+					<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp2" class="input-append date">
 						<input type="text" readonly="" value="" size="16" class="span2">
 						<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
@@ -147,7 +147,7 @@
  
 <script type="text/javascript">
   $(function() {
-    $('#dp3').datepicker();
+    $('.date').datepicker();
   });
 </script>
 
