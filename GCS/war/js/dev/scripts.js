@@ -136,6 +136,8 @@ $(function() {
 				}
 			}
 		});
+		
+		$('#papelera'+id).attr("data-toggle","modal");
 	});
 
 	// Submit for creating a new user.
@@ -170,7 +172,7 @@ $(function() {
 			$.ajax(
 			{
 			  url : formURL,
-			  type: "POST",
+			  type: "GET",
 			  data : postData,
 			  success:function(data, textStatus, jqXHR) 
 			  {
@@ -369,12 +371,9 @@ function editRow(id){
 	
 	setTimeout(function(){if (lng>0){
 		for (var n=0; n<lng;n++){
-			console.log(areas);
-			console.log("n= " + n + " lng=" + lng);
+			
 			var name = areas[n];
-			console.log(name);
-			console.log("$('#e-"+name+"')");
-			console.log($('#e-'+name));
+			
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}
 	}},500);

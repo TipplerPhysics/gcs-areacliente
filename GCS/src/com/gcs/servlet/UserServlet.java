@@ -40,7 +40,7 @@ public class UserServlet extends HttpServlet {
 			resp.setCharacterEncoding("UTF-8");
 	        resp.setContentType("application/json");       
 			resp.getWriter().println(json);
-		} catch (IOException | JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		

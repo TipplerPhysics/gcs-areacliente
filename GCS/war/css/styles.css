@@ -325,6 +325,16 @@ hr {
 .usersTable > table th:first-child {
   border-left: 1px solid #DCDCDC;
 }
+.usersTable > table th.search-th > input {
+  width: 100%;
+}
+.usersTable > table th.search-th:nth-child(5) {
+  overflow: visible;
+}
+.usersTable > table th.search-th:nth-child(5) > input {
+  position: relative;
+  width: 162%;
+}
 .usersTable > table .table_results .extended-row {
   width: 100%;
 }
@@ -616,6 +626,10 @@ hr {
   width: 45%;
   vertical-align: top;
   margin-bottom: 10px;
+}
+.newUserbox .new-user-form-holder .form-container .form-field > .bootstrap-select {
+  position: relative;
+  width: 248px !important;
 }
 .newUserbox .new-user-form-holder .form-container .form-field > span {
   width: 70px;
