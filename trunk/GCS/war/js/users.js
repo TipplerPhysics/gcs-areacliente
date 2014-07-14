@@ -9,16 +9,31 @@ var dto;
 
 // on pageload complete
 $(function() {
+	var userBoxSize = 0;
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
 			$('#newUserButton').removeClass('white-btn');
 			$('.user_span').removeClass('blue');
-			$('.new-user-form-holder').removeClass('open');
+
+			userBoxSize = $('.new-user-form-holder.open').outerHeight();
+			$('.new-user-form-holder.open').css('height', userBoxSize);
+			setTimeout(function(){
+				$('.new-user-form-holder.open').removeClass('open').css('height', '0px');
+			}, 25);
+			
 		} else {
 			$('#newUserButton').addClass('white-btn');
 			$('.user_span').addClass('blue');
 			$('.new-user-form-holder').addClass('open');
-		}	
+			if(userBoxSize > 0) {
+				setTimeout(function(){
+					$('.new-user-form-holder').css('height', userBoxSize);
+				}, 25);
+			}
+			setTimeout(function(){
+				$('.new-user-form-holder.open').css('height', 'auto');
+			}, 1000);
+		}
 	});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
@@ -111,39 +126,38 @@ $(function() {
 	$("#new-user-form").submit(function(e) {
 		e.preventDefault(); //STOP default action
 
-		var areas = "";
-		 if ($('#onboarding').prop('checked')==true){
+		if($(this).valid()){
+			var areas = "";
+			if ($('#onboarding').prop('checked')==true){
 			 areas += "Onboarding-"
-		 }
-		 if ($('#servicing').prop('checked')==true){
+			}
+			if ($('#servicing').prop('checked')==true){
 			 areas += "Servicing-"
-		 }
-		 if ($('#itcib').prop('checked')==true){
+			}
+			if ($('#itcib').prop('checked')==true){
 			 areas += "ITCIB-"
-		 }
-		 if ($('#gcs').prop('checked')==true){
+			}
+			if ($('#gcs').prop('checked')==true){
 			 areas += "Global Customer Service-"
-		 }
-		 if ($('#global-product').prop('checked')==true){
+			}
+			if ($('#global-product').prop('checked')==true){
 			 areas += "Global product-"
-		 }
-		 if ($('#clientes').prop('checked')==true){
+			}
+			if ($('#clientes').prop('checked')==true){
 			 areas += "Clientes-"
-		 }
-		 
-		var servicing = $('#servicing').val();
-		
-		 var postData = $(this).serialize() + "&accion=new&areas="+areas;
-		 var formURL = $(this).attr("action");
-		 $.ajax(
-		 {
+			}
+
+			var servicing = $('#servicing').val();
+
+			var postData = $(this).serialize() + "&accion=new&areas="+areas;
+			var formURL = $(this).attr("action");
+			$.ajax(
+			{
 			  url : formURL,
 			  type: "POST",
 			  data : postData,
 			  success:function(data, textStatus, jqXHR) 
 			  {
-				alert('succes');
-				console.log($(data));
 					//data: return data from server
 				if (data.success==("true")){
 					var html=generateRow(postData,data.id,data.permiso);
@@ -177,7 +191,8 @@ $(function() {
 					$('#message_div').addClass('error').removeClass('success');
 				}
 			  }
-		 });
+			});
+		}
 	});
 });
 

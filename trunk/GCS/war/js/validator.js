@@ -2,12 +2,12 @@ $(function() {
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
 		remote: "Por favor, rellena este campo.",
-		email: "Por favor, escribe una dirección de correo válida.",
+		email: "Por favor, escribe una direcci&oacuten de correo v&aacutelida.",
 		url: "Por favor, escribe una URL válida.",
 		date: "Por favor, escribe una fecha válida.",
 		dateISO: "Por favor, escribe una fecha (ISO) válida.",
-		number: "Por favor, escribe un número válido.",
-		digits: "Por favor, escribe sólo dígitos.",
+		number: "Por favor, escribe un n&uacutemero v&aacutelido.",
+		digits: "Por favor, escribe s&oacutelo dígitos.",
 		creditcard: "Por favor, escribe un número de tarjeta válido.",
 		equalTo: "Por favor, escribe el mismo valor de nuevo.",
 		extension: "Por favor, escribe un valor con una extensión aceptada.",
@@ -23,15 +23,14 @@ $(function() {
 	});
 
 	// One to rule the ... selects
-	$.validator.addMethod("hasSelectedValue", function(value, element, arg){
-		alert('hasSelectedValue');
-		return arg != value;
-	}, "Value must not equal arg.");
+	$.validator.addMethod("selected", function(value, element){
+		var valid = false;
 
-	$.validator.addMethod("greaterThanZero", function(value, element) {
-		alert('greaterThanZero');
-	    return this.optional(element) || (parseFloat(value) > 0);
-	}, "* Amount must be greater than zero");
+		if(value != 'default') {
+			valid = true;
+		}
+		return valid;
+	}, "Por favor, selecciona un valor.");
 
 	$.validator.addMethod('require-one', function(value, element) {
 		var valid = false;
@@ -49,7 +48,38 @@ $(function() {
 	// Setup form validation on the #register-form element
 	$('form').validate({
 	    submitHandler: function(form) {
+	    	console.log('hi');
 	        form.submit();
-	    }
+	    },
+	    errorPlacement: function(error, $element) {
+			// overwritable when using the tag data-error-show-style = tooltip
+			if(($element.is(':checkbox') || $element.is(':radio')) && $element.parent().hasClass('radio-container')) {
+				var $target = $element.closest('.radio-container-holder');
+				var $container = $target.find('#error-messages');
+				if($container.length == 0){
+					$container = $('<div id="error-messages" class="block-error server-errors"><ul></ul></div>');
+					$element.closest('.radio-container-holder').prepend($container);
+				}
+
+				// Create error element and append it to error container
+				var $errorelement = $('<li>');
+				$errorelement.append(error);
+				$container.find('ul').append($errorelement);
+
+			} else {
+				var $target = $element.closest('.form-container');
+				var $container = $target.find('#error-messages');
+
+				if($container.length == 0){
+					$container = $('<div id="error-messages" class="block-error server-errors detail"><ul></ul></div>');
+					$target.prepend($container);
+				}
+
+				// Create error element and append it to error container
+				var $errorelement = $('<li>');
+				$errorelement.append(error);
+				$container.find('ul').append($errorelement);
+			}
+		}
 	});
 });

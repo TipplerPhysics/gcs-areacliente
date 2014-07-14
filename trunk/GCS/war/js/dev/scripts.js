@@ -25,16 +25,31 @@ var dto;
 
 // on pageload complete
 $(function() {
+	var userBoxSize = 0;
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
 			$('#newUserButton').removeClass('white-btn');
 			$('.user_span').removeClass('blue');
-			$('.new-user-form-holder').removeClass('open');
+
+			userBoxSize = $('.new-user-form-holder.open').outerHeight();
+			$('.new-user-form-holder.open').css('height', userBoxSize);
+			setTimeout(function(){
+				$('.new-user-form-holder.open').removeClass('open').css('height', '0px');
+			}, 25);
+			
 		} else {
 			$('#newUserButton').addClass('white-btn');
 			$('.user_span').addClass('blue');
 			$('.new-user-form-holder').addClass('open');
-		}	
+			if(userBoxSize > 0) {
+				setTimeout(function(){
+					$('.new-user-form-holder').css('height', userBoxSize);
+				}, 25);
+			}
+			setTimeout(function(){
+				$('.new-user-form-holder.open').css('height', 'auto');
+			}, 1000);
+		}
 	});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
@@ -127,39 +142,38 @@ $(function() {
 	$("#new-user-form").submit(function(e) {
 		e.preventDefault(); //STOP default action
 
-		var areas = "";
-		 if ($('#onboarding').prop('checked')==true){
+		if($(this).valid()){
+			var areas = "";
+			if ($('#onboarding').prop('checked')==true){
 			 areas += "Onboarding-"
-		 }
-		 if ($('#servicing').prop('checked')==true){
+			}
+			if ($('#servicing').prop('checked')==true){
 			 areas += "Servicing-"
-		 }
-		 if ($('#itcib').prop('checked')==true){
+			}
+			if ($('#itcib').prop('checked')==true){
 			 areas += "ITCIB-"
-		 }
-		 if ($('#gcs').prop('checked')==true){
+			}
+			if ($('#gcs').prop('checked')==true){
 			 areas += "Global Customer Service-"
-		 }
-		 if ($('#global-product').prop('checked')==true){
+			}
+			if ($('#global-product').prop('checked')==true){
 			 areas += "Global product-"
-		 }
-		 if ($('#clientes').prop('checked')==true){
+			}
+			if ($('#clientes').prop('checked')==true){
 			 areas += "Clientes-"
-		 }
-		 
-		var servicing = $('#servicing').val();
-		
-		 var postData = $(this).serialize() + "&accion=new&areas="+areas;
-		 var formURL = $(this).attr("action");
-		 $.ajax(
-		 {
+			}
+
+			var servicing = $('#servicing').val();
+
+			var postData = $(this).serialize() + "&accion=new&areas="+areas;
+			var formURL = $(this).attr("action");
+			$.ajax(
+			{
 			  url : formURL,
 			  type: "POST",
 			  data : postData,
 			  success:function(data, textStatus, jqXHR) 
 			  {
-				alert('succes');
-				console.log($(data));
 					//data: return data from server
 				if (data.success==("true")){
 					var html=generateRow(postData,data.id,data.permiso);
@@ -193,7 +207,8 @@ $(function() {
 					$('#message_div').addClass('error').removeClass('success');
 				}
 			  }
-		 });
+			});
+		}
 	});
 });
 
@@ -367,12 +382,12 @@ function editRow(id){
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
 		remote: "Por favor, rellena este campo.",
-		email: "Por favor, escribe una dirección de correo válida.",
+		email: "Por favor, escribe una direcci&oacuten de correo v&aacutelida.",
 		url: "Por favor, escribe una URL válida.",
 		date: "Por favor, escribe una fecha válida.",
 		dateISO: "Por favor, escribe una fecha (ISO) válida.",
-		number: "Por favor, escribe un número válido.",
-		digits: "Por favor, escribe sólo dígitos.",
+		number: "Por favor, escribe un n&uacutemero v&aacutelido.",
+		digits: "Por favor, escribe s&oacutelo dígitos.",
 		creditcard: "Por favor, escribe un número de tarjeta válido.",
 		equalTo: "Por favor, escribe el mismo valor de nuevo.",
 		extension: "Por favor, escribe un valor con una extensión aceptada.",
@@ -388,15 +403,14 @@ function editRow(id){
 	});
 
 	// One to rule the ... selects
-	$.validator.addMethod("hasSelectedValue", function(value, element, arg){
-		alert('hasSelectedValue');
-		return arg != value;
-	}, "Value must not equal arg.");
+	$.validator.addMethod("selected", function(value, element){
+		var valid = false;
 
-	$.validator.addMethod("greaterThanZero", function(value, element) {
-		alert('greaterThanZero');
-	    return this.optional(element) || (parseFloat(value) > 0);
-	}, "* Amount must be greater than zero");
+		if(value != 'default') {
+			valid = true;
+		}
+		return valid;
+	}, "Por favor, selecciona un valor.");
 
 	$.validator.addMethod('require-one', function(value, element) {
 		var valid = false;
@@ -414,7 +428,38 @@ function editRow(id){
 	// Setup form validation on the #register-form element
 	$('form').validate({
 	    submitHandler: function(form) {
+	    	console.log('hi');
 	        form.submit();
-	    }
+	    },
+	    errorPlacement: function(error, $element) {
+			// overwritable when using the tag data-error-show-style = tooltip
+			if(($element.is(':checkbox') || $element.is(':radio')) && $element.parent().hasClass('radio-container')) {
+				var $target = $element.closest('.radio-container-holder');
+				var $container = $target.find('#error-messages');
+				if($container.length == 0){
+					$container = $('<div id="error-messages" class="block-error server-errors"><ul></ul></div>');
+					$element.closest('.radio-container-holder').prepend($container);
+				}
+
+				// Create error element and append it to error container
+				var $errorelement = $('<li>');
+				$errorelement.append(error);
+				$container.find('ul').append($errorelement);
+
+			} else {
+				var $target = $element.closest('.form-container');
+				var $container = $target.find('#error-messages');
+
+				if($container.length == 0){
+					$container = $('<div id="error-messages" class="block-error server-errors detail"><ul></ul></div>');
+					$target.prepend($container);
+				}
+
+				// Create error element and append it to error container
+				var $errorelement = $('<li>');
+				$errorelement.append(error);
+				$container.find('ul').append($errorelement);
+			}
+		}
 	});
 });
