@@ -699,22 +699,22 @@ hr {
 }
 .gestion_demanda #newuser_form > button {
   float: right;
-  margin-right: 133px;
+  margin-right: 25px;
   margin-top: 10px;
 }
 .gestion_demanda #newuser_form .form-container {
   display: inline-block;
-  width: 44%;
+  width: 49%;
   vertical-align: text-top;
 }
 .gestion_demanda #newuser_form .form-container > .form-field {
   height: 40px;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select {
   float: right;
   margin-bottom: 0px;
-  width: 175px;
+  width: 215px;
 }
 .gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select > .btn-default {
   border: 1px solid #e8e8e6;
@@ -736,29 +736,33 @@ hr {
 }
 .gestion_demanda #newuser_form .form-container > .form-field textarea {
   margin-left: 5px;
-  width: 175px;
+  width: 215px;
   float: right;
+  height: 85px;
+  resize: none;
 }
 .gestion_demanda #newuser_form .form-container > .form-field > select {
   float: right;
-  width: 175px;
+  width: 215px;
 }
 .gestion_demanda #newuser_form .form-container > .form-field > input {
   position: relative;
   float: right;
-  width: 175px;
+  width: 215px;
 }
 .gestion_demanda #newuser_form .form-container .form-field.textarea {
-  height: 80px;
+  height: 95px;
 }
 .gestion_demanda #newuser_form .form-container .form-field.datetime > .date > input {
-  width: 146px;
+  left: -13px;
   max-height: 30px;
+  position: relative;
+  width: 215px;
 }
 .gestion_demanda #newuser_form .form-container .form-field.datetime > .date > .add-on {
   display: inline-block;
-  left: 140px;
+  left: 163px;
   position: relative;
-  top: -30px;
+  top: -30.5px;
   width: 40px;
 }
