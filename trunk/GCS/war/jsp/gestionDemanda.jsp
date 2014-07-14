@@ -114,12 +114,17 @@
 				
 				<div class="form-field datetime">
 					<span>Hora petición</span>
-					<select class="selectpicker">					
-					    <option value="0" selected>Seleccionar</option>
+					<select class="selectpicker time">					
+					   
 						<c:forEach items="${gestores_it}" var="user">	
-							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
-						</c:forEach>					
-				
+							<option value="${user.key.id}">${user.nombre}</option>
+						</c:forEach>			
+					</select><span class="time-span">:</span>
+					<select class="selectpicker time">					
+					    
+						<c:forEach items="${gestores_it}" var="user">	
+							<option value="${user.key.id}">${user.nombre}</option>
+						</c:forEach>			
 					</select>
 				</div>
 				
