@@ -16,6 +16,14 @@
 					<th><span class="table-title">Permisos</span></th>
 					<th style="width:110px;">&nbsp;</th>
 				</tr>
+				<tr>
+					<th class="search-th"><input class="search col0"></th>
+					<th class="search-th"><input class="search col1"></th>
+					<th class="search-th"><input class="search col2"></th>
+					<th class="search-th"><input class="search col3"></th>
+					<th class="search-th"><input class="search col4"></th>
+					<th style="width:110px;">&nbsp;</th>
+				</tr>
 			</tbody>
 		</table>
 		<table class="users">

@@ -10,6 +10,8 @@
 		text-align:left;
 		border-collapse: collapse;
    		border-spacing: 0;
+   		
+   		
 		th{	
 			background-color: #F8F8F5;
 		    border-bottom: 1px solid #DCDCDC;
@@ -24,6 +26,21 @@
 		th:first-child{
 			 border-left: 1px solid #DCDCDC;
 		}
+		
+		th.search-th {
+			> input{
+				width: 100%;
+			}
+		}
+		
+		th.search-th:nth-child(5) {
+			overflow: visible;
+			> input{
+				position:relative;
+				width: 162%;
+			}
+		}
+		
 		.table_results{
 			.extended-row{
 				width:100%;
@@ -304,6 +321,7 @@
 			    text-align: left;			  
 			    margin: 10px auto 0;
 			    
+			    
 			    > .fieldset-title{
 			    	display:block;
 			    	margin-bottom:10px;
@@ -353,6 +371,12 @@
 				width: 45%;
 				vertical-align: top;
 				margin-bottom: 10px;
+				
+				  > .bootstrap-select{
+			    	position:relative;
+			    	width:248px !important;
+			    }
+				
 				> span{
 					width:70px;
 					display:inline-block;
