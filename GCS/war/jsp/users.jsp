@@ -70,7 +70,7 @@
 						<span>E-mail:</span><input class="long email" type="text" name="email" id="email" required aria-required="true" data-type="email">
 					</div><div class="form-field">
 						<span>Departamento:</span>
-						<select class="long validateSelect selectpicker" name="dto" required>
+						<select class="long selected selectpicker" name="dto" required>
 							<option selected value="default">Seleccionar</option>
  							<option value="Negocio - Global Customer Service (Incluye HDR)">Negocio - Global Customer Service (Incluye HDR)</option>
 							<option value="Negocio - Global Product">Negocio - Global Product</option>
@@ -88,7 +88,7 @@
 						</select>
 					</div><div class="form-field">
 						<span>Permisos:</span>
-						<select class="long validateSelect selectpicker" name="permiso" required>
+						<select class="long selected selectpicker" name="permiso" required>
 							<option selected value="default">Seleccionar</option>
 							<option value="5">Gestor IT</option>
 							<option value="4">Gestor Demanda</option>
