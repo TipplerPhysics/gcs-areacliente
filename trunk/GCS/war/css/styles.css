@@ -713,6 +713,7 @@ hr {
   float: right;
   position: relative;
   width: 44%;
+  height: 40px;
 }
 .gestion_demanda #newuser_form .form-container > .form-field textarea {
   margin-left: 5px;
