@@ -15,7 +15,7 @@
 				
 				<div class="form-field">
 					<span>Tipo de petición</span>
-					<select>
+					<select class="selectpicker">
 						<option value="CIB">CIB</option>
 						<option value="BEC">BEC</option>
 					</select>
@@ -23,7 +23,7 @@
 				</div>
 				<div class="form-field">
 					<span>Estado de la petición</span>
-					<select>
+					<select class="selectpicker">
 						<option value="0">Seleccionar</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 						<option value="P-950 en confección">P-950 en confección</option>
@@ -47,7 +47,7 @@
 				</div>
 				<div class="form-field">
 					<span>Catalogación de petición</span>
-					<select>
+					<select class="selectpicker">
 						<option value="Implantación">Implantación</option>
 						<option value="SEPA">SEPA</option>
 						<option value="Migración IA">Migración IA</option>
@@ -83,7 +83,7 @@
 			<div class="form-container">
 				<div class="form-field">
 					<span>Nombre Gestor Negocio asignado</span>
-					<select>					
+					<select class="selectpicker">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_demanda}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -93,7 +93,7 @@
 				</div>	
 				<div class="form-field">
 					<span>Nombre Gestor IT asignado</span>
-					<select>					
+					<select class="selectpicker">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_it}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -114,7 +114,7 @@
 				
 				<div class="form-field datetime">
 					<span>Hora petición</span>
-					<select>					
+					<select class="selectpicker">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_it}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -125,7 +125,7 @@
 				
 				<div class="form-field datetime">
 					<span>Hora solicitud asignación</span>
-					<select>					
+					<select class="selectpicker">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_it}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -148,6 +148,7 @@
 <script type="text/javascript">
   $(function() {
     $('.date').datepicker();
+    $('.selectpicker').selectpicker();
   });
 </script>
 

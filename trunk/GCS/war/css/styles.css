@@ -91,7 +91,9 @@ textarea {
   padding: 0.583em 0.755em 0.5em;
 }
 input:active,
-input:focus {
+input:focus,
+textarea:active,
+textarea:focus {
   background-color: #fffff5;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset, 0 0 0 2px #def4fb;
 }
@@ -205,6 +207,14 @@ hr {
   margin: 0px;
   margin-bottom: 10px;
   border-top: 1px solid #D1D1D1;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-color: #fffff5;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset, 0 0 0 2px #def4fb;
 }
 /* ****** GRID  ******  */
 /* ****** Ventana modal  ******  */
@@ -700,6 +710,15 @@ hr {
 .gestion_demanda #newuser_form .form-container > .form-field {
   height: 40px;
   padding-right: 20px;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select {
+  float: right;
+  margin-bottom: 0px;
+  width: 175px;
+}
+.gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select > .btn-default {
+  border: 1px solid #e8e8e6;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset;
 }
 .gestion_demanda #newuser_form .form-container > .form-field > span {
   font-family: BBVA Web Book;
