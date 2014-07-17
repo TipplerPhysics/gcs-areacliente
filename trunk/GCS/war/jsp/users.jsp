@@ -109,7 +109,7 @@
 						<span class="fieldset-title">&Aacute;reas:</span>
 						<fieldset class='radio-container-holder'>
 							<div class="radio-container">
-								<input class="require-one" type="checkbox" name='areas' value="Onboarding" id="onboarding"><label for="onboarding"><span></span>Onboarding</label>	
+								<input type="checkbox" name='areas' value="Onboarding" id="onboarding"><label for="onboarding"><span></span>Onboarding</label>	
 							</div><div class="radio-container">
 								<input type="checkbox" name='areas' value="Servicing" id="servicing"><label for="servicing"><span></span>Servicing</label>
 							</div><div class="radio-container">

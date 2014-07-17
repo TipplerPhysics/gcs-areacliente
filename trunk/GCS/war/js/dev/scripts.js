@@ -383,7 +383,7 @@ function editRow(id){
 			
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}
-	}},500);
+	}},750);
 }
 
 function resetUserForm(){

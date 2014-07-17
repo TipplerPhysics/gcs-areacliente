@@ -50,7 +50,12 @@ public class OwnerFilter implements Filter {
 			 if (url.contains("localhost")){
 				 response.sendRedirect("http://localhost:8888");
 			 }else{
-				 response.sendRedirect("https://gcs-areacliente.appspot.com");
+				 if (url.contains("pre.")){
+					 response.sendRedirect("https://pre.gcs-areacliente.appspot.com");
+
+				 }else{
+					 response.sendRedirect("https://gcs-areacliente.appspot.com");
+				 }
 			 }
 			 			 
 		 }
