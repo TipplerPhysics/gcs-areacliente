@@ -10,11 +10,11 @@
 		<div class="user-form">
 			<div class="form-container">				
 				<div class="form-field">
-					<span>Nombre de cliente</span><input class="long" type="text" >
+					<span>Nombre de cliente:</span><input class="long" type="text" >
 				</div>
 				
 				<div class="form-field">
-					<span>Tipo de petición</span>
+					<span>Tipo de petición:</span>
 					<select class="selectpicker">
 						<option value="CIB">CIB</option>
 						<option value="BEC">BEC</option>
@@ -22,7 +22,7 @@
 					
 				</div>
 				<div class="form-field">
-					<span>Estado de la petición</span>
+					<span>Estado de la petición:</span>
 					<select class="selectpicker">
 						<option value="0">Seleccionar</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
@@ -46,7 +46,7 @@
 					</select>
 				</div>
 				<div class="form-field">
-					<span>Catalogación de petición</span>
+					<span>Catalogación de petición:</span>
 					<select class="selectpicker">
 						<option value="Implantación">Implantación</option>
 						<option value="SEPA">SEPA</option>
@@ -57,12 +57,12 @@
 					</select>
 				</div>
 				<div class="form-field textarea">
-					<span class="align-top">Motivo de catalogación de petición</span><textarea class="long"></textarea>
+					<span class="align-top">Motivo de catalogación de petición:</span><textarea class="long"></textarea>
 				</div>
 				
 				
 				<div class="form-field datetime">
-					<span>Fecha petición</span>
+					<span>Fecha petición:</span>
 					<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
 						<input type="text" readonly="" value="" size="16" class="span2">
 						<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
@@ -71,7 +71,7 @@
 				</div>
 				
 				<div class="form-field datetime">
-					<span>Fecha solicitud asignación</span>
+					<span>Fecha solicitud asignación:</span>
 					<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp2" class="input-append date">
 						<input type="text" readonly="" value="" size="16" class="span2">
 						<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
@@ -82,7 +82,7 @@
 			</div>
 			<div class="form-container">
 				<div class="form-field">
-					<span>Nombre Gestor Negocio asignado</span>
+					<span>Nombre Gestor Negocio asignado:</span>
 					<select class="selectpicker">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_demanda}" var="user">	
@@ -92,7 +92,7 @@
 					</select>
 				</div>	
 				<div class="form-field">
-					<span>Nombre Gestor IT asignado</span>
+					<span>Nombre Gestor IT asignado:</span>
 					<select class="selectpicker">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_it}" var="user">	
@@ -105,37 +105,44 @@
 				<div class="form-field">
 				</div>
 				<div class="form-field">
-					<span>Devolución de petición</span><input class="long" type="text" >
+					<span>Devolución de petición:</span><input class="long" type="text" >
 				</div>
 					
 				<div class="form-field textarea">
-					<span class="align-top">Motivo de devolución de petición</span><textarea class="long"></textarea>
+					<span class="align-top">Motivo de devolución de petición:</span><textarea class="long"></textarea>
 				</div>
 				
 				<div class="form-field datetime">
-					<span>Hora petición</span>
-					<select class="selectpicker time">					
-					   
-						<c:forEach items="${gestores_it}" var="user">	
-							<option value="${user.key.id}">${user.nombre}</option>
+					<span>Hora petición:</span>
+					<select class="selectpicker time" id="min_peticion">					
+					   <c:forEach items="${minutosList}" var="min">		         	
+							<option value="${min}">${min}</option>
 						</c:forEach>			
 					</select><span class="time-span">:</span>
-					<select class="selectpicker time">					
+					<select class="selectpicker time" id="hora_peticion">					
 					    
-						<c:forEach items="${gestores_it}" var="user">	
-							<option value="${user.key.id}">${user.nombre}</option>
+							
+								<c:forEach items="${horasList}" var="hora">		         
+							
+							<option value="${hora}">${hora}</option>
 						</c:forEach>			
 					</select>
 				</div>
 				
 				<div class="form-field datetime">
-					<span>Hora solicitud asignación</span>
-					<select class="selectpicker">					
-					    <option value="0" selected>Seleccionar</option>
-						<c:forEach items="${gestores_it}" var="user">	
-							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
-						</c:forEach>					
-				
+					<span>Hora solicitud asignación:</span>
+					<select class="selectpicker time" id="min_asignacion">					
+					   <c:forEach items="${minutosList}" var="min">		         	
+							<option value="${min}">${min}</option>
+						</c:forEach>			
+					</select><span class="time-span">:</span>
+					<select class="selectpicker time" id="hora_asignacion">					
+					    
+							
+								<c:forEach items="${horasList}" var="hora">		         
+							
+							<option value="${hora}">${hora}</option>
+						</c:forEach>			
 					</select>
 				</div>
 				

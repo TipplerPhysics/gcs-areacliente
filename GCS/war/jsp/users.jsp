@@ -13,7 +13,7 @@
 					<th><span class="table-title">Apellido 1</span></th>
 					<th><span class="table-title">Apellido 2</span></th>
 					<th><span class="table-title">Email</span></th>
-					<th><span class="table-title">Permisos</span></th>
+					<th><span class="table-title">Perfil</span></th>
 					<th style="width:110px;">&nbsp;</th>
 				</tr>
 				<tr>
@@ -95,7 +95,7 @@
 							<option value="IT C&IB – B2B Global Support">IT C&IB - B2B Global Support</option>
 						</select>
 					</div><div class="form-field">
-						<span>Permisos:</span>
+						<span>Perfil:</span>
 						<select class="long selected selectpicker" name="permiso" required>
 							<option selected value="default">Seleccionar</option>
 							<option value="5">Gestor IT</option>
@@ -125,8 +125,9 @@
 					</div>
 					<div id="message_div"><span id="span_message"></span></div>
 				</div>
-				<button type="submit" id="submit_user_form">Aceptar</button>
+				
 			</form>
+			<button type="submit" id="submit_user_form">Aceptar</button>
 		</div>
 	</div>
 

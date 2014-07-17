@@ -185,6 +185,15 @@ button {
   vertical-align: text-bottom;
   width: 19px;
 }
+.bootstrap-select {
+  float: right;
+  margin-bottom: 0px;
+  width: 215px;
+}
+.bootstrap-select > .btn-default {
+  border: 1px solid #e8e8e6;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset;
+}
 .user_span.blue {
   background-image: url("../img/user.png");
 }
@@ -517,6 +526,7 @@ hr {
 .newUserbox .new-user-form-holder.open {
   height: 441px;
   border: 1px solid #DCDCDC;
+  overflow: visible;
 }
 .newUserbox .new-user-form-holder button#submit_user_form {
   left: 880px;
@@ -642,6 +652,7 @@ hr {
 }
 .newUserbox .new-user-form-holder .form-container .form-field .long {
   width: 245px;
+  left: -2px;
 }
 /* CLIENTES */
 .clients > .abc {
@@ -726,14 +737,9 @@ hr {
   height: 40px;
   padding-right: 10px;
 }
-.gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select {
+.gestion_demanda #newuser_form .form-container > .form-field > div.bootstrap-select {
   float: right;
   margin-bottom: 0px;
-  width: 215px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select > .btn-default {
-  border: 1px solid #e8e8e6;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset;
 }
 .gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select.time {
   width: 100px;
