@@ -79,6 +79,7 @@ public class UserServlet extends HttpServlet {
 		u.setAreas(areas);
 		u.setDepartamento(dto);
 		u.setPermisoStr(permisoStr);
+		u.setPermiso(permiso);
 		
 		uDao.createUser(u);
 		
