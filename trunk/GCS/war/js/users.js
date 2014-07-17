@@ -84,6 +84,7 @@ $(function() {
 		var id= $('.editing').attr('name');
 		var campo = $('.col'+id);
 		var areas =  $('.dtos').find('input');
+		var $fila= $('#row'+id);
 		
 		var nombre = $(campo[0]).val();
 		var ap1 = $(campo[1]).val();
@@ -94,6 +95,7 @@ $(function() {
 		
 		dto = dto.replace('&','#');
 		
+		
 		var areascont = $('.dtos').children();
 		var areas="";
 		
@@ -103,6 +105,14 @@ $(function() {
 				areas += $item.val() + "-";
 			}		
 		}
+		
+		// Ponemos en la info de la fila los valores nuevos de area y dto		
+		if (areas.length>1){
+			$fila.attr('data-area',areas.substring(0,areas.length-1));			
+		}else{
+			$fila.attr('data-area',"");
+		}
+		$fila.attr('data-dto',dto);
 
 		var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
 		var formURL = "/usersServlet";
@@ -125,10 +135,12 @@ $(function() {
 	});
 
 	// Submit for creating a new user.
-	$("#new-user-form").submit(function(e) {
+	
+	$("#submit_user_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
-
-		if($(this).valid()){
+		var $form = $("#new-user-form");
+		
+		if($form.valid()){
 			var areas = "";
 			if ($('#onboarding').prop('checked')==true){
 			 areas += "Onboarding-"
@@ -151,8 +163,8 @@ $(function() {
 
 			var servicing = $('#servicing').val();
 
-			var postData = $(this).serialize() + "&accion=new&areas="+areas;
-			var formURL = $(this).attr("action");
+			var postData = $form.serialize() + "&accion=new&areas="+areas;
+			var formURL = $form.attr("action");
 			$.ajax(
 			{
 			  url : formURL,
@@ -170,8 +182,11 @@ $(function() {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El usuario ha sido creado de forma correcta.")
+					$('#span_message').html("El usuario ha sido creado de forma correcta.");
 					$('#message_div').css('display','block');
+					
+					resetUserForm();
+					
 					setTimeout(function() { 
 						$('#user_form')[0].reset();
 						$( "#message_div" ).fadeOut( "slow", function() {
@@ -194,7 +209,9 @@ $(function() {
 				}
 			  }
 			});
+			
 		}
+		return false;
 	});
 });
 
@@ -260,24 +277,10 @@ function undoEditRow(id){
 	updateRow(id);
 }
 
-function generateRow(pagina,destino){
+function generateChecks(pagina,destino){
 	$.get('../html/'+pagina,null,function(result) {
 		 $(".extended-div").html(result); // Or whatever you need to insert the result
-		 for (var e=0; e<areas.length; e++){
-			if (areas[e].indexOf("Onboarding")!=-1){
-				$('#onboarding').attr('checked',"true");
-			}else if (areas[e].indexOf("Servicing")!=-1){
-				$('#servicing').attr('checked',"true");
-			}else if (areas[e].indexOf("ITCIB")!=-1){
-				$('#itcib').attr('checked',"true");
-			}else if (areas[e].indexOf("Customer")!=-1){
-				$('#gcs').attr('checked',"true");
-			}else if (areas[e].indexOf("Product")!=-1){
-				$('#global-product').attr('checked',"true");
-			}else if (areas[e].indexOf("Clientes")!=-1){
-				$('#clientes').attr('checked',"true");
-			}
-		}
+	
 	},'html');
 }
 
@@ -301,7 +304,8 @@ function editRow(id){
 
 	$('#row'+id).after("<tr class='extended-row'><td><div class='extended-div'></div></td><td></td><td></td><td></td><td></td><td></td></tr>");
 	
-	generateRow("extended-user.html","extended-div");
+	generateChecks("extended-user.html","extended-div");
+	
 	
 	var celdas = $('#row'+id).children();
 	cnombre = $(celdas[0]).children().html();
@@ -344,8 +348,7 @@ function editRow(id){
 	
 	$('#lapiz'+id).addClass('inactive');
 	$('#papelera'+id).addClass('inactive');
-	$('#permiso_ed option:selected').val(value);
-	$('#dtos_select').val(dto);
+	
 	
 	var lng = areas.length;
 	
@@ -353,7 +356,11 @@ function editRow(id){
 		lng=0;
 	}
 	
-	setTimeout(function(){if (lng>0){
+	setTimeout(function(){
+		$('#dtos_select').val(dto);
+		$('#permiso_ed').val(value);
+
+		if (lng>0){
 		for (var n=0; n<lng;n++){
 			
 			var name = areas[n];
@@ -361,4 +368,12 @@ function editRow(id){
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}
 	}},500);
+}
+
+function resetUserForm(){
+	$('#nombre').val("");
+	$('#ap1').val("");
+	$('#ap2').val("");
+	$('#email').val("");
+	
 }

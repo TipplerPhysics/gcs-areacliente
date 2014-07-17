@@ -1,5 +1,8 @@
 package com.gcs.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utils {
 
 	public static String getPermisoStr(int permiso){
@@ -19,5 +22,35 @@ public class Utils {
 		}
 		
 		return s;
+	}
+	
+	public static List<String> getHorasList(){
+		
+		List<String> listaHoras = new ArrayList();
+		
+		for (Integer a=0; a<24; a++){
+			if (a.toString().length()==1){
+				listaHoras.add("0"+a.toString());
+			}else{
+				listaHoras.add(a.toString());
+			}
+		}
+		
+		return listaHoras;
+	}
+	
+public static List<String> getMinutosList(){
+		
+		List<String> listaMinutos = new ArrayList();
+		
+		for (Integer a=0; a<60; a=a+5){
+			if (a.toString().length()==1){
+				listaMinutos.add("0"+a.toString());
+			}else{
+				listaMinutos.add(a.toString());
+			}
+		}
+		
+		return listaMinutos;
 	}
 }

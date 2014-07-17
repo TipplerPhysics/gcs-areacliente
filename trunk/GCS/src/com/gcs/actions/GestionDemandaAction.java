@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.User;
 import com.gcs.dao.UserDao;
+import com.gcs.utils.Utils;
 
 public class GestionDemandaAction extends Action {
 	public ActionForward execute (ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp) throws IOException{
@@ -23,6 +24,9 @@ public class GestionDemandaAction extends Action {
 			
 		req.setAttribute("gestores_demanda", gestores_demanda);
 		req.setAttribute("gestores_it", gestores_it);
+		
+		req.setAttribute("horasList", Utils.getHorasList());
+		req.setAttribute("minutosList", Utils.getMinutosList());
 		
 		 return mapping.findForward("ok");
 	 }
