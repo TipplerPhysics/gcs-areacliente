@@ -7,6 +7,7 @@
 	<head>
 		<title>Portal GCS</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
       	<script src="../tools/jquery-1.11.1.min.js" type="text/javascript"></script>
       	<script src="../tools/jquery.validate.js" type="text/javascript"></script> 
 	  	<script src="../components/bootstrap/js/bootstrap.js" type="text/javascript"></script>

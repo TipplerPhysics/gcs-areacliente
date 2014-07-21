@@ -201,15 +201,15 @@
 				margin-left:10px;
 				height:30px;
 				width:30px;
-				display:inline-block;				
+				display:inline-block;
+				cursor: pointer;
+				&:active{
+					background-image:url(../img/delete-active.png);
+				}		
+				&.inactive{
+					cursor: default;
+					background-image:url(../img/delete-inactive.png);
 				}
-			
-			.papelera:active{
-				background-image:url(../img/delete-active.png);
-			}
-			
-			.papelera.inactive{
-				background-image:url(../img/delete-inactive.png);
 			}
 			
 			.return{
@@ -218,11 +218,10 @@
 				margin-left:10px;
 				height:30px;
 				width:30px;
-				display:none;	
-			}
-			
-			.return:active{
-				background-image:url(../img/returnon.png);
+				display:none;
+				&:active{
+					background-image:url(../img/returnon.png);
+				}
 			}
 			
 			.guardar{
@@ -231,11 +230,10 @@
 				margin-left:10px;
 				height:30px;
 				width:30px;
-				display:none;		
-			}
-			
-			.guardar:active{
-				background-image:url(../img/guardaron.png);
+				display:none;
+				&:active{
+					background-image:url(../img/guardaron.png);
+				}		
 			}
 			
 			.lapiz{
@@ -245,15 +243,15 @@
 				height:30px;
 				width:30px;
 				display:inline-block;	
-				margin-right:10px;			
+				margin-right:10px;
+				cursor: pointer;
+				&:active{
+					background-image:url(../img/edit-active.png);
 				}
-			
-			.lapiz:active{
-				background-image:url(../img/edit-active.png);
-			}
-			
-			.lapiz.inactive{
-				background-image:url(../img/edit-inactive.png);
+				&.inactive{
+					cursor: default;
+					background-image:url(../img/edit-inactive.png);
+				}
 			}
 			
 			.vs{
