@@ -317,8 +317,27 @@ hr {
   width: 100%;
   background-color: #FFF;
   text-align: left;
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: initial;
+}
+.usersTable > table > #myTable button.selectpicker {
+  height: 30px;
+}
+.usersTable > table > #myTable .long {
+  height: 31px;
+  left: -2px;
+  top: 5px;
+  width: 306px;
+}
+.usersTable > table > #myTable .permiso_ed {
+  width: 175px;
+}
+.usersTable > table > #myTable #email_ext {
+  margin-left: 85px;
+  width: 455px;
+}
+.usersTable > table > #myTable td {
+  border-right: medium none;
 }
 .usersTable > table th {
   background-color: #F8F8F5;
@@ -344,41 +363,50 @@ hr {
   position: relative;
   width: 162%;
 }
-.usersTable > table .table_results .extended-row {
+.usersTable > table .extended-row {
   width: 100%;
+  background-color: #FFF;
+  border: none !important;
 }
-.usersTable > table .table_results .extended-div {
-  width: 900px;
+.usersTable > table .extended-row td {
+  border: none;
 }
-.usersTable > table .table_results .extended-div button {
+.usersTable > table .extended-row tr {
+  border: none;
+}
+.usersTable > table .extended-div {
+  width: 980px;
+  background-color: #FFF;
+}
+.usersTable > table .extended-div button {
   margin-left: 20px;
 }
-.usersTable > table .table_results .extended-div > .area-div > span {
+.usersTable > table .extended-div > .area-div > span {
   vertical-align: top;
 }
-.usersTable > table .table_results .extended-div > .dtos-div {
+.usersTable > table .extended-div > .dtos-div {
   display: inline-block;
   margin-top: 20px;
-  width: 500px;
-  margin-right: 220px;
+  width: 743px;
+  margin-right: 40px;
 }
-.usersTable > table .table_results .extended-div > .dtos-div select {
+.usersTable > table .extended-div > .dtos-div select {
   margin-left: 40px;
 }
-.usersTable > table .table_results .extended-div .dtos {
+.usersTable > table .extended-div .dtos {
   display: inline-block;
   width: 89%;
   margin-left: 40px;
 }
-.usersTable > table .table_results .extended-div .radio-container {
+.usersTable > table .extended-div .radio-container {
   display: inline-block;
   padding-left: 40px;
   width: 265px;
 }
-.usersTable > table .table_results .extended-div .radio-container span {
+.usersTable > table .extended-div .radio-container span {
   vertical-align: baseline;
 }
-.usersTable > table .table_results .edit_input {
+.usersTable > table .edit_input {
   width: 100%;
 }
 .usersTable > table .table_results tr:not(first-child) {
@@ -426,6 +454,7 @@ hr {
   color: #434A58;
   font-family: arial;
   text-align: left;
+  vertical-align: middle !important;
 }
 .usersTable > table td span {
   vertical-align: middle;
@@ -655,6 +684,12 @@ hr {
   left: -2px;
 }
 /* CLIENTES */
+.clients .bootstrap-select {
+  width: 70px !important;
+}
+.clients > #btn_alta_cliente {
+  margin-right: 10px;
+}
 .clients > .abc {
   margin-top: 40px;
   text-align: center;

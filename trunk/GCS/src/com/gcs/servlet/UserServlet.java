@@ -93,13 +93,15 @@ public class UserServlet extends HttpServlet {
 	private JSONObject createUser(HttpServletRequest req) throws JSONException{
 		JSONObject json = new JSONObject();
 		
+		try{
+		
 		String nombre = req.getParameter("nombre");
 		String ap1 = req.getParameter("ap1");
 		String ap2 = req.getParameter("ap2");
 		String email = req.getParameter("email");
 		String areas = req.getParameter("areas");
 		String dto = req.getParameter("dto");
-		if (areas.length()!=0 && areas.contains("-"));
+		if (areas.length()!=0 || areas.contains("-"))
 		areas = areas.substring(0, areas.length()-1);
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
@@ -127,7 +129,11 @@ public class UserServlet extends HttpServlet {
 			json.append("permiso", u.getPermisoStr());
 		}
 		
+		}catch(Exception e){
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
 		
+		}
 		return json;
 	}
 	

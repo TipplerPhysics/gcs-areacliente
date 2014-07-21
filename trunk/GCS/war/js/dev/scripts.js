@@ -23,6 +23,133 @@ var cpermiso="";
 var areas;
 var dto;
 
+$.fn.pageMe = function(opts) {
+	var $this = this, defaults = {
+		perPage : 7,
+		showPrevNext : false,
+		numbersPerPage : 5,
+		hidePageNumbers : false
+	}, settings = $.extend(defaults, opts);
+
+	var listElement = $this;
+	var perPage = settings.perPage;
+	var children = listElement.children();
+	var pager = $('.pagination');
+
+	if (typeof settings.childSelector != "undefined") {
+		children = listElement.find(settings.childSelector);
+	}
+
+	if (typeof settings.pagerSelector != "undefined") {
+		pager = $(settings.pagerSelector);
+	}
+
+	var numItems = children.size();
+	var numPages = Math.ceil(numItems / perPage);
+
+	pager.data("curr", 0);
+
+	if (settings.showPrevNext) {
+		$('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+	}
+
+	var curr = 0;
+	while (numPages > curr && (settings.hidePageNumbers == false)) {
+		$('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>')
+				.appendTo(pager);
+		curr++;
+	}
+
+	if (settings.numbersPerPage > 1) {
+		$('.page_link').hide();
+		$('.page_link').slice(pager.data("curr"), settings.numbersPerPage)
+				.show();
+	}
+
+	if (settings.showPrevNext) {
+		$('<li><a href="#" class="next_link">></a></li>').appendTo(pager);
+	}
+
+	pager.find('.page_link:first').addClass('active');
+	pager.find('.prev_link').hide();
+	if (numPages <= 1) {
+		pager.find('.next_link').hide();
+	}
+	pager.children().eq(1).addClass("active");
+
+	children.hide();
+	children.slice(0, perPage).show();
+
+	pager.find('li .page_link').click(function() {
+		var clickedPage = $(this).html().valueOf() - 1;
+		goTo(clickedPage, perPage);
+		return false;
+	});
+	pager.find('li .prev_link').click(function() {
+		previous();
+		return false;
+	});
+	pager.find('li .next_link').click(function() {
+		next();
+		return false;
+	});
+
+	function previous() {
+		var goToPage = parseInt(pager.data("curr")) - 1;
+		goTo(goToPage);
+	}
+
+	function next() {
+		goToPage = parseInt(pager.data("curr")) + 1;
+		goTo(goToPage);
+	}
+
+	function goTo(page) {
+		var startAt = page * perPage, endOn = startAt + perPage;
+
+		children.css('display', 'none').slice(startAt, endOn).show();
+
+		if (page >= 1) {
+			pager.find('.prev_link').show();
+		} else {
+			pager.find('.prev_link').hide();
+		}
+
+		if (page < (numPages - 1)) {
+			pager.find('.next_link').show();
+		} else {
+			pager.find('.next_link').hide();
+		}
+
+		pager.data("curr", page);
+
+		if (settings.numbersPerPage > 1) {
+			$('.page_link').hide();
+			$('.page_link').slice(page, settings.numbersPerPage + page)
+					.show();
+		}
+
+		pager.children().removeClass("active");
+		pager.children().eq(page + 1).addClass("active");
+
+	}
+};
+
+$(document).ready(function() {
+
+	$('#myTable').pageMe({
+		pagerSelector : '#myPager',
+		showPrevNext : true,
+		hidePageNumbers : false,
+		perPage : 4
+	});
+
+});
+
+$(function() {
+	$('.selectpicker').selectpicker();
+});
+
 // on pageload complete
 $(function() {
 	var userBoxSize = 0;
@@ -318,10 +445,11 @@ function editRow(id){
 	areas= areas.split("-");
 	dto= $('#row'+id).attr('data-dto');
 
-	$('#row'+id).after("<tr class='extended-row'><td><div class='extended-div'></div></td><td></td><td></td><td></td><td></td><td></td></tr>");
+	$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td><div class='extended-div'></div></td><td></td><td></td><td></td><td></td><td></td></tr>");
 	
 	generateChecks("extended-user.html","extended-div");
-	
+
+	 
 	
 	var celdas = $('#row'+id).children();
 	cnombre = $(celdas[0]).children().html();
@@ -330,17 +458,43 @@ function editRow(id){
 	cemail = $(celdas[3]).children().html();
 	cpermiso = $(celdas[4]).children().html();
 	
-	for (var a =0; celdas.length-3 >= a;a++){
+	for (var a =0; celdas.length-2 >= a;a++){
 		var $celda = $(celdas[a]);
 		var span = $celda.children().html();
 		$celda.children().remove();
-		$celda.prepend("<input type='text' class='edit_input col"+id+"' value=" + span +">");
+		if (span.indexOf('&amp;')!=-1){
+			span = span.replace('&amp;','&');
+		}
+		$celda.prepend("<input type='text' class='edit_input col"+id+"' value='" + span +"'>");
 	}
 
+	// DEPARTAMENTO
+	
+	var $celda = $(celdas[3]);
+	var span = $celda.children().html();
+	$celda.children().remove();
+	$celda.prepend("<select name='dto_ext' id='dto_ed' class='long selectpicker'>" +
+			"<option value='Negocio - Global Customer Service (Incluye HDR)'>Negocio - Global Customer Service (Incluye HDR)</option>" +
+			"<option value='Negocio - Global Product'>Negocio - Global Product</option>" +
+			"<option value='Negocio - Global Sales'>Negocio - Global Sales</option>" +
+			"<option value='IT C&IB - CTO - Soluciones T&eacute;cnicas'>IT C&IB - CTO - Soluciones T&eacute;cnicas</option>" +
+			"<option value='IT C&IB - CTO - Arquitectura Funcional'>IT C&IB - CTO - Arquitectura Funcional</option>" +
+			"<option value='IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)'>IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>" +
+			"<option value='IT C&IB - Control y Gesti&oacute;n'>IT C&IB - Control y Gesti&oacute;n</option>" +
+			"<option value='IT C&IB - E- commerce C&IB'>IT C&IB - E- commerce C&IB</option>" +
+			"<option value='IT C&IB - GCC Lending GTB & CFO'>IT C&IB - GCC Lending GTB & CFO</option>" +
+			"<option value='IT C&IB - GTB - Global Customer Solutions'>IT C&IB - GTB - Global Customer Solutions</option>" +
+			"<option value='IT C&IB – Global Transactional Product'>IT C&IB - Global Transactional Product</option>" +
+			"<option value='IT C&IB – B2B Global Support'>IT C&IB - B2B Global Support</option></select>");	
+	
+	
+	var value_dto="0";
+	
+	// PERFIL
 	var $celda = $(celdas[4]);
 	var span = $celda.children().html();
 	$celda.children().remove();
-	$celda.prepend("<select name='permiso' id='permiso_ed' class='long'>"
+	$celda.prepend("<select name='permiso' id='permiso_ed' class='permiso_ed long selectpicker'>"
 		+ "	<option value='5'>Gestor IT</option>"
 		+ "	<option value='4'>Gestor Demanda</option>"
 		+ "	<option value='3'>User Admin</option>"
@@ -364,6 +518,7 @@ function editRow(id){
 	
 	$('#lapiz'+id).addClass('inactive');
 	$('#papelera'+id).addClass('inactive');
+	$('.selectpicker').selectpicker();
 	
 	
 	var lng = areas.length;
@@ -422,6 +577,12 @@ function resetUserForm(){
 
 		if(value != 'default') {
 			valid = true;
+		}else{
+			var select = $(element).parent();
+			var bootstrapSel = $(select).find('button.selecpicker');
+			bootstrapSel.addClass('error');	
+			
+			
 		}
 		return valid;
 	}, "Por favor, selecciona un valor.");
@@ -442,7 +603,6 @@ function resetUserForm(){
 	// Setup form validation on the #register-form element
 	$('form').validate({
 	    submitHandler: function(form) {
-	    	console.log('hi');
 	        form.submit();
 	    },
 	    errorPlacement: function(error, $element) {
