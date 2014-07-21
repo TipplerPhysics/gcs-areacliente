@@ -445,7 +445,7 @@ function editRow(id){
 	areas= areas.split("-");
 	dto= $('#row'+id).attr('data-dto');
 
-	$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td><div class='extended-div'></div></td><td></td><td></td><td></td><td></td><td></td></tr>");
+	$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
 	
 	generateChecks("extended-user.html","extended-div");
 
