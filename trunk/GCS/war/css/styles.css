@@ -330,40 +330,43 @@ hr {
 .users_title_icon {
   margin-right: 10px;
 }
-.usersTable > table {
+.usersTable > .table {
   width: 100%;
   background-color: #FFF;
   text-align: left;
   border-spacing: 0;
   border-collapse: initial;
 }
-.usersTable > table > #myTable .editing,
-.usersTable > table > #myTable .extended-row {
+.usersTable > .table > thead:first-child > tr:first-child > th {
+  border-top: 1px solid #dcdcdc !important;
+}
+.usersTable > .table > #myTable .editing,
+.usersTable > .table > #myTable .extended-row {
   background-color: #FBF1D0;
 }
-.usersTable > table > #myTable extended-div {
+.usersTable > .table > #myTable extended-div {
   background-color: transparent;
 }
-.usersTable > table > #myTable button.selectpicker {
+.usersTable > .table > #myTable button.selectpicker {
   height: 30px;
 }
-.usersTable > table > #myTable .long {
+.usersTable > .table > #myTable .long {
   height: 31px;
   left: -2px;
   top: 5px;
   width: 306px;
 }
-.usersTable > table > #myTable .permiso_ed {
+.usersTable > .table > #myTable .permiso_ed {
   width: 175px;
 }
-.usersTable > table > #myTable #email_ext {
+.usersTable > .table > #myTable #email_ext {
   margin-left: 85px;
   width: 455px;
 }
-.usersTable > table > #myTable td {
+.usersTable > .table > #myTable td {
   border-right: medium none;
 }
-.usersTable > table th {
+.usersTable > .table th {
   background-color: #F8F8F5;
   border-bottom: 1px solid #DCDCDC;
   border-top: 1px solid #DCDCDC;
@@ -374,101 +377,101 @@ hr {
   padding: 4px 10px;
   text-transform: uppercase;
 }
-.usersTable > table th:first-child {
+.usersTable > .table th:first-child {
   border-left: 1px solid #DCDCDC;
 }
-.usersTable > table th.search-th > input {
+.usersTable > .table th.search-th > input {
   width: 100%;
 }
-.usersTable > table th.search-th:nth-child(5) {
+.usersTable > .table th.search-th:nth-child(5) {
   overflow: visible;
 }
-.usersTable > table th.search-th:nth-child(5) > input {
+.usersTable > .table th.search-th:nth-child(5) > input {
   position: relative;
   width: 162%;
 }
-.usersTable > table .extended-row {
+.usersTable > .table .extended-row {
   width: 100%;
   background-color: #FFF;
   border: none !important;
 }
-.usersTable > table .extended-row td {
+.usersTable > .table .extended-row td {
   border: none;
 }
-.usersTable > table .extended-row tr {
+.usersTable > .table .extended-row tr {
   border: none;
 }
-.usersTable > table .extended-div {
+.usersTable > .table .extended-div {
   width: 980px;
 }
-.usersTable > table .extended-div button {
+.usersTable > .table .extended-div button {
   margin-left: 20px;
 }
-.usersTable > table .extended-div > .area-div > span {
+.usersTable > .table .extended-div > .area-div > span {
   vertical-align: top;
 }
-.usersTable > table .extended-div > .dtos-div {
+.usersTable > .table .extended-div > .dtos-div {
   display: inline-block;
   margin-top: 20px;
   width: 743px;
   margin-right: 40px;
 }
-.usersTable > table .extended-div > .dtos-div select {
+.usersTable > .table .extended-div > .dtos-div select {
   margin-left: 40px;
 }
-.usersTable > table .extended-div .dtos {
+.usersTable > .table .extended-div .dtos {
   display: inline-block;
   width: 89%;
   margin-left: 40px;
 }
-.usersTable > table .extended-div .radio-container {
+.usersTable > .table .extended-div .radio-container {
   display: inline-block;
   padding-left: 40px;
   width: 265px;
 }
-.usersTable > table .extended-div .radio-container span {
+.usersTable > .table .extended-div .radio-container span {
   vertical-align: baseline;
 }
-.usersTable > table .edit_input {
+.usersTable > .table .edit_input {
   width: 100%;
 }
-.usersTable > table .table_results tr:not(first-child) {
+.usersTable > .table .table_results tr:not(first-child) {
   height: 70px;
   border-bottom: 1px solid #dcdcdc !important;
 }
-.usersTable > table td:nth-child(1),
-.usersTable > table th:nth-child(1) {
+.usersTable > .table td:nth-child(1),
+.usersTable > .table th:nth-child(1) {
   width: 120px;
   max-width: 120px;
 }
-.usersTable > table td:nth-child(2),
-.usersTable > table th:nth-child(2) {
+.usersTable > .table td:nth-child(2),
+.usersTable > .table th:nth-child(2) {
   width: 115px;
   max-width: 115px;
 }
-.usersTable > table td:nth-child(3),
-.usersTable > table th:nth-child(3) {
+.usersTable > .table td:nth-child(3),
+.usersTable > .table th:nth-child(3) {
   width: 115px;
   max-width: 115px;
 }
-.usersTable > table td:nth-child(4),
-.usersTable > table th:nth-child(4) {
+.usersTable > .table td:nth-child(4),
+.usersTable > .table th:nth-child(4) {
   width: 305px;
   max-width: 305px;
 }
-.usersTable > table td:nth-child(5) {
+.usersTable > .table td:nth-child(5) {
   width: 175px;
   max-width: 175px;
   border-right: 0px;
 }
-.usersTable > table th:nth-child(5) {
+.usersTable > .table th:nth-child(5) {
   border-right: 0px;
 }
-.usersTable > table th:last-child {
+.usersTable > .table th:last-child {
   width: 122px;
   max-width: 122px;
 }
-.usersTable > table td {
+.usersTable > .table td {
   padding: 20px;
   padding-right: 1px;
   padding-left: 13px;
@@ -479,10 +482,10 @@ hr {
   text-align: left;
   vertical-align: middle !important;
 }
-.usersTable > table td span {
+.usersTable > .table td span {
   vertical-align: middle;
 }
-.usersTable > table td .papelera {
+.usersTable > .table td .papelera {
   background-image: url(../img/delete.png);
   vertical-align: middle;
   margin-left: 10px;
@@ -491,14 +494,14 @@ hr {
   display: inline-block;
   cursor: pointer;
 }
-.usersTable > table td .papelera:active {
+.usersTable > .table td .papelera:active {
   background-image: url(../img/delete-active.png);
 }
-.usersTable > table td .papelera.inactive {
+.usersTable > .table td .papelera.inactive {
   cursor: default;
   background-image: url(../img/delete-inactive.png);
 }
-.usersTable > table td .return {
+.usersTable > .table td .return {
   background-image: url(../img/return.png);
   vertical-align: middle;
   margin-left: 10px;
@@ -506,10 +509,10 @@ hr {
   width: 30px;
   display: none;
 }
-.usersTable > table td .return:active {
+.usersTable > .table td .return:active {
   background-image: url(../img/returnon.png);
 }
-.usersTable > table td .guardar {
+.usersTable > .table td .guardar {
   background-image: url(../img/guardar.png);
   vertical-align: middle;
   margin-left: 10px;
@@ -517,10 +520,10 @@ hr {
   width: 30px;
   display: none;
 }
-.usersTable > table td .guardar:active {
+.usersTable > .table td .guardar:active {
   background-image: url(../img/guardaron.png);
 }
-.usersTable > table td .lapiz {
+.usersTable > .table td .lapiz {
   background-image: url(../img/edit.png);
   vertical-align: middle;
   margin-left: 10px;
@@ -530,14 +533,14 @@ hr {
   margin-right: 10px;
   cursor: pointer;
 }
-.usersTable > table td .lapiz:active {
+.usersTable > .table td .lapiz:active {
   background-image: url(../img/edit-active.png);
 }
-.usersTable > table td .lapiz.inactive {
+.usersTable > .table td .lapiz.inactive {
   cursor: default;
   background-image: url(../img/edit-inactive.png);
 }
-.usersTable > table td .vs {
+.usersTable > .table td .vs {
   position: relative;
   left: 0px;
   vertical-align: inherit;
@@ -578,7 +581,6 @@ hr {
 .newUserbox .new-user-form-holder.open {
   height: 441px;
   border: 1px solid #DCDCDC;
-  overflow: visible;
 }
 .newUserbox .new-user-form-holder button#submit_user_form {
   left: 880px;
@@ -667,7 +669,7 @@ hr {
 }
 .newUserbox .new-user-form-holder .form-container .form-fieldset .radio-container-holder .radio-container {
   display: inline-block;
-  width: 33.333%;
+  width: 32.333%;
   padding: 0 20px;
   margin: 5px 0;
   height: 30px;
