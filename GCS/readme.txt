@@ -5,3 +5,6 @@ global:
 Project:
 - npm install
 - grunt
+
+CONFIG: 
+Look in to the Gruntfile.js to configure grunt.

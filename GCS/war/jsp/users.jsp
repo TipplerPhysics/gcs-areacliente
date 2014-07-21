@@ -46,11 +46,7 @@
 									<td><span>${user.apellido2}</span></td>
 									<td><span>${user.departamento}</span></td>
 									<td><span>${user.permisoStr}</span></td>
-									<td><img class="vs" src="../img/vs.png"> 
-										<a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a> 
-										<a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a> <a class="return"	name="${user.key.id}" id="return${user.key.id}"></a> 
-										<a class="guardar" name="${user.key.id}"
-										id="guardar${user.key.id}"></a></td>
+									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
