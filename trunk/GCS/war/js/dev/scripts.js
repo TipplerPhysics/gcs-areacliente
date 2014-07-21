@@ -232,9 +232,9 @@ $(function() {
 		var nombre = $(campo[0]).val();
 		var ap1 = $(campo[1]).val();
 		var ap2 = $(campo[2]).val();
-		var email = $(campo[3]).val();
+		var email = $('#email_ext').val();
 		var permiso = $('#permiso_ed').val();
-		var dto = $('#dtos_select option:selected').text();
+		var dto = $('#dto_ed option:selected').text();
 		
 		dto = dto.replace('&','#');
 		
@@ -506,7 +506,7 @@ function editRow(id){
 	
 	$('#lapiz'+id).addClass('inactive');
 	$('#papelera'+id).addClass('inactive');
-	$('.selectpicker').selectpicker();
+	
 	
 	
 	var lng = areas.length;
@@ -517,9 +517,18 @@ function editRow(id){
 	
 	setTimeout(function(){
 		
-		$('#dto_ed').attr('data-selected-text-format',dto);
+		$('#dto_ed').val(dto);
+		$('#dto_ed').selectpicker('render');
 		
-		$('#permiso_ed option:selected').val(cpermiso);
+		$('#permiso_ed').val(cpermiso);
+		$('#permiso_ed').selectpicker('render');
+		
+		
+		
+		$('#email_ext').val($('#row'+id).attr('data-mail'));		
+		$('#email_ext').selectpicker('render');
+		
+		
 
 		if (lng>0){
 		for (var n=0; n<lng;n++){
