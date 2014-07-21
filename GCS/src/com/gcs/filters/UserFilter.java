@@ -57,7 +57,12 @@ public class UserFilter implements Filter {
 				 if (url.contains("localhost")){
 					 req.setAttribute("entorno", "http://localhost:8888");
 				 }else{
-					 req.setAttribute("entorno", "https://gcs-areacliente.appspot.com");
+					 if (url.contains("pre.")){
+						 req.setAttribute("entorno","https://pre.gcs-areacliente.appspot.com");
+
+					 }else{
+						 req.setAttribute("entorno","https://gcs-areacliente.appspot.com");
+					 }
 				 }
 				 
 				 if (usuario!=null){

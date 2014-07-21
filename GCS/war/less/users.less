@@ -8,9 +8,36 @@
 		width:100%;
 		background-color:#FFF;
 		text-align:left;
-		border-collapse: collapse;
+		
    		border-spacing: 0;
+   		    border-collapse: initial;
    		
+   		> #myTable{
+   		
+	   		button.selectpicker {
+	   			   height: 30px;
+	   		}
+   			
+   			.long{
+					height: 31px;
+				    left: -2px;
+				    top: 5px;
+				    width: 306px;
+				}
+				
+				.permiso_ed{
+					 width: 175px;
+				}
+	   			
+	   			#email_ext{
+   					margin-left:85px;
+   					width:455px;
+	   			}
+	   			
+				td{
+					border-right:medium none;
+				}   			
+   		}   		
    		
 		th{	
 			background-color: #F8F8F5;
@@ -22,6 +49,7 @@
 		    font-weight: bold;
 		    padding: 4px 10px;
 		    text-transform: uppercase;
+		    
 		}
 		th:first-child{
 			 border-left: 1px solid #DCDCDC;
@@ -41,13 +69,24 @@
 			}
 		}
 		
-		.table_results{
+		
 			.extended-row{
 				width:100%;
+				background-color:#FFF;
+				border:none !important;
+				td{
+					border: none;
+				
+				}
+				
+				tr{
+					border:none;
+				}
 			}
 			
 			.extended-div{
-				width:900px;
+				width:980px;
+				background-color:#FFF;
 				
 				button{
 					margin-left:20px;
@@ -63,8 +102,8 @@
 					
 					 display: inline-block;
 				    margin-top: 20px;
-				    width: 500px;
-					margin-right: 220px;
+				    width: 743px;
+					margin-right: 40px;
 									
 					select {
 						margin-left:40px;
@@ -92,7 +131,7 @@
 				width:100%;		
 			}
 		
-		} 
+		
 		
 		
 		.table_results tr:not(first-child){
@@ -142,6 +181,7 @@
 			color:#434A58;
 			font-family:arial;
 			text-align:left;
+			vertical-align:middle !important;
 			
 			span{
 				vertical-align:middle;
@@ -403,6 +443,14 @@
 /* CLIENTES */
 
 .clients{
+
+	.bootstrap-select{
+		width:70px !important;
+	}
+
+	> #btn_alta_cliente{
+		margin-right:10px;
+	}
 
 	> .abc{
 		margin-top:40px;

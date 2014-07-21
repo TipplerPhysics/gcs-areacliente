@@ -11,19 +11,22 @@
 		<div class="color baja"></div><span>Criticidad Baja</span>
 	</div>
 	<c:if test="${sessionScope.permiso == '1'}">
-			<button>Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
+			<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gestión de demanda<img src="../img/new-user-white.png"></button> 
+	</c:if>
+	<c:if test="${sessionScope.permiso == '1'}">
+			<button id="btn_alta_cliente">Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
 	</c:if>
 	
-	<div class="selector">
+	<div>
 		<span>Tipo de Criticidad</span>
-		<select>
+		<select class="selectpicker">
 			<option value="0">Todas</option>
 			<option value="3">Alta</option>
 			<option value="2">Media</option>
 			<option value="1">Baja</option>
 		</select>
 		<span>Tipo de Cliente</span>
-		<select>
+		<select class="selectpicker">
 			<option value="0">Todos</option>
 		</select>
 	</div>	
@@ -60,3 +63,9 @@
 	</div>
 		
 </div>
+
+<script type="text/javascript">
+  $(function() {
+       $('.selectpicker').selectpicker();
+  });
+</script>

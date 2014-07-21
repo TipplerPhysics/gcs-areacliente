@@ -28,6 +28,12 @@ $(function() {
 
 		if(value != 'default') {
 			valid = true;
+		}else{
+			var select = $(element).parent();
+			var bootstrapSel = $(select).find('button.selecpicker');
+			bootstrapSel.addClass('error');	
+			
+			
 		}
 		return valid;
 	}, "Por favor, selecciona un valor.");
@@ -48,7 +54,6 @@ $(function() {
 	// Setup form validation on the #register-form element
 	$('form').validate({
 	    submitHandler: function(form) {
-	    	console.log('hi');
 	        form.submit();
 	    },
 	    errorPlacement: function(error, $element) {
