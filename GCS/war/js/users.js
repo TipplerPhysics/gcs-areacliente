@@ -500,7 +500,9 @@ function editRow(id){
 	}
 	
 	setTimeout(function(){
-		$('#dtos_ed option:selected').val(dto);
+		
+		$('#dto_ed').attr('data-selected-text-format',dto);
+		
 		$('#permiso_ed option:selected').val(cpermiso);
 
 		if (lng>0){

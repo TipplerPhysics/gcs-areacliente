@@ -30,7 +30,14 @@
   margin-top: 20px;
 }
 .header-layout .header-container .main-menu ul.menu {
-  background: linear-gradient(to bottom, #0079c1 0%, #00529b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: #0079c1;
+  background: -moz-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0079c1), color-stop(100%, #00529b));
+  background: -webkit-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: -o-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: -ms-linear-gradient(top, #0079c1 0%, #00529b 100%);
+  background: linear-gradient(to bottom, #0079c1 0%, #00529b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0079c1, endColorstr=#00529b, GradientType=0);
   border-radius: 5px;
   display: table !important;
   list-style: none outside none;
@@ -59,6 +66,16 @@ span.menu-title {
   font-size: 13px;
   padding-left: 10px;
   white-space: nowrap;
+}
+button.btn-default {
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#ffffff, GradientType=0);
 }
 body {
   margin: 0px;
@@ -472,11 +489,13 @@ hr {
   height: 30px;
   width: 30px;
   display: inline-block;
+  cursor: pointer;
 }
 .usersTable > table td .papelera:active {
   background-image: url(../img/delete-active.png);
 }
 .usersTable > table td .papelera.inactive {
+  cursor: default;
   background-image: url(../img/delete-inactive.png);
 }
 .usersTable > table td .return {
@@ -509,11 +528,13 @@ hr {
   width: 30px;
   display: inline-block;
   margin-right: 10px;
+  cursor: pointer;
 }
 .usersTable > table td .lapiz:active {
   background-image: url(../img/edit-active.png);
 }
 .usersTable > table td .lapiz.inactive {
+  cursor: default;
   background-image: url(../img/edit-inactive.png);
 }
 .usersTable > table td .vs {
