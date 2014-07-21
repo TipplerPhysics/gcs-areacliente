@@ -39,7 +39,7 @@
 
 						<c:otherwise>
 							<c:forEach items="${userList}" var="user">
-								<tr id="row${user.key.id}" data-area="${user.areas}"
+								<tr id="row${user.key.id}" data-area="${user.areas}" data-permiso="${user.permiso}"
 									data-dto="${user.departamento}">
 									<td><span>${user.nombre}</span></td>
 									<td><span>${user.apellido1}</span></td>

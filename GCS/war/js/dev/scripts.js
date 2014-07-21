@@ -456,7 +456,7 @@ function editRow(id){
 	cap1 = $(celdas[1]).children().html();
 	cap2 = $(celdas[2]).children().html();
 	cemail = $(celdas[3]).children().html();
-	cpermiso = $(celdas[4]).children().html();
+	cpermiso =  $('#row'+id).attr('data-permiso');
 	
 	for (var a =0; celdas.length-2 >= a;a++){
 		var $celda = $(celdas[a]);
@@ -492,7 +492,7 @@ function editRow(id){
 	
 	// PERFIL
 	var $celda = $(celdas[4]);
-	var span = $celda.children().html();
+	var span = $celda.children().val();
 	$celda.children().remove();
 	$celda.prepend("<select name='permiso' id='permiso_ed' class='permiso_ed long selectpicker'>"
 		+ "	<option value='5'>Gestor IT</option>"
@@ -502,19 +502,7 @@ function editRow(id){
 		+ "	<option value='1'>Super</option>"
 		+ "	</select>");	
 	
-	var value="0";
-	
-	if (span=="Gestor IT"){
-		value="5";
-	}else if (span=="Gestor Demanda"){
-		value="4";
-	}else if (span=="User Admin"){
-		value="3";
-	}else if (span=="App Admin"){
-		value="2";
-	}else if (span=="Super"){
-		value="1";
-	}
+
 	
 	$('#lapiz'+id).addClass('inactive');
 	$('#papelera'+id).addClass('inactive');
@@ -528,8 +516,8 @@ function editRow(id){
 	}
 	
 	setTimeout(function(){
-		$('#dtos_select').val(dto);
-		$('#permiso_ed').val(value);
+		$('#dtos_ed option:selected').val(dto);
+		$('#permiso_ed option:selected').val(cpermiso);
 
 		if (lng>0){
 		for (var n=0; n<lng;n++){
