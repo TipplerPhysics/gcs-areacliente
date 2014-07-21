@@ -10,7 +10,7 @@
 <div class="">
 	<div class="row">
 		<div class="table-responsive usersTable">
-			<table class="table table-hover">
+			<table class="table">
 				<thead>
 					<tr>
 						<th><span class="table-title">Nombre</span></th>
