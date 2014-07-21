@@ -223,7 +223,7 @@ $(function() {
 		undoRow(id,arr);
 	});
 
-	$('.table_results').on('click', '.guardar-ext', function (e) {
+	$('#myTable').on('click', '.guardar-ext', function (e) {
 		var id= $('.editing').attr('name');
 		var campo = $('.col'+id);
 		var areas =  $('.dtos').find('input');
