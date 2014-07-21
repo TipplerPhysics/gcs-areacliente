@@ -34,7 +34,7 @@ $.fn.pageMe = function(opts) {
 	pager.data("curr", 0);
 
 	if (settings.showPrevNext) {
-		$('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+		$('<li><a href="#" class="prev_link"><</a></li>').appendTo(pager);
 	}
 
 	var curr = 0;
@@ -140,6 +140,7 @@ $(function() {
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
 			$('#newUserButton').removeClass('white-btn');
+			$('.new-user-form-holder').css('overflow','hidden');
 			$('.user_span').removeClass('blue');
 
 			userBoxSize = $('.new-user-form-holder.open').outerHeight();
@@ -152,6 +153,7 @@ $(function() {
 			$('#newUserButton').addClass('white-btn');
 			$('.user_span').addClass('blue');
 			$('.new-user-form-holder').addClass('open');
+			$('.new-user-form-holder').css('overflow','visible');
 			if(userBoxSize > 0) {
 				setTimeout(function(){
 					$('.new-user-form-holder').css('height', userBoxSize);
@@ -315,7 +317,7 @@ $(function() {
 					resetUserForm();
 					
 					setTimeout(function() { 
-						$('#user_form')[0].reset();
+						
 						$( "#message_div" ).fadeOut( "slow", function() {
 							$('#span_message').html("");
 					  }); }, 5000);
@@ -468,8 +470,8 @@ function editRow(id){
 			"<option value='IT C&IB - E- commerce C&IB'>IT C&IB - E- commerce C&IB</option>" +
 			"<option value='IT C&IB - GCC Lending GTB & CFO'>IT C&IB - GCC Lending GTB & CFO</option>" +
 			"<option value='IT C&IB - GTB - Global Customer Solutions'>IT C&IB - GTB - Global Customer Solutions</option>" +
-			"<option value='IT C&IB – Global Transactional Product'>IT C&IB - Global Transactional Product</option>" +
-			"<option value='IT C&IB – B2B Global Support'>IT C&IB - B2B Global Support</option></select>");	
+			"<option value='IT C&IB - Global Transactional Product'>IT C&IB - Global Transactional Product</option>" +
+			"<option value='IT C&IB - B2B Global Support'>IT C&IB - B2B Global Support</option></select>");	
 	
 	
 	var value_dto="0";

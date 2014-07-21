@@ -29,7 +29,7 @@ $(function() {
 		text = normalize(text);
 		var columna = $this.attr("class").split("col")[1];		
 		var $table_results = $('#myTable').children();		
-		for (var e=0; e<=$table_results.length; e++){
+		for (var e=0; e<$table_results.length; e++){
 			var $linea = $($table_results[e]);			
 			var cont = $($($linea.children()[columna]).children()).html().toLowerCase();			
 			if (cont.indexOf(text)==-1){

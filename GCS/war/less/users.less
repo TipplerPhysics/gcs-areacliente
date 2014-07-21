@@ -4,13 +4,19 @@
 }
 
 .usersTable{
-	> table{
+	> .table{
+	
+	
 		width:100%;
 		background-color:#FFF;
 		text-align:left;
 		
    		border-spacing: 0;
    		    border-collapse: initial;
+   		    
+   		>  thead:first-child > tr:first-child > th {
+   			border-top: 1px solid #dcdcdc !important;
+   		}
    		
    		> #myTable{
    		
@@ -303,7 +309,7 @@
 		&.open {
 			height: 441px;
 			border: 1px solid #DCDCDC;
-			overflow:visible;
+			
 		}
 		
 		button#submit_user_form{
@@ -400,7 +406,7 @@
 					.radio-container{
 						.clearfix();
 						display:inline-block;
-						width:33.333%;
+						width:32.333%;
 						padding: 0 20px;
 						margin: 5px 0;
 						height:30px;
