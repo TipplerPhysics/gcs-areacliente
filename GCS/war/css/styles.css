@@ -320,6 +320,13 @@ hr {
   border-spacing: 0;
   border-collapse: initial;
 }
+.usersTable > table > #myTable .editing,
+.usersTable > table > #myTable .extended-row {
+  background-color: #FBF1D0;
+}
+.usersTable > table > #myTable extended-div {
+  background-color: transparent;
+}
 .usersTable > table > #myTable button.selectpicker {
   height: 30px;
 }
@@ -376,7 +383,6 @@ hr {
 }
 .usersTable > table .extended-div {
   width: 980px;
-  background-color: #FFF;
 }
 .usersTable > table .extended-div button {
   margin-left: 20px;
@@ -527,10 +533,6 @@ hr {
   display: inline-block;
   overflow: auto;
   border-bottom: 2px solid #DCDCDC;
-}
-.usersTable .users .editing,
-.usersTable .users .extended-row {
-  background-color: #FBF1D0;
 }
 .newUserbox {
   margin-top: 40px;
