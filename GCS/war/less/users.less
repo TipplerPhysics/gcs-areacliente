@@ -423,9 +423,15 @@
 				vertical-align: top;
 				margin-bottom: 10px;
 				
-				  > .bootstrap-select{
+				> .bootstrap-select{
 			    	position:relative;
 			    	width:248px !important;
+			    	&.error {
+			    		button {
+				    		.linear-gradient(#f7e9e9, #f7e9e9);
+							border: 1px solid #e8e8e6;
+						}
+			    	}
 			    }
 				
 				> span{
