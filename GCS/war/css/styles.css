@@ -163,6 +163,13 @@ button {
   vertical-align: middle;
   height: 35px;
 }
+.selectpicker > span.filter-option {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+.bootstrap-select.btn-group .btn .filter-option {
+  padding-top: 4px;
+}
 .white-btn {
   background: #f4f7f5;
   background: -moz-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);

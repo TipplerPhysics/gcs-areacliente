@@ -29,21 +29,19 @@ public class UserServlet extends HttpServlet {
 		 try {
 		
 			if (accion.equals("new")){
-				json = createUser(req);
+				createUser(req,resp);
 			}else if (accion.equals("delete")){
-				json = deleteUser(req);
+				deleteUser(req,resp);
 			}else if (accion.equals("update")){
-				json = updateUser(req);
+				updateUser(req,resp);
 			}
 			
 	        
-			resp.setCharacterEncoding("UTF-8");
-	        resp.setContentType("application/json");       
-			resp.getWriter().println(json);
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}			
 		
 	}
 	
@@ -51,7 +49,7 @@ public class UserServlet extends HttpServlet {
 		doGet(req,resp);
 	}
 	
-	private JSONObject updateUser(HttpServletRequest req) throws JSONException{
+	private void updateUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
 		JSONObject json = new JSONObject();
 		
 		String nombre = req.getParameter("nombre");
@@ -87,10 +85,12 @@ public class UserServlet extends HttpServlet {
 		json.append("id", u.getKey().getId());
 		json.append("permiso", u.getPermisoStr());
 		
-		return json;
+		resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");       
+		resp.getWriter().println(json);
 	}
 	
-	private JSONObject createUser(HttpServletRequest req) throws JSONException{
+	private void createUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
 		JSONObject json = new JSONObject();
 		
 		try{
@@ -101,7 +101,7 @@ public class UserServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String areas = req.getParameter("areas");
 		String dto = req.getParameter("dto");
-		if (areas.length()!=0 || areas.contains("-"))
+		if (areas.length()!=0 && areas.contains("-"))
 		areas = areas.substring(0, areas.length()-1);
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
@@ -134,10 +134,12 @@ public class UserServlet extends HttpServlet {
 			json.append("error", "Se ha producido un error inesperado.");
 		
 		}
-		return json;
+		resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");       
+		resp.getWriter().println(json);
 	}
 	
-	private JSONObject deleteUser(HttpServletRequest req) throws JSONException {
+	private void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 		
 		UserDao udao = UserDao.getInstance();
@@ -151,7 +153,9 @@ public class UserServlet extends HttpServlet {
 		}
 		
 		
-		return json;
+		resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");       
+		resp.getWriter().println(json);
 	}
 	
 }
