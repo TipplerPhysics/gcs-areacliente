@@ -141,7 +141,7 @@ $(document).ready(function() {
 		pagerSelector : '#myPager',
 		showPrevNext : true,
 		hidePageNumbers : false,
-		perPage : 4
+		perPage : 5
 	});
 
 });
@@ -218,7 +218,7 @@ $(function() {
 		}	
 	});
 
-	$('.table_results').on('click', '.cancelar-ext', function (e) {
+	$('#myTable').on('click', '.cancelar-ext', function (e) {
 		var id= $('.editing').attr('name');
 		var arr = [cnombre,cap1,cap2,cemail,cpermiso];
 		$('#papelera'+id).attr("data-toggle","modal");

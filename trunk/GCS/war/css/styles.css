@@ -167,7 +167,7 @@ button {
   font-family: Arial, sans-serif;
   font-size: 12px;
 }
-.bootstrap-select.btn-group .btn .filter-option {
+.form-container .bootstrap-select.btn-group .btn .filter-option {
   padding-top: 4px;
 }
 .white-btn {
@@ -424,7 +424,7 @@ hr {
   border: none;
 }
 .usersTable > .table .extended-div {
-  width: 980px;
+  width: 925px;
 }
 .usersTable > .table .extended-div button {
   margin-left: 20px;
@@ -436,7 +436,6 @@ hr {
   display: inline-block;
   margin-top: 20px;
   width: 743px;
-  margin-right: 40px;
 }
 .usersTable > .table .extended-div > .dtos-div select {
   margin-left: 40px;
@@ -768,6 +767,7 @@ hr {
   font-weight: bold;
 }
 .clients > button > img {
+  height: 20px;
   margin-left: 15px;
   vertical-align: sub;
 }
