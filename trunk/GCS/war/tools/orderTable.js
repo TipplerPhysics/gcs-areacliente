@@ -34,8 +34,11 @@ $(function() {
 			var cont = $($($linea.children()[columna]).children()).html().toLowerCase();			
 			if (cont.indexOf(text)==-1){
 				$linea.hide();
+				$linea.removeClass('valid-result');
+				
 			}else{
 				$linea.show();
+				$linea.addClass('valid-result');
 			}			
 		}
 		

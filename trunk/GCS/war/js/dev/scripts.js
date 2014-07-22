@@ -33,7 +33,7 @@ $.fn.pageMe = function(opts) {
 
 	var listElement = $this;
 	var perPage = settings.perPage;
-	var children = listElement.children();
+	var children = listElement.find(".valid-result");
 	var pager = $('.pagination');
 
 	if (typeof settings.childSelector != "undefined") {
@@ -280,7 +280,6 @@ $(function() {
 	});
 
 	// Submit for creating a new user.
-	
 	$("#submit_user_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-user-form");
@@ -330,10 +329,9 @@ $(function() {
 					$('#span_message').html("El usuario ha sido creado de forma correcta.");
 					$('#message_div').css('display','block');
 					
-					resetUserForm();
+					resetForm($form);
 					
 					setTimeout(function() { 
-						
 						$( "#message_div" ).fadeOut( "slow", function() {
 							$('#span_message').html("");
 					  }); }, 5000);
@@ -542,12 +540,21 @@ function editRow(id){
 	}},750);
 }
 
-function resetUserForm(){
-	$('#nombre').val("");
-	$('#ap1').val("");
-	$('#ap2').val("");
-	$('#email').val("");
-	
+function resetForm($form) {
+	$form.find(':input').each(function(){
+		if($(this).attr('type') == 'text') {
+			$(this).val('');
+		} else if (($(this).attr('type') == 'radio') || ($(this).attr('type') == 'checkbox')) {
+			$(this).prop('checked', false);
+		}
+	});
+	$form.find('select').each(function() {
+		$(this).find('option:eq(0)').prop('selected', true);
+		if($(this).hasClass('selectpicker')) {
+			// Reset selectpicker
+			$('.selectpicker').selectpicker('refresh');
+		}
+	});
 };$(function() {
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
