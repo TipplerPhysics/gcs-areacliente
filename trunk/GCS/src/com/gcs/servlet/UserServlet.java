@@ -1,11 +1,26 @@
 package com.gcs.servlet;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.GroupLayout.Alignment;
+
+import jxl.Workbook;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
+import jxl.format.VerticalAlignment;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.User;
 import com.gcs.dao.UserDao;
@@ -160,8 +175,80 @@ public class UserServlet extends HttpServlet {
 		resp.getWriter().println(json);
 	}	
 	
-	public void generateXLS(HttpServletRequest req, HttpServletResponse resp){
-		
+	public void generateXLS(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		OutputStream out = null;
+		try {
+			resp.setContentType("application/vnd.ms-excel");
+			resp.setHeader("Content-Disposition",
+					"attachment; filename=UsuariosGCS.xls");
+			
+			WritableWorkbook w = Workbook.createWorkbook(resp
+					.getOutputStream());
+			
+			UserDao uDao = UserDao.getInstance();
+			List<User> usuarios = uDao.getAllUsers();
+			
+			WritableSheet s = w.createSheet("Usuarios", 0);
+			
+			/* for (int a=0; a<6; a++){
+				s.getCell(a, 0).
+			} */
+			
+			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
+		    cellFont.setColour(Colour.WHITE);
+		    
+		    WritableCellFormat cellFormat = new WritableCellFormat(cellFont);
+		    cellFormat.setBackground(Colour.BLUE);
+		    cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+		    cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
+		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);
+			
+			
+		    s.setColumnView(0, 16);
+		    s.setColumnView(1, 16);
+		    s.setColumnView(2, 16);
+		    s.setColumnView(3, 40);
+		    s.setColumnView(4, 16);
+		    s.setColumnView(5, 50);
+		    s.setColumnView(6, 70);
+		    s.setRowView(0, 900);
+			
+			
+			s.addCell(new Label(0, 0, "NOMBRE",cellFormat));
+			s.addCell(new Label(1, 0, "APELLIDO 1",cellFormat));
+			s.addCell(new Label(2, 0, "APELLIDO 2",cellFormat));
+			s.addCell(new Label(3, 0, "EMAIL",cellFormat));
+			s.addCell(new Label(4, 0, "PERFIL",cellFormat));
+			s.addCell(new Label(5, 0, "DEPARTAMENTO",cellFormat));
+			s.addCell(new Label(6, 0, "AREAS",cellFormat));
+			
+			
+			int aux=1;
+			
+			for (User u:usuarios){
+				s.addCell(new Label(0, aux, u.getNombre()));
+				s.addCell(new Label(1, aux, u.getApellido1()));
+				s.addCell(new Label(2, aux, u.getApellido2()));
+				s.addCell(new Label(3, aux, u.getEmail()));
+				s.addCell(new Label(4, aux, u.getPermisoStr()));
+				s.addCell(new Label(5, aux, u.getDepartamento()));
+				s.addCell(new Label(6, aux, u.getAreas()));
+				
+				aux++;
+			}
+			
+			
+			
+			
+			w.write();
+			w.close();
+		} catch (Exception e) {
+			throw new ServletException("Exception in Excel Sample Servlet", e);
+		} finally {
+			if (out != null)
+				out.close();
+		}
+
 	}
 }
 
