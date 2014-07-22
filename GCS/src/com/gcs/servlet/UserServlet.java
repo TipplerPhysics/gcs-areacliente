@@ -42,16 +42,30 @@ public class UserServlet extends HttpServlet {
 		String accion = req.getParameter("accion");
 		
 		 try {
+			 
+			HttpSession sesion = req.getSession();
+			int sesionpermiso = (int) sesion.getAttribute("permiso");
+			 
+			 if (sesionpermiso>2){
+					json.append("failure", "true");
+					json.append("error", "No tienes los permisos para realizar esta operaci�n");
+					
+					resp.setCharacterEncoding("UTF-8");
+			        resp.setContentType("application/json");       
+					resp.getWriter().println(json);
+			 }else{
+				 if (accion.equals("new")){
+						createUser(req,resp);
+					}else if (accion.equals("delete")){
+						deleteUser(req,resp);
+					}else if (accion.equals("update")){
+						updateUser(req,resp);
+					}else if (accion.equals("xls")){
+						generateXLS(req,resp);
+					}
+			 }
 		
-			if (accion.equals("new")){
-				createUser(req,resp);
-			}else if (accion.equals("delete")){
-				deleteUser(req,resp);
-			}else if (accion.equals("update")){
-				updateUser(req,resp);
-			}else if (accion.equals("xls")){
-				generateXLS(req,resp);
-			}
+			
 			
 	        
 		
@@ -105,6 +119,8 @@ public class UserServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");       
 		resp.getWriter().println(json);
+		
+		
 	}
 	
 	private void createUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
@@ -132,9 +148,6 @@ public class UserServlet extends HttpServlet {
 		if (us!=null){
 			json.append("failure", "true");
 			json.append("error", "Ya existe un usuario con este email");
-		}else if (sesionpermiso>2){
-			json.append("failure", "true");
-			json.append("error", "No tienes los permisos para realizar esta operaci�n");
 		}else{
 			
             User u = new User(nombre,ap1,ap2,email,permiso,permisoStr,areas,dto);	
@@ -189,11 +202,7 @@ public class UserServlet extends HttpServlet {
 			List<User> usuarios = uDao.getAllUsers();
 			
 			WritableSheet s = w.createSheet("Usuarios", 0);
-			
-			/* for (int a=0; a<6; a++){
-				s.getCell(a, 0).
-			} */
-			
+		
 			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
 		    cellFont.setColour(Colour.WHITE);
 		    
@@ -201,8 +210,7 @@ public class UserServlet extends HttpServlet {
 		    cellFormat.setBackground(Colour.BLUE);
 		    cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 		    cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
-		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);
-			
+		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);			
 			
 		    s.setColumnView(0, 16);
 		    s.setColumnView(1, 16);
@@ -212,8 +220,7 @@ public class UserServlet extends HttpServlet {
 		    s.setColumnView(5, 50);
 		    s.setColumnView(6, 70);
 		    s.setRowView(0, 900);
-			
-			
+						
 			s.addCell(new Label(0, 0, "NOMBRE",cellFormat));
 			s.addCell(new Label(1, 0, "APELLIDO 1",cellFormat));
 			s.addCell(new Label(2, 0, "APELLIDO 2",cellFormat));
@@ -235,15 +242,12 @@ public class UserServlet extends HttpServlet {
 				s.addCell(new Label(6, aux, u.getAreas()));
 				
 				aux++;
-			}
-			
-			
-			
+			}		
 			
 			w.write();
 			w.close();
 		} catch (Exception e) {
-			throw new ServletException("Exception in Excel Sample Servlet", e);
+			throw new ServletException("Exception in Excel", e);
 		} finally {
 			if (out != null)
 				out.close();

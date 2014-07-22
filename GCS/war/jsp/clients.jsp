@@ -10,10 +10,10 @@
 		<div class="color media"></div><span>Criticidad Media</span>
 		<div class="color baja"></div><span>Criticidad Baja</span>
 	</div>
-	<c:if test="${sessionScope.permiso == '1'}">
-			<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gestión de demanda<img src="../img/new-user-white.png"></button> 
+	<c:if test="${sessionScope.permiso <= 3}">
+			<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button> 
 	</c:if>
-	<c:if test="${sessionScope.permiso == '1'}">
+	<c:if test="${sessionScope.permiso <= 3}">
 			<button id="btn_alta_cliente">Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
 	</c:if>
 	

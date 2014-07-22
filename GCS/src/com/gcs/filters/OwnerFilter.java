@@ -39,13 +39,23 @@ public class OwnerFilter implements Filter {
 		 
 		 String url = request.getRequestURL().toString();
 		 
-	
 		 com.gcs.beans.User usuario = uDao.getUserByMail(user.getEmail());
 		 
-		  
+		 if (usuario!=null){
+			 if (usuario.getPermiso()<=3) {		
+				 chain.doFilter(req, resp);
+			 }else{
+				 if (url.contains("localhost")){
+					 response.sendRedirect("http://localhost:8888");
+				 }else{
+					 if (url.contains("pre.")){
+						 response.sendRedirect("https://pre.gcs-areacliente.appspot.com");
 
-		 if (usuario.getPermiso()<=3) {		
-			 chain.doFilter(req, resp);
+					 }else{
+						 response.sendRedirect("https://gcs-areacliente.appspot.com");
+					 }
+				 }				 			 
+			 }
 		 }else{
 			 if (url.contains("localhost")){
 				 response.sendRedirect("http://localhost:8888");
@@ -56,9 +66,10 @@ public class OwnerFilter implements Filter {
 				 }else{
 					 response.sendRedirect("https://gcs-areacliente.appspot.com");
 				 }
-			 }
-			 			 
+			 }	
 		 }
+
+		
 		
 		
 	}
