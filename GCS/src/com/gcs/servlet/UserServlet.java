@@ -34,6 +34,8 @@ public class UserServlet extends HttpServlet {
 				deleteUser(req,resp);
 			}else if (accion.equals("update")){
 				updateUser(req,resp);
+			}else if (accion.equals("xls")){
+				generateXLS(req,resp);
 			}
 			
 	        
@@ -156,6 +158,10 @@ public class UserServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");       
 		resp.getWriter().println(json);
-	}
+	}	
 	
+	public void generateXLS(HttpServletRequest req, HttpServletResponse resp){
+		
+	}
 }
+

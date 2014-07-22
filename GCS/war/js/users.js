@@ -17,7 +17,7 @@ $.fn.pageMe = function(opts) {
 
 	var listElement = $this;
 	var perPage = settings.perPage;
-	var children = listElement.children();
+	var children = listElement.find(".valid-result");
 	var pager = $('.pagination');
 
 	if (typeof settings.childSelector != "undefined") {
@@ -300,7 +300,7 @@ $(function() {
 			  data : postData,
 			  success:function(data, textStatus, jqXHR) 
 			  {
-				//data: return data from server
+					//data: return data from server
 				if (data.success==("true")){
 					var html=generateRow(postData,data.id,data.permiso);
 					
