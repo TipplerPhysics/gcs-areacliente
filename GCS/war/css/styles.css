@@ -209,6 +209,16 @@ button {
   vertical-align: text-bottom;
   width: 19px;
 }
+.excel_span {
+  background-image: url("../img/icon-excel-white.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 20px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+  width: 19px;
+  background-position: 50% 90%;
+}
 .bootstrap-select {
   float: right;
   margin-bottom: 0px;
@@ -336,6 +346,11 @@ hr {
 /* USERS */
 .users_title_icon {
   margin-right: 10px;
+}
+#excel_btn {
+  margin-bottom: 10px;
+  margin-left: 820px;
+  position: relative;
 }
 .usersTable > .table {
   width: 100%;
@@ -873,18 +888,21 @@ hr {
   top: -30.5px;
   width: 40px;
 }
+form #error-messages {
+  margin-bottom: 10px;
+}
 form #error-messages ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 form #error-messages ul li {
-  display: inline;
+  display: inline-block;
+  width: 44.5%;
   margin: 0 5px;
 }
 form #error-messages ul li label {
-  display: inline-block;
-  width: 44.5%;
+  display: block;
   padding: 5px 10px;
   margin: 0 0 10px;
   border-radius: 4px;

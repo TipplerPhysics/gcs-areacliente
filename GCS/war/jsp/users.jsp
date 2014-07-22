@@ -5,10 +5,12 @@
 <img class="users_title_icon" src="../img/user.png">
 <h1>Listado de usuarios</h1>
 <hr />
-<h2>Usuarios</h2>
 
-<div class="">
-	<div class="row">
+<button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'">
+	Descargar Tabla<a class="excel_span"></a>
+</button>
+<div>	
+	<div>
 		<div class="table-responsive usersTable">
 			<table class="table">
 				<thead>
