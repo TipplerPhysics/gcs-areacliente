@@ -578,12 +578,9 @@ function resetUserForm(){
 
 		if(value != 'default') {
 			valid = true;
+			$(element).parent().find('.bootstrap-select').removeClass('error');
 		}else{
-			var select = $(element).parent();
-			var bootstrapSel = $(select).find('button.selecpicker');
-			bootstrapSel.addClass('error');	
-			
-			
+			$(element).parent().find('.bootstrap-select').addClass('error');
 		}
 		return valid;
 	}, "Por favor, selecciona un valor.");
@@ -603,6 +600,8 @@ function resetUserForm(){
 
 	// Setup form validation on the #register-form element
 	$('form').validate({
+		ignore: ":hidden:not(select)",
+		focusCleanup: false,
 	    submitHandler: function(form) {
 	        form.submit();
 	    },
