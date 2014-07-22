@@ -41,4 +41,11 @@
 		<nature>com.google.appengine.eclipse.core.gaeNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>jxl.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/jexcelapi/jxl.jar</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
