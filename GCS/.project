@@ -45,7 +45,7 @@
 		<link>
 			<name>jxl.jar</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/jexcelapi/jxl.jar</locationURI>
+			<location>D:/Users/dmarti10/GAE-ws/GCS/war/WEB-INF/lib/jxl.jar</location>
 		</link>
 	</linkedResources>
 </projectDescription>
