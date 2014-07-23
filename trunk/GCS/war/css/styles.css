@@ -39,18 +39,27 @@
   background: linear-gradient(to bottom, #0079c1 0%, #00529b 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0079c1, endColorstr=#00529b, GradientType=0);
   border-radius: 5px;
-  display: table !important;
   list-style: none outside none;
   width: 100%;
   padding: 0px;
   padding-top: 3px;
+  height: 48px;
+}
+.header-layout .header-container .main-menu ul.menu li:hover {
+  background-color: #2586d7;
 }
 .header-layout .header-container .main-menu ul.menu li.menu {
-  height: 100%;
-  display: inline;
+  display: inline-block;
+  height: 48px;
   padding: 0 7px;
   position: relative;
-  top: -14px;
+  top: -30px;
+  vertical-align: text-top;
+}
+.header-layout .header-container .main-menu ul.menu li.menu a {
+  position: relative;
+  top: 4px;
+  vertical-align: sub;
 }
 .header-layout .header-container .main-menu ul.menu li.home {
   height: 100%;
