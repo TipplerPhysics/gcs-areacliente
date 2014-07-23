@@ -259,7 +259,7 @@ $(function() {
 		 $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
 	});
 
-	$('.papelera').on('click', function(e) {
+	$('#myTable').on('click', '.papelera', function(e) {
 		$('#deleteUser').attr('name',$(this).attr('name'));
 	});
 
@@ -280,7 +280,8 @@ $(function() {
 			});
 	});
 
-	$('.lapiz').on('click', function(e) {
+	
+	$('#myTable').on('click', '.lapiz', function(e) {
 		var id= $(this).attr('name');
 		if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
 		{
@@ -392,7 +393,7 @@ $(function() {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRow(postData,data.id,data.permiso,data.permisoid);
+					var html=generateRow(postData,data.id,data.permiso,data.permisoid, data.dto, data.area);
 					
 					$('#myTable').prepend(html);
 					
@@ -439,7 +440,7 @@ $(function() {
 	});
 });
 
-function generateRow(data,id,permiso,permisoid){
+function generateRow(data,id,permiso,permisoid,dto,area){
 	var a = data.split('&');
 	var nombre = $('#nombre').val();
 	var ap1 = $('#ap1').val();
@@ -448,15 +449,15 @@ function generateRow(data,id,permiso,permisoid){
 	
 	
 
-	var html = "<tr id=row"+id+" class='valid-result' data-dto='"+dto+" data-mail='"+email+" data-permiso='"+permisoid+"'>"
+	var html = "<tr id=row"+id+" class='valid-result' data-dto='"+dto+"' data-mail='"+email+"' data-permiso='"+permisoid+"' data-area='"+area+"'>"
 		+ "<td><span>"+nombre+"</span></td>"
 		+ "<td><span>"+ap1+"</span></td>"
 		+ "<td><span>"+ap2+"</span></td>"
 		+ "<td><span>"+email+"</span></td>"
 		+ "<td><span>"+permiso+"</span></td>"
 		+ "<td><img class='vs' src='../img/vs.png'>"
-		+ "<a class='papelera' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a>"
-		+ "<a class='lapiz' name="+id+"></a></td></tr>";
+		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a>"
+		+ "<a class='lapiz' id='lapiz"+id+"' name="+id+"></a></td></tr>";
 	
 	return html;
 }
