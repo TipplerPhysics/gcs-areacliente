@@ -383,14 +383,31 @@ function updateRow(id){
 function undoRow(id,arr){
 	$('#papelera'+id).attr('data-toggle');
 	$('#row'+id).removeClass('editing');
+	var dto = $('#dto_ed option:selected').text();
+	var perfil = $('#permiso_ed option:selected').text();
+	
+	
 	$('.extended-row').remove();
+	
 	var celdas = $('#row'+id).children();
-	for (var a =0; celdas.length-2 >= a;a++){
+	for (var a =0; celdas.length-4 >= a;a++){
 		var $celda = $(celdas[a]);
 		var span = $celda.children().val();
 		$celda.children().remove();
 		$celda.prepend("<span>"+arr[a]+"</span>");
 	}
+	
+	$celda = $(celdas[3]);
+	
+	$celda.children().remove();
+	$celda.prepend("<span>"+dto+"</span>");
+	
+	$celda = $(celdas[4]);
+		$celda.children().remove();
+	$celda.prepend("<span>"+perfil+"</span>");
+	
+	
+		
 	
 	$('#lapiz'+id).removeClass('inactive');
 	$('#papelera'+id).removeClass('inactive');
