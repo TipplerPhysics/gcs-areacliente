@@ -110,6 +110,8 @@ public class UserServlet extends HttpServlet {
 		u.setPermisoStr(permisoStr);
 		u.setPermiso(permiso);
 		
+		//TODO: req.getSession().getAttribute('')
+		
 		uDao.createUser(u);
 		
 		json.append("success", "true");
