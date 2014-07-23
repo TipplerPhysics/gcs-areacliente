@@ -91,6 +91,10 @@
 								id="servicing"><label for="servicing"><span></span>Servicing</label>
 						</div>
 						<div class="radio-container">
+							<input type="checkbox" name='areas' value="Clientes"
+								id="clientes"><label for="clientes"><span></span>Clientes</label>
+						</div>
+						<div class="radio-container">
 							<input type="checkbox" name='areas' value="ITCIB" id="itcib"><label
 								for="itcib"><span></span>ITCIB</label>
 						</div>
@@ -104,10 +108,7 @@
 								id="global-product"><label for="global-product"><span></span>Global
 								Product</label>
 						</div>
-						<div class="radio-container">
-							<input type="checkbox" name='areas' value="Clientes"
-								id="clientes"><label for="clientes"><span></span>Clientes</label>
-						</div>
+						
 					</fieldset>
 				</div>
 				<div id="message_div">
