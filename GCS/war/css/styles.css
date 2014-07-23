@@ -581,8 +581,9 @@ hr {
   border-bottom: 2px solid #DCDCDC;
 }
 .newUserbox {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: right;
 }
 .newUserbox > button#newUserButton {
   position: relative;
@@ -603,9 +604,10 @@ hr {
 .newUserbox .new-user-form-holder.open {
   height: 441px;
   border: 1px solid #DCDCDC;
+  margin-bottom: 20px;
 }
 .newUserbox .new-user-form-holder button#submit_user_form {
-  left: 880px;
+  left: -20px;
   position: relative;
   margin-bottom: 20px;
 }
