@@ -139,21 +139,27 @@ $(function() {
 	var userBoxSize = 0;
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
-			$('#newUserButton').removeClass('white-btn');
+			
 			$('.new-user-form-holder').css('overflow','hidden');
-			$('.user_span').removeClass('blue');
+			
 
 			userBoxSize = $('.new-user-form-holder.open').outerHeight();
 			$('.new-user-form-holder.open').css('height', userBoxSize);
 			setTimeout(function(){
 				$('.new-user-form-holder.open').removeClass('open').css('height', '0px');
+				
 			}, 25);
+			setTimeout(function(){
+				$('#newUserButton').removeClass('white-btn');	
+				$('.user_span').removeClass('blue');
+			}, 1000);
+			
+			
 			
 		} else {
 			$('#newUserButton').addClass('white-btn');
 			$('.user_span').addClass('blue');
 			$('.new-user-form-holder').addClass('open');
-			$('.new-user-form-holder').css('overflow','visible');
 			if(userBoxSize > 0) {
 				setTimeout(function(){
 					$('.new-user-form-holder').css('height', userBoxSize);
@@ -162,6 +168,12 @@ $(function() {
 			setTimeout(function(){
 				$('.new-user-form-holder.open').css('height', 'auto');
 			}, 1000);
+			setTimeout( function(){ 
+				$('.new-user-form-holder').css('overflow','visible');
+
+			  }
+			 , 1000 );
+			
 		}
 	});
 

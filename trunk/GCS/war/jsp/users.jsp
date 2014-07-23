@@ -6,66 +6,14 @@
 <h1>Listado de usuarios</h1>
 <hr />
 
-<button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'">
-	Descargar Tabla<a class="excel_span"></a>
-</button>
-<div>	
-	<div>
-		<div class="table-responsive usersTable">
-			<table class="table">
-				<thead>
-					<tr>
-						<th><span class="table-title">Nombre</span></th>
-						<th><span class="table-title">Apellido 1</span></th>
-						<th><span class="table-title">Apellido 2</span></th>
-						<th><span class="table-title">Departamento</span></th>
-						<th><span class="table-title">Perfil</span></th>
-						<th style="width: 110px;">&nbsp;</th>
-					</tr>
-					<tr>
-						<th class="search-th"><input class="search col0"></th>
-						<th class="search-th"><input class="search col1"></th>
-						<th class="search-th"><input class="search col2"></th>
-						<th class="search-th"><input class="search col3"></th>
-						<th class="search-th"><input class="search col4"></th>
-						<th style="width: 110px;">&nbsp;</th>
-					</tr>
-				</thead>
-				<tbody id="myTable" cellspacing="0">
-					<c:choose>
-						<c:when test="${empty userList}">
-							<tr>
-								<td><span>No existen usuarios.</span></td>
-							</tr>
-						</c:when>
-
-						<c:otherwise>
-							<c:forEach items="${userList}" var="user">
-								<tr class="valid-result" id="row${user.key.id}" data-area="${user.areas}" data-permiso="${user.permiso}" data-mail="${user.email}"
-									data-dto="${user.departamento}">
-									<td><span>${user.nombre}</span></td>
-									<td><span>${user.apellido1}</span></td>
-									<td><span>${user.apellido2}</span></td>
-									<td><span>${user.departamento}</span></td>
-									<td><span>${user.permisoStr}</span></td>
-									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-md-12 text-center">
-			<ul class="pagination" id="myPager"></ul>
-		</div>
-	</div>
-</div>
-
 <div class="newUserbox">
 	<button id="newUserButton">
 		Nuevo Usuario<a class="user_span"></a>
 	</button>
+	<button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'">
+		Descargar Tabla<a class="excel_span"></a>
+	</button>
+
 
 	<div class="new-user-form-holder">
 		<form id="new-user-form" name="new-user-form" action="/usersServlet"
@@ -171,6 +119,62 @@
 		<button type="submit" id="submit_user_form">Aceptar</button>
 	</div>
 </div>
+
+
+<div>	
+	<div>
+		<div class="table-responsive usersTable">
+			<table class="table">
+				<thead>
+					<tr>
+						<th><span class="table-title">Nombre</span></th>
+						<th><span class="table-title">Apellido 1</span></th>
+						<th><span class="table-title">Apellido 2</span></th>
+						<th><span class="table-title">Departamento</span></th>
+						<th><span class="table-title">Perfil</span></th>
+						<th style="width: 110px;">&nbsp;</th>
+					</tr>
+					<tr>
+						<th class="search-th"><input class="search col0"></th>
+						<th class="search-th"><input class="search col1"></th>
+						<th class="search-th"><input class="search col2"></th>
+						<th class="search-th"><input class="search col3"></th>
+						<th class="search-th"><input class="search col4"></th>
+						<th style="width: 110px;">&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody id="myTable" cellspacing="0">
+					<c:choose>
+						<c:when test="${empty userList}">
+							<tr>
+								<td><span>No existen usuarios.</span></td>
+							</tr>
+						</c:when>
+
+						<c:otherwise>
+							<c:forEach items="${userList}" var="user">
+								<tr class="valid-result" id="row${user.key.id}" data-area="${user.areas}" data-permiso="${user.permiso}" data-mail="${user.email}"
+									data-dto="${user.departamento}">
+									<td><span>${user.nombre}</span></td>
+									<td><span>${user.apellido1}</span></td>
+									<td><span>${user.apellido2}</span></td>
+									<td><span>${user.departamento}</span></td>
+									<td><span>${user.permisoStr}</span></td>
+									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-12 text-center">
+			<ul class="pagination" id="myPager"></ul>
+		</div>
+	</div>
+</div>
+
+
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">

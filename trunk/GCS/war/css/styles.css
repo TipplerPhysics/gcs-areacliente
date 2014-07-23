@@ -186,6 +186,9 @@ button {
   border-bottom-left-radius: 0px;
   color: #0065B7;
   z-index: 1;
+  height: 50px;
+  top: 7px;
+  padding-bottom: 11px;
 }
 .pink-btn {
   background: #cc0966;
@@ -348,8 +351,6 @@ hr {
   margin-right: 10px;
 }
 #excel_btn {
-  margin-bottom: 10px;
-  margin-left: 820px;
   position: relative;
 }
 .usersTable > .table {
@@ -585,7 +586,7 @@ hr {
 }
 .newUserbox > button#newUserButton {
   position: relative;
-  left: 20px;
+  margin-right: 5px;
 }
 .newUserbox .new-user-form-holder {
   border: 1px solid #FFF;
@@ -594,7 +595,7 @@ hr {
   overflow: hidden;
   height: 0px;
   position: relative;
-  top: -1px;
+  top: 6px;
   -webkit-transition: height 1s, border 1s;
   /* For Safari 3.1 to 6.0 */
   transition: height 1s, border 1s;
