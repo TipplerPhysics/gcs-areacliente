@@ -1,12 +1,12 @@
 var url = document.URL;
 
-if (url.indexOf("localhost")!=1){
+if (url.indexOf("localhost")>1){
 	url="http://localhost:8888";
 }else{
 	url="http://gcs-areacliente.appspot.com";
 };$.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
-		perPage : 7,
+		perPage : 5,
 		showPrevNext : false,
 		numbersPerPage : 5,
 		hidePageNumbers : false
@@ -221,8 +221,6 @@ $(function() {
 		if ($('#newUserButton').hasClass('white-btn')){
 			
 			$('.new-user-form-holder').css('overflow','hidden');
-			
-
 			userBoxSize = $('.new-user-form-holder.open').outerHeight();
 			$('.new-user-form-holder.open').css('height', userBoxSize);
 			setTimeout(function(){
@@ -267,7 +265,7 @@ $(function() {
 
 	$('#deleteUser').on('click', function(e) {
 		var id= $(this).attr('name');
-		 var formURL = url + "/usersServlet?";
+		 var formURL = "/usersServlet?";
 		 var postData="accion=delete&id="+ id;
 		 $.ajax(			
 			{
@@ -394,9 +392,16 @@ $(function() {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRow(postData,data.id,data.permiso);
+					var html=generateRow(postData,data.id,data.permiso,data.permisoid);
 					
-					$('.table_results').prepend(html);
+					$('#myTable').prepend(html);
+					
+					$('#myTable').paginateMe({
+						pagerSelector : '#myPager',
+						showPrevNext : true,
+						hidePageNumbers : false,
+						perPage : 5
+					});
 					
 					$('#message_div').removeClass("error").addClass("success");
 					if ($('.new-user-form-holder').height()<190){
@@ -434,15 +439,16 @@ $(function() {
 	});
 });
 
-function generateRow(data,id,permiso){
+function generateRow(data,id,permiso,permisoid){
 	var a = data.split('&');
 	var nombre = $('#nombre').val();
 	var ap1 = $('#ap1').val();
 	var ap2 = $('#ap2').val();
 	var email = $('#email').val();
-	dto = $('#dto').val();
+	
+	
 
-	var html = "<tr id=row"+id+">"
+	var html = "<tr id=row"+id+" class='valid-result' data-dto='"+dto+" data-mail='"+email+" data-permiso='"+permisoid+"'>"
 		+ "<td><span>"+nombre+"</span></td>"
 		+ "<td><span>"+ap1+"</span></td>"
 		+ "<td><span>"+ap2+"</span></td>"

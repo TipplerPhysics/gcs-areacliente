@@ -159,6 +159,7 @@ public class UserServlet extends HttpServlet {
 			json.append("success", "true");
 			json.append("id", u.getKey().getId());
 			json.append("permiso", u.getPermisoStr());
+			json.append("permisoid", permiso);
 		}
 		
 		}catch(Exception e){
