@@ -220,37 +220,44 @@ $(function() {
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
 			
-			$('.new-user-form-holder').css('overflow','hidden');
-			userBoxSize = $('.new-user-form-holder.open').outerHeight();
-			$('.new-user-form-holder.open').css('height', userBoxSize);
-			setTimeout(function(){
-				$('.new-user-form-holder.open').removeClass('open').css('height', '0px');
-				
-			}, 25);
-			setTimeout(function(){
-				$('#newUserButton').removeClass('white-btn');	
-				$('.user_span').removeClass('blue');
-			}, 1000);
+			if ($('.new-user-form-holder').height()>=456){
+				$('.new-user-form-holder').css('overflow','hidden');
+				userBoxSize = $('.new-user-form-holder.open').outerHeight();
+				$('.new-user-form-holder.open').css('height', userBoxSize);
+				setTimeout(function(){
+					$('.new-user-form-holder.open').removeClass('open').css('height', '0px');
+					
+				}, 25);
+				setTimeout(function(){
+					$('#newUserButton').removeClass('white-btn');	
+					$('.user_span').removeClass('blue');
+				}, 1000);
+			}
+			
+			
 			
 			
 			
 		} else {
-			$('#newUserButton').addClass('white-btn');
-			$('.user_span').addClass('blue');
-			$('.new-user-form-holder').addClass('open');
-			if(userBoxSize > 0) {
+			if ($('.new-user-form-holder').height()==0){
+				$('#newUserButton').addClass('white-btn');
+				$('.user_span').addClass('blue');
+				$('.new-user-form-holder').addClass('open');
+				if(userBoxSize > 0) {
+					setTimeout(function(){
+						$('.new-user-form-holder').css('height', userBoxSize);
+					}, 25);
+				}
 				setTimeout(function(){
-					$('.new-user-form-holder').css('height', userBoxSize);
-				}, 25);
-			}
-			setTimeout(function(){
-				$('.new-user-form-holder.open').css('height', 'auto');
-			}, 1000);
-			setTimeout( function(){ 
-				$('.new-user-form-holder').css('overflow','visible');
+					$('.new-user-form-holder.open').css('height', 'auto');
+				}, 1000);
+				setTimeout( function(){ 
+					$('.new-user-form-holder').css('overflow','visible');
 
-			  }
-			 , 1000 );
+				  }
+				 , 1000 );
+			}
+			
 			
 		}
 	});
