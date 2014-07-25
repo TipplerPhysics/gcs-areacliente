@@ -220,7 +220,7 @@ $(function() {
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
 			
-			if ($('.new-user-form-holder').height()>=456){
+			if ($('.new-user-form-holder').css('overflow')=="visible"){
 				$('.new-user-form-holder').css('overflow','hidden');
 				userBoxSize = $('.new-user-form-holder.open').outerHeight();
 				$('.new-user-form-holder.open').css('height', userBoxSize);
@@ -233,13 +233,10 @@ $(function() {
 					$('.user_span').removeClass('blue');
 				}, 1000);
 			}
-			
-			
-			
-			
-			
+						
+
 		} else {
-			if ($('.new-user-form-holder').height()==0){
+			if ($('.new-user-form-holder').css('overflow')=="hidden"){
 				$('#newUserButton').addClass('white-btn');
 				$('.user_span').addClass('blue');
 				$('.new-user-form-holder').addClass('open');
