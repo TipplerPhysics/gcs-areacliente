@@ -80,7 +80,7 @@
 				<div class="form-field double">
 					<div>
 					<span class="lbl">Tipo:</span>
-						<select class="selectpicker" name="tipo">
+						<select class="selectpicker" name="tipo" id="tipo">
 							<option value="CIB">CIB</option>
 							<option value="BEC">BEC</option>
 						</select>
@@ -127,7 +127,7 @@
 				
 				<div class="form-field">
 					<span class="lbl">Estado:</span>
-					<select class="selectpicker" name="estado">
+					<select class="selectpicker" name="estado" id="estado">
 						<option value="0">Seleccionar</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 						<option value="P-950 en confección">P-950 en confección</option>

@@ -37,6 +37,27 @@ $(function() {
 		
 	}
 	
+	function generateRowDemanda(postData, data){
+		var fecha_entrada = $('#fecha_entrada_peticion').val();
+		var cliente =  $('#cliente option:selected').val();
+		var tipo =  $('#tipo option:selected').val();
+		var estado =  $('#estado option:selected').val();
+		var cod_peticion = data.cod_peticion;
+		var id = data.id;
+		
+		var html = "<tr id=row"+id+" class='valid-result'>"
+		+ "<td><span>"+fecha_entrada+"</span></td>"
+		+ "<td><span>"+cliente+"</span></td>"
+		+ "<td><span>"+tipo+"</span></td>"
+		+ "<td><span>"+estado+"</span></td>"
+		+ "<td><span>"+cod_peticion+"</span></td>"
+		+ "<td><img class='vs' src='../img/vs.png'>"
+		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a>"
+		+ "<a class='lapiz' id='lapiz"+id+"' name="+id+"></a></td></tr>";
+	
+	return html;
+	}
+	
 $("#submit_demanda_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-demanda-form");
@@ -57,7 +78,7 @@ $("#submit_demanda_form").on('click',function(e) {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRow(postData,data.id,data.permiso,data.permisoid, data.dto, data.area);
+					var html=generateRowDemanda(postData,data);
 					
 					$('#myTable').prepend(html);
 					

@@ -1,6 +1,8 @@
 package com.gcs.servlet;
 
 import java.io.IOException;
+
+import com.gcs.utils.Utils;
 import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -142,8 +144,8 @@ JSONObject json = new JSONObject();
 		d.setComentarios(comentarios);
 		d.setDevuelta(devBool);
 		d.setEstado(estado);
-		d.setFecha_entrada_peticion(dateConverter(fecha_entrada_peticion));		
-		d.setFecha_solicitud_asignacion(dateConverter(fecha_solicitud_asignacion));
+		d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada_peticion));		
+		d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_solicitud_asignacion));
 		d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
 		d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
 		d.setGestor_it(Long.parseLong(gestor_it));
@@ -167,6 +169,7 @@ JSONObject json = new JSONObject();
 			
 		json.append("success", "true");
 		json.append("id", d.getKey().getId());
+		json.append("cod_peticion", d.getCod_peticion());
 			
 		
 		} catch (ParseException e) {
@@ -175,7 +178,8 @@ JSONObject json = new JSONObject();
 			e.printStackTrace();
 		}catch(Exception e){
 			json.append("success", "true");
-			json.append("id", d.getKey().getId());		
+			json.append("id", d.getKey().getId());	
+			json.append("cod_peticion", d.getCod_peticion());
 		}
 		
 		resp.setCharacterEncoding("UTF-8");
@@ -183,13 +187,7 @@ JSONObject json = new JSONObject();
 		resp.getWriter().println(json);
 	}
 	
-	public Date dateConverter(String cadena) throws ParseException{
-		DateFormat formatter = null;
-		formatter = new SimpleDateFormat("dd-MM-yyyy");
-        Date convertedDate = (Date) formatter.parse(cadena);
-        
-        return convertedDate;
-	}
+	
 	
 	public void generateXLS(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		OutputStream out = null;
