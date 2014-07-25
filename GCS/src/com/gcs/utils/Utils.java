@@ -1,6 +1,10 @@
 package com.gcs.utils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Utils {
@@ -22,6 +26,14 @@ public class Utils {
 		}
 		
 		return s;
+	}
+	
+	public static Date dateConverter(String cadena) throws ParseException{
+		DateFormat formatter = null;
+		formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date convertedDate = (Date) formatter.parse(cadena);
+        
+        return convertedDate;
 	}
 	
 	public static List<String> getHorasList(){
