@@ -64,7 +64,7 @@
 					<div>
 						<span class="lbl">Gestor de negocio:</span>
 						<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">					
-						    <option value="0" selected>Seleccionar</option>
+						    <option value="default" selected>Seleccionar</option>
 							<c:forEach items="${gestores_demanda}" var="user">	
 								<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 							</c:forEach>					
@@ -81,6 +81,7 @@
 					<div>
 					<span class="lbl">Tipo:</span>
 						<select class="selectpicker" name="tipo" id="tipo">
+							<option value="default">Seleccionar...</option>
 							<option value="CIB">CIB</option>
 							<option value="BEC">BEC</option>
 						</select>
@@ -88,6 +89,7 @@
 					<div>						
 						<span class="lbl">Devuelta:</span>
 						<select class="selectpicker" name="devuelta">
+							<option value="default">Seleccionar...</option>
 							<option value="SI">SI</option>
 							<option value="NO">NO</option>
 						</select>					
@@ -128,7 +130,7 @@
 				<div class="form-field">
 					<span class="lbl">Estado:</span>
 					<select class="selectpicker" name="estado" id="estado">
-						<option value="0">Seleccionar</option>
+						<option value="default">Seleccionar...</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 						<option value="P-950 en confección">P-950 en confección</option>
 						<option value="PDTE Valoración IT">PDTE Valoración IT</option>
@@ -153,7 +155,7 @@
 				<div class="form-field">
 					<span class="lbl">Gestor IT pre-asignado:</span>
 					<select class="selectpicker" name="gestor_it">					
-					    <option value="0" selected>Seleccionar</option>
+					    <option value="default" selected>Seleccionar...</option>
 						<c:forEach items="${gestores_it}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 						</c:forEach>					
@@ -164,6 +166,7 @@
 				<div class="form-field">
 					<span class="lbl">Catalogación de petición:</span>
 					<select class="selectpicker" name="catalogacion_peticion">
+						<option value="default">Seleccionar...</option>
 						<option value="Implantación">Implantación</option>
 						<option value="SEPA">SEPA</option>
 						<option value="Migración IA">Migración IA</option>
