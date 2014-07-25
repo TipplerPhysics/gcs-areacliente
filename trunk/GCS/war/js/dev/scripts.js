@@ -6,6 +6,28 @@ if (url.indexOf("localhost")>1){
 	url="http://gcs-areacliente.appspot.com";
 };$(function() {
 	
+	$('.gestion_demanda').on('click', '.papelera', function(e) {
+		$('#deleteDemanda').attr('name',$(this).attr('name'));
+	});
+	
+	$('#deleteDemanda').on('click', function(e) {
+		var id= $(this).attr('name');
+		 var formURL = "/demandaServlet?";
+		 var postData="accion=delete&id="+ id;
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					$('#row'+id).fadeOut("slow");
+					$('#confirm-delete').modal('hide');			        	
+				}
+			});
+	});
+
+	
 	function getDemandaData(form){
 		
 		var params = "";
@@ -346,7 +368,7 @@ $(function() {
 		 $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
 	});
 
-	$('#myTable').on('click', '.papelera', function(e) {
+	$('.alta_usuario').on('click', '.papelera', function(e) {
 		$('#deleteUser').attr('name',$(this).attr('name'));
 	});
 
@@ -368,7 +390,7 @@ $(function() {
 	});
 
 	
-	$('#myTable').on('click', '.lapiz', function(e) {
+	$('.alta_usuario').on('click', '.lapiz', function(e) {
 		var id= $(this).attr('name');
 		if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
 		{

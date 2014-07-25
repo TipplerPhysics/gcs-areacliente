@@ -19,6 +19,24 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         return new DemandaDao();
     }
 	
+	public void deleteDemanda(Demanda d){
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId() ) ); 
+		pm.close();
+		
+	}
+	
+	   public Demanda getDemandaById(long l) {
+           PersistenceManager pManager = PMF.get().getPersistenceManager();
+           Demanda demanda_temp = pManager.getObjectById(Demanda.class, l);
+          
+           Demanda demanda = pManager.detachCopy(demanda_temp);  
+            pManager.close();
+
+          
+           return demanda;
+   }
+	
 	public void  createDemanda(Demanda d){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();

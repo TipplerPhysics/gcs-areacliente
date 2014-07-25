@@ -1,5 +1,27 @@
 $(function() {
 	
+	$('.gestion_demanda').on('click', '.papelera', function(e) {
+		$('#deleteDemanda').attr('name',$(this).attr('name'));
+	});
+	
+	$('#deleteDemanda').on('click', function(e) {
+		var id= $(this).attr('name');
+		 var formURL = "/demandaServlet?";
+		 var postData="accion=delete&id="+ id;
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					$('#row'+id).fadeOut("slow");
+					$('#confirm-delete').modal('hide');			        	
+				}
+			});
+	});
+
+	
 	function getDemandaData(form){
 		
 		var params = "";
