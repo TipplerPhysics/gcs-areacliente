@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<div class="alta_usuario">
 
 
 <img class="users_title_icon" src="../img/user.png">
@@ -195,4 +196,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
