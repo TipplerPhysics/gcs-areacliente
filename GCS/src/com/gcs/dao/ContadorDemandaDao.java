@@ -13,6 +13,14 @@ public class ContadorDemandaDao {
 	public static ContadorDemandaDao getInstance() {
         return new ContadorDemandaDao();
     }
+	
+	public void increaseCont (){
+		ContadorDemanda cd = getContador();
+		
+		
+		cd.setNum(cd.getNum()+1);
+		createContador(cd); 
+	}
 
 	@SuppressWarnings("unchecked")
 	public Integer getContadorValue(){

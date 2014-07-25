@@ -194,7 +194,7 @@
 						<th><span class="table-title">Cliente</span></th>
 						<th><span class="table-title">Tipo</span></th>
 						<th><span class="table-title">Estado</span></th>
-						<th><span class="table-title">Cop. Petición</span></th>
+						<th><span class="table-title">Cod. Petición</span></th>
 						<th style="width: 110px;">&nbsp;</th>
 					</tr>
 					<tr>
@@ -208,7 +208,7 @@
 				</thead>
 				<tbody id="myTable" cellspacing="0">
 					<c:choose>
-						<c:when test="${empty userList}">
+						<c:when test="${empty demandaList}">
 							<tr>
 								<td><span>No existen peticiones.</span></td>
 							</tr>
@@ -217,11 +217,11 @@
 						<c:otherwise>
 							<c:forEach items="${demandaList}" var="demanda">
 								<tr class="valid-result" id="row${demanda.key.id}">
-									<td><span>${demanda.fecha_entrada_peticion}</span></td>
-									<td><span>${demanda.cliente}</span></td>
+									<td><span>${demanda.str_fecha_solicitud_asignacion}</span></td>
+									<td><span>${demanda.clientekey}</span></td>
 									<td><span>${demanda.tipo}</span></td>
 									<td><span>${demanda.estado}</span></td>
-									<td><span>${user.permisoStr}</span></td>
+									<td><span>${demanda.cod_peticion}</span></td>
 									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
 								</tr>
 							</c:forEach>
@@ -243,11 +243,11 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="">
-				<h2>Eliminar usuario</h2>
+				<h2>Eliminar Demanda</h2>
 				<hr />
 			</div>
 			<div class="">
-				<p>&iquest;Est&aacute; seguro que desea eliminar al usuario?
+				<p>&iquest;Est&aacute; seguro que desea eliminar la demanda?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="" data-dismiss="modal">Cancelar</button>

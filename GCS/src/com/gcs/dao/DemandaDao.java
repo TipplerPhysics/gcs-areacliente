@@ -21,11 +21,15 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
 	public void  createDemanda(Demanda d){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 		
 		try{
 			pm.makePersistent(d);
+			
+			
 		}finally{
 			pm.close();
+			cdDao.increaseCont();
 		}
 	}
 
@@ -48,11 +52,11 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		String str = a.toString();
 		
-		if (str.length()<1){
+		if (str.length()<=1){
 			str = "000"+str;
-		}else if (str.length()<2){
+		}else if (str.length()<=2){
 			str = "00"+str;
-		}else if (str.length()<3){
+		}else if (str.length()<=3){
 			str = "0"+str;
 		}
 		
