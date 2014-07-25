@@ -1,6 +1,10 @@
 package com.gcs.servlet;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.gcs.beans.Demanda;
+import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.DemandaDao;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -67,14 +72,57 @@ JSONObject json = new JSONObject();
 		try{
 		
 		String motivo_catalogacion = req.getParameter("motivo_catalogacion");
+		String comentarios = req.getParameter("comentarios");
+		String fecha_entrada_peticion = req.getParameter("fecha_entrada_peticion");
+		
+		String hora_peticion = req.getParameter("hora_peticion");
+		String min_peticion = req.getParameter("min_peticion");
+		String gestor_negocio = req.getParameter("gestor_negocio");
+		String cliente = req.getParameter("cliente");
+		String tipo = req.getParameter("tipo");
+		String devuelta = req.getParameter("devuelta");
+		Boolean devBool = false;
+		if (devuelta.equals("SI"))
+			devBool = true;
+		String fecha_solicitud_asignacion = req.getParameter("fecha_solicitud_asignacion");
 		
 		
-		DemandaDao dDao = DemandaDao.getInstance();
-				
-		Demanda d = new Demanda();
-		d.setMotivo_catalogacion(motivo_catalogacion);
+
+
+		
+		String hora_solicitud_asignacion = req.getParameter("hora_solicitud_asignacion");
+		String min_solicitud_asignacion = req.getParameter("min_solicitud_asignacion");
+		String estado = req.getParameter("estado");
+		String gestor_it = req.getParameter("gestor_it");
+		String catalogacion_peticion = req.getParameter("catalogacion_peticion");
+		
 			
-           
+		
+		
+		Demanda d = new Demanda();
+		DemandaDao dDao = DemandaDao.getInstance();
+		
+		d.setCatalogacion(catalogacion_peticion);
+		d.setComentarios(comentarios);
+		d.setDevuelta(devBool);
+		d.setEstado(estado);
+		d.setFecha_entrada_peticion(dateConverser(fecha_entrada_peticion));
+		d.setFecha_solicitud_asignacion(dateConverser(fecha_solicitud_asignacion));
+		d.setGestor_it(Long.parseLong(gestor_it));
+		d.setGestor_negocio(Long.parseLong(gestor_negocio));
+		d.setHora_entrada_peticion(hora_peticion+min_peticion);
+		d.setHora_solicitud_asignacion(hora_solicitud_asignacion+min_solicitud_asignacion);
+		d.setMotivo_catalogacion(motivo_catalogacion);
+		d.setTipo(tipo);
+		d.setMotivo_catalogacion(motivo_catalogacion);
+		d.setComentarios(comentarios);
+		
+		
+		
+		d.setCod_peticion("PET_"+dDao.countDemandas());
+		
+			
+		dDao.createDemanda(d);	
 			
 		json.append("success", "true");
 		json.append("id", d.getKey().getId());
@@ -89,5 +137,13 @@ JSONObject json = new JSONObject();
 		resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");       
 		resp.getWriter().println(json);
+	}
+	
+	public Date dateConverser(String cadena) throws ParseException{
+		DateFormat formatter = null;
+		formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date convertedDate = (Date) formatter.parse(cadena);
+        
+        return convertedDate;
 	}
 }

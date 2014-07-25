@@ -36,10 +36,10 @@ public class Demanda {
 	private String comentarios;	
 	
 	@Persistent
-	private User gestor_negocio;
+	private Long gestor_negocio;
 	
 	@Persistent
-	private User gestor_it;
+	private Long gestor_it;
 	
 	@Persistent
 	private String tipo;
@@ -54,7 +54,10 @@ public class Demanda {
 	private String catalogacion;
 	
 	@Persistent
-	private String clientekey;
+	private Long clientekey;
+	
+	@Persistent
+	private String cod_peticion;
 
 	public Key getKey() {
 		return key;
@@ -62,6 +65,14 @@ public class Demanda {
 
 	public void setKey(Key key) {
 		this.key = key;
+	}
+
+	public String getCod_peticion() {
+		return cod_peticion;
+	}
+
+	public void setCod_peticion(String cod_peticion) {
+		this.cod_peticion = cod_peticion;
 	}
 
 	public Date getFecha_entrada_peticion() {
@@ -112,28 +123,29 @@ public class Demanda {
 		this.comentarios = comentarios;
 	}
 
-	public User getGestor_negocio() {
-		return gestor_negocio;
-	}
-
-	public void setGestor_negocio(User gestor_negocio) {
-		this.gestor_negocio = gestor_negocio;
-	}
-
-	public User getGestor_it() {
-		return gestor_it;
-	}
-
-	public void setGestor_it(User gestor_it) {
-		this.gestor_it = gestor_it;
-	}
-
+	
 	public String getTipo() {
 		return tipo;
 	}
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public Long getGestor_negocio() {
+		return gestor_negocio;
+	}
+
+	public void setGestor_negocio(Long gestor_negocio) {
+		this.gestor_negocio = gestor_negocio;
+	}
+
+	public Long getGestor_it() {
+		return gestor_it;
+	}
+
+	public void setGestor_it(Long gestor_it) {
+		this.gestor_it = gestor_it;
 	}
 
 	public Boolean getDevuelta() {
@@ -160,13 +172,15 @@ public class Demanda {
 		this.catalogacion = catalogacion;
 	}
 
-	public String getClientekey() {
+	public Long getClientekey() {
 		return clientekey;
 	}
 
-	public void setClientekey(String clientekey) {
+	public void setClientekey(Long clientekey) {
 		this.clientekey = clientekey;
 	}
+
+	
 	
 	
 	

@@ -4,32 +4,33 @@ if (url.indexOf("localhost")>1){
 	url="http://localhost:8888";
 }else{
 	url="http://gcs-areacliente.appspot.com";
-};
-function detDemandaData(){
+};$(function() {
 	
-	var params = "?";
+	function getDemandaData(form){
+		
+		var params = "";
+		
+		var motivo_catalogacion = $('#motivo_catalogacion').val();
+		var comentarios = $('#comentarios').val();
+		
 	
-	var motivo_catalogacion = $('#motivo_catalogacion').html();
-	var comentarios = $('#comentarios').html();
+		
+		params = "&motivo_calogacion=" + motivo_catalogacion + "&comentarios=" + comentarios;
+		
+		return params;
+		
+	}
 	
-	
-	params = "motivo_calogacion=" + motivo_catalogacion + "&comentarios=" + comentarios;
-	
-	return params;
-	
-}
-
-$(function() {
 $("#submit_demanda_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-demanda-form");
 		
-		var params = getDemandaData();
+		var params = getDemandaData($form);
 		
 		
 		if($form.valid()){		
 
-			var postData = params + "&accion=new";
+			var postData = $form.serialize() + params + "&accion=new";
 			var formURL = $form.attr("action");
 			$.ajax(
 			{

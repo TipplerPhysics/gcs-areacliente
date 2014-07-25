@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.User;
+import com.gcs.dao.DemandaDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 
@@ -19,6 +20,7 @@ public class GestionDemandaAction extends Action {
 	public ActionForward execute (ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		
 		UserDao uDao = UserDao.getInstance();
+		DemandaDao dDao = DemandaDao.getInstance();
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
 		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
 			
@@ -27,6 +29,8 @@ public class GestionDemandaAction extends Action {
 		
 		req.setAttribute("horasList", Utils.getHorasList());
 		req.setAttribute("minutosList", Utils.getMinutosList());
+		
+		req.setAttribute("demandaList", dDao.getAllDemandas());
 		
 		 return mapping.findForward("ok");
 	 }

@@ -22,7 +22,7 @@
 					<div class="fecha">
 						<span class="lbl">Fecha entrada petición:</span>
 						<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
-							<input type="text" readonly="" value="" size="16" class="span2">
+							<input type="text" readonly="" value="" size="16" class="span2" name="fecha_entrada_peticion" id="fecha_entrada_peticion">
 							<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 					  	</div>
@@ -30,7 +30,7 @@
 				  <div class="tiempo">
 					<span class="lbl">Hora petición:</span>
 					
-					<select class="selectpicker time" id="hora_peticion">					
+					<select class="selectpicker time" id="hora_peticion" name="hora_peticion">					
 					    
 							
 								<c:forEach items="${horasList}" var="hora">		         
@@ -39,7 +39,7 @@
 						</c:forEach>			
 					</select>
 					<span class="time-span">:</span>
-					<select class="selectpicker time" id="min_peticion">					
+					<select class="selectpicker time" id="min_peticion" name="min_peticion">					
 					   <c:forEach items="${minutosList}" var="min">		         	
 							<option value="${min}">${min}</option>
 						</c:forEach>			
@@ -56,15 +56,14 @@
 				<div class="form-field double">
 					<div>
 						<span class="lbl">Cliente:</span>
-						<select class="selectpicker">
-							<option value="CIB">CIB</option>
-							<option value="BEC">BEC</option>
+						<select class="selectpicker" id="cliente" name="cliente">
+							<option value="default">Seleccionar...</option>
 						</select>					
 					</div>
 					
 					<div>
 						<span class="lbl">Gestor de negocio:</span>
-						<select class="selectpicker">					
+						<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">					
 						    <option value="0" selected>Seleccionar</option>
 							<c:forEach items="${gestores_demanda}" var="user">	
 								<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -81,14 +80,14 @@
 				<div class="form-field double">
 					<div>
 					<span class="lbl">Tipo:</span>
-						<select class="selectpicker">
+						<select class="selectpicker" name="tipo">
 							<option value="CIB">CIB</option>
 							<option value="BEC">BEC</option>
 						</select>
 					</div>
 					<div>						
 						<span class="lbl">Devuelta:</span>
-						<select class="selectpicker">
+						<select class="selectpicker" name="devuelta">
 							<option value="SI">SI</option>
 							<option value="NO">NO</option>
 						</select>					
@@ -99,7 +98,7 @@
 					<div class="fecha">
 						<span class="lbl">Fecha solicitud asignación:</span>
 						<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
-							<input type="text" readonly="" value="" size="16" class="span2">
+							<input type="text" readonly="" value="" size="16" class="span2" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion">
 							<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 					  	</div>
@@ -107,7 +106,7 @@
 				  <div class="tiempo">
 					<span class="lbl">Hora solicitud asignación:</span>
 					
-					<select class="selectpicker time" id="hora_peticion">					
+					<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">					
 					    
 							
 								<c:forEach items="${horasList}" var="hora">		         
@@ -116,7 +115,7 @@
 						</c:forEach>			
 					</select>
 					<span class="time-span">:</span>
-					<select class="selectpicker time" id="min_peticion">					
+					<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">					
 					   <c:forEach items="${minutosList}" var="min">		         	
 							<option value="${min}">${min}</option>
 						</c:forEach>			
@@ -128,7 +127,7 @@
 				
 				<div class="form-field">
 					<span class="lbl">Estado:</span>
-					<select class="selectpicker">
+					<select class="selectpicker" name="estado">
 						<option value="0">Seleccionar</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 						<option value="P-950 en confección">P-950 en confección</option>
@@ -153,7 +152,7 @@
 				
 				<div class="form-field">
 					<span class="lbl">Gestor IT pre-asignado:</span>
-					<select class="selectpicker">					
+					<select class="selectpicker" name="gestor_it">					
 					    <option value="0" selected>Seleccionar</option>
 						<c:forEach items="${gestores_it}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -164,7 +163,7 @@
 				
 				<div class="form-field">
 					<span class="lbl">Catalogación de petición:</span>
-					<select class="selectpicker">
+					<select class="selectpicker" name="catalogacion_peticion">
 						<option value="Implantación">Implantación</option>
 						<option value="SEPA">SEPA</option>
 						<option value="Migración IA">Migración IA</option>
@@ -216,13 +215,12 @@
 						</c:when>
 
 						<c:otherwise>
-							<c:forEach items="${userList}" var="user">
-								<tr class="valid-result" id="row${user.key.id}" data-area="${user.areas}" data-permiso="${user.permiso}" data-mail="${user.email}"
-									data-dto="${user.departamento}">
-									<td><span>${user.nombre}</span></td>
-									<td><span>${user.apellido1}</span></td>
-									<td><span>${user.apellido2}</span></td>
-									<td><span>${user.departamento}</span></td>
+							<c:forEach items="${demandaList}" var="demanda">
+								<tr class="valid-result" id="row${demanda.key.id}">
+									<td><span>${demanda.fecha_entrada_peticion}</span></td>
+									<td><span>${demanda.cliente}</span></td>
+									<td><span>${demanda.tipo}</span></td>
+									<td><span>${demanda.estado}</span></td>
 									<td><span>${user.permisoStr}</span></td>
 									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
 								</tr>
