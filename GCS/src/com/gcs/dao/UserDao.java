@@ -85,6 +85,21 @@ public class UserDao {
            return user;
    }
 	   
+	   public User getUserbyKey(Key k) {
+           PersistenceManager pManager = PMF.get().getPersistenceManager();
+           User user_temp = pManager.getObjectById(User.class, k);
+          
+           User user = pManager.detachCopy(user_temp);  
+            pManager.close();
+
+          
+           return user;
+   }
+	   
+	   
+	   
+	   
+	   
 	     public List<User> getUsersByPermisoStr (int permiso){
              PersistenceManager pManager = PMF.get().getPersistenceManager();
              Transaction transaction = pManager.currentTransaction();

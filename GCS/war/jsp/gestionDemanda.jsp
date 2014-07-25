@@ -7,9 +7,9 @@
 	
 <div class="newUserbox">
 	<button id="newUserButton">
-		Nueva Petición<a class="user_span"></a>
+		Nueva Petición<a class="demanda_span"></a>
 	</button>
-	<button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'">
+	<button id="excel_btn" onclick="window.location.href='../../demandaServlet?accion=xls'">
 		Descargar Tabla<a class="excel_span"></a>
 	</button>
 
@@ -222,7 +222,7 @@
 									<td><span>${demanda.tipo}</span></td>
 									<td><span>${demanda.estado}</span></td>
 									<td><span>${demanda.cod_peticion}</span></td>
-									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
+									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${demanda.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${demanda.key.id}"></a><a class="lapiz" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -251,7 +251,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="pink-btn" id="deleteUser">Borrar</button>
+				<button type="button" class="pink-btn" id="deleteDemanda">Borrar</button>
 
 			</div>
 		</div>
