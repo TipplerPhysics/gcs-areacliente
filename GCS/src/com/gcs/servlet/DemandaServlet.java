@@ -142,8 +142,8 @@ JSONObject json = new JSONObject();
 		d.setComentarios(comentarios);
 		d.setDevuelta(devBool);
 		d.setEstado(estado);
-		d.setFecha_entrada_peticion(dateConverser(fecha_entrada_peticion));		
-		d.setFecha_solicitud_asignacion(dateConverser(fecha_solicitud_asignacion));
+		d.setFecha_entrada_peticion(dateConverter(fecha_entrada_peticion));		
+		d.setFecha_solicitud_asignacion(dateConverter(fecha_solicitud_asignacion));
 		d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
 		d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
 		d.setGestor_it(Long.parseLong(gestor_it));
@@ -183,7 +183,7 @@ JSONObject json = new JSONObject();
 		resp.getWriter().println(json);
 	}
 	
-	public Date dateConverser(String cadena) throws ParseException{
+	public Date dateConverter(String cadena) throws ParseException{
 		DateFormat formatter = null;
 		formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date convertedDate = (Date) formatter.parse(cadena);
