@@ -17,6 +17,16 @@
 	<!-- LISTADO DE SERVLETS -->
 	
 	  <servlet>
+	    <servlet-name>DefaultConf</servlet-name>
+	    <servlet-class>com.gcs.servlet.DefaultConf</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>DefaultConf</servlet-name>
+	    <url-pattern>/defaultConf</url-pattern>
+	  </servlet-mapping>
+	
+	  <servlet>
 	    <servlet-name>DemandaServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.DemandaServlet</servlet-class>
 	  </servlet>

@@ -69,7 +69,9 @@ JSONObject json = new JSONObject();
 	private void createDemanda(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
 		JSONObject json = new JSONObject();
 		
-		try{
+		Demanda d = new Demanda();
+
+		try {
 		
 		String motivo_catalogacion = req.getParameter("motivo_catalogacion");
 		String comentarios = req.getParameter("comentarios");
@@ -99,15 +101,16 @@ JSONObject json = new JSONObject();
 			
 		
 		
-		Demanda d = new Demanda();
 		DemandaDao dDao = DemandaDao.getInstance();
 		
 		d.setCatalogacion(catalogacion_peticion);
 		d.setComentarios(comentarios);
 		d.setDevuelta(devBool);
 		d.setEstado(estado);
-		d.setFecha_entrada_peticion(dateConverser(fecha_entrada_peticion));
+		d.setFecha_entrada_peticion(dateConverser(fecha_entrada_peticion));		
 		d.setFecha_solicitud_asignacion(dateConverser(fecha_solicitud_asignacion));
+		d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
+		d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
 		d.setGestor_it(Long.parseLong(gestor_it));
 		d.setGestor_negocio(Long.parseLong(gestor_negocio));
 		d.setHora_entrada_peticion(hora_peticion+min_peticion);
@@ -116,7 +119,10 @@ JSONObject json = new JSONObject();
 		d.setTipo(tipo);
 		d.setMotivo_catalogacion(motivo_catalogacion);
 		d.setComentarios(comentarios);
-		
+		if (cliente.equals("default"))
+			d.setClientekey(Long.parseLong("1"));
+		else
+			d.setClientekey(Long.parseLong(cliente));
 		
 		
 		d.setCod_peticion("PET_"+dDao.countDemandas());
@@ -128,12 +134,15 @@ JSONObject json = new JSONObject();
 		json.append("id", d.getKey().getId());
 			
 		
-		
-		}catch(Exception e){
+		} catch (ParseException e) {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
-		
+			e.printStackTrace();
+		}catch(Exception e){
+			json.append("success", "true");
+			json.append("id", d.getKey().getId());		
 		}
+		
 		resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");       
 		resp.getWriter().println(json);

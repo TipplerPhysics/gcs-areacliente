@@ -21,10 +21,33 @@ public class Demanda {
 	private Date fecha_entrada_peticion;
 	
 	@Persistent
+	private String str_fecha_entrada_peticion;
+	
+	@Persistent
 	private String hora_entrada_peticion;
 	
 	@Persistent
 	private Date fecha_solicitud_asignacion;
+	
+	public String getStr_fecha_entrada_peticion() {
+		return str_fecha_entrada_peticion;
+	}
+
+	public void setStr_fecha_entrada_peticion(String str_fecha_entrada_peticion) {
+		this.str_fecha_entrada_peticion = str_fecha_entrada_peticion;
+	}
+
+	public String getStr_fecha_solicitud_asignacion() {
+		return str_fecha_solicitud_asignacion;
+	}
+
+	public void setStr_fecha_solicitud_asignacion(
+			String str_fecha_solicitud_asignacion) {
+		this.str_fecha_solicitud_asignacion = str_fecha_solicitud_asignacion;
+	}
+
+	@Persistent
+	private String str_fecha_solicitud_asignacion;
 	
 	@Persistent
 	private String hora_solicitud_asignacion;
