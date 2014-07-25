@@ -17,6 +17,16 @@
 	<!-- LISTADO DE SERVLETS -->
 	
 	  <servlet>
+	    <servlet-name>DemandaServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.DemandaServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>DemandaServlet</servlet-name>
+	    <url-pattern>/demandaServlet</url-pattern>
+	  </servlet-mapping>
+	
+	  <servlet>
 	    <servlet-name>UserServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.UserServlet</servlet-class>
 	  </servlet>
