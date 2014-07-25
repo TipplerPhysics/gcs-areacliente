@@ -615,7 +615,8 @@ hr {
   border: 1px solid #DCDCDC;
   margin-bottom: 20px;
 }
-.newUserbox .new-user-form-holder button#submit_user_form {
+.newUserbox .new-user-form-holder button#submit_user_form,
+.newUserbox .new-user-form-holder .submit_form {
   left: -20px;
   position: relative;
   margin-bottom: 20px;
@@ -852,43 +853,43 @@ hr {
 .gestion_demanda .form-field.double > div > .bootstrap-select {
   width: 247px !important;
 }
-.gestion_demanda .form-field .date,
-.gestion_demanda .form-field .time {
+.gestion_demanda .form-field .fecha,
+.gestion_demanda .form-field .tiempo {
   height: 45px;
 }
-.gestion_demanda .form-field .date .bootstrap-select.time:first-child,
-.gestion_demanda .form-field .time .bootstrap-select.time:first-child {
+.gestion_demanda .form-field .fecha .bootstrap-select.time:first-child,
+.gestion_demanda .form-field .tiempo .bootstrap-select.time:first-child {
   margin-left: 20px;
 }
-.gestion_demanda .form-field .date > span:first-child,
-.gestion_demanda .form-field .time > span:first-child {
+.gestion_demanda .form-field .fecha > span:first-child,
+.gestion_demanda .form-field .tiempo > span:first-child {
   position: relative;
   top: -16px;
 }
-.gestion_demanda .form-field .date > .date,
-.gestion_demanda .form-field .time > .date {
+.gestion_demanda .form-field .fecha > .date,
+.gestion_demanda .form-field .tiempo > .date {
   width: 245px;
   display: inline-block;
   text-align: left;
   position: relative;
   top: 4px;
 }
-.gestion_demanda .form-field .date > .date > input,
-.gestion_demanda .form-field .time > .date > input {
+.gestion_demanda .form-field .fecha > .date > input,
+.gestion_demanda .form-field .tiempo > .date > input {
   left: -2px;
   max-height: 30px;
   position: relative;
   width: 215px;
 }
-.gestion_demanda .form-field .date > .date > .add-on,
-.gestion_demanda .form-field .time > .date > .add-on {
+.gestion_demanda .form-field .fecha > .date > .add-on,
+.gestion_demanda .form-field .tiempo > .date > .add-on {
   display: inline-block;
   left: 206px;
   position: relative;
   top: -30.5px;
   width: 40px;
 }
-.gestion_demanda .form-field .time span.lbl {
+.gestion_demanda .form-field .tiempo span.lbl {
   display: inline-block !important;
   top: 0px !important;
 }

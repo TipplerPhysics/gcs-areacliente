@@ -15,11 +15,11 @@
 
 
 	<div class="new-user-form-holder">
-		<form id="new-gestion-form" name="new-user-form" action="/usersServlet"
+		<form id="new-demanda-form" name="new-user-form" action="/demandaServlet"
 			method="POST" novalidate="novalidate">
 			<div class="form-container">
 				<div class="form-field">
-					<div class="date">
+					<div class="fecha">
 						<span class="lbl">Fecha entrada petición:</span>
 						<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
 							<input type="text" readonly="" value="" size="16" class="span2">
@@ -27,7 +27,7 @@
 		                    </span>
 					  	</div>
 					  </div>
-				  <div class="time">
+				  <div class="tiempo">
 					<span class="lbl">Hora petición:</span>
 					
 					<select class="selectpicker time" id="hora_peticion">					
@@ -48,7 +48,7 @@
 				</div>
 				
 				<div class="form-field textarea">
-					<span class="align-top lbl">Motivo de catalogación:</span><textarea class="long"></textarea>
+					<span class="align-top lbl">Motivo de catalogación:</span><textarea name="motivo_catalogacion" id="motivo_catalogacion" class="long"></textarea>
 				</div>
 				
 				
@@ -75,7 +75,7 @@
 				</div>
 				
 				<div class="form-field textarea">
-					<span class="align-top lbl">Comentarios:</span><textarea class="long"></textarea>
+					<span class="align-top lbl">Comentarios:</span><textarea id="comentarios" name="comentarios" class="long"></textarea>
 				</div>
 				
 				<div class="form-field double">
@@ -96,7 +96,7 @@
 				</div>
 				
 				<div class="form-field">
-					<div class="date">
+					<div class="fecha">
 						<span class="lbl">Fecha solicitud asignación:</span>
 						<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
 							<input type="text" readonly="" value="" size="16" class="span2">
@@ -104,7 +104,7 @@
 		                    </span>
 					  	</div>
 					  </div>
-				  <div class="time">
+				  <div class="tiempo">
 					<span class="lbl">Hora solicitud asignación:</span>
 					
 					<select class="selectpicker time" id="hora_peticion">					
@@ -180,7 +180,7 @@
 			</div>
 
 		</form>
-		<button type="submit" id="submit_user_form">Aceptar</button>
+		<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
 	</div>
 </div>
 
