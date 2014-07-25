@@ -1,109 +1,89 @@
 /* NUEVO CLIENTE  */
 
 .gestion_demanda{
-	#newuser_form{
+
 	
-		> hr{
-			margin-top:10px;
+
+	.newUserbox .new-user-form-holder .form-container .form-field  .lbl {
+		width:100px;
+		margin-right:20px;
+		
+		 color: #434a58;
+    display: inline-block;
+    font-family: "BBVA Web Light";
+    font-size: 12px;
+    text-align: left;
+		
+		&.time-span{
+			display: inline-block;
+		    margin-left: 20px;
+		    margin-right: 17px;
+		    position: relative;
+		    top: -5px;
+		    width: 5px;
 		}
+	}
 	
-		> button{
-			float: right;
-			margin-right:25px;
-			margin-top:10px;			
+	.newUserbox .new-user-form-holder .form-container .form-field  .bootstrap-select.time {
+		width:118px !important;
+		display:inline-block;
+	}
+
+	
+			
+	.form-field.textarea textarea{
+		height:80px;
+	}
+	
+	.form-field.double > div > .bootstrap-select{
+		width: 247px !important;	
+	}
+	
+	 .form-field .date , .form-field .time{
+	 
+	 
+	 	.bootstrap-select.time:first-child{
+	 		margin-left:20px;
+	 	}
+	 
+	 	height:45px;
+	
+	
+		> span:first-child {
+			position: relative;
+			top: -16px;
 		}
 		
 	
-		 .form-container{
+	
+		>.date{
+			
+			width:245px;
+			display:inline-block;
+			text-align:left;
+			position:relative;
+			top:4px;
+		
+			>input{
+			    left: -2px;
+			    max-height: 30px;
+			    position: relative;
+			    width: 215px;
+		}
+		
+		> .add-on{
 			display: inline-block;
-			width:49%;
-			vertical-align:text-top;
-			
-			
-			
-			> .form-field{
-			
-				height:40px;
-				padding-right:10px;
-				
-				>div.bootstrap-select{
-					float:right;
-					margin-bottom:0px;
-				}
-				
-				
-				
-				> .bootstrap-select.time{
-					width:100px;
-				}
-				
-				> span.time-span{
-					float:right;
-					padding:5px;
-					padding: 0 5px 10px;
-				}
-				
-				> span{
-					font-family: BBVA Web Book;
-					font-size:12px;
-					color:#434A58;
-					position:relative;
-					top: 8px;
-					padding-left:35px;
-				}
-				
-				>.date{
-					float: right;
-				    position: relative;
-				    width: 44%;
-				    height:40px;
-				}
-				
-				textarea{
-					margin-left:5px;
-					width:215px;
-					float:right;
-					height:85px;
-					resize:none;
-				}
-				
-				> select{
-					float: right;
-					width:215px;
-				}
-				
-				> input{
-					position:relative;
-					float: right;
-					width:215px;
-					
-				}
-			}
-			
-			.form-field.textarea{
-				height:95px;
-			}
-			
-			.form-field.datetime{
-			
-				>.date{
-					>input{
-					    left: -13px;
-					    max-height: 30px;
-					    position: relative;
-					    width: 215px;
-				}
-				
-				> .add-on{
-					display: inline-block;
-				    left: 163px;
-				    position: relative;
-				    top: -30.5px;
-				    width: 40px;
-					}
-				}
-				
+		    left: 206px;
+		    position: relative;
+		    top: -30.5px;
+		    width: 40px;
 			}
 		}
+		
 	}
+	
+	.form-field .time span.lbl{
+	 		display:inline-block !important;
+	 		top:0px !important;
+	 	}
 }

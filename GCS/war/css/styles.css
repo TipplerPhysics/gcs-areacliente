@@ -825,80 +825,72 @@ hr {
   background-color: #86C82D;
 }
 /* NUEVO CLIENTE  */
-.gestion_demanda #newuser_form > hr {
-  margin-top: 10px;
-}
-.gestion_demanda #newuser_form > button {
-  float: right;
-  margin-right: 25px;
-  margin-top: 10px;
-}
-.gestion_demanda #newuser_form .form-container {
-  display: inline-block;
-  width: 49%;
-  vertical-align: text-top;
-}
-.gestion_demanda #newuser_form .form-container > .form-field {
-  height: 40px;
-  padding-right: 10px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > div.bootstrap-select {
-  float: right;
-  margin-bottom: 0px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > .bootstrap-select.time {
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl {
   width: 100px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > span.time-span {
-  float: right;
-  padding: 5px;
-  padding: 0 5px 10px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > span {
-  font-family: BBVA Web Book;
+  margin-right: 20px;
+  color: #434a58;
+  display: inline-block;
+  font-family: "BBVA Web Light";
   font-size: 12px;
-  color: #434A58;
+  text-align: left;
+}
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl.time-span {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 17px;
   position: relative;
-  top: 8px;
-  padding-left: 35px;
+  top: -5px;
+  width: 5px;
 }
-.gestion_demanda #newuser_form .form-container > .form-field > .date {
-  float: right;
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time {
+  width: 118px !important;
+  display: inline-block;
+}
+.gestion_demanda .form-field.textarea textarea {
+  height: 80px;
+}
+.gestion_demanda .form-field.double > div > .bootstrap-select {
+  width: 247px !important;
+}
+.gestion_demanda .form-field .date,
+.gestion_demanda .form-field .time {
+  height: 45px;
+}
+.gestion_demanda .form-field .date .bootstrap-select.time:first-child,
+.gestion_demanda .form-field .time .bootstrap-select.time:first-child {
+  margin-left: 20px;
+}
+.gestion_demanda .form-field .date > span:first-child,
+.gestion_demanda .form-field .time > span:first-child {
   position: relative;
-  width: 44%;
-  height: 40px;
+  top: -16px;
 }
-.gestion_demanda #newuser_form .form-container > .form-field textarea {
-  margin-left: 5px;
-  width: 215px;
-  float: right;
-  height: 85px;
-  resize: none;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > select {
-  float: right;
-  width: 215px;
-}
-.gestion_demanda #newuser_form .form-container > .form-field > input {
+.gestion_demanda .form-field .date > .date,
+.gestion_demanda .form-field .time > .date {
+  width: 245px;
+  display: inline-block;
+  text-align: left;
   position: relative;
-  float: right;
-  width: 215px;
+  top: 4px;
 }
-.gestion_demanda #newuser_form .form-container .form-field.textarea {
-  height: 95px;
-}
-.gestion_demanda #newuser_form .form-container .form-field.datetime > .date > input {
-  left: -13px;
+.gestion_demanda .form-field .date > .date > input,
+.gestion_demanda .form-field .time > .date > input {
+  left: -2px;
   max-height: 30px;
   position: relative;
   width: 215px;
 }
-.gestion_demanda #newuser_form .form-container .form-field.datetime > .date > .add-on {
+.gestion_demanda .form-field .date > .date > .add-on,
+.gestion_demanda .form-field .time > .date > .add-on {
   display: inline-block;
-  left: 163px;
+  left: 206px;
   position: relative;
   top: -30.5px;
   width: 40px;
+}
+.gestion_demanda .form-field .time span.lbl {
+  display: inline-block !important;
+  top: 0px !important;
 }
 form #error-messages {
   margin-bottom: 10px;
