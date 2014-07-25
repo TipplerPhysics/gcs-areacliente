@@ -1,29 +1,30 @@
-
-function detDemandaData(){
-	
-	var params = "?";
-	
-	var motivo_catalogacion = $('#motivo_catalogacion').html();
-	var comentarios = $('#comentarios').html();
-	
-	
-	params = "motivo_calogacion=" + motivo_catalogacion + "&comentarios=" + comentarios;
-	
-	return params;
-	
-}
-
 $(function() {
+	
+	function getDemandaData(form){
+		
+		var params = "";
+		
+		var motivo_catalogacion = $('#motivo_catalogacion').val();
+		var comentarios = $('#comentarios').val();
+		
+	
+		
+		params = "&motivo_calogacion=" + motivo_catalogacion + "&comentarios=" + comentarios;
+		
+		return params;
+		
+	}
+	
 $("#submit_demanda_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-demanda-form");
 		
-		var params = getDemandaData();
+		var params = getDemandaData($form);
 		
 		
 		if($form.valid()){		
 
-			var postData = params + "&accion=new";
+			var postData = $form.serialize() + params + "&accion=new";
 			var formURL = $form.attr("action");
 			$.ajax(
 			{
