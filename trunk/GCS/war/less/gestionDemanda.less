@@ -2,17 +2,87 @@
 
 .gestion_demanda{
 
+	.extended-row td{
+		padding-top:0px;
+	}
+
+	#botones_ext{
+		text-align:right;	
+	}
+	
+	.usersTable {
+	
+		> .table > #myTable{
+		.tipo_ed {
+		    position: relative;
+		    top: 5px;
+		    width: 100px;
+		}
+		.estado_ed {
+		    position: relative;
+		    top: 5px;
+		    width: 290px;
+		}
+	} 
+	
+		> .table th:nth-child(5),
+	    > .table td:nth-child(5) {
+		    width:85px;
+		    
+		    > input {
+			    position: relative;
+			    width: 120%;
+			}
+		}
+	}
 	
 
-	.newUserbox .new-user-form-holder .form-container .form-field  .lbl {
-		width:100px;
-		margin-right:20px;
+	
+	
+	
+	
+
+	#extended-demanda > .form-field > .fecha,
+	#extended-demanda > .form-field > .tiempo
+	{
+		display:inline-block;
+		vertical-align: text-top;
 		
-		 color: #434a58;
-    display: inline-block;
-    font-family: "BBVA Web Light";
-    font-size: 12px;
-    text-align: left;
+		.bootstrap-select.time{
+			width:85px;		
+		}
+		
+		
+	}
+	
+	#extended-demanda > .form-field  .lbl, 
+	
+	 {
+	 font-weight:100;
+	 margin-right:20px;
+	 }
+	 
+	 #extended-demanda > .form-field > .fecha{
+	 	.lbl{
+		 	width:120px;
+		 } 
+		 
+		#dp1 input{
+			width:190px;
+		}
+	 } 
+
+	.newUserbox .new-user-form-holder .form-container .form-field  .lbl,
+	#extended-demanda > .form-field .lbl, 
+	
+	 {
+		width:100px;
+		margin-right:20px;	
+		color: #434a58;		 
+	    display: inline-block;
+	    font-family: "BBVA Web Light";
+	    font-size: 12px;
+	    text-align: left;
 		
 		&.time-span{
 			display: inline-block;
@@ -39,22 +109,18 @@
 		width: 247px !important;	
 	}
 	
-	 .form-field .fecha , .form-field .tiempo{
-	 
+	.form-field .fecha , .form-field .tiempo{	 
 	 
 	 	.bootstrap-select.time:first-child{
 	 		margin-left:20px;
 	 	}
 	 
-	 	height:45px;
-	
+	 	height:45px;	
 	
 		> span:first-child {
 			position: relative;
 			top: -16px;
-		}
-		
-	
+		}	
 	
 		>.date{
 			
@@ -82,8 +148,30 @@
 		
 	}
 	
+	
+	
 	.form-field .tiempo span.lbl{
 	 		display:inline-block !important;
 	 		top:0px !important;
 	 	}
+}
+
+.gestion_demanda .extended-row .form-field{
+	 .fecha{
+	
+		> .date > .add-on{
+			top: -1px;
+			left: -14px;
+		}
+		
+		.lbl {
+			top:5px;
+		}
+	} 
+	.tiempo{
+		> .lbl{
+			 margin-right: 0 !important;
+   			 width: 73px !important;
+		}
+	}
 }

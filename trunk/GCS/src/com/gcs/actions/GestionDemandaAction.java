@@ -23,9 +23,20 @@ public class GestionDemandaAction extends Action {
 		DemandaDao dDao = DemandaDao.getInstance();
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
 		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
+		
+		String gestoresStr = "";
+		
+		if (!gestores_it.isEmpty()){			
+			for (User g:gestores_it){
+				gestoresStr += g.getNombre() + " " + g.getApellido1() + " " + g.getApellido2()+ "("+g.getKey().getId()+")"+"-";
+			}
+			
+		}
+		
 			
 		req.setAttribute("gestores_demanda", gestores_demanda);
 		req.setAttribute("gestores_it", gestores_it);
+		req.setAttribute("gestoresStr", gestoresStr);
 		
 		req.setAttribute("horasList", Utils.getHorasList());
 		req.setAttribute("minutosList", Utils.getMinutosList());
