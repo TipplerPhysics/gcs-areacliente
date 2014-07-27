@@ -66,7 +66,7 @@ JSONObject json = new JSONObject();
 					}else if (accion.equals("delete")){
 						deleteDemanda(req,resp);
 					}else if (accion.equals("update")){
-						//updateDemanda(req,resp);
+						updateDemanda(req,resp);
 					}else if (accion.equals("xls")){
 						generateXLS(req,resp);
 					}
@@ -102,6 +102,53 @@ JSONObject json = new JSONObject();
         resp.setContentType("application/json");       
 		resp.getWriter().println(json);
 	}	
+	
+	private void updateDemanda(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+		JSONObject json = new JSONObject();
+		
+		try{
+			
+				
+		String idStr = req.getParameter("id");
+		Long id = Long.parseLong(idStr);
+		
+		DemandaDao dDao = DemandaDao.getInstance();
+		Demanda d = dDao.getDemandaById(id);
+		
+
+		String cliente = req.getParameter("cliente");
+		String tipo = req.getParameter("tipo");
+		String estado = req.getParameter("estado");
+		String gestor_it = req.getParameter("gestor_it");
+		String fecha_entrada = req.getParameter("fecha_entrada");
+		String fecha_asignacion = req.getParameter("fecha_asignacion");
+		String hora_peticion_ext = req.getParameter("hora_peticion_ext");
+		String min_peticion_ext = req.getParameter("min_peticion_ext");
+		
+		d.setClientekey(Long.parseLong(cliente));
+		d.setTipo(tipo);
+		d.setEstado(estado);
+		d.setGestor_it(Long.parseLong(gestor_it));
+		d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada));
+		d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_asignacion));
+		d.setHora_entrada_peticion(hora_peticion_ext+":"+min_peticion_ext);
+		
+		
+		
+		dDao.createDemanda(d);	
+		
+		json.append("success", "true");
+		json.append("id", d.getKey().getId());
+		json.append("cod_peticion", d.getCod_peticion());
+		
+		}catch (Exception e){
+			json.append("failure", "true");
+			json.append("error", "Se ha producido un error inesperado");
+			
+		}
+		
+		
+		}
 	
 	private void createDemanda(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
 		JSONObject json = new JSONObject();

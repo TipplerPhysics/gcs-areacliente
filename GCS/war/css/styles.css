@@ -835,7 +835,52 @@ hr {
   background-color: #86C82D;
 }
 /* NUEVO CLIENTE  */
-.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl {
+.gestion_demanda .extended-row td {
+  padding-top: 0px;
+}
+.gestion_demanda #botones_ext {
+  text-align: right;
+}
+.gestion_demanda .usersTable > .table > #myTable .tipo_ed {
+  position: relative;
+  top: 5px;
+  width: 100px;
+}
+.gestion_demanda .usersTable > .table > #myTable .estado_ed {
+  position: relative;
+  top: 5px;
+  width: 290px;
+}
+.gestion_demanda .usersTable > .table th:nth-child(5),
+.gestion_demanda .usersTable > .table td:nth-child(5) {
+  width: 85px;
+}
+.gestion_demanda .usersTable > .table th:nth-child(5) > input,
+.gestion_demanda .usersTable > .table td:nth-child(5) > input {
+  position: relative;
+  width: 120%;
+}
+.gestion_demanda #extended-demanda > .form-field > .fecha,
+.gestion_demanda #extended-demanda > .form-field > .tiempo {
+  display: inline-block;
+  vertical-align: text-top;
+}
+.gestion_demanda #extended-demanda > .form-field > .fecha .bootstrap-select.time,
+.gestion_demanda #extended-demanda > .form-field > .tiempo .bootstrap-select.time {
+  width: 85px;
+}
+.gestion_demanda #extended-demanda > .form-field .lbl {
+  font-weight: 100;
+  margin-right: 20px;
+}
+.gestion_demanda #extended-demanda > .form-field > .fecha .lbl {
+  width: 120px;
+}
+.gestion_demanda #extended-demanda > .form-field > .fecha #dp1 input {
+  width: 190px;
+}
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl,
+.gestion_demanda #extended-demanda > .form-field .lbl {
   width: 100px;
   margin-right: 20px;
   color: #434a58;
@@ -844,7 +889,8 @@ hr {
   font-size: 12px;
   text-align: left;
 }
-.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl.time-span {
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl.time-span,
+.gestion_demanda #extended-demanda > .form-field .lbl.time-span {
   display: inline-block;
   margin-left: 20px;
   margin-right: 17px;
@@ -901,6 +947,17 @@ hr {
 .gestion_demanda .form-field .tiempo span.lbl {
   display: inline-block !important;
   top: 0px !important;
+}
+.gestion_demanda .extended-row .form-field .fecha > .date > .add-on {
+  top: -1px;
+  left: -14px;
+}
+.gestion_demanda .extended-row .form-field .fecha .lbl {
+  top: 5px;
+}
+.gestion_demanda .extended-row .form-field .tiempo > .lbl {
+  margin-right: 0 !important;
+  width: 73px !important;
 }
 form #error-messages {
   margin-bottom: 10px;
