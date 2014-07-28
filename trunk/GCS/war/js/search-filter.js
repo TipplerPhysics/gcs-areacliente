@@ -40,9 +40,10 @@ $(function() {
 					var text = normalize($(this).val().toLowerCase());
 					var columna = $(this).attr("class").split("col")[1];
 				    var cont = $($linea.children()[columna]).children().html().toLowerCase();
-				    if (cont.indexOf(text)==-1){
+				    var textLength = text.length;
+				    if(text != cont.substring(0, textLength)){
 				    	isValid = false;
-				    }
+					}
 				}
 			});
 

@@ -7,7 +7,7 @@ var cpermiso="";
 var areas;
 var dto;
 
-$(document).ready(function() {
+$(function() {
 
 	$('#myTable').paginateMe({
 		pagerSelector : '#myPager',
@@ -16,14 +16,8 @@ $(document).ready(function() {
 		perPage : 5
 	});
 
-});
-
-$(function() {
 	$('.selectpicker').selectpicker();
-});
 
-// on pageload complete
-$(function() {
 	var userBoxSize = 0;
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
@@ -42,8 +36,6 @@ $(function() {
 					$('.demanda_span').removeClass('blue');
 				}, 1000);
 			}
-						
-
 		} else {
 			if ($('.new-user-form-holder').css('overflow')=="hidden"){
 				$('#newUserButton').addClass('white-btn');
@@ -64,8 +56,6 @@ $(function() {
 				  }
 				 , 1000 );
 			}
-			
-			
 		}
 	});
 
@@ -260,9 +250,6 @@ function generateRow(data,id,permiso,permisoid,dto,area){
 	var ap1 = $('#ap1').val();
 	var ap2 = $('#ap2').val();
 	var email = $('#email').val();
-	
-	
-
 	var html = "<tr id=row"+id+" class='valid-result' data-dto='"+dto+"' data-mail='"+email+"' data-permiso='"+permisoid+"' data-area='"+area+"'>"
 		+ "<td><span>"+nombre+"</span></td>"
 		+ "<td><span>"+ap1+"</span></td>"
@@ -452,21 +439,4 @@ function editRow(id){
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}
 	}},750);
-}
-
-function resetForm($form) {
-	$form.find(':input').each(function(){
-		if($(this).attr('type') == 'text') {
-			$(this).val('');
-		} else if (($(this).attr('type') == 'radio') || ($(this).attr('type') == 'checkbox')) {
-			$(this).prop('checked', false);
-		}
-	});
-	$form.find('select').each(function() {
-		$(this).find('option:eq(0)').prop('selected', true);
-		if($(this).hasClass('selectpicker')) {
-			// Reset selectpicker
-			$('.selectpicker').selectpicker('refresh');
-		}
-	});
 }

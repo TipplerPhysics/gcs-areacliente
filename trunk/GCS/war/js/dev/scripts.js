@@ -325,7 +325,36 @@ $("#submit_demanda_form").on('click',function(e) {
 		return false;
 	});
 });
-;$.fn.paginateMe = function(opts) {
+;function resetForm($form) {
+	$form.find('input').each(function(){
+		if($(this).attr('type') == 'text') {
+			$(this).val('');
+		} else if (($(this).attr('type') == 'radio') || ($(this).attr('type') == 'checkbox')) {
+			$(this).prop('checked', false);
+		}
+	});
+	$form.find('textarea').each(function(){
+		$(this).val('');
+	});
+	var $selects = $form.find('select');
+	var selectTotal = $selects.length
+	$selects.each(function(i) {
+		$(this).find('option:eq(0)').prop('selected', true);
+		if(i === selectTotal - 1) {
+			// Reset all selectpickers
+			$('.selectpicker').selectpicker('refresh');
+		}
+	});
+}
+
+$(function() {
+	$('form').find('.btn.close-form').on('click', function(){
+		var $form = $(this).closest('form');
+		$('#newUserButton').trigger('click');
+		resetForm($form);
+		return false;
+	});
+});;$.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
 		perPage : 5,
 		showPrevNext : false,
@@ -481,9 +510,10 @@ $(function() {
 					var text = normalize($(this).val().toLowerCase());
 					var columna = $(this).attr("class").split("col")[1];
 				    var cont = $($linea.children()[columna]).children().html().toLowerCase();
-				    if (cont.indexOf(text)==-1){
+				    var textLength = text.length;
+				    if(text != cont.substring(0, textLength)){
 				    	isValid = false;
-				    }
+					}
 				}
 			});
 
@@ -520,7 +550,7 @@ var cpermiso="";
 var areas;
 var dto;
 
-$(document).ready(function() {
+$(function() {
 
 	$('#myTable').paginateMe({
 		pagerSelector : '#myPager',
@@ -529,14 +559,8 @@ $(document).ready(function() {
 		perPage : 5
 	});
 
-});
-
-$(function() {
 	$('.selectpicker').selectpicker();
-});
 
-// on pageload complete
-$(function() {
 	var userBoxSize = 0;
 	$('#newUserButton').click(function(e){
 		if ($('#newUserButton').hasClass('white-btn')){
@@ -552,14 +576,14 @@ $(function() {
 				setTimeout(function(){
 					$('#newUserButton').removeClass('white-btn');	
 					$('.user_span').removeClass('blue');
+					$('.demanda_span').removeClass('blue');
 				}, 1000);
 			}
-						
-
 		} else {
 			if ($('.new-user-form-holder').css('overflow')=="hidden"){
 				$('#newUserButton').addClass('white-btn');
 				$('.user_span').addClass('blue');
+				$('.demanda_span').addClass('blue');
 				$('.new-user-form-holder').addClass('open');
 				if(userBoxSize > 0) {
 					setTimeout(function(){
@@ -575,8 +599,6 @@ $(function() {
 				  }
 				 , 1000 );
 			}
-			
-			
 		}
 	});
 
@@ -716,7 +738,7 @@ $(function() {
 			  data : postData,
 			  success:function(data, textStatus, jqXHR) 
 			  {
-				//data: return data from server
+					//data: return data from server
 				if (data.success==("true")){
 					var html=generateRow(postData,data.id,data.permiso,data.permisoid, data.dto, data.area);
 					
@@ -771,9 +793,6 @@ function generateRow(data,id,permiso,permisoid,dto,area){
 	var ap1 = $('#ap1').val();
 	var ap2 = $('#ap2').val();
 	var email = $('#email').val();
-	
-	
-
 	var html = "<tr id=row"+id+" class='valid-result' data-dto='"+dto+"' data-mail='"+email+"' data-permiso='"+permisoid+"' data-area='"+area+"'>"
 		+ "<td><span>"+nombre+"</span></td>"
 		+ "<td><span>"+ap1+"</span></td>"
@@ -963,23 +982,6 @@ function editRow(id){
 			$('#e-'+name)[0].setAttribute("checked", "checked");
 		}
 	}},750);
-}
-
-function resetForm($form) {
-	$form.find(':input').each(function(){
-		if($(this).attr('type') == 'text') {
-			$(this).val('');
-		} else if (($(this).attr('type') == 'radio') || ($(this).attr('type') == 'checkbox')) {
-			$(this).prop('checked', false);
-		}
-	});
-	$form.find('select').each(function() {
-		$(this).find('option:eq(0)').prop('selected', true);
-		if($(this).hasClass('selectpicker')) {
-			// Reset selectpicker
-			$('.selectpicker').selectpicker('refresh');
-		}
-	});
 };$(function() {
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",

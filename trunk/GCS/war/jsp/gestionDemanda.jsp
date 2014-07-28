@@ -105,28 +105,22 @@
 		                    </span>
 					  	</div>
 					  </div>
-				  <div class="tiempo">
-					<span class="lbl">Hora solicitud asignación:</span>
-					
-					<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">					
-					    
-							
-								<c:forEach items="${horasList}" var="hora">		         
-							
-							<option value="${hora}">${hora}</option>
-						</c:forEach>			
-					</select>
-					<span class="time-span">:</span>
-					<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">					
-					   <c:forEach items="${minutosList}" var="min">		         	
-							<option value="${min}">${min}</option>
-						</c:forEach>			
-					</select>
+				  	<div class="tiempo">
+						<span class="lbl">Hora solicitud asignación:</span>
+						
+						<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
+							<c:forEach items="${horasList}" var="hora">		         
+								<option value="${hora}">${hora}</option>
+							</c:forEach>			
+						</select>
+						<span class="time-span">:</span>
+						<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">					
+						   <c:forEach items="${minutosList}" var="min">		         	
+								<option value="${min}">${min}</option>
+							</c:forEach>			
+						</select>
+					</div>
 				</div>
-				</div>
-				
-				
-				
 				<div class="form-field">
 					<span class="lbl">Estado:</span>
 					<select class="selectpicker" name="estado" id="estado">
@@ -180,13 +174,11 @@
 					<span id="span_message"></span>
 				</div>
 			</div>
-
+			<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
+			<a href="#" class="btn btn-default close-form">Cancelar</button>
 		</form>
-		<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
 	</div>
 </div>
-
-
 <div>	
 	<div>
 		<div class="table-responsive usersTable">
@@ -246,16 +238,15 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="">
-				<h2>Eliminar Demanda</h2>
+				<h2>Eliminar petición</h2>
 				<hr />
 			</div>
 			<div class="">
-				<p>&iquest;Est&aacute; seguro que desea eliminar la demanda?
+				<p>&iquest;Est&aacute; seguro que desea eliminar el petición?
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="pink-btn" id="deleteDemanda">Eliminar</button>
 				<button type="button" class="" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="pink-btn" id="deleteDemanda">Borrar</button>
-
 			</div>
 		</div>
 	</div>
