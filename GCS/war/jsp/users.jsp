@@ -30,7 +30,7 @@
 				</div>
 				<div class="form-field">
 					<span>Apellido 2:</span><input class="long" type="text" name="ap2"
-						id="ap2" required aria-required="true">
+						id="ap2">
 				</div>
 				<div class="form-field">
 					<span>E-mail:</span><input class="long email" type="text"
@@ -73,6 +73,7 @@
 					<span>Perfil:</span> <select class="long selected selectpicker"
 						name="permiso" required>
 						<option selected value="default">Seleccionar</option>
+						<option value="6">Consulta</option>
 						<option value="5">Gestor IT</option>
 						<option value="4">Gestor Demanda</option>
 						<option value="3">User Admin</option>
