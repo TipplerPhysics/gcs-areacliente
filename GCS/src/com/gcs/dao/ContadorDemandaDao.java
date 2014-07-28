@@ -16,8 +16,6 @@ public class ContadorDemandaDao {
 	
 	public void increaseCont (){
 		ContadorDemanda cd = getContador();
-		
-		
 		cd.setNum(cd.getNum()+1);
 		createContador(cd); 
 	}
@@ -37,6 +35,24 @@ public class ContadorDemandaDao {
 		}
 		
 		return i;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String countDemandas(){
+		
+		Integer a = getContador().getNum();
+		
+		String str = a.toString();
+		
+		if (str.length()<=1){
+			str = "000"+str;
+		}else if (str.length()<=2){
+			str = "00"+str;
+		}else if (str.length()<=3){
+			str = "0"+str;
+		}
+		
+		return str;
 	}
 	
 	public ContadorDemanda getContador(){

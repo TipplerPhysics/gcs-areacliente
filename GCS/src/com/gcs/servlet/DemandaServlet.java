@@ -1,15 +1,11 @@
 package com.gcs.servlet;
 
 import java.io.IOException;
-
-import com.gcs.utils.Utils;
 import java.io.OutputStream;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
+import javax.jdo.JDOHelper;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +25,10 @@ import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Demanda;
 import com.gcs.beans.User;
+import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.DemandaDao;
 import com.gcs.dao.UserDao;
+import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -186,6 +184,7 @@ JSONObject json = new JSONObject();
 		
 		
 		DemandaDao dDao = DemandaDao.getInstance();
+		ContadorDemandaDao cDDao = ContadorDemandaDao.getInstance();
 		
 		d.setCatalogacion(catalogacion_peticion);
 		d.setComentarios(comentarios);
@@ -213,10 +212,10 @@ JSONObject json = new JSONObject();
 			d.setClientekey(Long.parseLong(cliente));
 		
 		
-		d.setCod_peticion("PET_"+dDao.countDemandas());
-		
+		d.setCod_peticion("PET_"+cDDao.countDemandas());
 			
-		dDao.createDemanda(d);	
+		dDao.createDemanda(d);
+		//cDDao.increaseCont();
 			
 		json.append("success", "true");
 		json.append("id", d.getKey().getId());
