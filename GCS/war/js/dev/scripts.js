@@ -716,7 +716,7 @@ $(function() {
 			  data : postData,
 			  success:function(data, textStatus, jqXHR) 
 			  {
-					//data: return data from server
+				//data: return data from server
 				if (data.success==("true")){
 					var html=generateRow(postData,data.id,data.permiso,data.permisoid, data.dto, data.area);
 					
