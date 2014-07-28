@@ -63,12 +63,13 @@ $(function() {
 			data : postData,
 			success:function(data, textStatus, jqXHR) {
 				//data: return data from server
-				if (data.success==("true")){
-					$('.extended-row').remove();
-					$('#row'+id).removeClass('editing');
 
-					updateRow(id);
-				}
+				//	$('.extended-row').remove();
+				//	$('#row'+id).removeClass('editing');
+
+				//	updateRow(id);
+				
+				location.reload();
 			}
 		});
 		
