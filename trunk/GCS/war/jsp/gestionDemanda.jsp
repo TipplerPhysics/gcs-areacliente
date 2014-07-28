@@ -236,7 +236,7 @@
 				<hr />
 			</div>
 			<div class="">
-				<p>&iquest;Est&aacute; seguro que desea eliminar el petición?
+				<p>&iquest;Est&aacute; seguro que desea eliminar la petición?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="pink-btn" id="deleteDemanda">Eliminar</button>
