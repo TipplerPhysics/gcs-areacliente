@@ -174,9 +174,9 @@
 					<span id="span_message"></span>
 				</div>
 			</div>
-			<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
-			<a href="#" class="btn btn-default close-form">Cancelar</button>
 		</form>
+		<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
+		<button href="#" class="close-form">Cancelar</button>
 	</div>
 </div>
 <div>	

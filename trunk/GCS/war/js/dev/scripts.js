@@ -342,16 +342,19 @@ $("#submit_demanda_form").on('click',function(e) {
 		$(this).find('option:eq(0)').prop('selected', true);
 		if(i === selectTotal - 1) {
 			// Reset all selectpickers
-			$('.selectpicker').selectpicker('refresh');
+			$form.find('.selectpicker').selectpicker('refresh');
 		}
 	});
 }
 
 $(function() {
-	$('form').find('.btn.close-form').on('click', function(){
-		var $form = $(this).closest('form');
+	$('form').parent().find('button.close-form').on('click', function(){
+		var $form = $(this).parent().find('form');
 		$('#newUserButton').trigger('click');
-		resetForm($form);
+		setTimeout(function(){
+			resetForm($form);
+		},750);
+
 		return false;
 	});
 });;$.fn.paginateMe = function(opts) {
