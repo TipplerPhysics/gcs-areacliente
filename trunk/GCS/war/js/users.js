@@ -39,6 +39,7 @@ $(function() {
 				setTimeout(function(){
 					$('#newUserButton').removeClass('white-btn');	
 					$('.user_span').removeClass('blue');
+					$('.demanda_span').removeClass('blue');
 				}, 1000);
 			}
 						
@@ -47,6 +48,7 @@ $(function() {
 			if ($('.new-user-form-holder').css('overflow')=="hidden"){
 				$('#newUserButton').addClass('white-btn');
 				$('.user_span').addClass('blue');
+				$('.demanda_span').addClass('blue');
 				$('.new-user-form-holder').addClass('open');
 				if(userBoxSize > 0) {
 					setTimeout(function(){
