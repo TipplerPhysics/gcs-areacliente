@@ -23,6 +23,8 @@ public class Utils {
 			break;
 		case 5: s="Gestor IT";
 			break;
+		case 6: s="Consulta";
+			break;
 		}
 		
 		return s;
