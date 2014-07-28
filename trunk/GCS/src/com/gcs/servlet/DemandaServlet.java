@@ -191,12 +191,16 @@ JSONObject json = new JSONObject();
 		d.setComentarios(comentarios);
 		d.setDevuelta(devBool);
 		d.setEstado(estado);
-		d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada_peticion));		
-		d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_solicitud_asignacion));
+		d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada_peticion));
+		if(! "".equals(fecha_solicitud_asignacion)) {
+			d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_solicitud_asignacion));
+		}
 		d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
 		d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
 		d.setGestor_it(Long.parseLong(gestor_it));
-		d.setGestor_negocio(Long.parseLong(gestor_negocio));
+		if(isLong(gestor_negocio)) {
+			d.setGestor_negocio(Long.parseLong(gestor_negocio));
+		}
 		d.setHora_entrada_peticion(hora_peticion+":"+min_peticion);
 		d.setHora_solicitud_asignacion(hora_solicitud_asignacion+":"+min_solicitud_asignacion);
 		d.setMotivo_catalogacion(motivo_catalogacion);
@@ -335,5 +339,15 @@ JSONObject json = new JSONObject();
 				out.close();
 		}
 
+	}
+	
+	private boolean isLong(String input) {
+		try {
+			Long.parseLong(input);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 }
