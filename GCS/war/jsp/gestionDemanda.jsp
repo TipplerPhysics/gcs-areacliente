@@ -22,7 +22,7 @@
 					<div class="fecha">
 						<span class="lbl"><span class="required-asterisk">*</span>Fecha entrada petición:</span>
 						<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
-							<input type="text" readonly="" value="" size="16" class="span2" name="fecha_entrada_peticion" id="fecha_entrada_peticion">
+							<input type="text" readonly="" value="" size="16" class="span2" name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
 							<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 					  	</div>
@@ -30,16 +30,13 @@
 				  <div class="tiempo">
 					<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
 					
-					<select class="selectpicker time" id="hora_peticion" name="hora_peticion">					
-					    
-							
-								<c:forEach items="${horasList}" var="hora">		         
-							
+					<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
+						<c:forEach items="${horasList}" var="hora">
 							<option value="${hora}">${hora}</option>
 						</c:forEach>			
 					</select>
 					<span class="time-span">:</span>
-					<select class="selectpicker time" id="min_peticion" name="min_peticion">					
+					<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
 					   <c:forEach items="${minutosList}" var="min">		         	
 							<option value="${min}">${min}</option>
 						</c:forEach>			
@@ -50,20 +47,18 @@
 				<div class="form-field textarea">
 					<span class="align-top lbl">Motivo de catalogación:</span><textarea name="motivo_catalogacion" id="motivo_catalogacion" class="long"></textarea>
 				</div>
-				
-				
-				
 				<div class="form-field double">
 					<div>
 						<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
 						<select class="selectpicker" id="cliente" name="cliente">
+						<!--select class="selectpicker selected" id="cliente" name="cliente" required aria-required="true"-->
 							<option value="default">Seleccionar...</option>
 						</select>					
 					</div>
 					
 					<div>
 						<span class="lbl">Gestor de negocio:</span>
-						<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">					
+						<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">
 						    <option value="default" selected>Seleccionar</option>
 							<c:forEach items="${gestores_demanda}" var="user">	
 								<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -80,7 +75,7 @@
 				<div class="form-field double">
 					<div>
 					<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
-						<select class="selectpicker" name="tipo" id="tipo">
+						<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
 							<option value="default">Seleccionar...</option>
 							<option value="CIB">CIB</option>
 							<option value="BEC">BEC</option>
@@ -88,7 +83,7 @@
 					</div>
 					<div>						
 						<span class="lbl"><span class="required-asterisk">*</span>Devuelta:</span>
-						<select class="selectpicker" name="devuelta">
+						<select class="selectpicker selected" name="devuelta" required aria-required="true">
 							<option value="default">Seleccionar...</option>
 							<option value="SI">SI</option>
 							<option value="NO">NO</option>
@@ -107,14 +102,13 @@
 					  </div>
 				  	<div class="tiempo">
 						<span class="lbl">Hora solicitud asignación:</span>
-						
 						<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
 							<c:forEach items="${horasList}" var="hora">		         
 								<option value="${hora}">${hora}</option>
 							</c:forEach>			
 						</select>
 						<span class="time-span">:</span>
-						<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">					
+						<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">
 						   <c:forEach items="${minutosList}" var="min">		         	
 								<option value="${min}">${min}</option>
 							</c:forEach>			
@@ -123,7 +117,7 @@
 				</div>
 				<div class="form-field">
 					<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
-					<select class="selectpicker" name="estado" id="estado">
+					<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
 						<option value="default">Seleccionar...</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 						<option value="P-950 en confección">P-950 en confección</option>
@@ -148,7 +142,7 @@
 				
 				<div class="form-field">
 					<span class="lbl"><span class="required-asterisk">*</span>Gestor IT pre-asignado:</span>
-					<select class="selectpicker" name="gestor_it">					
+					<select class="selectpicker selected" name="gestor_it" required aria-required="true">					
 					    <option value="default" selected>Seleccionar...</option>
 						<c:forEach items="${gestores_it}" var="user">	
 							<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -159,7 +153,7 @@
 				
 				<div class="form-field">
 					<span class="lbl"><span class="required-asterisk">*</span>Catalogación de petición:</span>
-					<select class="selectpicker" name="catalogacion_peticion">
+					<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
 						<option value="default">Seleccionar...</option>
 						<option value="Implantación">Implantación</option>
 						<option value="SEPA">SEPA</option>

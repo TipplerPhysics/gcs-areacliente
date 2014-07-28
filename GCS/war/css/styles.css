@@ -738,11 +738,11 @@ hr {
   vertical-align: top;
   margin-bottom: 10px;
 }
-.newUserbox .new-user-form-holder .form-container .form-field > .bootstrap-select {
+.newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select {
   position: relative;
   width: 248px !important;
 }
-.newUserbox .new-user-form-holder .form-container .form-field > .bootstrap-select.error button {
+.newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.error button {
   background: #f7e9e9;
   background: -moz-linear-gradient(top, #f7e9e9 0%, #f7e9e9 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f7e9e9), color-stop(100%, #f7e9e9));
@@ -1001,6 +1001,10 @@ form input.error {
   background-color: #f7e9e9;
 }
 form select.error {
+  border: 1px solid #e8e8e6;
+  background-color: #f7e9e9;
+}
+form textarea.error {
   border: 1px solid #e8e8e6;
   background-color: #f7e9e9;
 }
