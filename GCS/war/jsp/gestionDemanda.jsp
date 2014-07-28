@@ -20,7 +20,7 @@
 			<div class="form-container">
 				<div class="form-field">
 					<div class="fecha">
-						<span class="lbl">Fecha entrada petición:</span>
+						<span class="lbl"><span class="required-asterisk">*</span>Fecha entrada petición:</span>
 						<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
 							<input type="text" readonly="" value="" size="16" class="span2" name="fecha_entrada_peticion" id="fecha_entrada_peticion">
 							<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span>
@@ -28,7 +28,7 @@
 					  	</div>
 					  </div>
 				  <div class="tiempo">
-					<span class="lbl">Hora petición:</span>
+					<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
 					
 					<select class="selectpicker time" id="hora_peticion" name="hora_peticion">					
 					    
