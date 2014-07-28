@@ -626,12 +626,13 @@ hr {
   height: 441px;
   border: 1px solid #DCDCDC;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 }
-.newUserbox .new-user-form-holder button#submit_user_form,
-.newUserbox .new-user-form-holder .submit_form {
-  left: -20px;
-  position: relative;
-  margin-bottom: 20px;
+.newUserbox .new-user-form-holder button {
+  margin-right: 10px;
+}
+.newUserbox .new-user-form-holder button:last-of-type {
+  margin-right: 20px;
 }
 .newUserbox .new-user-form-holder .form-container {
   display: block;
