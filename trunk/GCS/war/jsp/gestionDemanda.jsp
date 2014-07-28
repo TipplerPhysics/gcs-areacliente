@@ -55,7 +55,7 @@
 				
 				<div class="form-field double">
 					<div>
-						<span class="lbl">Cliente:</span>
+						<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
 						<select class="selectpicker" id="cliente" name="cliente">
 							<option value="default">Seleccionar...</option>
 						</select>					
@@ -79,7 +79,7 @@
 				
 				<div class="form-field double">
 					<div>
-					<span class="lbl">Tipo:</span>
+					<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
 						<select class="selectpicker" name="tipo" id="tipo">
 							<option value="default">Seleccionar...</option>
 							<option value="CIB">CIB</option>
@@ -87,7 +87,7 @@
 						</select>
 					</div>
 					<div>						
-						<span class="lbl">Devuelta:</span>
+						<span class="lbl"><span class="required-asterisk">*</span>Devuelta:</span>
 						<select class="selectpicker" name="devuelta">
 							<option value="default">Seleccionar...</option>
 							<option value="SI">SI</option>
@@ -122,7 +122,7 @@
 					</div>
 				</div>
 				<div class="form-field">
-					<span class="lbl">Estado:</span>
+					<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
 					<select class="selectpicker" name="estado" id="estado">
 						<option value="default">Seleccionar...</option>
 						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
@@ -147,7 +147,7 @@
 				</div>
 				
 				<div class="form-field">
-					<span class="lbl">Gestor IT pre-asignado:</span>
+					<span class="lbl"><span class="required-asterisk">*</span>Gestor IT pre-asignado:</span>
 					<select class="selectpicker" name="gestor_it">					
 					    <option value="default" selected>Seleccionar...</option>
 						<c:forEach items="${gestores_it}" var="user">	
@@ -158,7 +158,7 @@
 				</div>
 				
 				<div class="form-field">
-					<span class="lbl">Catalogación de petición:</span>
+					<span class="lbl"><span class="required-asterisk">*</span>Catalogación de petición:</span>
 					<select class="selectpicker" name="catalogacion_peticion">
 						<option value="default">Seleccionar...</option>
 						<option value="Implantación">Implantación</option>
