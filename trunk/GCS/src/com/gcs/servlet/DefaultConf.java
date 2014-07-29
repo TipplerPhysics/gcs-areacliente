@@ -16,7 +16,6 @@ public class DefaultConf extends HttpServlet {
 		JSONObject json = new JSONObject();
 
 		try {
-
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 
@@ -25,8 +24,7 @@ public class DefaultConf extends HttpServlet {
 			} else {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operaciï¿½n");
-
+						"No tienes los permisos para realizar esta operación");
 			}
 			resp.setCharacterEncoding("UTF-8");
 			resp.setContentType("application/json");
@@ -44,7 +42,6 @@ public class DefaultConf extends HttpServlet {
 				e1.printStackTrace();
 			}
 		}
-
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
