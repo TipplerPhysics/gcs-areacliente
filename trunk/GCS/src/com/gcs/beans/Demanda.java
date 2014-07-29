@@ -10,77 +10,62 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-
 public class Demanda {
-	
+
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Key key;
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
+
+	@Persistent(valueStrategy = IdGeneratorStrategy.SEQUENCE)
+	private Long sequence;
+
+	@Persistent
+	private String cod_peticion;
 
 	@Persistent
 	private Date fecha_entrada_peticion;
-	
+
 	@Persistent
 	private String str_fecha_entrada_peticion;
-	
+
 	@Persistent
 	private String hora_entrada_peticion;
-	
+
 	@Persistent
 	private Date fecha_solicitud_asignacion;
-	
-	public String getStr_fecha_entrada_peticion() {
-		return str_fecha_entrada_peticion;
-	}
-
-	public void setStr_fecha_entrada_peticion(String str_fecha_entrada_peticion) {
-		this.str_fecha_entrada_peticion = str_fecha_entrada_peticion;
-	}
-
-	public String getStr_fecha_solicitud_asignacion() {
-		return str_fecha_solicitud_asignacion;
-	}
-
-	public void setStr_fecha_solicitud_asignacion(
-			String str_fecha_solicitud_asignacion) {
-		this.str_fecha_solicitud_asignacion = str_fecha_solicitud_asignacion;
-	}
 
 	@Persistent
 	private String str_fecha_solicitud_asignacion;
-	
+
 	@Persistent
 	private String hora_solicitud_asignacion;
-	
+
 	@Persistent
 	private String motivo_catalogacion;
-	
+
 	@Persistent
-	private String comentarios;	
-	
+	private String comentarios;
+
 	@Persistent
 	private Long gestor_negocio;
-	
+
 	@Persistent
 	private Long gestor_it;
-	
+
 	@Persistent
 	private String tipo;
-	
+
 	@Persistent
 	private Boolean devuelta;
-	
+
 	@Persistent
 	private String estado;
-	
+
 	@Persistent
 	private String catalogacion;
-	
+
 	@Persistent
 	private Long clientekey;
-	
-	@Persistent
-	private String cod_peticion;
 
 	public Key getKey() {
 		return key;
@@ -88,6 +73,14 @@ public class Demanda {
 
 	public void setKey(Key key) {
 		this.key = key;
+	}
+
+	public Long getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(Long sequence) {
+		this.sequence = sequence;
 	}
 
 	public String getCod_peticion() {
@@ -106,6 +99,14 @@ public class Demanda {
 		this.fecha_entrada_peticion = fecha_entrada_peticion;
 	}
 
+	public String getStr_fecha_entrada_peticion() {
+		return str_fecha_entrada_peticion;
+	}
+
+	public void setStr_fecha_entrada_peticion(String str_fecha_entrada_peticion) {
+		this.str_fecha_entrada_peticion = str_fecha_entrada_peticion;
+	}
+
 	public String getHora_entrada_peticion() {
 		return hora_entrada_peticion;
 	}
@@ -120,6 +121,15 @@ public class Demanda {
 
 	public void setFecha_solicitud_asignacion(Date fecha_solicitud_asignacion) {
 		this.fecha_solicitud_asignacion = fecha_solicitud_asignacion;
+	}
+
+	public String getStr_fecha_solicitud_asignacion() {
+		return str_fecha_solicitud_asignacion;
+	}
+
+	public void setStr_fecha_solicitud_asignacion(
+			String str_fecha_solicitud_asignacion) {
+		this.str_fecha_solicitud_asignacion = str_fecha_solicitud_asignacion;
 	}
 
 	public String getHora_solicitud_asignacion() {
@@ -146,15 +156,6 @@ public class Demanda {
 		this.comentarios = comentarios;
 	}
 
-	
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public Long getGestor_negocio() {
 		return gestor_negocio;
 	}
@@ -169,6 +170,14 @@ public class Demanda {
 
 	public void setGestor_it(Long gestor_it) {
 		this.gestor_it = gestor_it;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public Boolean getDevuelta() {
@@ -202,14 +211,5 @@ public class Demanda {
 	public void setClientekey(Long clientekey) {
 		this.clientekey = clientekey;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

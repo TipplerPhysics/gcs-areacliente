@@ -83,11 +83,13 @@
 					</div>
 					<div>						
 						<span class="lbl"><span class="required-asterisk">*</span>Devuelta:</span>
-						<select class="selectpicker selected" name="devuelta" required aria-required="true">
+						<!--<select class="selectpicker selected" name="devuelta" required aria-required="true">
 							<option value="default">Seleccionar...</option>
 							<option value="SI">SI</option>
 							<option value="NO">NO</option>
-						</select>					
+						</select>-->
+						<input type="radio" name="devuelta" value="SI">SI
+						<input type="radio" name="devuelta" value="NO" checked>NO											
 					</div>	
 				</div>
 				
@@ -119,24 +121,11 @@
 					<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
 					<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
 						<option value="default">Seleccionar...</option>
-						<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
-						<option value="P-950 en confección">P-950 en confección</option>
-						<option value="PDTE Valoración IT">PDTE Valoración IT</option>
-						<option value="PDTE Plan de Trabajo IT">PDTE Plan de Trabajo IT</option>
-						<option value="PDTE Visto Bueno del CL del plan de trabajo">PDTE Visto Bueno del CL del plan de trabajo</option>
-						<option value="En Desarrollo">En Desarrollo</option>
-						<option value="En Test - Conectividad">En Test - Conectividad</option>
-						<option value="En Test - Integración">En Test - Integración</option>
-						<option value="En Test - Aceptación">En Test - Aceptación</option>
-						<option value="Parado por Negocio - Producto">Parado por Negocio - Producto</option>
-						<option value="Parado por Negocio">Parado por Negocio</option>
-						<option value="Parado por IT">Parado por IT</option>
-						<option value="Excluido por Negocio">Excluido por Negocio</option>
-						<option value="Excluido por Timeout">Excluido por Timeout</option>
-						<option value="PDTE Implantar">PDTE Implantar</option>						
-						<option value="En Penny Test">En Penny Test</option>
-						<option value="Implementado con OK">Implementado con OK</option>						
-						<option value="Implementado sin OK">Implementado sin OK</option>						
+						<option value="Pendiente de Asignación">Pendiente de Asignación</option>
+						<option value="Asignada">Asignada</option>
+						<option value="Devuelta">Devuelta</option>
+						<option value="Parada">Parada</option>
+						<option value="Desestimada">Desestimada</option>						
 					</select>
 				</div>
 				

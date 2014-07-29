@@ -17,43 +17,35 @@ import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
-public class UsersAction extends Action{
+public class UsersAction extends Action {
 
-	public ActionForward execute (ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp) throws IOException{		
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
 		try {
 			UserDao uDao = UserDao.getInstance();
 			List<User> usuarios = uDao.getAllUsers();
-			
-			//req.getSession().setAttribute("userList", usuarios);
+
+			// req.getSession().setAttribute("userList", usuarios);
 			JSONArray jsonArray = new JSONArray();
-			
+
 			/*
-			for (User u:usuarios){
-				JSONObject jsonUser = new JSONObject();				
-				jsonUser.put("name", u.getNombre());				
-				jsonUser.put("ap1", u.getApellido1());
-				jsonUser.put("ap2", u.getApellido2());
-				jsonUser.put("email", u.getEmail());
-				jsonUser.put("permiso", u.getPermiso());
-				jsonUser.put("permisoStr", u.getPermisoStr());
-				jsonUser.put("areas", u.getAreas());
-				jsonUser.put("email", u.getDepartamento());
-				jsonUser.put("id", u.getKey().getId());
-				jsonArray.put(jsonUser);
-			}
-			req.setAttribute("userJson", jsonArray);
-			*/
+			 * for (User u:usuarios){ JSONObject jsonUser = new JSONObject();
+			 * jsonUser.put("name", u.getNombre()); jsonUser.put("ap1",
+			 * u.getApellido1()); jsonUser.put("ap2", u.getApellido2());
+			 * jsonUser.put("email", u.getEmail()); jsonUser.put("permiso",
+			 * u.getPermiso()); jsonUser.put("permisoStr", u.getPermisoStr());
+			 * jsonUser.put("areas", u.getAreas()); jsonUser.put("email",
+			 * u.getDepartamento()); jsonUser.put("id", u.getKey().getId());
+			 * jsonArray.put(jsonUser); } req.setAttribute("userJson",
+			 * jsonArray);
+			 */
 			req.setAttribute("userList", usuarios);
-			
-			
-			
-			
-			
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return mapping.findForward("ok");
-	 }
+	}
 }

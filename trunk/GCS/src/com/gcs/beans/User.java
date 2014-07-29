@@ -29,40 +29,16 @@ public class User {
 	@Persistent
 	private String areas;
 	
-	public String getDepartamento() {
-		return departamento;
-	}
-
-	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
-	}
-
 	@Persistent
 	private String departamento;
 	
-	public String getAreas() {
-		return areas;
-	}
-
-	public void setAreas(String areas) {
-		this.areas = areas;
-	}
-
-	public String getPermisoStr() {
-		return permisoStr;
-	}
-
-	public void setPermisoStr(String permisoStr) {
-		this.permisoStr = permisoStr;
-	}
-
 	@Persistent
 	private int permiso;
 	
 	@Persistent 
 	private String permisoStr;
 	
-		public User(String nombre, String apellido1, String apellido2,
+	public User(String nombre, String apellido1, String apellido2,
 			String email, int permiso, String permisoStr, String areas,String dto) {
 		super();
 		this.nombre = nombre;
@@ -75,11 +51,11 @@ public class User {
 		this.departamento = dto;
 	}
 		
-		public User() {
-			super();
-		};
+	public User() {
+		super();
+	};
 
-		public int getPermiso() {
+	public int getPermiso() {
 		return permiso;
 	}
 
@@ -87,7 +63,7 @@ public class User {
 		this.permiso = permiso;
 	}
 
-		public Key getKey() {
+	public Key getKey() {
 		return key;
 	}		
 
@@ -127,5 +103,28 @@ public class User {
 		this.email = email;
 	}
 
+	public String getAreas() {
+		return areas;
+	}
+
+	public void setAreas(String areas) {
+		this.areas = areas;
+	}
+
+	public String getPermisoStr() {
+		return permisoStr;
+	}
+
+	public void setPermisoStr(String permisoStr) {
+		this.permisoStr = permisoStr;
+	}
+	
+	public String getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
 		
 }

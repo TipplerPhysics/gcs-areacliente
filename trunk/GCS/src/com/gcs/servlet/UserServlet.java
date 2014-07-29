@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.GroupLayout.Alignment;
 
 import jxl.Workbook;
 import jxl.format.Border;
@@ -30,9 +29,6 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class UserServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -826683004548238295L;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp){
@@ -63,14 +59,9 @@ public class UserServlet extends HttpServlet {
 					}else if (accion.equals("xls")){
 						generateXLS(req,resp);
 					}
-			 }
-		
-			
-			
-	        
+			 }    
 		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}			
 		
@@ -109,8 +100,6 @@ public class UserServlet extends HttpServlet {
 		u.setDepartamento(dto);
 		u.setPermisoStr(permisoStr);
 		u.setPermiso(permiso);
-		
-		//TODO: req.getSession().getAttribute('')
 		
 		uDao.createUser(u);
 		

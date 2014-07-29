@@ -3,10 +3,7 @@ package com.gcs.actionForms;
 import org.apache.struts.action.ActionForm;
 
 public class UsersForm extends ActionForm{
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -7822254957429613005L;
 	
 	public String getMail() {
