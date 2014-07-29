@@ -146,12 +146,11 @@ $(function() {
 			data : postData,
 			success:function(data, textStatus, jqXHR) {
 				//data: return data from server
-				if (data.success==("true")){
-					$('.extended-row').remove();
-					$('#row'+id).removeClass('editing');
+				//$('.extended-row').remove();
+				//$('#row'+id).removeClass('editing');
+				//updateRow(id);
 
-					updateRow(id);
-				}
+				location.reload();
 			}
 		});
 		

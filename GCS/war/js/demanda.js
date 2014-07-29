@@ -220,8 +220,8 @@ $(function() {
 		
 		setTimeout(function(){
 			
-			$('#dp1').datepicker();			
-			$('#fecha_entrada_peticion_ext').val($('#row'+id).attr('data-fecha-entrada'));		
+			//$('#dp1').datepicker();
+			$('#fecha_entrada_peticion_ext').val($('#row'+id).attr('data-fecha-entrada'));
 			
 			var gestores_it = $('#row'+id).attr('data-gestores-list').split("-");
 			var ges_it = $('#row'+id).attr('data-gestor-asig').split("-");
@@ -229,15 +229,10 @@ $(function() {
 			var hora = data_time.split(":")[0];
 			var minutos = data_time.split(":")[1];
 			var $gestoresSelect = $('#gestor_it_ext');
-			
-			
 
-			
 			for (var a=0; a<gestores_it.length-1; a++){
-				
 				var gestor_name = gestores_it[a].split("(")[0];
 				var gestor_id = gestores_it[a].split("(")[1].split(")")[0];
-				
 				$gestoresSelect.append("<option value='"+gestor_id+"'>"+gestor_name+"</option>")
 			}
 			
