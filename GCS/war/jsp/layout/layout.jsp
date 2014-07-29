@@ -11,6 +11,7 @@
       	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       	<!-- Custom UI: datepicker only -->
       	<script src="../tools/jquery-ui.min.js" type="text/javascript"></script>
+      	<script src="../tools/jquery-ui-datepicker-es.js" type="text/javascript"></script>
       	<script src="../tools/jquery.validate.js" type="text/javascript"></script> 
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="../components/bootstrap/select/bootstrap-select.min.js" type="text/javascript"></script>
