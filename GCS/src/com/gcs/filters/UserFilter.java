@@ -19,12 +19,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class UserFilter implements Filter {
 	
-	
-
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

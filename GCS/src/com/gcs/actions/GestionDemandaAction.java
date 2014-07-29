@@ -17,32 +17,35 @@ import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 
 public class GestionDemandaAction extends Action {
-	public ActionForward execute (ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+
 		UserDao uDao = UserDao.getInstance();
 		DemandaDao dDao = DemandaDao.getInstance();
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
 		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
-		
+
 		String gestoresStr = "";
-		
-		if (!gestores_it.isEmpty()){			
-			for (User g:gestores_it){
-				gestoresStr += g.getNombre() + " " + g.getApellido1() + " " + g.getApellido2()+ "("+g.getKey().getId()+")"+"-";
+
+		if (!gestores_it.isEmpty()) {
+			for (User g : gestores_it) {
+				gestoresStr += g.getNombre() + " " + g.getApellido1() + " "
+						+ g.getApellido2() + "(" + g.getKey().getId() + ")"
+						+ "-";
 			}
-			
+
 		}
-		
-			
+
 		req.setAttribute("gestores_demanda", gestores_demanda);
 		req.setAttribute("gestores_it", gestores_it);
 		req.setAttribute("gestoresStr", gestoresStr);
-		
+
 		req.setAttribute("horasList", Utils.getHorasList());
 		req.setAttribute("minutosList", Utils.getMinutosList());
-		
+
 		req.setAttribute("demandaList", dDao.getAllDemandas());
-		
-		 return mapping.findForward("ok");
-	 }
+
+		return mapping.findForward("ok");
+	}
 }

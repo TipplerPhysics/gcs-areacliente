@@ -5,63 +5,50 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.gcs.beans.ContadorDemanda;
-import com.gcs.dao.ContadorDemandaDao;
-import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
-public class DefaultConf extends HttpServlet{
-	
-	/**
-	 * 
-	 */
+public class DefaultConf extends HttpServlet {
+
 	private static final long serialVersionUID = 5138569693243826017L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp){
-		
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+
 		JSONObject json = new JSONObject();
 
-		
 		try {
-		 
-		HttpSession sesion = req.getSession();
-		int sesionpermiso = (int) sesion.getAttribute("permiso");
-		 
-		 if (sesionpermiso==1){
-			 ContadorDemanda cd = new ContadorDemanda(1);
-			ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
-			cdDao.createContador(cd);
-			
-			json.append("failure", "true");	
-		 }else{
-			json.append("failure", "true");				
-			json.append("error", "No tienes los permisos para realizar esta operaci�n");				
-			
-		 }
-		 resp.setCharacterEncoding("UTF-8");
-	        resp.setContentType("application/json");       
+
+			HttpSession sesion = req.getSession();
+			int sesionpermiso = (int) sesion.getAttribute("permiso");
+
+			if (sesionpermiso == 1) {
+				json.append("failure", "true");
+			} else {
+				json.append("failure", "true");
+				json.append("error",
+						"No tienes los permisos para realizar esta operaci�n");
+
+			}
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
 			resp.getWriter().println(json);
-		 
+
 		} catch (Exception e) {
 			try {
-			json.append("failure", "true");						
-			json.append("error", "Error inesperado");
-				
-				
-			resp.setCharacterEncoding("UTF-8");
-	        resp.setContentType("application/json");       
-			resp.getWriter().println(json);
+				json.append("failure", "true");
+				json.append("error", "Error inesperado");
+
+				resp.setCharacterEncoding("UTF-8");
+				resp.setContentType("application/json");
+				resp.getWriter().println(json);
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}	
+			}
 		}
-		
-		
+
 	}
-		
-	public void doPost(HttpServletRequest req, HttpServletResponse resp){
-			doGet(req,resp);
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+		doGet(req, resp);
 	}
 
 }

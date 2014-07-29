@@ -8,6 +8,8 @@ import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 public class DemandaDao {
 	
@@ -35,11 +37,16 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
            return demanda;
    }
 	
-	public void  createDemanda(Demanda d){
+	public void  createDemanda(Demanda demanda){
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
-		try{
-			pm.makePersistent(d);
-		}finally{
+		try {
+			pm.makePersistent(demanda);
+			
+			// guarda id de peticion
+			String codPeticion = "PET_" + String.format("%07d", demanda.getSequence());
+			demanda.setCod_peticion(codPeticion);
+			pm.makePersistent(demanda);
+		} finally{
 			pm.close();
 		}
 	}
