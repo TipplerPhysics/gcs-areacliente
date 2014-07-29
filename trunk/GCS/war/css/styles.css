@@ -301,6 +301,15 @@ hr {
 .modal-content > .modal-footer > button {
   margin-right: 15px;
 }
+form .datepicker {
+  background-image: url('../img/textbox_calendar.png');
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  background-attachment: center;
+  cursor: pointer;
+  padding-right: 30px;
+  width: 100%;
+}
 #sidebar {
   position: fixed;
   top: 50%;

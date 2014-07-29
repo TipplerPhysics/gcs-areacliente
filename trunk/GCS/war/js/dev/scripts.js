@@ -226,8 +226,8 @@ $(function() {
 		
 		setTimeout(function(){
 			
-			$('#dp1').datepicker();			
-			$('#fecha_entrada_peticion_ext').val($('#row'+id).attr('data-fecha-entrada'));		
+			//$('#dp1').datepicker();
+			$('#fecha_entrada_peticion_ext').val($('#row'+id).attr('data-fecha-entrada'));
 			
 			var gestores_it = $('#row'+id).attr('data-gestores-list').split("-");
 			var ges_it = $('#row'+id).attr('data-gestor-asig').split("-");
@@ -235,15 +235,10 @@ $(function() {
 			var hora = data_time.split(":")[0];
 			var minutos = data_time.split(":")[1];
 			var $gestoresSelect = $('#gestor_it_ext');
-			
-			
 
-			
 			for (var a=0; a<gestores_it.length-1; a++){
-				
 				var gestor_name = gestores_it[a].split("(")[0];
 				var gestor_id = gestores_it[a].split("(")[1].split(")")[0];
-				
 				$gestoresSelect.append("<option value='"+gestor_id+"'>"+gestor_name+"</option>")
 			}
 			
@@ -358,6 +353,20 @@ $(function() {
 
 		return false;
 	});
+});;$(function(){
+	// init all the datepickers which generally are always inside of a form.
+	$('form').find('.datepicker').each(function(){
+		if($(this).hasClass('datefuture')) {
+			$(this).datepicker({minDate:0});
+		} else if($(this).hasClass('datepast')) {
+			$(this).datepicker({maxDate:0});
+		} else {
+			$(this).datepicker();
+		}
+	});
+
+	// init all the datepickers which generally are always inside of a form.
+	$('form').find('.selectpicker').selectpicker();
 });;$.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
 		perPage : 5,
@@ -693,12 +702,11 @@ $(function() {
 			data : postData,
 			success:function(data, textStatus, jqXHR) {
 				//data: return data from server
-				if (data.success==("true")){
-					$('.extended-row').remove();
-					$('#row'+id).removeClass('editing');
+				//$('.extended-row').remove();
+				//$('#row'+id).removeClass('editing');
+				//updateRow(id);
 
-					updateRow(id);
-				}
+				location.reload();
 			}
 		});
 		
