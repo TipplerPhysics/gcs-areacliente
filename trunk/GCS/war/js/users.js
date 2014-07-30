@@ -99,59 +99,6 @@ $(function() {
 		}	
 	});
 
-	$('#myTable').on('click', '.guardar-ext', function (e) {
-		var id= $('.editing').attr('name');
-		var campo = $('.col'+id);
-		var areas =  $('.dtos').find('input');
-		var $fila= $('#row'+id);
-		
-		var nombre = $(campo[0]).val();
-		var ap1 = $(campo[1]).val();
-		var ap2 = $(campo[2]).val();
-		var email = $('#email_ext').val();
-		var permiso = $('#permiso_ed').val();
-		var dto = $('#dto_ed option:selected').text();
-		
-		dto = dto.replace('&','#');
-		
-		
-		var areascont = $('.dtos').children();
-		var areas="";
-		
-		for (var i=0; i<areascont.length;i++){
-			var $item = $($(areascont[i]).children()[0]);
-			if ($item[0].checked==true){
-				areas += $item.val() + "-";
-			}		
-		}
-		
-		// Ponemos en la info de la fila los valores nuevos de area y dto		
-		if (areas.length>1){
-			$fila.attr('data-area',areas.substring(0,areas.length-1));			
-		}else{
-			$fila.attr('data-area',"");
-		}
-		$fila.attr('data-dto',dto);
-
-		var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
-		var formURL = "/usersServlet";
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) {
-				//data: return data from server
-				//$('.extended-row').remove();
-				//$('#row'+id).removeClass('editing');
-				//updateRow(id);
-
-				location.reload();
-			}
-		});
-		
-		$('#papelera'+id).attr("data-toggle","modal");
-	});
-
 	// Submit for creating a new user.
 	$("#submit_user_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
@@ -299,10 +246,7 @@ function undoRow(id,arr){
 	$celda = $(celdas[4]);
 		$celda.children().remove();
 	$celda.prepend("<span>"+perfil+"</span>");
-	
-	
-		
-	
+
 	$('#lapiz'+id).removeClass('inactive');
 	$('#papelera'+id).removeClass('inactive');
 }
@@ -334,7 +278,7 @@ function editRow(id){
 	if (areas.indexOf("Global Product")!=-1){
 		areas = areas.replace("Global Product","globalproduct");
 	}
-	areas= areas.split("-");
+	areas= areas.split("_");
 	dto= $currentRow.attr('data-dto');
 	// Current known values from item.
 	var celdas = $currentRow.children();
@@ -386,8 +330,6 @@ function editRow(id){
 		$editForm.find('.edit_input.apellido2').val(cap2);
 		$editForm.find('.edit_input.email').val(email);
 		$.each(areas, function(i, value){
-			console.log('ok');
-			console.log(value);
 			$editForm.find('.dtos').find('.radio-container').each(function(){
 				var input = $(this).find('input#e-' + value);
 				if(input.length > 0){
@@ -396,12 +338,49 @@ function editRow(id){
 				}
 			});
 		});
-		// Activate the selectpickers.
+		// Activate everything.
 		$editForm.find('.selectpicker').selectpicker();
+		initForms();
+
 		// Click event for the cancel button.
 		$editForm.on('click', '.cancelar-ext', function (e) {
 			$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 			$currentOpenEdit.remove();
+			return false;
+		});
+		// Click event for the save button.
+		$editForm.on('click', '.guardar-ext', function (e) {
+			var $editItemHolder = $(this).closest('#edit-item-holder');
+			// Collect all the information.
+			var id= $editItemHolder.data('row-id');
+			var nombre = $editItemHolder.find('input.edit_input.nombre').val();
+			var ap1 = $editItemHolder.find('input.edit_input.apellido1').val();
+			var ap2 = $editItemHolder.find('input.edit_input.apellido2').val();
+			var email = $editItemHolder.find('input.edit_input.email').val();
+			var permiso = $('#permiso_ed').val();
+			var dto = $('#dto_ed option:selected').text();
+			dto = dto.replace('&','#');
+			// Get all checked boxes in to one string, devided by _ (underscore).
+			var $checkedBoxes = $editItemHolder.find('.dtos').find('.radio-container').find('input:checked');
+			var areas="";
+			$checkedBoxes.each(function(i){
+				areas += $(this).val();
+				if(i < $checkedBoxes.length - 1){
+					areas += "_";
+				}
+			});
+			// Update the database.
+			var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
+			var formURL = "/usersServlet";
+			$.ajax({
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) {
+					location.reload();
+				}
+			});
+
 			return false;
 		});
 	},'html');

@@ -89,42 +89,42 @@ button.btn-default {
 .span-24 {
   display: inline-block;
   width: 100%;
-  padding-right: 10px;
 }
 .span-12 {
   display: inline-block;
   width: 50%;
-  padding-right: 10px;
 }
 .span-10 {
   display: inline-block;
   width: 41.66666666666667%;
-  padding-right: 10px;
 }
 .span-8 {
   display: inline-block;
   width: 33.33333333333333%;
-  padding-right: 10px;
+}
+.span-7 {
+  display: inline-block;
+  width: 29.16666666666667%;
 }
 .span-6 {
   display: inline-block;
   width: 25%;
-  padding-right: 10px;
+}
+.span-5 {
+  display: inline-block;
+  width: 20.83333333333333%;
 }
 .span-4 {
   display: inline-block;
   width: 16.66666666666667%;
-  padding-right: 10px;
 }
 .span-3 {
   display: inline-block;
   width: 12.5%;
-  padding-right: 10px;
 }
 .span-2 {
   display: inline-block;
   width: 8.333333333333333%;
-  padding-right: 10px;
 }
 body {
   margin: 0px;
@@ -452,6 +452,9 @@ form .datepicker {
 .usersTable > .table > #myTable .permiso_ed {
   width: 175px;
 }
+.usersTable > .table > #myTable .dto_ed {
+  width: 260px;
+}
 .usersTable > .table > #myTable #email_ext {
   margin-left: 85px;
   width: 455px;
@@ -500,11 +503,39 @@ form .datepicker {
 .usersTable > .table .extended-div button {
   margin-left: 20px;
 }
-.usersTable > .table .extended-div > .area-div > span {
+.usersTable > .table .extended-div .area-div {
+  margin-bottom: 20px;
+  position: relative;
+}
+.usersTable > .table .extended-div .area-div > span {
   vertical-align: top;
 }
-.usersTable > .table .extended-div > .area-div > span:last-of-type {
-  padding-right: 0;
+.usersTable > .table .extended-div .area-div > span[class^="span-"] {
+  padding-top: 9px;
+  padding-right: 10px;
+}
+.usersTable > .table .extended-div .area-div > span[class^="span-"]:last-of-type {
+  padding: 0;
+  width: 10%;
+  position: absolute;
+  right: -15px;
+}
+.usersTable > .table .extended-div .area-div > span[class^="span-"]:last-of-type a {
+  margin-top: 9px;
+}
+.usersTable > .table .extended-div .area-div .btn-group.bootstrap-select {
+  margin-bottom: 0;
+}
+.usersTable > .table .extended-div .area-div .btn-group.bootstrap-select .btn.dropdown-toggle {
+  margin-left: 0;
+}
+.usersTable > .table .extended-div .area-div.email > span {
+  vertical-align: middle;
+}
+.usersTable > .table .extended-div .area-div.email input {
+  display: inline-block;
+  margin-left: 80px;
+  width: 300px;
 }
 .usersTable > .table .extended-div > .dtos-div {
   display: inline-block;
@@ -526,6 +557,9 @@ form .datepicker {
 }
 .usersTable > .table .extended-div .radio-container span {
   vertical-align: baseline;
+}
+.usersTable > .table .extended-div #edit-item button {
+  float: right;
 }
 .usersTable > .table .edit_input {
   width: 100%;
