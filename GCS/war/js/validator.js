@@ -50,7 +50,7 @@ $(function() {
 
 	// Setup form validation on the #register-form element
 	$('form').validate({
-		ignore: ":hidden:not(select)",
+		ignore: ":hidden:not(select):not([type='radio']):not([type='checkbox'])",
 		focusCleanup: false,
 	    submitHandler: function(form) {
 	        form.submit();

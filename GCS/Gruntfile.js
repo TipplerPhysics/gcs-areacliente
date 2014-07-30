@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         // Here we watch the files the less task will compile to
         // These files are sent to the live reload server after less compiles to them
         options: { livereload: true },
-        files: ['war/less/**/*.less', 'war/jsp/**/*.jsp', 'war/js/**/*.js'],
+        files: ['war/less/**/*.less', 'war/jsp/**/*.jsp', 'war/js/**/*.js', 'war/html/**/*.html'],
       }
     }
   });
