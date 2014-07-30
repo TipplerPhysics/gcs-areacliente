@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.User;
+import com.gcs.dao.ClienteDao;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class DefaultConf extends HttpServlet {
@@ -23,6 +25,10 @@ public class DefaultConf extends HttpServlet {
 			if (sesionpermiso == 1) {
 				json.append("failure", "true");
 				
+				/* Crea cliente de prueba */
+				ClienteDao cDao = ClienteDao.getInstance();				
+				Cliente cliente = new Cliente("Cliente","De", "Prueba", "deprueba@gmail.com");			
+				cDao.createCliente(cliente);				
 				
 			} else {
 				json.append("failure", "true");

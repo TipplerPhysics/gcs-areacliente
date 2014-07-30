@@ -23,11 +23,15 @@ public class Cliente {
 	@Persistent
 	private String apellido2;
 	
-	public Cliente(String nombre, String apellido1, String apellido2) {
+	@Persistent
+	private String email;
+	
+	public Cliente(String nombre, String apellido1, String apellido2, String email) {
 		super();
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
+		this.email = email;
 	}
 		
 	public Cliente() {
@@ -64,6 +68,14 @@ public class Cliente {
 
 	public void setApellido2(String apellido2) {
 		this.apellido2 = apellido2;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
