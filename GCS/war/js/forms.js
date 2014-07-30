@@ -4,6 +4,7 @@ function resetForm($form) {
 			$(this).val('');
 		} else if (($(this).attr('type') == 'radio') || ($(this).attr('type') == 'checkbox')) {
 			$(this).prop('checked', false);
+			$(this).parent().find('label').removeClass('checked');
 		}
 	});
 	$form.find('textarea').each(function(){

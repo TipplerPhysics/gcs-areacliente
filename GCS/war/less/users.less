@@ -39,25 +39,26 @@
 	   		}
    			
    			.long{
-					height: 31px;
-				    left: -2px;
-				    top: 5px;
-				    width: 306px;
-				}
-				
-				.permiso_ed{
-					 width: 175px;
-				}
-	   			
-	   			#email_ext{
-   					margin-left:85px;
-   					width:455px;
-	   			}
-	   			
-				td{
-					border-right:medium none;
-				}   			
-   		}   		
+				height: 31px;
+				left: -2px;
+				top: 5px;
+				width: 306px;
+			}
+			
+			.permiso_ed{
+				 width: 175px;
+			}
+			.dto_ed{
+				width: 260px;
+   			}
+   			#email_ext{
+				margin-left:85px;
+				width:455px;
+			}
+			td{
+				border-right:medium none;
+			}
+		}
    		
 		th{	
 			background-color: #F8F8F5;
@@ -112,13 +113,42 @@
 					margin-left:20px;
 				}
 				
-				>.area-div{
+				.area-div{
+					margin-bottom: 20px;
+					position: relative;
 					> span {
 						vertical-align:top;
-						&:last-of-type {
-							padding-right: 0;
+						&[class^="span-"] {
+							padding-top: 9px;
+							padding-right: 10px;
+							&:last-of-type {
+								padding: 0;
+								width: 10%;
+								position: absolute;
+								right: -15px;
+								a {
+									margin-top: 9px;
+								}
+							}
 						}
 					}
+					.btn-group.bootstrap-select {
+						margin-bottom: 0;
+						.btn.dropdown-toggle {
+							margin-left: 0;
+						}
+					}
+					&.email {
+						> span {
+							vertical-align: middle;
+						}
+						input {
+							display: inline-block;
+							margin-left: 80px;
+							width: 300px;
+						}
+					}
+
 				}
 				
 				> .dtos-div{
@@ -146,6 +176,11 @@
 					
 					span{
 						vertical-align: baseline;
+					}
+				}
+				#edit-item {
+					button {
+						float: right;
 					}
 				}
 			}
