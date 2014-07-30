@@ -17,7 +17,7 @@ public class ClienteDao {
 		return new ClienteDao();
 	}
 
-	public void createGestorIt(Cliente u) {
+	public void createCliente(Cliente u) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 
 		try {

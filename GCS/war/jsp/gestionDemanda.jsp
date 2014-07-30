@@ -48,9 +48,11 @@
 					<div class="form-field double">
 						<div>
 							<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
-							<select class="selectpicker" id="cliente" name="cliente">
-							<!--select class="selectpicker selected" id="cliente" name="cliente" required aria-required="true"-->
+							<select class="selectpicker selected" name="cliente" required aria-required="true">
 								<option value="default">Seleccionar...</option>
+								<c:forEach items="${clientes}" var="cliente">	
+									<option value="${cliente.key.id}">${cliente.nombre} ${cliente.apellido1} ${cliente.apellido2}</option>
+								</c:forEach>
 							</select>					
 						</div>
 						

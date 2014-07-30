@@ -11,7 +11,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.User;
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.DemandaDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
@@ -23,8 +25,10 @@ public class GestionDemandaAction extends Action {
 
 		UserDao uDao = UserDao.getInstance();
 		DemandaDao dDao = DemandaDao.getInstance();
+		ClienteDao cDao = ClienteDao.getInstance();
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
 		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
+		List<Cliente> clientes = cDao.getAllCliente();
 
 		String gestoresStr = "";
 
@@ -37,6 +41,7 @@ public class GestionDemandaAction extends Action {
 
 		}
 
+		req.setAttribute("clientes", clientes);
 		req.setAttribute("gestores_demanda", gestores_demanda);
 		req.setAttribute("gestores_it", gestores_it);
 		req.setAttribute("gestoresStr", gestoresStr);
