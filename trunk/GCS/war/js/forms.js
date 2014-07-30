@@ -18,16 +18,35 @@ function resetForm($form) {
 			$form.find('.selectpicker').selectpicker('refresh');
 		}
 	});
+	var validator = $form.validate();
+	validator.resetForm();
+	$form.find('.bootstrap-select.error').removeClass('error');
 }
 
-$(function() {
+var initForms = function(){
+	// Closing and resetting the form.
 	$('form').parent().find('button.close-form').on('click', function(){
 		var $form = $(this).parent().find('form');
 		$('#newUserButton').trigger('click');
-		setTimeout(function(){
-			resetForm($form);
-		},750);
 
 		return false;
 	});
+
+	// Setting labels to checked where needed and click function.
+	$('form').find('.radio-container').each(function(){
+		var $checkbox = $(this).find('input[type="checkbox"]');
+		var $label = $(this).find('label');
+
+		if($checkbox.prop('checked')){
+			$label.addClass('checked');
+		}
+
+		$label.on('click', function(){
+			$(this).toggleClass('checked');
+		})
+	});
+}
+
+$(function() {
+	initForms();
 });

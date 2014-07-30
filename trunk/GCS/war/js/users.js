@@ -20,20 +20,22 @@ $(function() {
 
 	var userBoxSize = 0;
 	$('#newUserButton').click(function(e){
-		if ($('#newUserButton').hasClass('white-btn')){
-			
+		var $newUserButton = $(this);
+		if ($newUserButton.hasClass('white-btn')){
 			if ($('.new-user-form-holder').css('overflow')=="visible"){
 				$('.new-user-form-holder').css('overflow','hidden');
 				userBoxSize = $('.new-user-form-holder.open').outerHeight();
 				$('.new-user-form-holder.open').css('height', userBoxSize);
 				setTimeout(function(){
 					$('.new-user-form-holder.open').removeClass('open').css('height', '0px');
-					
 				}, 25);
 				setTimeout(function(){
 					$('#newUserButton').removeClass('white-btn');	
 					$('.user_span').removeClass('blue');
 					$('.demanda_span').removeClass('blue');
+
+					var $form = $newUserButton.parent().find('form');
+					resetForm($form);
 				}, 1000);
 			}
 		} else {
@@ -95,13 +97,6 @@ $(function() {
 		}else if (!$(this).hasClass('inactive')){
 			editRow(id);
 		}	
-	});
-
-	$('#myTable').on('click', '.cancelar-ext', function (e) {
-		var id= $('.editing').attr('name');
-		var arr = [cnombre,cap1,cap2,cemail,cpermiso];
-		$('#papelera'+id).attr("data-toggle","modal");
-		undoRow(id,arr);
 	});
 
 	$('#myTable').on('click', '.guardar-ext', function (e) {
@@ -323,119 +318,91 @@ function undoEditRow(id){
 function generateChecks(pagina,destino){
 	$.get('../html/'+pagina,null,function(result) {
 		 $(".extended-div").html(result); // Or whatever you need to insert the result
-	
 	},'html');
 }
 
 function editRow(id){
 	$('#papelera'+id).removeAttr('data-toggle');
-	$('#row'+id).addClass('editing');
-	$('#row'+id).attr('name',id);
-
-	areas= $('#row'+id).attr('data-area');
-
+	var $currentRow = $('#row'+id);
+	var $table = $currentRow.closest('table');
+	var $previousOpenEdit = $table.find('#edit-item-holder');
+	// Get the select box values.
+	areas= $currentRow.attr('data-area');
 	if (areas.indexOf("Global Customer Service")!=-1){
 		areas= areas.replace("Global Customer Service","gcs");
 	}
-
 	if (areas.indexOf("Global Product")!=-1){
 		areas = areas.replace("Global Product","globalproduct");
 	}
-
 	areas= areas.split("-");
-	dto= $('#row'+id).attr('data-dto');
-
-	$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
-	
-	generateChecks("extended-user.html","extended-div");
-
-	 
-	
-	var celdas = $('#row'+id).children();
+	dto= $currentRow.attr('data-dto');
+	// Current known values from item.
+	var celdas = $currentRow.children();
 	cnombre = $(celdas[0]).children().html();
 	cap1 = $(celdas[1]).children().html();
 	cap2 = $(celdas[2]).children().html();
 	cemail = $(celdas[3]).children().html();
-	cpermiso =  $('#row'+id).attr('data-permiso');
-	
-	for (var a =0; celdas.length-2 >= a;a++){
-		var $celda = $(celdas[a]);
-		var span = $celda.children().html();
-		$celda.children().remove();
-		if (span.indexOf('&amp;')!=-1){
-			span = span.replace('&amp;','&');
+	cpermiso =  $currentRow.attr('data-permiso');
+	var email = $currentRow.attr('data-mail');
+	// load the external html in to the page.
+	$.get('../html/extended-user.html',null,function(result) {
+		// Close other editing field and show the row.
+		if($previousOpenEdit.length > 0){
+			$('#row'+$previousOpenEdit.data('row-id')).css({display:'table-row'});
+			$previousOpenEdit.remove();
 		}
-		$celda.prepend("<input type='text' class='edit_input col"+id+"' value='" + span +"'>");
-	}
-
-	// DEPARTAMENTO
-	
-	var $celda = $(celdas[3]);
-	var span = $celda.children().html();
-	$celda.children().remove();
-	$celda.prepend("<select name='dto_ext' id='dto_ed' class='long selectpicker'>" +
-			"<option value='Negocio - Global Customer Service (Incluye HDR)'>Negocio - Global Customer Service (Incluye HDR)</option>" +
-			"<option value='Negocio - Global Product'>Negocio - Global Product</option>" +
-			"<option value='Negocio - Global Sales'>Negocio - Global Sales</option>" +
-			"<option value='IT C&IB - CTO - Soluciones T&eacute;cnicas'>IT C&IB - CTO - Soluciones T&eacute;cnicas</option>" +
-			"<option value='IT C&IB - CTO - Arquitectura Funcional'>IT C&IB - CTO - Arquitectura Funcional</option>" +
-			"<option value='IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)'>IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>" +
-			"<option value='IT C&IB - Control y Gesti&oacute;n'>IT C&IB - Control y Gesti&oacute;n</option>" +
-			"<option value='IT C&IB - E- commerce C&IB'>IT C&IB - E- commerce C&IB</option>" +
-			"<option value='IT C&IB - GCC Lending GTB & CFO'>IT C&IB - GCC Lending GTB & CFO</option>" +
-			"<option value='IT C&IB - GTB - Global Customer Solutions'>IT C&IB - GTB - Global Customer Solutions</option>" +
-			"<option value='IT C&IB - Global Transactional Product'>IT C&IB - Global Transactional Product</option>" +
-			"<option value='IT C&IB - B2B Global Support'>IT C&IB - B2B Global Support</option></select>");	
-	
-	
-	var value_dto="0";
-	
-	// PERFIL
-	var $celda = $(celdas[4]);
-	var span = $celda.children().val();
-	$celda.children().remove();
-	$celda.prepend("<select name='permiso' id='permiso_ed' class='permiso_ed long selectpicker'>"
-		+ "	<option value='5'>Gestor IT</option>"
-		+ "	<option value='4'>Gestor Demanda</option>"
-		+ "	<option value='3'>User Admin</option>"
-		+ "	<option value='2'>App Admin</option>"
-		+ "	<option value='1'>Super</option>"
-		+ "	</select>");	
-	
-
-	
-	$('#lapiz'+id).addClass('inactive');
-	$('#papelera'+id).addClass('inactive');
-	
-	
-	
-	var lng = areas.length;
-	
-	if (lng==1 && areas[0]==""){
-		lng=0;
-	}
-	
-	setTimeout(function(){
-		
-		$('#dto_ed').val(dto);
-		$('#dto_ed').selectpicker('render');
-		
-		$('#permiso_ed').val(cpermiso);
-		$('#permiso_ed').selectpicker('render');
-		
-		
-		
-		$('#email_ext').val($('#row'+id).attr('data-mail'));		
-		$('#email_ext').selectpicker('render');
-		
-		
-
-		if (lng>0){
-		for (var n=0; n<lng;n++){
-			
-			var name = areas[n];
-			
-			$('#e-'+name)[0].setAttribute("checked", "checked");
-		}
-	}},750);
+		// Hide current row.
+		$currentRow.css({display:'none'});
+		// Adds the item holder row for editing the item.
+		$currentRow.after("<tr id='edit-item-holder' class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
+		var $currentOpenEdit = $table.find('#edit-item-holder');
+		$currentOpenEdit.data('row-id', id);
+		 $(".extended-div").html(result); // Or whatever you need to insert the result
+		// The form we're editing in.
+		var $editForm = $('#edit-item-holder').find('form#edit-item');
+		// Adding select options.
+		$editForm.find('select#dto_ed').append(
+			"<option value='Negocio - Global Customer Service (Incluye HDR)'>Negocio - Global Customer Service (Incluye HDR)</option>"
+			+ "<option value='Negocio - Global Product'>Negocio - Global Product</option>"
+			+ "<option value='Negocio - Global Sales'>Negocio - Global Sales</option>"
+			+ "<option value='IT C&IB - CTO - Soluciones T&eacute;cnicas'>IT C&IB - CTO - Soluciones T&eacute;cnicas</option>"
+			+ "<option value='IT C&IB - CTO - Arquitectura Funcional'>IT C&IB - CTO - Arquitectura Funcional</option>"
+			+ "<option value='IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)'>IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>"
+			+ "<option value='IT C&IB - Control y Gesti&oacute;n'>IT C&IB - Control y Gesti&oacute;n</option>"
+			+ "<option value='IT C&IB - E- commerce C&IB'>IT C&IB - E- commerce C&IB</option>"
+			+ "<option value='IT C&IB - GCC Lending GTB & CFO'>IT C&IB - GCC Lending GTB & CFO</option>"
+			+ "<option value='IT C&IB - GTB - Global Customer Solutions'>IT C&IB - GTB - Global Customer Solutions</option>"
+			+ "<option value='IT C&IB - Global Transactional Product'>IT C&IB - Global Transactional Product</option>"
+			+ "<option value='IT C&IB - B2B Global Support'>IT C&IB - B2B Global Support</option>").val(dto);
+		$editForm.find('select#permiso_ed').append(
+			"<option value='5'>Gestor IT</option>"
+			+ "	<option value='4'>Gestor Demanda</option>"
+			+ "	<option value='3'>User Admin</option>"
+			+ "	<option value='2'>App Admin</option>"
+			+ "	<option value='1'>Super</option>").val(cpermiso);
+		// Inserting values
+		$editForm.find('.edit_input.nombre').val(cnombre);
+		$editForm.find('.edit_input.apellido1').val(cap1);
+		$editForm.find('.edit_input.apellido2').val(cap2);
+		$editForm.find('.edit_input.email').val(email);
+		$.each(areas, function(i, value){
+			console.log('ok');
+			console.log(value);
+			$editForm.find('.dtos').find('.radio-container').each(function(){
+				var input = $(this).find('input#e-' + value);
+				if(input.length > 0){
+					input.prop('checked', true);
+					$(this).find('label').addClass('checked');
+				}
+			});
+		});
+		// Activate the selectpickers.
+		$editForm.find('.selectpicker').selectpicker();
+		// Click event for the cancel button.
+		$editForm.on('click', '.cancelar-ext', function (e) {
+			$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
+			$currentOpenEdit.remove();
+			return false;
+		});
+	},'html');
 }
