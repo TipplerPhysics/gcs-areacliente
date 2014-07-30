@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.gcs.beans.User;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class DefaultConf extends HttpServlet {
@@ -21,6 +22,8 @@ public class DefaultConf extends HttpServlet {
 
 			if (sesionpermiso == 1) {
 				json.append("failure", "true");
+				
+				
 			} else {
 				json.append("failure", "true");
 				json.append("error",
