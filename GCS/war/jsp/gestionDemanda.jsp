@@ -2,7 +2,7 @@
 
 <div class="gestion_demanda">
 
-	<img class="users_title_icon" src="../img/user.png"><h1>Alta solicitud gestión de demanda</h1>
+	<img class="users_title_icon" src="../img/user.png"><h1>Alta petición</h1>
 	<hr/>
 	
 	<div class="newUserbox">
