@@ -934,30 +934,15 @@ form .datepicker {
   position: relative;
   top: -16px;
 }
-.gestion_demanda .form-field .fecha > .date,
-.gestion_demanda .form-field .tiempo > .date {
-  width: 245px;
-  display: inline-block;
-  text-align: left;
-  position: relative;
-  top: 4px;
-}
-.gestion_demanda .form-field .fecha > .date > input,
-.gestion_demanda .form-field .tiempo > .date > input {
-  left: -2px;
-  max-height: 30px;
-  position: relative;
-  width: 215px;
-}
-.gestion_demanda .form-field .fecha > .date > .add-on,
-.gestion_demanda .form-field .tiempo > .date > .add-on {
+.gestion_demanda .form-field .fecha > .add-on,
+.gestion_demanda .form-field .tiempo > .add-on {
   display: inline-block;
   left: 206px;
   position: relative;
   top: -30px;
   width: 40px;
 }
-.gestion_demanda .form-field .tiempo span.lbl {
+.form-field .tiempo span.lbl {
   display: inline-block !important;
   top: 0px !important;
 }
