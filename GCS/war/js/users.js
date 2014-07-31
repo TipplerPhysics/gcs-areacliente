@@ -99,6 +99,57 @@ $(function() {
 		}	
 	});
 
+	/*$('#myTable').on('click', '.guardar-ext', function (e) {
+		
+		var fila = $('#edit-item-holder').prev();
+		var id = fila.attr('id').split("w")[1];
+		var nombre = $('#nombre_ed').val();
+		var ap1 = $('#apellido1_ed').val();
+		var ap2 = $('#apellido2_ed').val();
+		var email = $('#email_ed').val();
+		var permiso = $('#permiso_ed').val();
+		var dto = $('#dto_ed option:selected').text();
+		dto = dto.replace('&','#');
+		
+		var areascont = $('#edit-item').find('.areas').children();
+		var areas="";
+		
+		for (var i=0; i<areascont.length;i++){
+			var $item = $($(areascont[i]).children()[0]);
+			if ($item[0].checked==true){
+				areas += $item.val() + "_";
+			}		
+		}
+		
+		// Ponemos en la info de la fila los valores nuevos de area y dto
+		if (areas.length>1){
+			fila.attr('data-area',areas.substring(0,areas.length-1));			
+		}else{
+			fila.attr('data-area',"");
+		}
+		fila.attr('data-dto',dto);
+
+		//alert("&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas);
+		
+		var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
+		var formURL = "/usersServlet";
+		$.ajax({
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) {
+				//data: return data from server
+				//$('.extended-row').remove();
+				//$('#row'+id).removeClass('editing');
+				//updateRow(id);
+
+				location.reload();
+			}
+		});
+		
+		$('#papelera'+id).attr("data-toggle","modal");
+	});*/
+
 	// Submit for creating a new user.
 	$("#submit_user_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
@@ -107,27 +158,25 @@ $(function() {
 		if($form.valid()){
 			var areas = "";
 			if ($('#onboarding').prop('checked')==true){
-			 areas += "Onboarding-"
+			 areas += "Onboarding_"
 			}
 			if ($('#servicing').prop('checked')==true){
-			 areas += "Servicing-"
+			 areas += "Servicing_"
 			}
 			if ($('#itcib').prop('checked')==true){
-			 areas += "ITCIB-"
+			 areas += "ITCIB_"
 			}
 			if ($('#gcs').prop('checked')==true){
-			 areas += "Global Customer Service-"
+			 areas += "Global Customer Service_"
 			}
 			if ($('#global-product').prop('checked')==true){
-			 areas += "Global product-"
+			 areas += "Global Product_"
 			}
 			if ($('#clientes').prop('checked')==true){
-			 areas += "Clientes-"
+			 areas += "Clientes_"
 			}
-
-			var servicing = $('#servicing').val();
-
-			var postData = $form.serialize() + "&accion=new&areas="+areas;
+			
+			var postData = $form.serialize() + "&accion=new&areasStr="+areas;
 			var formURL = $form.attr("action");
 			$.ajax(
 			{
@@ -138,7 +187,7 @@ $(function() {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRow(postData,data.id,data.permiso,data.permisoid, data.dto, data.area);
+					var html=generateRow(postData, data.id, data.permiso, data.permisoid, data.dto, data.area);
 					
 					$('#myTable').prepend(html);
 					
@@ -185,7 +234,7 @@ $(function() {
 	});
 });
 
-function generateRow(data,id,permiso,permisoid,dto,area){
+function generateRow(data ,id, permiso, permisoid, dto, area){
 	var a = data.split('&');
 	var nombre = $('#nombre').val();
 	var ap1 = $('#ap1').val();
@@ -195,7 +244,7 @@ function generateRow(data,id,permiso,permisoid,dto,area){
 		+ "<td><span>"+nombre+"</span></td>"
 		+ "<td><span>"+ap1+"</span></td>"
 		+ "<td><span>"+ap2+"</span></td>"
-		+ "<td><span>"+email+"</span></td>"
+		+ "<td><span>"+dto+"</span></td>"
 		+ "<td><span>"+permiso+"</span></td>"
 		+ "<td><img class='vs' src='../img/vs.png'>"
 		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a>"
@@ -272,6 +321,7 @@ function editRow(id){
 	var $previousOpenEdit = $table.find('#edit-item-holder');
 	// Get the select box values.
 	areas= $currentRow.attr('data-area');
+	
 	if (areas.indexOf("Global Customer Service")!=-1){
 		areas= areas.replace("Global Customer Service","gcs");
 	}
@@ -304,33 +354,21 @@ function editRow(id){
 		 $(".extended-div").html(result); // Or whatever you need to insert the result
 		// The form we're editing in.
 		var $editForm = $('#edit-item-holder').find('form#edit-item');
-		// Adding select options.
-		$editForm.find('select#dto_ed').append(
-			"<option value='Negocio - Global Customer Service (Incluye HDR)'>Negocio - Global Customer Service (Incluye HDR)</option>"
-			+ "<option value='Negocio - Global Product'>Negocio - Global Product</option>"
-			+ "<option value='Negocio - Global Sales'>Negocio - Global Sales</option>"
-			+ "<option value='IT C&IB - CTO - Soluciones T&eacute;cnicas'>IT C&IB - CTO - Soluciones T&eacute;cnicas</option>"
-			+ "<option value='IT C&IB - CTO - Arquitectura Funcional'>IT C&IB - CTO - Arquitectura Funcional</option>"
-			+ "<option value='IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)'>IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>"
-			+ "<option value='IT C&IB - Control y Gesti&oacute;n'>IT C&IB - Control y Gesti&oacute;n</option>"
-			+ "<option value='IT C&IB - E- commerce C&IB'>IT C&IB - E- commerce C&IB</option>"
-			+ "<option value='IT C&IB - GCC Lending GTB & CFO'>IT C&IB - GCC Lending GTB & CFO</option>"
-			+ "<option value='IT C&IB - GTB - Global Customer Solutions'>IT C&IB - GTB - Global Customer Solutions</option>"
-			+ "<option value='IT C&IB - Global Transactional Product'>IT C&IB - Global Transactional Product</option>"
-			+ "<option value='IT C&IB - B2B Global Support'>IT C&IB - B2B Global Support</option>").val(dto);
-		$editForm.find('select#permiso_ed').append(
-			"<option value='5'>Gestor IT</option>"
-			+ "	<option value='4'>Gestor Demanda</option>"
-			+ "	<option value='3'>User Admin</option>"
-			+ "	<option value='2'>App Admin</option>"
-			+ "	<option value='1'>Super</option>").val(cpermiso);
+		// copia options de select de formulario de creacion
+		var $dtoOptions = $('select#dto_select option').clone();
+		$editForm.find('select#dto_ed').append($dtoOptions).val(dto);
+		$editForm.find('select#dto_ed option').first().remove();		
+		// copia options de select de creacion
+		var $permisoOptions = $('select#permiso_select option').clone();
+		$editForm.find('select#permiso_ed').append($permisoOptions).val(cpermiso);
+		$editForm.find('select#permiso_ed option').first().remove();
 		// Inserting values
 		$editForm.find('.edit_input.nombre').val(cnombre);
 		$editForm.find('.edit_input.apellido1').val(cap1);
 		$editForm.find('.edit_input.apellido2').val(cap2);
 		$editForm.find('.edit_input.email').val(email);
 		$.each(areas, function(i, value){
-			$editForm.find('.dtos').find('.radio-container').each(function(){
+			$editForm.find('.areas').find('.radio-container').each(function(){
 				var input = $(this).find('input#e-' + value);
 				if(input.length > 0){
 					input.prop('checked', true);
@@ -361,7 +399,7 @@ function editRow(id){
 			var dto = $('#dto_ed option:selected').text();
 			dto = dto.replace('&','#');
 			// Get all checked boxes in to one string, devided by _ (underscore).
-			var $checkedBoxes = $editItemHolder.find('.dtos').find('.radio-container').find('input:checked');
+			var $checkedBoxes = $editItemHolder.find('.areas').find('.radio-container').find('input:checked');
 			var areas="";
 			$checkedBoxes.each(function(i){
 				areas += $(this).val();

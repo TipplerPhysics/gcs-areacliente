@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.User;
+import com.gcs.config.StaticConfig;
 import com.gcs.dao.UserDao;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
@@ -41,6 +42,8 @@ public class UsersAction extends Action {
 			 * jsonArray);
 			 */
 			req.setAttribute("userList", usuarios);
+			req.setAttribute("permisos", StaticConfig.permisos);
+			req.setAttribute("departamentos", StaticConfig.departamentos);			
 
 		} catch (Exception e) {
 			e.printStackTrace();
