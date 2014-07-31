@@ -349,7 +349,7 @@ $("#submit_demanda_form").on('click',function(e) {
 
 var initForms = function(){
 	// Closing and resetting the form.
-	$('form').parent().find('button.close-form').on('click', function(){
+	$('form').parent().find('button.close-form').off('.close-form').on('click.close-form', function(){
 		var $form = $(this).parent().find('form');
 		$('#newUserButton').trigger('click');
 
@@ -360,14 +360,12 @@ var initForms = function(){
 	$('form').find('.radio-container').each(function(){
 		var $checkbox = $(this).find('input[type="checkbox"]');
 		var $label = $(this).find('label');
-
 		if($checkbox.prop('checked')){
 			$label.addClass('checked');
 		}
-
-		$label.on('click', function(){
+		$label.off('.check-label').on('click.check-label', function(){
 			$(this).toggleClass('checked');
-		})
+		});
 	});
 }
 
@@ -584,7 +582,6 @@ var areas;
 var dto;
 
 $(function() {
-
 	$('#myTable').paginateMe({
 		pagerSelector : '#myPager',
 		showPrevNext : true,
@@ -665,92 +662,24 @@ $(function() {
 	
 	$('.alta_usuario').on('click', '.lapiz', function(e) {
 		var id= $(this).attr('name');
-		if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
-		{
-			var rowid = $('.editing').attr('id').split("w")[1];
-			undoEditRow(rowid);
-			editRow(id);
-		}else if (!$(this).hasClass('inactive')){
+		if (!$(this).hasClass('inactive')) {
 			editRow(id);
 		}	
 	});
-
-	/*$('#myTable').on('click', '.guardar-ext', function (e) {
-		
-		var fila = $('#edit-item-holder').prev();
-		var id = fila.attr('id').split("w")[1];
-		var nombre = $('#nombre_ed').val();
-		var ap1 = $('#apellido1_ed').val();
-		var ap2 = $('#apellido2_ed').val();
-		var email = $('#email_ed').val();
-		var permiso = $('#permiso_ed').val();
-		var dto = $('#dto_ed option:selected').text();
-		dto = dto.replace('&','#');
-		
-		var areascont = $('#edit-item').find('.areas').children();
-		var areas="";
-		
-		for (var i=0; i<areascont.length;i++){
-			var $item = $($(areascont[i]).children()[0]);
-			if ($item[0].checked==true){
-				areas += $item.val() + "_";
-			}		
-		}
-		
-		// Ponemos en la info de la fila los valores nuevos de area y dto
-		if (areas.length>1){
-			fila.attr('data-area',areas.substring(0,areas.length-1));			
-		}else{
-			fila.attr('data-area',"");
-		}
-		fila.attr('data-dto',dto);
-
-		//alert("&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas);
-		
-		var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
-		var formURL = "/usersServlet";
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) {
-				//data: return data from server
-				//$('.extended-row').remove();
-				//$('#row'+id).removeClass('editing');
-				//updateRow(id);
-
-				location.reload();
-			}
-		});
-		
-		$('#papelera'+id).attr("data-toggle","modal");
-	});*/
 
 	// Submit for creating a new user.
 	$("#submit_user_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-user-form");
-		
 		if($form.valid()){
 			var areas = "";
-			if ($('#onboarding').prop('checked')==true){
-			 areas += "Onboarding_"
-			}
-			if ($('#servicing').prop('checked')==true){
-			 areas += "Servicing_"
-			}
-			if ($('#itcib').prop('checked')==true){
-			 areas += "ITCIB_"
-			}
-			if ($('#gcs').prop('checked')==true){
-			 areas += "Global Customer Service_"
-			}
-			if ($('#global-product').prop('checked')==true){
-			 areas += "Global Product_"
-			}
-			if ($('#clientes').prop('checked')==true){
-			 areas += "Clientes_"
-			}
+			var $checkedBoxes = $form.find('.radio-container-holder').find('.radio-container').find('input:checked');
+			$checkedBoxes.each(function(i){
+				areas += $(this).val();
+				if(i < $checkedBoxes.length - 1){
+					areas += "_";
+				}
+			});
 			
 			var postData = $form.serialize() + "&accion=new&areasStr="+areas;
 			var formURL = $form.attr("action");
@@ -778,7 +707,7 @@ $(function() {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El usuario ha sido creado de forma correcta.");
+					$('#span_message').html("El usuario ha sido creado de forma correcta.<br/>En un segundo volvemos a la pagina.");
 					$('#message_div').css('display','block');
 					
 					resetForm($form);
@@ -823,8 +752,8 @@ function generateRow(data ,id, permiso, permisoid, dto, area){
 		+ "<td><span>"+dto+"</span></td>"
 		+ "<td><span>"+permiso+"</span></td>"
 		+ "<td><img class='vs' src='../img/vs.png'>"
-		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a>"
-		+ "<a class='lapiz' id='lapiz"+id+"' name="+id+"></a></td></tr>";
+		+ "<a class='lapiz' id='lapiz"+id+"' name="+id+"></a>"
+		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a></td></tr>";
 	
 	return html;
 }
@@ -877,7 +806,6 @@ function undoRow(id,arr){
 }
 
 function undoEditRow(id){
-	$('#papelera'+id).attr('data-toggle','modal');
 	$('#row'+id).removeClass('editing');
 	$('.extended-row').remove();
 
@@ -891,7 +819,6 @@ function generateChecks(pagina,destino){
 }
 
 function editRow(id){
-	$('#papelera'+id).removeAttr('data-toggle');
 	var $currentRow = $('#row'+id);
 	var $table = $currentRow.closest('table');
 	var $previousOpenEdit = $table.find('#edit-item-holder');
@@ -955,6 +882,7 @@ function editRow(id){
 		// Activate everything.
 		$editForm.find('.selectpicker').selectpicker();
 		initForms();
+		initValidator();
 
 		// Click event for the cancel button.
 		$editForm.on('click', '.cancelar-ext', function (e) {
@@ -964,37 +892,38 @@ function editRow(id){
 		});
 		// Click event for the save button.
 		$editForm.on('click', '.guardar-ext', function (e) {
-			var $editItemHolder = $(this).closest('#edit-item-holder');
-			// Collect all the information.
-			var id= $editItemHolder.data('row-id');
-			var nombre = $editItemHolder.find('input.edit_input.nombre').val();
-			var ap1 = $editItemHolder.find('input.edit_input.apellido1').val();
-			var ap2 = $editItemHolder.find('input.edit_input.apellido2').val();
-			var email = $editItemHolder.find('input.edit_input.email').val();
-			var permiso = $('#permiso_ed').val();
-			var dto = $('#dto_ed option:selected').text();
-			dto = dto.replace('&','#');
-			// Get all checked boxes in to one string, devided by _ (underscore).
-			var $checkedBoxes = $editItemHolder.find('.areas').find('.radio-container').find('input:checked');
-			var areas="";
-			$checkedBoxes.each(function(i){
-				areas += $(this).val();
-				if(i < $checkedBoxes.length - 1){
-					areas += "_";
-				}
-			});
-			// Update the database.
-			var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
-			var formURL = "/usersServlet";
-			$.ajax({
-				url : formURL,
-				type: "POST",
-				data : postData,
-				success:function(data, textStatus, jqXHR) {
-					location.reload();
-				}
-			});
-
+			if($editForm.valid()){
+				var $editItemHolder = $(this).closest('#edit-item-holder');
+				// Collect all the information.
+				var id= $editItemHolder.data('row-id');
+				var nombre = $editItemHolder.find('input.edit_input.nombre').val();
+				var ap1 = $editItemHolder.find('input.edit_input.apellido1').val();
+				var ap2 = $editItemHolder.find('input.edit_input.apellido2').val();
+				var email = $editItemHolder.find('input.edit_input.email').val();
+				var permiso = $('#permiso_ed').val();
+				var dto = $('#dto_ed option:selected').text();
+				dto = dto.replace('&','#');
+				// Get all checked boxes in to one string, devided by _ (underscore).
+				var $checkedBoxes = $editItemHolder.find('.areas').find('.radio-container').find('input:checked');
+				var areas="";
+				$checkedBoxes.each(function(i){
+					areas += $(this).val();
+					if(i < $checkedBoxes.length - 1){
+						areas += "_";
+					}
+				});
+				// Update the database.
+				var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
+				var formURL = "/usersServlet";
+				$.ajax({
+					url : formURL,
+					type: "POST",
+					data : postData,
+					success:function(data, textStatus, jqXHR) {
+						location.reload();
+					}
+				});
+			}
 			return false;
 		});
 	},'html');
@@ -1047,43 +976,72 @@ function editRow(id){
 		return valid;
 	},'Por favor, selecciona una opci&oacute;n.');
 
-
-	// Setup form validation on the #register-form element
-	$('form').validate({
-		ignore: ":hidden:not(select):not([type='radio']):not([type='checkbox'])",
-		focusCleanup: false,
-	    submitHandler: function(form) {
-	        form.submit();
-	    },
-	    errorPlacement: function(error, $element) {
-			// overwritable when using the tag data-error-show-style = tooltip
-			if(($element.is(':checkbox') || $element.is(':radio')) && $element.parent().hasClass('radio-container')) {
-				var $target = $element.closest('.radio-container-holder');
-				var $container = $target.find('#error-messages');
-				if($container.length == 0){
-					$container = $('<div id="error-messages" class="block-error server-errors"><ul></ul></div>');
-					$element.closest('.radio-container-holder').prepend($container);
-				}
-
-				// Create error element and append it to error container
-				var $errorelement = $('<li>');
-				$errorelement.append(error);
-				$container.find('ul').append($errorelement);
-
-			} else {
-				var $target = $element.closest('.form-container');
-				var $container = $target.find('#error-messages');
-
-				if($container.length == 0){
-					$container = $('<div id="error-messages" class="block-error server-errors detail"><ul></ul></div>');
-					$target.prepend($container);
-				}
-
-				// Create error element and append it to error container
-				var $errorelement = $('<li>');
-				$errorelement.append(error);
-				$container.find('ul').append($errorelement);
-			}
-		}
-	});
+	initValidator();
 });
+
+var initValidator = function() {
+	// Setup form validation on all the form elements.
+	$('form').each(function(){
+		$(this).validate({
+			ignore: ":hidden:not(select):not([type='radio']):not([type='checkbox'])",
+			focusCleanup: false,
+			onkeyup: false,
+		    submitHandler: function(form) {
+		        form.submit();
+		    },
+		    errorPlacement: function(error, $element) {
+		    	var $target = $element.parent();
+		    	$target.find('.error-messages').remove();
+				var $container = '';
+
+				if($element.hasClass('selectpicker')){
+					$element = $target.find('.bootstrap-select');
+				}
+				// overwritable when using the tag data-error-show-style = tooltip
+				if(($element.is(':checkbox') || $element.is(':radio')) && $element.parent().hasClass('radio-container')) {
+					var $target = $element.closest('.radio-container-holder');
+					var $container = $target.find('#error-messages');
+					if($container.length == 0){
+						$container = $('<div id="error-messages" class="block-error server-errors"><ul></ul></div>');
+						$element.closest('.radio-container-holder').prepend($container);
+					}
+
+					// Create error element and append it to error container
+					var $errorelement = $('<li>');
+					$errorelement.append(error);
+					$container.find('ul').append($errorelement);
+
+				} else {
+					$container = $('<div class="error-messages"><ul></ul></div>');
+					$target.css({position:'relative'}).prepend($container);
+				}
+				// Create error element and append it to error container
+				var $errorelement = $('<li>');
+				$errorelement.append(error);
+				$container.find('ul').append($errorelement);
+				var leftPosition = 0;
+				if ($element.outerWidth() < $container.outerWidth()) {
+					// Error message is bigger than element.
+					leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
+				} else if ($element.outerWidth() > $container.outerWidth()) {
+					// Error message is smaller than element.
+					leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
+				}
+				// In two steps so the element can have a real height to work with.
+				$container.css({left: ($element.position().left + leftPosition) + 'px', marginLeft: $element.css('margin-left'), maxWidth:'200px'});
+				$container.css({top:'-' + ($container.outerHeight() + 10) + 'px'});
+
+				$element.hover(
+				  function() {
+				    $container.addClass("hover");
+				  }, function() {
+				    $container.removeClass("hover");
+				  }
+				);
+			},
+			success: function(label) {
+				label.closest('.error-messages').remove();
+			}
+		});
+	});
+}

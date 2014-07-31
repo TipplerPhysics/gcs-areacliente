@@ -47,43 +47,72 @@ $(function() {
 		return valid;
 	},'Por favor, selecciona una opci&oacute;n.');
 
-
-	// Setup form validation on the #register-form element
-	$('form').validate({
-		ignore: ":hidden:not(select):not([type='radio']):not([type='checkbox'])",
-		focusCleanup: false,
-	    submitHandler: function(form) {
-	        form.submit();
-	    },
-	    errorPlacement: function(error, $element) {
-			// overwritable when using the tag data-error-show-style = tooltip
-			if(($element.is(':checkbox') || $element.is(':radio')) && $element.parent().hasClass('radio-container')) {
-				var $target = $element.closest('.radio-container-holder');
-				var $container = $target.find('#error-messages');
-				if($container.length == 0){
-					$container = $('<div id="error-messages" class="block-error server-errors"><ul></ul></div>');
-					$element.closest('.radio-container-holder').prepend($container);
-				}
-
-				// Create error element and append it to error container
-				var $errorelement = $('<li>');
-				$errorelement.append(error);
-				$container.find('ul').append($errorelement);
-
-			} else {
-				var $target = $element.closest('.form-container');
-				var $container = $target.find('#error-messages');
-
-				if($container.length == 0){
-					$container = $('<div id="error-messages" class="block-error server-errors detail"><ul></ul></div>');
-					$target.prepend($container);
-				}
-
-				// Create error element and append it to error container
-				var $errorelement = $('<li>');
-				$errorelement.append(error);
-				$container.find('ul').append($errorelement);
-			}
-		}
-	});
+	initValidator();
 });
+
+var initValidator = function() {
+	// Setup form validation on all the form elements.
+	$('form').each(function(){
+		$(this).validate({
+			ignore: ":hidden:not(select):not([type='radio']):not([type='checkbox'])",
+			focusCleanup: false,
+			onkeyup: false,
+		    submitHandler: function(form) {
+		        form.submit();
+		    },
+		    errorPlacement: function(error, $element) {
+		    	var $target = $element.parent();
+		    	$target.find('.error-messages').remove();
+				var $container = '';
+
+				if($element.hasClass('selectpicker')){
+					$element = $target.find('.bootstrap-select');
+				}
+				// overwritable when using the tag data-error-show-style = tooltip
+				if(($element.is(':checkbox') || $element.is(':radio')) && $element.parent().hasClass('radio-container')) {
+					var $target = $element.closest('.radio-container-holder');
+					var $container = $target.find('#error-messages');
+					if($container.length == 0){
+						$container = $('<div id="error-messages" class="block-error server-errors"><ul></ul></div>');
+						$element.closest('.radio-container-holder').prepend($container);
+					}
+
+					// Create error element and append it to error container
+					var $errorelement = $('<li>');
+					$errorelement.append(error);
+					$container.find('ul').append($errorelement);
+
+				} else {
+					$container = $('<div class="error-messages"><ul></ul></div>');
+					$target.css({position:'relative'}).prepend($container);
+				}
+				// Create error element and append it to error container
+				var $errorelement = $('<li>');
+				$errorelement.append(error);
+				$container.find('ul').append($errorelement);
+				var leftPosition = 0;
+				if ($element.outerWidth() < $container.outerWidth()) {
+					// Error message is bigger than element.
+					leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
+				} else if ($element.outerWidth() > $container.outerWidth()) {
+					// Error message is smaller than element.
+					leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
+				}
+				// In two steps so the element can have a real height to work with.
+				$container.css({left: ($element.position().left + leftPosition) + 'px', marginLeft: $element.css('margin-left'), maxWidth:'200px'});
+				$container.css({top:'-' + ($container.outerHeight() + 10) + 'px'});
+
+				$element.hover(
+				  function() {
+				    $container.addClass("hover");
+				  }, function() {
+				    $container.removeClass("hover");
+				  }
+				);
+			},
+			success: function(label) {
+				label.closest('.error-messages').remove();
+			}
+		});
+	});
+}
