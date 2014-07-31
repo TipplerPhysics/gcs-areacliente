@@ -123,7 +123,7 @@ public class UserServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String areas = req.getParameter("areasStr");
 		String dto = req.getParameter("dto");
-		if (areas.length()!=0 && areas.contains("_")) {
+		if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
 			areas = areas.substring(0, areas.length()-1);
 		}
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));

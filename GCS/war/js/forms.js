@@ -26,7 +26,7 @@ function resetForm($form) {
 
 var initForms = function(){
 	// Closing and resetting the form.
-	$('form').parent().find('button.close-form').on('click', function(){
+	$('form').parent().find('button.close-form').off('.close-form').on('click.close-form', function(){
 		var $form = $(this).parent().find('form');
 		$('#newUserButton').trigger('click');
 
@@ -37,14 +37,12 @@ var initForms = function(){
 	$('form').find('.radio-container').each(function(){
 		var $checkbox = $(this).find('input[type="checkbox"]');
 		var $label = $(this).find('label');
-
 		if($checkbox.prop('checked')){
 			$label.addClass('checked');
 		}
-
-		$label.on('click', function(){
+		$label.off('.check-label').on('click.check-label', function(){
 			$(this).toggleClass('checked');
-		})
+		});
 	});
 }
 

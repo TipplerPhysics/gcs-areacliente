@@ -21,11 +21,11 @@
 			method="POST" novalidate="novalidate">
 			<div class="form-container">
 				<div class="form-field">
-					<span for="nombre">Nombre:</span><input class="long" type="text"
+					<span for="nombre"><span class="required-asterisk">*</span>Nombre:</span><input class="long" type="text"
 						name="nombre" id="nombre" required aria-required="true">
 				</div>
 				<div class="form-field">
-					<span>Apellido 1:</span><input class="long" type="text" name="ap1"
+					<span><span class="required-asterisk">*</span>Apellido 1:</span><input class="long" type="text" name="ap1"
 						id="ap1" required aria-required="true">
 				</div>
 				<div class="form-field">
@@ -33,12 +33,12 @@
 						id="ap2">
 				</div>
 				<div class="form-field">
-					<span>E-mail:</span><input class="long email" type="text"
+					<span><span class="required-asterisk">*</span>E-mail:</span><input class="long email" type="text"
 						name="email" id="email" required aria-required="true"
 						data-type="email">
 				</div>
 				<div class="form-field">
-					<span>Departamento:</span> <select id="dto_select"
+					<span><span class="required-asterisk">*</span>Departamento:</span><select id="dto_select"
 						class="long selected selectpicker" name="dto" required>
 						<option selected value="default">Seleccionar</option>
 						<c:forEach items="${departamentos}" var="departamento">		         	
@@ -47,7 +47,7 @@
 					</select>
 				</div>
 				<div class="form-field">
-					<span>Perfil:</span> <select id="permiso_select" class="long selected selectpicker"
+					<span><span class="required-asterisk">*</span>Perfil:</span><select id="permiso_select" class="long selected selectpicker"
 						name="permiso" required>
 						<option selected value="default">Seleccionar</option>
 						<c:forEach items="${permisos}" var="permiso">		         	
@@ -76,7 +76,7 @@
 						</div>
 						<div class="radio-container">
 							<input type="checkbox" name='areas'
-								value=">Global Customer Service" id="gcs"><label
+								value="Global Customer Service" id="gcs"><label
 								for="gcs"><span></span>Global Customer Service</label>
 						</div>
 						<div class="radio-container">
@@ -94,6 +94,7 @@
 
 		</form>
 		<button type="submit" id="submit_user_form">Aceptar</button>
+		<button href="#" class="close-form">Cancelar</button>
 	</div>
 </div>
 
@@ -137,7 +138,7 @@
 									<td><span>${user.apellido2}</span></td>
 									<td><span>${user.departamento}</span></td>
 									<td><span>${user.permisoStr}</span></td>
-									<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a></td>
+									<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -165,8 +166,8 @@
 				<p>&iquest;Est&aacute; seguro que desea eliminar al usuario?
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="pink-btn" id="deleteUser">Eliminar</button>
 				<button type="button" class="" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="pink-btn" id="deleteUser">Borrar</button>
 			</div>
 		</div>
 	</div>
