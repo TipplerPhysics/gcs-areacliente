@@ -38,47 +38,21 @@
 						data-type="email">
 				</div>
 				<div class="form-field">
-					<span>Departamento:</span> <select
+					<span>Departamento:</span> <select id="dto_select"
 						class="long selected selectpicker" name="dto" required>
 						<option selected value="default">Seleccionar</option>
-						<option value="Negocio - Global Customer Service (Incluye HDR)">Negocio
-							- Global Customer Service (Incluye HDR)</option>
-						<option value="Negocio - Global Product">Negocio - Global
-							Product</option>
-						<option value="Negocio - Global Sales">Negocio - Global
-							Sales</option>
-						<option value="IT C&IB - CTO - Soluciones T&eacute;cnicas">IT
-							C&IB - CTO - Soluciones T&eacute;cnicas</option>
-						<option value="IT C&IB - CTO - Arquitectura Funcional">IT
-							C&IB - CTO - Arquitectura Funcional</option>
-						<option
-							value="IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)">IT
-							C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)</option>
-						<option value="IT C&IB - Control y Gesti&oacute;n">IT
-							C&IB - Control y Gesti&oacute;n</option>
-						<option value="IT C&IB - E- commerce C&IB">IT C&IB - E-
-							commerce C&IB</option>
-						<option value="IT C&IB - GCC Lending GTB & CFO">IT C&IB -
-							GCC Lending GTB & CFO</option>
-
-						<option value="IT C&IB - GTB - Global Customer Solutions">IT
-							C&IB - GTB - Global Customer Solutions</option>
-						<option value="IT C&IB – Global Transactional Product">IT
-							C&IB - Global Transactional Product</option>
-						<option value="IT C&IB – B2B Global Support">IT C&IB -
-							B2B Global Support</option>
+						<c:forEach items="${departamentos}" var="departamento">		         	
+							<option value="${departamento.value}">${departamento.desc}</option>
+						</c:forEach>
 					</select>
 				</div>
 				<div class="form-field">
-					<span>Perfil:</span> <select class="long selected selectpicker"
+					<span>Perfil:</span> <select id="permiso_select" class="long selected selectpicker"
 						name="permiso" required>
 						<option selected value="default">Seleccionar</option>
-						<option value="6">Consulta</option>
-						<option value="5">Gestor IT</option>
-						<option value="4">Gestor Demanda</option>
-						<option value="3">User Admin</option>
-						<option value="2">App Admin</option>
-						<option value="1">Super</option>
+						<c:forEach items="${permisos}" var="permiso">		         	
+							<option value="${permiso.value}">${permiso.desc}</option>
+						</c:forEach>
 					</select>
 				</div>
 				<div class="form-fieldset">
@@ -193,7 +167,6 @@
 			<div class="modal-footer">
 				<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				<button type="button" class="pink-btn" id="deleteUser">Borrar</button>
-
 			</div>
 		</div>
 	</div>

@@ -83,9 +83,7 @@ public class UserServlet extends HttpServlet {
 		dto = dto.replace('#', '&');
 		
 		String id = req.getParameter("id");
-		if (!areas.equals("")){
-			areas = areas.substring(0, areas.length()-1);
-		}
+		
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
 		
@@ -123,10 +121,11 @@ public class UserServlet extends HttpServlet {
 		String ap1 = req.getParameter("ap1");
 		String ap2 = req.getParameter("ap2");
 		String email = req.getParameter("email");
-		String areas = req.getParameter("areas");
+		String areas = req.getParameter("areasStr");
 		String dto = req.getParameter("dto");
-		if (areas.length()!=0 && areas.contains("-"))
-		areas = areas.substring(0, areas.length()-1);
+		if (areas.length()!=0 && areas.contains("_")) {
+			areas = areas.substring(0, areas.length()-1);
+		}
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
 		
