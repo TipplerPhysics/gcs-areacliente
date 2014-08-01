@@ -72,17 +72,24 @@ $(function() {
 		var id= $(this).attr('name');
 		 var formURL = "/usersServlet?";
 		 var postData="accion=delete&id="+ id;
-		 $.ajax(			
+		 $.ajax({
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
 			{
-				url : formURL,
-				type: "POST",
-				data : postData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					$('#row'+id).fadeOut("slow");
-					$('#confirm-delete').modal('hide');			        	
-				}
-			});
+				$('#row'+id).fadeOut("fast", function(){
+					$(this).remove();
+					$('#myTable').paginateMe({
+						pagerSelector : '#myPager',
+						showPrevNext : true,
+						hidePageNumbers : false,
+						perPage : 5
+					});
+				});
+				$('#confirm-delete').modal('hide');			        	
+			}
+		});
 	});
 
 	
@@ -118,30 +125,17 @@ $(function() {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRow(postData, data.id, data.permiso, data.permisoid, data.dto, data.area);
-					
-					$('#myTable').prepend(html);
-					
-					$('#myTable').paginateMe({
-						pagerSelector : '#myPager',
-						showPrevNext : true,
-						hidePageNumbers : false,
-						perPage : 5
-					});
-					
-					$('#message_div').removeClass("error").addClass("success");
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El usuario ha sido creado de forma correcta.<br/>En un segundo volvemos a la pagina.");
-					$('#message_div').css('display','block');
-					
-					resetForm($form);
-					
+					$form.find('.form-container').find('div:not(#message_div)').hide(0);
+					$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+					$('#message_div').css('display','block').removeClass("error").addClass("success");;
+
 					setTimeout(function() { 
-						$( "#message_div" ).fadeOut( "slow", function() {
-							$('#span_message').html("");
-					  }); }, 5000);
+						resetForm($form);
+						location.reload();
+					}, 1500);
 				}else{
 					$('#message_div').removeClass("success").addClass("error");
 					if ($('.new-user-form-holder').height()<190){

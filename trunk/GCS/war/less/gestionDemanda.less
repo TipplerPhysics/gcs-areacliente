@@ -60,11 +60,37 @@
 			width:190px;
 		}
 	 } 
-
+	#new-demanda-form .form-container{
+		text-align: left;
+		.form-field-divider {
+			vertical-align: top;
+			display: inline-block;
+			width: 50%;
+			padding-left: 10px;
+			&.left {
+				padding-left: 40px;
+			}
+			&.right {
+				padding-right: 40px;
+			}
+			.form-field {
+				display: block;
+				width: 100%;
+				.lbl {
+					position: inherit;
+					top: 0;
+					left: 0;
+				}
+				.input {
+					vertical-align: top;
+					display: inline-block;
+					width: 250px;
+				}
+			}
+		}
+	}
 	.newUserbox .new-user-form-holder .form-container .form-field  .lbl,
-	#extended-demanda > .form-field .lbl, 
-	
-	 {
+	#extended-demanda > .form-field .lbl {
 		width:100px;
 		margin-right:20px;	
 		color: #434a58;		 

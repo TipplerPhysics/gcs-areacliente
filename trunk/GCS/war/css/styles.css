@@ -972,6 +972,35 @@ form .datepicker {
 .gestion_demanda #extended-demanda > .form-field > .fecha #dp1 input {
   width: 190px;
 }
+.gestion_demanda #new-demanda-form .form-container {
+  text-align: left;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider {
+  vertical-align: top;
+  display: inline-block;
+  width: 50%;
+  padding-left: 10px;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider.left {
+  padding-left: 40px;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider.right {
+  padding-right: 40px;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field {
+  display: block;
+  width: 100%;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .lbl {
+  position: inherit;
+  top: 0;
+  left: 0;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .input {
+  vertical-align: top;
+  display: inline-block;
+  width: 250px;
+}
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl,
 .gestion_demanda #extended-demanda > .form-field .lbl {
   width: 100px;
