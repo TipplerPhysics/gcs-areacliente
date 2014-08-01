@@ -8,6 +8,10 @@ $(function() {
 	
 	$('.gestion_demanda').on('click', '.lapiz', function(e) {
 		var id= $(this).attr('name');
+		if (!$(this).hasClass('inactive')) {
+			editRowDemanda(id);
+		}	
+	});/*
 		if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
 		{
 			var rowid = $('.editing').attr('id').split("w")[1];
@@ -16,7 +20,7 @@ $(function() {
 		}else if (!$(this).hasClass('inactive')){
 			editRowDemanda(id);
 		}	
-	});
+	});*/
 	
 	$('.gestion_demanda').on('click', '.cancelar-ext-demanda', function (e) {
 		var id= $('.editing').attr('name');
@@ -87,7 +91,7 @@ $(function() {
 				success:function(data, textStatus, jqXHR) 
 				{
 					$('#row'+id).fadeOut("slow");
-					$('#confirm-delete').modal('hide');			        	
+					$('#confirm-delete').modal('hide');
 				}
 			});
 	});
@@ -167,21 +171,14 @@ $(function() {
 		$('#papelera'+id).removeAttr('data-toggle');
 		$('#row'+id).addClass('editing');
 		$('#row'+id).attr('name',id);
-		
-		
-
-		
 
 		$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
 		
 		generateChecks("extended-demanda.html","extended-div");
 
-		 
-		
 		var celdas = $('#row'+id).children();
 		cnombre = $(celdas[0]).children().html();
-		
-		
+
 		for (var a =0; celdas.length-5 >= a;a++){
 			var $celda = $(celdas[a]);
 			var span = $celda.children().html();
@@ -191,16 +188,13 @@ $(function() {
 			}
 			$celda.prepend("<input type='text' class='edit_input col"+id+"' value='" + span +"'>");
 		}
-
-		
 		// TIPO
-		
 		var $celda = $(celdas[2]);
 		tipoini = $celda.children().html();
 		$celda.children().remove();
 		$celda.prepend("<select name='tipo_ed' id='tipo_ed' class='selectpicker tipo_ed'>" +
 				"<option value='CIB'>CIB</option>" +
-				"<option value='BEC'>BEC</option></select>");			
+				"<option value='BEC'>BEC</option></select>");
 		
 		$('#tipo_ed').val(tipoini);
 		

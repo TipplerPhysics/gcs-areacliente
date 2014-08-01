@@ -23,11 +23,11 @@ $(function() {
 	$('.search').on('keyup', function(e) { 
 		var $table = $(this).closest('table').find('tbody').first();	
 		var $table_results = $table.children();
-
-
 		var $current_input = $(this);
+
 		$(this).closest('tr').find('.search-th').find('input').each(function(){
-			if (!($(this).is($current_input)) && $(this).val().trim().length != 0) {
+			if (!($(this).is($current_input)) && $(this).val().length != 0) {
+				console.log('multi');
 			    multipleFilter = true;
 			}
 		});
@@ -36,7 +36,7 @@ $(function() {
 			var isValid = true;
 			var $linea = $($table_results[e]);	
 			$(this).closest('tr').find('.search-th').find('input').each(function(){
-				if ($(this).val().trim().length != 0) {
+				if ($(this).val().length != 0) {
 					var text = normalize($(this).val().toLowerCase());
 					var columna = $(this).attr("class").split("col")[1];
 				    var cont = $($linea.children()[columna]).children().html().toLowerCase();

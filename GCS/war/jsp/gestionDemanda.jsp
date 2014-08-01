@@ -18,137 +18,145 @@
 			<form id="new-demanda-form" name="new-user-form" action="/demandaServlet"
 				method="POST" novalidate="novalidate">
 				<div class="form-container">
-					<div class="form-field">
-						<div class="fecha">
+					<div class="form-field-divider left">
+						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Fecha entrada petición:</span>
-							<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
-								<input type="text" readonly="" value="" size="16" class="datepicker datefuture" name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
-						  	</div>
-						  </div>
-					  <div class="tiempo">
-						<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
-						
-						<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
-							<c:forEach items="${horasList}" var="hora">
-								<option value="${hora}">${hora}</option>
-							</c:forEach>			
-						</select>
-						<span class="time-span">:</span>
-						<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
-						   <c:forEach items="${minutosList}" var="min">		         	
-								<option value="${min}">${min}</option>
-							</c:forEach>			
-						</select>
-					</div>
-					</div>
-					
-					<div class="form-field textarea">
-						<span class="align-top lbl">Motivo de catalogación:</span><textarea name="motivo_catalogacion" id="motivo_catalogacion" class="long"></textarea>
-					</div>
-					<div class="form-field double">
-						<div>
-							<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
-							<select class="selectpicker selected" name="cliente" required aria-required="true">
-								<option value="default">Seleccionar...</option>
-								<c:forEach items="${clientes}" var="cliente">	
-									<option value="${cliente.key.id}">${cliente.nombre} ${cliente.apellido1} ${cliente.apellido2}</option>
-								</c:forEach>
-							</select>					
+							<div class="input">
+								<input type="text" readonly="" value="" size="16" class="datepicker datefuture fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
+							</div>
 						</div>
-						
-						<div>
-							<span class="lbl">Gestor de negocio:</span>
-							<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">
-							    <option value="default" selected>Seleccionar</option>
-								<c:forEach items="${gestores_demanda}" var="user">	
-									<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
-								</c:forEach>					
-						
-							</select>
-						</div>	
-					</div>
-					
-					<div class="form-field textarea">
-						<span class="align-top lbl">Comentarios:</span><textarea id="comentarios" name="comentarios" class="long"></textarea>
-					</div>
-					
-					<div class="form-field double">
-						<div>
-						<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
-							<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
-								<option value="default">Seleccionar...</option>
-								<option value="CIB">CIB</option>
-								<option value="BEC">BEC</option>
-							</select>
-						</div>
-						<div>						
-							<span class="lbl"><span class="required-asterisk">*</span>Devuelta:</span>
-							<select class="selectpicker selected" name="devuelta" required aria-required="true">
-								<option value="default">Seleccionar...</option>
-								<option value="SI">SI</option>
-								<option value="NO">NO</option>
-							</select>					
-						</div>	
-					</div>
-					
-					<div class="form-field">
-						<div class="fecha">
-							<span class="lbl">Fecha solicitud asignación:</span>
-							<div data-date-format="dd-mm-yyyy" data-date="12-02-2012" id="dp1" class="input-append date">
-								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion">
-						  	</div>
-						  </div>
-					  	<div class="tiempo">
-							<span class="lbl">Hora solicitud asignación:</span>
-							<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
-								<c:forEach items="${horasList}" var="hora">		         
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
+							<div class="input">
+								<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
+									<c:forEach items="${horasList}" var="hora">
 									<option value="${hora}">${hora}</option>
-								</c:forEach>			
-							</select>
-							<span class="time-span">:</span>
-							<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">
-							   <c:forEach items="${minutosList}" var="min">		         	
+									</c:forEach>
+								</select>
+								<span class="time-span">:</span>
+								<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
+									<c:forEach items="${minutosList}" var="min">
 									<option value="${min}">${min}</option>
-								</c:forEach>			
-							</select>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
+							<div class="input">
+								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
+									<option value="default">Seleccionar...</option>
+									<c:forEach items="${clientes}" var="cliente">	
+										<option value="${cliente.key.id}">${cliente.nombre} ${cliente.apellido1} ${cliente.apellido2}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Gestor de negocio:</span>
+							<div class="input">
+								<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">
+								    <option value="default" selected>Seleccionar</option>
+									<c:forEach items="${gestores_demanda}" var="user">	
+										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
+									</c:forEach>					
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
+									<option value="default">Seleccionar...</option>
+									<option value="CIB">CIB</option>
+									<option value="BEC">BEC</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Devuelta:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="devuelta" required aria-required="true">
+									<option value="default">Seleccionar...</option>
+									<option value="SI">SI</option>
+									<option value="NO">NO</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
+									<option value="default">Seleccionar...</option>
+									<option value="Pendiente de asignación">Pendiente de asignación</option>
+									<option value="Asignada">Asignada</option>
+									<option value="Devuelta">Devuelta</option>
+									<option value="Parada">Parada</option>
+									<option value="Desestimada">Desestimada</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Catalogación de petición:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
+									<option value="default">Seleccionar...</option>
+									<option value="Implantación">Implantación</option>
+									<option value="SEPA">SEPA</option>
+									<option value="Migración IA">Migración IA</option>
+									<option value="Estandarización Clientes">Estandarización Clientes</option>
+									<option value="Evolutivo">Evolutivo</option>
+									<option value="Pruebas Cliente">Pruebas Cliente</option>
+								</select>
+							</div>
+						</div>
+					</div><div class="form-field-divider right">
+						<div class="form-field">
+							<span class="align-top lbl">Motivo de catalogación:</span>
+							<div class='input'>
+								<textarea name="motivo_catalogacion" id="motivo_catalogacion" class="long"></textarea>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="align-top lbl">Comentarios:</span>
+							<div class='input'>
+								<textarea id="comentarios" name="comentarios" class="long"></textarea>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Fecha solicitud asignación:</span>
+							<div class="input">
+								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Hora solicitud asignación:</span>
+							<div class="input">
+								<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
+									<c:forEach items="${horasList}" var="hora">
+										<option value="${hora}">${hora}</option>
+									</c:forEach>
+								</select>
+								<span class="time-span">:</span>
+								<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">
+									<c:forEach items="${minutosList}" var="min">
+										<option value="${min}">${min}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl"><span class="required-asterisk">*</span>Gestor IT pre-asignado:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="gestor_it" required aria-required="true">	
+								<option value="default" selected>Seleccionar...</option>
+									<c:forEach items="${gestores_it}" var="user">
+										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
+									</c:forEach>
+								</select>
+							</div>
 						</div>
 					</div>
-					<div class="form-field">
-						<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
-						<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
-							<option value="default">Seleccionar...</option>
-							<option value="Pendiente de asignación">Pendiente de asignación</option>
-							<option value="Asignada">Asignada</option>
-							<option value="Devuelta">Devuelta</option>
-							<option value="Parada">Parada</option>
-							<option value="Desestimada">Desestimada</option>													
-						</select>
-					</div>
-					
-					<div class="form-field">
-						<span class="lbl"><span class="required-asterisk">*</span>Gestor IT pre-asignado:</span>
-						<select class="selectpicker selected" name="gestor_it" required aria-required="true">					
-						    <option value="default" selected>Seleccionar...</option>
-							<c:forEach items="${gestores_it}" var="user">	
-								<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
-							</c:forEach>					
-					
-						</select>
-					</div>
-					
-					<div class="form-field">
-						<span class="lbl"><span class="required-asterisk">*</span>Catalogación de petición:</span>
-						<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
-							<option value="default">Seleccionar...</option>
-							<option value="Implantación">Implantación</option>
-							<option value="SEPA">SEPA</option>
-							<option value="Migración IA">Migración IA</option>
-							<option value="Estandarización Clientes">Estandarización Clientes</option>
-							<option value="Evolutivo">Evolutivo</option>
-							<option value="Pruebas Cliente">Pruebas Cliente</option>
-						</select>
-					</div>
-					<div class="form-field"></div>
 					<div id="message_div">
 						<span id="span_message"></span>
 					</div>
@@ -196,7 +204,7 @@
 										<td><span>${demanda.tipo}</span></td>
 										<td><span>${demanda.estado}</span></td>
 										<td><span>${demanda.cod_peticion}</span></td>
-										<td><img class="vs" src="../img/vs.png"><a class="papelera" name="${demanda.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${demanda.key.id}"></a><a class="lapiz" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a></td>
+										<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

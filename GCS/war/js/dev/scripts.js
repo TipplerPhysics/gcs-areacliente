@@ -14,6 +14,10 @@ $(function() {
 	
 	$('.gestion_demanda').on('click', '.lapiz', function(e) {
 		var id= $(this).attr('name');
+		if (!$(this).hasClass('inactive')) {
+			editRowDemanda(id);
+		}	
+	});/*
 		if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
 		{
 			var rowid = $('.editing').attr('id').split("w")[1];
@@ -22,7 +26,7 @@ $(function() {
 		}else if (!$(this).hasClass('inactive')){
 			editRowDemanda(id);
 		}	
-	});
+	});*/
 	
 	$('.gestion_demanda').on('click', '.cancelar-ext-demanda', function (e) {
 		var id= $('.editing').attr('name');
@@ -93,7 +97,7 @@ $(function() {
 				success:function(data, textStatus, jqXHR) 
 				{
 					$('#row'+id).fadeOut("slow");
-					$('#confirm-delete').modal('hide');			        	
+					$('#confirm-delete').modal('hide');
 				}
 			});
 	});
@@ -173,21 +177,14 @@ $(function() {
 		$('#papelera'+id).removeAttr('data-toggle');
 		$('#row'+id).addClass('editing');
 		$('#row'+id).attr('name',id);
-		
-		
-
-		
 
 		$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
 		
 		generateChecks("extended-demanda.html","extended-div");
 
-		 
-		
 		var celdas = $('#row'+id).children();
 		cnombre = $(celdas[0]).children().html();
-		
-		
+
 		for (var a =0; celdas.length-5 >= a;a++){
 			var $celda = $(celdas[a]);
 			var span = $celda.children().html();
@@ -197,16 +194,13 @@ $(function() {
 			}
 			$celda.prepend("<input type='text' class='edit_input col"+id+"' value='" + span +"'>");
 		}
-
-		
 		// TIPO
-		
 		var $celda = $(celdas[2]);
 		tipoini = $celda.children().html();
 		$celda.children().remove();
 		$celda.prepend("<select name='tipo_ed' id='tipo_ed' class='selectpicker tipo_ed'>" +
 				"<option value='CIB'>CIB</option>" +
-				"<option value='BEC'>BEC</option></select>");			
+				"<option value='BEC'>BEC</option></select>");
 		
 		$('#tipo_ed').val(tipoini);
 		
@@ -374,12 +368,19 @@ $(function() {
 });;$(function(){
 	// init all the datepickers which generally are always inside of a form.
 	$('form').find('.datepicker').each(function(){
-		if($(this).hasClass('datefuture')) {
-			$(this).datepicker({minDate:0});
-		} else if($(this).hasClass('datepast')) {
-			$(this).datepicker({maxDate:0});
+		var $datepicker = $(this);
+		if($datepicker.hasClass('datefuture')) {
+			$datepicker.datepicker({minDate:0});
+		} else if($datepicker.hasClass('datepast')) {
+			$datepicker.datepicker({maxDate:0});
 		} else {
-			$(this).datepicker();
+			$datepicker.datepicker();
+		}
+		if($datepicker.hasClass('fromTo')){
+			var $targetDatepicker = $('#'+$datepicker.data('target-id'));
+			$datepicker.on('change.fromTo', function(){
+				$targetDatepicker.datepicker('option', 'minDate', $datepicker.datepicker('getDate'));
+			});
 		}
 	});
 
@@ -524,11 +525,11 @@ $(function() {
 	$('.search').on('keyup', function(e) { 
 		var $table = $(this).closest('table').find('tbody').first();	
 		var $table_results = $table.children();
-
-
 		var $current_input = $(this);
+
 		$(this).closest('tr').find('.search-th').find('input').each(function(){
-			if (!($(this).is($current_input)) && $(this).val().trim().length != 0) {
+			if (!($(this).is($current_input)) && $(this).val().length != 0) {
+				console.log('multi');
 			    multipleFilter = true;
 			}
 		});
@@ -537,7 +538,7 @@ $(function() {
 			var isValid = true;
 			var $linea = $($table_results[e]);	
 			$(this).closest('tr').find('.search-th').find('input').each(function(){
-				if ($(this).val().trim().length != 0) {
+				if ($(this).val().length != 0) {
 					var text = normalize($(this).val().toLowerCase());
 					var columna = $(this).attr("class").split("col")[1];
 				    var cont = $($linea.children()[columna]).children().html().toLowerCase();
@@ -646,17 +647,24 @@ $(function() {
 		var id= $(this).attr('name');
 		 var formURL = "/usersServlet?";
 		 var postData="accion=delete&id="+ id;
-		 $.ajax(			
+		 $.ajax({
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
 			{
-				url : formURL,
-				type: "POST",
-				data : postData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					$('#row'+id).fadeOut("slow");
-					$('#confirm-delete').modal('hide');			        	
-				}
-			});
+				$('#row'+id).fadeOut("fast", function(){
+					$(this).remove();
+					$('#myTable').paginateMe({
+						pagerSelector : '#myPager',
+						showPrevNext : true,
+						hidePageNumbers : false,
+						perPage : 5
+					});
+				});
+				$('#confirm-delete').modal('hide');			        	
+			}
+		});
 	});
 
 	
@@ -692,30 +700,17 @@ $(function() {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRow(postData, data.id, data.permiso, data.permisoid, data.dto, data.area);
-					
-					$('#myTable').prepend(html);
-					
-					$('#myTable').paginateMe({
-						pagerSelector : '#myPager',
-						showPrevNext : true,
-						hidePageNumbers : false,
-						perPage : 5
-					});
-					
-					$('#message_div').removeClass("error").addClass("success");
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El usuario ha sido creado de forma correcta.<br/>En un segundo volvemos a la pagina.");
-					$('#message_div').css('display','block');
-					
-					resetForm($form);
-					
+					$form.find('.form-container').find('div:not(#message_div)').hide(0);
+					$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+					$('#message_div').css('display','block').removeClass("error").addClass("success");;
+
 					setTimeout(function() { 
-						$( "#message_div" ).fadeOut( "slow", function() {
-							$('#span_message').html("");
-					  }); }, 5000);
+						resetForm($form);
+						location.reload();
+					}, 1500);
 				}else{
 					$('#message_div').removeClass("success").addClass("error");
 					if ($('.new-user-form-holder').height()<190){
