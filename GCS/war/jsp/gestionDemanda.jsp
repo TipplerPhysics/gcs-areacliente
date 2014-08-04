@@ -152,7 +152,7 @@
 								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
 								<option value="default" selected>Seleccionar...</option>
 									<c:forEach items="${gestores_it}" var="user">
-										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
+										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
 								</select>
 							</div>

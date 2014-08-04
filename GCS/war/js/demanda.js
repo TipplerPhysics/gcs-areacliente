@@ -321,7 +321,7 @@ $("#submit_demanda_form").on('click',function(e) {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El usuario ha sido creado de forma correcta.");
+					$('#span_message').html("El usuario ha sido creado de forma correcta con el código de petición num: " + data.cod_peticion);
 					$('#message_div').css('display','block');
 					
 					resetForm($form);
