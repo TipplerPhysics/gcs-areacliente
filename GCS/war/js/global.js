@@ -37,11 +37,11 @@ var initSelectpickers = function() {
 // Convert a string date dd/mm/yyyy to yyyy/mm/dd.
 // IMPORTANT: Use dd/mm/yyyy for dateString.
 var getIsoDate = function(dateString) {
-	var collection = dateString.split("-")
+	var collection = dateString.split("/");
 	var day = collection[0];
 	var month = collection[1];
 	var year = collection[2];
-	var isoDate = year + '-' + month + '-' + day;
+	var isoDate = year + '/' + month + '/' + day;
 
 	return isoDate;
 }
