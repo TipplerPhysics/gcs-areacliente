@@ -1,3 +1,29 @@
+$(function() {
+	initForms();
+});
+
+var initForms = function(){
+	// Closing and resetting the form.
+	$('form').parent().find('button.close-form').off('.close-form').on('click.close-form', function(){
+		var $form = $(this).parent().find('form');
+		$('#newUserButton').trigger('click');
+
+		return false;
+	});
+
+	// Setting labels to checked where needed and click function.
+	$('form').find('.radio-container').each(function(){
+		var $checkbox = $(this).find('input[type="checkbox"]');
+		var $label = $(this).find('label');
+		if($checkbox.prop('checked')){
+			$label.addClass('checked');
+		}
+		$label.off('.check-label').on('click.check-label', function(){
+			$(this).toggleClass('checked');
+		});
+	});
+}
+
 function resetForm($form) {
 	$form.find('input').each(function(){
 		if($(this).attr('type') == 'text') {
@@ -23,29 +49,3 @@ function resetForm($form) {
 	validator.resetForm();
 	$form.find('.bootstrap-select.error').removeClass('error');
 }
-
-var initForms = function(){
-	// Closing and resetting the form.
-	$('form').parent().find('button.close-form').off('.close-form').on('click.close-form', function(){
-		var $form = $(this).parent().find('form');
-		$('#newUserButton').trigger('click');
-
-		return false;
-	});
-
-	// Setting labels to checked where needed and click function.
-	$('form').find('.radio-container').each(function(){
-		var $checkbox = $(this).find('input[type="checkbox"]');
-		var $label = $(this).find('label');
-		if($checkbox.prop('checked')){
-			$label.addClass('checked');
-		}
-		$label.off('.check-label').on('click.check-label', function(){
-			$(this).toggleClass('checked');
-		});
-	});
-}
-
-$(function() {
-	initForms();
-});

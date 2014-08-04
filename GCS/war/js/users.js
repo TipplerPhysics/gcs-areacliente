@@ -274,9 +274,10 @@ function editRow(id){
 		$currentRow.after("<tr id='edit-item-holder' class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
 		var $currentOpenEdit = $table.find('#edit-item-holder');
 		$currentOpenEdit.data('row-id', id);
-		 $(".extended-div").html(result); // Or whatever you need to insert the result
+		// Add the result to the element
+		$currentOpenEdit.find(".extended-div").html(result);
 		// The form we're editing in.
-		var $editForm = $('#edit-item-holder').find('form#edit-item');
+		var $editForm = $currentOpenEdit.find('form#edit-item');
 		// copia options de select de formulario de creacion
 		var $dtoOptions = $('select#dto_select option').clone();
 		$editForm.find('select#dto_ed').append($dtoOptions).val(dto);

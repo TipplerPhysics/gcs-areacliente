@@ -1,68 +1,69 @@
-<form id="edit-item" novalidate="novalidate">
+<form id="edit-item" class="demanda" novalidate="novalidate">
 	<div class='area-div'>
 		<span class="span-3">
-			<input type="text" value="" id="fecha_entrada_peticion_ed" class="edit_input " required aria-required="true">
+			<input type="text" value="" id="fecha_entrada_peticion_ed" class="edit_input datepicker datefuture fromTo" required aria-required="true" data-target-id='fecha_solicitud_asignacion_ed'>
 		</span>
-		<span class="span-3">
+		<span class="span-4">
 			<select class="selectpicker" id="input_cliente_ed" name="input_cliente_ed" required aria-required="true"></select>
 		</span>
-		<span class="span-3">
+		<span class="span-4">
 			<select class="selectpicker" id="input_tipo_ed" name="input_tipo_ed" required aria-required="true"></select>
 		</span>
 		<span class="span-7">
 			<select class="selectpicker" id="input_estado_ed" name="input_estado_ed" required aria-required="true"></select>
 		</span>
-		<span class="span-5">
+		<span class="span-3 cod_peticion">
 			<span id="cod_peticion_ed"></span>
 		</span>
-		<span class="span-3 last">
+		<span class="span-3 last demanda">
 			<img src="../img/vs.png" class="vs"><a id="lapiz" class="lapiz inactive"></a><a id="papelera" data-target="#confirm-delete" name="" class="papelera inactive"></a>
 		</span>
 	</div>
 	<div id="extended-demanda">
 		<div class="form-field">
 			<span class="lbl">Gestor IT asignado:</span>
-			<select class="selectpicker gestor_it_ext" name="gestor_it_ext" id="gestor_it_ext">
-			</select>
+			<div class="input long">
+				<select class="selectpicker gestor_it_ed" name="gestor_it_ed" id="gestor_it_ed">
+				</select>
+			</div>
 		</div>
 		<div class="form-field">
 				<div class="fecha">
 					<span class="lbl">Fecha comunicación asignación gestor:</span>
-					<div>
-						<input type="text" class="datepicker" value="" size="16" class="span2" name="fecha_entrada_peticion" id="fecha_entrada_peticion_ext">
+					<div class="input">
+						<input type="text" class="datepicker" value="" name="fecha_solicitud_asignacion_ed" id="fecha_solicitud_asignacion_ed">
 				  	</div>
 				  </div>
 			  <div class="tiempo">
 				<span class="lbl">Hora petición:</span>
-				<select class="selectpicker time hora_peticion_ext" id="hora_peticion_ext" name="hora_peticion">
-				    <option value="00">00</option>
-				    <option value="01">01</option>
-				    <option value="02">02</option>
-				    <option value="03">03</option>
-				    <option value="04">04</option>
-				    <option value="05">05</option>
-				    <option value="06">06</option>
-				    <option value="07">07</option>
-				    <option value="08">08</option>
-				    <option value="09">09</option>
-				    <option value="10">10</option>
-				    <option value="11">11</option>
-				    <option value="12">12</option>
-				    <option value="13">13</option>
-				    <option value="14">14</option>
-				    <option value="15">15</option>
-				    <option value="16">16</option>
-				    <option value="17">17</option>
-				    <option value="18">18</option>
-				    <option value="19">19</option>
-				    <option value="20">20</option>
-				    <option value="21">21</option>
-				    <option value="22">22</option>
-				    <option value="23">23</option>
-
+				<select class="selectpicker time hora_peticion_ed" id="hora_peticion_ed" name="hora_peticion">
+					<option value="00">00</option>
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
 				</select>
 				<span class="time-span">:</span>
-				<select class="selectpicker time min_peticion_ext" id="min_peticion_ext" name="min_peticion">				
+				<select class="selectpicker time min_peticion_ed" id="min_peticion_ed" name="min_peticion">
 				  <option value="00">00</option>
 				  <option value="05">05</option>
 				  <option value="10">10</option>
@@ -74,21 +75,11 @@
 				  <option value="40">40</option>
 				  <option value="45">45</option>
 				  <option value="50">50</option>
-				  <option value="55">55</option> 		
+				  <option value="55">55</option>
 				</select>
 			</div>
 		</div>
 	</div>
+<button class="cancelar-ext">Cancelar</button>
+<button class="guardar-ext">Guardar</button>
 </form>
-<div id="botones_ext">
-	<button class="guardar-ext-demanda">Guardar</button>
-	<button class="cancelar-ext-demanda">Cancelar</button>
-</div>
-
-</div>
-	<script>
-	$('.date').datepicker();
-	$('.selectpicker').selectpicker();
-</script>
-	
-	

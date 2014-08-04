@@ -148,7 +148,7 @@
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Gestor IT pre-asignado:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="gestor_it" required aria-required="true">	
+								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
 								<option value="default" selected>Seleccionar...</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -198,6 +198,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${demandaList}" var="demanda">
+									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-comun="${demanda.str_fecha_solicitud_asignacion}" data-hora-comun="${demanda.hora_solicitud_asignacion}" data-gestor-asig="${demanda.gestor_it}">
 									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-entrada="${demanda.str_fecha_entrada_peticion}" data-hora-entrada="${demanda.hora_entrada_peticion}" data-gestor-asig="${demanda.gestor_it}">
 										<td><span>${demanda.str_fecha_entrada_peticion}</span></td>
 										<td><span>${demanda.clienteName}</span></td>

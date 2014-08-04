@@ -11,16 +11,7 @@ $(function() {
 		if (!$(this).hasClass('inactive')) {
 			editRowDemanda(id);
 		}	
-	});/*
-		if ($('.editing')[0] != undefined && !$(this).hasClass('inactive'))
-		{
-			var rowid = $('.editing').attr('id').split("w")[1];
-			undoEditRow(rowid);
-			editRowDemanda(id);
-		}else if (!$(this).hasClass('inactive')){
-			editRowDemanda(id);
-		}	
-	});*/
+	});
 	
 	$('.gestion_demanda').on('click', '.cancelar-ext-demanda', function (e) {
 		var id= $('.editing').attr('name');
@@ -60,13 +51,6 @@ $(function() {
 			type: "POST",
 			data : postData,
 			success:function(data, textStatus, jqXHR) {
-				//data: return data from server
-
-				//	$('.extended-row').remove();
-				//	$('#row'+id).removeClass('editing');
-
-				//	updateRow(id);
-				
 				location.reload();
 			}
 		});
@@ -136,10 +120,7 @@ $(function() {
 		$celda = $(celdas[3]);
 			$celda.children().remove();
 		$celda.prepend("<span>"+estadoini+"</span>");
-		
-		
-		
-		
+
 		$('#lapiz'+id).removeClass('inactive');
 		$('#papelera'+id).removeClass('inactive');
 	}
@@ -164,18 +145,87 @@ $(function() {
 	
 	return html;
 	}
-	
-	
-	
+
 	function editRowDemanda(id){
-		$('#papelera'+id).removeAttr('data-toggle');
-		$('#row'+id).addClass('editing');
-		$('#row'+id).attr('name',id);
-
-		$('#row'+id).after("<tr class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
+		var $currentRow = $('#row'+id);
+		var $table = $currentRow.closest('table');
+		var $previousOpenEdit = $table.find('#edit-item-holder');
 		
-		generateChecks("extended-demanda.html","extended-div");
+		// Get the data from the current row
+		var celdas = $currentRow.children();
+		var fechaEntrada = $(celdas[0]).children().html();
+		var cliente = $(celdas[1]).children().html();
+		var tipo = $(celdas[2]).children().html();
+		var estado = $(celdas[3]).children().html();
+		var codPeticion =  $(celdas[4]).children().html();
+		var gestorAsignado = $currentRow.data('gestor-asig');
+		var fechaComun = $currentRow.data('fecha-comun');
+		var horaComun = $currentRow.data('hora-comun');
 
+		$.get('../html/extended-demanda.html',null,function(result) {
+			// Close other editing field and show the row.
+			if($previousOpenEdit.length > 0){
+				$('#row'+$previousOpenEdit.data('row-id')).css({display:'table-row'});
+				$previousOpenEdit.remove();
+			}
+			// Hide current row.
+			$currentRow.css({display:'none'});
+			// Adds the item holder row for editing the item.
+			$currentRow.after("<tr id='edit-item-holder' class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
+			var $currentOpenEdit = $table.find('#edit-item-holder');
+			$currentOpenEdit.data('row-id', id);
+			// Add the result to the element
+			$(".extended-div").html(result);
+			// The form we're editing in.
+			var $editForm = $currentOpenEdit.find('form#edit-item');
+			// Add info stuff ... errr ... 0_o.
+			$editForm.find('#fecha_entrada_peticion_ed').val(fechaEntrada);
+			// copia options de select de formulario de creacion
+			var $clienteOptions = $('select#input_cliente option').clone();
+			$editForm.find('select#input_cliente_ed').append($clienteOptions).val(cliente);
+			$editForm.find('select#input_cliente_ed option').first().remove();
+
+			var $tipoOptions = $('select#tipo option').clone();
+			$editForm.find('select#input_tipo_ed').append($tipoOptions).val(tipo);
+			$editForm.find('select#input_tipo_ed option').first().remove();
+
+			var $tipoOptions = $('select#estado option').clone();
+			$editForm.find('select#input_estado_ed').append($tipoOptions).val(estado);
+			$editForm.find('select#input_estado_ed option').first().remove();
+
+			$editForm.find('#cod_peticion_ed').html(codPeticion);
+
+			var $gestorOptions = $('select#gestor_it option').clone();
+			$editForm.find('select#gestor_it_ed').append($gestorOptions).val(gestorAsignado);
+			$editForm.find('select#gestor_it_ed option').first().remove();
+
+			// If it has a fecha it might have a time too.
+			if(fechaComun.length > 0) {
+				fecha_solicitud_asignacion_ed.val(fechaComun);
+				$editForm.find('select#hora_peticion_ed').val(horaComun.substring(0, 2));
+				$editForm.find('select#min_peticion_ed').val(horaComun.substring(3, 5));
+			}
+
+			// Activate everything.
+			initDatepickers();
+			initSelectpickers();
+			initForms();
+			initValidator();
+			// Click event for the cancel button.
+			$editForm.on('click.close-form', '.cancelar-ext', function (e) {
+				$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
+				$currentOpenEdit.remove();
+				return false;
+			});
+			// Click event for the save button.
+			$editForm.on('click', '.guardar-ext', function (e) {
+				if($editForm.valid()){
+
+				}
+				return false;
+			});
+		});
+/*
 		var celdas = $('#row'+id).children();
 		cnombre = $(celdas[0]).children().html();
 
@@ -207,11 +257,6 @@ $(function() {
 		
 		$('#estado_ed').val(estadoini);
 		
-
-		
-		$('#lapiz'+id).addClass('inactive');
-		$('#papelera'+id).addClass('inactive');		
-		
 		setTimeout(function(){
 			
 			//$('#dp1').datepicker();
@@ -235,10 +280,8 @@ $(function() {
 			$('#hora_peticion_ext').val(hora);
 			$('#min_peticion_ext').val(minutos);
 			$('.selectpicker').selectpicker('render');
-			
-
-			
 		},750);
+*/
 	}
 	
 	
