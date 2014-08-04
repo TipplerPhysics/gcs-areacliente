@@ -119,6 +119,7 @@ public class DemandaServlet extends HttpServlet {
 			d.setTipo(tipo);
 			d.setEstado(estado);
 			d.setGestor_it(Long.parseLong(gestor_it));
+			if (!fecha_entrada.equals(""))
 			d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada));
 			d.setFecha_solicitud_asignacion(Utils
 					.dateConverter(fecha_asignacion));

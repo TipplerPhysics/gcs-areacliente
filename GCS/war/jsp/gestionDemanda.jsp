@@ -3,6 +3,7 @@
 <div class="gestion_demanda">
 
 	<img class="users_title_icon" src="../img/user.png"><h1>Alta petición</h1>
+	<!-- <button class="btn-atras" type="button">Atrás</button>  -->
 	<hr/>
 	
 	<div class="newUserbox">
@@ -22,7 +23,7 @@
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Fecha entrada petición:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker datefuture fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
+								<input type="text" readonly="" value="" size="16" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
 							</div>
 						</div>
 						<div class="form-field">
