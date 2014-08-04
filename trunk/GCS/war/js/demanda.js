@@ -146,7 +146,7 @@ $(function() {
 	
 	function generateRowDemanda(postData, data){
 		var fecha_entrada = $('#fecha_entrada_peticion').val();
-		var cliente =  $('#cliente option:selected').val();
+		var cliente =  $('#input_cliente option:selected').text();
 		var tipo =  $('#tipo option:selected').val();
 		var estado =  $('#estado option:selected').val();
 		var cod_peticion = data.cod_peticion;
@@ -159,8 +159,8 @@ $(function() {
 		+ "<td><span>"+estado+"</span></td>"
 		+ "<td><span>"+cod_peticion+"</span></td>"
 		+ "<td><img class='vs' src='../img/vs.png'>"
-		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a>"
-		+ "<a class='lapiz' id='lapiz"+id+"' name="+id+"></a></td></tr>";
+		+ "<a class='lapiz' id='lapiz"+id+"' name="+id+"></a>"
+		+ "<a class='papelera' id='papelera"+id+"' name="+id+" data-toggle='modal' data-target='#confirm-delete'> </a></td></tr>";
 	
 	return html;
 	}

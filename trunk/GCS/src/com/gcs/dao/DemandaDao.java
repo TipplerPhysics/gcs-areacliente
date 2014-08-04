@@ -4,12 +4,11 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 
 public class DemandaDao {
 	
@@ -21,20 +20,18 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
 	public void deleteDemanda(Demanda d){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId() ) ); 
+		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId())); 
 		pm.close();
 		
 	}
 	
 	   public Demanda getDemandaById(long l) {
-           PersistenceManager pManager = PMF.get().getPersistenceManager();
-           Demanda demanda_temp = pManager.getObjectById(Demanda.class, l);
-          
-           Demanda demanda = pManager.detachCopy(demanda_temp);  
-            pManager.close();
-
-          
-           return demanda;
+	       PersistenceManager pManager = PMF.get().getPersistenceManager();
+	       Demanda demanda_temp = pManager.getObjectById(Demanda.class, l);	      
+	       Demanda demanda = pManager.detachCopy(demanda_temp);  
+	       pManager.close();
+		      
+	       return demanda;
    }
 	
 	public void  createDemanda(Demanda demanda){
@@ -44,6 +41,10 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			
 			// guarda id de peticion
 			String codPeticion = "PET_" + String.format("%07d", demanda.getSequence());
+			ClienteDao cDao = ClienteDao.getInstance();
+			Cliente c = cDao.getClienteById(demanda.getClientekey());
+			
+			demanda.setClienteName(c.getNombre());
 			demanda.setCod_peticion(codPeticion);
 			pm.makePersistent(demanda);
 		} finally{

@@ -66,6 +66,17 @@ public class Demanda {
 
 	@Persistent
 	private Long clientekey;
+	
+	@Persistent
+	private String clienteName;
+
+	public String getClienteName() {
+		return clienteName;
+	}
+
+	public void setClienteName(String clienteName) {
+		this.clienteName = clienteName;
+	}
 
 	public Key getKey() {
 		return key;

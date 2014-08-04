@@ -928,81 +928,163 @@ form .datepicker {
   background-color: #86C82D;
 }
 /* NUEVO CLIENTE  */
-.gestion_demanda .extended-row td {
+.gestion_demanda .extended-row td,
+.gestion_cliente .extended-row td {
   padding-top: 0px;
 }
-.gestion_demanda #botones_ext {
+.gestion_demanda #botones_ext,
+.gestion_cliente #botones_ext {
   text-align: right;
 }
-.gestion_demanda .usersTable > .table > #myTable .tipo_ed {
+.gestion_demanda .usersTable > .table > #myTable .tipo_ed,
+.gestion_cliente .usersTable > .table > #myTable .tipo_ed {
   position: relative;
   top: 5px;
   width: 100px;
 }
-.gestion_demanda .usersTable > .table > #myTable .estado_ed {
+.gestion_demanda .usersTable > .table > #myTable .estado_ed,
+.gestion_cliente .usersTable > .table > #myTable .estado_ed {
   position: relative;
   top: 5px;
   width: 290px;
 }
 .gestion_demanda .usersTable > .table th:nth-child(5),
-.gestion_demanda .usersTable > .table td:nth-child(5) {
+.gestion_cliente .usersTable > .table th:nth-child(5),
+.gestion_demanda .usersTable > .table td:nth-child(5),
+.gestion_cliente .usersTable > .table td:nth-child(5) {
   width: 85px;
 }
 .gestion_demanda .usersTable > .table th:nth-child(5) > input,
-.gestion_demanda .usersTable > .table td:nth-child(5) > input {
+.gestion_cliente .usersTable > .table th:nth-child(5) > input,
+.gestion_demanda .usersTable > .table td:nth-child(5) > input,
+.gestion_cliente .usersTable > .table td:nth-child(5) > input {
   position: relative;
   width: 120%;
 }
 .gestion_demanda #extended-demanda > .form-field > .fecha,
-.gestion_demanda #extended-demanda > .form-field > .tiempo {
+.gestion_cliente #extended-demanda > .form-field > .fecha,
+.gestion_demanda #extended-demanda > .form-field > .tiempo,
+.gestion_cliente #extended-demanda > .form-field > .tiempo {
   display: inline-block;
   vertical-align: text-top;
 }
 .gestion_demanda #extended-demanda > .form-field > .fecha .bootstrap-select.time,
-.gestion_demanda #extended-demanda > .form-field > .tiempo .bootstrap-select.time {
+.gestion_cliente #extended-demanda > .form-field > .fecha .bootstrap-select.time,
+.gestion_demanda #extended-demanda > .form-field > .tiempo .bootstrap-select.time,
+.gestion_cliente #extended-demanda > .form-field > .tiempo .bootstrap-select.time {
   width: 85px;
 }
-.gestion_demanda #extended-demanda > .form-field .lbl {
+.gestion_demanda #extended-demanda > .form-field .lbl,
+.gestion_cliente #extended-demanda > .form-field .lbl {
   font-weight: 100;
   margin-right: 20px;
 }
-.gestion_demanda #extended-demanda > .form-field > .fecha .lbl {
+.gestion_demanda #extended-demanda > .form-field > .fecha .lbl,
+.gestion_cliente #extended-demanda > .form-field > .fecha .lbl {
   width: 120px;
 }
-.gestion_demanda #extended-demanda > .form-field > .fecha #dp1 input {
+.gestion_demanda #extended-demanda > .form-field > .fecha #dp1 input,
+.gestion_cliente #extended-demanda > .form-field > .fecha #dp1 input {
   width: 190px;
 }
-.gestion_demanda #new-demanda-form .form-container {
+.gestion_demanda #new-demanda-form .form-container,
+.gestion_cliente #new-demanda-form .form-container,
+.gestion_demanda #new-client-form .form-container,
+.gestion_cliente #new-client-form .form-container {
   text-align: left;
 }
-.gestion_demanda #new-demanda-form .form-container .form-field-divider {
+.gestion_demanda #new-demanda-form .form-container .form-field-divider,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider,
+.gestion_demanda #new-client-form .form-container .form-field-divider,
+.gestion_cliente #new-client-form .form-container .form-field-divider {
   vertical-align: top;
   display: inline-block;
   width: 50%;
   padding-left: 10px;
 }
-.gestion_demanda #new-demanda-form .form-container .form-field-divider.left {
+.gestion_demanda #new-demanda-form .form-container .form-field-divider.left,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider.left,
+.gestion_demanda #new-client-form .form-container .form-field-divider.left,
+.gestion_cliente #new-client-form .form-container .form-field-divider.left {
   padding-left: 40px;
 }
-.gestion_demanda #new-demanda-form .form-container .form-field-divider.right {
+.gestion_demanda #new-demanda-form .form-container .form-field-divider.right,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider.right,
+.gestion_demanda #new-client-form .form-container .form-field-divider.right,
+.gestion_cliente #new-client-form .form-container .form-field-divider.right {
   padding-right: 40px;
 }
-.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field {
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field {
   display: block;
   width: 100%;
 }
-.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .lbl {
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .lbl,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .lbl,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .lbl,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .lbl {
   position: inherit;
   top: 0;
   left: 0;
 }
-.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .input {
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .input,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .input,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .input,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .input {
   vertical-align: top;
   display: inline-block;
   width: 250px;
 }
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-div,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-div,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-div,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-div {
+  text-align: center;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container {
+  display: inline-block;
+  width: 32%;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container label,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container label,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container label,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container label {
+  color: #434a58;
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+  margin-right: 10px;
+  font-weight: 100;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field {
+  display: inline-block;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field input,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field input,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field input,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field input {
+  margin-right: 5px;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field span,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field span,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field span,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field span {
+  margin-right: 20px;
+  color: #434a58;
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+}
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl,
-.gestion_demanda #extended-demanda > .form-field .lbl {
+.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl,
+.gestion_demanda #extended-demanda > .form-field .lbl,
+.gestion_cliente #extended-demanda > .form-field .lbl {
   width: 100px;
   margin-right: 20px;
   color: #434a58;
@@ -1012,7 +1094,9 @@ form .datepicker {
   text-align: left;
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl.time-span,
-.gestion_demanda #extended-demanda > .form-field .lbl.time-span {
+.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl.time-span,
+.gestion_demanda #extended-demanda > .form-field .lbl.time-span,
+.gestion_cliente #extended-demanda > .form-field .lbl.time-span {
   display: inline-block;
   margin-left: 20px;
   margin-right: 17px;
@@ -1020,49 +1104,64 @@ form .datepicker {
   top: -5px;
   width: 5px;
 }
-.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time {
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time,
+.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time {
   width: 118px !important;
   display: inline-block;
 }
-.gestion_demanda .form-field.textarea textarea {
+.gestion_demanda .form-field.textarea textarea,
+.gestion_cliente .form-field.textarea textarea {
   height: 80px;
 }
-.gestion_demanda .form-field.double > div > .bootstrap-select {
+.gestion_demanda .form-field.double > div > .bootstrap-select,
+.gestion_cliente .form-field.double > div > .bootstrap-select {
   width: 247px !important;
 }
 .gestion_demanda .form-field .fecha,
-.gestion_demanda .form-field .tiempo {
+.gestion_cliente .form-field .fecha,
+.gestion_demanda .form-field .tiempo,
+.gestion_cliente .form-field .tiempo {
   height: 45px;
 }
 .gestion_demanda .form-field .fecha .bootstrap-select.time:first-child,
-.gestion_demanda .form-field .tiempo .bootstrap-select.time:first-child {
+.gestion_cliente .form-field .fecha .bootstrap-select.time:first-child,
+.gestion_demanda .form-field .tiempo .bootstrap-select.time:first-child,
+.gestion_cliente .form-field .tiempo .bootstrap-select.time:first-child {
   margin-left: 20px;
 }
 .gestion_demanda .form-field .fecha > span:first-child,
-.gestion_demanda .form-field .tiempo > span:first-child {
+.gestion_cliente .form-field .fecha > span:first-child,
+.gestion_demanda .form-field .tiempo > span:first-child,
+.gestion_cliente .form-field .tiempo > span:first-child {
   position: relative;
   top: -16px;
 }
 .gestion_demanda .form-field .fecha > .add-on,
-.gestion_demanda .form-field .tiempo > .add-on {
+.gestion_cliente .form-field .fecha > .add-on,
+.gestion_demanda .form-field .tiempo > .add-on,
+.gestion_cliente .form-field .tiempo > .add-on {
   display: inline-block;
   left: 206px;
   position: relative;
   top: -30px;
   width: 40px;
 }
-.gestion_demanda .form-field .tiempo span.lbl {
+.gestion_demanda .form-field .tiempo span.lbl,
+.gestion_cliente .form-field .tiempo span.lbl {
   display: inline-block !important;
   top: 0px !important;
 }
-.gestion_demanda .gestion_demanda .extended-row .form-field .fecha > .date > .add-on {
+.gestion_demanda .gestion_demanda .extended-row .form-field .fecha > .date > .add-on,
+.gestion_cliente .gestion_demanda .extended-row .form-field .fecha > .date > .add-on {
   top: -1px;
   left: -14px;
 }
-.gestion_demanda .gestion_demanda .extended-row .form-field .fecha .lbl {
+.gestion_demanda .gestion_demanda .extended-row .form-field .fecha .lbl,
+.gestion_cliente .gestion_demanda .extended-row .form-field .fecha .lbl {
   top: 5px;
 }
-.gestion_demanda .gestion_demanda .extended-row .form-field .tiempo > .lbl {
+.gestion_demanda .gestion_demanda .extended-row .form-field .tiempo > .lbl,
+.gestion_cliente .gestion_demanda .extended-row .form-field .tiempo > .lbl {
   margin-right: 0 !important;
   width: 73px !important;
 }
