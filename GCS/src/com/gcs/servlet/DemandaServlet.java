@@ -299,14 +299,21 @@ public class DemandaServlet extends HttpServlet {
 				s.addCell(new Label(6, aux, d.getMotivo_catalogacion()));
 				s.addCell(new Label(7, aux, d.getComentarios()));
 
-				u = uDao.getUserbyId(d.getGestor_negocio());
-				s.addCell(new Label(8, aux, u.getNombre() + " "
-						+ u.getApellido1() + " " + u.getApellido2()));
+				if (d.getGestor_negocio()!=null){
+					u = uDao.getUserbyId(d.getGestor_negocio());
+					
+					s.addCell(new Label(8, aux, u.getNombre() + " "
+							+ u.getApellido1() + " " + u.getApellido2()));
+				}
+				
 
 				s.addCell(new Label(9, aux, d
 						.getStr_fecha_solicitud_asignacion()));
 				s.addCell(new Label(10, aux, d.getHora_solicitud_asignacion()));
-				s.addCell(new Label(11, aux, d.getDevuelta().toString()));
+				if (d.getDevuelta().toString().equals(true))
+					s.addCell(new Label(11, aux, "Si"));
+				else
+					s.addCell(new Label(11, aux, "No"));
 
 				u = uDao.getUserbyId(d.getGestor_it());
 				s.addCell(new Label(12, aux, u.getNombre() + " "
