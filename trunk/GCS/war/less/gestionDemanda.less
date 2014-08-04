@@ -1,11 +1,6 @@
 /* NUEVO CLIENTE  */
 
 .gestion_demanda, .gestion_cliente{
-
-	.extended-row td{
-		padding-top:0px;
-	}
-
 	#botones_ext{
 		text-align:right;	
 	}
@@ -46,20 +41,10 @@
 	}
 	
 	#extended-demanda > .form-field .lbl
-	 {
-	 font-weight:100;
-	 margin-right:20px;
-	 }
-	 
-	 #extended-demanda > .form-field > .fecha{
-	 	.lbl{
-		 	width:120px;
-		 } 
-		 
-		#dp1 input{
-			width:190px;
-		}
-	 } 
+	{
+		font-weight:100;
+		margin-right:20px;
+	}
 	 
 	#new-demanda-form .form-container,
 	#new-client-form .form-container
@@ -83,6 +68,7 @@
 					position: inherit;
 					top: 0;
 					left: 0;
+					margin-right: 10px;
 				}
 				.input {
 					vertical-align: top;
@@ -127,22 +113,33 @@
 		}
 	}
 	.newUserbox .new-user-form-holder .form-container .form-field  .lbl,
-	#extended-demanda > .form-field .lbl {
-		width:100px;
-		margin-right:20px;	
-		color: #434a58;		 
-	    display: inline-block;
-	    font-family: "BBVA Web Light";
-	    font-size: 12px;
-	    text-align: left;
-		
-		&.time-span{
+	#extended-demanda > .form-field {
+		margin-bottom: 20px;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		.lbl {
+			width:110px;
+			margin-right:10px;	
+			color: #434a58;		 
 			display: inline-block;
-		    margin-left: 20px;
-		    margin-right: 17px;
-		    position: relative;
-		    top: -5px;
-		    width: 5px;
+			font-family: "BBVA Web Light";
+			font-size: 12px;
+			text-align: left;
+			
+			&.time-span {
+				display: inline-block;
+			    margin-left: 20px;
+			    margin-right: 17px;
+			    position: relative;
+			    top: -5px;
+			    width: 5px;
+			}
+		}
+		.tiempo {
+			.lbl {
+				width: 80px;
+			}
 		}
 	}
 	
@@ -161,50 +158,31 @@
 		width: 247px !important;	
 	}
 	
-	.form-field .fecha , .form-field .tiempo{	 
-	 
-	 	.bootstrap-select.time:first-child{
-	 		margin-left:20px;
-	 	}
-	 
-	 	height:45px;	
-	
-		> span:first-child {
-			position: relative;
-			top: -16px;
-		}	
-		
-		> .add-on{
+	.form-field {
+		.input {
+			vertical-align: top;
 			display: inline-block;
-		    left: 206px;
-		    position: relative;
-		    top: -30px;
-		    width: 40px;
+			width: 110px;
+			margin-right: 20px;
+			&.long {
+				width: 320px;
 			}
 		}
+		.fecha , .form-field .tiempo{	 
+			height:45px;
 
-	.form-field .tiempo span.lbl{
-	 		display:inline-block !important;
-	 		top:0px !important;
-	 	}
+		 	.bootstrap-select.time:first-child{
+		 		margin-left:20px;
+		 	}
 
-	.gestion_demanda .extended-row .form-field{
-		 .fecha{
-		
-			> .date > .add-on{
-				top: -1px;
-				left: -14px;
+			> .add-on{
+				display: inline-block;
+				left: 206px;
+				position: relative;
+				top: -30px;
+				width: 40px;
 			}
 			
-			.lbl {
-				top:5px;
-			}
-		} 
-		.tiempo{
-			> .lbl{
-				margin-right: 0 !important;
-				width: 73px !important;
-			}
 		}
 	}
 }
