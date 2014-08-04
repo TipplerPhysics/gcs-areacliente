@@ -87,7 +87,7 @@ $(function() {
 						perPage : 5
 					});
 				});
-				$('#confirm-delete').modal('hide');			        	
+				$('#confirm-delete').modal('hide');	        	
 			}
 		});
 	});

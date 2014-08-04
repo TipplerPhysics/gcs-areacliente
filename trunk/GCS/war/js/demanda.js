@@ -74,7 +74,15 @@ $(function() {
 				data : postData,
 				success:function(data, textStatus, jqXHR) 
 				{
-					$('#row'+id).fadeOut("slow");
+					$('#row'+id).fadeOut("fast", function(){
+						$(this).remove();
+						$('#myTable').paginateMe({
+							pagerSelector : '#myPager',
+							showPrevNext : true,
+							hidePageNumbers : false,
+							perPage : 5
+						});
+					});
 					$('#confirm-delete').modal('hide');
 				}
 			});
@@ -87,9 +95,7 @@ $(function() {
 		
 		var motivo_catalogacion = $('#motivo_catalogacion').val();
 		var comentarios = $('#comentarios').val();
-		
-	
-		
+
 		params = "&motivo_calogacion=" + motivo_catalogacion + "&comentarios=" + comentarios;
 		
 		return params;
@@ -212,7 +218,7 @@ $(function() {
 			initForms();
 			initValidator();
 			// Click event for the cancel button.
-			$editForm.on('click.close-form', '.cancelar-ext', function (e) {
+			$editForm.on('click', '.cancelar-ext', function (e) {
 				$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 				$currentOpenEdit.remove();
 				return false;
@@ -220,71 +226,34 @@ $(function() {
 			// Click event for the save button.
 			$editForm.on('click', '.guardar-ext', function (e) {
 				if($editForm.valid()){
+					var $editItemHolder = $(this).closest('#edit-item-holder');
+					// Collect all the information.
+					var id= $editItemHolder.data('row-id');
+					var fecha_entrada_peticion = $editItemHolder.find('input#fecha_entrada_peticion_ed').val();
+					var input_cliente = $('#input_cliente_ed option:selected').val();
+					var input_tipo = $('#input_tipo_ed option:selected').val();
+					var input_estado = $('#input_estado_ed option:selected').val();
+					var gestor_it = $('#gestor_it_ed option:selected').val();
+					var fecha_solicitud_asignacion = $editItemHolder.find('input#fecha_solicitud_asignacion_ed').val();
+					var hora_peticion = $('#hora_peticion_ed option:selected').val();
+					var min_peticion = $('#min_peticion_ed option:selected').val();
+					
+					var postData = "fecha_entrada="+fecha_entrada_peticion+"&cliente="+input_cliente+"&tipo="+input_tipo+"&estado="+input_estado+"&gestor_it="+gestor_it+"&fecha_asignacion="+fecha_solicitud_asignacion+"&hora_peticion_ext="+hora_peticion+"&accion=update&min_peticion_ext="+min_peticion+"&id="+id;
+					var formURL = "/demandaServlet";
 
+					$.ajax({
+						url : formURL,
+						type: "POST",
+						data : postData,
+						success:function(data, textStatus, jqXHR) {
+							location.reload();
+						}
+					});
 				}
 				return false;
 			});
 		});
-/*
-		var celdas = $('#row'+id).children();
-		cnombre = $(celdas[0]).children().html();
-
-		for (var a =0; celdas.length-5 >= a;a++){
-			var $celda = $(celdas[a]);
-			var span = $celda.children().html();
-			$celda.children().remove();
-			if (span.indexOf('&amp;')!=-1){
-				span = span.replace('&amp;','&');
-			}
-			$celda.prepend("<input type='text' class='edit_input col"+id+"' value='" + span +"'>");
-		}
-		// TIPO
-		var $celda = $(celdas[2]);
-		tipoini = $celda.children().html();
-		$celda.children().remove();
-		$celda.prepend("<select name='tipo_ed' id='tipo_ed' class='selectpicker tipo_ed'>" +
-				"<option value='CIB'>CIB</option>" +
-				"<option value='BEC'>BEC</option></select>");
-		
-		$('#tipo_ed').val(tipoini);
-		
-		// ESTADO
-		
-		$celda = $(celdas[3]);
-		estadoini = $celda.children().html();
-		$celda.children().remove();
-		$celda.prepend("<select name='estado_ed' id='estado_ed' class='selectpicker estado_ed'>" +opciones_estado + "</select>");			
-		
-		$('#estado_ed').val(estadoini);
-		
-		setTimeout(function(){
-			
-			//$('#dp1').datepicker();
-			$('#fecha_entrada_peticion_ext').val($('#row'+id).attr('data-fecha-entrada'));
-			
-			var gestores_it = $('#row'+id).attr('data-gestores-list').split("-");
-			var ges_it = $('#row'+id).attr('data-gestor-asig').split("-");
-			var data_time = $('#row'+id).attr('data-hora-entrada').split("-")[0];
-			var hora = data_time.split(":")[0];
-			var minutos = data_time.split(":")[1];
-			var $gestoresSelect = $('#gestor_it_ext');
-
-			for (var a=0; a<gestores_it.length-1; a++){
-				var gestor_name = gestores_it[a].split("(")[0];
-				var gestor_id = gestores_it[a].split("(")[1].split(")")[0];
-				$gestoresSelect.append("<option value='"+gestor_id+"'>"+gestor_name+"</option>")
-			}
-			
-			$('.selectpicker').selectpicker('refresh');
-			$('#gestor_it_ext').val(ges_it);
-			$('#hora_peticion_ext').val(hora);
-			$('#min_peticion_ext').val(minutos);
-			$('.selectpicker').selectpicker('render');
-		},750);
-*/
 	}
-	
-	
 	
 $("#submit_demanda_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
