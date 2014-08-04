@@ -121,6 +121,7 @@ public class DemandaServlet extends HttpServlet {
 			d.setGestor_it(Long.parseLong(gestor_it));
 			if (!fecha_entrada.equals(""))
 			d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada));
+			if (!fecha_asignacion.equals(""))
 			d.setFecha_solicitud_asignacion(Utils
 					.dateConverter(fecha_asignacion));
 			d.setHora_entrada_peticion(hora_peticion_ext + ":"
