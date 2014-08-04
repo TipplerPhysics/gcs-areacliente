@@ -1,6 +1,6 @@
 /* NUEVO CLIENTE  */
 
-.gestion_demanda{
+.gestion_demanda, .gestion_cliente{
 
 	.extended-row td{
 		padding-top:0px;
@@ -60,7 +60,10 @@
 			width:190px;
 		}
 	 } 
-	#new-demanda-form .form-container{
+	 
+	#new-demanda-form .form-container,
+	#new-client-form .form-container
+	{
 		text-align: left;
 		.form-field-divider {
 			vertical-align: top;
@@ -86,6 +89,40 @@
 					display: inline-block;
 					width: 250px;
 				}
+				
+				.radio-div {
+				
+					text-align:center;
+				
+					> .radio-container{
+						display:inline-block;
+						width:32%;
+						
+						label{
+							color: #434a58;
+							font-family:"BBVA Web Light";
+							font-size:12px;
+							margin-right:10px;
+							font-weight:100;
+						}
+					}
+				}
+				
+				.radio-field{
+				
+					display:inline-block;
+					
+					input{
+						margin-right:5px;
+					}
+				
+					span{
+						margin-right:20px;
+						color: #434a58;
+						font-family:"BBVA Web Light";
+						font-size:12px;
+					}
+				} 
 			}
 		}
 	}

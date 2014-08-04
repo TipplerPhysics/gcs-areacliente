@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.gcs.beans.Cliente;
-import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -17,23 +16,31 @@ public class DefaultConf extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
 		JSONObject json = new JSONObject();
+		
+		String accion = req.getParameter("accion");
+		
 
 		try {
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 
 			if (sesionpermiso == 1) {
-				json.append("failure", "true");
 				
-				/* Crea cliente de prueba */
-				ClienteDao cDao = ClienteDao.getInstance();				
-				Cliente cliente = new Cliente("Cliente","De", "Prueba", "deprueba@gmail.com");			
-				cDao.createCliente(cliente);				
+				if ("def_user".equals(accion)){
+					/* Crea cliente de prueba */
+					ClienteDao cDao = ClienteDao.getInstance();				
+					Cliente cliente = new Cliente("Cliente de Prueba", "deprueba@gmail.com");			
+					cDao.createCliente(cliente);	
+				}
+				
+			
+				
+				json.append("success", "true");
 				
 			} else {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operación");
+						"No tienes los permisos para realizar esta operaciï¿½n");
 			}
 			resp.setCharacterEncoding("UTF-8");
 			resp.setContentType("application/json");

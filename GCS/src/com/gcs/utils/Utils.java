@@ -32,7 +32,7 @@ public class Utils {
 	
 	public static Date dateConverter(String cadena) throws ParseException{
 		DateFormat formatter = null;
-		formatter = new SimpleDateFormat("dd-MM-yyyy");
+		formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date convertedDate = (Date) formatter.parse(cadena);
         
         return convertedDate;

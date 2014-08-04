@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -37,5 +38,16 @@ public class ClienteDao {
 
 		return clientes;
 	}
+	
+	   public Cliente getClienteById(long l) {
+           PersistenceManager pManager = PMF.get().getPersistenceManager();
+           Cliente cliente_temp = pManager.getObjectById(Cliente.class, l);
+          
+           Cliente cliente = pManager.detachCopy(cliente_temp);  
+            pManager.close();
+
+          
+           return cliente;
+   }
 
 }

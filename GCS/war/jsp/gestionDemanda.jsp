@@ -47,7 +47,7 @@
 								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
 									<option value="default">Seleccionar...</option>
 									<c:forEach items="${clientes}" var="cliente">	
-										<option value="${cliente.key.id}">${cliente.nombre} ${cliente.apellido1} ${cliente.apellido2}</option>
+										<option value="${cliente.key.id}">${cliente.nombre}</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -198,9 +198,9 @@
 
 							<c:otherwise>
 								<c:forEach items="${demandaList}" var="demanda">
-									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-entrada="${demanda.str_fecha_entrada_peticion}" data-hora-entrada="${demanda.hora_entrada_peticion}" data-gestor-asig="${demanda.gestor_it}" data-gestores-list="${gestoresStr}">
+									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-entrada="${demanda.str_fecha_entrada_peticion}" data-hora-entrada="${demanda.hora_entrada_peticion}" data-gestor-asig="${demanda.gestor_it}">
 										<td><span>${demanda.str_fecha_entrada_peticion}</span></td>
-										<td><span>${demanda.clientekey}</span></td>
+										<td><span>${demanda.clienteName}</span></td>
 										<td><span>${demanda.tipo}</span></td>
 										<td><span>${demanda.estado}</span></td>
 										<td><span>${demanda.cod_peticion}</span></td>
