@@ -3,6 +3,7 @@ package com.gcs.servlet;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -127,7 +128,7 @@ public class DemandaServlet extends HttpServlet {
 			d.setHora_entrada_peticion(hora_peticion_ext + ":"
 					+ min_peticion_ext);
 
-			dDao.createDemandaAndIncreaseCount(d);
+			dDao.createDemanda(d);
 
 			json.append("success", "true");
 			json.append("id", d.getKey().getId());
@@ -144,6 +145,18 @@ public class DemandaServlet extends HttpServlet {
 	private void createDemanda(HttpServletRequest req, HttpServletResponse resp)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
+		
+		Date fecha_comunicacion = new Date();
+		
+		String hora_hora = String.valueOf(fecha_comunicacion.getHours());
+		if (hora_hora.length()==1)
+			hora_hora = "0" + hora_hora;
+		
+		String min_min = String.valueOf(fecha_comunicacion.getMinutes());
+		if (min_min.length()==1)
+			min_min = "0" + min_min;
+		
+		String hora_comunicacion = hora_hora +":"+ min_min;
 
 		Demanda d = new Demanda();
 
@@ -177,6 +190,16 @@ public class DemandaServlet extends HttpServlet {
 
 			DemandaDao dDao = DemandaDao.getInstance();
 
+			d.setFecha_comunicacion(fecha_comunicacion);
+			String dia_com = String.valueOf(fecha_comunicacion.getDay());
+			if (dia_com.length()==1)
+				dia_com = "0"+dia_com;
+			String mes_com = String.valueOf(fecha_comunicacion.getMonth()+1);
+			if (mes_com.length()==1)
+				mes_com = "0"+mes_com;
+			String anio = String.valueOf(fecha_comunicacion.getYear()+1900);
+			d.setStr_fecha_comunicacion(dia_com+"/"+mes_com+"/"+anio);
+			d.setHora_comunicacion(hora_comunicacion);
 			d.setCatalogacion(catalogacion_peticion);
 			d.setComentarios(comentarios);
 			d.setDevuelta(devBool);
@@ -266,6 +289,8 @@ public class DemandaServlet extends HttpServlet {
 			s.setColumnView(11, 15);
 			s.setColumnView(12, 30);
 			s.setColumnView(13, 30);
+			s.setColumnView(14, 30);
+			s.setColumnView(15, 30);
 			s.setRowView(0, 900);
 
 			s.addCell(new Label(0, 0, "COD_PETICION", cellFormat));
@@ -276,15 +301,14 @@ public class DemandaServlet extends HttpServlet {
 			s.addCell(new Label(5, 0, "HORA ENTRADA", cellFormat));
 			s.addCell(new Label(6, 0, "MOTIVO DE CATALOGACION", cellFormat));
 			s.addCell(new Label(7, 0, "COMENTARIOS", cellFormat));
-
 			s.addCell(new Label(8, 0, "GESTOR DE NEGOCIO", cellFormat));
-
 			s.addCell(new Label(9, 0, "FECHA DE SOLICITUD", cellFormat));
 			s.addCell(new Label(10, 0, "HORA DE SOLICITUD", cellFormat));
 			s.addCell(new Label(11, 0, "DEVUELTA", cellFormat));
 			s.addCell(new Label(12, 0, "GESTOR IT", cellFormat));
-			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",
-					cellFormat));
+			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",cellFormat));
+			s.addCell(new Label(14, 0, "FECHA COMUNICACION", cellFormat));
+			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));
 
 			UserDao uDao = UserDao.getInstance();
 			User u = new User();
@@ -323,6 +347,8 @@ public class DemandaServlet extends HttpServlet {
 						+ u.getApellido1() + " " + u.getApellido2()));
 
 				s.addCell(new Label(13, aux, d.getCatalogacion()));
+				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
+				s.addCell(new Label(15,aux,d.getHora_comunicacion()));
 
 				aux++;
 			}

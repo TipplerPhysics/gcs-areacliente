@@ -23,7 +23,9 @@ public class Utils {
 			break;
 		case 5: s="Gestor IT";
 			break;
-		case 6: s="Consulta";
+		case 6: s="Gestor Negocio";
+			break;
+		case 7: s="Consulta";
 			break;
 		}
 		

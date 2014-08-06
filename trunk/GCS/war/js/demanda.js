@@ -297,7 +297,7 @@ $("#submit_demanda_form").on('click',function(e) {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("La petición ha ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
+					$('#span_message').html("La petici&oacute;n ha ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
 					$('#message_div').css('display','block');
 					
 					resetForm($form);
