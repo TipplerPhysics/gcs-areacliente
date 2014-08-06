@@ -3,6 +3,7 @@ package com.gcs.dao;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.ContadorDemanda;
@@ -49,13 +50,17 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 		Integer count = cdDao.getContadorValue();
 		
-		// guarda id de peticion
-		String codPeticion = "PET_" + String.format("%07d", count);
+		// guarda id de peticion si no existe
+		if (demanda.getKey()==null){
+			String codPeticion = "PET_" + String.format("%07d", count);
+			demanda.setCod_peticion(codPeticion);
+		}
+		
 		ClienteDao cDao = ClienteDao.getInstance();
 		Cliente c = cDao.getClienteById(demanda.getClientekey());
 		
 		demanda.setClienteName(c.getNombre());
-		demanda.setCod_peticion(codPeticion);
+		
 		
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
@@ -77,8 +82,9 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		List<Demanda> demandas;		
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
-		String queryStr = "select from " + Demanda.class.getName();		
-		demandas = (List<Demanda>) pm.newQuery(queryStr).execute();
+		Query q = pm.newQuery("select from " + Demanda.class.getName());		
+		q.setOrdering("fecha_entrada_peticion desc");
+		demandas = (List<Demanda>) q.execute();
 		
 		return demandas;
 	}

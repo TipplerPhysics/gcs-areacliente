@@ -59,7 +59,7 @@
 							<div class="input">
 								<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">
 								    <option value="default" selected>Seleccionar</option>
-									<c:forEach items="${gestores_demanda}" var="user">	
+									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 									</c:forEach>					
 								</select>
@@ -89,7 +89,6 @@
 							<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
-									<option value="default">Seleccionar...</option>
 									<option value="Pendiente de asignación">Pendiente de asignación</option>
 									<option value="Asignada">Asignada</option>
 									<option value="Devuelta">Devuelta</option>
@@ -182,7 +181,7 @@
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
 						<tr>
-							<th class="search-th"><input class="search col0"></th>
+							<th class="search-th"><input class="search col0 search_anywhere"></th>
 							<th class="search-th"><input class="search col1"></th>
 							<th class="search-th"><input class="search col2"></th>
 							<th class="search-th"><input class="search col3"></th>

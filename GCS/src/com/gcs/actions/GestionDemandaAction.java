@@ -28,6 +28,7 @@ public class GestionDemandaAction extends Action {
 		ClienteDao cDao = ClienteDao.getInstance();
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
 		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
+		List<User> gestores_negocio = uDao.getUsersByPermisoStr(6);
 		List<Cliente> clientes = cDao.getAllCliente();
 
 		String gestoresStr = "";
@@ -45,6 +46,8 @@ public class GestionDemandaAction extends Action {
 		req.setAttribute("gestores_demanda", gestores_demanda);
 		req.setAttribute("gestores_it", gestores_it);
 		req.setAttribute("gestoresStr", gestoresStr);
+		
+		req.setAttribute("gestores_negocio", gestores_negocio);
 
 		req.setAttribute("horasList", Utils.getHorasList());
 		req.setAttribute("minutosList", Utils.getMinutosList());

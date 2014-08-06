@@ -332,7 +332,7 @@ $("#submit_demanda_form").on('click',function(e) {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("La petición ha ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
+					$('#span_message').html("La petici&oacute;n ha ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
 					$('#message_div').css('display','block');
 					
 					resetForm($form);
@@ -614,11 +614,19 @@ $(function() {
 				if ($(this).val().length != 0) {
 					var text = normalize($(this).val().toLowerCase());
 					var columna = $(this).attr("class").split("col")[1];
+					if ($(this).hasClass('search_anywhere'))
+						columna = columna.split(" ")[0];
 				    var cont = $($linea.children()[columna]).children().html().toLowerCase();
 				    var textLength = text.length;
-				    if(text != cont.substring(0, textLength)){
-				    	isValid = false;
-					}
+				    if (!$(this).hasClass('search_anywhere')){
+				    	if(text != cont.substring(0, textLength)){
+					    	isValid = false;
+						}
+				    }else{
+				    	if(cont.indexOf(text)==-1){
+					    	isValid = false;
+						}
+				    }				    
 				}
 			});
 

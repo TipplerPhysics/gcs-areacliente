@@ -7,7 +7,8 @@ public class StaticConfig {
 
 	static public ArrayList<Config> permisos =
 			new ArrayList<Config>(Arrays.asList(
-					new Config("6", "Consulta"),
+					new Config("7", "Consulta"),
+					new Config("6", "Gestor Negocio"),
 					new Config("5", "Gestor IT"),
 					new Config("4", "Gestor Demanda"),
 					new Config("3", "User Admin"),
