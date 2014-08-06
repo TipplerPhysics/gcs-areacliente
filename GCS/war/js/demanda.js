@@ -136,10 +136,17 @@ $(function() {
 		var cliente =  $('#input_cliente option:selected').text();
 		var tipo =  $('#tipo option:selected').val();
 		var estado =  $('#estado option:selected').val();
+		var gestor =  $('#gestor_it option:selected').val();
+		var fecha = $('#fecha_entrada_peticion').val();
+		
+		var hora = $('#hora_peticion option:selected').val() +  ":" + $('#min_peticion option:selected').val();
+			
+			
+			
 		var cod_peticion = data.cod_peticion;
 		var id = data.id;
 		
-		var html = "<tr id=row"+id+" class='valid-result'>"
+		var html = "<tr id=row"+id+" class='valid-result' data-gestor-asig="+ gestor+ " data-hora-comun="+hora+" data-fecha-comun="+fecha+">"
 		+ "<td><span>"+fecha_entrada+"</span></td>"
 		+ "<td><span>"+cliente+"</span></td>"
 		+ "<td><span>"+tipo+"</span></td>"
@@ -207,7 +214,7 @@ $(function() {
 
 			// If it has a fecha it might have a time too.
 			if(fechaComun.length > 0) {
-				fecha_solicitud_asignacion_ed.val(fechaComun);
+				$('#fecha_solicitud_asignacion_ed').val(fechaComun);
 				$editForm.find('select#hora_peticion_ed').val(horaComun.substring(0, 2));
 				$editForm.find('select#min_peticion_ed').val(horaComun.substring(3, 5));
 			}
@@ -290,7 +297,7 @@ $("#submit_demanda_form").on('click',function(e) {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El usuario ha sido creado de forma correcta con el código de petición num: " + data.cod_peticion);
+					$('#span_message').html("La petición ha ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
 					$('#message_div').css('display','block');
 					
 					resetForm($form);

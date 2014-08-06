@@ -4,6 +4,7 @@
 
 	<img class="users_title_icon" src="../img/user.png"><h1>Alta petición</h1>
 	<!-- <button class="btn-atras" type="button">Atrás</button>  -->
+	<img src="../img/bot-Inicio.png" class="btn-atras" onclick="window.location.href='../../'">
 	<hr/>
 	
 	<div class="newUserbox">

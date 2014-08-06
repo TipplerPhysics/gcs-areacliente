@@ -127,7 +127,7 @@ public class DemandaServlet extends HttpServlet {
 			d.setHora_entrada_peticion(hora_peticion_ext + ":"
 					+ min_peticion_ext);
 
-			dDao.createDemanda(d);
+			dDao.createDemandaAndIncreaseCount(d);
 
 			json.append("success", "true");
 			json.append("id", d.getKey().getId());
@@ -206,7 +206,7 @@ public class DemandaServlet extends HttpServlet {
 				d.setClientekey(Long.parseLong(cliente));
 			}
 
-			dDao.createDemanda(d);
+			dDao.createDemandaAndIncreaseCount(d);
 
 			json.append("success", "true");
 			json.append("id", d.getKey().getId());
@@ -292,8 +292,9 @@ public class DemandaServlet extends HttpServlet {
 			int aux = 1;
 
 			for (Demanda d : demandas) {
+				
 				s.addCell(new Label(0, aux, d.getCod_peticion()));
-				s.addCell(new Label(1, aux, d.getClientekey().toString()));
+				s.addCell(new Label(1, aux, d.getClienteName()));
 				s.addCell(new Label(2, aux, d.getTipo()));
 				s.addCell(new Label(3, aux, d.getEstado()));
 				s.addCell(new Label(4, aux, d.getStr_fecha_entrada_peticion()));

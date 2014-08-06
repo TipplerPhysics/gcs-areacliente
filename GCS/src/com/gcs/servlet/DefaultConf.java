@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.ContadorDemanda;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorDemandaDao;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class DefaultConf extends HttpServlet {
@@ -31,11 +33,17 @@ public class DefaultConf extends HttpServlet {
 					ClienteDao cDao = ClienteDao.getInstance();				
 					Cliente cliente = new Cliente("Cliente de Prueba", "deprueba@gmail.com");			
 					cDao.createCliente(cliente);	
+					json.append("success", "true");
+				}else if ("def_counter".equals(accion)){
+					ContadorDemanda cd = new ContadorDemanda(1);
+					ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
+					cdDao.createContador(cd);	
+					json.append("success", "true");
 				}
 				
 			
 				
-				json.append("success", "true");
+				
 				
 			} else {
 				json.append("failure", "true");
