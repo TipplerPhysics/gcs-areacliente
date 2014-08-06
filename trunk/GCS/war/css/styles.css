@@ -164,16 +164,14 @@ textarea:focus {
   background-color: #fffff5;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset, 0 0 0 2px #def4fb;
 }
-btn.btn-atras {
-  background-image: url("img/buttons-arrow.png");
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  content: "";
-  height: 30px;
-  left: -10px;
-  position: absolute;
-  top: -1px;
-  width: 10px;
+.btn-atras {
+  cursor: pointer;
+}
+.gestion_demanda .btn-atras {
+  margin-left: 70%;
+}
+.alta_usuario .btn-atras {
+  margin-left: 60%;
 }
 .radio-container {
   position: relative;
@@ -1185,6 +1183,10 @@ form .datepicker {
   position: relative;
   top: -30px;
   width: 40px;
+}
+.gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field > span,
+.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field > span {
+  width: 94px;
 }
 form #error-messages {
   margin-bottom: 10px;

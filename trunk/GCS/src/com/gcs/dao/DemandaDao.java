@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.ContadorDemanda;
 import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
@@ -33,20 +34,39 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		      
 	       return demanda;
    }
+	   
+	public void createDemandaAndIncreaseCount(Demanda demanda){
+		
+			createDemanda(demanda);
+			ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();			
+			cdDao.increaseCont();
+		
+		
+	}
 	
 	public void  createDemanda(Demanda demanda){
+		
+		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
+		Integer count = cdDao.getContadorValue();
+		
+		// guarda id de peticion
+		String codPeticion = "PET_" + String.format("%07d", count);
+		ClienteDao cDao = ClienteDao.getInstance();
+		Cliente c = cDao.getClienteById(demanda.getClientekey());
+		
+		demanda.setClienteName(c.getNombre());
+		demanda.setCod_peticion(codPeticion);
+		
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		try {
+			
+			
+			
 			pm.makePersistent(demanda);
 			
-			// guarda id de peticion
-			String codPeticion = "PET_" + String.format("%07d", demanda.getSequence());
-			ClienteDao cDao = ClienteDao.getInstance();
-			Cliente c = cDao.getClienteById(demanda.getClientekey());
+		
 			
-			demanda.setClienteName(c.getNombre());
-			demanda.setCod_peticion(codPeticion);
-			pm.makePersistent(demanda);
 		} finally{
 			pm.close();
 		}
