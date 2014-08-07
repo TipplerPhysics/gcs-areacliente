@@ -11,7 +11,7 @@
 		</button>
 		
 		<button id="newProjectButton">
-			Alta Proyecto<a class="demanda_span"></a>
+			Alta Proyecto<a class="proyecto_span"></a>
 		</button>		
 		
 		<button id="excel_btn" onclick="window.location.href='../../?accion=xls'">
@@ -20,7 +20,7 @@
 
 
 		<div class="new-user-form-holder">
-			<form id="new-client-form" name="new-client-form" action="/demandaServlet"
+			<form id="new-client-form" name="new-client-form" action="/clienteServlet"
 				method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
@@ -32,23 +32,16 @@
 						</div>						
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
-							<div class="input">
-								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
-									<option value="default">Seleccionar...</option>
-									<c:forEach items="${clientes}" var="cliente">	
-										<option value="${cliente.key.id}">${cliente.nombre} ${cliente.apellido1} ${cliente.apellido2}</option>
-									</c:forEach>
-								</select>
-							</div>
+							<input type="text" aria-required="true" required="" id="client_name" name="client_name" class="long">
 						</div>
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
 							<div class="input">
-								<select class="selectpicker" id="tipo" name="tipo">
-								    <option value="default" selected>Seleccionar</option>
-									<c:forEach items="${gestores_demanda}" var="user">	
-										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
-									</c:forEach>					
+								<select class="selectpicker selected" id="tipo" name="tipo" required aria-required="true">
+								    <option value="default">Seleccionar</option>
+								    <option value="CIB">CIB</option>
+								    <option value="BEC">BEC</option>
+													
 								</select>
 							</div>
 						</div>
@@ -66,25 +59,25 @@
 						
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Referencia Global:</span>
-							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long">
+							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Referencia Local:</span>
-							<input type="text" aria-required="true" required="" id="ref_local" name="ref_local" class="long">
+							<input type="text" id="ref_local" name="ref_local" class="long" maxlength="24">
 						</div>
 					</div><div class="form-field-divider right">
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
-							<input type="text" aria-required="true" required="" id="logo_url" name="logo_url" class="long">
+							<input type="text" id="logo_url" name="logo_url" class="long">
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Workflow:</span>
 							<div class="radio-field">
-								<input type="radio" name="workflow" value="si"><span>Si</span>
-								<input type="radio" name="workflow" value="no"><span>No</span>
+								<label class="lbl"><input type="radio" name="workflow" value="SI"><span class="overlay"></span> Si</label>
+								<label class="lbl"><input type="radio" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
 							</div>
 						</div>
 						
@@ -97,7 +90,7 @@
 							<div class="radio-div">
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Lorem 1"
-										id="Lorem1"><label for="Lorem1"><span></span>Lorem 1</label>
+										id="Lorem1" class="require-one"><label for="Lorem1"><span></span>Lorem 1</label>
 								</div>
 								
 								<div class="radio-container">
@@ -159,21 +152,22 @@
 					</thead>
 					<tbody id="myTable" cellspacing="0">
 						<c:choose>
-							<c:when test="${empty demandaList}">
+							<c:when test="${empty clientes}">
 								<tr>
 									<td><span>No existen clientes.</span></td>
 								</tr>
 							</c:when>
 
 							<c:otherwise>
-								<c:forEach items="${demandaList}" var="demanda">
-									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-entrada="${demanda.str_fecha_entrada_peticion}" data-hora-entrada="${demanda.hora_entrada_peticion}" data-gestor-asig="${demanda.gestor_it}" data-gestores-list="${gestoresStr}">
-										<td><span>${demanda.str_fecha_entrada_peticion}</span></td>
-										<td><span>${demanda.clientekey}</span></td>
-										<td><span>${demanda.tipo}</span></td>
-										<td><span>${demanda.estado}</span></td>
-										<td><span>${demanda.cod_peticion}</span></td>
-										<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
+								<c:forEach items="${clientes}" var="cliente">
+									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}">
+										<td><span>${cliente.str_fecha_alta_cliente}</span></td>
+										<td><span>${cliente.clientId}</span></td>
+										<td><span>${cliente.nombre}</span></td>
+										<td><span>${cliente.ref_global}</span></td>
+										<td><span>${cliente.tipo}</span></td>
+										<td><span>${cliente.criticidad}</span></td>
+										<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${cliente.key.id}"	id="lapiz${cliente.key.id}"></a><a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -194,14 +188,14 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="">
-					<h2>Eliminar petición</h2>
+					<h2>Eliminar Cliente</h2>
 					<hr />
 				</div>
 				<div class="">
-					<p>&iquest;Est&aacute; seguro que desea eliminar la petición?
+					<p>&iquest;Est&aacute; seguro que desea eliminar el cliente?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="pink-btn" id="deleteDemanda">Eliminar</button>
+					<button type="button" class="pink-btn" id="deleteCliente">Eliminar</button>
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>

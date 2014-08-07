@@ -9,16 +9,12 @@
 	<form-beans>
 		<form-bean name="clientsForm" type="com.gcs.actionForms.ClientsForm" />
 		<form-bean name="usersForm" type="com.gcs.actionForms.UsersForm" />
-	</form-beans>
-	
-	
+	</form-beans>	
 
 	<global-forwards>
 		<forward name="clients" path="/clients.do" />
 		<forward name="users" path="/admin/users.do" />
-	</global-forwards>
-
-	
+	</global-forwards>	
 
 	<action-mappings>	
 		<action path="/clients" type="com.gcs.actions.ClientsAction"
@@ -35,11 +31,10 @@
 			<forward name="ok" path="/jsp/skeletons/gestionDemanda-skeleton.jsp" />
 		</action>
 		
-		<action path="/dashboard/gestionCliente" type="com.gcs.actions.GestionCliente">
+		<action path="/dashboard/gestionCliente" type="com.gcs.actions.GestionClienteAction">
 			<forward name="ok" path="/jsp/skeletons/newClient-skeleton.jsp" />
 		</action>
-	</action-mappings>
-	
+	</action-mappings>	
 	
 	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
 		<set-property property="definitions-config"

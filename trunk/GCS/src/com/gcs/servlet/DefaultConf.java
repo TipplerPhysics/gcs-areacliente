@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.ContadorCliente;
 import com.gcs.beans.ContadorDemanda;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.ContadorDemandaDao;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -31,13 +33,19 @@ public class DefaultConf extends HttpServlet {
 				if ("def_user".equals(accion)){
 					/* Crea cliente de prueba */
 					ClienteDao cDao = ClienteDao.getInstance();				
-					Cliente cliente = new Cliente("Cliente de Prueba", "deprueba@gmail.com");			
+					Cliente cliente = new Cliente();			
+					cliente.setNombre("Cliente de Prueba");
 					cDao.createCliente(cliente);	
 					json.append("success", "true");
-				}else if ("def_counter".equals(accion)){
+				}else if ("def_counter_demand".equals(accion)){
 					ContadorDemanda cd = new ContadorDemanda(1);
 					ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 					cdDao.createContador(cd);	
+					json.append("success", "true");
+				}else if ("def_counter_client".equals(accion)){
+					ContadorCliente cc = new ContadorCliente(1);
+					ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
+					ccDao.createContador(cc);	
 					json.append("success", "true");
 				}
 				

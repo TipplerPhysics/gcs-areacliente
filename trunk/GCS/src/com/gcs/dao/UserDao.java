@@ -58,8 +58,7 @@ public class UserDao {
 		String queryStr = "select from " + User.class.getName()
 				+ " where email  == :p1";
 
-		List<User> users = (List<User>) pManager.newQuery(queryStr).execute(
-				email);
+		List<User> users = (List<User>) pManager.newQuery(queryStr).execute(email);
 
 		if (!users.isEmpty()) {
 			u = users.get(0);

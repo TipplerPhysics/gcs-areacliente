@@ -173,6 +173,28 @@ textarea:focus {
 .alta_usuario .btn-atras {
   margin-left: 60%;
 }
+input[type=radio] {
+  opacity: 0;
+  z-index: 9999;
+}
+/* default radio button style: unchecked */
+.overlay {
+  display: inline-block;
+  position: relative;
+  left: -1em;
+  /* or whatever length you need here */
+  height: 16px;
+  width: 16px;
+  background-image: url("../img/radio.png");
+  border-radius: 50%;
+}
+.overlay:hover {
+  background-image: url("../img/radio-hover.png");
+}
+/* changed style when checked */
+input[type=radio]:checked + .overlay {
+  background-image: url("../img/radio-selected.png");
+}
 .radio-container {
   position: relative;
 }
@@ -362,7 +384,7 @@ form .datepicker {
   background-attachment: center;
   cursor: pointer;
   padding-right: 30px;
-  width: 100%;
+  width: 245px;
 }
 #sidebar {
   position: fixed;
@@ -1043,6 +1065,7 @@ form .datepicker {
   top: 0;
   left: 0;
   margin-right: 10px;
+  vertical-align: text-top;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .input,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .input,
@@ -1080,6 +1103,18 @@ form .datepicker {
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field {
   display: inline-block;
+  height: 40px;
+  padding-top: 10px;
+}
+.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field label,
+.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field label,
+.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field label,
+.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field label {
+  color: #434a58;
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+  font-weight: 100;
+  margin-right: 10px;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field input,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field input,
@@ -1091,7 +1126,6 @@ form .datepicker {
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field span,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field span,
 .gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field span {
-  margin-right: 20px;
   color: #434a58;
   font-family: "BBVA Web Light";
   font-size: 12px;

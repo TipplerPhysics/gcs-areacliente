@@ -45,6 +45,16 @@
 	    <servlet-name>UserServlet</servlet-name>
 	    <url-pattern>/usersServlet</url-pattern>
 	  </servlet-mapping>
+	  
+	   <servlet>
+	    <servlet-name>ClienteServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.ClienteServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>ClienteServlet</servlet-name>
+	    <url-pattern>/clienteServlet</url-pattern>
+	  </servlet-mapping>
 	
     <security-constraint>
         <web-resource-collection>
