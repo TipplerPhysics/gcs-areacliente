@@ -62,6 +62,7 @@ body{
 	vertical-align:top;
 }
 
+
 input , textarea {
 	resize: none;
     border: 1px solid #e8e8e6;
@@ -90,6 +91,30 @@ input:active, input:focus, textarea:active, textarea:focus{
 .alta_usuario .btn-atras{
 	margin-left: 60%;
 }	
+
+input[type=radio] {
+  opacity: 0;
+  z-index: 9999;
+}
+/* default radio button style: unchecked */
+.overlay {
+  display: inline-block;
+  position: relative;
+  left: -1em; /* or whatever length you need here */
+  height: 16px;
+  width: 16px;
+  background-image: url("../img/radio.png");
+  border-radius: 50%;
+}
+
+.overlay:hover{
+	background-image: url("../img/radio-hover.png");
+}
+
+/* changed style when checked */
+input[type=radio]:checked + .overlay {
+  background-image: url("../img/radio-selected.png");
+}
 
 .radio-container {
 	position: relative;
@@ -288,5 +313,5 @@ form .datepicker {
   background-attachment: center;
   cursor: pointer;
   padding-right: 30px;
-  width: 100%;
+  width: 245px;
 }

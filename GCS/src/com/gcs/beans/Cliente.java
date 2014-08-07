@@ -1,5 +1,7 @@
 package com.gcs.beans;
 
+import java.util.Date;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -16,16 +18,111 @@ public class Cliente {
 
 	@Persistent
 	private String nombre;
+
+	@Persistent
+	private String clientId;
 	
 	@Persistent
-	private String email;
+	private String criticidad;
 	
-	public Cliente(String nombre, String email) {
-		super();
-		this.nombre = nombre;
-		this.email = email;
-	}
+	@Persistent
+	private String str_fecha_alta_cliente;
+	
+	@Persistent
+	private Date fecha_alta_cliente;
+	
+	@Persistent
+	private String logo_url;
+	
+	@Persistent
+	private String paises;
+	
+	@Persistent
+	private String ref_global;
+	
+	@Persistent
+	private String ref_local;
+	
+	@Persistent
+	private String tipo;
+	
+	@Persistent
+	private Boolean workflow;
+	
+	
 		
+	public String getCriticidad() {
+		return criticidad;
+	}
+
+	public void setCriticidad(String criticidad) {
+		this.criticidad = criticidad;
+	}
+
+	public String getStr_fecha_alta_cliente() {
+		return str_fecha_alta_cliente;
+	}
+
+	public void setStr_fecha_alta_cliente(String str_fecha_alta_cliente) {
+		this.str_fecha_alta_cliente = str_fecha_alta_cliente;
+	}
+
+	public Date getFecha_alta_cliente() {
+		return fecha_alta_cliente;
+	}
+
+	public void setFecha_alta_cliente(Date fecha_alta_cliente) {
+		this.fecha_alta_cliente = fecha_alta_cliente;
+	}
+
+	public String getLogo_url() {
+		return logo_url;
+	}
+
+	public void setLogo_url(String logo_url) {
+		this.logo_url = logo_url;
+	}
+
+	public String getPaises() {
+		return paises;
+	}
+
+	public void setPaises(String paises) {
+		this.paises = paises;
+	}
+
+	public String getRef_global() {
+		return ref_global;
+	}
+
+	public void setRef_global(String ref_global) {
+		this.ref_global = ref_global;
+	}
+
+	public String getRef_local() {
+		return ref_local;
+	}
+
+	public void setRef_local(String ref_local) {
+		this.ref_local = ref_local;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public Boolean getWorkflow() {
+		return workflow;
+	}
+
+	public void setWorkflow(Boolean workflow) {
+		this.workflow = workflow;
+	}
+
 	public Cliente() {
 		super();
 	};
@@ -46,12 +143,13 @@ public class Cliente {
 		this.nombre = nombre;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getClientId() {
+		return clientId;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
 	}
+	
 	
 }

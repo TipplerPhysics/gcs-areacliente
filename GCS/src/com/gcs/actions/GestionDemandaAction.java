@@ -29,7 +29,7 @@ public class GestionDemandaAction extends Action {
 		List<User> gestores_demanda = uDao.getUsersByPermisoStr(4);
 		List<User> gestores_it = uDao.getUsersByPermisoStr(5);
 		List<User> gestores_negocio = uDao.getUsersByPermisoStr(6);
-		List<Cliente> clientes = cDao.getAllCliente();
+		List<Cliente> clientes = cDao.getAllClientes();
 
 		String gestoresStr = "";
 
