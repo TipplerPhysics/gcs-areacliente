@@ -173,6 +173,9 @@ textarea:focus {
 .alta_usuario .btn-atras {
   margin-left: 60%;
 }
+.gestion_cliente .btn-atras {
+  margin-left: 72%;
+}
 input[type=radio] {
   opacity: 0;
   z-index: 9999;
@@ -1017,6 +1020,12 @@ form .datepicker {
 .gestion_demanda #extended-demanda > .form-field > .tiempo .bootstrap-select.time,
 .gestion_cliente #extended-demanda > .form-field > .tiempo .bootstrap-select.time {
   width: 85px;
+}
+.gestion_demanda #extended-demanda > .form-field > .fecha #fecha_solicitud_asignacion_ed,
+.gestion_cliente #extended-demanda > .form-field > .fecha #fecha_solicitud_asignacion_ed,
+.gestion_demanda #extended-demanda > .form-field > .tiempo #fecha_solicitud_asignacion_ed,
+.gestion_cliente #extended-demanda > .form-field > .tiempo #fecha_solicitud_asignacion_ed {
+  width: 115px;
 }
 .gestion_demanda #extended-demanda > .form-field .lbl,
 .gestion_cliente #extended-demanda > .form-field .lbl {

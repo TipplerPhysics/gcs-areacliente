@@ -199,7 +199,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${demandaList}" var="demanda">
-									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-comun="${demanda.str_fecha_solicitud_asignacion}" data-hora-comun="${demanda.hora_solicitud_asignacion}" data-gestor-asig="${demanda.gestor_it}">
+									<tr class="valid-result" id="row${demanda.key.id}" data-fecha-comun="${demanda.str_fecha_comunicacion}" data-hora-comun="${demanda.hora_comunicacion}" data-gestor-asig="${demanda.gestor_it}">
 										<td><span>${demanda.str_fecha_entrada_peticion}</span></td>
 										<td><span>${demanda.clienteName}</span></td>
 										<td><span>${demanda.tipo}</span></td>

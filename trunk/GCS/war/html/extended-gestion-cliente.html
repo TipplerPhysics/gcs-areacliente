@@ -1,0 +1,45 @@
+<form id="edit-item" class="gestion_cliente_ext" novalidate="novalidate">
+	<div class='area-div'>
+		<span class="span-3">
+			<input type="text" value="" id="fecha_entrada_peticion_ed" class="edit_input datepicker datefuture fromTo" required aria-required="true" data-target-id='fecha_solicitud_asignacion_ed'>
+		</span>
+		<span class="span-3">
+			<input type="text" value="" id="id_cliente_ext" class="edit_input" required aria-required="true">
+		</span>
+		<span class="span-3">
+			<select class="selectpicker" id="clientes_ext" name="clientes_ext" required aria-required="true"></select>
+		</span>
+		<span class="span-7">
+			<input type="text" value="" id="ref_global_ext" class="edit_input" required aria-required="true">
+		</span>
+		<span class="span-3">
+			<input type="text" value="" id="tipo_ext" class="edit_input" required aria-required="true">
+		</span>
+		<span class="span-3">
+			<input type="text" value="" id="criticidad_ext" class="edit_input" required aria-required="true">
+		</span>
+		<span class="span-3 last demanda">
+			<img src="../img/vs.png" class="vs"><a id="lapiz" class="lapiz inactive"></a><a id="papelera" data-target="#confirm-delete" name="" class="papelera inactive"></a>
+		</span>
+	</div>
+	<div id="extended-demanda">
+		<div class="form-field">
+			<span class="lbl">Gestor IT asignado:</span>
+			<div class="input long">
+				<select class="selectpicker gestor_it_ed" name="gestor_it_ed" id="gestor_it_ed">
+				</select>
+			</div>
+		</div>
+		<div class="form-field">
+				<div class="fecha">
+					<span class="lbl">Fecha comunicación asignación gestor:</span>
+					<div class="input">
+						<input type="text" class="datepicker" value="" name="fecha_solicitud_asignacion_ed" id="fecha_solicitud_asignacion_ed">
+				  	</div>
+				  </div>
+			  
+		</div>
+	</div>
+<button class="cancelar-ext">Cancelar</button>
+<button class="guardar-ext">Guardar</button>
+</form>

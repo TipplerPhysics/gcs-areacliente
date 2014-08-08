@@ -146,7 +146,7 @@ $(function() {
 		var cod_peticion = data.cod_peticion;
 		var id = data.id;
 		
-		var html = "<tr id=row"+id+" class='valid-result' data-gestor-asig="+ gestor+ " data-hora-comun="+hora+" data-fecha-comun="+fecha+">"
+		var html = "<tr id=row"+id+" class='valid-result' data-gestor-asig="+ gestor+ " data-hora-comun='' data-fecha-comun=''>"
 		+ "<td><span>"+fecha_entrada+"</span></td>"
 		+ "<td><span>"+cliente+"</span></td>"
 		+ "<td><span>"+tipo+"</span></td>"
@@ -195,7 +195,15 @@ $(function() {
 			$editForm.find('#fecha_entrada_peticion_ed').val(fechaEntrada);
 			// copia options de select de formulario de creacion
 			var $clienteOptions = $('select#input_cliente option').clone();
-			$editForm.find('select#input_cliente_ed').append($clienteOptions).val(cliente);
+			$editForm.find('select#input_cliente_ed').append($clienteOptions);
+			var inputvar = $('#input_cliente_ed').children();
+			var clientValue;
+			for (var a=0; a<=inputvar.length-1;a++)
+				if (inputvar[a].innerHTML==cliente)
+					clientValue = inputvar[a].value;
+			
+			$editForm.find('select#input_cliente_ed').val(clientValue);
+			
 			$editForm.find('select#input_cliente_ed option').first().remove();
 
 			var $tipoOptions = $('select#tipo option').clone();
