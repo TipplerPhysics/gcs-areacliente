@@ -122,11 +122,15 @@ public class DemandaServlet extends HttpServlet {
 			d.setGestor_it(Long.parseLong(gestor_it));
 			if (!fecha_entrada.equals(""))
 			d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada));
+			//if (!fecha_asignacion.equals(""))
+			//d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_asignacion));
+			//d.setHora_entrada_peticion(hora_peticion_ext + ":"+ min_peticion_ext);
+			
 			if (!fecha_asignacion.equals(""))
-			d.setFecha_solicitud_asignacion(Utils
-					.dateConverter(fecha_asignacion));
-			d.setHora_entrada_peticion(hora_peticion_ext + ":"
-					+ min_peticion_ext);
+			d.setFecha_comunicacion(Utils.dateConverter(fecha_asignacion));
+			d.setStr_fecha_comunicacion(fecha_asignacion);
+			d.setHora_comunicacion(hora_peticion_ext+":"+min_peticion_ext);
+			
 
 			dDao.createDemanda(d);
 
@@ -190,16 +194,20 @@ public class DemandaServlet extends HttpServlet {
 
 			DemandaDao dDao = DemandaDao.getInstance();
 
-			d.setFecha_comunicacion(fecha_comunicacion);
-			String dia_com = String.valueOf(fecha_comunicacion.getDay());
+			
+			String dia_com = String.valueOf(fecha_comunicacion.getDate());
 			if (dia_com.length()==1)
 				dia_com = "0"+dia_com;
 			String mes_com = String.valueOf(fecha_comunicacion.getMonth()+1);
 			if (mes_com.length()==1)
 				mes_com = "0"+mes_com;
 			String anio = String.valueOf(fecha_comunicacion.getYear()+1900);
-			d.setStr_fecha_comunicacion(dia_com+"/"+mes_com+"/"+anio);
-			d.setHora_comunicacion(hora_comunicacion);
+			
+			//TODO: Segun la logica de cristina estas lineas deben ir descomentadas, pero segun susana esto es en edicion.
+			
+			//d.setStr_fecha_comunicacion(dia_com+"/"+mes_com+"/"+anio);
+			//d.setHora_comunicacion(hora_comunicacion);
+			//d.setFecha_comunicacion(fecha_comunicacion);
 			d.setCatalogacion(catalogacion_peticion);
 			d.setComentarios(comentarios);
 			d.setDevuelta(devBool);

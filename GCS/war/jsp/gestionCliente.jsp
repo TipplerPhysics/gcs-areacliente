@@ -3,6 +3,8 @@
 <div class="gestion_cliente">
 
 	<img class="users_title_icon" src="../img/user.png"><h1>Alta cliente</h1>
+	<img src="../img/bot-Inicio.png" class="btn-atras" onclick="window.location.href='../../'">
+	
 	<hr/>
 	
 	<div class="newUserbox">
@@ -160,7 +162,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${clientes}" var="cliente">
-									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}">
+									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-logo-url="${cliente.logo_url}" data-ref-local="${cliente.ref_local}" data-workflow="${cliente.workflow}">
 										<td><span>${cliente.str_fecha_alta_cliente}</span></td>
 										<td><span>${cliente.clientId}</span></td>
 										<td><span>${cliente.nombre}</span></td>

@@ -39,11 +39,20 @@ $(function() {
 				if ($(this).val().length != 0) {
 					var text = normalize($(this).val().toLowerCase());
 					var columna = $(this).attr("class").split("col")[1];
+					if ($(this).hasClass('search_anywhere'))
+						columna = columna.split(" ")[0];
 				    var cont = $($linea.children()[columna]).children().html().toLowerCase();
 				    var textLength = text.length;
-				    if(text != cont.substring(0, textLength)){
-				    	isValid = false;
-					}
+				    
+				    if ($(this).hasClass('search_anywhere')){
+				    	if(cont.indexOf(text)==-1){
+					    	isValid = false;
+						}
+				    }else{
+				    	if(text != cont.substring(0, textLength)){
+					    	isValid = false;
+						}
+				    }				    
 				}
 			});
 
