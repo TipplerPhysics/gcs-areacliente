@@ -28,7 +28,6 @@ public class UsersAction extends Action {
 			List<User> usuarios = uDao.getAllUsers();
 
 			// req.getSession().setAttribute("userList", usuarios);
-			JSONArray jsonArray = new JSONArray();
 
 			/*
 			 * for (User u:usuarios){ JSONObject jsonUser = new JSONObject();

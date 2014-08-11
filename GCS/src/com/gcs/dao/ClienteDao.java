@@ -3,6 +3,7 @@ package com.gcs.dao;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
@@ -20,18 +21,25 @@ public class ClienteDao {
 		return new ClienteDao();
 	}
 
-	public void createCliente(Cliente u) {
+	public void createCliente(Cliente c) {
 		ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 		Integer cont = ccDao.getContadorValue();
 		
-		if (u.getKey()==null)
-			u.setClientId("IDGLOBAL"+ String.format("%04d", cont));
+		String nombre = c.getNombre();
+		String letra = nombre.substring(0,1).toUpperCase();
+		String nombreMayus = letra + nombre.substring(1,nombre.length());
+		
+		c.setNombre(nombreMayus);
+		
+		
+		if (c.getKey()==null)
+			c.setClientId("IDGLOBAL"+ String.format("%04d", cont));
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 
 		try {
-			pm.makePersistent(u);
+			pm.makePersistent(c);
 		} finally {
 			pm.close();
 			ccDao.increaseCont();
@@ -119,9 +127,11 @@ public class ClienteDao {
 	public List<Cliente> getAllClientes() {
 
 		List<Cliente> clientes;
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		String queryStr = "select from " + Cliente.class.getName();
-		clientes = (List<Cliente>) pm.newQuery(queryStr).execute();
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("select from " + Cliente.class.getName());		
+		q.setOrdering("nombre asc");
+		clientes = (List<Cliente>) q.execute();
 
 		return clientes;
 	}

@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 
 
 <div class="clients">
@@ -9,61 +11,80 @@
 		<div class="color alta"></div><span>Criticidad Alta</span>
 		<div class="color media"></div><span>Criticidad Media</span>
 		<div class="color baja"></div><span>Criticidad Baja</span>
-	</div>
-	<c:if test="${sessionScope.permiso <= 3}">
-			<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button>  
-		<!-- 	<button  id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button> -->
-			 
-	</c:if>
-	<c:if test="${sessionScope.permiso <= 3}">
-			<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
-	</c:if>
-	
-	<div>
+		<div class="selects">
 		<span>Tipo de Criticidad</span>
-		<select class="selectpicker">
+		<select class="selectpicker" id="tip_crit">
 			<option value="0">Todas</option>
-			<option value="3">Alta</option>
-			<option value="2">Media</option>
-			<option value="1">Baja</option>
+			<option value="Alta">Alta</option>
+			<option value="Media">Media</option>
+			<option value="Baja">Baja</option>
 		</select>
 		<span>Tipo de Cliente</span>
-		<select class="selectpicker">
+		<select class="selectpicker" id="tip_client">
 			<option value="0">Todos</option>
+			<option value="CIB">CIB</option>
+			<option value="BEC">BEC</option>
 		</select>
 	</div>	
+	</div>
+	<div class="search_div">
+		<c:if test="${sessionScope.permiso <= 6}">
+				<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button>  
+			<!-- 	<button  id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button> -->
+				 
+		</c:if>
+		<c:if test="${sessionScope.permiso <= 6}">
+				<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
+		</c:if>
+		<input type="text" class="long" name="buscador_cliente" id="buscador_cliente" placeholder="Introduzca cliente a buscar">
+	</div>
+	
+	
+	
+	
 	<div class="abc">
 		<div>
-			<a href="#"><span>A</span></a>
-			<a href="#"><span>B</span></a>
-			<a href="#"><span>C</span></a>
-			<a href="#"><span>D</span></a>
-			<a href="#"><span>E</span></a>
-			<a href="#"><span>F</span></a>
-			<a href="#"><span>G</span></a>
-			<a href="#"><span>H</span></a>
-			<a href="#"><span>I</span></a>
-			<a href="#"><span>J</span></a>
-			<a href="#"><span>K</span></a>
-			<a href="#"><span>L</span></a>
-			<a href="#"><span>M</span></a>
-			<a href="#"><span>N</span></a>
-			<a href="#"><span>Ñ</span></a>
-			<a href="#"><span>O</span></a>
-			<a href="#"><span>P</span></a>
-			<a href="#"><span>Q</span></a>
-			<a href="#"><span>R</span></a>
-			<a href="#"><span>S</span></a>
-			<a href="#"><span>T</span></a>
-			<a href="#"><span>U</span></a>
-			<a href="#"><span>V</span></a>
-			<a href="#"><span>W</span></a>
-			<a href="#"><span>X</span></a>
-			<a href="#"><span>Y</span></a>
-			<a href="#"><span>Z</span></a>
+			 <c:forEach items="${alphabet}" var="char">
+			 	<c:choose>
+					<c:when test="${fn:indexOf(letras,char)>0}">
+		 				<a id="letra_${char}" href="#${char}_anchor"><span class="active">${char}</span></a>
+		 			</c:when>
+		 			<c:otherwise>
+		 				<a id="letra_${char}"><span class="inactive">${char}</span></a>
+		 			</c:otherwise>
+		 		</c:choose>
+			 </c:forEach>
+			
 		</div>
 	</div>
-		
+	<div class="clients_container">
+	
+		<c:set var="letra_anterior" value="0" />
+		<c:forEach items="${clientes}" var="c">
+			<c:set var="letra" value="${fn:substring(c.nombre, 0, 1)}" />
+			
+			<c:choose>
+				<c:when test="${letra ne letra_anterior}">
+					<c:choose>
+						<c:when test="${letra_anterior ne '0'}">
+							</div>
+						</c:when>
+					</c:choose>
+					<div class="letter_anchor">
+						<span id="${letra}_anchor">${letra}</span>	
+						<hr/>
+					</div>
+					<div class="clientes_letra">
+				</c:when>
+			</c:choose>
+				
+				<div class="client_box crit_${c.criticidad} tipo_${c.tipo}">
+					<p>${c.nombre}</p>
+				</div>
+			<c:set var="letra_anterior" value="${letra}" />	
+		</c:forEach>
+		</div>
+	</div>	
 </div>
 
 <script type="text/javascript">

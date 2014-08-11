@@ -45,7 +45,7 @@ $(function() {
 				  {
 						//data: return data from server
 					if (data.success==("true")){
-						var html=generateRowCliente(postData,data);
+						/*var html=generateRowCliente(postData,data);
 						
 						$('#myTable').prepend(html);
 						
@@ -54,7 +54,7 @@ $(function() {
 							showPrevNext : true,
 							hidePageNumbers : false,
 							perPage : 5
-						});
+						});*/
 						
 						$('#message_div').removeClass("error").addClass("success");
 						if ($('.new-user-form-holder').height()<190){
