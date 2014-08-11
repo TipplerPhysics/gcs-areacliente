@@ -133,7 +133,6 @@ body {
   padding: 0px;
   background-color: white;
   text-align: center;
-  margin-top: 20px;
 }
 .body-container {
   display: inline-block;
@@ -908,7 +907,7 @@ form .datepicker {
 }
 /* CLIENTES */
 .clients .bootstrap-select {
-  width: 70px !important;
+  width: 80px !important;
 }
 .clients > #btn_alta_cliente {
   margin-right: 10px;
@@ -916,6 +915,7 @@ form .datepicker {
 .clients > .abc {
   margin-top: 40px;
   text-align: center;
+  margin-bottom: 20px;
 }
 .clients > .abc > div > a {
   text-decoration: none;
@@ -924,15 +924,32 @@ form .datepicker {
   margin-right: 1.5%;
   font-family: BBVA Web Light;
   font-size: 18px;
-  color: #0065B7;
 }
-.clients > button {
+.clients > .abc > div > a > span.active {
+  color: #0065B7;
+  font-weight: bold;
+}
+.clients > .abc > div > a > span.inactive {
+  color: #71777F;
+}
+.clients > div.search_div {
+  display: inline-block;
+  float: right;
+  max-width: 355px;
+}
+.clients > div.search_div #buscador_cliente {
+  float: right;
+  margin-top: 10px;
+  width: 323px;
+}
+.clients > div.search_div button {
   float: right;
   font-family: BBVA Web Light;
   font-size: 12px;
   font-weight: bold;
+  margin-left: 10px;
 }
-.clients > button > img {
+.clients > div.search_div button > img {
   height: 20px;
   margin-left: 15px;
   vertical-align: sub;
@@ -953,12 +970,13 @@ form .datepicker {
 }
 .clients .leyenda_clientes {
   display: inline-block;
-  width: 385px;
+  width: 396px;
 }
 .clients .leyenda_clientes .color {
   display: inline-block;
   height: 20px;
   width: 20px;
+  margin-right: 5px;
 }
 .clients .leyenda_clientes span {
   font-family: arial;
@@ -967,7 +985,7 @@ form .datepicker {
   font-weight: bold;
   vertical-align: text-top;
   margin-left: 5px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .clients .leyenda_clientes .alta {
   background-color: #F6891E;
@@ -977,6 +995,19 @@ form .datepicker {
 }
 .clients .leyenda_clientes .baja {
   background-color: #86C82D;
+}
+.clients .leyenda_clientes .bootstrap-select.btn-group .btn .caret {
+  right: 0px;
+}
+.clients .leyenda_clientes .selects span {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+.clients .leyenda_clientes .selects .bootstrap-select {
+  margin-right: 10px;
+}
+.clients .leyenda_clientes .selects .bootstrap-select > .btn {
+  padding-top: 10px;
 }
 /* NUEVO CLIENTE  */
 .gestion_demanda #botones_ext,
@@ -1335,4 +1366,54 @@ form textarea.error {
   border-top-color: #ca0161;
   border-width: 6px;
   margin-left: -6px;
+}
+.clients > .clients_container > .letter_anchor span {
+  color: #0065b7;
+  font-family: BBVA Web Light;
+  font-size: 18px;
+}
+.clients > .clients_container > .clientes_letra {
+  margin-top: 20px;
+}
+.clients > .clients_container > .clientes_letra > .client_box {
+  display: inline-table;
+  height: 60px;
+  width: 148px;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: bottom;
+  margin-bottom: 10px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 5px;
+}
+.clients > .clients_container > .clientes_letra > .client_box.crit_h {
+  display: none;
+}
+.clients > .clients_container > .clientes_letra > .client_box.tipo_h {
+  display: none;
+}
+.clients > .clients_container > .clientes_letra > .client_box.search_h {
+  display: none;
+}
+.clients > .clients_container > .clientes_letra > .client_box.crit_Alta {
+  background-color: #F6891E;
+}
+.clients > .clients_container > .clientes_letra > .client_box.crit_Media {
+  background-color: #FDBD2C;
+}
+.clients > .clients_container > .clientes_letra > .client_box.crit_Baja {
+  background-color: #86C82D;
+}
+.clients > .clients_container > .clientes_letra > .client_box p {
+  color: white;
+  font-family: "BBVA Web Book", arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.clients > .clients_container > .clientes_letra > .client_box:nth-child(6n).client_box {
+  margin-right: 0px;
 }

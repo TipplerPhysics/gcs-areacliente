@@ -66,7 +66,7 @@ public class UserFilter implements Filter {
 					Integer permiso = usuario.getPermiso();
 					sesion.setAttribute("permiso", permiso);
 				} else {
-					sesion.setAttribute("permiso", 0);
+					sesion.setAttribute("permiso", 7);
 				}
 
 				chain.doFilter(req, resp);
