@@ -10,13 +10,16 @@
 }
 .header-layout {
   padding: 0px;
-  background-color: white;
+  background-color: #F9F9F9;
   height: 175px;
   text-align: center;
 }
 .header-layout .header-container {
   display: inline-block;
-  width: 960px;
+  width: 980px;
+  height: 175px;
+  padding: 0 10px;
+  background-color: white;
   margin-right: auto;
   margin-left: auto;
   text-align: left;
@@ -131,15 +134,17 @@ body {
 }
 .body-layout {
   padding: 0px;
-  background-color: white;
+  background-color: #F9F9F9;
   text-align: center;
 }
 .body-container {
   display: inline-block;
-  width: 960px;
+  width: 980px;
+  padding: 0 10px;
   margin-right: auto;
   margin-left: auto;
   text-align: left;
+  background-color: white;
 }
 .align-top {
   vertical-align: top;
@@ -165,6 +170,13 @@ textarea:focus {
 }
 .btn-atras {
   cursor: pointer;
+  background-image: url("../img/bot-volver.png");
+  display: inline-block;
+  height: 30px;
+  width: 88px;
+}
+.btn-atras:active {
+  background-image: url("../img/bot-volveron.png");
 }
 .gestion_demanda .btn-atras {
   margin-left: 70%;
@@ -174,6 +186,31 @@ textarea:focus {
 }
 .gestion_cliente .btn-atras {
   margin-left: 72%;
+}
+.gestion_cliente td:nth-child(2),
+.gestion_cliente th:nth-child(2) {
+  width: 115px;
+  max-width: 175px;
+}
+.gestion_cliente td:nth-child(3),
+.gestion_cliente th:nth-child(3) {
+  width: 205px;
+  max-width: 305px;
+}
+.gestion_cliente .usersTable > .table th:nth-child(5) {
+  border-right: 1px solid #dcdcdc;
+}
+.gestion_cliente .usersTable > .table th:nth-child(5) > input {
+  width: 105% !important;
+}
+.gestion_cliente .usersTable > .table td:nth-child(3),
+.gestion_cliente .usersTable > .table th:nth-child(3) {
+  width: 305px !important;
+  max-width: inherit;
+}
+.gestion_cliente .usersTable > .table td:nth-child(4),
+.gestion_cliente .usersTable > .table th:nth-child(4) {
+  width: 140px !important;
 }
 input[type=radio] {
   opacity: 0;
@@ -913,9 +950,9 @@ form .datepicker {
   margin-right: 10px;
 }
 .clients > .abc {
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .clients > .abc > div > a {
   text-decoration: none;
@@ -944,14 +981,15 @@ form .datepicker {
 }
 .clients > div.search_div button {
   float: right;
-  font-family: BBVA Web Light;
+  font-family: BBVA Web Medium;
   font-size: 12px;
   font-weight: bold;
   margin-left: 10px;
+  width: 156px;
 }
 .clients > div.search_div button > img {
   height: 20px;
-  margin-left: 15px;
+  margin-left: 10px;
   vertical-align: sub;
 }
 .clients .selector {
@@ -970,7 +1008,7 @@ form .datepicker {
 }
 .clients .leyenda_clientes {
   display: inline-block;
-  width: 396px;
+  width: 450px;
 }
 .clients .leyenda_clientes .color {
   display: inline-block;
@@ -1366,6 +1404,23 @@ form textarea.error {
   border-top-color: #ca0161;
   border-width: 6px;
   margin-left: -6px;
+}
+.clients .l_anchor {
+  position: relative;
+  top: -20px;
+  height: 1px;
+  width: 1px;
+  display: inline;
+}
+.clients > .abc > #abc_child_scroll.scroll_hidden {
+  display: none;
+}
+.clients > .abc > #abc_child_scroll.inScroll {
+  position: fixed;
+  width: 71.2%;
+  text-align: center;
+  top: 0px;
+  background-color: white;
 }
 .clients > .clients_container > .letter_anchor span {
   color: #0065b7;

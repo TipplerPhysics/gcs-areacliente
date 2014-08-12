@@ -60,7 +60,7 @@ $(function() {
 						if ($('.new-user-form-holder').height()<190){
 							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 						}
-						$('#span_message').html("La petici&oacute;n ha ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
+						$('#span_message').html("El cliente se ha creado de forma correcta.");
 						$('#message_div').css('display','block');
 						
 						resetForm($form);
@@ -658,6 +658,18 @@ var getIsoDate = function(dateString) {
 	return isoDate;
 };$(function() {
 	
+	$(window).scroll(function (event) {
+	    var scroll = $(window).scrollTop();
+	    if (scroll>350){
+	    	$('#abc_child_scroll').addClass('inScroll');
+	    	$('#abc_child_scroll').removeClass('scroll_hidden');
+	    }else{
+	    	$('#abc_child_scroll').removeClass('inScroll');
+	    	$('#abc_child_scroll').addClass('scroll_hidden');
+
+	    }
+	});
+	
 	function drawLetters(){
 		var isEmpty;
 		var cajas = $('.clients_container').children();
@@ -680,9 +692,14 @@ var getIsoDate = function(dateString) {
 				}				
 				if (isEmpty==true){
 					letra.css('display','none');
+					letra.prev().css('display','none');
+					div.css('display','none');
+					
 				}else{
 					letra.css('display','block');
 					letrasValidas += $(letra.find('span')[0]).text();
+					letra.prev().css('display','inline-block');
+					div.css('display','inherit');
 				}
 			}
 			
@@ -692,20 +709,25 @@ var getIsoDate = function(dateString) {
 	}
 	
 	function drawbar(string){
-		var letras = $($('.abc').children()[0]).children();
-		var a=0;
-		for (a; a<=letras.length-1;a++){
-			var letra_div = $(letras[a]);
-			var letra = letra_div[0].id.substring(6,7);
-			if (string.indexOf(letra)!=-1){
-				letra_div.attr('href','#'+letra+'_anchor');
-				letra_div.children().addClass('active');	
-				letra_div.children().removeClass('inactive');				
-
-			}else{
-				letra_div.removeAttr('href');
-				letra_div.children().addClass('inactive');
-				letra_div.children().removeClass('active');
+		
+		var barra = $('.abc').children();
+		var z = 0;
+		for (z=0; z<=barra.length-1;z++){
+			var letras = $(barra[z]).children();		
+			var a=0;
+			for (a; a<=letras.length-1;a++){
+				var letra_div = $(letras[a]);
+				var letra = letra_div[0].id.substring(6,7);
+				if (string.indexOf(letra)!=-1){
+					letra_div.attr('href','#'+letra+'_anchor');
+					letra_div.children().addClass('active');	
+					letra_div.children().removeClass('inactive');				
+	
+				}else{
+					letra_div.removeAttr('href');
+					letra_div.children().addClass('inactive');
+					letra_div.children().removeClass('active');
+				}
 			}
 		}
 		
@@ -724,7 +746,7 @@ var getIsoDate = function(dateString) {
 				$(clientes[a]).addClass('search_h');
 			}
 		}
-		drawLetters()
+		drawLetters();
 	});
 	
 	$('#tip_crit').on('change', function(e) {		
