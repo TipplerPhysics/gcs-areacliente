@@ -45,16 +45,18 @@ body{
 
 .body-layout{
 	padding: 0px;
-	background-color:white;
+	background-color:#F9F9F9;
 	text-align:center;	
 }
 
 .body-container{	
 	display:inline-block;
-	width:960px;
+	width:980px;
+	padding: 0 10px;
 	margin-right:auto;
 	margin-left:auto;
 	text-align:left;	
+	background-color:white;
 }
 
 .align-top{
@@ -81,6 +83,14 @@ input:active, input:focus, textarea:active, textarea:focus{
 
 .btn-atras{
 	cursor:pointer;
+	background-image: url("../img/bot-volver.png");
+	display: inline-block;
+    height: 30px;
+    width: 88px;
+    
+    &:active{
+    	background-image: url("../img/bot-volveron.png");
+    }
 }
 
 .gestion_demanda .btn-atras{
@@ -94,6 +104,37 @@ input:active, input:focus, textarea:active, textarea:focus{
 .gestion_cliente .btn-atras{
 	margin-left: 72%;
 }	
+
+.gestion_cliente {
+	td:nth-child(2),  th:nth-child(2){
+			width:115px;
+			max-width:175px;
+			
+		}
+		td:nth-child(3),  th:nth-child(3){
+			width:205px;
+			max-width:305px;			
+		}
+		
+		.usersTable{
+			> .table th:nth-child(5) {		
+				border-right: 1px solid #dcdcdc;				
+				 > input{
+				 	width:105% !important;
+				 }
+			}
+			 > .table td:nth-child(3), 
+			 > .table th:nth-child(3) {			   
+			    	width: 305px !important;
+			    	max-width: inherit;
+			}
+			
+			 > .table td:nth-child(4), 
+			 > .table th:nth-child(4) {			   
+			    	width: 140px !important;
+			}
+		} 
+}
 
 input[type=radio] {
   opacity: 0;

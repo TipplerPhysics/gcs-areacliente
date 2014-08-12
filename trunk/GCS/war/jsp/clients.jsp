@@ -43,7 +43,19 @@
 	
 	
 	<div class="abc">
-		<div>
+		<div id="abc_child_scroll" class="scroll_hidden">
+			 <c:forEach items="${alphabet}" var="char">
+			 	<c:choose>
+					<c:when test="${fn:indexOf(letras,char)>0}">
+		 				<a id="letra_${char}" href="#${char}_anchor"><span class="active">${char}</span></a>
+		 			</c:when>
+		 			<c:otherwise>
+		 				<a id="letra_${char}"><span class="inactive">${char}</span></a>
+		 			</c:otherwise>
+		 		</c:choose>
+			 </c:forEach>			
+		</div>
+		<div id="abc_child">
 			 <c:forEach items="${alphabet}" var="char">
 			 	<c:choose>
 					<c:when test="${fn:indexOf(letras,char)>0}">
@@ -70,8 +82,9 @@
 							</div>
 						</c:when>
 					</c:choose>
+					<div class="l_anchor" id="${letra}_anchor"></div>
 					<div class="letter_anchor">
-						<span id="${letra}_anchor">${letra}</span>	
+						<span>${letra}</span>	
 						<hr/>
 					</div>
 					<div class="clientes_letra">

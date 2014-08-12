@@ -5,7 +5,8 @@
 
 <img class="users_title_icon" src="../img/user.png">
 <h1>Listado de usuarios</h1>
-<img src="../img/bot-Inicio.png" class="btn-atras" onclick="window.location.href='../../'">
+<span class="btn-atras" onclick="window.location.href='../../'"></span>
+
 <hr />
 
 <div class="newUserbox">
