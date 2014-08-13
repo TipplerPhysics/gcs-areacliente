@@ -18,8 +18,8 @@
   display: inline-block;
   width: 980px;
   height: 175px;
-  padding: 0 10px;
   background-color: white;
+  padding: 0 10px;
   margin-right: auto;
   margin-left: auto;
   text-align: left;
@@ -56,18 +56,19 @@
   height: 48px;
   padding: 0 7px;
   position: relative;
-  top: -30px;
+  top: -5px;
   vertical-align: text-top;
-}
-.header-layout .header-container .main-menu ul.menu li.menu a {
-  position: relative;
-  top: 6px;
-  vertical-align: sub;
+  padding-top: 13px;
 }
 .header-layout .header-container .main-menu ul.menu li.home {
-  height: 100%;
-  display: inline;
-  padding: 0 7px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  display: inline-block;
+  height: 47px;
+  padding: 3px 7px 0;
+  position: relative;
+  top: -2px;
+  vertical-align: top;
 }
 .header-layout .header-container .main-menu ul.menu li a.no-underline {
   text-decoration: none;
@@ -131,6 +132,7 @@ button.btn-default {
 }
 body {
   margin: 0px;
+  background-color: #F9F9F9;
 }
 .body-layout {
   padding: 0px;
@@ -145,6 +147,7 @@ body {
   margin-left: auto;
   text-align: left;
   background-color: white;
+  min-height: 570px;
 }
 .align-top {
   vertical-align: top;
@@ -287,6 +290,16 @@ button {
   vertical-align: middle;
   height: 35px;
 }
+button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
+  background: #0069b1;
+  background: -moz-linear-gradient(top, #0069b1 0%, #004b8c 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0069b1), color-stop(100%, #004b8c));
+  background: -webkit-linear-gradient(top, #0069b1 0%, #004b8c 100%);
+  background: -o-linear-gradient(top, #0069b1 0%, #004b8c 100%);
+  background: -ms-linear-gradient(top, #0069b1 0%, #004b8c 100%);
+  background: linear-gradient(to bottom, #0069b1 0%, #004b8c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0069b1, endColorstr=#004b8c, GradientType=0);
+}
 .selectpicker > span.filter-option {
   font-family: Arial, sans-serif;
   font-size: 12px;
@@ -328,13 +341,21 @@ button {
   color: #FFFFFF;
   z-index: 1;
 }
-.user_span {
-  background-image: url("../img/user-white.png");
+.proyecto_span {
+  background-image: url("../img/nuevoPB.png");
   display: inline-block;
-  height: 20px;
+  height: 16px;
   margin-left: 10px;
   vertical-align: text-bottom;
-  width: 19px;
+  width: 13px;
+}
+.user_span {
+  background-image: url("../img/user16.png");
+  display: inline-block;
+  height: 14px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+  width: 15px;
 }
 .demanda_span {
   background-image: url("../img/gestion.png");
@@ -977,7 +998,7 @@ form .datepicker {
 .clients > div.search_div #buscador_cliente {
   float: right;
   margin-top: 10px;
-  width: 323px;
+  width: 341px;
 }
 .clients > div.search_div button {
   float: right;
@@ -985,7 +1006,7 @@ form .datepicker {
   font-size: 12px;
   font-weight: bold;
   margin-left: 10px;
-  width: 156px;
+  width: 165px;
 }
 .clients > div.search_div button > img {
   height: 20px;
@@ -1009,6 +1030,9 @@ form .datepicker {
 .clients .leyenda_clientes {
   display: inline-block;
   width: 450px;
+}
+.clients .leyenda_clientes .bootstrap-select {
+  float: inherit;
 }
 .clients .leyenda_clientes .color {
   display: inline-block;
@@ -1416,11 +1440,12 @@ form textarea.error {
   display: none;
 }
 .clients > .abc > #abc_child_scroll.inScroll {
+  background-color: #fff;
+  left: 142px;
   position: fixed;
-  width: 71.2%;
   text-align: center;
-  top: 0px;
-  background-color: white;
+  top: 0;
+  width: 77.5%;
 }
 .clients > .clients_container > .letter_anchor span {
   color: #0065b7;

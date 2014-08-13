@@ -17,7 +17,7 @@
 			Alta Proyecto<a class="proyecto_span"></a>
 		</button>		
 		
-		<button id="excel_btn" onclick="window.location.href='../../?accion=xls'">
+		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
 			Descargar Tabla<a class="excel_span"></a>
 		</button>
 
@@ -30,7 +30,7 @@
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Fecha alta cliente:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker datefuture fromTo" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
+								<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
 							</div>
 						</div>						
 						<div class="form-field">
@@ -52,10 +52,10 @@
 							<span class="lbl"><span class="required-asterisk">*</span>Criticidad:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="criticidad" id="criticidad" required aria-required="true">
-									<option value="default">Seleccionar...</option>
-									<option value="Alta">Alta</option>
-									<option value="Media">Media</option>
 									<option value="Baja">Baja</option>
+									<option value="Media">Media</option>
+									<option value="Alta">Alta</option>			
+									
 								</select>
 							</div>
 						</div>
@@ -198,7 +198,7 @@
 					<p>&iquest;Est&aacute; seguro que desea eliminar el cliente?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="pink-btn" id="deleteCliente">Eliminar</button>
+					<button type="button" class="pink-btn" id="deleteClient">Eliminar</button>
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>

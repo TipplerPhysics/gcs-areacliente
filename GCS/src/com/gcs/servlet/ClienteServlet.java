@@ -1,16 +1,31 @@
 package com.gcs.servlet;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jxl.Workbook;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
+import jxl.format.VerticalAlignment;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+
 import com.gcs.beans.Cliente;
+import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -45,6 +60,8 @@ public class ClienteServlet extends HttpServlet {
 					createClient(req, resp);
 				}else if (accion.equals("delete")){
 					deleteClient(req,resp);
+				}else if (accion.equals("xls")){
+					generateXLS(req,resp);
 				}
 			}
 			
@@ -56,6 +73,83 @@ public class ClienteServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
+	}
+	
+	private void generateXLS(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		
+		OutputStream out = null;
+		try {
+			resp.setContentType("application/vnd.ms-excel");
+			resp.setHeader("Content-Disposition",
+					"attachment; filename=ClientesGCS.xls");
+			
+			WritableWorkbook w = Workbook.createWorkbook(resp
+					.getOutputStream());
+			
+			ClienteDao cDao = ClienteDao.getInstance();
+			List<Cliente> clientes = cDao.getAllClientes();
+			
+			WritableSheet s = w.createSheet("Clientes", 0);
+		
+			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
+		    cellFont.setColour(Colour.WHITE);
+		    
+		    WritableCellFormat cellFormat = new WritableCellFormat(cellFont);
+		    cellFormat.setBackground(Colour.BLUE);
+		    cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+		    cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
+		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);			
+			
+		    s.setColumnView(0, 35);
+		    s.setColumnView(1, 16);
+		    s.setColumnView(2, 16);
+		    s.setColumnView(3, 20);
+		    s.setColumnView(4, 40);
+		    s.setColumnView(5, 30);
+		    s.setColumnView(6, 20);
+		    s.setColumnView(7, 15);
+		    s.setColumnView(8, 15);
+		    s.setRowView(0, 900);
+						
+			s.addCell(new Label(0, 0, "NOMBRE",cellFormat));
+			s.addCell(new Label(1, 0, "CLIENTE ID",cellFormat));
+			s.addCell(new Label(2, 0, "CRITICIDAD",cellFormat));
+			s.addCell(new Label(3, 0, "FECHA ALTA CLIENTE",cellFormat));
+			s.addCell(new Label(4, 0, "LOGO URL",cellFormat));
+			s.addCell(new Label(5, 0, "REF. LOCAL",cellFormat));
+			s.addCell(new Label(6, 0, "REF. GLOBAL",cellFormat));
+			s.addCell(new Label(7, 0, "TIPO",cellFormat));
+			s.addCell(new Label(8, 0, "WORKFLOW",cellFormat));
+			
+			
+			int aux=1;
+			
+			for (Cliente c:clientes){
+				s.addCell(new Label(0, aux, c.getNombre()));
+				s.addCell(new Label(1, aux, c.getClientId()));
+				s.addCell(new Label(2, aux, c.getCriticidad()));
+				s.addCell(new Label(3, aux, c.getStr_fecha_alta_cliente()));
+				s.addCell(new Label(4, aux, c.getLogo_url()));
+				s.addCell(new Label(5, aux, c.getRef_local()));
+				s.addCell(new Label(6, aux, c.getRef_global()));
+				s.addCell(new Label(7, aux, c.getTipo()));
+				if (c.getWorkflow()==true){
+					s.addCell(new Label(8, aux, "SI"));
+				}else{
+					s.addCell(new Label(8, aux, "NO"));
+				}
+				
+				aux++;
+			}		
+			
+			w.write();
+			w.close();
+		} catch (Exception e) {
+			throw new ServletException("Exception in Excel", e);
+		} finally {
+			if (out != null)
+				out.close();
+		}
 	}
 
 	private void deleteClient(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
@@ -69,7 +163,7 @@ public class ClienteServlet extends HttpServlet {
 			
 			json.append("success", "true");
 		} catch (Exception e) {
-			json.append("failure", "true");
+			json.append("failure", "true");	
 		}
 	
 		resp.setCharacterEncoding("UTF-8");

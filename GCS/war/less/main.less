@@ -41,6 +41,7 @@
 }
 body{
 	margin:0px;
+	background-color:#F9F9F9;
 }
 
 .body-layout{
@@ -57,6 +58,7 @@ body{
 	margin-left:auto;
 	text-align:left;	
 	background-color:white;
+	min-height:570px;
 }
 
 .align-top{
@@ -211,7 +213,12 @@ button {
     vertical-align: middle;
     height: 35px;
     
+   
 }
+
+button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover{
+    	.linear-gradient(#0069b1, #004b8c);
+    }
 
 .selectpicker > span.filter-option{
 	 font-family: Arial, sans-serif;
@@ -245,13 +252,22 @@ button {
 	z-index:1
 }
 
-.user_span{
-	background-image: url("../img/user-white.png");
+.proyecto_span{
+	background-image: url("../img/nuevoPB.png");
     display: inline-block;
-    height: 20px;
+    height: 16px;
     margin-left: 10px;
     vertical-align: text-bottom;
-    width: 19px;	
+    width: 13px;	
+}
+
+.user_span{
+	background-image: url("../img/user16.png");
+    display: inline-block;
+    height: 14px;
+    margin-left: 10px;
+    vertical-align: text-bottom;
+    width: 15px;	
 }
 
 .demanda_span {
