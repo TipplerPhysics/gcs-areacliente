@@ -130,6 +130,7 @@ public class DemandaServlet extends HttpServlet {
 			d.setFecha_comunicacion(Utils.dateConverter(fecha_asignacion));
 			d.setStr_fecha_comunicacion(fecha_asignacion);
 			d.setHora_comunicacion(hora_peticion_ext+":"+min_peticion_ext);
+
 			
 
 			dDao.createDemanda(d);
@@ -225,8 +226,8 @@ public class DemandaServlet extends HttpServlet {
 				d.setGestor_negocio(Long.parseLong(gestor_negocio));
 			}
 			d.setHora_entrada_peticion(hora_peticion + ":" + min_peticion);
-			d.setHora_solicitud_asignacion(hora_solicitud_asignacion + ":"
-					+ min_solicitud_asignacion);
+			if (!hora_solicitud_asignacion.equals("default") && !min_solicitud_asignacion.equals("default"))
+				d.setHora_solicitud_asignacion(hora_solicitud_asignacion + ":"	+ min_solicitud_asignacion);
 			d.setMotivo_catalogacion(motivo_catalogacion);
 			d.setTipo(tipo);
 			d.setMotivo_catalogacion(motivo_catalogacion);

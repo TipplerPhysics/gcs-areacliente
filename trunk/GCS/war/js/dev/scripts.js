@@ -1057,6 +1057,34 @@ $(function() {
 	$('.alta_usuario').on('click', '.papelera', function(e) {
 		$('#deleteUser').attr('name',$(this).attr('name'));
 	});
+	
+	$('.gestion_cliente').on('click', '.papelera', function(e) {
+		$('#deleteClient').attr('name',$(this).attr('name'));
+	});
+	
+	$('#deleteClient').on('click', function(e) {
+		var id= $(this).attr('name');
+		 var formURL = "/clienteServlet?";
+		 var postData="accion=delete&id="+ id;
+		 $.ajax({
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				$('#row'+id).fadeOut("fast", function(){
+					$(this).remove();
+					$('#myTable').paginateMe({
+						pagerSelector : '#myPager',
+						showPrevNext : true,
+						hidePageNumbers : false,
+						perPage : 5
+					});
+				});
+				$('#confirm-delete').modal('hide');	        	
+			}
+		});
+	});
 
 	$('#deleteUser').on('click', function(e) {
 		var id= $(this).attr('name');

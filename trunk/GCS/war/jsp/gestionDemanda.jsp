@@ -134,12 +134,15 @@
 							<span class="lbl">Hora solicitud asignación:</span>
 							<div class="input">
 								<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
+										<option value="default"> </option>
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
 								<span class="time-span">:</span>
 								<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">
+								<option value="default"> </option>
+									
 									<c:forEach items="${minutosList}" var="min">
 										<option value="${min}">${min}</option>
 									</c:forEach>
