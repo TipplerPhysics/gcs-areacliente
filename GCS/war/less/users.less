@@ -386,44 +386,7 @@
 			border: 1px solid #dcdcdc;
 			border-radius:2px; 
 			
-			#message_div{
-				position: absolute;
-				border: 1px solid black;
-			    border-radius: 2px;
-			    display: inline-block;
-			    width: 90%;
-			    position: relative;
-			    border-radius:4px;
-			    opacity: 0;
-				filter: alpha(opacity=0);
-				&.error, &.success {
-					margin: 20px auto 0;
-					position: inherit;
-			    	display: block;
-			    	opacity: 1;
-    				filter: alpha(opacity=100);
-
-    				> span {
-						display: inline-block;
-    					padding: 10px;
-    				}
-				}
-			    &.error {
-    				background-color: #F7E9E9;
-					border: 1px solid #CA0161; 
-					> span{
-						color: #C4136C;
-					}
-			    }
-			    &.success{
-					background-color: #E2FAFE;
-					border: 1px solid #c8e1e6;
-					
-					> span {
-						color: #0065b7;
-					} 
-				}
-			}
+			
 
 			.form-fieldset{
 				display: block;
@@ -664,3 +627,41 @@
 	}
 }
 
+#message_div, .message_div{
+				position: absolute;
+				border: 1px solid black;
+			    border-radius: 2px;
+			    display: inline-block;
+			    width: 90%;
+			    position: relative;
+			    border-radius:4px;
+			    opacity: 0;
+				filter: alpha(opacity=0);
+				&.error, &.success {
+					margin: 20px auto 0;
+					position: inherit;
+			    	display: block;
+			    	opacity: 1;
+    				filter: alpha(opacity=100);
+
+    				> span {
+						display: inline-block;
+    					padding: 10px;
+    				}
+				}
+			    &.error {
+    				background-color: #F7E9E9;
+					border: 1px solid #CA0161; 
+					> span{
+						color: #C4136C;
+					}
+			    }
+			    &.success{
+					background-color: #E2FAFE;
+					border: 1px solid #c8e1e6;
+					
+					> span {
+						color: #0065b7;
+					} 
+				}
+			}

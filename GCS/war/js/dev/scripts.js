@@ -25,6 +25,75 @@ $(function() {
 			});
 	});
 	
+	
+	
+	$("#submit_client_form_modal").on('click',function(e) {
+		e.preventDefault(); //STOP default action
+		var $form = $("#new-client-form");
+		
+		var params = getClientData($form);
+		
+		
+		if($form.valid()){		
+
+			var postData = $form.serialize() + "&accion=new";
+			var formURL = $form.attr("action");
+			$.ajax(
+			{
+				 url : formURL,
+				  type: "GET",
+				  data : postData,
+				  success:function(data, textStatus, jqXHR) 
+				  {
+						//data: return data from server
+					if (data.success==("true")){
+						/*var html=generateRowCliente(postData,data);
+						
+						$('#myTable').prepend(html);
+						
+						$('#myTable').paginateMe({
+							pagerSelector : '#myPager',
+							showPrevNext : true,
+							hidePageNumbers : false,
+							perPage : 5
+						});*/
+						
+						$('#message_div_cliente').removeClass("error").addClass("success");
+						if ($('.new-user-form-holder').height()<190){
+							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						}
+						$('#span_message_cliente').html("El cliente se ha creado de forma correcta.");
+						$('#message_div_cliente').css('display','block');
+						
+						resetForm($form);
+						setTimeout(function() { 
+							$( "#message_div_cliente" ).fadeOut( "slow", function() {
+								$('#span_message_cliente').html("");
+						  });
+							$('#new-client').modal('toggle');	
+						}, 5000);
+						
+					}else{
+						$('#message_div_cliente').removeClass("success").addClass("error");
+						if ($('.new-user-form-holder').height()<190){
+							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						}
+						$('#span_message_cliente').html(data.error);
+						$('#message_div_cliente').css('display','block');
+					
+						}
+				  },
+			  error: function(jqXHR, textStatus, errorThrown) 
+			  {
+				if (errorThrown.length > 0){
+					$('#span_message').html(errorThrown);
+					$('#message_div').addClass('error').removeClass('success');
+				}
+			  }
+			});
+		}			
+	});
+	
 	$("#submit_client_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-client-form");
@@ -56,25 +125,31 @@ $(function() {
 							perPage : 5
 						});*/
 						
-						$('#message_div').removeClass("error").addClass("success");
+						$('#message_div_cliente').removeClass("error").addClass("success");
 						if ($('.new-user-form-holder').height()<190){
 							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 						}
-						$('#span_message').html("El cliente se ha creado de forma correcta.");
-						$('#message_div').css('display','block');
+						
+						$form.find('.form-container').find('div:not(#message_div)').hide(0);
+						$('#span_message_cliente').html("El cliente se ha creado de forma correcta.");
+						$('#message_div_cliente').css('display','block');
 						
 						resetForm($form);
 						setTimeout(function() { 
 							$( "#message_div" ).fadeOut( "slow", function() {
 								$('#span_message').html("");
-						  }); }, 5000);
+						  }); 
+						$('#newUserButton').click();	
+						location.reload();
+
+						}, 5000);
 					}else{
-						$('#message_div').removeClass("success").addClass("error");
+						$('#message_div_cliente').removeClass("success").addClass("error");
 						if ($('.new-user-form-holder').height()<190){
 							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 						}
-						$('#span_message').html(data.error);
-						$('#message_div').css('display','block');
+						$('#span_message_cliente').html(data.error);
+						$('#message_div_cliente').css('display','block');
 					
 						}
 				  },
@@ -102,8 +177,57 @@ $(function() {
 		var id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRowCliente(id);
+			disableSearch();
 		}	
 	});
+	
+	function checkPaises(paises){
+		if (paises.indexOf("Argentina")!=-1){
+			$('#argentina_span').addClass('checked');
+		}
+		if (paises.indexOf("Belgica")!=-1){
+			$('#belgica_span').addClass('checked');
+		}
+		if (paises.indexOf("Chile")!=-1){
+			$('#chile_span').addClass('checked');
+		}
+		if (paises.indexOf("Colombia")!=-1){
+			$('#colombia_span').addClass('checked');
+		}
+		if (paises.indexOf("Espa")!=-1){
+			$('#espania_span').addClass('checked');
+		}
+		if (paises.indexOf("Francia")!=-1){
+			$('#francia_span').addClass('checked');
+		}
+		if (paises.indexOf("Italia")!=-1){
+			$('#italia_span').addClass('checked');
+		}
+		if (paises.indexOf("Mexico")!=-1){
+			$('#mexico_span').addClass('checked');
+		}
+		if (paises.indexOf("Peru")!=-1){
+			$('#peru_span').addClass('checked');
+		}
+		if (paises.indexOf("Portugal")!=-1){
+			$('#portugal_span').addClass('checked');
+		}
+		if (paises.indexOf("Reino Unido")!=-1){
+			$('#reino_unido_span').addClass('checked');
+		}
+		if (paises.indexOf("Uruguay")!=-1){
+			$('#uruguay_span').addClass('checked');
+		}
+		if (paises.indexOf("USA")!=-1){
+			$('#usa_span').addClass('checked');
+		}
+		if (paises.indexOf("Venezuela")!=-1){
+			$('#venezuela_span').addClass('checked');
+		}
+		if (paises.indexOf("Redex")!=-1){
+			$('#redex_span').addClass('checked');
+		}
+	}
 		
 	function editRowCliente(id){
 		var $currentRow = $('#row'+id);
@@ -121,6 +245,7 @@ $(function() {
 		var logo_url = $currentRow.data('logo-url');
 		var ref_local = $currentRow.data('ref-local');
 		var workflow = $currentRow.data('workflow');
+		var paises = $currentRow.data('paises');
 
 		$.get('../html/extended-gestion-cliente.html',null,function(result) {
 			// Close other editing field and show the row.
@@ -131,7 +256,7 @@ $(function() {
 			// Hide current row.
 			$currentRow.css({display:'none'});
 			// Adds the item holder row for editing the item.
-			$currentRow.after("<tr id='edit-item-holder' class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
+			$currentRow.after("<tr id='edit-item-holder' class='extended-row' style='display: table-row;'><td colspan='7'><div class='extended-div'></div></td></tr>");
 			var $currentOpenEdit = $table.find('#edit-item-holder');
 			$currentOpenEdit.data('row-id', id);
 			// Add the result to the element
@@ -140,40 +265,34 @@ $(function() {
 			var $editForm = $currentOpenEdit.find('form#edit-item');
 			// Add info stuff ... errr ... 0_o.
 			$editForm.find('#fecha_entrada_peticion_ed').val(fechaEntrada);
+			
 			// copia options de select de formulario de creacion
-			var $clienteOptions = $('select#input_cliente option').clone();
-			$editForm.find('select#input_cliente_ed').append($clienteOptions);
-			var inputvar = $('#input_cliente_ed').children();
-			var clientValue;
-			for (var a=0; a<=inputvar.length-1;a++)
-				if (inputvar[a].innerHTML==cliente)
-					clientValue = inputvar[a].value;
+			var $tipoOptions = $('select#tipo option').clone();			
+			$editForm.find('select#tipo_ext').append($tipoOptions);
+			$('#tipo_ext option').first().remove();
 			
-			$editForm.find('select#input_cliente_ed').val(clientValue);
+			var $criticidadOptions = $('select#criticidad option').clone();
+			$editForm.find('select#criticidad_ext').append($criticidadOptions);
 			
-			$editForm.find('select#input_cliente_ed option').first().remove();
+			$('#logo_url_ext').val(logo_url);
+			$('#ref_local_ext').val(ref_local);
+			$('#id_cliente_ext').val(idCliente);
+			$('#clientes_ext').val(cliente);
+			$('#ref_global_ext').val(ref_global);
 
-			var $tipoOptions = $('select#tipo option').clone();
-			$editForm.find('select#input_tipo_ed').append($tipoOptions).val(tipo);
-			$editForm.find('select#input_tipo_ed option').first().remove();
+			$('#tipo_ext').val(tipo);
+			$('#criticidad_ext').val(criticidad);
+			
+			$('#id_cliente_ext').text(idCliente);
 
-			var $tipoOptions = $('select#estado option').clone();
-			$editForm.find('select#input_estado_ed').append($tipoOptions).val(estado);
-			$editForm.find('select#input_estado_ed option').first().remove();
-
-			$editForm.find('#cod_peticion_ed').html(codPeticion);
-
-			var $gestorOptions = $('select#gestor_it option').clone();
-			$editForm.find('select#gestor_it_ed').append($gestorOptions).val(gestorAsignado);
-			$editForm.find('select#gestor_it_ed option').first().remove();
-
-			// If it has a fecha it might have a time too.
-			if(fechaComun.length > 0) {
-				$('#fecha_solicitud_asignacion_ed').val(fechaComun);
-				$editForm.find('select#hora_peticion_ed').val(horaComun.substring(0, 2));
-				$editForm.find('select#min_peticion_ed').val(horaComun.substring(3, 5));
+			checkPaises(paises);
+			
+			if (workflow==true){
+				$('#workflow_true').attr("checked","checked");
+			}else{
+				$('#workflow_false').attr("checked","checked");
 			}
-
+	
 			// Activate everything.
 			initDatepickers();
 			initSelectpickers();
@@ -183,7 +302,9 @@ $(function() {
 			$editForm.on('click', '.cancelar-ext', function (e) {
 				$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 				$currentOpenEdit.remove();
+				enableSearch();
 				return false;
+				
 			});
 			// Click event for the save button.
 			$editForm.on('click', '.guardar-ext', function (e) {
@@ -191,7 +312,7 @@ $(function() {
 					var $editItemHolder = $(this).closest('#edit-item-holder');
 					// Collect all the information.
 					var id= $editItemHolder.data('row-id');
-					var fecha_entrada_peticion = $editItemHolder.find('input#fecha_entrada_peticion_ed').val();
+					/*var fecha_entrada_peticion = $editItemHolder.find('input#fecha_entrada_peticion_ed').val();
 					var input_cliente = $('#input_cliente_ed option:selected').val();
 					var input_tipo = $('#input_tipo_ed option:selected').val();
 					var input_estado = $('#input_estado_ed option:selected').val();
@@ -201,13 +322,16 @@ $(function() {
 					var min_peticion = $('#min_peticion_ed option:selected').val();
 					
 					var postData = "fecha_entrada="+fecha_entrada_peticion+"&cliente="+input_cliente+"&tipo="+input_tipo+"&estado="+input_estado+"&gestor_it="+gestor_it+"&fecha_asignacion="+fecha_solicitud_asignacion+"&hora_peticion_ext="+hora_peticion+"&accion=update&min_peticion_ext="+min_peticion+"&id="+id;
-					var formURL = "/demandaServlet";
+					*/
+					var formURL = "/clienteServlet?accion=edit";
+					var postData = $editForm.serialize()+"&id="+id;
 
 					$.ajax({
 						url : formURL,
 						type: "POST",
 						data : postData,
 						success:function(data, textStatus, jqXHR) {
+							enableSearch();
 							location.reload();
 						}
 					});
@@ -222,6 +346,22 @@ if (url.indexOf("localhost")>1){
 	url="http://localhost:8888";
 }else{
 	url="http://gcs-areacliente.appspot.com";
+}
+
+function disableSearch(){
+	var fila = $($('thead').children()[1]).children();
+	var a = 0;
+	for (a=0;a<=fila.length-1;a++){
+		$(fila[a]).children().prop('disabled', true);
+	}
+}
+
+function enableSearch(){
+	var fila = $($('thead').children()[1]).children();
+	var a = 0;
+	for (a=0;a<=fila.length-1;a++){
+		$(fila[a]).children().prop('disabled', false);
+	}
 };var opciones_estado = "<option value='PDTE Doc Alcance en GCS'>PDTE Doc Alcance en GCS</option><option value='P-950 en confecci&oacute;n'>P-950 en confección</option><option value='PDTE Valoración IT'>PDTE Valoración IT</option><option value='PDTE Plan de Trabajo IT'>PDTE Plan de Trabajo IT</option><option value='PDTE Visto Bueno del CL del plan de trabajo'>PDTE Visto Bueno del CL del plan de trabajo</option><option value='En Desarrollo'>En Desarrollo</option><option value='En Test - Conectividad'>En Test - Conectividad</option><option value='En Test - Integración'>En Test - Integración</option><option value='En Test - Aceptación'>En Test - Aceptación</option><option value='Parado por Negocio - Producto'>Parado por Negocio - Producto</option><option value='Parado por Negocio'>Parado por Negocio</option><option value='Parado por IT'>Parado por IT</option><option value='Excluido por Negocio'>Excluido por Negocio</option><option value='Excluido por Timeout'>Excluido por Timeout</option><option value='PDTE Implantar'>PDTE Implantar</option><option value='En Penny Test'>En Penny Test</option><option value='Implementado con OK'>Implementado con OK</option><option value='Implementado sin OK'>Implementado sin OK</option>";
 
 
@@ -234,6 +374,8 @@ $(function() {
 		var id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRowDemanda(id);
+			disableSearch();
+
 		}	
 	});
 	
@@ -242,6 +384,7 @@ $(function() {
 		
 		$('#papelera'+id).attr("data-toggle","modal");
 		undoRowDemanda(id);
+		enableSearch();
 	});
 	
 	$('#myTable').on('click', '.guardar-ext-demanda', function (e) {
@@ -460,6 +603,7 @@ $(function() {
 			$editForm.on('click', '.cancelar-ext', function (e) {
 				$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 				$currentOpenEdit.remove();
+				enableSearch();
 				return false;
 			});
 			// Click event for the save button.
@@ -485,6 +629,7 @@ $(function() {
 						type: "POST",
 						data : postData,
 						success:function(data, textStatus, jqXHR) {
+							enableSearch();
 							location.reload();
 						}
 					});
@@ -1115,6 +1260,8 @@ $(function() {
 		var id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRow(id);
+			disableSearch();
+
 		}	
 	});
 
@@ -1327,6 +1474,7 @@ function editRow(id){
 		$editForm.on('click', '.cancelar-ext', function (e) {
 			$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 			$currentOpenEdit.remove();
+			enableSearch();
 			return false;
 		});
 		// Click event for the save button.
@@ -1359,6 +1507,7 @@ function editRow(id){
 					type: "POST",
 					data : postData,
 					success:function(data, textStatus, jqXHR) {
+						enableSearch();
 						location.reload();
 					}
 				});
@@ -1370,7 +1519,7 @@ function editRow(id){
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
 		remote: "Por favor, rellena este campo.",
-		email: "Por favor, escribe una direcci&oacuten de correo v&aacutelida.",
+		email: "Por favor, escribe una direcci&oacuten de correo v&aacutelida.(Terminada en @bbva.com)",
 		url: "Por favor, escribe una URL válida.",
 		date: "Por favor, escribe una fecha válida.",
 		dateISO: "Por favor, escribe una fecha (ISO) válida.",

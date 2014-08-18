@@ -92,36 +92,73 @@
 						<div class="form-field">						
 							<div class="radio-div">
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Lorem 1"
-										id="Lorem1" class="require-one"><label for="Lorem1"><span></span>Lorem 1</label>
+									<input type="checkbox" name='paises' value="Argentina"
+										id="Lorem1" class="require-one"><label for="Lorem1"><span></span>Argentina</label>
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Lorem 2"
-										id="Lorem2"><label for="Lorem2"><span></span>Lorem 2</label>
+									<input type="checkbox" name='paises' value="Bélgica"
+										id="Lorem2"><label for="Lorem2"><span></span>Bélgica</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Lorem 3"
-										id="Lorem3"><label for="Lorem3"><span></span>Lorem 3</label>
+									<input type="checkbox" name='paises' value="Chile"
+										id="Lorem3"><label for="Lorem3"><span></span>Chile</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Lorem 4"
-										id="Lorem4"><label for="Lorem4"><span></span>Lorem 4</label>
+									<input type="checkbox" name='paises' value="Colombia"
+										id="Lorem4"><label for="Lorem4"><span></span>Colombia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Lorem 5"
-										id="Lorem5"><label for="Lorem5"><span></span>Lorem 5</label>
+									<input type="checkbox" name='paises' value="España"
+										id="Lorem5"><label for="Lorem5"><span></span>España</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Lorem 6"
-										id="Lorem6"><label for="Lorem6"><span></span>Lorem 6</label>
+									<input type="checkbox" name='paises' value="Francia"
+										id="Lorem6"><label for="Lorem6"><span></span>Francia</label>
 								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Italia"
+										id="Lorem7"><label for="Lorem7"><span></span>Italia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Mexico"
+										id="Lorem8"><label for="Lorem8"><span></span>México</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Peru"
+										id="Lorem9"><label for="Lorem9"><span></span>Perú</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Portugal"
+										id="Lorem10"><label for="Lorem10"><span></span>Portugal</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Reino Unido"
+										id="Lorem11"><label for="Lorem11"><span></span>Reino Unido</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Uruguay"
+										id="Lorem12"><label for="Lorem12"><span></span>Uruguay</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="USA"
+										id="Lorem13"><label for="Lorem13"><span></span>USA</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Venezuela"
+										id="Lorem14"><label for="Lorem14"><span></span>Venezuela</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Redex"
+										id="Lorem15"><label for="Lorem15"><span></span>Redex</label>
+								</div>
+								
 							</div>
 						</div>
 						
 					</div>
-					<div id="message_div">
-						<span id="span_message"></span>
+					<div id="message_div_cliente" class="message_div">
+						<span id="span_message_cliente" class="span_message"></span>
 					</div>
 				</div>
 			</form>
@@ -163,7 +200,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${clientes}" var="cliente">
-									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-logo-url="${cliente.logo_url}" data-ref-local="${cliente.ref_local}" data-workflow="${cliente.workflow}">
+									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-paises="${cliente.paises}" data-logo-url="${cliente.logo_url}" data-ref-local="${cliente.ref_local}" data-workflow="${cliente.workflow}">
 										<td><span>${cliente.str_fecha_alta_cliente}</span></td>
 										<td><span>${cliente.clientId}</span></td>
 										<td><span>${cliente.nombre}</span></td>

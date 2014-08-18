@@ -1,43 +1,108 @@
-<form id="edit-item" class="gestion_cliente_ext" novalidate="novalidate">
+<form id="edit-item" class="gestion_cliente_ext" novalidate="novalidate" action>
 	<div class='area-div'>
 		<span class="span-3">
-			<input type="text" value="" id="fecha_entrada_peticion_ed" class="edit_input datepicker datefuture fromTo" required aria-required="true" data-target-id='fecha_solicitud_asignacion_ed'>
+			<input type="text" value="" id="fecha_entrada_peticion_ed" name="fecha_entrada_peticion_ed" class="edit_input datepicker datefuture fromTo" required aria-required="true" data-target-id='fecha_solicitud_asignacion_ed'>
 		</span>
 		<span class="span-3">
-			<input type="text" value="" id="id_cliente_ext" class="edit_input" required aria-required="true">
+			<span id="id_cliente_ext"></span>
 		</span>
-		<span class="span-3">
-			<select class="selectpicker" id="clientes_ext" name="clientes_ext" required aria-required="true"></select>
+		<span class="span-cliente">
+			<input type="text" value="" id="clientes_ext" name="clientes_ext" class="edit_input" required aria-required="true">
 		</span>
-		<span class="span-7">
-			<input type="text" value="" id="ref_global_ext" class="edit_input" required aria-required="true">
+		<span class="span-ref-global">
+			<input type="text" value="" id="ref_global_ext" name="ref_global_ext" class="edit_input" required aria-required="true">
 		</span>
-		<span class="span-3">
-			<input type="text" value="" id="tipo_ext" class="edit_input" required aria-required="true">
+		<span class="span-tipo">
+			<select class="selectpicker" id="tipo_ext" name="tipo_ext" required aria-required="true"></select>
 		</span>
-		<span class="span-3">
-			<input type="text" value="" id="criticidad_ext" class="edit_input" required aria-required="true">
+		<span class="span-crit">
+			<select class="selectpicker" id="criticidad_ext" name="criticidad_ext" required aria-required="true"></select>
 		</span>
-		<span class="span-3 last demanda">
+		<span class="span-3 last">
 			<img src="../img/vs.png" class="vs"><a id="lapiz" class="lapiz inactive"></a><a id="papelera" data-target="#confirm-delete" name="" class="papelera inactive"></a>
 		</span>
 	</div>
-	<div id="extended-demanda">
+	<div id="extended-cliente">
 		<div class="form-field">
-			<span class="lbl">Gestor IT asignado:</span>
-			<div class="input long">
-				<select class="selectpicker gestor_it_ed" name="gestor_it_ed" id="gestor_it_ed">
-				</select>
-			</div>
+			<span class="lbl">Logo Url:</span>
+			<input type="text" aria-required="true" name="logo_url"  class="" id="logo_url_ext" value="">
 		</div>
 		<div class="form-field">
-				<div class="fecha">
-					<span class="lbl">Fecha comunicación asignación gestor:</span>
-					<div class="input">
-						<input type="text" class="datepicker" value="" name="fecha_solicitud_asignacion_ed" id="fecha_solicitud_asignacion_ed">
-				  	</div>
-				  </div>
-			  
+			<span class="lbl">Referencia local:</span>
+			<input type="text" aria-required="true" name="ref_local"  class="" id="ref_local_ext" value="">
+		</div>
+		<div class="form-field">
+			<span class="lbl">Paises:</span>
+			<div class="radio-div">
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Argentina"
+										id="Lorem1_ext"><label for="Lorem1_ext" id="argentina_span"><span></span>Argentina</label>
+								</div>
+								
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Bélgica"
+										id="Lorem2_ext"><label for="Lorem2_ext" id="belgica_span"><span></span>Bélgica</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Chile"
+										id="Lorem3_ext"><label for="Lorem3_ext" id="chile_span"><span></span>Chile</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Colombia"
+										id="Lorem4_ext"><label for="Lorem4_ext" id="colombia_span"><span></span>Colombia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="España"
+										id="Lorem5_ext"><label for="Lorem5_ext" id="espania_span"><span></span>España</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Francia"
+										id="Lorem6_ext"><label for="Lorem6_ext" id="francia_span"><span></span>Francia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Italia"
+										id="Lorem7_ext"><label for="Lorem7_ext" id="italia_span"><span></span>Italia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Mexico"
+										id="Lorem8_ext"><label for="Lorem8_ext" id="mexico_span"><span></span>México</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Peru"
+										id="Lorem9_ext"><label for="Lorem9_ext" id="peru_span"><span></span>Perú</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Portugal"
+										id="Lorem10_ext"><label for="Lorem10_ext" id="portugal_span"><span></span>Portugal</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Reino Unido"
+										id="Lorem11_ext"><label for="Lorem11_ext" id="reino_unido_span"><span></span>Reino Unido</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Uruguay"
+										id="Lorem12_ext"><label for="Lorem12_ext" id="uruguay_span"><span></span>Uruguay</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="USA"
+										id="Lorem13_ext"><label for="Lorem13_ext" id="usa_span"><span></span>USA</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Venezuela"
+										id="Lorem14_ext"><label for="Lorem14_ext" id="venezuela_span"><span></span>Venezuela</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Redex"
+										id="Lorem15_ext"><label for="Lorem15_ext" id="redex_span"><span></span>Redex</label>
+								</div>
+							</div>
+		</div>
+		<div class="form-field">
+			<span class="lbl">Workflow:</span>
+			<div class="radio-field">
+				<label class="lbl"><input type="radio" value="SI" name="workflow" id="workflow_true"><span class="overlay"></span> Si</label>
+				<label class="lbl"><input type="radio" value="NO" name="workflow" id="workflow_false"><span class="overlay"></span> No</label>								
+			</div>
 		</div>
 	</div>
 <button class="cancelar-ext">Cancelar</button>

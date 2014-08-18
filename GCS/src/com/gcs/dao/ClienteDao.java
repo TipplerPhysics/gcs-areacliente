@@ -31,9 +31,11 @@ public class ClienteDao {
 		
 		c.setNombre(nombreMayus);
 		
-		
-		if (c.getKey()==null)
+		boolean isNewClient = false;
+		if (c.getKey()==null){
 			c.setClientId("IDGLOBAL"+ String.format("%04d", cont));
+			isNewClient = true;
+		}
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
@@ -42,6 +44,7 @@ public class ClienteDao {
 			pm.makePersistent(c);
 		} finally {
 			pm.close();
+			if (isNewClient)
 			ccDao.increaseCont();
 		}
 	}

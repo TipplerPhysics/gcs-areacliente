@@ -125,6 +125,8 @@ $(function() {
 		var id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRow(id);
+			disableSearch();
+
 		}	
 	});
 
@@ -337,6 +339,7 @@ function editRow(id){
 		$editForm.on('click', '.cancelar-ext', function (e) {
 			$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 			$currentOpenEdit.remove();
+			enableSearch();
 			return false;
 		});
 		// Click event for the save button.
@@ -369,6 +372,7 @@ function editRow(id){
 					type: "POST",
 					data : postData,
 					success:function(data, textStatus, jqXHR) {
+						enableSearch();
 						location.reload();
 					}
 				});
