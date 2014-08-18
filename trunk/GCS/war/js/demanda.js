@@ -10,6 +10,8 @@ $(function() {
 		var id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRowDemanda(id);
+			disableSearch();
+
 		}	
 	});
 	
@@ -18,6 +20,7 @@ $(function() {
 		
 		$('#papelera'+id).attr("data-toggle","modal");
 		undoRowDemanda(id);
+		enableSearch();
 	});
 	
 	$('#myTable').on('click', '.guardar-ext-demanda', function (e) {
@@ -236,6 +239,7 @@ $(function() {
 			$editForm.on('click', '.cancelar-ext', function (e) {
 				$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
 				$currentOpenEdit.remove();
+				enableSearch();
 				return false;
 			});
 			// Click event for the save button.
@@ -261,6 +265,7 @@ $(function() {
 						type: "POST",
 						data : postData,
 						success:function(data, textStatus, jqXHR) {
+							enableSearch();
 							location.reload();
 						}
 					});

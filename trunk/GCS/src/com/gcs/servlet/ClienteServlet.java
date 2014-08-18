@@ -60,6 +60,8 @@ public class ClienteServlet extends HttpServlet {
 					createClient(req, resp);
 				}else if (accion.equals("delete")){
 					deleteClient(req,resp);
+				}else if(accion.equals("edit")){
+					editClient(req,resp);
 				}else if (accion.equals("xls")){
 					generateXLS(req,resp);
 				}
@@ -172,6 +174,72 @@ public class ClienteServlet extends HttpServlet {
 		
 	}
 	
+	private void editClient(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
+		JSONObject json = new JSONObject();
+		
+		Cliente c = new Cliente();
+		ClienteDao cDao = ClienteDao.getInstance();
+		
+		try {
+			
+			String errorStr = "";
+			String nombre = req.getParameter("clientes_ext");
+			String fecha_entrada_peticion_ed = req.getParameter("fecha_entrada_peticion_ed");
+			String[] paises = req.getParameterValues("paises");
+			
+			String workflow = req.getParameter("workflow");
+			String ref_global = req.getParameter("ref_global_ext");
+			String ref_local = req.getParameter("ref_local");
+
+			String id = req.getParameter("id");
+			String logo_url = req.getParameter("logo_url");
+			
+			String criticidad = req.getParameter("criticidad_ext");
+			String tipo = req.getParameter("tipo_ext");
+			
+		
+			c = cDao.getClienteById(Long.parseLong(id));
+			c.setNombre(nombre);
+			String paises_str="";
+			if (paises!=null){
+				for (String p:paises){
+					paises_str+=p+"-";
+				}
+			}
+			
+			c.setPaises(paises_str);
+			if (workflow=="SI")
+			c.setWorkflow(true);
+			else
+			c.setWorkflow(false);
+			c.setRef_global(ref_global);
+			c.setRef_local(ref_local);
+			c.setLogo_url(logo_url);
+			c.setCriticidad(criticidad);
+			c.setTipo(tipo);
+			
+			c.setStr_fecha_alta_cliente(fecha_entrada_peticion_ed);
+			c.setFecha_alta_cliente(Utils.dateConverter(fecha_entrada_peticion_ed));
+			
+			cDao.createCliente(c);
+			json.append("success", "true");		
+			json.append("id", c.getKey().getId());
+			
+		} catch (JSONException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
+		} catch (ParseException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
+		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
 	private void createClient(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
@@ -186,8 +254,8 @@ public class ClienteServlet extends HttpServlet {
 			String nombre = req.getParameter("client_name");
 			String criticidad = req.getParameter("criticidad");		
 			String str_fecha_alta_cliente = req.getParameter("fecha_alta_cliente");
-			String logo_url = req.getParameter("logo_url");
-			String paises = req.getParameter("paises");
+			String logo_url = req.getParameter("logo_url");			
+			String[] paises = req.getParameterValues("paises");
 			String ref_global = req.getParameter("ref_global").toUpperCase();
 			String ref_local = req.getParameter("ref_local").toUpperCase();
 			String tipo = req.getParameter("tipo");
@@ -221,6 +289,11 @@ public class ClienteServlet extends HttpServlet {
 				errorStr += "Ya existe un cliente con esta referencia local";			
 			}
 			
+			String pais_str="";
+			for (String p:paises){
+				pais_str+=p+"-";
+			}
+			
 			if (errorStr.equals("")){
 				c = new Cliente();
 				c.setNombre(nombre);
@@ -228,7 +301,7 @@ public class ClienteServlet extends HttpServlet {
 				c.setStr_fecha_alta_cliente(str_fecha_alta_cliente);
 				c.setFecha_alta_cliente(Utils.dateConverter(str_fecha_alta_cliente));
 				c.setLogo_url(logo_url);
-				c.setPaises(paises);
+				c.setPaises(pais_str);
 				c.setRef_global(ref_global);
 				c.setRef_local(ref_local);
 				c.setTipo(tipo);
