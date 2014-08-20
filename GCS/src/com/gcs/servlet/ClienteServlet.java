@@ -255,7 +255,6 @@ public class ClienteServlet extends HttpServlet {
 			String criticidad = req.getParameter("criticidad");		
 			String str_fecha_alta_cliente = req.getParameter("fecha_alta_cliente");
 			String logo_url = req.getParameter("logo_url");			
-			String[] paises = req.getParameterValues("paises");
 			String ref_global = req.getParameter("ref_global").toUpperCase();
 			String ref_local = req.getParameter("ref_local").toUpperCase();
 			String tipo = req.getParameter("tipo");
@@ -276,23 +275,25 @@ public class ClienteServlet extends HttpServlet {
 			if (exist_client){
 				errorStr += "Ya existe un cliente con este nombre";			
 			}
+			
 			c = cDao.getClienteByRefGlobal(ref_global);
 			if (c!=null){
 				if (!errorStr.equals(""))
 					errorStr += " </br> ";
 				errorStr += "Ya existe un cliente con esta referencia global";			
 			}
-			c = cDao.getClienteByRefLocal(ref_local);
-			if (c!=null){
-				if (!errorStr.equals(""))
-					errorStr += " </br> ";
-				errorStr += "Ya existe un cliente con esta referencia local";			
-			}
 			
-			String pais_str="";
-			for (String p:paises){
-				pais_str+=p+"-";
+			if (!ref_local.equals("")){
+				c = cDao.getClienteByRefLocal(ref_local);
+				if (c!=null){
+					if (!errorStr.equals(""))
+						errorStr += " </br> ";
+					errorStr += "Ya existe un cliente con esta referencia local";			
+				}
 			}
+		
+			
+			
 			
 			if (errorStr.equals("")){
 				c = new Cliente();
@@ -301,7 +302,6 @@ public class ClienteServlet extends HttpServlet {
 				c.setStr_fecha_alta_cliente(str_fecha_alta_cliente);
 				c.setFecha_alta_cliente(Utils.dateConverter(str_fecha_alta_cliente));
 				c.setLogo_url(logo_url);
-				c.setPaises(pais_str);
 				c.setRef_global(ref_global);
 				c.setRef_local(ref_local);
 				c.setTipo(tipo);

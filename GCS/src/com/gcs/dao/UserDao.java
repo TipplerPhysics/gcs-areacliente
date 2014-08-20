@@ -74,13 +74,23 @@ public class UserDao {
 	}
 
 	public User getUserbyId(long l) {
+		
+		User user;
+		try{			
+		
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		User user_temp = pManager.getObjectById(User.class, l);
 
-		User user = pManager.detachCopy(user_temp);
+		user = pManager.detachCopy(user_temp);
 		pManager.close();
 
+		}catch(Exception e){
+			user=null;
+		}
+		
 		return user;
+		
+		
 	}
 
 	public User getUserbyKey(Key k) {

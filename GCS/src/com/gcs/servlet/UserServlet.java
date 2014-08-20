@@ -225,14 +225,21 @@ public class UserServlet extends HttpServlet {
 			
 			int aux=1;
 			
+			
+			
 			for (User u:usuarios){
+				
+				String areas = u.getAreas();
+				areas = areas.replace("-", " - ");
+				areas = areas.replace("_", " - ");
+				
 				s.addCell(new Label(0, aux, u.getNombre()));
 				s.addCell(new Label(1, aux, u.getApellido1()));
 				s.addCell(new Label(2, aux, u.getApellido2()));
 				s.addCell(new Label(3, aux, u.getEmail()));
 				s.addCell(new Label(4, aux, u.getPermisoStr()));
 				s.addCell(new Label(5, aux, u.getDepartamento()));
-				s.addCell(new Label(6, aux, u.getAreas()));
+				s.addCell(new Label(6, aux, areas));
 				
 				aux++;
 			}		
