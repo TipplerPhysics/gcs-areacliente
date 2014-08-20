@@ -28,11 +28,13 @@
 	</div>	
 	</div>
 	<div class="search_div">
+	<!-- 
 		<c:if test="${sessionScope.permiso <= 6}">
 				<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button>  
-			<!-- 	<button  id="btn_gestion_demanda">Gestión de demanda<img src="../img/gestion.png"></button> -->
+			
 				 
 		</c:if>
+	 -->
 		<c:if test="${sessionScope.permiso <= 6}">
 				<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
 		</c:if>

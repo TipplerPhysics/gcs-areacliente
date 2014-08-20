@@ -67,12 +67,16 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
+							<span class="lbl"><span class="required-asterisk">*</span>Tipo peticion:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
 									<option value="default">Seleccionar...</option>
-									<option value="CIB">CIB</option>
-									<option value="BEC">BEC</option>
+									<option value="Implantacion">Implantacion</option>
+									<option value="Migracion IA">Migracion IA</option>
+									<option value="Estandarización Clientes">Estandarización Clientes</option>
+									<option value="Evolutivo">Evolutivo</option>
+									<option value="Pruebas Cliente">Pruebas Cliente</option>
+									<option value="SEPA">SEPA</option>
 								</select>
 							</div>
 						</div>
@@ -103,12 +107,9 @@
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
 									<option value="default">Seleccionar...</option>
-									<option value="Implantación">Implantación</option>
-									<option value="SEPA">SEPA</option>
-									<option value="Migración IA">Migración IA</option>
-									<option value="Estandarización Clientes">Estandarización Clientes</option>
-									<option value="Evolutivo">Evolutivo</option>
-									<option value="Pruebas Cliente">Pruebas Cliente</option>
+									<option value="Estandar">Estandar</option>
+									<option value="Compleja">Compleja</option>
+									
 								</select>
 							</div>
 						</div>
@@ -294,6 +295,9 @@
 							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
+						
+					</div><div class="form-field-divider right">
+						
 						<div class="form-field">
 							<span class="lbl">Referencia Local:</span>
 							<input type="text" id="ref_local" name="ref_local" class="long" maxlength="24">
@@ -303,9 +307,6 @@
 							<span class="lbl">Logo-url:</span>
 							<input type="text" id="logo_url" name="logo_url" class="long">
 						</div>
-					</div><div class="form-field-divider right">
-						
-					
 						
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Workflow:</span>
@@ -314,7 +315,7 @@
 								<label class="lbl"><input type="radio" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
 							</div>
 						</div>
-						
+						<!-- 
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Paises:</span>
 							
@@ -386,7 +387,7 @@
 								
 							</div>
 						</div>
-						
+						 -->
 					</div>
 					
 				</div>

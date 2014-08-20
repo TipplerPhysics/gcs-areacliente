@@ -188,8 +188,11 @@ textarea:focus {
 .gestion_demanda .btn-atras {
   margin-left: 70%;
 }
+.alta_usuario h1 {
+  width: 260px;
+}
 .alta_usuario .btn-atras {
-  margin-left: 60%;
+  margin-left: 59.5%;
 }
 .gestion_cliente .btn-atras {
   margin-left: 72%;
@@ -507,6 +510,10 @@ form .datepicker {
 #sidebar .side-menu ul li a span.usuarios {
   background-position: left center;
   background-image: url('../img/user-white20.png');
+}
+#sidebar .side-menu ul li a span.demanda {
+  background-position: left center;
+  background-image: url('../img/gestion_white.png');
 }
 #sidebar .side-menu ul li a span.informes {
   background-position: left center;
@@ -876,6 +883,7 @@ form .datepicker {
   border-radius: 4px;
   display: inline-block;
   padding: 15px 20px 10px 20px;
+  width: 765px;
 }
 .newUserbox .new-user-form-holder .form-container .form-fieldset .radio-container-holder .radio-container {
   display: inline-block;
@@ -959,12 +967,12 @@ form .datepicker {
 .clients > div.search_div {
   display: inline-block;
   float: right;
-  max-width: 355px;
+  max-width: 300px;
 }
 .clients > div.search_div #buscador_cliente {
   float: right;
   margin-top: 10px;
-  width: 341px;
+  width: 166px;
 }
 .clients > div.search_div button {
   float: right;
@@ -1245,7 +1253,6 @@ form .datepicker {
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field {
-  display: inline-block;
   height: 40px;
   padding-top: 10px;
 }

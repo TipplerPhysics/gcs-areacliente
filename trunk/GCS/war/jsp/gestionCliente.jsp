@@ -60,6 +60,9 @@
 							</div>
 						</div>
 						
+						
+					</div><div class="form-field-divider right">
+						
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Referencia Global:</span>
 							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
@@ -69,7 +72,6 @@
 							<span class="lbl">Referencia Local:</span>
 							<input type="text" id="ref_local" name="ref_local" class="long" maxlength="24">
 						</div>
-					</div><div class="form-field-divider right">
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
@@ -84,11 +86,12 @@
 							</div>
 						</div>
 						
+						<!-- 
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Paises:</span>
 							
 						</div>
-						
+					
 						<div class="form-field">						
 							<div class="radio-div">
 								<div class="radio-container">
@@ -155,7 +158,7 @@
 								
 							</div>
 						</div>
-						
+						 -->
 					</div>
 					<div id="message_div_cliente" class="message_div">
 						<span id="span_message_cliente" class="span_message"></span>

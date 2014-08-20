@@ -337,9 +337,11 @@ public class DemandaServlet extends HttpServlet {
 
 				if (d.getGestor_negocio()!=null){
 					u = uDao.getUserbyId(d.getGestor_negocio());
+					if (u!=null){
+						s.addCell(new Label(8, aux, u.getNombre() + " "
+								+ u.getApellido1() + " " + u.getApellido2()));
+					}
 					
-					s.addCell(new Label(8, aux, u.getNombre() + " "
-							+ u.getApellido1() + " " + u.getApellido2()));
 				}
 				
 
@@ -352,8 +354,11 @@ public class DemandaServlet extends HttpServlet {
 					s.addCell(new Label(11, aux, "No"));
 
 				u = uDao.getUserbyId(d.getGestor_it());
-				s.addCell(new Label(12, aux, u.getNombre() + " "
-						+ u.getApellido1() + " " + u.getApellido2()));
+				if (u!=null){
+					s.addCell(new Label(12, aux, u.getNombre() + " "
+							+ u.getApellido1() + " " + u.getApellido2()));
+				}
+				
 
 				s.addCell(new Label(13, aux, d.getCatalogacion()));
 				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
@@ -365,6 +370,7 @@ public class DemandaServlet extends HttpServlet {
 			w.write();
 			w.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ServletException("Exception in Excel", e);
 		} finally {
 			if (out != null)
