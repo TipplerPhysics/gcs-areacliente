@@ -225,6 +225,7 @@ textarea:focus {
 input[type=radio] {
   opacity: 0;
   z-index: 9999;
+  visibility: hidden;
 }
 /* default radio button style: unchecked */
 .overlay {
@@ -1382,6 +1383,9 @@ form .datepicker {
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field > span {
   width: 94px;
 }
+.newUserbox > .new-user-form-holder .form-field > .input > .bootstrap-select {
+  float: none !important;
+}
 .gestion_cliente_ext .span-cliente {
   width: 290px;
   display: inline-block;
@@ -1651,4 +1655,44 @@ form textarea.error {
 }
 .clients > .clients_container > .clientes_letra > .client_box:nth-child(6n).client_box {
   margin-right: 0px;
+}
+.profile_cont .table {
+  margin-top: 20px;
+}
+.profile_cont .table .header {
+  background-color: #2966B0;
+  color: white;
+  text-align: center;
+  height: 30px;
+}
+.profile_cont .table .header td {
+  border: 1px solid white;
+}
+.profile_cont .table .header td:nth-child(3) {
+  width: 100px;
+}
+.profile_cont .summary {
+  margin-top: 20px;
+}
+.profile_cont .summary .img_div {
+  height: 145px;
+  width: 225px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+}
+.profile_cont .summary .img_div > img {
+  display: inline-block;
+  max-height: 145px;
+  max-width: 225px;
+}
+.profile_cont .summary > div {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  padding-top: 0px;
+}
+.profile_cont .summary > div > ul > li {
+  height: 25px;
+  color: #0b5394;
 }

@@ -93,7 +93,7 @@
 				</c:when>
 			</c:choose>
 				
-				<div class="client_box crit_${c.criticidad} tipo_${c.tipo}">
+				<div class="client_box crit_${c.criticidad} tipo_${c.tipo}" data-id="${c.key.id}">
 					<p>${c.nombre}</p>
 				</div>
 			<c:set var="letra_anterior" value="${letra}" />	
