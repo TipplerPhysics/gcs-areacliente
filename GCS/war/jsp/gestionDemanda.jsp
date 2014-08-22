@@ -30,6 +30,21 @@
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
 							<div class="input">
+							
+								<!--[if lte IE 9]>
+									<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
+										<c:forEach items="${horasList}" var="hora">
+										<option value="${hora}">${hora}</option>
+										</c:forEach>
+									</select>
+									<span class="time-span">:</span>
+									<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
+										<c:forEach items="${minutosList}" var="min">
+										<option value="${min}">${min}</option>
+										</c:forEach>
+									</select>
+								<![endif]-->
+								<!--[if !IE]> -->
 								<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
 									<c:forEach items="${horasList}" var="hora">
 									<option value="${hora}">${hora}</option>
@@ -41,6 +56,7 @@
 									<option value="${min}">${min}</option>
 									</c:forEach>
 								</select>
+								<!-- <![endif]-->
 							</div>
 						</div>
 						<div class="form-field cliente">

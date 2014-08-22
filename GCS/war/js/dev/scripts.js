@@ -1,5 +1,10 @@
 $(function() {
 	
+	$('.client_box').on('click', function(e) {
+		var id = this.getAttribute("data-id");
+		window.location.replace("../clientProfile.do?id="+id);
+	});
+	
 	$('#deleteCliente').on('click', function(e) {
 		var id= $(this).attr('name');
 		 var formURL = "/clienteServlet?";
@@ -1194,6 +1199,8 @@ $(function() {
 			}
 		}
 	});
+	
+	
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		 $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));

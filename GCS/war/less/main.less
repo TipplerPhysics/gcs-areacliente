@@ -152,6 +152,7 @@ input:active, input:focus, textarea:active, textarea:focus{
 input[type=radio] {
   opacity: 0;
   z-index: 9999;
+  visibility: hidden;
 }
 /* default radio button style: unchecked */
 .overlay {
@@ -174,6 +175,7 @@ input[type=radio] {
 input[type=radio]:checked + .overlay {
   background-image: url("../img/radio-selected.png");
 }
+
 
 .radio-container {
 	position: relative;

@@ -22,6 +22,10 @@
 			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
 		</action>
 		
+		<action path="/clientProfile" type="com.gcs.actions.ClientProfileAction">
+			<forward name="ok" path="/jsp/skeletons/clientProfile-skeleton.jsp" />
+		</action>
+		
 		<action path="/admin/users" type="com.gcs.actions.UsersAction"
 			name="usersForm">
 			<forward name="ok" path="/jsp/skeletons/users-skeleton.jsp" />
