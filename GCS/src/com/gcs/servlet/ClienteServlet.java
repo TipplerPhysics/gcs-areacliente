@@ -47,30 +47,41 @@ public class ClienteServlet extends HttpServlet {
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 
-			if (sesionpermiso > 2) {
-				json.append("failure", "true");
-				json.append("error",
-						"No tienes los permisos para realizar esta operaci�n");
-
-				resp.setCharacterEncoding("UTF-8");
-				resp.setContentType("application/json");
-				resp.getWriter().println(json);
-			} else {
+			
+			
 				if (accion.equals("new")) {
-					createClient(req, resp);
+					if (sesionpermiso < 5) {
+						createClient(req,resp);
+					}else{
+						returnNoPermission(req, resp);
+					}
 				}else if (accion.equals("delete")){
-					deleteClient(req,resp);
+					if (sesionpermiso < 5) {
+						deleteClient(req,resp);
+					}else{
+						returnNoPermission(req, resp);
+					}
+					
 				}else if(accion.equals("edit")){
 					editClient(req,resp);
 				}else if (accion.equals("xls")){
 					generateXLS(req,resp);
 				}
-			}
+			
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		
+	}
+	
+	public void returnNoPermission(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+		JSONObject json = new JSONObject();
+		json.append("failure", "true");
+		json.append("error","No tienes los permisos para realizar esta operaci�n");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){

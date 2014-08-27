@@ -150,6 +150,7 @@
 		</div>
 		<div class="col-md-12 text-center">
 			<ul class="pagination" id="myPager"></ul>
+			<span class="pagesummary"></span>
 		</div>
 	</div>
 </div>

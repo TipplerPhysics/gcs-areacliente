@@ -954,6 +954,7 @@ var getIsoDate = function(dateString) {
 	var perPage = settings.perPage;
 	var children = listElement.find(".valid-result");
 	var pager = $('.pagination');
+	var resumen = $('.pagesummary');
 
 	if (typeof settings.childSelector != "undefined") {
 		children = listElement.find(settings.childSelector);
@@ -998,9 +999,20 @@ var getIsoDate = function(dateString) {
 		pager.find('.next_link').hide();
 	}
 	pager.children().eq(1).addClass("active");
+	
+	
 
 	children.hide();
 	children.slice(0, perPage).show();
+	
+	var currentPage = pager.children().eq(1).children().html();
+	$(resumen).html('');
+	if (numItems>=5){
+		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + (currentPage*5) + ' de '+ numItems);
+	}else{
+		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + (numItems) + ' de '+ numItems);
+	}
+	
 
 	pager.find('li .page_link').click(function() {
 		var clickedPage = $(this).html().valueOf() - 1;
@@ -1053,6 +1065,16 @@ var getIsoDate = function(dateString) {
 
 		pager.children().removeClass("active");
 		pager.children().eq(page + 1).addClass("active");
+		
+		
+		$(resumen).html('');
+		
+		if (numItems>=5){
+			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ((page+1)*5) + ' de '+ numItems);
+		}else{
+			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + numItems + ' de '+ numItems);
+		}
+		
 	}
 };
 

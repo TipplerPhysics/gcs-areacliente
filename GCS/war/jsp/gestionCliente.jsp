@@ -9,9 +9,11 @@
 	<hr/>
 	
 	<div class="newUserbox">
-		<button id="newUserButton">
-			Alta Cliente<a class="user_span"></a>
-		</button>
+		<c:if test="${sessionScope.permiso < 5}">
+			<button id="newUserButton">
+				Alta Cliente<a class="user_span"></a>
+			</button>
+		</c:if>
 		
 		<button id="newProjectButton">
 			Alta Proyecto<a class="proyecto_span"></a>
@@ -210,7 +212,12 @@
 										<td><span>${cliente.ref_global}</span></td>
 										<td><span>${cliente.tipo}</span></td>
 										<td><span>${cliente.criticidad}</span></td>
-										<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${cliente.key.id}"	id="lapiz${cliente.key.id}"></a><a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a></td>
+										<td><img class="vs" src="../img/vs.png">
+										<a class="lapiz" name="${cliente.key.id}"	id="lapiz${cliente.key.id}"></a>
+										<c:if test="${sessionScope.permiso < 5}">
+											<a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a>
+										</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -220,6 +227,7 @@
 			</div>
 			<div class="col-md-12 text-center">
 				<ul class="pagination" id="myPager"></ul>
+				<span class="pagesummary"></span>
 			</div>
 		</div>
 	</div>

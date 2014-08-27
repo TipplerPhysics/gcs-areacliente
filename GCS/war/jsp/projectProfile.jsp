@@ -19,28 +19,14 @@
 		</div>
 		<div>
 			<ul>
-				<li>En producción:</li>
-				<li>En Implementación:</li>
-				<li>Países:</li>
-				<li>Producto:</li>
-				<li>Proyecto:</li>
+				<li>Código de proyecto:</li>
+				<li>Gestor de negocio:</li>
+				<li>Gestor IT:</li>
+				<li>Estado:</li>
+				<li>Fecha implantación:</li>
 			</ul>
 		</div>
 	</div>
-	<div class="table">
-		<table style="width:100%">
-			<tr class="header">
-			  <td>PRODUCTO</td>
-			  <td>CONECTIVIDAD</td> 
-			  <td>PAÍS</td>
-			  <td>FORMATO FICHERO</td>
-			  <td>SERVICIO</td>
-			  <td>ESTADO</td>
-			  <td>CODIGO DE PROYECTO</td>
-			</tr>
-			
-		</table>
-	</div>
-
+	
 
 </div>
