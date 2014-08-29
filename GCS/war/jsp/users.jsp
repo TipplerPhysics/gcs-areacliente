@@ -23,11 +23,11 @@
 			method="POST" novalidate="novalidate">
 			<div class="form-container">
 				<div class="form-field">
-					<span for="nombre"><span class="required-asterisk">*</span>Nombre:</span><input class="long" type="text"
+					<span for="nombre">Nombre<span class="required-asterisk">*</span>:</span><input class="long" type="text"
 						name="nombre" id="nombre" required aria-required="true">
 				</div>
 				<div class="form-field">
-					<span><span class="required-asterisk">*</span>Apellido 1:</span><input class="long" type="text" name="ap1"
+					<span>Apellido 1<span class="required-asterisk">*</span>:</span><input class="long" type="text" name="ap1"
 						id="ap1" required aria-required="true">
 				</div>
 				<div class="form-field">
@@ -35,12 +35,12 @@
 						id="ap2">
 				</div>
 				<div class="form-field">
-					<span><span class="required-asterisk">*</span>E-mail:</span><input class="long email" type="text"
+					<span>E-mail<span class="required-asterisk">*</span>:</span><input class="long email" type="text"
 						name="email" id="email" required aria-required="true"
 						data-type="email">
 				</div>
 				<div class="form-field">
-					<span><span class="required-asterisk">*</span>Departamento:</span><select id="dto_select"
+					<span>Departamento<span class="required-asterisk">*</span>:</span><select id="dto_select"
 						class="long selected selectpicker" name="dto" required>
 						<option selected value="default">Seleccionar</option>
 						<c:forEach items="${departamentos}" var="departamento">		         	
@@ -49,7 +49,7 @@
 					</select>
 				</div>
 				<div class="form-field">
-					<span><span class="required-asterisk">*</span>Perfil:</span><select id="permiso_select" class="long selected selectpicker"
+					<span>Perfil<span class="required-asterisk">*</span>:</span><select id="permiso_select" class="long selected selectpicker"
 						name="permiso" required>
 						<option selected value="default">Seleccionar</option>
 						<c:forEach items="${permisos}" var="permiso">		         	

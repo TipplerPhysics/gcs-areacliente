@@ -341,7 +341,6 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
   color: #0065B7;
   z-index: 1;
   height: 50px;
-  top: 7px;
   padding-bottom: 11px;
 }
 .pink-btn {
@@ -538,6 +537,10 @@ form .datepicker {
 }
 #excel_btn {
   position: relative;
+  vertical-align: top;
+}
+#newUserButton {
+  vertical-align: bottom;
 }
 .usersTable > .table {
   width: 100%;
@@ -838,7 +841,7 @@ form .datepicker {
   overflow: hidden;
   height: 0px;
   position: relative;
-  top: 6px;
+  top: -1px;
   -webkit-transition: height 1s, border 1s;
   /* For Safari 3.1 to 6.0 */
   transition: height 1s, border 1s;

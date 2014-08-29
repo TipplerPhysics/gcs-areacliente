@@ -22,13 +22,13 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Fecha entrada petición:</span>
+							<span class="lbl">Fecha entrada petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
+							<span class="lbl">Hora petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 							
 								
@@ -47,7 +47,7 @@
 							</div>
 						</div>
 						<div class="form-field cliente">
-							<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
+							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
 									<option value="default">Seleccionar...</option>
@@ -70,7 +70,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Tipo petición:</span>
+							<span class="lbl">Tipo petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
 									<option value="default">Seleccionar...</option>
@@ -84,7 +84,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Devuelta:</span>
+							<span class="lbl">Devuelta<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="devuelta" required aria-required="true">
 									<option value="NO">NO</option>
@@ -94,7 +94,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Estado:</span>
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
 									<option value="Pendiente de asignación">Pendiente de asignación</option>
@@ -106,7 +106,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Catalogación de petición:</span>
+							<span class="lbl">Catalogación de petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
 									<option value="default">Seleccionar...</option>
@@ -155,7 +155,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Gestor IT pre-asignado:</span>
+							<span class="lbl">Gestor IT pre-asignado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
 								<option value="default" selected>Seleccionar...</option>
@@ -262,17 +262,17 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Fecha alta cliente:</span>
+							<span class="lbl">Fecha alta cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
 							</div>
 						</div>						
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Cliente:</span>
+							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<input type="text" aria-required="true" required="" id="client_name" name="client_name" class="long">
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Tipo:</span>
+							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" id="tipo" name="tipo" required aria-required="true">
 								    <option value="default">Seleccionar</option>
@@ -283,7 +283,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Criticidad:</span>
+							<span class="lbl">Criticidad<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="criticidad" id="criticidad" required aria-required="true">
 									<option value="Baja">Baja</option>
@@ -300,7 +300,7 @@
 					</div><div class="form-field-divider right">
 					
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Referencia Global:</span>
+							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
 							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
@@ -315,7 +315,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Workflow:</span>
+							<span class="lbl">Workflow<span class="required-asterisk">*</span>:</span>
 							<div class="radio-field">
 								<label class="lbl"><input type="radio" name="workflow" value="SI"><span class="overlay"></span> Si</label>
 								<label class="lbl"><input type="radio" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
@@ -332,7 +332,7 @@
 			
 		</div>
 				<div class="modal-footer">
-					<button type="button" class="pink-btn" id="submit_client_form_modal">Guardar</button>
+					<button type="button" class="" id="submit_client_form_modal">Guardar</button>
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>
