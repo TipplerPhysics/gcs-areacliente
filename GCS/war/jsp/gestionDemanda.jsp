@@ -31,20 +31,7 @@
 							<span class="lbl"><span class="required-asterisk">*</span>Hora petición:</span>
 							<div class="input">
 							
-								<!--[if lte IE 9]>
-									<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
-										<c:forEach items="${horasList}" var="hora">
-										<option value="${hora}">${hora}</option>
-										</c:forEach>
-									</select>
-									<span class="time-span">:</span>
-									<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
-										<c:forEach items="${minutosList}" var="min">
-										<option value="${min}">${min}</option>
-										</c:forEach>
-									</select>
-								<![endif]-->
-								<!--[if !IE]> -->
+								
 								<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
 									<c:forEach items="${horasList}" var="hora">
 									<option value="${hora}">${hora}</option>
@@ -83,7 +70,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Tipo peticion:</span>
+							<span class="lbl"><span class="required-asterisk">*</span>Tipo petición:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
 									<option value="default">Seleccionar...</option>
@@ -196,7 +183,7 @@
 						<tr>
 							<th><span class="table-title">Fecha Entrada</span></th>
 							<th><span class="table-title">Cliente</span></th>
-							<th><span class="table-title">Tipo</span></th>
+							<th><span class="table-title">Tipo Petición</span></th>
 							<th><span class="table-title">Estado</span></th>
 							<th><span class="table-title">Cod. Petición</span></th>
 							<th style="width: 110px;">&nbsp;</th>
@@ -270,7 +257,7 @@
 					<hr />
 				</div>
 				<div class="new-user-form-holder">
-			<form id="new-client-form" name="new-client-form" action="/clienteServlet"
+			<form id="new-client-form-modal" name="new-client-form" action="/clienteServlet"
 				method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
@@ -307,13 +294,15 @@
 							</div>
 						</div>
 						
+						
+						
+						
+					</div><div class="form-field-divider right">
+					
 						<div class="form-field">
 							<span class="lbl"><span class="required-asterisk">*</span>Referencia Global:</span>
 							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
-						
-						
-					</div><div class="form-field-divider right">
 						
 						<div class="form-field">
 							<span class="lbl">Referencia Local:</span>
@@ -332,79 +321,7 @@
 								<label class="lbl"><input type="radio" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
 							</div>
 						</div>
-						<!-- 
-						<div class="form-field">
-							<span class="lbl"><span class="required-asterisk">*</span>Paises:</span>
-							
-						</div>
-						
-						<div class="form-field">						
-							<div class="radio-div">
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Argentina"
-										id="Lorem1" class="require-one"><label for="Lorem1"><span></span>Argentina</label>
-								</div>
-								
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Bélgica"
-										id="Lorem2"><label for="Lorem2"><span></span>Bélgica</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Chile"
-										id="Lorem3"><label for="Lorem3"><span></span>Chile</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Colombia"
-										id="Lorem4"><label for="Lorem4"><span></span>Colombia</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="España"
-										id="Lorem5"><label for="Lorem5"><span></span>España</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Francia"
-										id="Lorem6"><label for="Lorem6"><span></span>Francia</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Italia"
-										id="Lorem7"><label for="Lorem7"><span></span>Italia</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Mexico"
-										id="Lorem8"><label for="Lorem8"><span></span>México</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Peru"
-										id="Lorem9"><label for="Lorem9"><span></span>Perú</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Portugal"
-										id="Lorem10"><label for="Lorem10"><span></span>Portugal</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Reino Unido"
-										id="Lorem11"><label for="Lorem11"><span></span>Reino Unido</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Uruguay"
-										id="Lorem12"><label for="Lorem12"><span></span>Uruguay</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="USA"
-										id="Lorem13"><label for="Lorem13"><span></span>USA</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Venezuela"
-										id="Lorem14"><label for="Lorem14"><span></span>Venezuela</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Redex"
-										id="Lorem15"><label for="Lorem15"><span></span>Redex</label>
-								</div>
-								
-							</div>
-						</div>
-						 -->
+					
 					</div>
 					
 				</div>

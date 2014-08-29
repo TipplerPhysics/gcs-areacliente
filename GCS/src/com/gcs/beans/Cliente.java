@@ -33,10 +33,7 @@ public class Cliente {
 	
 	@Persistent
 	private String logo_url;
-	
-	@Persistent
-	private String paises;
-	
+		
 	@Persistent
 	private String ref_global;
 	
@@ -83,14 +80,7 @@ public class Cliente {
 		this.logo_url = logo_url;
 	}
 
-	public String getPaises() {
-		return paises;
-	}
-
-	public void setPaises(String paises) {
-		this.paises = paises;
-	}
-
+	
 	public String getRef_global() {
 		return ref_global;
 	}

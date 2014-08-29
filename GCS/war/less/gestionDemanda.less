@@ -122,6 +122,7 @@
 					
 					height: 40px;
     				padding-top: 10px;
+    				display:inline-block;
 					
 					label{
 						color: #434a58;
@@ -292,40 +293,7 @@
 
 .gestion_demanda{
 	
-	#new_client_dialog{
-		width:800px;
-		
-		.form-field{
-			.radio-div{
-				padding-left:12px !important;
-			}
-			
-			.bootstrap-select.error > button{
-				background:none;
-				background-color:#F7E9E9;
-			}
-			
-			margin-bottom:20px;
-			
-			> input, .input{
-				width: 180px !important;
-				margin-right:0px;
-				float:right;
-				height:30px;
-				
-				#fecha_alta_cliente{
-					width:100%;
-				}
-				
-				div.bootstrap-select {
-					width:100%;
-				}
-			}
-		
-		
-		}
-		
-	}
+	
 	
 	.usersTable > .table td:nth-child(6), .usersTable > .table th:nth-child(6){
 		width:150px !important;
@@ -353,3 +321,63 @@
 		border-right:0px;
 	}
 }	
+
+#new_client_dialog, #edit_client_dialog{
+		width:800px;
+		
+		.form-field-divider{
+			display: inline-block;
+		    vertical-align: top;
+		    width: 48%;
+		}
+		
+		.form-field-divider:first-child{
+			margin-right:20px;
+		}
+		
+		.form-field{
+			.radio-field{
+				float: right;
+				display:inline-block;
+				width:175px;
+				
+				label{
+					font-family: Arial;
+					font-size:14px;
+					font-weight: 100;
+					margin-right:20px;
+				}
+			}
+		
+			.radio-div{
+				padding-left:12px !important;
+				
+				
+			}
+			
+			.bootstrap-select.error > button{
+				background:none;
+				background-color:#F7E9E9;
+			}
+			
+			margin-bottom:20px;
+			
+			> input, .input{
+				width: 180px !important;
+				margin-right:0px;
+				float:right;
+				height:30px;
+				
+				#fecha_alta_cliente, #fecha_alta_cliente_modal{
+					width:100%;
+				}
+				
+				div.bootstrap-select {
+					width:100%;
+				}
+			}
+		
+		
+		}
+		
+	}
