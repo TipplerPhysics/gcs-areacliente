@@ -34,7 +34,7 @@ $(function() {
 	
 	$("#submit_client_form_modal").on('click',function(e) {
 		e.preventDefault(); //STOP default action
-		var $form = $("#new-client-form");
+		var $form = $("#new-client-form-modal");
 		
 		var params = getClientData($form);
 		
@@ -97,6 +97,64 @@ $(function() {
 			  }
 			});
 		}			
+	});
+	
+	$('#edit_client_form_modal').on('click',function(e){
+		
+		var $form = $("#edit-client-form");
+		var id = $(this).data("id");
+		
+		//var params = getClientData($form);
+		
+		
+		if($form.valid()){		
+
+			var postData = $form.serialize() + "&accion=edit&id="+id;
+			var formURL = $form.attr("action");
+			$.ajax({
+				url : formURL,
+				  type: "GET",
+				  data : postData,
+				  success:function(data, textStatus, jqXHR) 
+				  {
+						//data: return data from server
+					if (data.success==("true")){
+						$('#message_div_cliente_modal').removeClass("error").addClass("success");
+						if ($('.edit-user-form-holder').height()<190){
+							$('.edit-user-form-holder').height($('.new-user-form-holder').height()+35);
+						}
+						
+						$form.find('.form-container').find('div:not(#message_div)').hide(0);
+						$('#span_message_cliente_modal').html("El cliente se ha creado de forma correcta.");
+						$('#message_div_cliente_modal').css('display','block');
+						
+						resetForm($form);
+						setTimeout(function() { 
+							$( "#message_div" ).fadeOut( "slow", function() {
+								$('#span_message').html("");
+						  }); 
+						
+						location.reload();
+
+						}, 5000);
+					}else{
+						$('#message_div_cliente_modal').removeClass("success").addClass("error");
+						if ($('.edit-user-form-holder').height()<190){
+							$('.edit-user-form-holder').height($('.new-user-form-holder').height()+35);
+						}
+						$('#span_message_cliente_modal').html(data.error);
+						$('#message_div_cliente_modal').css('display','block');
+					}
+				  },
+				  error:function(data, textStatus, jqXHR){
+					  if (errorThrown.length > 0){
+							$('#span_message_cliente_modal').html(errorThrown);
+							$('#message_div_cliente_modal').addClass('error').removeClass('success');
+						}
+				  }
+			});
+			
+		}
 	});
 	
 	$("#submit_client_form").on('click',function(e) {
@@ -179,12 +237,39 @@ $(function() {
 	}
 	
 	$('.gestion_cliente').on('click', '.lapiz', function(e) {
+		
+		var line = $(this).parent().parent();
+		
 		var id= $(this).attr('name');
-		if (!$(this).hasClass('inactive')) {
-			editRowCliente(id);
-			disableSearch();
-		}	
+		var workflow= line.data('workflow');
+		var ref_local = line.data('ref-local');
+		var logo_url = line.data('logo-url');
+		var ref_global = line.data('ref-global');
+		var crit = line.data('criticidad');
+		var tipo = line.data('tipo');
+		var nombre = line.data('nombre');
+		var fecha_alta = line.data('fecha-alta');
+		
+		$('#fecha_alta_cliente_modal').val(fecha_alta);
+		$('#client_name_modal').val(nombre);
+		$('#ref_global_modal').val(ref_global);
+		$('#ref_local_modal').val(ref_local);
+		$('#logo_url_modal').val(logo_url);
+		
+		$('#tipo_modal').val(tipo);
+		$('#criticidad_modal').val(crit);
+		
+		if (workflow==true){
+			$('#workflow_yes_modal').attr("checked","checked");
+		}
+		
+		$('#edit_client_form_modal').data("id",id);
+		
+		initSelectpickers();
+		
 	});
+
+
 	
 	function checkPaises(paises){
 		if (paises.indexOf("Argentina")!=-1){
@@ -317,17 +402,7 @@ $(function() {
 					var $editItemHolder = $(this).closest('#edit-item-holder');
 					// Collect all the information.
 					var id= $editItemHolder.data('row-id');
-					/*var fecha_entrada_peticion = $editItemHolder.find('input#fecha_entrada_peticion_ed').val();
-					var input_cliente = $('#input_cliente_ed option:selected').val();
-					var input_tipo = $('#input_tipo_ed option:selected').val();
-					var input_estado = $('#input_estado_ed option:selected').val();
-					var gestor_it = $('#gestor_it_ed option:selected').val();
-					var fecha_solicitud_asignacion = $editItemHolder.find('input#fecha_solicitud_asignacion_ed').val();
-					var hora_peticion = $('#hora_peticion_ed option:selected').val();
-					var min_peticion = $('#min_peticion_ed option:selected').val();
-					
-					var postData = "fecha_entrada="+fecha_entrada_peticion+"&cliente="+input_cliente+"&tipo="+input_tipo+"&estado="+input_estado+"&gestor_it="+gestor_it+"&fecha_asignacion="+fecha_solicitud_asignacion+"&hora_peticion_ext="+hora_peticion+"&accion=update&min_peticion_ext="+min_peticion+"&id="+id;
-					*/
+				
 					var formURL = "/clienteServlet?accion=edit";
 					var postData = $editForm.serialize()+"&id="+id;
 

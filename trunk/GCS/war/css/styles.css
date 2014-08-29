@@ -188,6 +188,10 @@ textarea:focus {
 .gestion_demanda .btn-atras {
   margin-left: 70%;
 }
+.lbl {
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+}
 .alta_usuario h1 {
   width: 260px;
 }
@@ -304,7 +308,7 @@ button {
   text-align: center;
   text-shadow: none;
   vertical-align: middle;
-  height: 35px;
+  height: 30px;
 }
 button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
   background: #0069b1;
@@ -319,9 +323,6 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
 .selectpicker > span.filter-option {
   font-family: Arial, sans-serif;
   font-size: 12px;
-}
-.form-container .bootstrap-select.btn-group .btn .filter-option {
-  padding-top: 4px;
 }
 .white-btn {
   background: #f4f7f5;
@@ -377,16 +378,15 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
   background-image: url("../img/user16_blue.png");
 }
 .demanda_span {
-  background-image: url("../img/gestion.png");
-  background-size: 20px;
+  background-image: url("../img/gestion_white_small.png");
   display: inline-block;
-  height: 20px;
+  height: 16px;
   margin-left: 10px;
   vertical-align: text-bottom;
-  width: 19px;
+  width: 15px;
 }
 .demanda_span.blue {
-  background-image: url("../img/gestion_blue.png");
+  background-image: url("../img/gestion_blue_small.png");
 }
 .excel_span {
   background-image: url("../img/icon-excel-white.png");
@@ -1268,6 +1268,7 @@ form .datepicker {
 .gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field {
   height: 40px;
   padding-top: 10px;
+  display: inline-block;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field label,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field label,
@@ -1442,34 +1443,6 @@ form .datepicker {
   font-weight: 100;
   margin-right: 10px;
 }
-.gestion_demanda #new_client_dialog {
-  width: 800px;
-}
-.gestion_demanda #new_client_dialog .form-field {
-  margin-bottom: 20px;
-}
-.gestion_demanda #new_client_dialog .form-field .radio-div {
-  padding-left: 12px !important;
-}
-.gestion_demanda #new_client_dialog .form-field .bootstrap-select.error > button {
-  background: none;
-  background-color: #F7E9E9;
-}
-.gestion_demanda #new_client_dialog .form-field > input,
-.gestion_demanda #new_client_dialog .form-field .input {
-  width: 180px !important;
-  margin-right: 0px;
-  float: right;
-  height: 30px;
-}
-.gestion_demanda #new_client_dialog .form-field > input #fecha_alta_cliente,
-.gestion_demanda #new_client_dialog .form-field .input #fecha_alta_cliente {
-  width: 100%;
-}
-.gestion_demanda #new_client_dialog .form-field > input div.bootstrap-select,
-.gestion_demanda #new_client_dialog .form-field .input div.bootstrap-select {
-  width: 100%;
-}
 .gestion_demanda .usersTable > .table td:nth-child(6),
 .gestion_demanda .usersTable > .table th:nth-child(6) {
   width: 150px !important;
@@ -1494,6 +1467,71 @@ form .datepicker {
 .gestion_cliente .usersTable > .table td:nth-child(6),
 .gestion_cliente .usersTable > .table th:nth-child(6) {
   border-right: 0px;
+}
+#new_client_dialog,
+#edit_client_dialog {
+  width: 800px;
+}
+#new_client_dialog .form-field-divider,
+#edit_client_dialog .form-field-divider {
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+}
+#new_client_dialog .form-field-divider:first-child,
+#edit_client_dialog .form-field-divider:first-child {
+  margin-right: 20px;
+}
+#new_client_dialog .form-field,
+#edit_client_dialog .form-field {
+  margin-bottom: 20px;
+}
+#new_client_dialog .form-field .radio-field,
+#edit_client_dialog .form-field .radio-field {
+  float: right;
+  display: inline-block;
+  width: 175px;
+}
+#new_client_dialog .form-field .radio-field label,
+#edit_client_dialog .form-field .radio-field label {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: 100;
+  margin-right: 20px;
+}
+#new_client_dialog .form-field .radio-div,
+#edit_client_dialog .form-field .radio-div {
+  padding-left: 12px !important;
+}
+#new_client_dialog .form-field .bootstrap-select.error > button,
+#edit_client_dialog .form-field .bootstrap-select.error > button {
+  background: none;
+  background-color: #F7E9E9;
+}
+#new_client_dialog .form-field > input,
+#edit_client_dialog .form-field > input,
+#new_client_dialog .form-field .input,
+#edit_client_dialog .form-field .input {
+  width: 180px !important;
+  margin-right: 0px;
+  float: right;
+  height: 30px;
+}
+#new_client_dialog .form-field > input #fecha_alta_cliente,
+#edit_client_dialog .form-field > input #fecha_alta_cliente,
+#new_client_dialog .form-field .input #fecha_alta_cliente,
+#edit_client_dialog .form-field .input #fecha_alta_cliente,
+#new_client_dialog .form-field > input #fecha_alta_cliente_modal,
+#edit_client_dialog .form-field > input #fecha_alta_cliente_modal,
+#new_client_dialog .form-field .input #fecha_alta_cliente_modal,
+#edit_client_dialog .form-field .input #fecha_alta_cliente_modal {
+  width: 100%;
+}
+#new_client_dialog .form-field > input div.bootstrap-select,
+#edit_client_dialog .form-field > input div.bootstrap-select,
+#new_client_dialog .form-field .input div.bootstrap-select,
+#edit_client_dialog .form-field .input div.bootstrap-select {
+  width: 100%;
 }
 form #error-messages {
   margin-bottom: 10px;

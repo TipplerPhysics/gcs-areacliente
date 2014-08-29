@@ -194,47 +194,60 @@ public class ClienteServlet extends HttpServlet {
 		try {
 			
 			String errorStr = "";
-			String nombre = req.getParameter("clientes_ext");
-			String fecha_entrada_peticion_ed = req.getParameter("fecha_entrada_peticion_ed");
-			String[] paises = req.getParameterValues("paises");
+			String nombre = req.getParameter("client_name");
+			String fecha_entrada_peticion_ed = req.getParameter("fecha_alta_cliente");
 			
 			String workflow = req.getParameter("workflow");
-			String ref_global = req.getParameter("ref_global_ext");
+			String ref_global = req.getParameter("ref_global");
 			String ref_local = req.getParameter("ref_local");
 
 			String id = req.getParameter("id");
 			String logo_url = req.getParameter("logo_url");
 			
-			String criticidad = req.getParameter("criticidad_ext");
-			String tipo = req.getParameter("tipo_ext");
+			String criticidad = req.getParameter("criticidad");
+			String tipo = req.getParameter("tipo");
 			
-		
 			c = cDao.getClienteById(Long.parseLong(id));
-			c.setNombre(nombre);
-			String paises_str="";
-			if (paises!=null){
-				for (String p:paises){
-					paises_str+=p+"-";
-				}
+			
+			String errorMsg = "";
+			
+			
+			if (cDao.getClienteByRefGlobal(ref_global)!=c){
+				errorMsg = "Ya existe un usuario con esta referencia global";
 			}
 			
-			c.setPaises(paises_str);
-			if (workflow=="SI")
-			c.setWorkflow(true);
-			else
-			c.setWorkflow(false);
-			c.setRef_global(ref_global);
-			c.setRef_local(ref_local);
-			c.setLogo_url(logo_url);
-			c.setCriticidad(criticidad);
-			c.setTipo(tipo);
+			if (cDao.getClienteByRefLocal(ref_local)!=c){
+				if (errorMsg.equals("")){
+					errorMsg = "Ya existe un usuario con esta referencia global";
+				}else{
+					errorMsg = "\nYa existe un usuario con esta referencia global";
+				}
+			}
+		
+			if (errorMsg.equals("")){
+				c.setNombre(nombre);			
+				if (workflow=="SI")
+				c.setWorkflow(true);
+				else
+				c.setWorkflow(false);
+				c.setRef_global(ref_global);
+				c.setRef_local(ref_local);
+				c.setLogo_url(logo_url);
+				c.setCriticidad(criticidad);
+				c.setTipo(tipo);
+				
+				c.setStr_fecha_alta_cliente(fecha_entrada_peticion_ed);
+				c.setFecha_alta_cliente(Utils.dateConverter(fecha_entrada_peticion_ed));
+				
+				cDao.createCliente(c);
+				json.append("success", "true");		
+				json.append("id", c.getKey().getId());
+			}else{
+				json.append("success", "false");
+				json.append("error", errorMsg);
+			}
+		
 			
-			c.setStr_fecha_alta_cliente(fecha_entrada_peticion_ed);
-			c.setFecha_alta_cliente(Utils.dateConverter(fecha_entrada_peticion_ed));
-			
-			cDao.createCliente(c);
-			json.append("success", "true");		
-			json.append("id", c.getKey().getId());
 			
 		} catch (JSONException e) {
 			json.append("success", "false");
