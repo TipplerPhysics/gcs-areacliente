@@ -220,7 +220,7 @@ public class ClienteServlet extends HttpServlet {
 				if (errorMsg.equals("")){
 					errorMsg = "Ya existe un usuario con esta referencia global";
 				}else{
-					errorMsg = "\nYa existe un usuario con esta referencia global";
+					errorMsg += "\nYa existe un usuario con esta referencia local";
 				}
 			}
 		
