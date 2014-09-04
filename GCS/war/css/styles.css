@@ -826,13 +826,11 @@ form .datepicker {
   position: relative;
   text-align: right;
 }
-.newUserbox > button#newUserButton {
+.newUserbox > button#newUserButton,
+.newUserbox button#newProjectButton {
   position: relative;
   margin-right: 5px;
-}
-.newUserbox > button#newProjectButton {
-  position: relative;
-  margin-right: 5px;
+  vertical-align: top;
 }
 .newUserbox .new-user-form-holder {
   border: 1px solid #FFF;
@@ -1053,9 +1051,6 @@ form .datepicker {
 }
 .clients .leyenda_clientes .selects span {
   margin-left: 0px;
-  margin-right: 10px;
-}
-.clients .leyenda_clientes .selects .bootstrap-select {
   margin-right: 10px;
 }
 .clients .leyenda_clientes .selects .bootstrap-select > .btn {

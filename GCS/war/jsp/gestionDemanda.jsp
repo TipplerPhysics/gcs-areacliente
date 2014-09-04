@@ -110,7 +110,7 @@
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
 									<option value="default">Seleccionar...</option>
-									<option value="Estandar">Estandar</option>
+									<option value="Estandar">Estándar</option>
 									<option value="Compleja">Compleja</option>
 									
 								</select>
@@ -155,9 +155,9 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Gestor IT pre-asignado<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Gestor IT pre-asignado:</span>
 							<div class="input">
-								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
+								<select class="selectpicker selected" id="gestor_it" name="gestor_it" aria-required="true">	
 								<option value="default" selected>Seleccionar...</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
