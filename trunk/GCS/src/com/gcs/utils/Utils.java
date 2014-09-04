@@ -13,19 +13,15 @@ public class Utils {
 		String s = "";
 		
 		switch(permiso){
-		case 1: s="Super";
+		case 1: s="Admin";
 			break;
-		case 2: s="App Admin";
+		case 2: s="Gestor Demanda";
 			break;
-		case 3: s="User Admin";
+		case 3: s="Gestor IT";
 			break;
-		case 4: s="Gestor Demanda";
+		case 4: s="Gestor Negocio";
 			break;
-		case 5: s="Gestor IT";
-			break;
-		case 6: s="Gestor Negocio";
-			break;
-		case 7: s="Consulta";
+		case 5: s="Consulta";
 			break;
 		}
 		
