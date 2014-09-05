@@ -36,7 +36,7 @@
 		</c:if>
 	 -->
 		<c:if test="${sessionScope.permiso <= 6}">
-				<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Alta nuevo cliente<img src="../img/new-user-white.png"></button> 
+				<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gestión clientes<img src="../img/new-user-white.png"></button> 
 		</c:if>
 		<input type="text" class="long" name="buscador_cliente" id="buscador_cliente" placeholder="Introduzca cliente a buscar">
 	</div>

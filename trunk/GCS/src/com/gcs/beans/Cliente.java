@@ -1,6 +1,7 @@
 package com.gcs.beans;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -44,10 +45,18 @@ public class Cliente {
 	private String tipo;
 	
 	@Persistent
-	private Boolean workflow;
+	private Set<String> paises;
 	
 	
-		
+	
+	public Set<String> getPaises() {
+		return paises;
+	}
+
+	public void setPaises(Set<String> paises) {
+		this.paises = paises;
+	}
+
 	public String getCriticidad() {
 		return criticidad;
 	}
@@ -103,15 +112,7 @@ public class Cliente {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public Boolean getWorkflow() {
-		return workflow;
-	}
-
-	public void setWorkflow(Boolean workflow) {
-		this.workflow = workflow;
-	}
+	}	
 
 	public Cliente() {
 		super();

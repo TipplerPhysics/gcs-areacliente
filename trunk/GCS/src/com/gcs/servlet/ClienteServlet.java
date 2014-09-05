@@ -3,7 +3,9 @@ package com.gcs.servlet;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +25,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Cliente;
-import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
-import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -132,7 +132,6 @@ public class ClienteServlet extends HttpServlet {
 			s.addCell(new Label(5, 0, "REF. LOCAL",cellFormat));
 			s.addCell(new Label(6, 0, "REF. GLOBAL",cellFormat));
 			s.addCell(new Label(7, 0, "TIPO",cellFormat));
-			s.addCell(new Label(8, 0, "WORKFLOW",cellFormat));
 			
 			
 			int aux=1;
@@ -146,11 +145,7 @@ public class ClienteServlet extends HttpServlet {
 				s.addCell(new Label(5, aux, c.getRef_local()));
 				s.addCell(new Label(6, aux, c.getRef_global()));
 				s.addCell(new Label(7, aux, c.getTipo()));
-				if (c.getWorkflow()==true){
-					s.addCell(new Label(8, aux, "SI"));
-				}else{
-					s.addCell(new Label(8, aux, "NO"));
-				}
+				
 				
 				aux++;
 			}		
@@ -197,7 +192,7 @@ public class ClienteServlet extends HttpServlet {
 			String nombre = req.getParameter("client_name");
 			String fecha_entrada_peticion_ed = req.getParameter("fecha_alta_cliente");
 			
-			String workflow = req.getParameter("workflow");
+			
 			String ref_global = req.getParameter("ref_global");
 			String ref_local = req.getParameter("ref_local");
 
@@ -226,10 +221,7 @@ public class ClienteServlet extends HttpServlet {
 		
 			if (errorMsg.equals("")){
 				c.setNombre(nombre);			
-				if (workflow=="SI")
-				c.setWorkflow(true);
-				else
-				c.setWorkflow(false);
+				
 				c.setRef_global(ref_global);
 				c.setRef_local(ref_local);
 				c.setLogo_url(logo_url);
@@ -282,8 +274,13 @@ public class ClienteServlet extends HttpServlet {
 			String ref_global = req.getParameter("ref_global").toUpperCase();
 			String ref_local = req.getParameter("ref_local").toUpperCase();
 			String tipo = req.getParameter("tipo");
-			String workflow = req.getParameter("workflow");
-			Boolean workflow_bool = false;
+			String[] paises = req.getParameterValues("paises");
+			
+			Set<String> paises_set = new HashSet<String>();
+			for (String p:paises)
+				paises_set.add(p);
+			
+			
 			
 			c = cDao.getClienteByName(nombre);
 			List<Cliente> clientes = cDao.getAllClientes();
@@ -329,9 +326,8 @@ public class ClienteServlet extends HttpServlet {
 				c.setRef_global(ref_global);
 				c.setRef_local(ref_local);
 				c.setTipo(tipo);
-				if ("SI".equals(workflow))
-					workflow_bool=true;
-				c.setWorkflow(workflow_bool);
+				c.setPaises(paises_set);
+				
 				
 				cDao.createCliente(c);
 				json.append("success", "true");		

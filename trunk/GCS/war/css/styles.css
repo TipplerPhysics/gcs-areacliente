@@ -925,7 +925,7 @@ form .datepicker {
 }
 .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select {
   position: relative;
-  width: 248px !important;
+  width: 245px !important;
 }
 .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.error button {
   background: #f7e9e9;
@@ -1053,9 +1053,6 @@ form .datepicker {
   margin-left: 0px;
   margin-right: 10px;
 }
-.clients .leyenda_clientes .selects .bootstrap-select > .btn {
-  padding-top: 10px;
-}
 #message_div,
 .message_div {
   position: absolute;
@@ -1171,6 +1168,24 @@ form .datepicker {
   font-weight: 100;
   margin-right: 20px;
 }
+.gestion_demanda .radio-div,
+.gestion_cliente .radio-div {
+  text-align: left;
+  padding-left: 30px;
+}
+.gestion_demanda .radio-div > .radio-container,
+.gestion_cliente .radio-div > .radio-container {
+  display: inline-block;
+  width: 32%;
+}
+.gestion_demanda .radio-div > .radio-container label,
+.gestion_cliente .radio-div > .radio-container label {
+  color: #434a58;
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+  margin-right: 10px;
+  font-weight: 100;
+}
 .gestion_demanda #new-demanda-form .form-container,
 .gestion_cliente #new-demanda-form .form-container,
 .gestion_demanda #new-client-form .form-container,
@@ -1226,7 +1241,7 @@ form .datepicker {
   top: 0;
   left: 0;
   margin-right: 10px;
-  vertical-align: text-top;
+  vertical-align: middle;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .input,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .input,
@@ -1235,30 +1250,6 @@ form .datepicker {
   vertical-align: top;
   display: inline-block;
   width: 250px;
-}
-.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-div,
-.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-div,
-.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-div,
-.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-div {
-  text-align: left;
-  padding-left: 30px;
-}
-.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container,
-.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container,
-.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container,
-.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container {
-  display: inline-block;
-  width: 32%;
-}
-.gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container label,
-.gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-div > .radio-container label,
-.gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container label,
-.gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-div > .radio-container label {
-  color: #434a58;
-  font-family: "BBVA Web Light";
-  font-size: 12px;
-  margin-right: 10px;
-  font-weight: 100;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
@@ -1355,7 +1346,7 @@ form .datepicker {
 }
 .gestion_demanda .form-field.double > div > .bootstrap-select,
 .gestion_cliente .form-field.double > div > .bootstrap-select {
-  width: 247px !important;
+  width: 245px !important;
 }
 .gestion_demanda .form-field .input,
 .gestion_cliente .form-field .input {
@@ -1443,7 +1434,7 @@ form .datepicker {
 }
 .gestion_demanda .usersTable > .table td:nth-child(6),
 .gestion_demanda .usersTable > .table th:nth-child(6) {
-  width: 150px !important;
+  width: 100px !important;
 }
 .gestion_demanda .usersTable > .table td:nth-child(4),
 .gestion_demanda .usersTable > .table th:nth-child(4) {
@@ -1530,6 +1521,9 @@ form .datepicker {
 #new_client_dialog .form-field .input div.bootstrap-select,
 #edit_client_dialog .form-field .input div.bootstrap-select {
   width: 100%;
+}
+#edit_client_dialog #logo_url_modal {
+  width: 275px !important;
 }
 form #error-messages {
   margin-bottom: 10px;

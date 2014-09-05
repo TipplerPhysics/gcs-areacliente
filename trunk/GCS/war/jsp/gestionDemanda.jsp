@@ -157,7 +157,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT pre-asignado:</span>
 							<div class="input">
-								<select class="selectpicker selected" id="gestor_it" name="gestor_it" aria-required="true">	
+								<select class="selectpicker" id="gestor_it" name="gestor_it">	
 								<option value="default" selected>Seleccionar...</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
@@ -312,18 +312,8 @@
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
 							<input type="text" id="logo_url" name="logo_url" class="long">
-						</div>
-						
-						<div class="form-field">
-							<span class="lbl">Workflow<span class="required-asterisk">*</span>:</span>
-							<div class="radio-field">
-								<label class="lbl"><input type="radio" name="workflow" value="SI"><span class="overlay"></span> Si</label>
-								<label class="lbl"><input type="radio" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
-							</div>
-						</div>
-					
-					</div>
-					
+						</div>							
+					</div>					
 				</div>
 			</form>
 			<div id="message_div_cliente" class="message_div" style='margin-bottom:10px;'>
