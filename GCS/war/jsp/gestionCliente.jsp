@@ -61,14 +61,14 @@
 								</select>
 							</div>
 						</div>
-						
-						
-					</div><div class="form-field-divider right">
-						
 						<div class="form-field">
 							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
 							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
+						
+						
+						
+					</div><div class="form-field-divider right">
 						
 						<div class="form-field">
 							<span class="lbl">Referencia Local:</span>
@@ -80,15 +80,77 @@
 							<input type="text" id="logo_url" name="logo_url" class="long">
 						</div>
 						
-						<div class="form-field">
-							<span class="lbl">Workflow<span class="required-asterisk">*</span>:</span>
-							<div class="radio-field">
-								<label class="lbl"><input type="radio" name="workflow" value="SI"><span class="overlay"></span> Si</label>
-								<label class="lbl"><input type="radio" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
-							</div>
-						</div>
+						
 						
 					
+						<div class="form-field">	
+							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
+							<div class="radio-div">
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Argentina"
+										id="argentina_check" class="require-one"><label for="argentina_check"><span></span>Argentina</label>
+								</div>
+								
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Bélgica"
+										id="belgica_check"><label for="belgica_check"><span></span>Bélgica</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Chile"
+										id="chile_check"><label for="chile_check"><span></span>Chile</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Colombia"
+										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="España"
+										id="esp_check"><label for="esp_check"><span></span>España</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Francia"
+										id="francia_check"><label for="francia_check"><span></span>Francia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Italia"
+										id="italia_check"><label for="italia_check"><span></span>Italia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Mexico"
+										id="mexico_check"><label for="mexico_check"><span></span>México</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Peru"
+										id="peru_check"><label for="peru_check"><span></span>Perú</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Portugal"
+										id="portugal_check"><label for="portugal_check"><span></span>Portugal</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Reino Unido"
+										id="uk_check"><label for="uk_check"><span></span>Reino Unido</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Uruguay"
+										id="uruguay_check"><label for="uruguay_check"><span></span>Uruguay</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="USA"
+										id="usa_check"><label for="usa_check"><span></span>USA</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Venezuela"
+										id="venezuela_check"><label for="venezuela_check"><span></span>Venezuela</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Redex"
+										id="redex_check"><label for="redex_check"><span></span>Redex</label>
+								</div>
+								
+							</div>
+						</div>
+						 
 					</div>
 					<div id="message_div_cliente" class="message_div">
 						<span id="span_message_cliente" class="span_message"></span>
@@ -133,7 +195,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${clientes}" var="cliente">
-									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-fecha-alta="${cliente.str_fecha_alta_cliente}" data-nombre="${cliente.nombre}" data-tipo="${cliente.tipo}" data-criticidad="${cliente.criticidad}" data-ref-global="${cliente.ref_global}" data-logo-url="${cliente.logo_url}" data-ref-local="${cliente.ref_local}" data-workflow="${cliente.workflow}">
+									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-fecha-alta="${cliente.str_fecha_alta_cliente}" data-nombre="${cliente.nombre}" data-tipo="${cliente.tipo}" data-criticidad="${cliente.criticidad}" data-ref-global="${cliente.ref_global}" data-logo-url="${cliente.logo_url}" data-paises="${cliente.paises}" data-ref-local="${cliente.ref_local}">
 										<td><span>${cliente.str_fecha_alta_cliente}</span></td>
 										<td><span>${cliente.clientId}</span></td>
 										<td><span>${cliente.nombre}</span></td>
@@ -206,11 +268,6 @@
 							</div>
 						</div>
 						
-						
-						
-						
-					</div><div class="form-field-divider right">
-					
 						<div class="form-field">
 							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
 							<input type="text" aria-required="true" required="" id="ref_global_modal" name="ref_global" class="long" maxlength="11">
@@ -221,16 +278,82 @@
 							<input type="text" id="ref_local_modal" name="ref_local" class="long" maxlength="24">
 						</div>
 						
+					</div><div class="form-field-divider right">
+					
+						
+						
+						
+						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
 							<input type="text" id="logo_url_modal" name="logo_url" class="long">
 						</div>
 						
-						<div class="form-field">
-							<span class="lbl">Workflow<span class="required-asterisk">*</span>:</span>
-							<div class="radio-field">
-								<label class="lbl"><input type="radio" id="workflow_yes_modal" name="workflow" value="SI"><span class="overlay"></span> Si</label>
-								<label class="lbl"><input type="radio" id="workflow_no_modal" name="workflow" value="NO" checked="checked"><span class="overlay"></span> No</label>								
+						<div class="form-field">	
+							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
+							<div class="radio-div">
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Argentina"
+										id="argentina_check" class="require-one"><label for="argentina_check"><span></span>Argentina</label>
+								</div>
+								
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Bélgica"
+										id="belgica_check"><label for="belgica_check"><span></span>Bélgica</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Chile"
+										id="chile_check"><label for="chile_check"><span></span>Chile</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Colombia"
+										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="España"
+										id="esp_check"><label for="esp_check"><span></span>España</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Francia"
+										id="francia_check"><label for="francia_check"><span></span>Francia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Italia"
+										id="italia_check"><label for="italia_check"><span></span>Italia</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Mexico"
+										id="mexico_check"><label for="mexico_check"><span></span>México</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Peru"
+										id="peru_check"><label for="peru_check"><span></span>Perú</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Portugal"
+										id="portugal_check"><label for="portugal_check"><span></span>Portugal</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Reino Unido"
+										id="uk_check"><label for="uk_check"><span></span>Reino Unido</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Uruguay"
+										id="uruguay_check"><label for="uruguay_check"><span></span>Uruguay</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="USA"
+										id="usa_check"><label for="usa_check"><span></span>USA</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Venezuela"
+										id="venezuela_check"><label for="venezuela_check"><span></span>Venezuela</label>
+								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Redex"
+										id="redex_check"><label for="redex_check"><span></span>Redex</label>
+								</div>
+								
 							</div>
 						</div>
 				

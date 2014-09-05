@@ -221,7 +221,8 @@ public class DemandaServlet extends HttpServlet {
 			}
 			d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
 			d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
-			d.setGestor_it(Long.parseLong(gestor_it));
+			if (!"default".equals(gestor_it))
+				d.setGestor_it(Long.parseLong(gestor_it));
 			if (isLong(gestor_negocio)) {
 				d.setGestor_negocio(Long.parseLong(gestor_negocio));
 			}

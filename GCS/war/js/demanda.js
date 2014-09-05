@@ -314,11 +314,12 @@ $("#submit_demanda_form").on('click',function(e) {
 					$('#message_div').css('display','block');
 					
 					resetForm($form);
+					$form.hide();
 					
 					setTimeout(function() { 
 						$( "#message_div" ).fadeOut( "slow", function() {
 							$('#span_message').html("");
-					  }); }, 5000);
+					  }); location.reload();}, 5000);
 				}else{
 					$('#message_div').removeClass("success").addClass("error");
 					if ($('.new-user-form-holder').height()<190){
