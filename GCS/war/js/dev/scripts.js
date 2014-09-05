@@ -241,7 +241,7 @@ $(function() {
 		var line = $(this).parent().parent();
 		
 		var id= $(this).attr('name');
-		var workflow= line.data('workflow');
+		
 		var ref_local = line.data('ref-local');
 		var logo_url = line.data('logo-url');
 		var ref_global = line.data('ref-global');
@@ -249,6 +249,10 @@ $(function() {
 		var tipo = line.data('tipo');
 		var nombre = line.data('nombre');
 		var fecha_alta = line.data('fecha-alta');
+		var paises = line.data('paises');
+		paises = paises.replace("[","");
+		paises = paises.replace("]","");
+		paises = paises.replace(/, /g,"-");
 		
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#client_name_modal').val(nombre);
@@ -259,15 +263,79 @@ $(function() {
 		$('#tipo_modal').val(tipo);
 		$('#criticidad_modal').val(crit);
 		
-		if (workflow==true){
-			$('#workflow_yes_modal').attr("checked","checked");
-		}
+		
 		
 		$('#edit_client_form_modal').data("id",id);
+		
+		drawChecks(paises);
 		
 		initSelectpickers();
 		
 	});
+	
+	function drawChecks(str){
+		str = str.toLowerCase();
+		if (str.indexOf("argentina")!=-1){
+			$('#argentina_check_modal').attr("checked","checked");
+			$('#argentina_check_modal').next().addClass("checked");
+		}			
+		if (str.indexOf("belgica")!=-1){
+			$('#belgica_check_modal').attr("checked","checked");
+			$('#belgica_check_modal').next().addClass("checked");
+		}			
+		if (str.indexOf("chile")!=-1){
+			$('#chile_check_modal').attr("checked","checked");
+			$('#chile_check_modal').next().addClass("checked");
+		}			
+		if (str.indexOf("colombia")!=-1){
+			$('#colombia_check_modal').attr("checked","checked");
+			$('#colombia_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("espa")!=-1){
+			$('#esp_check_modal').attr("checked","checked");
+			$('#esp_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("francia")!=-1){
+			$('#francia_check_modal').attr("checked","checked");
+			$('#francia_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("italia")!=-1){
+			$('#italia_check_modal').attr("checked","checked");
+			$('#italia_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("mexico")!=-1){
+			$('#mexico_check_modal').attr("checked","checked");
+			$('#mexico_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("peru")!=-1){
+			$('#peru_check_modal').attr("checked","checked");
+			$('#peru_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("portugal")!=-1){
+			$('#portugal_check_modal').attr("checked","checked");
+			$('#portugal_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("reino")!=-1){
+			$('#uk_check_modal').attr("checked","checked");
+			$('#uk_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("uruguay")!=-1){
+			$('#uruguay_check_modal').attr("checked","checked");
+			$('#uruguay_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("usa")!=-1){
+			$('#usa_check_modal').attr("checked","checked");
+			$('#usa_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("venezuela")!=-1){
+			$('#venezuela_check_modal').attr("checked","checked");
+			$('#venezuela_check_modal').next().addClass("checked");
+		}
+		if (str.indexOf("redex")!=-1){
+			$('#redex_check_modal').attr("checked","checked");
+			$('#redex_check_modal').next().addClass("checked");
+		}		
+	}
 
 
 	
