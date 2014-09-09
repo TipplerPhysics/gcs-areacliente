@@ -283,7 +283,10 @@ function editRow(id){
 	if (areas.indexOf("Global Product")!=-1){
 		areas = areas.replace("Global Product","globalproduct");
 	}
-	areas= areas.split("_");
+	if(areas.lenght!=0){
+		areas= areas.split("_");
+		drawChecksAreas(areas);
+	}
 	dto= $currentRow.attr('data-dto');
 	// Current known values from item.
 	var celdas = $currentRow.children();
@@ -302,4 +305,34 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	initSelectpickers();
+}
+
+function drawChecksAreas(str){
+	for (x=0;x<str.length;x++){
+		str[x] = str[x].toLowerCase();
+		if (str[x].indexOf("onboarding")!=-1){
+			$('#onboarding_modal').attr("checked","checked");
+			$('#onboarding_modal').next().addClass("checked");
+		}			
+		if (str[x].indexOf("servicing")!=-1){
+			$('#servicing_modal').attr("checked","checked");
+			$('#servicing_modal').next().addClass("checked");
+		}			
+		if (str[x].indexOf("clientes")!=-1){
+			$('#clientes_modal').attr("checked","checked");
+			$('#clientes_modal').next().addClass("checked");
+		}			
+		if (str[x].indexOf("itcib")!=-1){
+			$('#itcib_modal').attr("checked","checked");
+			$('#itcib_modal').next().addClass("checked");
+		}
+		if (str[x].indexOf("gcs")!=-1){
+			$('#gcs_modal').attr("checked","checked");
+			$('#gcs_modal').next().addClass("checked");
+		}
+		if (str[x].indexOf("globalproduct")!=-1){
+			$('#global-product_modal').attr("checked","checked");
+			$('#global-product_modal').next().addClass("checked");
+		}
+	}
 }
