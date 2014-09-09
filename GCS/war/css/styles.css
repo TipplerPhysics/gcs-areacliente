@@ -1285,6 +1285,8 @@ form .datepicker {
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .lbl,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .lbl,
 .gestion_demanda #extended-cliente > .form-field,
 .gestion_cliente #extended-cliente > .form-field,
 .gestion_demanda #extended-demanda > .form-field,
@@ -1293,6 +1295,8 @@ form .datepicker {
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl:last-of-type,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl:last-of-type,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .lbl:last-of-type,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .lbl:last-of-type,
 .gestion_demanda #extended-cliente > .form-field:last-of-type,
 .gestion_cliente #extended-cliente > .form-field:last-of-type,
 .gestion_demanda #extended-demanda > .form-field:last-of-type,
@@ -1301,6 +1305,8 @@ form .datepicker {
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl .lbl,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl .lbl,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .lbl .lbl,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .lbl .lbl,
 .gestion_demanda #extended-cliente > .form-field .lbl,
 .gestion_cliente #extended-cliente > .form-field .lbl,
 .gestion_demanda #extended-demanda > .form-field .lbl,
@@ -1315,6 +1321,8 @@ form .datepicker {
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl .lbl.time-span,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl .lbl.time-span,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .lbl .lbl.time-span,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .lbl .lbl.time-span,
 .gestion_demanda #extended-cliente > .form-field .lbl.time-span,
 .gestion_cliente #extended-cliente > .form-field .lbl.time-span,
 .gestion_demanda #extended-demanda > .form-field .lbl.time-span,
@@ -1328,6 +1336,8 @@ form .datepicker {
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
 .gestion_demanda #extended-cliente > .form-field .tiempo .lbl,
 .gestion_cliente #extended-cliente > .form-field .tiempo .lbl,
 .gestion_demanda #extended-demanda > .form-field .tiempo .lbl,
@@ -1335,7 +1345,9 @@ form .datepicker {
   width: 80px;
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time,
-.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time {
+.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .bootstrap-select.time,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .bootstrap-select.time {
   width: 118px !important;
   display: inline-block;
 }
@@ -1382,10 +1394,13 @@ form .datepicker {
   width: 40px;
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field > span,
-.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field > span {
+.gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field > span,
+.gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field > span,
+.gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field > span {
   width: 106px;
 }
-.newUserbox > .new-user-form-holder .form-field > .input > .bootstrap-select {
+.newUserbox > .new-user-form-holder .form-field > .input > .bootstrap-select,
+.newUserbox > .edit-user-form-holder .form-field > .input > .bootstrap-select {
   float: none !important;
 }
 .gestion_cliente_ext .span-cliente {
@@ -1434,7 +1449,7 @@ form .datepicker {
 }
 .gestion_demanda .usersTable > .table td:nth-child(6),
 .gestion_demanda .usersTable > .table th:nth-child(6) {
-  width: 100px !important;
+  width: 105px !important;
 }
 .gestion_demanda .usersTable > .table td:nth-child(4),
 .gestion_demanda .usersTable > .table th:nth-child(4) {
@@ -1522,8 +1537,53 @@ form .datepicker {
 #edit_client_dialog .form-field .input div.bootstrap-select {
   width: 100%;
 }
-#edit_client_dialog #logo_url_modal {
-  width: 275px !important;
+.modal-dialog.editUser {
+  width: 950px;
+}
+#edit_user_dialog {
+  width: 850px;
+}
+#edit_user_dialog form#edit-user-form .form-field {
+  display: inline-block;
+  width: 47%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+#edit_user_dialog form#edit-user-form .form-field input {
+  float: right;
+  width: 250px;
+}
+#edit_user_dialog form#edit-user-form .form-field .bootstrap-select {
+  width: 250px;
+  float: right;
+}
+#edit_user_dialog form#edit-user-form .form-field:nth-child(2n+1) {
+  margin-right: 30px;
+}
+#edit_user_dialog form#edit-user-form .form-fieldset {
+  display: block;
+  margin: 10px auto 0;
+  text-align: left;
+  width: 90%;
+}
+#edit_user_dialog form#edit-user-form .form-fieldset .radio-container-holder {
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 15px 20px 10px;
+  width: 765px;
+}
+#edit_user_dialog form#edit-user-form .form-fieldset .radio-container {
+  display: inline-block;
+  height: 30px;
+  margin: 5px 0;
+  padding: 0 20px;
+  width: 32.333%;
+}
+#edit_user_dialog form#edit-user-form .form-fieldset .radio-container label {
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+  font-weight: 100;
 }
 form #error-messages {
   margin-bottom: 10px;
