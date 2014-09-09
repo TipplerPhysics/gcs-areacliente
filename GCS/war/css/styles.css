@@ -839,7 +839,6 @@ form .datepicker {
   overflow: hidden;
   height: 0px;
   position: relative;
-  top: -1px;
   -webkit-transition: height 1s, border 1s;
   /* For Safari 3.1 to 6.0 */
   transition: height 1s, border 1s;
@@ -849,6 +848,7 @@ form .datepicker {
   border: 1px solid #DCDCDC;
   margin-bottom: 20px;
   padding-bottom: 20px;
+  top: -1px;
 }
 .newUserbox .new-user-form-holder button {
   margin-right: 10px;
@@ -1129,6 +1129,10 @@ form .datepicker {
 .gestion_cliente .usersTable > .table td:nth-child(5) > input {
   position: relative;
   width: 120%;
+}
+.gestion_demanda .usersTable > .table th:last-child > input,
+.gestion_cliente .usersTable > .table th:last-child > input {
+  width: 100%;
 }
 .gestion_demanda #extended-cliente > .form-field > .fecha,
 .gestion_cliente #extended-cliente > .form-field > .fecha,

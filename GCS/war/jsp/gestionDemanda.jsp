@@ -8,9 +8,12 @@
 	<hr/>
 	
 	<div class="newUserbox">
-		<button id="newUserButton">
-			Nueva Petición<a class="demanda_span"></a>
-		</button>
+		
+		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+			<button id="newUserButton">
+				Nueva Petición<a class="demanda_span"></a>
+			</button>
+		</c:if>
 		<button id="excel_btn" onclick="window.location.href='../../demandaServlet?accion=xls'">
 			Descargar Tabla<a class="excel_span"></a>
 		</button>
@@ -214,7 +217,9 @@
 							<th><span class="table-title">Tipo Petición</span></th>
 							<th><span class="table-title">Estado</span></th>
 							<th><span class="table-title">Cod. Petición</span></th>
-							<th style="width: 110px;">&nbsp;</th>
+							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+								<th style="width: 110px;">&nbsp;</th>
+							</c:if>
 						</tr>
 						<tr>
 							<th class="search-th"><input class="search col0 search_anywhere"></th>
@@ -222,7 +227,9 @@
 							<th class="search-th"><input class="search col2"></th>
 							<th class="search-th"><input class="search col3"></th>
 							<th class="search-th"><input class="search col4"></th>
-							<th style="width: 110px;">&nbsp;</th>
+							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+								<th style="width: 110px;">&nbsp;</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody id="myTable" cellspacing="0">
@@ -241,7 +248,9 @@
 										<td><span>${demanda.tipo}</span></td>
 										<td><span>${demanda.estado}</span></td>
 										<td><span>${demanda.cod_peticion}</span></td>
-										<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
+										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+											<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
