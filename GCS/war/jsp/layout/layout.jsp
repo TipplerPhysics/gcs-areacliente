@@ -33,7 +33,7 @@
 			</div>
 		</div>	
 		 
-	 	<c:if test="${sessionScope.permiso != 5}">
+	 	<c:if test="${sessionScope.permiso == 1 or sessionScope.permiso == 2}">
 				<tiles:insert attribute="side-bar"/> 
 		</c:if>
 		
