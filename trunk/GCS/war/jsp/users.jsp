@@ -168,6 +168,7 @@
 				<div class="edit-user-form-holder open" id="edit_user">
 								<form id="edit-user-form" name="edit-user-form" action="/usersServlet"
 						method="POST" novalidate="novalidate">
+						<input type="hidden" id="id_modal" name="id" value="">
 						<div class="form-container">
 							<div class="form-field">
 								<span for="nombre" class="lbl">Nombre<span class="required-asterisk">*</span>:</span><input class="long" type="text"
@@ -206,29 +207,29 @@
 							</div>
 							<div class="form-fieldset">
 								<span class="fieldset-title lbl">&Aacute;reas:</span>
-								<fieldset class='radio-container-holder'>
-									<div class="radio-container">
+								<fieldset class='radio-container-holder' id='radio-container-holder_modal'>
+									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Onboarding"
 											id="onboarding_modal"><label for="onboarding"><span></span>Onboarding</label>
 									</div>
-									<div class="radio-container">
+									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Servicing"
 											id="servicing_modal"><label for="servicing"><span></span>Servicing</label>
 									</div>
-									<div class="radio-container">
+									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Clientes"
 											id="clientes_modal"><label for="clientes"><span></span>Clientes</label>
 									</div>
-									<div class="radio-container">
+									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="ITCIB" id="itcib_modal"><label
 											for="itcib"><span></span>ITCIB</label>
 									</div>
-									<div class="radio-container">
+									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas'
 											value="Global Customer Service" id="gcs_modal"><label
 											for="gcs"><span></span>Global Customer Service</label>
 									</div>
-									<div class="radio-container">
+									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Global Product"
 											id="global-product_modal"><label for="global-product"><span></span>Global
 											Product</label>
@@ -236,13 +237,15 @@
 									
 								</fieldset>
 							</div>
-							<div id="message_div">
-								<span id="span_message"></span>
+							<div id="message_div_modal">
+								<span id="span_message_modal"></span>
 							</div>
 						</div>
 					</form>
-					<button type="button" id="submit_edit_user_form">Aceptar</button>
-					<button type="button" class="" data-dismiss="modal">Cancelar</button>
+				</div>
+				<div>
+				<button type="button" id="submit_edit_user_form">Aceptar</button>
+				<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>	
 		</div>
