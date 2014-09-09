@@ -25,6 +25,42 @@ public class Demanda {
 	@Persistent
 	private Date fecha_entrada_peticion;
 	
+	@Persistent
+	private String hora_comunicacion_asignacion;
+	
+	public String getHora_comunicacion_asignacion() {
+		return hora_comunicacion_asignacion;
+	}
+
+	public void setHora_comunicacion_asignacion(String hora_comunicacion_asignacion) {
+		this.hora_comunicacion_asignacion = hora_comunicacion_asignacion;
+	}
+
+	public String getStr_fecha_comunicacion_asignacion() {
+		return str_fecha_comunicacion_asignacion;
+	}
+
+	public void setStr_fecha_comunicacion_asignacion(
+			String str_fecha_comunicacion_asignacion) {
+		this.str_fecha_comunicacion_asignacion = str_fecha_comunicacion_asignacion;
+	}
+
+	public Date getFecha_comunicacion_asignacion() {
+		return fecha_comunicacion_asignacion;
+	}
+
+	public void setFecha_comunicacion_asignacion(Date fecha_comunicacion_asignacion) {
+		this.fecha_comunicacion_asignacion = fecha_comunicacion_asignacion;
+	}
+
+	@Persistent
+	private String str_fecha_comunicacion_asignacion;
+	
+	@Persistent
+	private Date fecha_comunicacion_asignacion;
+	
+	
+	
 	public Date getFecha_comunicacion() {
 		return fecha_comunicacion;
 	}

@@ -19,28 +19,25 @@
 		</div>
 		<div>
 			<ul>
-				<li>En producción:</li>
-				<li>En Implementación:</li>
-				<li>Países:</li>
-				<li>Producto:</li>
-				<li>Proyecto:</li>
+				<li>Cliente: <span>${cliente.nombre}</span></li>
+				<li>IDGLOBAL: <span>${cliente.clientId}</span></li>
+				<li>Referencia Global: <span>${cliente.ref_global}</span></li>
+				<li>Tipo: <span>${cliente.tipo}</span></li>
+				<li>Criticidad: <span>${cliente.criticidad}</span></li>
 			</ul>
 		</div>
 	</div>
+	<h2>Proyectos asociados</h2>
+	<hr/>
 	<div class="table">
 		<table style="width:100%">
 			<tr class="header">
-			  <td>PRODUCTO</td>
-			  <td>CONECTIVIDAD</td> 
-			  <td>PAÍS</td>
-			  <td>FORMATO FICHERO</td>
-			  <td>SERVICIO</td>
-			  <td>ESTADO</td>
-			  <td>CODIGO DE PROYECTO</td>
-			</tr>
-			
+			  <td>Nombre proyecto</td>
+			  <td>Tipo de proyecto</td> 
+			  <td>Gestor IT</td>
+			  <td>Gestor Negocio</td>
+			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>			
 		</table>
 	</div>
-
-
 </div>

@@ -165,6 +165,34 @@
 								</select>
 							</div>
 						</div>
+						
+						
+						<div class="form-field">
+							<span class="lbl">Fecha comunicación asignación:</span>
+							<div class="input">
+								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Hora comunicación asignación:</span>
+							<div class="input">
+								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion">
+										<option value="default"> </option>
+									<c:forEach items="${horasList}" var="hora">
+										<option value="${hora}">${hora}</option>
+									</c:forEach>
+								</select>
+								<span class="time-span">:</span>
+								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion">
+								<option value="default"> </option>
+									
+									<c:forEach items="${minutosList}" var="min">
+										<option value="${min}">${min}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						
 					</div>
 					<div id="message_div">
 						<span id="span_message"></span>
@@ -305,10 +333,6 @@
 						</div>
 						
 					</div><div class="form-field-divider right">
-					
-						
-						
-						
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
