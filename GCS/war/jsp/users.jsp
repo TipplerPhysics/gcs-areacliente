@@ -189,7 +189,7 @@
 							<div class="form-field">
 								<span class="lbl">Departamento<span class="required-asterisk">*</span>:</span>
 								<select id="dto_select_modal"
-									class="long selected selectpicker" name="dto" required>
+									class="long selected selectpicker" name="dto">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${departamentos}" var="departamento">		         	
 										<option value="${departamento.value}">${departamento.desc}</option>
@@ -199,7 +199,7 @@
 							<div class="form-field">
 								<span class="lbl">Perfil<span class="required-asterisk">*</span>:</span>
 								<select id="permiso_select_modal" class="long selected selectpicker"
-									name="permiso" required>
+									name="permiso">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${permisos}" var="permiso">		         	
 										<option value="${permiso.value}">${permiso.desc}</option>
