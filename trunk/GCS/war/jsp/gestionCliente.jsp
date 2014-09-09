@@ -9,15 +9,17 @@
 	<hr/>
 	
 	<div class="newUserbox">
-		<c:if test="${sessionScope.permiso < 5}">
+		<c:if test="${sessionScope.permiso != 3 and sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newUserButton">
 				Alta Cliente<a class="user_span"></a>
 			</button>
 		</c:if>
 		
-		<button id="newProjectButton">
-			Alta Proyecto<a class="proyecto_span"></a>
-		</button>		
+		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+			<button id="newProjectButton">
+				Alta Proyecto<a class="proyecto_span"></a>
+			</button>	
+		</c:if>	
 		
 		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
 			Descargar Tabla<a class="excel_span"></a>
@@ -173,7 +175,9 @@
 							<th><span class="table-title">Referencia Global</span></th>
 							<th><span class="table-title">Tipo</span></th>
 							<th><span class="table-title">Criticidad</span></th>
-							<th style="width: 110px;">&nbsp;</th>
+							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+								<th style="width: 110px;">&nbsp;</th>
+							</c:if>
 						</tr>
 						<tr>
 							<th class="search-th"><input class="search col0"></th>
@@ -182,7 +186,9 @@
 							<th class="search-th"><input class="search col3"></th>
 							<th class="search-th"><input class="search col4"></th>
 							<th class="search-th"><input class="search col5"></th>
-							<th style="width: 110px;">&nbsp;</th>
+							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+								<th style="width: 110px;">&nbsp;</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody id="myTable" cellspacing="0">
@@ -202,12 +208,16 @@
 										<td><span>${cliente.ref_global}</span></td>
 										<td><span>${cliente.tipo}</span></td>
 										<td><span>${cliente.criticidad}</span></td>
-										<td><img class="vs" src="../img/vs.png">
-										<a class="lapiz" name="${cliente.key.id}"	id="lapiz${cliente.key.id}" data-toggle="modal" data-target="#edit-client"></a>
-										<c:if test="${sessionScope.permiso < 5}">
-											<a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a>
-										</c:if>
+										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+										<td>										
+											<img class="vs" src="../img/vs.png">								
+											<a class="lapiz" name="${cliente.key.id}"	id="lapiz${cliente.key.id}" data-toggle="modal" data-target="#edit-client"></a>
+									
+											<c:if test="${sessionScope.permiso != 3}">
+												<a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a>
+											</c:if>
 										</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

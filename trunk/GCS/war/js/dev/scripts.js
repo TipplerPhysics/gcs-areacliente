@@ -1407,6 +1407,46 @@ $(function() {
 			}
 		});
 	});
+	
+	$('#submit_edit_user_form').on('click', function (e) {
+		var $form = $("#edit-user-form");
+		
+		if($form.valid()){		
+
+			var postData = $form.serialize() + "&accion=update";
+			var formURL = $form.attr("action");
+			$.ajax(
+			{
+			  url : formURL,
+			  type: "GET",
+			  data : postData,
+			  success:function(data, textStatus, jqXHR) 
+			  {
+					//data: return data from server
+				  if (data.success==("true")){
+						if ($('.new-user-form-holder').height()<190){
+							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						}
+						$form.find('.form-container').find('div:not(#message_div)').hide(0);
+						$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+						$('#message_div').css('display','block').removeClass("error").addClass("success");;
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#message_div').removeClass("success").addClass("error");
+						if ($('.new-user-form-holder').height()<190){
+							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						}
+						$('#span_message').html(data.error);
+						$('#message_div').css('display','block');
+					}
+			  }
+			},'html');
+		}
+	});
 
 	$('#deleteUser').on('click', function(e) {
 		var id= $(this).attr('name');
@@ -1593,7 +1633,10 @@ function editRow(id){
 	if (areas.indexOf("Global Product")!=-1){
 		areas = areas.replace("Global Product","globalproduct");
 	}
-	areas= areas.split("_");
+	if(areas.lenght!=0){
+		areas= areas.split("_");
+		drawChecksAreas(areas);
+	}
 	dto= $currentRow.attr('data-dto');
 	// Current known values from item.
 	var celdas = $currentRow.children();
@@ -1612,7 +1655,42 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	initSelectpickers();
-};$(function() {
+}
+
+function drawChecksAreas(str){
+	for (x=0;x<str.length;x++){
+		str[x] = str[x].toLowerCase();
+		if (str[x].indexOf("onboarding")!=-1){
+			$('#onboarding_modal').attr("checked","checked");
+			$('#onboarding_modal').next().addClass("checked");
+		}			
+		if (str[x].indexOf("servicing")!=-1){
+			$('#servicing_modal').attr("checked","checked");
+			$('#servicing_modal').next().addClass("checked");
+		}			
+		if (str[x].indexOf("clientes")!=-1){
+			$('#clientes_modal').attr("checked","checked");
+			$('#clientes_modal').next().addClass("checked");
+		}			
+		if (str[x].indexOf("itcib")!=-1){
+			$('#itcib_modal').attr("checked","checked");
+			$('#itcib_modal').next().addClass("checked");
+		}
+		if (str[x].indexOf("gcs")!=-1){
+			$('#gcs_modal').attr("checked","checked");
+			$('#gcs_modal').next().addClass("checked");
+		}
+		if (str[x].indexOf("globalproduct")!=-1){
+			$('#global-product_modal').attr("checked","checked");
+			$('#global-product_modal').next().addClass("checked");
+		}
+	}
+}
+
+
+
+
+;$(function() {
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
 		remote: "Por favor, rellena este campo.",
