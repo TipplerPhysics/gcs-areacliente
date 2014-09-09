@@ -444,12 +444,12 @@ hr {
 .modal-content p {
   margin-bottom: 20px;
 }
- > .modal-footer {
+.modal-footer {
   border: 0 none;
   padding: 0;
   text-align: center;
 }
- > .modal-footer > button {
+.modal-footer > button {
   margin-right: 15px;
 }
 form .datepicker {
@@ -1095,6 +1095,7 @@ form .datepicker {
 .message_div.success {
   background-color: #E2FAFE;
   border: 1px solid #c8e1e6;
+  text-align: left;
 }
 #message_div.success > span,
 .message_div.success > span {
