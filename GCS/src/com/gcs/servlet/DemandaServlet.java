@@ -192,6 +192,18 @@ public class DemandaServlet extends HttpServlet {
 			String gestor_it = req.getParameter("gestor_it");
 			String catalogacion_peticion = req
 					.getParameter("catalogacion_peticion");
+			
+			String hora_comunicacion_asignacion = req
+					.getParameter("hora_comunicacion_asignacion");
+			
+			String min_comunicacion_asignacion = req
+					.getParameter("min_comunicacion_asignacion");
+			
+			String fecha_comunicacion_asignacion = req
+					.getParameter("fecha_comunicacion_asignacion");
+			
+			
+			
 
 			DemandaDao dDao = DemandaDao.getInstance();
 
@@ -204,11 +216,7 @@ public class DemandaServlet extends HttpServlet {
 				mes_com = "0"+mes_com;
 			String anio = String.valueOf(fecha_comunicacion.getYear()+1900);
 			
-			//TODO: Segun la logica de cristina estas lineas deben ir descomentadas, pero segun susana esto es en edicion.
 			
-			//d.setStr_fecha_comunicacion(dia_com+"/"+mes_com+"/"+anio);
-			//d.setHora_comunicacion(hora_comunicacion);
-			//d.setFecha_comunicacion(fecha_comunicacion);
 			d.setCatalogacion(catalogacion_peticion);
 			d.setComentarios(comentarios);
 			d.setDevuelta(devBool);
@@ -226,6 +234,12 @@ public class DemandaServlet extends HttpServlet {
 			if (isLong(gestor_negocio)) {
 				d.setGestor_negocio(Long.parseLong(gestor_negocio));
 			}
+			d.setStr_fecha_comunicacion_asignacion(hora_comunicacion_asignacion+":"+ min_comunicacion_asignacion);
+			if (!"".equals(fecha_comunicacion_asignacion)){
+				d.setFecha_comunicacion_asignacion(Utils
+						.dateConverter(fecha_comunicacion_asignacion));
+			}
+			d.setStr_fecha_comunicacion_asignacion(fecha_comunicacion_asignacion);
 			d.setHora_entrada_peticion(hora_peticion + ":" + min_peticion);
 			if (!hora_solicitud_asignacion.equals("default") && !min_solicitud_asignacion.equals("default"))
 				d.setHora_solicitud_asignacion(hora_solicitud_asignacion + ":"	+ min_solicitud_asignacion);

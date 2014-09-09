@@ -1205,13 +1205,13 @@ form .datepicker {
 .gestion_cliente #new-demanda-form .form-container .form-field-divider.left,
 .gestion_demanda #new-client-form .form-container .form-field-divider.left,
 .gestion_cliente #new-client-form .form-container .form-field-divider.left {
-  padding-left: 40px;
+  padding-left: 25px;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider.right,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider.right,
 .gestion_demanda #new-client-form .form-container .form-field-divider.right,
 .gestion_cliente #new-client-form .form-container .form-field-divider.right {
-  padding-right: 40px;
+  padding-right: 25px;
 }
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field,
@@ -1383,7 +1383,7 @@ form .datepicker {
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field > span,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field > span {
-  width: 94px;
+  width: 106px;
 }
 .newUserbox > .new-user-form-holder .form-field > .input > .bootstrap-select {
   float: none !important;
@@ -1711,9 +1711,13 @@ form textarea.error {
 }
 .profile_cont .table .header td {
   border: 1px solid white;
+  width: 200px;
 }
-.profile_cont .table .header td:nth-child(3) {
+.profile_cont .table .header td:nth-child(2) {
   width: 100px;
+}
+.profile_cont .table .header td:nth-child(5) {
+  width: 65px;
 }
 .profile_cont .summary {
   margin-top: 20px;
@@ -1739,4 +1743,8 @@ form textarea.error {
 .profile_cont .summary > div > ul > li {
   height: 25px;
   color: #0b5394;
+}
+.profile_cont .summary > div > ul > li > span {
+  color: #434a58;
+  font-weight: 700;
 }
