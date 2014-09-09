@@ -1191,12 +1191,16 @@ form .datepicker {
   margin-right: 10px;
   font-weight: 100;
 }
+.gestion_demanda #edit-demanda-form .form-container,
+.gestion_cliente #edit-demanda-form .form-container,
 .gestion_demanda #new-demanda-form .form-container,
 .gestion_cliente #new-demanda-form .form-container,
 .gestion_demanda #new-client-form .form-container,
 .gestion_cliente #new-client-form .form-container {
   text-align: left;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider,
 .gestion_demanda #new-client-form .form-container .form-field-divider,
@@ -1206,18 +1210,24 @@ form .datepicker {
   width: 50%;
   padding-left: 10px;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider.left,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider.left,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider.left,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider.left,
 .gestion_demanda #new-client-form .form-container .form-field-divider.left,
 .gestion_cliente #new-client-form .form-container .form-field-divider.left {
   padding-left: 25px;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider.right,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider.right,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider.right,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider.right,
 .gestion_demanda #new-client-form .form-container .form-field-divider.right,
 .gestion_cliente #new-client-form .form-container .form-field-divider.right {
   padding-right: 25px;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field,
@@ -1225,6 +1235,8 @@ form .datepicker {
   display: block;
   width: 100%;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > button,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > button,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field.cliente .input > button,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field.cliente .input > button,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field.cliente .input > button,
@@ -1232,12 +1244,16 @@ form .datepicker {
   margin-right: 0px;
   vertical-align: top;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field.cliente .input > div,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field.cliente .input > div,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field.cliente .input > div,
 .gestion_cliente #new-client-form .form-container .form-field-divider .form-field.cliente .input > div {
   width: 192px !important;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field .lbl,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field .lbl,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .lbl,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .lbl,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .lbl,
@@ -1248,6 +1264,8 @@ form .datepicker {
   margin-right: 10px;
   vertical-align: middle;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field .input,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field .input,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .input,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .input,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .input,
@@ -1256,6 +1274,8 @@ form .datepicker {
   display: inline-block;
   width: 250px;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field .radio-field,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field,
@@ -1264,6 +1284,8 @@ form .datepicker {
   padding-top: 10px;
   display: inline-block;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field .radio-field label,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field .radio-field label,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field label,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field label,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field label,
@@ -1274,12 +1296,16 @@ form .datepicker {
   font-weight: 100;
   margin-right: 10px;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field .radio-field input,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field .radio-field input,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field input,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field input,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field input,
 .gestion_cliente #new-client-form .form-container .form-field-divider .form-field .radio-field input {
   margin-right: 5px;
 }
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field .radio-field span,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field .radio-field span,
 .gestion_demanda #new-demanda-form .form-container .form-field-divider .form-field .radio-field span,
 .gestion_cliente #new-demanda-form .form-container .form-field-divider .form-field .radio-field span,
 .gestion_demanda #new-client-form .form-container .form-field-divider .form-field .radio-field span,
@@ -1287,6 +1313,26 @@ form .datepicker {
   color: #434a58;
   font-family: "BBVA Web Light";
   font-size: 12px;
+}
+.gestion_demanda #edit-demanda > .modal-dialog,
+.gestion_cliente #edit-demanda > .modal-dialog {
+  width: 670px;
+}
+.gestion_demanda #edit-demanda-form .form-container .input > div,
+.gestion_cliente #edit-demanda-form .form-container .input > div {
+  width: 100% !important;
+}
+.gestion_demanda #edit-demanda-form .form-container textarea,
+.gestion_cliente #edit-demanda-form .form-container textarea {
+  width: 100%;
+}
+.gestion_demanda #edit-demanda-form .form-container div.time,
+.gestion_cliente #edit-demanda-form .form-container div.time {
+  width: 117px !important;
+}
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div#input_cliente_modal,
+.gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div#input_cliente_modal {
+  width: 100% !important;
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl,
@@ -1589,6 +1635,9 @@ form .datepicker {
   font-family: "BBVA Web Light";
   font-size: 12px;
   font-weight: 100;
+}
+.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div {
+  width: 100% !important!;
 }
 form #error-messages {
   margin-bottom: 10px;

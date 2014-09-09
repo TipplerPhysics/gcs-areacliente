@@ -13,11 +13,11 @@
       	<script src="../tools/jquery-ui.min.js" type="text/javascript"></script>
       	<script src="../tools/jquery-ui-datepicker-es.js" type="text/javascript"></script>
       	<script src="../tools/jquery.validate.js" type="text/javascript"></script> 
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="../components/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<script src="../components/bootstrap/select/bootstrap-select.min.js" type="text/javascript"></script>
 		<script src="../js/dev/scripts.js" type="text/javascript"></script>
 
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.min.css" />
 		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.theme.min.css" />
 		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.structure.min.css" />
