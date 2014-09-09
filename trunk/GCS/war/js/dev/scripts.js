@@ -282,62 +282,92 @@ $(function() {
 		if (str.indexOf("argentina")!=-1){
 			$('#argentina_check_modal').attr("checked","checked");
 			$('#argentina_check_modal').next().addClass("checked");
-		}			
+		}else{
+			$('#argentina_check_modal').removeClass("checked");
+		}				
 		if (str.indexOf("belgica")!=-1){
 			$('#belgica_check_modal').attr("checked","checked");
 			$('#belgica_check_modal').next().addClass("checked");
-		}			
+		}else{
+			$('#belgica_check_modal').removeClass("checked");
+		}				
 		if (str.indexOf("chile")!=-1){
 			$('#chile_check_modal').attr("checked","checked");
 			$('#chile_check_modal').next().addClass("checked");
+		}else{
+			$('#chile_check_modal').removeClass("checked");
 		}			
 		if (str.indexOf("colombia")!=-1){
 			$('#colombia_check_modal').attr("checked","checked");
 			$('#colombia_check_modal').next().addClass("checked");
-		}
+		}else{
+			$('#colombia_check_modal').removeClass("checked");
+		}	
 		if (str.indexOf("espa")!=-1){
 			$('#esp_check_modal').attr("checked","checked");
 			$('#esp_check_modal').next().addClass("checked");
-		}
+		}else{
+			$('#esp_check_modal').removeClass("checked");
+		}	
 		if (str.indexOf("francia")!=-1){
 			$('#francia_check_modal').attr("checked","checked");
 			$('#francia_check_modal').next().addClass("checked");
-		}
+		}else{
+			$('#francia_check_modal').removeClass("checked");
+		}	
 		if (str.indexOf("italia")!=-1){
 			$('#italia_check_modal').attr("checked","checked");
 			$('#italia_check_modal').next().addClass("checked");
+		}else{
+			$('#italia_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("mexico")!=-1){
 			$('#mexico_check_modal').attr("checked","checked");
 			$('#mexico_check_modal').next().addClass("checked");
+		}else{
+			$('#mexico_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("peru")!=-1){
 			$('#peru_check_modal').attr("checked","checked");
 			$('#peru_check_modal').next().addClass("checked");
+		}else{
+			$('#peru_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("portugal")!=-1){
 			$('#portugal_check_modal').attr("checked","checked");
 			$('#portugal_check_modal').next().addClass("checked");
+		}else{
+			$('#portugal_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("reino")!=-1){
 			$('#uk_check_modal').attr("checked","checked");
 			$('#uk_check_modal').next().addClass("checked");
+		}else{
+			$('#uk_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("uruguay")!=-1){
 			$('#uruguay_check_modal').attr("checked","checked");
 			$('#uruguay_check_modal').next().addClass("checked");
+		}else{
+			$('#uruguay_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("usa")!=-1){
 			$('#usa_check_modal').attr("checked","checked");
 			$('#usa_check_modal').next().addClass("checked");
+		}else{
+			$('#usa_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("venezuela")!=-1){
 			$('#venezuela_check_modal').attr("checked","checked");
 			$('#venezuela_check_modal').next().addClass("checked");
+		}else{
+			$('#venezuela_check_modal').removeClass("checked");
 		}
 		if (str.indexOf("redex")!=-1){
 			$('#redex_check_modal').attr("checked","checked");
 			$('#redex_check_modal').next().addClass("checked");
+		}else{
+			$('#redex_check_modal').removeClass("checked");
 		}		
 	}
 
@@ -1412,8 +1442,15 @@ $(function() {
 		var $form = $("#edit-user-form");
 		
 		if($form.valid()){		
-
-			var postData = $form.serialize() + "&accion=update";
+			var areas = "";
+			var $checkedBoxes = $form.find('.radio-container-holder').find('.radio-container').find('input:checked');
+			$checkedBoxes.each(function(i){
+				areas += $(this).val();
+				if(i < $checkedBoxes.length - 1){
+					areas += "_";
+				}
+			});
+			var postData = $form.serialize() + "&accion=update&areasStr="+areas;
 			var formURL = $form.attr("action");
 			$.ajax(
 			{
@@ -1424,24 +1461,24 @@ $(function() {
 			  {
 					//data: return data from server
 				  if (data.success==("true")){
-						if ($('.new-user-form-holder').height()<190){
-							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						if ($('.edit-user-form-holder').height()<190){
+							$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 						}
-						$form.find('.form-container').find('div:not(#message_div)').hide(0);
-						$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
-						$('#message_div').css('display','block').removeClass("error").addClass("success");;
+						$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
+						$form.find('#span_message_modal').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
 
 						setTimeout(function() { 
 							resetForm($form);
 							location.reload();
 						}, 1500);
 					}else{
-						$('#message_div').removeClass("success").addClass("error");
-						if ($('.new-user-form-holder').height()<190){
-							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						$('#message_div_modal').removeClass("success").addClass("error");
+						if ($('.edit-user-form-holder').height()<190){
+							$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 						}
-						$('#span_message').html(data.error);
-						$('#message_div').css('display','block');
+						$('#span_message_modal').html(data.error);
+						$('#message_div_modal').css('display','block');
 					}
 			  }
 			},'html');
@@ -1647,6 +1684,7 @@ function editRow(id){
 	cpermiso = $currentRow.data('permiso');
 	email = $currentRow.attr('data-mail');
 	
+	$("#id_modal").val(id);
 	$("#nombre_modal").val(cnombre);
 	$("#ap1_modal").val(cap1);
 	$("#ap2_modal").val(cap2);
@@ -1663,26 +1701,38 @@ function drawChecksAreas(str){
 		if (str[x].indexOf("onboarding")!=-1){
 			$('#onboarding_modal').attr("checked","checked");
 			$('#onboarding_modal').next().addClass("checked");
-		}			
+		}else{
+			$('#onboarding_modal').removeClass("checked");
+		}		
 		if (str[x].indexOf("servicing")!=-1){
 			$('#servicing_modal').attr("checked","checked");
 			$('#servicing_modal').next().addClass("checked");
-		}			
+		}else{
+			$('#servicing_modal').removeClass("checked");
+		}				
 		if (str[x].indexOf("clientes")!=-1){
 			$('#clientes_modal').attr("checked","checked");
 			$('#clientes_modal').next().addClass("checked");
+		}else{
+			$('#clientes_modal').removeClass("checked");
 		}			
 		if (str[x].indexOf("itcib")!=-1){
 			$('#itcib_modal').attr("checked","checked");
 			$('#itcib_modal').next().addClass("checked");
+		}else{
+			$('#itcib_modal').removeClass("checked");
 		}
 		if (str[x].indexOf("gcs")!=-1){
 			$('#gcs_modal').attr("checked","checked");
 			$('#gcs_modal').next().addClass("checked");
+		}else{
+			$('#gcs_modal').removeClass("checked");
 		}
 		if (str[x].indexOf("globalproduct")!=-1){
 			$('#global-product_modal').attr("checked","checked");
 			$('#global-product_modal').next().addClass("checked");
+		}else{
+			$('#global-product_modal').removeClass("checked");
 		}
 	}
 }

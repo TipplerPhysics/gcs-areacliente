@@ -444,12 +444,12 @@ hr {
 .modal-content p {
   margin-bottom: 20px;
 }
-.modal-content > .modal-footer {
+ > .modal-footer {
   border: 0 none;
   padding: 0;
   text-align: center;
 }
-.modal-content > .modal-footer > button {
+ > .modal-footer > button {
   margin-right: 15px;
 }
 form .datepicker {
