@@ -102,7 +102,15 @@ $(function() {
 		var $form = $("#edit-user-form");
 		
 		if($form.valid()){		
-			var postData = $form.serialize() + "&accion=update";
+			var areas = "";
+			var $checkedBoxes = $form.find('.radio-container-holder').find('.radio-container').find('input:checked');
+			$checkedBoxes.each(function(i){
+				areas += $(this).val();
+				if(i < $checkedBoxes.length - 1){
+					areas += "_";
+				}
+			});
+			var postData = $form.serialize() + "&accion=update&areasStr="+areas;
 			var formURL = $form.attr("action");
 			$.ajax(
 			{
@@ -353,26 +361,38 @@ function drawChecksAreas(str){
 		if (str[x].indexOf("onboarding")!=-1){
 			$('#onboarding_modal').attr("checked","checked");
 			$('#onboarding_modal').next().addClass("checked");
-		}			
+		}else{
+			$('#onboarding_modal').removeClass("checked");
+		}		
 		if (str[x].indexOf("servicing")!=-1){
 			$('#servicing_modal').attr("checked","checked");
 			$('#servicing_modal').next().addClass("checked");
-		}			
+		}else{
+			$('#servicing_modal').removeClass("checked");
+		}				
 		if (str[x].indexOf("clientes")!=-1){
 			$('#clientes_modal').attr("checked","checked");
 			$('#clientes_modal').next().addClass("checked");
+		}else{
+			$('#clientes_modal').removeClass("checked");
 		}			
 		if (str[x].indexOf("itcib")!=-1){
 			$('#itcib_modal').attr("checked","checked");
 			$('#itcib_modal').next().addClass("checked");
+		}else{
+			$('#itcib_modal').removeClass("checked");
 		}
 		if (str[x].indexOf("gcs")!=-1){
 			$('#gcs_modal').attr("checked","checked");
 			$('#gcs_modal').next().addClass("checked");
+		}else{
+			$('#gcs_modal').removeClass("checked");
 		}
 		if (str[x].indexOf("globalproduct")!=-1){
 			$('#global-product_modal').attr("checked","checked");
 			$('#global-product_modal').next().addClass("checked");
+		}else{
+			$('#global-product_modal').removeClass("checked");
 		}
 	}
 }

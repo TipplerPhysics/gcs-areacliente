@@ -44,7 +44,7 @@ public class UserServlet extends HttpServlet {
 			 
 			 if (sesionpermiso>2){
 					json.append("failure", "true");
-					json.append("error", "No tienes los permisos para realizar esta operaci�n");
+					json.append("error", "No tienes los permisos para realizar esta operación");
 					
 					resp.setCharacterEncoding("UTF-8");
 			        resp.setContentType("application/json");       
@@ -78,7 +78,11 @@ public class UserServlet extends HttpServlet {
 		String ap1 = req.getParameter("ap1");
 		String ap2 = req.getParameter("ap2");
 		String email = req.getParameter("email");
-		String areas = req.getParameter("areas");
+		
+		String areas = req.getParameter("areasStr");
+		if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
+			areas = areas.substring(0, areas.length()-1);
+		}
 		String dto = req.getParameter("dto");
 		dto = dto.replace('#', '&');
 		
@@ -104,6 +108,9 @@ public class UserServlet extends HttpServlet {
 		json.append("success", "true");
 		json.append("id", u.getKey().getId());
 		json.append("permiso", u.getPermisoStr());
+		json.append("permisoid", permiso);
+		json.append("dto", dto);
+		json.append("area", areas);
 		
 		resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");       
