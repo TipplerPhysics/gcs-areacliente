@@ -102,7 +102,6 @@ $(function() {
 		var $form = $("#edit-user-form");
 		
 		if($form.valid()){		
-
 			var postData = $form.serialize() + "&accion=update";
 			var formURL = $form.attr("action");
 			$.ajax(
@@ -114,24 +113,24 @@ $(function() {
 			  {
 					//data: return data from server
 				  if (data.success==("true")){
-						if ($('.new-user-form-holder').height()<190){
-							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						if ($('.edit-user-form-holder').height()<190){
+							$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 						}
-						$form.find('.form-container').find('div:not(#message_div)').hide(0);
-						$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
-						$('#message_div').css('display','block').removeClass("error").addClass("success");;
+						$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
+						$form.find('#span_message_modal').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
 
 						setTimeout(function() { 
 							resetForm($form);
 							location.reload();
 						}, 1500);
 					}else{
-						$('#message_div').removeClass("success").addClass("error");
-						if ($('.new-user-form-holder').height()<190){
-							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+						$('#message_div_modal').removeClass("success").addClass("error");
+						if ($('.edit-user-form-holder').height()<190){
+							$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 						}
-						$('#span_message').html(data.error);
-						$('#message_div').css('display','block');
+						$('#span_message_modal').html(data.error);
+						$('#message_div_modal').css('display','block');
 					}
 			  }
 			},'html');
@@ -337,6 +336,7 @@ function editRow(id){
 	cpermiso = $currentRow.data('permiso');
 	email = $currentRow.attr('data-mail');
 	
+	$("#id_modal").val(id);
 	$("#nombre_modal").val(cnombre);
 	$("#ap1_modal").val(cap1);
 	$("#ap2_modal").val(cap2);
