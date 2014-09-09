@@ -250,9 +250,13 @@ $(function() {
 		var nombre = line.data('nombre');
 		var fecha_alta = line.data('fecha-alta');
 		var paises = line.data('paises');
-		paises = paises.replace("[","");
-		paises = paises.replace("]","");
-		paises = paises.replace(/, /g,"-");
+		if (paises.length!=0){
+			paises = paises.replace("[","");
+			paises = paises.replace("]","");
+			paises = paises.replace(/, /g,"-");
+			drawChecks(paises);
+		}
+		
 		
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#client_name_modal').val(nombre);
@@ -267,7 +271,7 @@ $(function() {
 		
 		$('#edit_client_form_modal').data("id",id);
 		
-		drawChecks(paises);
+		
 		
 		initSelectpickers();
 		
@@ -1433,7 +1437,7 @@ $(function() {
 		var id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRow(id);
-			disableSearch();
+			
 
 		}	
 	});
@@ -1596,98 +1600,18 @@ function editRow(id){
 	cnombre = $(celdas[0]).children().html();
 	cap1 = $(celdas[1]).children().html();
 	cap2 = $(celdas[2]).children().html();
-	cemail = $(celdas[3]).children().html();
-	cpermiso =  $currentRow.attr('data-permiso');
-	var email = $currentRow.attr('data-mail');
-	// load the external html in to the page.
-	$.get('../html/extended-user.html',null,function(result) {
-		// Close other editing field and show the row.
-		if($previousOpenEdit.length > 0){
-			$('#row'+$previousOpenEdit.data('row-id')).css({display:'table-row'});
-			$previousOpenEdit.remove();
-		}
-		// Hide current row.
-		$currentRow.css({display:'none'});
-		// Adds the item holder row for editing the item.
-		$currentRow.after("<tr id='edit-item-holder' class='extended-row' style='display: table-row;'><td colspan='6'><div class='extended-div'></div></td></tr>");
-		var $currentOpenEdit = $table.find('#edit-item-holder');
-		$currentOpenEdit.data('row-id', id);
-		// Add the result to the element
-		$currentOpenEdit.find(".extended-div").html(result);
-		// The form we're editing in.
-		var $editForm = $currentOpenEdit.find('form#edit-item');
-		// copia options de select de formulario de creacion
-		var $dtoOptions = $('select#dto_select option').clone();
-		$editForm.find('select#dto_ed').append($dtoOptions).val(dto);
-		$editForm.find('select#dto_ed option').first().remove();		
-		// copia options de select de creacion
-		var $permisoOptions = $('select#permiso_select option').clone();
-		$editForm.find('select#permiso_ed').append($permisoOptions).val(cpermiso);
-		$editForm.find('select#permiso_ed option').first().remove();
-		// Inserting values
-		$editForm.find('.edit_input.nombre').val(cnombre);
-		$editForm.find('.edit_input.apellido1').val(cap1);
-		$editForm.find('.edit_input.apellido2').val(cap2);
-		$editForm.find('.edit_input.email').val(email);
-		$.each(areas, function(i, value){
-			$editForm.find('.areas').find('.radio-container').each(function(){
-				var input = $(this).find('input#e-' + value);
-				if(input.length > 0){
-					input.prop('checked', true);
-					$(this).find('label').addClass('checked');
-				}
-			});
-		});
-		// Activate everything.
-		$editForm.find('.selectpicker').selectpicker();
-		initForms();
-		initValidator();
-
-		// Click event for the cancel button.
-		$editForm.on('click', '.cancelar-ext', function (e) {
-			$('#row'+$currentOpenEdit.data('row-id')).css({display:'table-row'});
-			$currentOpenEdit.remove();
-			enableSearch();
-			return false;
-		});
-		// Click event for the save button.
-		$editForm.on('click', '.guardar-ext', function (e) {
-			if($editForm.valid()){
-				var $editItemHolder = $(this).closest('#edit-item-holder');
-				// Collect all the information.
-				var id= $editItemHolder.data('row-id');
-				var nombre = $editItemHolder.find('input.edit_input.nombre').val();
-				var ap1 = $editItemHolder.find('input.edit_input.apellido1').val();
-				var ap2 = $editItemHolder.find('input.edit_input.apellido2').val();
-				var email = $editItemHolder.find('input.edit_input.email').val();
-				var permiso = $('#permiso_ed').val();
-				var dto = $('#dto_ed option:selected').text();
-				dto = dto.replace('&','#');
-				// Get all checked boxes in to one string, devided by _ (underscore).
-				var $checkedBoxes = $editItemHolder.find('.areas').find('.radio-container').find('input:checked');
-				var areas="";
-				$checkedBoxes.each(function(i){
-					areas += $(this).val();
-					if(i < $checkedBoxes.length - 1){
-						areas += "_";
-					}
-				});
-				// Update the database.
-				var postData = "&nombre="+nombre+"&id="+id+"&dto="+dto+"&permiso="+permiso+"&email="+email+"&ap1="+ap1+"&ap2="+ap2+"&accion=update&areas="+areas;
-				var formURL = "/usersServlet";
-				$.ajax({
-					url : formURL,
-					type: "POST",
-					data : postData,
-					success:function(data, textStatus, jqXHR) {
-						enableSearch();
-						location.reload();
-					}
-				});
-			}
-			return false;
-		});
-	},'html');
+	cdepartamento = $currentRow.data('dto');
+	cpermiso = $currentRow.data('permiso');
+	email = $currentRow.attr('data-mail');
+	
+	$("#nombre_modal").val(cnombre);
+	$("#ap1_modal").val(cap1);
+	$("#ap2_modal").val(cap2);
+	$("#email_modal").val(email);
+	$("#dto_select_modal").val(cdepartamento);
+	$("#permiso_select_modal").val(cpermiso);
+	
+	initSelectpickers();
 };$(function() {
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",

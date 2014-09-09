@@ -121,7 +121,8 @@ public class ClienteServlet extends HttpServlet {
 		    s.setColumnView(5, 30);
 		    s.setColumnView(6, 20);
 		    s.setColumnView(7, 15);
-		    s.setColumnView(8, 15);
+		    s.setColumnView(8, 40);
+		   
 		    s.setRowView(0, 900);
 						
 			s.addCell(new Label(0, 0, "NOMBRE",cellFormat));
@@ -132,6 +133,7 @@ public class ClienteServlet extends HttpServlet {
 			s.addCell(new Label(5, 0, "REF. LOCAL",cellFormat));
 			s.addCell(new Label(6, 0, "REF. GLOBAL",cellFormat));
 			s.addCell(new Label(7, 0, "TIPO",cellFormat));
+			s.addCell(new Label(8, 0, "PAISES",cellFormat));
 			
 			
 			int aux=1;
@@ -145,6 +147,11 @@ public class ClienteServlet extends HttpServlet {
 				s.addCell(new Label(5, aux, c.getRef_local()));
 				s.addCell(new Label(6, aux, c.getRef_global()));
 				s.addCell(new Label(7, aux, c.getTipo()));
+				if (!c.getPaises().isEmpty()){
+					String str_paises = c.getPaises().toString();
+					s.addCell(new Label(8, aux, c.getPaises().toString().substring(1, str_paises.length()-1)));
+				}
+				
 				
 				
 				aux++;

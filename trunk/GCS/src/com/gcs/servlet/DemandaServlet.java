@@ -166,11 +166,9 @@ public class DemandaServlet extends HttpServlet {
 		Demanda d = new Demanda();
 
 		try {
-			String motivo_catalogacion = req
-					.getParameter("motivo_catalogacion");
+			String motivo_catalogacion = req.getParameter("motivo_catalogacion");
 			String comentarios = req.getParameter("comentarios");
-			String fecha_entrada_peticion = req
-					.getParameter("fecha_entrada_peticion");
+			String fecha_entrada_peticion = req.getParameter("fecha_entrada_peticion");
 
 			String hora_peticion = req.getParameter("hora_peticion");
 			String min_peticion = req.getParameter("min_peticion");
@@ -181,26 +179,19 @@ public class DemandaServlet extends HttpServlet {
 			Boolean devBool = false;
 			if (devuelta.equals("SI"))
 				devBool = true;
-			String fecha_solicitud_asignacion = req
-					.getParameter("fecha_solicitud_asignacion");
+			String fecha_solicitud_asignacion = req.getParameter("fecha_solicitud_asignacion");
 
-			String hora_solicitud_asignacion = req
-					.getParameter("hora_solicitud_asignacion");
-			String min_solicitud_asignacion = req
-					.getParameter("min_solicitud_asignacion");
+			String hora_solicitud_asignacion = req.getParameter("hora_solicitud_asignacion");
+			String min_solicitud_asignacion = req.getParameter("min_solicitud_asignacion");
 			String estado = req.getParameter("estado");
 			String gestor_it = req.getParameter("gestor_it");
-			String catalogacion_peticion = req
-					.getParameter("catalogacion_peticion");
+			String catalogacion_peticion = req.getParameter("catalogacion_peticion");
 			
-			String hora_comunicacion_asignacion = req
-					.getParameter("hora_comunicacion_asignacion");
+			String hora_comunicacion_asignacion = req.getParameter("hora_comunicacion_asignacion");
 			
-			String min_comunicacion_asignacion = req
-					.getParameter("min_comunicacion_asignacion");
+			String min_comunicacion_asignacion = req.getParameter("min_comunicacion_asignacion");
 			
-			String fecha_comunicacion_asignacion = req
-					.getParameter("fecha_comunicacion_asignacion");
+			String fecha_comunicacion_asignacion = req.getParameter("fecha_comunicacion_asignacion");
 			
 			
 			
@@ -234,7 +225,8 @@ public class DemandaServlet extends HttpServlet {
 			if (isLong(gestor_negocio)) {
 				d.setGestor_negocio(Long.parseLong(gestor_negocio));
 			}
-			d.setStr_fecha_comunicacion_asignacion(hora_comunicacion_asignacion+":"+ min_comunicacion_asignacion);
+			d.setHora_comunicacion_asignacion(hora_comunicacion_asignacion+":"+ min_comunicacion_asignacion);
+			
 			if (!"".equals(fecha_comunicacion_asignacion)){
 				d.setFecha_comunicacion_asignacion(Utils
 						.dateConverter(fecha_comunicacion_asignacion));

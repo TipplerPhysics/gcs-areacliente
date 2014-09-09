@@ -250,9 +250,13 @@ $(function() {
 		var nombre = line.data('nombre');
 		var fecha_alta = line.data('fecha-alta');
 		var paises = line.data('paises');
-		paises = paises.replace("[","");
-		paises = paises.replace("]","");
-		paises = paises.replace(/, /g,"-");
+		if (paises.length!=0){
+			paises = paises.replace("[","");
+			paises = paises.replace("]","");
+			paises = paises.replace(/, /g,"-");
+			drawChecks(paises);
+		}
+		
 		
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#client_name_modal').val(nombre);
@@ -267,7 +271,7 @@ $(function() {
 		
 		$('#edit_client_form_modal').data("id",id);
 		
-		drawChecks(paises);
+		
 		
 		initSelectpickers();
 		

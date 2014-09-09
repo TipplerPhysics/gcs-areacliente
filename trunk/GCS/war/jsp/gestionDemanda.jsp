@@ -168,23 +168,23 @@
 						
 						
 						<div class="form-field">
-							<span class="lbl">Fecha comunicación asignación:</span>
+							<span class="lbl">Fecha comunicación asignación<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion">
+								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion" required>
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora comunicación asignación:</span>
+							<span class="lbl">Hora comunicación asignación<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion">
-										<option value="default"> </option>
+								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion" required aria-required="true">
+										
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
 								<span class="time-span">:</span>
-								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion">
-								<option value="default"> </option>
+								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion" required aria-required="true">
+								
 									
 									<c:forEach items="${minutosList}" var="min">
 										<option value="${min}">${min}</option>
