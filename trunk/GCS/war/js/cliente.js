@@ -284,94 +284,107 @@ $(function() {
 			$('#argentina_check_modal').next().addClass("checked");
 		}else{
 			$('#argentina_check_modal').removeClass("checked");
+			$('#argentina_check_modal').next().removeClass("checked");
 		}				
 		if (str.indexOf("belgica")!=-1){
 			$('#belgica_check_modal').attr("checked","checked");
 			$('#belgica_check_modal').next().addClass("checked");
 		}else{
 			$('#belgica_check_modal').removeClass("checked");
+			$('#belgica_check_modal').next().removeClass("checked");
 		}				
 		if (str.indexOf("chile")!=-1){
 			$('#chile_check_modal').attr("checked","checked");
 			$('#chile_check_modal').next().addClass("checked");
 		}else{
 			$('#chile_check_modal').removeClass("checked");
+			$('#chile_check_modal').next().removeClass("checked");
 		}			
 		if (str.indexOf("colombia")!=-1){
 			$('#colombia_check_modal').attr("checked","checked");
 			$('#colombia_check_modal').next().addClass("checked");
 		}else{
 			$('#colombia_check_modal').removeClass("checked");
+			$('#colombia_check_modal').next().removeClass("checked");
 		}	
 		if (str.indexOf("espa")!=-1){
 			$('#esp_check_modal').attr("checked","checked");
 			$('#esp_check_modal').next().addClass("checked");
 		}else{
 			$('#esp_check_modal').removeClass("checked");
+			$('#esp_check_modal').next().removeClass("checked");
 		}	
 		if (str.indexOf("francia")!=-1){
 			$('#francia_check_modal').attr("checked","checked");
 			$('#francia_check_modal').next().addClass("checked");
 		}else{
 			$('#francia_check_modal').removeClass("checked");
+			$('#francia_check_modal').next().removeClass("checked");
 		}	
 		if (str.indexOf("italia")!=-1){
 			$('#italia_check_modal').attr("checked","checked");
 			$('#italia_check_modal').next().addClass("checked");
 		}else{
 			$('#italia_check_modal').removeClass("checked");
+			$('#italia_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("mexico")!=-1){
 			$('#mexico_check_modal').attr("checked","checked");
 			$('#mexico_check_modal').next().addClass("checked");
 		}else{
 			$('#mexico_check_modal').removeClass("checked");
+			$('#mexico_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("peru")!=-1){
 			$('#peru_check_modal').attr("checked","checked");
 			$('#peru_check_modal').next().addClass("checked");
 		}else{
 			$('#peru_check_modal').removeClass("checked");
+			$('#peru_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("portugal")!=-1){
 			$('#portugal_check_modal').attr("checked","checked");
 			$('#portugal_check_modal').next().addClass("checked");
 		}else{
 			$('#portugal_check_modal').removeClass("checked");
+			$('#portugal_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("reino")!=-1){
 			$('#uk_check_modal').attr("checked","checked");
 			$('#uk_check_modal').next().addClass("checked");
 		}else{
 			$('#uk_check_modal').removeClass("checked");
+			$('#uk_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("uruguay")!=-1){
 			$('#uruguay_check_modal').attr("checked","checked");
 			$('#uruguay_check_modal').next().addClass("checked");
 		}else{
 			$('#uruguay_check_modal').removeClass("checked");
+			$('#uruguay_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("usa")!=-1){
 			$('#usa_check_modal').attr("checked","checked");
 			$('#usa_check_modal').next().addClass("checked");
 		}else{
 			$('#usa_check_modal').removeClass("checked");
+			$('#usa_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("venezuela")!=-1){
 			$('#venezuela_check_modal').attr("checked","checked");
 			$('#venezuela_check_modal').next().addClass("checked");
 		}else{
 			$('#venezuela_check_modal').removeClass("checked");
+			$('#venezuela_check_modal').next().removeClass("checked");
 		}
 		if (str.indexOf("redex")!=-1){
 			$('#redex_check_modal').attr("checked","checked");
 			$('#redex_check_modal').next().addClass("checked");
 		}else{
 			$('#redex_check_modal').removeClass("checked");
+			$('#redex_check_modal').next().removeClass("checked");
 		}		
 	}
-
-
 	
 	function checkPaises(paises){
 		if (paises.indexOf("Argentina")!=-1){
