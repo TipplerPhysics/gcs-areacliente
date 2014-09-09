@@ -237,15 +237,15 @@
 									
 								</fieldset>
 							</div>
-							<div id="message_div_modal">
+							<div id="message_div_modal" class="message_div">
 								<span id="span_message_modal"></span>
 							</div>
 						</div>
 					</form>
 				</div>
-				<div>
-				<button type="button" id="submit_edit_user_form">Aceptar</button>
-				<button type="button" class="" data-dismiss="modal">Cancelar</button>
+				<div class="modal-footer" id="modal-footer_submit">
+					<button type="button" id="submit_edit_user_form">Aceptar</button>
+					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>	
 		</div>
