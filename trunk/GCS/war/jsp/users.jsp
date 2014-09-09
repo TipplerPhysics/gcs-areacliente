@@ -210,28 +210,28 @@
 								<fieldset class='radio-container-holder' id='radio-container-holder_modal'>
 									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Onboarding"
-											id="onboarding_modal"><label for="onboarding"><span></span>Onboarding</label>
+											id="onboarding_modal"><label for="onboarding_modal"><span></span>Onboarding</label>
 									</div>
 									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Servicing"
-											id="servicing_modal"><label for="servicing"><span></span>Servicing</label>
+											id="servicing_modal"><label for="servicing_modal"><span></span>Servicing</label>
 									</div>
 									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Clientes"
-											id="clientes_modal"><label for="clientes"><span></span>Clientes</label>
+											id="clientes_modal"><label for="clientes_modal"><span></span>Clientes</label>
 									</div>
 									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="ITCIB" id="itcib_modal"><label
-											for="itcib"><span></span>ITCIB</label>
+											for="itcib_modal"><span></span>ITCIB</label>
 									</div>
 									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas'
 											value="Global Customer Service" id="gcs_modal"><label
-											for="gcs"><span></span>Global Customer Service</label>
+											for="gcs_modal"><span></span>Global Customer Service</label>
 									</div>
 									<div class="radio-container" id='radio-container_modal'>
 										<input type="checkbox" name='areas' value="Global Product"
-											id="global-product_modal"><label for="global-product"><span></span>Global
+											id="global-product_modal"><label for="global-product_modal"><span></span>Global
 											Product</label>
 									</div>
 									
