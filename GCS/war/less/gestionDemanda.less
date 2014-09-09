@@ -149,6 +149,7 @@
 		}
 	}
 	.newUserbox .new-user-form-holder .form-container .form-field  .lbl,
+	.newUserbox .edit-user-form-holder .form-container .form-field  .lbl,
 	#extended-cliente > .form-field,
 	#extended-demanda > .form-field {
 		margin-bottom: 20px;
@@ -180,7 +181,8 @@
 		}
 	}
 	
-	.newUserbox .new-user-form-holder .form-container .form-field  .bootstrap-select.time {
+	.newUserbox .new-user-form-holder .form-container .form-field  .bootstrap-select.time,
+	.newUserbox .edit-user-form-holder .form-container .form-field  .bootstrap-select.time {
 		width:118px !important;
 		display:inline-block;
 	}
@@ -224,12 +226,14 @@
 		}
 	}
 	
-	.newUserbox .new-user-form-holder .form-container .form-field > span {
+	.newUserbox .new-user-form-holder .form-container .form-field > span,
+	.newUserbox .edit-user-form-holder .form-container .form-field > span {
 		width: 106px;
 	}
 }
 
-.newUserbox >.new-user-form-holder .form-field > .input > .bootstrap-select {
+.newUserbox >.new-user-form-holder .form-field > .input > .bootstrap-select,
+.newUserbox >.edit-user-form-holder .form-field > .input > .bootstrap-select {
 	float:none !important;
 }
 
@@ -383,7 +387,59 @@
 		}
 		
 	}
+
+	.modal-dialog.editUser{width:950px;}
+
+#edit_user_dialog{
 	
-#edit_client_dialog #logo_url_modal{
-	width:275px !important;
-}
+	width: 850px;
+
+	form#edit-user-form .form-field{
+		display: inline-block;
+		width: 47%;
+		text-align:left;
+		margin-bottom: 10px;
+		
+		input{
+			float:right;
+			width: 250px;
+		}
+		
+		.bootstrap-select{
+			width: 250px;	
+			float: right;
+		}
+	}
+
+	form#edit-user-form .form-field:nth-child(2n+1){
+		margin-right:30px;
+	}	
+	
+	form#edit-user-form .form-fieldset{
+		display: block;
+   		margin: 10px auto 0;
+    	text-align: left;
+    	width: 90%;
+	}
+	
+	form#edit-user-form .form-fieldset .radio-container-holder{
+		border: 1px solid #dcdcdc;
+    	border-radius: 4px;
+    	display: inline-block;
+    	padding: 15px 20px 10px;
+    	width: 765px;
+    }
+    
+    form#edit-user-form .form-fieldset .radio-container{
+    	display: inline-block;
+    	height: 30px;
+    	margin: 5px 0;
+    	padding: 0 20px;
+    	width: 32.333%;
+    	label{
+    	font-family: "BBVA Web Light";
+    	font-size: 12px;
+    	font-weight:100;
+    	}
+    }
+}	

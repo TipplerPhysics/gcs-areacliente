@@ -140,7 +140,7 @@
 									<td><span>${user.apellido2}</span></td>
 									<td><span>${user.departamento}</span></td>
 									<td><span>${user.permisoStr}</span></td>
-									<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}"></a><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a></td>
+									<td><img class="vs" src="../img/vs.png"><a class="lapiz" name="${user.key.id}"	id="lapiz${user.key.id}" data-toggle="modal" data-target="#edit-user"></a><a class="papelera" name="${user.key.id}" data-toggle="modal"	data-target="#confirm-delete" id="papelera${user.key.id}"></a></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -155,6 +155,101 @@
 	</div>
 </div>
 
+
+<div class="modal fade" id="edit-user" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="edit_user_dialog">
+		<div class="modal-content">
+			<div class="">
+				<h2>Editar usuario</h2>
+				<hr />
+			</div>
+			<div class="newUserbox">
+				<div class="edit-user-form-holder open" id="edit_user">
+								<form id="edit-user-form" name="edit-user-form" action="/usersServlet"
+						method="POST" novalidate="novalidate">
+						<div class="form-container">
+							<div class="form-field">
+								<span for="nombre" class="lbl">Nombre<span class="required-asterisk">*</span>:</span><input class="long" type="text"
+									name="nombre" id="nombre_modal" required aria-required="true">
+							</div>
+							<div class="form-field">
+								<span  class="lbl">Apellido 1<span class="required-asterisk">*</span>:</span><input class="long" type="text" name="ap1"
+									id="ap1_modal" required aria-required="true">
+							</div>
+							<div class="form-field">
+								<span class="lbl">Apellido 2:</span><input class="long" type="text" name="ap2"
+									id="ap2_modal">
+							</div>
+							<div class="form-field">
+								<span class="lbl">E-mail<span class="required-asterisk">*</span>:</span><input class="long email" type="text"
+									name="email" id="email_modal" required aria-required="true"
+									data-type="email">
+							</div>
+							<div class="form-field">
+								<span class="lbl">Departamento<span class="required-asterisk">*</span>:</span>
+								<select id="dto_select_modal"
+									class="long selected selectpicker" name="dto" required>
+									<option selected value="default">Seleccionar</option>
+									<c:forEach items="${departamentos}" var="departamento">		         	
+										<option value="${departamento.value}">${departamento.desc}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="form-field">
+								<span class="lbl">Perfil<span class="required-asterisk">*</span>:</span><select id="permiso_select_modal" class="long selected selectpicker"
+									name="permiso" required>
+									<option selected value="default">Seleccionar</option>
+									<c:forEach items="${permisos}" var="permiso">		         	
+										<option value="${permiso.value}">${permiso.desc}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="form-fieldset">
+								<span class="fieldset-title lbl">&Aacute;reas:</span>
+								<fieldset class='radio-container-holder'>
+									<div class="radio-container">
+										<input type="checkbox" name='areas' value="Onboarding"
+											id="onboarding_modal"><label for="onboarding"><span></span>Onboarding</label>
+									</div>
+									<div class="radio-container">
+										<input type="checkbox" name='areas' value="Servicing"
+											id="servicing_modal"><label for="servicing"><span></span>Servicing</label>
+									</div>
+									<div class="radio-container">
+										<input type="checkbox" name='areas' value="Clientes"
+											id="clientes_modal"><label for="clientes"><span></span>Clientes</label>
+									</div>
+									<div class="radio-container">
+										<input type="checkbox" name='areas' value="ITCIB" id="itcib_modal"><label
+											for="itcib"><span></span>ITCIB</label>
+									</div>
+									<div class="radio-container">
+										<input type="checkbox" name='areas'
+											value="Global Customer Service" id="gcs_modal"><label
+											for="gcs"><span></span>Global Customer Service</label>
+									</div>
+									<div class="radio-container">
+										<input type="checkbox" name='areas' value="Global Product"
+											id="global-product_modal"><label for="global-product"><span></span>Global
+											Product</label>
+									</div>
+									
+								</fieldset>
+							</div>
+							<div id="message_div">
+								<span id="span_message"></span>
+							</div>
+						</div>
+						<button type="submit" id="submit_user_form">Aceptar</button>
+						<button type="button" class="" data-dismiss="modal">Cancelar</button>
+					</form>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+</div>
 
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
