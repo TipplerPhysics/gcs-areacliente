@@ -240,9 +240,9 @@
 								<span id="span_message"></span>
 							</div>
 						</div>
-						<button type="submit" id="submit_user_form">Aceptar</button>
-						<button type="button" class="" data-dismiss="modal">Cancelar</button>
 					</form>
+					<button type="button" id="submit_edit_user_form">Aceptar</button>
+					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>	
 		</div>
