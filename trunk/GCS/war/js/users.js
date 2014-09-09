@@ -364,36 +364,42 @@ function drawChecksAreas(str){
 			$('#onboarding_modal').next().addClass("checked");
 		}else{
 			$('#onboarding_modal').removeClass("checked");
+			$('#onboarding_modal').next().removeClass("checked");
 		}		
 		if (str[x].indexOf("servicing")!=-1){
 			$('#servicing_modal').attr("checked","checked");
 			$('#servicing_modal').next().addClass("checked");
 		}else{
 			$('#servicing_modal').removeClass("checked");
+			$('#servicing_modal').next().removeClass("checked");
 		}				
 		if (str[x].indexOf("clientes")!=-1){
 			$('#clientes_modal').attr("checked","checked");
 			$('#clientes_modal').next().addClass("checked");
 		}else{
 			$('#clientes_modal').removeClass("checked");
+			$('#clientes_modal').next().removeClass("checked");
 		}			
 		if (str[x].indexOf("itcib")!=-1){
 			$('#itcib_modal').attr("checked","checked");
 			$('#itcib_modal').next().addClass("checked");
 		}else{
 			$('#itcib_modal').removeClass("checked");
+			$('#itcib_modal').next().removeClass("checked");
 		}
 		if (str[x].indexOf("gcs")!=-1){
 			$('#gcs_modal').attr("checked","checked");
 			$('#gcs_modal').next().addClass("checked");
 		}else{
 			$('#gcs_modal').removeClass("checked");
+			$('#gcs_modal').next().removeClass("checked");
 		}
 		if (str[x].indexOf("globalproduct")!=-1){
 			$('#global-product_modal').attr("checked","checked");
 			$('#global-product_modal').next().addClass("checked");
 		}else{
 			$('#global-product_modal').removeClass("checked");
+			$('#global-product_modal').next().removeClass("checked");
 		}
 	}
 }
