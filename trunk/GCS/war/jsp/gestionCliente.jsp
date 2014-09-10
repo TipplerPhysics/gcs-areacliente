@@ -2,7 +2,7 @@
 
 <div class="gestion_cliente">
 
-	<img class="users_title_icon" src="../img/user.png"><h1>Alta cliente</h1>
+	<img class="users_title_icon" src="../img/user.png"><h1>Gestión cliente</h1>
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
 	
 	

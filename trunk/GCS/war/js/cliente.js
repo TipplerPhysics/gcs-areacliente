@@ -167,7 +167,7 @@ function sendEditClient(){
 					}
 					
 					$form.find('.form-container').find('div:not(#message_div)').hide(0);
-					$('#span_message_cliente_modal').html("El cliente se ha creado de forma correcta.");
+					$('#span_message_cliente_modal').html("El cliente se ha modificado de forma correcta.");
 					$('#message_div_cliente_modal').css('display','block');
 					
 					$(".modal-footer").hide();
