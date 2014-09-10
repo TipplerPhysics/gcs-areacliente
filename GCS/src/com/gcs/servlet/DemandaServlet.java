@@ -48,7 +48,7 @@ public class DemandaServlet extends HttpServlet {
 			if (sesionpermiso > 2) {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operaci�n");
+						"No tienes los permisos para realizar esta operación");
 
 				resp.setCharacterEncoding("UTF-8");
 				resp.setContentType("application/json");
@@ -303,7 +303,7 @@ public class DemandaServlet extends HttpServlet {
 		try {
 			resp.setContentType("application/vnd.ms-excel");
 			resp.setHeader("Content-Disposition",
-					"attachment; filename=DemandasGestionGCS.xls");
+					"attachment; filename=GestionDemandasGCS.xls");
 
 			WritableWorkbook w = Workbook
 					.createWorkbook(resp.getOutputStream());
@@ -311,7 +311,7 @@ public class DemandaServlet extends HttpServlet {
 			DemandaDao dDao = DemandaDao.getInstance();
 			List<Demanda> demandas = dDao.getAllDemandas();
 
-			WritableSheet s = w.createSheet("Demandas de gestion", 0);
+			WritableSheet s = w.createSheet("Gestion de demandas", 0);
 
 			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
 			cellFont.setColour(Colour.WHITE);
