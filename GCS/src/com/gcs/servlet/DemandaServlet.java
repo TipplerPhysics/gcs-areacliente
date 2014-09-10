@@ -107,31 +107,62 @@ public class DemandaServlet extends HttpServlet {
 			DemandaDao dDao = DemandaDao.getInstance();
 			Demanda d = dDao.getDemandaById(id);
 
+			String catalogacion_peticion = req.getParameter("catalogacion_peticion");
+			String comentarios = req.getParameter("comentarios");
+			String devuelta = req.getParameter("devuelta");
+			String fecha_comunicacion_asignacion = req.getParameter("fecha_comunicacion_asignacion");
+			String fecha_entrada_peticion = req.getParameter("fecha_entrada_peticion");
+			String fecha_solicitud_asignacion = req.getParameter("fecha_solicitud_asignacion");
+			String gestor_negocio = req.getParameter("gestor_negocio");
+			String hora_comunicacion_asignacion = req.getParameter("hora_comunicacion_asignacion");
+			String min_comunicacion_asignacion = req.getParameter("min_comunicacion_asignacion");
+			String hora_peticion = req.getParameter("hora_peticion");
+			String min_peticion = req.getParameter("min_peticion");
+			String hora_solicitud_asignacion = req.getParameter("hora_solicitud_asignacion");
+			String min_solicitud_asignacion = req.getParameter("min_solicitud_asignacion");
+			String motivo_catalogacion = req.getParameter("motivo_catalogacion");
+			
+			
 			String cliente = req.getParameter("cliente");
 			String tipo = req.getParameter("tipo");
 			String estado = req.getParameter("estado");
 			String gestor_it = req.getParameter("gestor_it");
-			String fecha_entrada = req.getParameter("fecha_entrada");
-			String fecha_asignacion = req.getParameter("fecha_asignacion");
-			String hora_peticion_ext = req.getParameter("hora_peticion_ext");
-			String min_peticion_ext = req.getParameter("min_peticion_ext");
-
+			
+			d.setMotivo_catalogacion(motivo_catalogacion);
+			d.setCatalogacion(catalogacion_peticion);
+			d.setComentarios(comentarios);
+			if ("SI".equals(devuelta))
+				d.setDevuelta(true);
+			else
+				d.setDevuelta(false);
 			d.setClientekey(Long.parseLong(cliente));
 			d.setTipo(tipo);
 			d.setEstado(estado);
 			d.setGestor_it(Long.parseLong(gestor_it));
-			if (!fecha_entrada.equals(""))
-			d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada));
-			//if (!fecha_asignacion.equals(""))
-			//d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_asignacion));
-			//d.setHora_entrada_peticion(hora_peticion_ext + ":"+ min_peticion_ext);
+			d.setGestor_negocio(Long.parseLong(gestor_negocio));
 			
-			if (!fecha_asignacion.equals(""))
-			d.setFecha_comunicacion(Utils.dateConverter(fecha_asignacion));
-			d.setStr_fecha_comunicacion(fecha_asignacion);
-			d.setHora_comunicacion(hora_peticion_ext+":"+min_peticion_ext);
-
 			
+			
+			if (!"".equals(fecha_entrada_peticion)){
+				d.setFecha_entrada_peticion(Utils.dateConverter(fecha_entrada_peticion));
+				d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
+			}
+			
+			d.setHora_entrada_peticion(hora_peticion + ":" + min_peticion);
+			d.setHora_comunicacion_asignacion(hora_comunicacion_asignacion + ":" + min_comunicacion_asignacion);
+			d.setHora_solicitud_asignacion(hora_solicitud_asignacion + ":" + min_solicitud_asignacion);
+			
+			if (!"".equals(fecha_solicitud_asignacion)){
+				d.setFecha_solicitud_asignacion(Utils.dateConverter(fecha_solicitud_asignacion));
+				d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
+			}
+			
+			
+			
+			if (!"".equals(fecha_comunicacion_asignacion)){
+				d.setFecha_comunicacion(Utils.dateConverter(fecha_comunicacion_asignacion));
+				d.setStr_fecha_comunicacion(fecha_comunicacion_asignacion);
+			}			
 
 			dDao.createDemanda(d);
 
