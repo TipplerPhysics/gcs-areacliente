@@ -94,8 +94,8 @@
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Bélgica"
-										id="belgica_check"><label for="belgica_check"><span></span>Bélgica</label>
+									<input type="checkbox" name='paises' value="B&eacute;lgica"
+										id="belgica_check"><label for="belgica_check"><span></span>B&eacute;lgica</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Chile"
@@ -106,8 +106,8 @@
 										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="España"
-										id="esp_check"><label for="esp_check"><span></span>España</label>
+									<input type="checkbox" name='paises' value="Espa&ntilde;a"
+										id="esp_check"><label for="esp_check"><span></span>Espa&ntilde;a</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Francia"
@@ -118,12 +118,12 @@
 										id="italia_check"><label for="italia_check"><span></span>Italia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Mexico"
-										id="mexico_check"><label for="mexico_check"><span></span>México</label>
+									<input type="checkbox" name='paises' value="M&eacute;xico"
+										id="mexico_check"><label for="mexico_check"><span></span>M&eacute;xico</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Peru"
-										id="peru_check"><label for="peru_check"><span></span>Perú</label>
+									<input type="checkbox" name='paises' value="Per&uacute;"
+										id="peru_check"><label for="peru_check"><span></span>Per&uacute;</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Portugal"
@@ -159,8 +159,10 @@
 					</div>
 				</div>
 			</form>
-			<button type="submit" class="submit_form" id="submit_client_form">Aceptar</button>
-			<button href="#" class="close-form">Cancelar</button>
+			<div id="buttons_new_client">
+				<button type="submit" class="submit_form" id="submit_client_form">Aceptar</button>
+				<button href="#" class="close-form">Cancelar</button>
+			</div>
 		</div>
 	</div>
 	<div>	
@@ -308,8 +310,8 @@
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Bélgica"
-										id="belgica_check_modal"><label for="belgica_check_modal"><span></span>Bélgica</label>
+									<input type="checkbox" name='paises' value="B&eacute;lgica"
+										id="belgica_check_modal"><label for="belgica_check_modal"><span></span>B&eacute;lgica</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Chile"
@@ -320,8 +322,8 @@
 										id="colombia_check_modal"><label for="colombia_check_modal"><span></span>Colombia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="España"
-										id="esp_check_modal"><label for="esp_check_modal"><span></span>España</label>
+									<input type="checkbox" name='paises' value="Espa&ntilde;a"
+										id="esp_check_modal"><label for="esp_check_modal"><span></span>Espa&ntilde;a</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Francia"
@@ -332,12 +334,12 @@
 										id="italia_check_modal"><label for="italia_check_modal"><span></span>Italia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Mexico"
-										id="mexico_check_modal"><label for="mexico_check_modal"><span></span>México</label>
+									<input type="checkbox" name='paises' value="M&eacute;xico"
+										id="mexico_check_modal"><label for="mexico_check_modal"><span></span>M&eacute;xico</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Peru"
-										id="peru_check_modal"><label for="peru_check_modal"><span></span>Perú</label>
+									<input type="checkbox" name='paises' value="Per&uacute;"
+										id="peru_check_modal"><label for="peru_check_modal"><span></span>Per&uacute;</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Portugal"
