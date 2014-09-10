@@ -2,8 +2,8 @@
 
 <div class="gestion_demanda">
 
-	<img class="users_title_icon" src="../img/user.png"><h1>Alta petición</h1>
-	<!-- <button class="btn-atras" type="button">Atrás</button>  -->
+	<img class="users_title_icon" src="../img/user.png"><h1>Alta petici&oacute;n</h1>
+	<!-- <button class="btn-atras" type="button">Atr&aacute;s</button>  -->
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
 	<hr/>
 	
@@ -11,7 +11,7 @@
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newUserButton">
-				Nueva Petición<a class="demanda_span"></a>
+				Nueva Petici&oacute;n<a class="demanda_span"></a>
 			</button>
 		</c:if>
 		<button id="excel_btn" onclick="window.location.href='../../demandaServlet?accion=xls'">
@@ -25,13 +25,13 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
-							<span class="lbl">Fecha entrada petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha entrada petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion" required aria-required="true">
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Hora petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 							
 								
@@ -73,13 +73,13 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Tipo petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
 									<option value="default">Seleccionar...</option>
 									<option value="Implantacion">Implantacion</option>
 									<option value="Migracion IA">Migracion IA</option>
-									<option value="Estandarización Clientes">Estandarización Clientes</option>
+									<option value="Estandarizaci&oacute;n Clientes">Estandarizaci&oacute;n Clientes</option>
 									<option value="Evolutivo">Evolutivo</option>
 									<option value="Pruebas Cliente">Pruebas Cliente</option>
 									<option value="SEPA">SEPA</option>
@@ -100,7 +100,7 @@
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
-									<option value="Pendiente de asignación">Pendiente de asignación</option>
+									<option value="Pendiente de asignaci&oacute;n">Pendiente de asignaci&oacute;n</option>
 									<option value="Asignada">Asignada</option>
 									<option value="Devuelta">Devuelta</option>
 									<option value="Parada">Parada</option>
@@ -109,11 +109,11 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Catalogación de petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
 									<option value="default">Seleccionar...</option>
-									<option value="Estandar">Estándar</option>
+									<option value="Estandar">Est&aacute;ndar</option>
 									<option value="Compleja">Compleja</option>
 									
 								</select>
@@ -121,7 +121,7 @@
 						</div>
 					</div><div class="form-field-divider right">
 						<div class="form-field">
-							<span class="align-top lbl">Motivo de catalogación:</span>
+							<span class="align-top lbl">Motivo de catalogaci&oacute;n:</span>
 							<div class='input'>
 								<textarea name="motivo_catalogacion" id="motivo_catalogacion" class="long"></textarea>
 							</div>
@@ -133,13 +133,13 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Fecha solicitud asignación:</span>
+							<span class="lbl">Fecha solicitud asignaci&oacute;n:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion">
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora solicitud asignación:</span>
+							<span class="lbl">Hora solicitud asignaci&oacute;n:</span>
 							<div class="input">
 								<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
 										<option value="default"> </option>
@@ -171,13 +171,13 @@
 						
 						
 						<div class="form-field">
-							<span class="lbl">Fecha comunicación asignación<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion" required>
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora comunicación asignación<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Hora comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion" required aria-required="true">
 										
@@ -197,13 +197,17 @@
 						</div>
 						
 					</div>
-					<div id="message_div">
-						<span id="span_message"></span>
-					</div>
 				</div>
 			</form>
-			<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
-			<button href="#" class="close-form">Cancelar</button>
+			<div class="message-container">
+				<div id="message_div" class="message_div">
+					<span id="span_message" span_message></span>
+				</div>
+			</div>
+			<div id="buttons_new_demanda">
+				<button type="submit" class="submit_form" id="submit_demanda_form">Aceptar</button>
+				<button href="#" class="close-form">Cancelar</button>
+			</div>
 		</div>
 	</div>
 	<div>	
@@ -214,9 +218,9 @@
 						<tr>
 							<th><span class="table-title">Fecha Entrada</span></th>
 							<th><span class="table-title">Cliente</span></th>
-							<th><span class="table-title">Tipo Petición</span></th>
+							<th><span class="table-title">Tipo Petici&oacute;n</span></th>
 							<th><span class="table-title">Estado</span></th>
-							<th><span class="table-title">Cod. Petición</span></th>
+							<th><span class="table-title">Cod. Petici&oacute;n</span></th>
 							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 								<th style="width: 110px;">&nbsp;</th>
 							</c:if>
@@ -282,11 +286,11 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="">
-					<h2>Eliminar petición</h2>
+					<h2>Eliminar peticiï¿½n</h2>
 					<hr />
 				</div>
 				<div class="">
-					<p>&iquest;Est&aacute; seguro que desea eliminar la petición?
+					<p>&iquest;Est&aacute; seguro que desea eliminar la petici&oacute;n?
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="pink-btn" id="deleteDemanda">Eliminar</button>
@@ -367,8 +371,8 @@
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Bélgica"
-										id="belgica_check"><label for="belgica_check"><span></span>Bélgica</label>
+									<input type="checkbox" name='paises' value="B&eacute;lgica"
+										id="belgica_check"><label for="belgica_check"><span></span>B&eacute;lgica</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Chile"
@@ -379,8 +383,8 @@
 										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="España"
-										id="esp_check"><label for="esp_check"><span></span>España</label>
+									<input type="checkbox" name='paises' value="Espa&ntilde;a"
+										id="esp_check"><label for="esp_check"><span></span>Espa&ntilde;a</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Francia"
@@ -392,11 +396,11 @@
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Mexico"
-										id="mexico_check"><label for="mexico_check"><span></span>México</label>
+										id="mexico_check"><label for="mexico_check"><span></span>M&eacute;xico</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Peru"
-										id="peru_check"><label for="peru_check"><span></span>Perú</label>
+										id="peru_check"><label for="peru_check"><span></span>Per&uacute;</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Portugal"
