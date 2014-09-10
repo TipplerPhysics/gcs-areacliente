@@ -7,6 +7,57 @@ var cpermiso="";
 var areas;
 var dto;
 
+var id;
+
+function sendEditUser(){
+
+	var $form = $("#edit-user-form");
+	
+	if($form.valid()){		
+		var areas = "";
+		var $checkedBoxes = $form.find('.radio-container-holder').find('.radio-container').find('input:checked');
+		$checkedBoxes.each(function(i){
+			areas += $(this).val();
+			if(i < $checkedBoxes.length - 1){
+				areas += "_";
+			}
+		});
+		var postData = $form.serialize() + "&accion=update&areasStr="+areas;
+		var formURL = $form.attr("action");
+		$.ajax(
+		{
+		  url : formURL,
+		  type: "GET",
+		  data : postData,
+		  success:function(data, textStatus, jqXHR) 
+		  {
+				//data: return data from server
+			  if (data.success==("true")){
+					if ($('.edit-user-form-holder').height()<190){
+						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
+					}
+					$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
+					$form.find('#span_message_modal').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+					$('#modal-footer_submit').css('display','none');
+					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
+
+					setTimeout(function() { 
+						resetForm($form);
+						location.reload();
+					}, 1500);
+				}else{
+					$('#message_div_modal').removeClass("success").addClass("error");
+					if ($('.edit-user-form-holder').height()<190){
+						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
+					}
+					$('#span_message_modal').html(data.error);
+					$('#message_div_modal').css('display','block');
+				}
+		  }
+		},'html');
+	}
+}
+
 $(function() {
 	$('#myTable').paginateMe({
 		pagerSelector : '#myPager',
@@ -14,6 +65,10 @@ $(function() {
 		hidePageNumbers : false,
 		perPage : 5
 	});
+	
+	$('.alta_usuario').on('shown.bs.modal', function () {
+		editRow(id);
+	})
 
 	$('.selectpicker').selectpicker();
 
@@ -172,7 +227,7 @@ $(function() {
 
 	
 	$('.alta_usuario').on('click', '.lapiz', function(e) {
-		var id= $(this).attr('name');
+		id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRow(id);
 			
