@@ -34,6 +34,11 @@
 			
 		</action>
 		
+		<action path="/clienteModal" type="com.gcs.actions.modal.ClienteModalAction">
+			<forward name="ok" path="/jsp/modal/modal-cliente.jsp" />
+			
+		</action>
+		
 		<action path="/clientProfile" type="com.gcs.actions.ClientProfileAction">
 			<forward name="ok" path="/jsp/skeletons/clientProfile-skeleton.jsp" />
 			<forward name="ko" path="/clients.do" />

@@ -2,7 +2,8 @@ var opciones_estado = "<option value='PDTE Doc Alcance en GCS'>PDTE Doc Alcance 
 var id;
 
 $(document).on('hidden.bs.modal', function (e) {
-    $(e.target).removeData('bs.modal');
+   // $(e.target).removeData('bs.modal');
+	$(".modal-content").html();
 });
 
 function sendEditDemanda(){
@@ -42,9 +43,7 @@ $(function() {
 	
 	$('.gestion_demanda').on('click', '.lapiz', function(e) {
 		id= $(this).attr('name');
-		if (!$(this).hasClass('inactive')) {
-			editRowDemanda(id);
-		}	
+		
 	});
 	
 	$('.gestion_demanda').on('click', '.cancelar-ext-demanda', function (e) {
@@ -251,11 +250,9 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		initDatepickers();
+		
 		initSelectpickers();
-		initForms();
-		initValidator();
-			
+		
 	}
 	
 	
