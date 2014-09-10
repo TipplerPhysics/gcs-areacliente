@@ -350,11 +350,6 @@
 							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
-						<div class="form-field">
-							<span class="lbl">Referencia Local:</span>
-							<input type="text" id="ref_local" name="ref_local" class="long" maxlength="24">
-						</div>
-						
 					</div><div class="form-field-divider right">
 						
 						<div class="form-field">

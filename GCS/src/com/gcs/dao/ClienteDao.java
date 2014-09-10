@@ -100,32 +100,6 @@ public class ClienteDao {
 
 	}
 	
-	public Cliente getClienteByRefLocal(String ref) {
-
-		Cliente c = new Cliente();
-
-		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
-
-		String queryStr = "select from " + Cliente.class.getName()
-				+ " where ref_local  == :p1";
-
-		List<Cliente> clientes = (List<Cliente>) pManager.newQuery(queryStr).execute(ref);
-
-		if (!clientes.isEmpty()) {
-			c = clientes.get(0);
-		} else {
-			c = null;
-		}
-
-		transaction.commit();
-		pManager.close();
-
-		return c;
-
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Cliente> getAllClientes() {
 

@@ -127,6 +127,7 @@ $(function() {
 						$form.find('.form-container').find('div:not(#message_div)').hide(0);
 						$('#span_message_cliente_modal').html("El cliente se ha creado de forma correcta.");
 						$('#message_div_cliente_modal').css('display','block');
+						$('.modal-footer').css('display','none');
 						
 						resetForm($form);
 						setTimeout(function() { 
@@ -243,7 +244,6 @@ $(function() {
 		
 		var id= $(this).attr('name');
 		
-		var ref_local = line.data('ref-local');
 		var logo_url = line.data('logo-url');
 		var ref_global = line.data('ref-global');
 		var crit = line.data('criticidad');
@@ -262,7 +262,6 @@ $(function() {
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#client_name_modal').val(nombre);
 		$('#ref_global_modal').val(ref_global);
-		$('#ref_local_modal').val(ref_local);
 		$('#logo_url_modal').val(logo_url);
 		
 		$('#tipo_modal').val(tipo);
@@ -450,7 +449,6 @@ $(function() {
 		var tipo =  $(celdas[4]).children().html();
 		var criticidad =  $(celdas[5]).children().html();
 		var logo_url = $currentRow.data('logo-url');
-		var ref_local = $currentRow.data('ref-local');
 		var workflow = $currentRow.data('workflow');
 		var paises = $currentRow.data('paises');
 
@@ -482,7 +480,6 @@ $(function() {
 			$editForm.find('select#criticidad_ext').append($criticidadOptions);
 			
 			$('#logo_url_ext').val(logo_url);
-			$('#ref_local_ext').val(ref_local);
 			$('#id_cliente_ext').val(idCliente);
 			$('#clientes_ext').val(cliente);
 			$('#ref_global_ext').val(ref_global);

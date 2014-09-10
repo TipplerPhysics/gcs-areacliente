@@ -130,7 +130,6 @@ public class ClienteServlet extends HttpServlet {
 			s.addCell(new Label(2, 0, "CRITICIDAD",cellFormat));
 			s.addCell(new Label(3, 0, "FECHA ALTA CLIENTE",cellFormat));
 			s.addCell(new Label(4, 0, "LOGO URL",cellFormat));
-			s.addCell(new Label(5, 0, "REF. LOCAL",cellFormat));
 			s.addCell(new Label(6, 0, "REF. GLOBAL",cellFormat));
 			s.addCell(new Label(7, 0, "TIPO",cellFormat));
 			s.addCell(new Label(8, 0, "PAISES",cellFormat));
@@ -144,7 +143,6 @@ public class ClienteServlet extends HttpServlet {
 				s.addCell(new Label(2, aux, c.getCriticidad()));
 				s.addCell(new Label(3, aux, c.getStr_fecha_alta_cliente()));
 				s.addCell(new Label(4, aux, c.getLogo_url()));
-				s.addCell(new Label(5, aux, c.getRef_local()));
 				s.addCell(new Label(6, aux, c.getRef_global()));
 				s.addCell(new Label(7, aux, c.getTipo()));
 				if (!c.getPaises().isEmpty()){
@@ -201,7 +199,6 @@ public class ClienteServlet extends HttpServlet {
 			
 			
 			String ref_global = req.getParameter("ref_global");
-			String ref_local = req.getParameter("ref_local");
 
 			String id = req.getParameter("id");
 			String logo_url = req.getParameter("logo_url");
@@ -218,22 +215,11 @@ public class ClienteServlet extends HttpServlet {
 				errorMsg = "Ya existe un usuario con esta referencia global";
 			}
 			
-			if (!"".equals(ref_local)){
-				if (!cDao.getClienteByRefLocal(ref_local).equals(c)){
-					if (errorMsg.equals("")){
-						errorMsg = "Ya existe un usuario con esta referencia local";
-					}else{
-						errorMsg += "\nYa existe un usuario con esta referencia local";
-					}
-				}
-			}
-			
 		
 			if (errorMsg.equals("")){
 				c.setNombre(nombre);			
 				
 				c.setRef_global(ref_global);
-				c.setRef_local(ref_local);
 				c.setLogo_url(logo_url);
 				c.setCriticidad(criticidad);
 				c.setTipo(tipo);
@@ -282,7 +268,6 @@ public class ClienteServlet extends HttpServlet {
 			String str_fecha_alta_cliente = req.getParameter("fecha_alta_cliente");
 			String logo_url = req.getParameter("logo_url");			
 			String ref_global = req.getParameter("ref_global").toUpperCase();
-			String ref_local = req.getParameter("ref_local").toUpperCase();
 			String tipo = req.getParameter("tipo");
 			String[] paises = req.getParameterValues("paises");
 			
@@ -314,17 +299,6 @@ public class ClienteServlet extends HttpServlet {
 				errorStr += "Ya existe un cliente con esta referencia global";			
 			}
 			
-			if (!ref_local.equals("")){
-				c = cDao.getClienteByRefLocal(ref_local);
-				if (c!=null){
-					if (!errorStr.equals(""))
-						errorStr += " </br> ";
-					errorStr += "Ya existe un cliente con esta referencia local";			
-				}
-			}
-		
-			
-			
 			
 			if (errorStr.equals("")){
 				c = new Cliente();
@@ -334,7 +308,6 @@ public class ClienteServlet extends HttpServlet {
 				c.setFecha_alta_cliente(Utils.dateConverter(str_fecha_alta_cliente));
 				c.setLogo_url(logo_url);
 				c.setRef_global(ref_global);
-				c.setRef_local(ref_local);
 				c.setTipo(tipo);
 				c.setPaises(paises_set);
 				
