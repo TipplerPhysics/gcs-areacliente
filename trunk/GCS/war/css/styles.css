@@ -1636,9 +1636,6 @@ form .datepicker {
   font-size: 12px;
   font-weight: 100;
 }
-.gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div {
-  width: 100% !important!;
-}
 form #error-messages {
   margin-bottom: 10px;
 }

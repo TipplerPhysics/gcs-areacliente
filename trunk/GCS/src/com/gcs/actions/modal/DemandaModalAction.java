@@ -1,4 +1,4 @@
-package com.gcs.actions;
+package com.gcs.actions.modal;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +18,7 @@ import com.gcs.dao.DemandaDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 
-public class GestionDemandaAction extends Action {
+public class DemandaModalAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {

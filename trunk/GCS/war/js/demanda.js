@@ -1,4 +1,34 @@
 var opciones_estado = "<option value='PDTE Doc Alcance en GCS'>PDTE Doc Alcance en GCS</option><option value='P-950 en confecci&oacute;n'>P-950 en confección</option><option value='PDTE Valoración IT'>PDTE Valoración IT</option><option value='PDTE Plan de Trabajo IT'>PDTE Plan de Trabajo IT</option><option value='PDTE Visto Bueno del CL del plan de trabajo'>PDTE Visto Bueno del CL del plan de trabajo</option><option value='En Desarrollo'>En Desarrollo</option><option value='En Test - Conectividad'>En Test - Conectividad</option><option value='En Test - Integración'>En Test - Integración</option><option value='En Test - Aceptación'>En Test - Aceptación</option><option value='Parado por Negocio - Producto'>Parado por Negocio - Producto</option><option value='Parado por Negocio'>Parado por Negocio</option><option value='Parado por IT'>Parado por IT</option><option value='Excluido por Negocio'>Excluido por Negocio</option><option value='Excluido por Timeout'>Excluido por Timeout</option><option value='PDTE Implantar'>PDTE Implantar</option><option value='En Penny Test'>En Penny Test</option><option value='Implementado con OK'>Implementado con OK</option><option value='Implementado sin OK'>Implementado sin OK</option>";
+var id;
+
+$(document).on('hidden.bs.modal', function (e) {
+    $(e.target).removeData('bs.modal');
+});
+
+function sendEditDemanda(){
+	var formURL = "/demandaServlet?";
+	var $form = $('#edit-demanda-form')
+	 var $formData = $('#edit-demanda-form').serialize();
+	 var postData= $formData+"&accion=update&id="+ id;
+	 $.ajax(			
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				$form.hide();
+				$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la pagina.');
+				$('.modal-footer').hide();
+				$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");;
+
+				setTimeout(function() { 
+					resetForm($form);
+					location.reload();
+				}, 1500);
+			}
+		});
+}
 
 
 $(function() {
@@ -6,12 +36,14 @@ $(function() {
 	var tipoini="";
 	var estadoini="";
 	
+	$('#edit-demanda').on('shown.bs.modal', function () {
+		editRowDemanda(id);
+	})
+	
 	$('.gestion_demanda').on('click', '.lapiz', function(e) {
-		var id= $(this).attr('name');
+		id= $(this).attr('name');
 		if (!$(this).hasClass('inactive')) {
 			editRowDemanda(id);
-			
-
 		}	
 	});
 	
@@ -65,6 +97,11 @@ $(function() {
 	$('.gestion_demanda').on('click', '.papelera', function(e) {
 		$('#deleteDemanda').attr('name',$(this).attr('name'));
 	});
+	
+	
+	
+		 
+	
 	
 	$('#deleteDemanda').on('click', function(e) {
 		var id= $(this).attr('name');
@@ -170,17 +207,61 @@ $(function() {
 		// Get the data from the current row
 		var celdas = $currentRow.children();
 		var fechaEntrada = $(celdas[0]).children().html();
-		var cliente = $(celdas[1]).children().html();
+		var horaEntrada = $currentRow.data('hora-peticion');
+		var cliente = $currentRow.data('clienteid');
 		var tipo = $(celdas[2]).children().html();
 		var estado = $(celdas[3]).children().html();
 		var codPeticion =  $(celdas[4]).children().html();
-		var gestorAsignado = $currentRow.data('gestor-asig');
+		
+		var gestorNegocio = $currentRow.data('gestor-negocio');
+		var gestorIT = $currentRow.data('gestor-it');
 		var fechaComun = $currentRow.data('fecha-comun');
 		var horaComun = $currentRow.data('hora-comun');
+		var devuelta = $currentRow.data('devuelta');
+		var catalogacion = $currentRow.data('catalogacion');
+		var motivo = $currentRow.data('motivo');
+		var comentarios = $currentRow.data('comentarios');
+		var fechaSolicitud = $currentRow.data('fecha-solicitud');
+		var horaSolicitud = $currentRow.data('hora-solicitud');
+			
+			
 
 		
+		$('#fecha_comunicacion_asignacion_modal').val(fechaComun);
+		$('#hora_comunicacion_asignacion_modal').val(horaComun.split(":")[0]);
+		$('#min_comunicacion_asignacion_modal').val(horaComun.split(":")[1]);
+		$('#fecha_solicitud_asignacion_modal').val(fechaSolicitud);
+		$('#hora_solicitud_asignacion_modal').val(horaSolicitud.split(":")[0]);
+		$('#min_solicitud_asignacion_modal').val(horaSolicitud.split(":")[1]);
+		$('#motivo_catalogacion_modal').val(motivo);
+		$('#comentarios_modal').val(comentarios);
+		$('#fecha_entrada_peticion_modal').val(fechaEntrada);
+		$('#hora_peticion_modal').val(horaEntrada.split(":")[0]);
+		$('#min_peticion_modal').val(horaEntrada.split(":")[1]);
+		$('#input_cliente_modal').val(cliente);
+		$('#gestor_negocio_modal').val(gestorNegocio);
+		$('#gestor_it_modal').val(gestorIT);
+		$('#tipo_modal').val(tipo);
+		
+		if (devuelta==true)
+			$('#devuelta_modal').val("SI");
+		else
+			$('#devuelta_modal').val("NO");
+		
+		$('#estado_modal').val(estado);
+		$('#catalogacion_peticion_modal').val(catalogacion);
+		
+		initDatepickers();
+		initSelectpickers();
+		initForms();
+		initValidator();
 			
 	}
+	
+	
+	
+	
+	
 	
 $("#submit_demanda_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
