@@ -39,9 +39,6 @@ public class Cliente {
 	private String ref_global;
 	
 	@Persistent
-	private String ref_local;
-	
-	@Persistent
 	private String tipo;
 	
 	@Persistent
@@ -96,14 +93,6 @@ public class Cliente {
 
 	public void setRef_global(String ref_global) {
 		this.ref_global = ref_global;
-	}
-
-	public String getRef_local() {
-		return ref_local;
-	}
-
-	public void setRef_local(String ref_local) {
-		this.ref_local = ref_local;
 	}
 
 	public String getTipo() {

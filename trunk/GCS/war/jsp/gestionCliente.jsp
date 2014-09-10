@@ -73,11 +73,6 @@
 					</div><div class="form-field-divider right">
 						
 						<div class="form-field">
-							<span class="lbl">Referencia Local:</span>
-							<input type="text" id="ref_local" name="ref_local" class="long" maxlength="24">
-						</div>
-						
-						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
 							<input type="text" id="logo_url" name="logo_url" class="long">
 						</div>
@@ -203,7 +198,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${clientes}" var="cliente">
-									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-fecha-alta="${cliente.str_fecha_alta_cliente}" data-nombre="${cliente.nombre}" data-tipo="${cliente.tipo}" data-criticidad="${cliente.criticidad}" data-ref-global="${cliente.ref_global}" data-logo-url="${cliente.logo_url}" data-paises="${cliente.paises}" data-ref-local="${cliente.ref_local}">
+									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-fecha-alta="${cliente.str_fecha_alta_cliente}" data-nombre="${cliente.nombre}" data-tipo="${cliente.tipo}" data-criticidad="${cliente.criticidad}" data-ref-global="${cliente.ref_global}" data-logo-url="${cliente.logo_url}" data-paises="${cliente.paises}">
 										<td><span>${cliente.str_fecha_alta_cliente}</span></td>
 										<td><span>${cliente.clientId}</span></td>
 										<td><span>${cliente.nombre}</span></td>
@@ -283,11 +278,6 @@
 						<div class="form-field">
 							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
 							<input type="text" aria-required="true" required="" id="ref_global_modal" name="ref_global" class="long" maxlength="11">
-						</div>
-						
-						<div class="form-field">
-							<span class="lbl">Referencia Local:</span>
-							<input type="text" id="ref_local_modal" name="ref_local" class="long" maxlength="24">
 						</div>
 						
 					</div><div class="form-field-divider right">
