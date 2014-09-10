@@ -196,6 +196,7 @@ $(function() {
 						$form.find('.form-container').find('div:not(#message_div)').hide(0);
 						$('#span_message_cliente').html("El cliente se ha creado de forma correcta.");
 						$('#message_div_cliente').css('display','block');
+						$('#buttons_new_client').css('display','none');
 						
 						resetForm($form);
 						setTimeout(function() { 
