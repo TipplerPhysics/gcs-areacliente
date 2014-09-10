@@ -283,24 +283,16 @@ $("#submit_demanda_form").on('click',function(e) {
 			  {
 					//data: return data from server
 				if (data.success==("true")){
-					var html=generateRowDemanda(postData,data);
-					
-					$('#myTable').prepend(html);
-					
-					$('#myTable').paginateMe({
-						pagerSelector : '#myPager',
-						showPrevNext : true,
-						hidePageNumbers : false,
-						perPage : 5
-					});
 					
 					$('#message_div').removeClass("error").addClass("success");
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("La petici&oacute;n ha sido creado de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
+					$('#span_message').html("La petici&oacute;n ha sido creada de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
 					$('#message_div').css('display','block');
 					
+					$('#buttons_new_demanda').css('display','none');
+					$('.message-container').css('display','block');
 					resetForm($form);
 					$form.hide();
 					
