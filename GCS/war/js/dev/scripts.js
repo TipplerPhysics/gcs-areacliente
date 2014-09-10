@@ -167,7 +167,7 @@ function sendEditClient(){
 					}
 					
 					$form.find('.form-container').find('div:not(#message_div)').hide(0);
-					$('#span_message_cliente_modal').html("El cliente se ha creado de forma correcta.");
+					$('#span_message_cliente_modal').html("El cliente se ha modificado de forma correcta.");
 					$('#message_div_cliente_modal').css('display','block');
 					
 					$(".modal-footer").hide();
@@ -630,6 +630,7 @@ var id;
 
 $(document).on('hidden.bs.modal', function (e) {
     $(e.target).removeData('bs.modal');
+	//$(".modal-content").html();
 });
 
 function sendEditDemanda(){
@@ -669,9 +670,7 @@ $(function() {
 	
 	$('.gestion_demanda').on('click', '.lapiz', function(e) {
 		id= $(this).attr('name');
-		if (!$(this).hasClass('inactive')) {
-			editRowDemanda(id);
-		}	
+		
 	});
 	
 	$('.gestion_demanda').on('click', '.cancelar-ext-demanda', function (e) {
@@ -878,11 +877,10 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		initDatepickers();
+		
 		initSelectpickers();
-		initForms();
-		initValidator();
-			
+		initDatepickers();
+		
 	}
 	
 	
@@ -1438,7 +1436,7 @@ function sendEditUser(){
 						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 					}
 					$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
-					$form.find('#span_message_modal').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+					$form.find('#span_message_modal').html('El usuario ha sido modificado de forma correcta.<br/>En breve volvemos a la pagina.');
 					$('#modal-footer_submit').css('display','none');
 					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
 

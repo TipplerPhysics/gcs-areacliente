@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 	<div class="">
-					<h2>Editar Demanda</h2>
+					<h2>Editar Petici&oacute;n</h2>
 					<hr>
 				</div>
 				<div class="edit-demanda-form-holder">
@@ -94,11 +94,11 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Catalogación de petici&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" id="catalogacion_peticion_modal" required aria-required="true">
 									
-									<option value="Estandar">Estándar</option>
+									<option value="Estandar">Est&aacute;ndar</option>
 									<option value="Compleja">Compleja</option>
 									
 								</select>
@@ -156,7 +156,7 @@
 						
 						
 						<div class="form-field">
-							<span class="lbl">Fecha comunicacin asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion_modal" required>
 							</div>
