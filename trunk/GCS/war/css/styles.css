@@ -1636,6 +1636,15 @@ form .datepicker {
   font-size: 12px;
   font-weight: 100;
 }
+.message-container {
+  display: none;
+  text-align: center;
+  margin: 20px;
+  background-color: #FFF;
+  padding: 30px;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+}
 form #error-messages {
   margin-bottom: 10px;
 }
@@ -1809,7 +1818,7 @@ form textarea.error {
   margin-right: 0px;
 }
 .profile_cont .btn-atras {
-  margin-left: 73.5%;
+  margin-left: 72%;
 }
 .profile_cont .table {
   margin-top: 20px;

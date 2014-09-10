@@ -245,6 +245,10 @@ public class ClienteServlet extends HttpServlet {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
 			e.printStackTrace();
+		}catch (Exception e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
 		}
 		
 		resp.setCharacterEncoding("UTF-8");

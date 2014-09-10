@@ -10,13 +10,13 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
-							<span class="lbl">Fecha entrada petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha entrada petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion_modal" required aria-required="true">
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Hora petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 							
 								
@@ -58,13 +58,13 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Tipo petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true">
 									
-									<option value="Implantacion">Implantacion</option>
+									<option value="Implantacion">Implantaci&oacute;n</option>
 									<option value="Migracion IA">Migracion IA</option>
-									<option value="Estandarización Clientes">Estandarización Clientes</option>
+									<option value="Estandarización Clientes">Estandarizaci&oacute;n Clientes</option>
 									<option value="Evolutivo">Evolutivo</option>
 									<option value="Pruebas Cliente">Pruebas Cliente</option>
 									<option value="SEPA">SEPA</option>
@@ -85,7 +85,7 @@
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true">
-									<option value="Pendiente de asignación">Pendiente de asignación</option>
+									<option value="Pendiente de asignación">Pendiente de asignaci&oacute;n</option>
 									<option value="Asignada">Asignada</option>
 									<option value="Devuelta">Devuelta</option>
 									<option value="Parada">Parada</option>
@@ -94,7 +94,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Catalogación de petición<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Catalogación de petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" id="catalogacion_peticion_modal" required aria-required="true">
 									
@@ -106,7 +106,7 @@
 						</div>
 					</div><div class="form-field-divider right">
 						<div class="form-field">
-							<span class="align-top lbl">Motivo de catalogación:</span>
+							<span class="align-top lbl">Motivo de catalogaci&oacute;n:</span>
 							<div class='input'>
 								<textarea name="motivo_catalogacion" id="motivo_catalogacion_modal" class="long"></textarea>
 							</div>
@@ -118,13 +118,13 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Fecha solicitud asignación:</span>
+							<span class="lbl">Fecha solicitud asignaci&oacute;n:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion_modal">
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora solicitud asignación:</span>
+							<span class="lbl">Hora solicitud asignaci&oacute;n:</span>
 							<div class="input">
 								<select class="selectpicker time" id="hora_solicitud_asignacion_modal" name="hora_solicitud_asignacion">
 										
@@ -156,13 +156,13 @@
 						
 						
 						<div class="form-field">
-							<span class="lbl">Fecha comunicación asignación<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha comunicacin asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion_modal" required>
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora comunicación asignación<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Hora comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker time" id="hora_comunicacion_asignacion_modal" name="hora_comunicacion_asignacion" required aria-required="true">
 										
