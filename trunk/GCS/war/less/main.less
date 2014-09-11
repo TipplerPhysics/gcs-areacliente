@@ -168,32 +168,9 @@ input:active, input:focus, textarea:active, textarea:focus{
 }
 
 
-input[type=radio] {
-  opacity: 0;
-  z-index: 9999;
-  visibility: hidden;
-}
-/* default radio button style: unchecked */
-.overlay {
-  display: inline-block;
-  position: relative;
-  left: -1em; /* or whatever length you need here */
-  height: 16px;
-  width: 16px;
-  background-image: url("../img/radio.png");
-  border-radius: 50%;
-  	
-}
 
-.overlay:hover{
-	background-image: url("../img/radio-hover.png");
-	
-}
 
-/* changed style when checked */
-input[type=radio]:checked + .overlay {
-  background-image: url("../img/radio-selected.png");
-}
+
 
 
 .radio-container {
@@ -213,7 +190,7 @@ input[type=radio]:checked + .overlay {
 	    top:5px;
 	    margin-right:10px;
 	}
-	input[type="checkbox"] + label.checked span {
+	input[type="checkbox"]:checked + label span {
 	    background:url(/img/input-check-checked.png) left top no-repeat;
 	    position:relative;
 	    top:5px;

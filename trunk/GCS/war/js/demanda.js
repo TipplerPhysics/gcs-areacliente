@@ -2,8 +2,8 @@ var opciones_estado = "<option value='PDTE Doc Alcance en GCS'>PDTE Doc Alcance 
 var id;
 
 $(document).on('hidden.bs.modal', function (e) {
-    $(e.target).removeData('bs.modal');
-	//$(".modal-content").html();
+	$(".modal-content").html();
+	$(e.target).removeData('bs.modal');	
 });
 
 function sendEditDemanda(){

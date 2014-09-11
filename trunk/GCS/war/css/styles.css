@@ -199,7 +199,7 @@ textarea:focus {
   margin-left: 59.5%;
 }
 .gestion_cliente .btn-atras {
-  margin-left: 72%;
+  margin-left: 66%;
 }
 .gestion_cliente td:nth-child(2),
 .gestion_cliente th:nth-child(2) {
@@ -234,29 +234,6 @@ textarea:focus {
   font-family: arial;
   margin-bottom: 20px;
 }
-input[type=radio] {
-  opacity: 0;
-  z-index: 9999;
-  visibility: hidden;
-}
-/* default radio button style: unchecked */
-.overlay {
-  display: inline-block;
-  position: relative;
-  left: -1em;
-  /* or whatever length you need here */
-  height: 16px;
-  width: 16px;
-  background-image: url("../img/radio.png");
-  border-radius: 50%;
-}
-.overlay:hover {
-  background-image: url("../img/radio-hover.png");
-}
-/* changed style when checked */
-input[type=radio]:checked + .overlay {
-  background-image: url("../img/radio-selected.png");
-}
 .radio-container {
   position: relative;
 }
@@ -273,7 +250,7 @@ input[type=radio]:checked + .overlay {
   top: 5px;
   margin-right: 10px;
 }
-.radio-container input[type="checkbox"] + label.checked span {
+.radio-container input[type="checkbox"]:checked + label span {
   background: url(/img/input-check-checked.png) left top no-repeat;
   position: relative;
   top: 5px;
