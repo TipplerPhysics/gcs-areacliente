@@ -629,8 +629,9 @@ function enableSearch(){
 var id;
 
 $(document).on('hidden.bs.modal', function (e) {
-    $(e.target).removeData('bs.modal');
-	//$(".modal-content").html();
+	$(".modal-content").html();
+	$(e.target).removeData('bs.modal');
+	
 });
 
 function sendEditDemanda(){
