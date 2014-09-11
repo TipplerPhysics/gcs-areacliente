@@ -1,10 +1,13 @@
 package com.gcs.servlet;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,12 +35,15 @@ import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class DemandaServlet extends HttpServlet {
+	
+	private static final Logger log = Logger.getLogger(DemandaServlet.class.getName());
 
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
 
+		log.info("Dentro de servletDemanda");
 		String accion = req.getParameter("accion");
 
 		try {
@@ -100,6 +106,8 @@ public class DemandaServlet extends HttpServlet {
 		JSONObject json = new JSONObject();
 
 		try {
+			
+			log.info("Dentro de updateDemanda");
 
 			String idStr = req.getParameter("id");
 			Long id = Long.parseLong(idStr);
@@ -139,7 +147,12 @@ public class DemandaServlet extends HttpServlet {
 			d.setTipo(tipo);
 			d.setEstado(estado);
 			d.setGestor_it(Long.parseLong(gestor_it));
-			d.setGestor_negocio(Long.parseLong(gestor_negocio));
+			
+			
+			
+			if (!"".equals(gestor_negocio) && gestor_negocio!=null)
+				
+				d.setGestor_negocio(Long.parseLong(gestor_negocio));
 			
 			
 			
@@ -171,10 +184,26 @@ public class DemandaServlet extends HttpServlet {
 			json.append("cod_peticion", d.getCod_peticion());
 
 		} catch (Exception e) {
+			log.warning("Error en updateDemanda");
+			log.warning((e.toString()));
+		//	log.warning((e.fillInStackTrace().toString()));
+			
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(baos);
+			e.printStackTrace(ps);
+			String content = baos.toString("ISO-8859-1"); // e.g. ISO-8859-1
+			
+		
+			log.warning(content);
+			
 			json.append("failure", "true");
 			json.append("error", "Se ha producido un error inesperado");
 
 		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
 
 	}
 

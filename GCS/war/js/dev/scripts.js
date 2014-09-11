@@ -630,19 +630,19 @@ var id;
 
 $(document).on('hidden.bs.modal', function (e) {
 	$(".modal-content").html();
-	$(e.target).removeData('bs.modal');
-	
+	$(e.target).removeData('bs.modal');	
 });
 
 function sendEditDemanda(){
-	var formURL = "/demandaServlet?";
-	var $form = $('#edit-demanda-form')
+	
+	var $form = $('#edit-demanda-form');
+	var formURL = $form.attr("action");
 	 var $formData = $('#edit-demanda-form').serialize();
 	 var postData= $formData+"&accion=update&id="+ id;
 	 $.ajax(			
 		{
 			url : formURL,
-			type: "POST",
+			type: "GET",
 			data : postData,
 			success:function(data, textStatus, jqXHR) 
 			{
