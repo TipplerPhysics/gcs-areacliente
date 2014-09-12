@@ -1,3 +1,4 @@
+	<div class="modal_ajax">
 		<div class="">
 					<h2>Editar Cliente</h2>
 					<hr />
@@ -139,3 +140,4 @@
 					<button type="button" class="" id="edit_client_form_modal" onclick="sendEditClient();">Guardar</button>
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
+		</div>

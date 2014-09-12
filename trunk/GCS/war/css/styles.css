@@ -1622,6 +1622,9 @@ form .datepicker {
   border: 1px solid #dcdcdc;
   border-radius: 2px;
 }
+.modal_ajax {
+  display: none;
+}
 form #error-messages {
   margin-bottom: 10px;
 }

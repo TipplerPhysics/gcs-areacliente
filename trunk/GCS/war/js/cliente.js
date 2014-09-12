@@ -141,7 +141,8 @@ function editRowCliente(id){
 		
 		$('#edit_client_form_modal').data("id",id);		
 		
-		initSelectpickers();
+		setTimeout(showModal(), 500);
+		
 	}
 
 function sendEditClient(){

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
+<div class="modal_ajax">
 <div class="">
 				<h2>Editar usuario</h2>
 				<hr />
