@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-	<div class="">
+	<div class="modal_ajax">
+		<div>
 					<h2>Editar Petici&oacute;n</h2>
 					<hr>
 				</div>
@@ -198,3 +198,4 @@
 				<button onclick="sendEditDemanda();" id="edit_demanda_form_modal" class="" type="button">Guardar</button>
 				<button data-dismiss="modal" class="dismis_edit_demanda" type="button">Cancelar</button>
 			</div>	
+		</div>

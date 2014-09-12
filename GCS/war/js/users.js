@@ -408,7 +408,9 @@ function editRow(id){
 	$("#dto_select_modal").val(cdepartamento);
 	$("#permiso_select_modal").val(cpermiso);
 	
-	initSelectpickers();
+	
+	setTimeout(showModal(), 500);
+	
 }
 
 function drawChecksAreas(str){

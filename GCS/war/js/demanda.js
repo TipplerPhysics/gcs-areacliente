@@ -6,6 +6,12 @@ $(document).on('hidden.bs.modal', function (e) {
 	$(e.target).removeData('bs.modal');	
 });
 
+function showModal(){
+	initSelectpickers();
+	initDatepickers();
+	$('.modal_ajax').css("display","block");
+}
+
 function sendEditDemanda(){
 	
 	var $form = $('#edit-demanda-form');
@@ -251,9 +257,10 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
+		setTimeout(showModal(), 500);
 		
-		initSelectpickers();
-		initDatepickers();
+		
+		
 		
 	}
 	
