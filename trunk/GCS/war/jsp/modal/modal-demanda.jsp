@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 	<div class="modal_ajax">
 		<div>
 					<h2>Editar Petici&oacute;n</h2>
@@ -15,7 +16,7 @@
 								<input type="text" readonly="" value="" size="16" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion_modal" required aria-required="true">
 							</div>
 						</div>
-						<div class="form-field">
+						<div class="form-field horas">
 							<span class="lbl">Hora petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 							

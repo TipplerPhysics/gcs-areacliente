@@ -186,17 +186,18 @@ textarea:focus {
   background-image: url("../img/bot-volveron.png");
 }
 .gestion_demanda .btn-atras {
-  margin-left: 70%;
+  margin-left: 57%;
+  float: right;
 }
 .lbl {
   font-family: "BBVA Web Light";
   font-size: 12px;
 }
 .alta_usuario h1 {
-  width: 260px;
+  width: 265px;
 }
 .alta_usuario .btn-atras {
-  margin-left: 59.5%;
+  margin-left: 59%;
 }
 .gestion_cliente .btn-atras {
   margin-left: 66%;
@@ -421,6 +422,11 @@ hr {
 .modal-content p {
   margin-bottom: 20px;
 }
+.modal-content .form-field.horas div.input {
+  display: block !important;
+  float: none;
+  text-align: inherit;
+}
 .modal-footer {
   border: 0 none;
   padding: 0;
@@ -437,6 +443,10 @@ form .datepicker {
   cursor: pointer;
   padding-right: 30px;
   width: 245px;
+}
+.selects_hora {
+  float: left;
+  padding: 5px;
 }
 #sidebar {
   position: fixed;
@@ -1361,6 +1371,8 @@ form .datepicker {
   position: relative;
   top: -5px;
   width: 5px;
+  float: left;
+  padding: 5px;
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
