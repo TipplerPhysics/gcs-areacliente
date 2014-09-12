@@ -257,7 +257,7 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		setTimeout(showModal(), 500);
+		window.setTimeout(function(){showModal()}, 500);
 		
 		
 		

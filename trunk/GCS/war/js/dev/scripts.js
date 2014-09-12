@@ -141,7 +141,7 @@ function editRowCliente(id){
 		
 		$('#edit_client_form_modal').data("id",id);		
 		
-		setTimeout(showModal(), 500);
+		window.setTimeout(function(){showModal()}, 500);
 		
 	}
 
@@ -885,7 +885,7 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		setTimeout(showModal(), 500);
+		window.setTimeout(function(){showModal()}, 500);
 		
 		
 		
@@ -1817,7 +1817,7 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	
-	setTimeout(showModal(), 500);
+	window.setTimeout(function(){showModal()}, 500);
 	
 }
 

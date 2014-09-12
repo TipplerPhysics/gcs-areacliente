@@ -57,6 +57,10 @@
 			<forward name="ok" path="/jsp/skeletons/gestionDemanda-skeleton.jsp" />
 		</action>
 		
+		<action path="/dashboard/gestionProyecto" type="com.gcs.actions.GestionProyectoAction">
+			<forward name="ok" path="/jsp/skeletons/gestionProyecto-skeleton.jsp" />
+		</action>
+		
 		<action path="/dashboard/gestionCliente" type="com.gcs.actions.GestionClienteAction">
 			<forward name="ok" path="/jsp/skeletons/newClient-skeleton.jsp" />
 		</action>
