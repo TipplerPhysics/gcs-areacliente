@@ -1848,3 +1848,10 @@ form textarea.error {
   color: #434a58;
   font-weight: 700;
 }
+#alta_proyecto .btn-atras {
+  margin-left: 64%;
+}
+#alta_proyecto .usersTable > .table td:nth-child(2) {
+  max-width: 135px;
+  width: 135px;
+}
