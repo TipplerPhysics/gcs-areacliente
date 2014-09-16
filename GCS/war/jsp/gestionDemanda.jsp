@@ -40,7 +40,7 @@
 									<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
-								<span class="time-span selects_hora">:</span>
+								<span class="time-span">:</span>
 								<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
 									<c:forEach items="${minutosList}" var="min">
 									<option value="${min}">${min}</option>
@@ -147,7 +147,7 @@
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
-								<span class="time-span selects_hora">:</span>
+								<span class="time-span">:</span>
 								<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">
 								<option value="default"> </option>
 									
@@ -185,7 +185,7 @@
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
-								<span class="time-span selects_hora">:</span>
+								<span class="time-span">:</span>
 								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion" required aria-required="true">
 								
 									
@@ -286,7 +286,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="">
-					<h2>Eliminar petici&oacute;n</h2>
+					<h2>Eliminar petición</h2>
 					<hr />
 				</div>
 				<div class="">

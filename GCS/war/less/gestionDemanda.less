@@ -42,7 +42,7 @@
 		display:inline-block;
 		vertical-align: text-top;
 		.bootstrap-select.time{
-			width:85px;	
+			width:85px;		
 		}
 		
 		#fecha_solicitud_asignacion_ed{
@@ -161,8 +161,22 @@
 
 		.form-container{
 
-			.input > div{
-				width:100% !important;
+			.input {
+				> div{
+					width:100% !important;
+					
+					&.hora{
+						float:left;
+					}
+					&.minutos{
+						float:right;
+						position:relative;
+					}
+				}
+				
+				.time-span{
+					margin: 0 5px;
+				}
 			}
 
 			textarea{
@@ -170,8 +184,12 @@
 			}
 
 			div.time{
-				width:117px !important;
+				width:115px !important;
+				
+				
 			}
+			
+			
 
 			.form-field-divider .form-field.cliente .input > div#input_cliente_modal{
 				width:100% !important;
@@ -206,8 +224,6 @@
 			    position: relative;
 			    top: -5px;
 			    width: 5px;
-			    float:left;
-			    padding:5px;
 			}
 		}
 		.tiempo {
@@ -219,7 +235,7 @@
 	
 	.newUserbox .new-user-form-holder .form-container .form-field  .bootstrap-select.time,
 	.newUserbox .edit-user-form-holder .form-container .form-field  .bootstrap-select.time {
-		width:118px !important;
+		width:114px !important;
 		display:inline-block;
 	}
 

@@ -186,18 +186,17 @@ textarea:focus {
   background-image: url("../img/bot-volveron.png");
 }
 .gestion_demanda .btn-atras {
-  margin-left: 57%;
-  float: right;
+  margin-left: 70%;
 }
 .lbl {
   font-family: "BBVA Web Light";
   font-size: 12px;
 }
 .alta_usuario h1 {
-  width: 265px;
+  width: 260px;
 }
 .alta_usuario .btn-atras {
-  margin-left: 59%;
+  margin-left: 59.5%;
 }
 .gestion_cliente .btn-atras {
   margin-left: 66%;
@@ -422,11 +421,6 @@ hr {
 .modal-content p {
   margin-bottom: 20px;
 }
-.modal-content .form-field.horas div.input {
-  display: block !important;
-  float: none;
-  text-align: inherit;
-}
 .modal-footer {
   border: 0 none;
   padding: 0;
@@ -443,10 +437,6 @@ form .datepicker {
   cursor: pointer;
   padding-right: 30px;
   width: 245px;
-}
-.selects_hora {
-  float: left;
-  padding: 5px;
 }
 #sidebar {
   position: fixed;
@@ -1309,13 +1299,26 @@ form .datepicker {
 .gestion_cliente #edit-demanda-form .form-container .input > div {
   width: 100% !important;
 }
+.gestion_demanda #edit-demanda-form .form-container .input > div.hora,
+.gestion_cliente #edit-demanda-form .form-container .input > div.hora {
+  float: left;
+}
+.gestion_demanda #edit-demanda-form .form-container .input > div.minutos,
+.gestion_cliente #edit-demanda-form .form-container .input > div.minutos {
+  float: right;
+  position: relative;
+}
+.gestion_demanda #edit-demanda-form .form-container .input .time-span,
+.gestion_cliente #edit-demanda-form .form-container .input .time-span {
+  margin: 0 5px;
+}
 .gestion_demanda #edit-demanda-form .form-container textarea,
 .gestion_cliente #edit-demanda-form .form-container textarea {
   width: 100%;
 }
 .gestion_demanda #edit-demanda-form .form-container div.time,
 .gestion_cliente #edit-demanda-form .form-container div.time {
-  width: 117px !important;
+  width: 115px !important;
 }
 .gestion_demanda #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div#input_cliente_modal,
 .gestion_cliente #edit-demanda-form .form-container .form-field-divider .form-field.cliente .input > div#input_cliente_modal {
@@ -1371,8 +1374,6 @@ form .datepicker {
   position: relative;
   top: -5px;
   width: 5px;
-  float: left;
-  padding: 5px;
 }
 .gestion_demanda .newUserbox .new-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .lbl .tiempo .lbl,
@@ -1388,7 +1389,7 @@ form .datepicker {
 .gestion_cliente .newUserbox .new-user-form-holder .form-container .form-field .bootstrap-select.time,
 .gestion_demanda .newUserbox .edit-user-form-holder .form-container .form-field .bootstrap-select.time,
 .gestion_cliente .newUserbox .edit-user-form-holder .form-container .form-field .bootstrap-select.time {
-  width: 118px !important;
+  width: 114px !important;
   display: inline-block;
 }
 .gestion_demanda .form-field.textarea textarea,
