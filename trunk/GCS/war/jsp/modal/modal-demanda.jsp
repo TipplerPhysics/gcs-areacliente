@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 	<div class="modal_ajax">
+	
 		<div>
 					<h2>Editar Petici&oacute;n</h2>
 					<hr>
@@ -21,13 +21,13 @@
 							<div class="input">
 							
 								
-								<select class="selectpicker  time" id="hora_peticion_modal" name="hora_peticion" required aria-required="true">
+								<select class="selectpicker  time hora" id="hora_peticion_modal" name="hora_peticion" required aria-required="true">
 									<c:forEach items="${horasList}" var="hora">
 									<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
-								<span class="time-span selects_hora">:</span>
-								<select class="selectpicker  time" id="min_peticion_modal" name="min_peticion" required aria-required="true">
+								<span class="time-span">:</span>
+								<select class="selectpicker  time minutos" id="min_peticion_modal" name="min_peticion" required aria-required="true">
 									<c:forEach items="${minutosList}" var="min">
 									<option value="${min}">${min}</option>
 									</c:forEach>
@@ -124,17 +124,17 @@
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion_modal">
 							</div>
 						</div>
-						<div class="form-field">
+						<div class="form-field horas">
 							<span class="lbl">Hora solicitud asignaci&oacute;n:</span>
 							<div class="input">
-								<select class="selectpicker time" id="hora_solicitud_asignacion_modal" name="hora_solicitud_asignacion">
+								<select class="selectpicker time hora" id="hora_solicitud_asignacion_modal" name="hora_solicitud_asignacion">
 										
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
-								<span class="time-span selects_hora">:</span>
-								<select class="selectpicker time" id="min_solicitud_asignacion_modal" name="min_solicitud_asignacion">
+								<span class="time-span">:</span>
+								<select class="selectpicker time minutos" id="min_solicitud_asignacion_modal" name="min_solicitud_asignacion">
 								
 									
 									<c:forEach items="${minutosList}" var="min">
@@ -162,17 +162,17 @@
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion_modal" required>
 							</div>
 						</div>
-						<div class="form-field">
+						<div class="form-field horas">
 							<span class="lbl">Hora comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker time" id="hora_comunicacion_asignacion_modal" name="hora_comunicacion_asignacion" required aria-required="true">
+								<select class="selectpicker time hora" id="hora_comunicacion_asignacion_modal" name="hora_comunicacion_asignacion" required aria-required="true">
 										
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
-								<span class="time-span selects_hora">:</span>
-								<select class="selectpicker time" id="min_comunicacion_asignacion_modal" name="min_comunicacion_asignacion" required aria-required="true">
+								<span class="time-span">:</span>
+								<select class="selectpicker time minutos" id="min_comunicacion_asignacion_modal" name="min_comunicacion_asignacion" required aria-required="true">
 								
 									
 									<c:forEach items="${minutosList}" var="min">

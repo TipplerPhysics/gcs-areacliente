@@ -100,9 +100,8 @@ input:active, input:focus, textarea:active, textarea:focus{
 }
 
 .gestion_demanda .btn-atras{
-	margin-left: 57%;
+	margin-top:25px;
 	float:right;
-
 }
 
 .lbl{
@@ -113,11 +112,12 @@ input:active, input:focus, textarea:active, textarea:focus{
 .alta_usuario{
 	
 	h1{
-		width: 265px;
+		width: 280px;
 	}
 
 	.btn-atras{
-		margin-left: 59%;
+		float:right;
+		margin-top:25px;
 	}	
 } 
 
@@ -367,13 +367,24 @@ hr{
 		margin-bottom:20px;
 	}
 	
+
 	.form-field.horas{
 		div.input{
 			display:block !important;
 			float:none;
 			text-align:inherit;
+			
+			div:first-child{			
+				float:left !important;				
+			}
+			
+			div:first-child + select{			
+				float:right !important;	
+				position:relative;			
+			}
 		}
 	}
+
 	
 }
 
@@ -396,9 +407,4 @@ form .datepicker {
   cursor: pointer;
   padding-right: 30px;
   width: 245px;
-}
-
-.selects_hora{
-	float:left;
-	padding:5px;
 }
