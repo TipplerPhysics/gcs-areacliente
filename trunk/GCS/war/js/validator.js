@@ -77,6 +77,7 @@ var initValidator = function() {
 						$element.closest('.radio-container-holder').prepend($container);
 					}
 
+					
 					// Create error element and append it to error container
 					var $errorelement = $('<li>');
 					$errorelement.append(error);
@@ -86,29 +87,33 @@ var initValidator = function() {
 					$container = $('<div class="error-messages"><ul></ul></div>');
 					$target.css({position:'relative'}).prepend($container);
 				}
-				// Create error element and append it to error container
-				var $errorelement = $('<li>');
-				$errorelement.append(error);
-				$container.find('ul').append($errorelement);
-				var leftPosition = 0;
-				if ($element.outerWidth() < $container.outerWidth()) {
-					// Error message is bigger than element.
-					leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
-				} else if ($element.outerWidth() > $container.outerWidth()) {
-					// Error message is smaller than element.
-					leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
-				}
-				// In two steps so the element can have a real height to work with.
-				$container.css({left: ($element.position().left + leftPosition) + 'px', marginLeft: $element.css('margin-left'), maxWidth:'200px'});
-				$container.css({top:'-' + ($container.outerHeight() + 10) + 'px'});
+				
+				if (!$element.hasClass("no_message_error")){
+					// Create error element and append it to error container
+					var $errorelement = $('<li>');
+					$errorelement.append(error);
+					$container.find('ul').append($errorelement);
+					var leftPosition = 0;
+					if ($element.outerWidth() < $container.outerWidth()) {
+						// Error message is bigger than element.
+						leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
+					} else if ($element.outerWidth() > $container.outerWidth()) {
+						// Error message is smaller than element.
+						leftPosition = ($element.outerWidth() - $container.outerWidth()) / 2;
+					}
+					// In two steps so the element can have a real height to work with.
+					$container.css({left: ($element.position().left + leftPosition) + 'px', marginLeft: $element.css('margin-left'), maxWidth:'200px'});
+					$container.css({top:'-' + ($container.outerHeight() + 10) + 'px'});
 
-				$element.hover(
-				  function() {
-				    $container.addClass("hover");
-				  }, function() {
-				    $container.removeClass("hover");
-				  }
-				);
+					$element.hover(
+					  function() {
+					    $container.addClass("hover");
+					  }, function() {
+					    $container.removeClass("hover");
+					  }
+					);
+				}
+				
 			},
 			success: function(label) {
 				label.closest('.error-messages').remove();

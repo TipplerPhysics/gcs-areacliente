@@ -11,7 +11,7 @@
 	<div class="newUserbox">
 		<c:if test="${sessionScope.permiso != 3 and sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newUserButton">
-				Alta Cliente<a class="user_span"></a>
+				Nuevo Cliente<a class="user_span"></a>
 			</button>
 		</c:if>
 		

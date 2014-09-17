@@ -186,17 +186,19 @@ textarea:focus {
   background-image: url("../img/bot-volveron.png");
 }
 .gestion_demanda .btn-atras {
-  margin-left: 70%;
+  margin-top: 25px;
+  float: right;
 }
 .lbl {
   font-family: "BBVA Web Light";
   font-size: 12px;
 }
 .alta_usuario h1 {
-  width: 260px;
+  width: 280px;
 }
 .alta_usuario .btn-atras {
-  margin-left: 59.5%;
+  float: right;
+  margin-top: 25px;
 }
 .gestion_cliente .btn-atras {
   margin-left: 66%;
@@ -241,7 +243,8 @@ textarea:focus {
   z-index: -1;
   position: absolute;
 }
-.radio-container input[type="checkbox"] + label span {
+.radio-container input[type="checkbox"] + label span,
+.radio-container label.error + label span {
   display: inline-block;
   width: 19px;
   height: 19px;
@@ -420,6 +423,18 @@ hr {
 }
 .modal-content p {
   margin-bottom: 20px;
+}
+.modal-content .form-field.horas div.input {
+  display: block !important;
+  float: none;
+  text-align: inherit;
+}
+.modal-content .form-field.horas div.input div:first-child {
+  float: left !important;
+}
+.modal-content .form-field.horas div.input div:first-child + select {
+  float: right !important;
+  position: relative;
 }
 .modal-footer {
   border: 0 none;
@@ -1557,7 +1572,7 @@ form .datepicker {
 #edit_client_dialog .form-field > input,
 #new_client_dialog .form-field .input,
 #edit_client_dialog .form-field .input {
-  width: 180px !important;
+  width: 180px;
   margin-right: 0px;
   float: right;
   height: 30px;
@@ -1637,6 +1652,12 @@ form .datepicker {
 }
 .modal_ajax {
   display: none;
+}
+.modal_ajax label.error {
+  display: none !important;
+}
+.modal_ajax #logo_url_modal {
+  width: 275px !important;
 }
 form #error-messages {
   margin-bottom: 10px;
@@ -1864,7 +1885,47 @@ form textarea.error {
 #alta_proyecto .btn-atras {
   margin-left: 64%;
 }
-#alta_proyecto .usersTable > .table td:nth-child(2) {
-  max-width: 135px;
-  width: 135px;
+#alta_proyecto .usersTable > .table th:nth-child(1) {
+  max-width: 145px !important;
+  width: 145px !important;
+}
+#alta_proyecto .usersTable > .table th:nth-child(2) {
+  max-width: 145px !important;
+  width: 145px !important;
+}
+#alta_proyecto .usersTable > .table th:nth-child(3) {
+  max-width: 155px !important;
+  width: 155px !important;
+}
+#alta_proyecto .usersTable > .table th:nth-child(4) {
+  max-width: 100px !important;
+  width: 100px !important;
+}
+#alta_proyecto .usersTable > .table th:nth-child(5) {
+  max-width: 135px !important;
+  width: 135px !important;
+  border-right: 1px solid #dcdcdc;
+}
+#alta_proyecto .usersTable > .table th:nth-child(5) > input {
+  width: 100%;
+}
+#alta_proyecto .form-field-divider {
+  display: inline-block;
+  width: 50%;
+}
+#alta_proyecto .form-field-divider.left {
+  float: left;
+}
+#alta_proyecto .form-field-divider.right {
+  float: right;
+}
+#alta_proyecto .form-field-divider .form-field {
+  width: 100%;
+}
+#alta_proyecto .form-field-divider .form-field > input {
+  float: right;
+}
+#alta_proyecto .form-field-divider .form-field div.input {
+  display: inline-block;
+  float: right;
 }

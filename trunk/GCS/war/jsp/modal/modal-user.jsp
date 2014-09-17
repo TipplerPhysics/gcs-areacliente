@@ -24,7 +24,7 @@
 									id="ap2_modal">
 							</div>
 							<div class="form-field">
-								<span class="lbl">E-mail<span class="required-asterisk">*</span>:</span><input class="long email" type="text"
+								<span class="lbl">E-mail<span class="required-asterisk">*</span>:</span><input class="long email no_message_error" type="text"
 									name="email" id="email_modal" required aria-required="true"
 									data-type="email">
 							</div>

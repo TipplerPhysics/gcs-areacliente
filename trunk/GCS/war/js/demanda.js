@@ -26,7 +26,7 @@ function sendEditDemanda(){
 			success:function(data, textStatus, jqXHR) 
 			{
 				$form.hide();
-				$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la pagina.');
+				$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aocute;gina.');
 				$('.modal-footer').hide();
 				$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");;
 
