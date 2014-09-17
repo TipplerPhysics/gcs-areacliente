@@ -1,8 +1,11 @@
 package com.gcs.servlet;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +34,9 @@ public class UserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -826683004548238295L;
 
+	private static final Logger log = Logger.getLogger(UserServlet.class.getName());
+
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp){
 		
 		JSONObject json = new JSONObject();
@@ -137,7 +143,7 @@ public class UserServlet extends HttpServlet {
 		String permisoStr = Utils.getPermisoStr(permiso);
 		
 		HttpSession sesion = req.getSession();
-		int sesionpermiso = (int) sesion.getAttribute("permiso");
+		
 		
 		UserDao uDao = UserDao.getInstance();
 		User us = uDao.getUserByMail(email);
@@ -160,6 +166,18 @@ public class UserServlet extends HttpServlet {
 		}
 		
 		}catch(Exception e){
+			log.warning("Error en NewUserServlet");
+			log.warning((e.toString()));
+		
+			
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(baos);
+			e.printStackTrace(ps);
+			String content = baos.toString("ISO-8859-1"); // e.g. ISO-8859-1
+			
+		
+			log.warning(content);
+			
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
 		

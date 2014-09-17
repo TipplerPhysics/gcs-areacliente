@@ -205,6 +205,14 @@ public class ClienteServlet extends HttpServlet {
 			
 			String criticidad = req.getParameter("criticidad");
 			String tipo = req.getParameter("tipo");
+			String[] paises_str = req.getParameterValues("paises");
+			
+			Set<String> paises = new HashSet<String>();
+			
+			for (String p:paises_str){
+				paises.add(p);
+			}
+				
 			
 			c = cDao.getClienteById(Long.parseLong(id));
 			
@@ -223,6 +231,7 @@ public class ClienteServlet extends HttpServlet {
 				c.setLogo_url(logo_url);
 				c.setCriticidad(criticidad);
 				c.setTipo(tipo);
+				c.setPaises(paises);
 				
 				c.setStr_fecha_alta_cliente(fecha_entrada_peticion_ed);
 				c.setFecha_alta_cliente(Utils.dateConverter(fecha_entrada_peticion_ed));

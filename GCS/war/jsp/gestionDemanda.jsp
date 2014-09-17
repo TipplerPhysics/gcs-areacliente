@@ -299,6 +299,9 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Nuevo Cliente -->
+	
 	<div class="modal fade" id="new-client" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" id="new_client_dialog">
