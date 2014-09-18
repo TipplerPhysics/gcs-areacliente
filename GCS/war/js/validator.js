@@ -45,12 +45,14 @@ $(function() {
 			}
 		});
 		
-		if (valid==false) {
-			$('#span_message_cliente').text("Error");
-			$('#message_div_cliente').addClass('error');
+		
+		if (valid==false) {			
+			$('.span_message').text("Es necesario seleccionar un pais");
+			($(element).attr('id').indexOf('modal') > -1) ? $('#message_div_cliente_modal').addClass('error') : $('#message_div_cliente').addClass('error');
+	
 		} else {
-			$('#span_message_cliente').text("");
-			$('#message_div_cliente').removeClass('error');
+			$('.span_message').text("");
+			($(element).attr('id').indexOf('modal') > -1) ? $('#message_div_cliente_modal').removeClass('error') : $('#message_div_cliente').removeClass('error');
 		}
 			
 			
