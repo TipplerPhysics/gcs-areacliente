@@ -44,8 +44,19 @@ public class Cliente {
 	@Persistent
 	private Set<String> paises;
 	
+	@Persistent
+	private Integer project_number;
 	
 	
+	
+	public Integer getProject_number() {
+		return project_number;
+	}
+
+	public void setProject_number(Integer project_number) {
+		this.project_number = project_number;
+	}
+
 	public Set<String> getPaises() {
 		return paises;
 	}

@@ -1252,12 +1252,16 @@ var getIsoDate = function(dateString) {
 	children.slice(0, perPage).show();
 	
 	var currentPage = pager.children().eq(1).children().html();
+	var ocursinpage = ((currentPage*5)>numItems) ? numItems : (currentPage*5);
+
+	
 	$(resumen).html('');
 	if (numItems>=5){
-		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + (currentPage*5) + ' de '+ numItems);
+		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
 	}else{
-		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + (numItems) + ' de '+ numItems);
+		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
 	}
+	
 	
 
 	pager.find('li .page_link').click(function() {
@@ -1315,10 +1319,12 @@ var getIsoDate = function(dateString) {
 		
 		$(resumen).html('');
 		
+		var ocursinpage2 = (((page+1)*5)>numItems) ? numItems : ((page+1)*5);
+		
 		if (numItems>=5){
-			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ((page+1)*5) + ' de '+ numItems);
+			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
 		}else{
-			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + numItems + ' de '+ numItems);
+			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
 		}
 		
 	}
@@ -1958,7 +1964,13 @@ function drawChecksAreas(str){
 		nieES: "Por favor, escribe un NIE válido.",
 		cifES: "Por favor, escribe un CIF válido."
 	});
-
+	
+	
+	
+	$.validator.addMethod("money", function(value, element) {
+		 return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+		}, "Por favor, introduce una cifra v&aacute;lida");
+	
 	// One to rule the ... selects
 	$.validator.addMethod("selected", function(value, element){
 		var valid = false;
@@ -1981,6 +1993,16 @@ function drawChecksAreas(str){
 				valid = true;
 			}
 		});
+		
+		if (valid==false) {
+			$('#span_message_cliente').text("Error");
+			$('#message_div_cliente').addClass('error');
+		} else {
+			$('#span_message_cliente').text("");
+			$('#message_div_cliente').removeClass('error');
+		}
+			
+			
 		return valid;
 	},'Por favor, selecciona una opci&oacute;n.');
 

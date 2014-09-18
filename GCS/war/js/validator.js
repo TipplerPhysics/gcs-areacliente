@@ -21,7 +21,13 @@ $(function() {
 		nieES: "Por favor, escribe un NIE válido.",
 		cifES: "Por favor, escribe un CIF válido."
 	});
-
+	
+	
+	
+	$.validator.addMethod("money", function(value, element) {
+		 return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+		}, "Por favor, introduce una cifra v&aacute;lida");
+	
 	// One to rule the ... selects
 	$.validator.addMethod("selected", function(value, element){
 		var valid = false;
@@ -45,14 +51,12 @@ $(function() {
 			}
 		});
 		
-		
-		if (valid==false) {			
-			$('.span_message').text("Es necesario seleccionar un pais");
-			($(element).attr('id').indexOf('modal') > -1) ? $('#message_div_cliente_modal').addClass('error') : $('#message_div_cliente').addClass('error');
-	
+		if (valid==false) {
+			$('#span_message_cliente').text("Error");
+			$('#message_div_cliente').addClass('error');
 		} else {
-			$('.span_message').text("");
-			($(element).attr('id').indexOf('modal') > -1) ? $('#message_div_cliente_modal').removeClass('error') : $('#message_div_cliente').removeClass('error');
+			$('#span_message_cliente').text("");
+			$('#message_div_cliente').removeClass('error');
 		}
 			
 			

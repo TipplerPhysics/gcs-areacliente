@@ -2,6 +2,7 @@ package com.gcs.servlet;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,47 +45,64 @@ public class ProjectServlet extends HttpServlet{
 	private void createProject(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
-		
+		Proyecto p = new Proyecto();
+	
 		try {
-		
-		String fecha_alta_str = req.getParameter("fecha_alta_cliente");
-		String nombre = req.getParameter("project_name");
-		String tipo = req.getParameter("tipo");
-		String cliente = req.getParameter("cliente");
-		
-		String clasificacion = req.getParameter("clasificacion");
-		String gestor_it_str = req.getParameter("gestor_it");
-		String gestor_negocio_str = req.getParameter("gestor_negocio");
-		String coste = req.getParameter("coste");
-		
-		if (fecha_alta_str.equals("")||nombre.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
-				||gestor_it_str.equals("")||gestor_negocio_str.equals("")||coste.equals("")){
-			json.append("failure", "true");
-			json.append("error","Faltan campos obligatorios.");
 			
-		}else{
-			Proyecto p = new Proyecto();
+			String fecha_alta_str = req.getParameter("fecha_alta_cliente");
+			String nombre = req.getParameter("project_name");
+			String tipo = req.getParameter("tipo");
+			String cliente = req.getParameter("cliente");
 			
-			p.setFecha_alta_str(fecha_alta_str);
-			p.setFecha_alta(Utils.dateConverter(fecha_alta_str));	
-			p.setNombre(nombre);
-			p.setTipo(tipo);
-			p.setClienteKey(Long.parseLong(cliente));
-			p.setClasificacion(Integer.parseInt(clasificacion));
-			p.setGestor_it(Long.parseLong(gestor_it_str));
-			p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
-			p.setCoste(Long.parseLong(coste));
+			String clasificacion = req.getParameter("clasificacion");
+			String gestor_it_str = req.getParameter("gestor_it");
+			String gestor_negocio_str = req.getParameter("gestor_negocio");
+			String coste = req.getParameter("coste");
 			
-			ProyectoDao pDao = ProyectoDao.getInstance();
-			pDao.createProject(p);
-			
-		}
-		
+			if (fecha_alta_str.equals("")||nombre.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
+					||gestor_it_str.equals("")||gestor_negocio_str.equals("")||coste.equals("")){
+				json.append("failure", "true");
+				json.append("error","Faltan campos obligatorios.");
+				
+			}else{
+				
+				ProyectoDao pDao = ProyectoDao.getInstance();
+				
+				List<Proyecto> projects = pDao.getAllProjects();
+				Boolean exist_project = false;
+				for (Proyecto pr:projects){
+					if (pr.getNombre().toLowerCase().equals(nombre.toLowerCase()))
+						exist_project = true;
+				}
+				
+				if (exist_project){
+					json.append("failure", "true");
+					json.append("error","Ya existe un proyecto con este nombre.");
+				}else{
+					
+					p.setFecha_alta_str(fecha_alta_str);					
+					p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					
+					p.setNombre(nombre);
+					p.setTipo(tipo);
+					p.setClienteKey(Long.parseLong(cliente));
+					p.setClasificacion(Integer.parseInt(clasificacion));
+					p.setGestor_it(Long.parseLong(gestor_it_str));
+					p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
+					p.setCoste(coste);
+					
+					
+					pDao.createProject(p);
+				}			
+			}
 		} catch (ParseException e) {
-			json.append("failure", "true");
-			json.append("error", "Se ha producido un error inesperado");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}	
+		
+		
+		
+		json.append("success", "true");
+		json.append("id", p.getKey().getId());
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
