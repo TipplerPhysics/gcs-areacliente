@@ -87,6 +87,8 @@ $(function() {
 					$('#newUserButton').removeClass('white-btn');	
 					$('.user_span').removeClass('blue');
 					$('.demanda_span').removeClass('blue');
+					$('.proyecto_span').removeClass('blue');
+					
 
 					var $form = $newUserButton.parent().find('form');
 					resetForm($form);
@@ -97,6 +99,7 @@ $(function() {
 				$('#newUserButton').addClass('white-btn');
 				$('.user_span').addClass('blue');
 				$('.demanda_span').addClass('blue');
+				$('.proyecto_span').addClass('blue');
 				$('.new-user-form-holder').addClass('open');
 				if(userBoxSize > 0) {
 					setTimeout(function(){
