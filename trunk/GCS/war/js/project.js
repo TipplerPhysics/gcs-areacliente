@@ -1,4 +1,20 @@
+function modalCliente(){
+	
+	$('#edit_project_form_modal').data("id",id);		
+	
+	window.setTimeout(function(){showModal()}, 500);
+}
+
+
 $(function() {
+	$('#alta_proyecto').on('click', '.lapiz', function(e) {		
+		id= $(this).attr('name');	
+	});
+	
+	$('#alta_proyecto').on('shown.bs.modal', function () {
+		modalCliente(id);
+	})
+	
 	$("#submit_project_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-project-form");

@@ -169,10 +169,20 @@
 								<c:forEach items="${proyectos}" var="proyecto">
 									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-fecha-alta="${proyecto.fecha_alta_str}" data-nombre="${proyecto.nombre}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}" >
 										<td><span>${proyecto.fecha_alta_str}</span></td>
-										<td><span>${proyecto.fecha_alta_str}</span></td>
-										<td><span>${proyecto.fecha_alta_str}</span></td>
-										<td><span>${proyecto.fecha_alta_str}</span></td>
-										<td><span>${proyecto.fecha_alta_str}</span></td>
+										<td><span>${proyecto.cod_proyecto}</span></td>
+										<td><span>${proyecto.clienteName}</span></td>
+										<td><span>${proyecto.clasificacion}</span></td>
+										<td><span>${proyecto.tipo}</span></td>
+										<td><span>${proyecto.coste} &#8364;</span></td>
+										<c:if test="${sessionScope.permiso != 5}">
+										<td>										
+											<img class="vs" src="../img/vs.png">								
+											<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>
+																
+											<a class="papelera" name="${proyecto.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${proyecto.key.id}"></a>
+											
+										</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
