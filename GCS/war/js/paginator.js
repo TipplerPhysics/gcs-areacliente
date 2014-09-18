@@ -62,12 +62,16 @@ $.fn.paginateMe = function(opts) {
 	children.slice(0, perPage).show();
 	
 	var currentPage = pager.children().eq(1).children().html();
+	var ocursinpage = ((currentPage*5)>numItems) ? numItems : (currentPage*5);
+
+	
 	$(resumen).html('');
 	if (numItems>=5){
-		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + (currentPage*5) + ' de '+ numItems);
+		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
 	}else{
-		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + (numItems) + ' de '+ numItems);
+		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
 	}
+	
 	
 
 	pager.find('li .page_link').click(function() {
@@ -125,10 +129,12 @@ $.fn.paginateMe = function(opts) {
 		
 		$(resumen).html('');
 		
+		var ocursinpage2 = (((page+1)*5)>numItems) ? numItems : ((page+1)*5);
+		
 		if (numItems>=5){
-			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ((page+1)*5) + ' de '+ numItems);
+			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
 		}else{
-			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + numItems + ' de '+ numItems);
+			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
 		}
 		
 	}
