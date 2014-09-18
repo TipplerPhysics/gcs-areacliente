@@ -91,8 +91,8 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_it" name="gestor_it" required aria-required="true">	
-								<option value="default" selected>Seleccionar...</option>
+								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
+								<option value="default">Seleccionar...</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
@@ -103,8 +103,8 @@
 						<div class="form-field">
 							<span class="lbl">Gestor de negocio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_negocio" name="gestor_negocio" required aria-required="true">
-								    <option value="default" selected>Seleccionar</option>
+								<select class="selectpicker selected" id="gestor_negocio" name="gestor_negocio" required aria-required="true">
+								    <option value="default">Seleccionar</option>
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 									</c:forEach>					
@@ -114,7 +114,7 @@
 						
 						<div class="form-field">
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="coste" name="coste" class="long" class="euro">
+						<input type="text" aria-required="true" required="" id="coste" name="coste" class="long euro money">
 					</div>
 				</div>
 				
@@ -159,7 +159,24 @@
 					</tr>
 				</thead>
 				<tbody id="myTable" cellspacing="0">
-					
+					<c:choose>
+							<c:when test="${empty clientes}">
+								<tr>
+									<td><span>No existen proyectos.</span></td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${proyectos}" var="proyecto">
+									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-fecha-alta="${proyecto.fecha_alta_str}" data-nombre="${proyecto.nombre}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}" >
+										<td><span>${proyecto.fecha_alta_str}</span></td>
+										<td><span>${proyecto.fecha_alta_str}</span></td>
+										<td><span>${proyecto.fecha_alta_str}</span></td>
+										<td><span>${proyecto.fecha_alta_str}</span></td>
+										<td><span>${proyecto.fecha_alta_str}</span></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 				</tbody>
 			</table>
 		</div>

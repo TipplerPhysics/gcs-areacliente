@@ -46,6 +46,16 @@
 	    <url-pattern>/usersServlet</url-pattern>
 	  </servlet-mapping>
 	  
+	    <servlet>
+	    <servlet-name>ProyectoServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.ProjectServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>ProyectoServlet</servlet-name>
+	    <url-pattern>/projectServlet</url-pattern>
+	  </servlet-mapping>
+	  
 	   <servlet>
 	    <servlet-name>ClienteServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.ClienteServlet</servlet-class>

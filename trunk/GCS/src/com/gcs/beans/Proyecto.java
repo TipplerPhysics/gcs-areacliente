@@ -29,19 +29,31 @@ public class Proyecto {
 	private Long clienteKey;
 	
 	@Persistent
+	private String clienteName;
+	
+	@Persistent
 	private int clasificacion;
 	
 	@Persistent
 	private Long gestor_it;
 	
 	@Persistent
+	private String gestor_it_name;
+	
+	@Persistent
 	private Long gestor_negocio;
 	
 	@Persistent
-	private Long coste;
+	private String gestor_negocio_name;
+	
+	@Persistent
+	private String coste;
 
 	@Persistent
 	private String tipo;
+	
+	@Persistent
+	private String cod_proyecto;
 	
 	/*
 	@Persistent
@@ -51,6 +63,38 @@ public class Proyecto {
 	public Proyecto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getCod_proyecto() {
+		return cod_proyecto;
+	}
+
+	public void setCod_proyecto(String cod_proyecto) {
+		this.cod_proyecto = cod_proyecto;
+	}
+
+	public String getGestor_it_name() {
+		return gestor_it_name;
+	}
+
+	public void setGestor_it_name(String gestor_it_name) {
+		this.gestor_it_name = gestor_it_name;
+	}
+
+	public String getGestor_negocio_name() {
+		return gestor_negocio_name;
+	}
+
+	public void setGestor_negocio_name(String gestor_negocio_name) {
+		this.gestor_negocio_name = gestor_negocio_name;
+	}
+
+	public String getClienteName() {
+		return clienteName;
+	}
+
+	public void setClienteName(String clienteName) {
+		this.clienteName = clienteName;
 	}
 
 	public Long getGestor_negocio() {
@@ -125,11 +169,11 @@ public class Proyecto {
 		this.gestor_it = gestor_it;
 	}
 
-	public Long getCoste() {
+	public String getCoste() {
 		return coste;
 	}
 
-	public void setCoste(Long coste) {
+	public void setCoste(String coste) {
 		this.coste = coste;
 	}
 	
