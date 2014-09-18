@@ -126,8 +126,10 @@
 		
 
 		</form>
-		<button type="submit" id="submit_user_form">Aceptar</button>
-		<button href="#" class="close-form">Cancelar</button>
+		<div id="buttons_holder">
+			<button type="submit" id="submit_project_form">Aceptar</button>
+			<button href="#" class="close-form">Cancelar</button>
+		</div>
 	</div>
 </div>
 
