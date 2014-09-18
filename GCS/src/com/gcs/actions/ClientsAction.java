@@ -34,12 +34,12 @@ public class ClientsAction extends Action {
 		}
 
 		String[] alphabet = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"}; 
-		String alpha = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+		
 		
 		req.setAttribute("clientes", clientes);
 		req.setAttribute("letras", letras.toString());
 		req.setAttribute("alphabet", alphabet);
-		req.setAttribute("alpha", alpha);
+		
 		
 		return mapping.findForward("ok");
 	}

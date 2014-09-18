@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="modal_ajax">
+<div class="modal_ajax" id="project_modal">
 
 	<div>
 		<h2>Editar Proyecto</h2>
@@ -68,7 +68,6 @@
 							<span class="lbl">Clasificaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="clasificacion" id="clasificacion" required aria-required="true">
-									<option value="default">Seleccionar...</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -103,7 +102,7 @@
 						
 						<div class="form-field">
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="coste" name="coste" class="long" class="euro">
+						<input type="text" aria-required="true" required="" id="coste" name="coste" class="long euro">
 					</div>
 				</div>
 				

@@ -33,7 +33,17 @@ public class ProyectoDao {
 		p.setGestor_negocio_name(gestor_negocio.getNombre()+ " " + gestor_negocio.getApellido1() + " " + gestor_negocio.getApellido2());
 		
 		if (p.getKey()==null){
-			String cod_Proyecto = createProjectName(c,p);
+			Integer project_number = c.getProject_number();
+			if (project_number==null)
+				project_number=1;			
+			else
+				project_number++;
+			
+			String cod_proyecto = createProjectName(c,p,project_number);			
+			p.setCod_proyecto(cod_proyecto);
+			
+			c.setProject_number(project_number);
+			cDao.createCliente(c);
 			
 			
 		}
@@ -80,16 +90,12 @@ public Proyecto getProjectbyId(long l) {
 		return p;		
 	}
 
-	private String createProjectName (Cliente c, Proyecto p){
+	private String createProjectName (Cliente c, Proyecto p, Integer project_number){
 		String project_name = "";
-		
-		Integer project_number = c.getProject_number();
-		if (project_number==null)
-			project_number=1;			
-		else
-			project_number++;
-		
+				
 		String cod_cliente = c.getClientId().split("IDGLOBAL")[1];
+		
+		project_name = p.getTipo()+cod_cliente+"_"+String.format("%02d", project_number);
 		
 		return project_name;
 	}

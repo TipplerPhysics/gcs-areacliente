@@ -458,6 +458,9 @@ form .datepicker {
   padding-right: 30px;
   width: 245px;
 }
+.euro {
+  background: url("../img/euro.png") 96% center no-repeat;
+}
 #sidebar {
   position: fixed;
   top: 50%;
@@ -1891,35 +1894,47 @@ form textarea.error {
   margin-left: 64%;
 }
 #alta_proyecto .usersTable > .table th:nth-child(1) {
-  max-width: 145px !important;
-  width: 145px !important;
+  max-width: 121px !important;
+  width: 121px !important;
 }
 #alta_proyecto .usersTable > .table th:nth-child(2) {
-  max-width: 145px !important;
-  width: 145px !important;
+  max-width: 155px !important;
+  width: 155px !important;
 }
 #alta_proyecto .usersTable > .table th:nth-child(3) {
   max-width: 155px !important;
   width: 155px !important;
 }
+#alta_proyecto .usersTable > .table td:nth-child(4),
 #alta_proyecto .usersTable > .table th:nth-child(4) {
   max-width: 100px !important;
   width: 100px !important;
 }
+#alta_proyecto .usersTable > .table td:nth-child(5) {
+  max-width: 115px !important;
+  width: 115px !important;
+}
 #alta_proyecto .usersTable > .table th:nth-child(5) {
-  max-width: 135px !important;
-  width: 135px !important;
+  max-width: 115px !important;
+  width: 115px !important;
   border-right: 1px solid #dcdcdc;
 }
 #alta_proyecto .usersTable > .table th:nth-child(5) > input {
   width: 100%;
 }
+#alta_proyecto .usersTable > .table th:nth-child(5) .usersTable > .table th:nth-child(6) {
+  border-right: 0px !important;
+}
+#alta_proyecto .usersTable > .table th:nth-child(5) .usersTable > .table th:nth-child(7) {
+  border-left: 0px !important;
+}
 #alta_proyecto .form-field-divider {
   display: inline-block;
-  width: 50%;
+  width: 48%;
 }
 #alta_proyecto .form-field-divider.left {
   float: left;
+  margin-right: 10px;
 }
 #alta_proyecto .form-field-divider.right {
   float: right;
@@ -1933,4 +1948,19 @@ form textarea.error {
 #alta_proyecto .form-field-divider .form-field div.input {
   display: inline-block;
   float: right;
+}
+#alta_proyecto .modal_ajax .form-field {
+  width: 100%;
+  height: 40px;
+}
+#alta_proyecto .modal_ajax .form-field > input {
+  float: right;
+  width: 220px;
+}
+#alta_proyecto .modal_ajax .form-field div.input {
+  display: inline-block;
+  float: right;
+}
+#alta_proyecto .modal_ajax .form-field div.input > input {
+  width: 220px;
 }

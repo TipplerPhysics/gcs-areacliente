@@ -34,6 +34,11 @@
 			
 		</action>
 		
+		<action path="/projectModal" type="com.gcs.actions.modal.ProyectoModalAction">
+			<forward name="ok" path="/jsp/modal/modal-project.jsp" />
+			
+		</action>
+		
 		<action path="/clienteModal" type="com.gcs.actions.modal.ClienteModalAction">
 			<forward name="ok" path="/jsp/modal/modal-cliente.jsp" />
 			
