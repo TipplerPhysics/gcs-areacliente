@@ -44,6 +44,16 @@ $(function() {
 				valid = true;
 			}
 		});
+		
+		if (valid==false) {
+			$('#span_message_cliente').text("Error");
+			$('#message_div_cliente').addClass('error');
+		} else {
+			$('#span_message_cliente').text("");
+			$('#message_div_cliente').removeClass('error');
+		}
+			
+			
 		return valid;
 	},'Por favor, selecciona una opci&oacute;n.');
 
