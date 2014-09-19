@@ -247,7 +247,6 @@ $(function() {
 		
 		var params = getClientData($form);
 		
-		
 		if($form.valid()){		
 
 			var postData = $form.serialize() + "&accion=new";
