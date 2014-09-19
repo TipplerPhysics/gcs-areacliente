@@ -25,9 +25,13 @@
 				<li>Tipo: <span>${cliente.tipo}</span></li>
 				<li>Criticidad: <span>${cliente.criticidad}</span></li>
 			</ul>
+			
 		</div>
 	</div>
 	<h2>Proyectos asociados</h2>
+	<button id="newProjectButton" onclick="location.href = './dashboard/gestionProyecto.do';">
+				Nuevo Proyecto<a class="proyecto_span_fixed"></a>
+			</button>	
 	<hr/>
 	<div class="table">
 		<table style="width:100%">
@@ -37,7 +41,15 @@
 			  <td>Gestor IT</td>
 			  <td>Gestor Negocio</td>
 			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			</tr>			
+			</tr>	
+			<c:forEach items="${projects}" var="p">
+				<tr class="body">
+			 		 <td>${p.cod_proyecto}</td>
+			 		 <td>${p.tipo}</td>
+			 		 <td>${p.gestor_it_name}</td>
+			 		 <td>${p.gestor_negocio_name}</td>
+			 		 <td><a class="mas" name="${p.key.id}"></a></td>
+			</c:forEach>		
 		</table>
 	</div>
 </div>

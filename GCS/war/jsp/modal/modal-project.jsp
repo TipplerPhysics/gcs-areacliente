@@ -8,7 +8,7 @@
 	
 	
 	<div class="new-user-form-holder">
-		<form id="new-project-form" name="new-project-form" action="/projectServlet"
+		<form id="edit-project-form" name="edit-project-form" action="/projectServlet"
 			method="POST" novalidate="novalidate">
 			<div class="form-container">
 				
@@ -16,20 +16,20 @@
 					<div class="form-field">
 						<span class="lbl">Fecha alta cliente<span class="required-asterisk">*</span>:</span>
 						<div class="input">
-							<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
+							<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente_modal" required aria-required="true">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Nombre Proyecto<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="project_name" name="project_name" class="long">
+						<input type="text" aria-required="true" required="" id="project_name_modal" name="project_name" class="long">
 					</div>
 					
 					<div class="form-field">
 							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
-									<option value="default">Seleccionar...</option>
+								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true">
+									
 									<option value="IMPL">IMPL</option>
 									<option value="SEPA">SEPA</option>
 									<option value="IMPL-OB-C">IMPL-OB-C</option>
@@ -53,8 +53,8 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
-									<option value="default">Seleccionar...</option>
+								<select id="input_cliente_modal" class="selectpicker" name="cliente" required aria-required="true">
+					
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
 									</c:forEach>
@@ -67,7 +67,7 @@
 					<div class="form-field">
 							<span class="lbl">Clasificaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="clasificacion" id="clasificacion" required aria-required="true">
+								<select class="selectpicker" name="clasificacion" id="clasificacion_modal" required aria-required="true">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -79,8 +79,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_it" name="gestor_it" required aria-required="true">	
-								<option value="default" selected>Seleccionar...</option>
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_it" required aria-required="true">	
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
@@ -91,8 +90,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor de negocio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_negocio" name="gestor_negocio" required aria-required="true">
-								    <option value="default" selected>Seleccionar</option>
+								<select class="selectpicker" id="gestor_negocio_modal" name="gestor_negocio" required aria-required="true">
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 									</c:forEach>					
@@ -102,7 +100,7 @@
 						
 						<div class="form-field">
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="coste" name="coste" class="long euro">
+						<input type="text" aria-required="true" required="" id="coste_modal" name="coste" class="long euro">
 					</div>
 				</div>
 				

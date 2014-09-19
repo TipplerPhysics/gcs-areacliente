@@ -80,11 +80,19 @@ input , textarea {
     height: auto;
     margin: 0;
     padding: 0.583em 0.755em 0.5em;
+    
+    &.readonly{
+    	background-color: #F4F7F5;
+    }
 }
 
 input:active, input:focus, textarea:active, textarea:focus{
 	 background-color: #fffff5;
      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset, 0 0 0 2px #def4fb;
+     
+     &.readonly{
+    	background-color: #F4F7F5;
+    }
 }
 
 .btn-atras{
@@ -98,6 +106,20 @@ input:active, input:focus, textarea:active, textarea:focus{
     	background-image: url("../img/bot-volveron.png");
     }
 }
+
+a.mas{
+		background-image:url(../img/mas1.png);
+		vertical-align:middle;
+		margin-left:10px;
+		height:32px;
+		width:32px;
+		display:inline-block;	
+		cursor: pointer;
+		&:active{
+			background-image:url(../img/mas-hover.png);
+		}
+		
+	}
 
 .gestion_demanda .btn-atras{
 	margin-top:25px;
@@ -346,7 +368,8 @@ h1{
 h2{
 	font-family: "BBVA Web Light" !important;
 	font-size:22px !important;
-	color:#0078D2 !important;	
+	color:#0078D2 !important;
+	display:inline-block;	
 }
 
 hr{
@@ -419,4 +442,5 @@ form .datepicker {
 
 .euro {
 	background: url("../img/euro.png") 96% center no-repeat;
+	padding-right:30px;
 }

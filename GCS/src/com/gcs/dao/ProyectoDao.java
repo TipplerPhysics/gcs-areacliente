@@ -1,8 +1,10 @@
 package com.gcs.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Proyecto;
@@ -10,6 +12,7 @@ import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Key;
 
 public class ProyectoDao {
 	
@@ -71,6 +74,26 @@ public class ProyectoDao {
 
 		return proyectos;
 	}
+	
+public List<Proyecto> getProjectsByClient(Long id){
+	
+	
+	PersistenceManager pManager = PMF.get().getPersistenceManager();
+	Transaction transaction = pManager.currentTransaction();
+	transaction.begin();
+
+	String queryStr = "select from " + Proyecto.class.getName()
+			+ " WHERE clienteKey == :id";
+
+	List<Proyecto> projects = (List<Proyecto>) pManager.newQuery(queryStr)
+			.execute(id);
+
+	transaction.commit();
+
+	pManager.close();
+
+	return projects;
+}
 	
 public Proyecto getProjectbyId(long l) {
 		

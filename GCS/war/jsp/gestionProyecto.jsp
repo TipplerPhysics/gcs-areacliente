@@ -32,8 +32,8 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Nombre Proyecto<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="project_name" name="project_name" class="long">
+						<span class="lbl">Nombre Proyecto:</span>
+						<input type="text" id="project_name" name="project_name" class="long readonly" unselectable="on" readonly="true">
 					</div>
 					
 					<div class="form-field">
@@ -167,7 +167,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${proyectos}" var="proyecto">
-									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-fecha-alta="${proyecto.fecha_alta_str}" data-nombre="${proyecto.nombre}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}" >
+									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-nombre="${proyecto.nombre}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}" >
 										<td><span>${proyecto.fecha_alta_str}</span></td>
 										<td><span>${proyecto.cod_proyecto}</span></td>
 										<td><span>${proyecto.clienteName}</span></td>
@@ -218,6 +218,7 @@
 			</div>
 			<div class="">
 				<p>&iquest;Est&aacute; seguro que desea eliminar al proyecto?</p>
+				<p>Se eliminarán todos los servicios asociados</p>
 				
 			</div>
 			<div class="modal-footer">

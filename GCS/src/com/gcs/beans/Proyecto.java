@@ -177,4 +177,17 @@ public class Proyecto {
 		this.coste = coste;
 	}
 	
+	@Override
+	public boolean equals(Object object_b) {
+		 if (!(object_b instanceof Proyecto)) {
+		        return false;
+		    }
+
+		    Proyecto object_a = (Proyecto) object_b;
+		    
+		 // Custom equality check here.
+		    return this.key.equals(object_a.key);
+		      
+	}	
+	
 }
