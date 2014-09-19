@@ -30,6 +30,10 @@ public class ProjectServlet extends HttpServlet{
 
 			if ("new".equals(accion)){
 				createProject(req,resp);
+			}else if ("update".equals(accion)){
+				editProject(req,resp);
+			}else if ("delete".equals(accion)){
+				deleteProject(req,resp);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -42,6 +46,81 @@ public class ProjectServlet extends HttpServlet{
 		doGet(req,resp);
 	}
 	
+	private void deleteProject(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+		
+		JSONObject json = new JSONObject();
+		ProyectoDao pDao = ProyectoDao.getInstance();	
+		
+		String id = req.getParameter("id");
+		
+		Proyecto p = pDao.getProjectbyId(Long.parseLong(id));
+		pDao.deleteProject(p);
+		
+		json.append("success", "true");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);		
+	}
+	
+	private void editProject (HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+		JSONObject json = new JSONObject();		
+		ProyectoDao pDao = ProyectoDao.getInstance();
+		
+		try {
+		
+			String id = req.getParameter("id");
+			
+			Proyecto p = pDao.getProjectbyId(Long.parseLong(id));
+			
+			if (p!=null){
+				String fecha_alta_str = req.getParameter("fecha_alta_cliente");
+				
+				String tipo = req.getParameter("tipo");
+				String cliente = req.getParameter("cliente");
+				
+				String clasificacion = req.getParameter("clasificacion");
+				String gestor_it_str = req.getParameter("gestor_it");
+				String gestor_negocio_str = req.getParameter("gestor_negocio");
+				String coste = req.getParameter("coste");
+				
+				List<Proyecto> projects = pDao.getAllProjects();
+				Boolean exist_project = false;
+				
+				
+				
+					p.setFecha_alta_str(fecha_alta_str);					
+					
+						p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
+									
+				
+					p.setTipo(tipo);
+					p.setClienteKey(Long.parseLong(cliente));
+					p.setClasificacion(Integer.parseInt(clasificacion));
+					p.setGestor_it(Long.parseLong(gestor_it_str));
+					p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
+					p.setCoste(coste);
+					
+					
+					pDao.createProject(p);
+			
+				
+				json.append("success", "true");
+				json.append("id", p.getKey().getId());
+				
+			}
+			
+		} catch (ParseException e) {
+			json.append("failure", "true");
+			json.append("error", "Se ha producido un error inesperado");
+			e.printStackTrace();
+		}	
+			
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);		
+		
+	}
+	
 	private void createProject(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
@@ -50,7 +129,7 @@ public class ProjectServlet extends HttpServlet{
 		try {
 			
 			String fecha_alta_str = req.getParameter("fecha_alta_cliente");
-			String nombre = req.getParameter("project_name");
+			
 			String tipo = req.getParameter("tipo");
 			String cliente = req.getParameter("cliente");
 			
@@ -59,7 +138,7 @@ public class ProjectServlet extends HttpServlet{
 			String gestor_negocio_str = req.getParameter("gestor_negocio");
 			String coste = req.getParameter("coste");
 			
-			if (fecha_alta_str.equals("")||nombre.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
+			if (fecha_alta_str.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
 					||gestor_it_str.equals("")||gestor_negocio_str.equals("")||coste.equals("")){
 				json.append("failure", "true");
 				json.append("error","Faltan campos obligatorios.");
@@ -70,19 +149,13 @@ public class ProjectServlet extends HttpServlet{
 				
 				List<Proyecto> projects = pDao.getAllProjects();
 				Boolean exist_project = false;
-				for (Proyecto pr:projects){
-					if (pr.getNombre().toLowerCase().equals(nombre.toLowerCase()))
-						exist_project = true;
-				}
 				
-				if (exist_project){
-					json.append("failure", "true");
-					json.append("error","Ya existe un proyecto con este nombre.");
-				}else{
+				
+				
 					
 					p.setFecha_alta_str(fecha_alta_str);					
 					p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					
-					p.setNombre(nombre);
+					
 					p.setTipo(tipo);
 					p.setClienteKey(Long.parseLong(cliente));
 					p.setClasificacion(Integer.parseInt(clasificacion));
@@ -92,7 +165,7 @@ public class ProjectServlet extends HttpServlet{
 					
 					
 					pDao.createProject(p);
-				}			
+							
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

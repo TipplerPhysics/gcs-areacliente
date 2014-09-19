@@ -168,12 +168,22 @@ textarea {
   margin: 0;
   padding: 0.583em 0.755em 0.5em;
 }
+input.readonly,
+textarea.readonly {
+  background-color: #F4F7F5;
+}
 input:active,
 input:focus,
 textarea:active,
 textarea:focus {
   background-color: #fffff5;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16) inset, 0 0 0 2px #def4fb;
+}
+input:active.readonly,
+input:focus.readonly,
+textarea:active.readonly,
+textarea:focus.readonly {
+  background-color: #F4F7F5;
 }
 .btn-atras {
   cursor: pointer;
@@ -184,6 +194,18 @@ textarea:focus {
 }
 .btn-atras:active {
   background-image: url("../img/bot-volveron.png");
+}
+a.mas {
+  background-image: url(../img/mas1.png);
+  vertical-align: middle;
+  margin-left: 10px;
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  cursor: pointer;
+}
+a.mas:active {
+  background-image: url(../img/mas-hover.png);
 }
 .gestion_demanda .btn-atras {
   margin-top: 25px;
@@ -404,6 +426,7 @@ h2 {
   font-family: "BBVA Web Light" !important;
   font-size: 22px !important;
   color: #0078D2 !important;
+  display: inline-block;
 }
 hr {
   color: #F8F8F5;
@@ -460,6 +483,7 @@ form .datepicker {
 }
 .euro {
   background: url("../img/euro.png") 96% center no-repeat;
+  padding-right: 30px;
 }
 #sidebar {
   position: fixed;
@@ -1842,8 +1866,21 @@ form textarea.error {
 .profile_cont .btn-atras {
   margin-left: 72%;
 }
+.profile_cont #newProjectButton {
+  float: right;
+  margin-top: 20px;
+}
 .profile_cont .table {
   margin-top: 20px;
+}
+.profile_cont .table .body td {
+  color: #434a58;
+  font-family: arial;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 20px 1px 20px 13px;
+  text-align: left;
+  vertical-align: middle !important;
 }
 .profile_cont .table .header {
   background-color: #2966B0;
@@ -1882,16 +1919,17 @@ form textarea.error {
   vertical-align: top;
   padding-top: 0px;
 }
-.profile_cont .summary > div > ul > li {
+.profile_cont .summary > div > ul:first-child > li {
   height: 25px;
   color: #0b5394;
 }
-.profile_cont .summary > div > ul > li > span {
+.profile_cont .summary > div > ul:first-child > li > span {
   color: #434a58;
   font-weight: 700;
 }
 #alta_proyecto .btn-atras {
-  margin-left: 64%;
+  float: right;
+  margin-top: 20px;
 }
 #alta_proyecto .usersTable > .table th:nth-child(1) {
   max-width: 121px !important;
