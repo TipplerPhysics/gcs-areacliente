@@ -55,10 +55,10 @@ $(function() {
 		if (valid==false) {
 			if (modal) {
 				$('#message_div_cliente_modal').addClass('error');
-				$('#span_message_cliente_modal').text('Debe seleccionar un país');
+				$('#span_message_cliente_modal').text('Debe seleccionar un pa\u00EDs');
 			} else {
 				$('#message_div_cliente').addClass('error');
-				$('#span_message_cliente').text('Debe seleccionar un paí­s');
+				$('#span_message_cliente').text('Debe seleccionar un pa\u00EDs');
 			}
 		} else {
 			if (modal) {
@@ -67,6 +67,7 @@ $(function() {
 			} else {
 				$('#message_div_cliente').removeClass('error');
 				$('#span_message_cliente').text('');
+				
 			}
 		}
 		
