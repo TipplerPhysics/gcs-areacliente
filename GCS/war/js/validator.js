@@ -21,7 +21,7 @@ $(function() {
 		nieES: "Por favor, escribe un NIE válido.",
 		cifES: "Por favor, escribe un CIF válido."
 	});
-	
+
 	
 	
 	$.validator.addMethod("money", function(value, element) {
@@ -53,7 +53,7 @@ $(function() {
 		
 		if (valid==false) {
 			$('#span_message_cliente').text("Error");
-			$('#message_div_cliente').addClass('error');
+			$('#message_div_cliente').addClass('Debe seleccionar un país');
 		} else {
 			$('#span_message_cliente').text("");
 			$('#message_div_cliente').removeClass('error');
