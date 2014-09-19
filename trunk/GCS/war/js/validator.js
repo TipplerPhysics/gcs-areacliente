@@ -69,6 +69,7 @@ $(function() {
 				$('#span_message_cliente').text('');
 			}
 		}
+		
 			
 			
 		return valid;
