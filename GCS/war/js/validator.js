@@ -51,12 +51,23 @@ $(function() {
 			}
 		});
 		
+		var modal =  $(element).attr('id').indexOf('modal') != -1;
 		if (valid==false) {
-			$('#span_message_cliente').text("Error");
-			$('#message_div_cliente').addClass('Debe seleccionar un paÃ­s');
+			if (modal) {
+				$('#message_div_cliente_modal').addClass('error');
+				$('#span_message_cliente_modal').text('Debe seleccionar un país');
+			} else {
+				$('#message_div_cliente').addClass('error');
+				$('#span_message_cliente').text('Debe seleccionar un paí­s');
+			}
 		} else {
-			$('#span_message_cliente').text("");
-			$('#message_div_cliente').removeClass('error');
+			if (modal) {
+				$('#message_div_cliente_modal').removeClass('error');
+				$('#span_message_cliente_modal').text('');
+			} else {
+				$('#message_div_cliente').removeClass('error');
+				$('#span_message_cliente').text('');
+			}
 		}
 			
 			
