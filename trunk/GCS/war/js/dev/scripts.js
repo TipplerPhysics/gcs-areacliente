@@ -247,7 +247,6 @@ $(function() {
 		
 		var params = getClientData($form);
 		
-		
 		if($form.valid()){		
 
 			var postData = $form.serialize() + "&accion=new";
@@ -2094,10 +2093,10 @@ function drawChecksAreas(str){
 		if (valid==false) {
 			if (modal) {
 				$('#message_div_cliente_modal').addClass('error');
-				$('#span_message_cliente_modal').text('Debe seleccionar un pa�s');
+				$('#span_message_cliente_modal').text('Debe seleccionar un pa\u00EDs');
 			} else {
 				$('#message_div_cliente').addClass('error');
-				$('#span_message_cliente').text('Debe seleccionar un pa��s');
+				$('#span_message_cliente').text('Debe seleccionar un pa\u00EDs');
 			}
 		} else {
 			if (modal) {
@@ -2106,8 +2105,10 @@ function drawChecksAreas(str){
 			} else {
 				$('#message_div_cliente').removeClass('error');
 				$('#span_message_cliente').text('');
+				
 			}
 		}
+		
 			
 			
 		return valid;
