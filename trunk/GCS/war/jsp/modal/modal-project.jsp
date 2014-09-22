@@ -21,8 +21,8 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Nombre Proyecto<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="project_name_modal" name="project_name" class="long">
+						<span class="lbl">Nombre Proyecto:</span>
+						<input type="text" id="project_name_modal" name="project_name" class="long readonly" readonly="true">
 					</div>
 					
 					<div class="form-field">
@@ -126,4 +126,7 @@
 		<button onclick="sendEditProject();" id="edit_project_form_modal" class="" type="button">Guardar</button>
 		<button data-dismiss="modal" class="dismis_edit_project" type="button">Cancelar</button>
 	</div>	
+</div>
+<div class="ajax_loader" id="ajax_loader">
+	<img src="../../img/ajax-loader.gif" />
 </div>

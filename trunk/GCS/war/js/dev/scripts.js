@@ -141,7 +141,7 @@ function editRowCliente(id){
 		
 		$('#edit_client_form_modal').data("id",id);		
 		
-		window.setTimeout(function(){showModal()}, 500);
+		window.setTimeout(function(){showModal()}, 750);
 		
 	}
 
@@ -636,7 +636,10 @@ $(document).on('hidden.bs.modal', function (e) {
 function showModal(){
 	initSelectpickers();
 	initDatepickers();
+	$('#ajax_loader').css("display","none");
 	$('.modal_ajax').css("display","block");
+	
+	
 }
 
 function sendEditDemanda(){
@@ -884,7 +887,7 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		window.setTimeout(function(){showModal()}, 500);
+		window.setTimeout(function(){showModal()}, 750);
 		
 		
 		
@@ -1343,7 +1346,7 @@ var getIsoDate = function(dateString) {
 			{
 				if (data.success=="true"){
 					$form.hide();
-					$('#span_message_demanda_modal').html('El proyecto ha sido modificado de forma correcta.<br/>En breve volvemos a la página.');
+					$('#span_message_demanda_modal').html('El proyecto ha sido modificado de forma correcta.');
 					$('.modal-footer').hide();
 					$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");
 
@@ -1384,7 +1387,7 @@ function modalCliente(){
 	$('#coste_modal').val(coste);
 	
 	
-	window.setTimeout(function(){showModal()}, 500);
+	window.setTimeout(function(){showModal()}, 750);
 }
 
 
@@ -1464,7 +1467,7 @@ $(function() {
 						//$('#newUserButton').click();	
 						location.reload();
 
-						}, 5000);
+						}, 3000);
 					}else{
 						$('#message_div').removeClass("success").addClass("error");
 						if ($('.new-user-form-holder').height()<190){
@@ -1981,7 +1984,7 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	
-	window.setTimeout(function(){showModal()}, 500);
+	window.setTimeout(function(){showModal()}, 750);
 	
 }
 

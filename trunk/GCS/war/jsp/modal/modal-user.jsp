@@ -90,3 +90,7 @@
 				</div>
 			</div>	
 		</div>
+		
+<div class="ajax_loader" id="ajax_loader">
+	<img src="../../img/ajax-loader.gif" />
+</div>

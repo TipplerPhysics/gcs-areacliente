@@ -412,7 +412,7 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	
-	window.setTimeout(function(){showModal()}, 500);
+	window.setTimeout(function(){showModal()}, 750);
 	
 }
 

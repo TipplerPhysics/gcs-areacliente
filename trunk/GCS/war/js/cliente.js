@@ -141,7 +141,7 @@ function editRowCliente(id){
 		
 		$('#edit_client_form_modal').data("id",id);		
 		
-		window.setTimeout(function(){showModal()}, 500);
+		window.setTimeout(function(){showModal()}, 750);
 		
 	}
 
