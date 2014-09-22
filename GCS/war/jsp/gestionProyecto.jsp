@@ -13,7 +13,7 @@
 	<button id="newUserButton">
 		Nuevo Proyecto<a class="proyecto_span"></a>
 	</button>
-	<button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'">
+	<button id="excel_btn" onclick="window.location.href='../../projectServlet?accion=xls'">
 		Descargar Tabla<a class="excel_span"></a>
 	</button>
 
@@ -167,7 +167,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${proyectos}" var="proyecto">
-									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-nombre="${proyecto.nombre}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}" >
+									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-nombre="${proyecto.cod_proyecto}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}" >
 										<td><span>${proyecto.fecha_alta_str}</span></td>
 										<td><span>${proyecto.cod_proyecto}</span></td>
 										<td><span>${proyecto.clienteName}</span></td>
@@ -218,7 +218,7 @@
 			</div>
 			<div class="">
 				<p>&iquest;Est&aacute; seguro que desea eliminar al proyecto?</p>
-				<p>Se eliminarán todos los servicios asociados</p>
+				<p>Se eliminarán todos los servicios asociados.</p>
 				
 			</div>
 			<div class="modal-footer">

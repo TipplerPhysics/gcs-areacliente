@@ -9,7 +9,10 @@ $(document).on('hidden.bs.modal', function (e) {
 function showModal(){
 	initSelectpickers();
 	initDatepickers();
+	$('#ajax_loader').css("display","none");
 	$('.modal_ajax').css("display","block");
+	
+	
 }
 
 function sendEditDemanda(){
@@ -257,7 +260,7 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		window.setTimeout(function(){showModal()}, 500);
+		window.setTimeout(function(){showModal()}, 750);
 		
 		
 		

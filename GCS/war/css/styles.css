@@ -153,6 +153,9 @@ body {
   background-color: white;
   min-height: 570px;
 }
+p {
+  font-family: Arial;
+}
 .align-top {
   vertical-align: top;
 }
@@ -449,9 +452,6 @@ hr {
   padding: 10px;
   padding-top: 0px;
 }
-.modal-content p {
-  margin-bottom: 20px;
-}
 .modal-content .form-field.horas div.input {
   display: block !important;
   float: none;
@@ -484,6 +484,10 @@ form .datepicker {
 .euro {
   background: url("../img/euro.png") 96% center no-repeat;
   padding-right: 30px;
+}
+.ajax_loader {
+  text-align: center;
+  margin-top: 20px;
 }
 #sidebar {
   position: fixed;
