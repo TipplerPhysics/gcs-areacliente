@@ -211,7 +211,7 @@ a.mas:active {
   background-image: url(../img/mas-hover.png);
 }
 .gestion_demanda .btn-atras {
-  margin-top: 25px;
+  margin-top: 20px;
   float: right;
 }
 .lbl {
@@ -223,10 +223,11 @@ a.mas:active {
 }
 .alta_usuario .btn-atras {
   float: right;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 .gestion_cliente .btn-atras {
-  margin-left: 66%;
+  float: right;
+  margin-top: 20px;
 }
 .gestion_cliente td:nth-child(2),
 .gestion_cliente th:nth-child(2) {
@@ -1868,7 +1869,8 @@ form textarea.error {
   margin-right: 0px;
 }
 .profile_cont .btn-atras {
-  margin-left: 72%;
+  float: right;
+  margin-top: 20px;
 }
 .profile_cont #newProjectButton {
   float: right;

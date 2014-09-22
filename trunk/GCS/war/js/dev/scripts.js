@@ -141,7 +141,8 @@ function editRowCliente(id){
 		
 		$('#edit_client_form_modal').data("id",id);		
 		
-		window.setTimeout(function(){showModal()}, 750);
+		showModal();
+		
 		
 	}
 
@@ -205,7 +206,7 @@ function sendEditClient(){
 
 $(function() {
 	
-	$('#edit-client').on('shown.bs.modal', function () {
+	$('#edit-client').on('loaded.bs.modal', function () {
 		editRowCliente(id);
 	})
 	
@@ -674,7 +675,7 @@ $(function() {
 	var tipoini="";
 	var estadoini="";
 	
-	$('#edit-demanda').on('shown.bs.modal', function () {
+	$('#edit-demanda').on('loaded.bs.modal', function () {
 		editRowDemanda(id);
 	})
 	
@@ -887,7 +888,7 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		window.setTimeout(function(){showModal()}, 750);
+		showModal();
 		
 		
 		
@@ -1386,8 +1387,9 @@ function modalCliente(){
 	$('#gestor_negocio_modal').val(gestor_negocio);
 	$('#coste_modal').val(coste);
 	
+	showModal();
 	
-	window.setTimeout(function(){showModal()}, 750);
+	//window.setTimeout(setTimeout(function(){showModal()}, 1000));
 }
 
 
@@ -1396,13 +1398,15 @@ $(function() {
 		id= $(this).attr('name');	
 	});
 	
-	$('#alta_proyecto').on('shown.bs.modal', function () {
+	$('#alta_proyecto').on('loaded.bs.modal', function () {
 		modalCliente(id);
+		
 	});
 	
 	$('#alta_proyecto').on('click', '.papelera', function(e) {
 		$('#deleteProject').attr('name',$(this).attr('name'));
 	});
+	
 	
 	$('#deleteProject').on('click', function(e) {
 		var id= $(this).attr('name');
@@ -1638,7 +1642,7 @@ $(function() {
 		perPage : 5
 	});
 	
-	$('.alta_usuario').on('shown.bs.modal', function () {
+	$('.alta_usuario').on('loaded.bs.modal', function () {
 		editRow(id);
 	})
 
@@ -1984,7 +1988,7 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	
-	window.setTimeout(function(){showModal()}, 750);
+	showModal();
 	
 }
 

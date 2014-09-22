@@ -1,5 +1,8 @@
 package com.gcs.beans;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -8,8 +11,13 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-public class User {
+public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7953675697633829943L;
+
 	@PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
@@ -38,6 +46,9 @@ public class User {
 	@Persistent 
 	private String permisoStr;
 	
+	@Persistent
+	private Boolean erased;
+	
 	public User(String nombre, String apellido1, String apellido2,
 			String email, int permiso, String permisoStr, String areas,String dto) {
 		super();
@@ -54,6 +65,14 @@ public class User {
 	public User() {
 		super();
 	};
+
+	public Boolean getErased() {
+		return erased;
+	}
+
+	public void setErased(Boolean erased) {
+		this.erased = erased;
+	}
 
 	public int getPermiso() {
 		return permiso;
@@ -126,5 +145,33 @@ public class User {
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
 	}
+	
+	
+	public Boolean isInArray (List<User> lo){
+		
+		Boolean result = false;
+		
+		for (User o:lo){
+			if (this.equals(o)){
+				result = true;
+			}
+		}		
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object object_b) {
+		 if (!(object_b instanceof User)) {
+		        return false;
+		    }
+
+		    User object_a = (User) object_b;
+		    
+		 // Custom equality check here.
+		    return this.email.equals(object_a.email);
+		     
+	}	
+	
+	
 		
 }

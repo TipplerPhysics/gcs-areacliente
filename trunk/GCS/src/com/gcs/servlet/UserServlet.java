@@ -136,13 +136,15 @@ public class UserServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String areas = req.getParameter("areasStr");
 		String dto = req.getParameter("dto");
+		
+
 		if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
 			areas = areas.substring(0, areas.length()-1);
 		}
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
 		
-		HttpSession sesion = req.getSession();
+		
 		
 		
 		UserDao uDao = UserDao.getInstance();
@@ -154,7 +156,8 @@ public class UserServlet extends HttpServlet {
 		}else{
 			
             User u = new User(nombre,ap1,ap2,email,permiso,permisoStr,areas,dto);	
-			
+            u.setErased(false);
+            
 			uDao.createUser(u);
 			
 			json.append("success", "true");
@@ -194,7 +197,7 @@ public class UserServlet extends HttpServlet {
 		try{
 			User u = udao.getUserbyId(Long.parseLong(req.getParameter("id")));
 			
-			udao.deleteUser(u);
+			udao.logicalDelete(u);
 			json.append("success", "true");
 		}catch(Exception e){
 			json.append("failure", "true");
@@ -217,7 +220,7 @@ public class UserServlet extends HttpServlet {
 					.getOutputStream());
 			
 			UserDao uDao = UserDao.getInstance();
-			List<User> usuarios = uDao.getAllUsers();
+			List<User> usuarios = uDao.getAllNonDeletedUsers();
 			
 			WritableSheet s = w.createSheet("Usuarios", 0);
 		

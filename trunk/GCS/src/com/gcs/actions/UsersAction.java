@@ -25,7 +25,7 @@ public class UsersAction extends Action {
 			throws IOException {
 		try {
 			UserDao uDao = UserDao.getInstance();
-			List<User> usuarios = uDao.getAllUsers();
+			List<User> usuarios = uDao.getAllNonDeletedUsers();
 
 			// req.getSession().setAttribute("userList", usuarios);
 

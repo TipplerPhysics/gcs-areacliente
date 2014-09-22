@@ -177,7 +177,7 @@
 										<c:if test="${sessionScope.permiso != 5}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>
+											<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do?git=${proyecto.gestor_it}&gn=${proyecto.gestor_negocio}"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>
 																
 											<a class="papelera" name="${proyecto.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${proyecto.key.id}"></a>
 											

@@ -52,8 +52,9 @@ function modalCliente(){
 	$('#gestor_negocio_modal').val(gestor_negocio);
 	$('#coste_modal').val(coste);
 	
+	showModal();
 	
-	window.setTimeout(function(){showModal()}, 750);
+	//window.setTimeout(setTimeout(function(){showModal()}, 1000));
 }
 
 
@@ -62,13 +63,15 @@ $(function() {
 		id= $(this).attr('name');	
 	});
 	
-	$('#alta_proyecto').on('shown.bs.modal', function () {
+	$('#alta_proyecto').on('loaded.bs.modal', function () {
 		modalCliente(id);
+		
 	});
 	
 	$('#alta_proyecto').on('click', '.papelera', function(e) {
 		$('#deleteProject').attr('name',$(this).attr('name'));
 	});
+	
 	
 	$('#deleteProject').on('click', function(e) {
 		var id= $(this).attr('name');

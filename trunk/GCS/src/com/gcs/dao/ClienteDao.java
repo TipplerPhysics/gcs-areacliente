@@ -7,8 +7,7 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
-import com.gcs.beans.Demanda;
-import com.gcs.beans.User;
+import com.gcs.beans.Proyecto;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -125,6 +124,13 @@ public class ClienteDao {
    }
 	   
 		public void deleteClient(Cliente c){
+			ProyectoDao pDao = ProyectoDao.getInstance();
+			List<Proyecto> projects = pDao.getProjectsByClient(c.getKey().getId());
+			
+			for (Proyecto p:projects){
+				pDao.deleteProject(p);
+			}
+			
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			pm.deletePersistent( pm.getObjectById( c.getClass(), c.getKey().getId())); 
 			pm.close();

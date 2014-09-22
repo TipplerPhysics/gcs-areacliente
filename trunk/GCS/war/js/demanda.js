@@ -47,7 +47,7 @@ $(function() {
 	var tipoini="";
 	var estadoini="";
 	
-	$('#edit-demanda').on('shown.bs.modal', function () {
+	$('#edit-demanda').on('loaded.bs.modal', function () {
 		editRowDemanda(id);
 	})
 	
@@ -260,7 +260,7 @@ $(function() {
 		$('#estado_modal').val(estado);
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
-		window.setTimeout(function(){showModal()}, 750);
+		showModal();
 		
 		
 		

@@ -1,6 +1,7 @@
 package com.gcs.actions.modal;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,29 @@ public class ProyectoModalAction extends Action {
 		ClienteDao cDao = ClienteDao.getInstance();
 		UserDao uDao = UserDao.getInstance();
 		
+		String git_str = req.getParameter("git");
+		String gn_str = req.getParameter("gn");
 		
-		List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-		List<User> gestores_negocio = uDao.getUsersByPermisoStr(4);
+		User git = uDao.getUserbyId(Long.parseLong(git_str));
+		User gn = uDao.getUserbyId(Long.parseLong(gn_str));
+		
+		List<User> gestores_it_jdo = uDao.getUsersByPermisoStr(3);
+		List<User> gestores_negocio_jdo = uDao.getUsersByPermisoStr(4);
+		
+		List<User> gestores_it = new ArrayList<User>();
+		gestores_it.addAll(gestores_it_jdo);
+		
+		List<User> gestores_negocio = new ArrayList<User>();
+		gestores_negocio.addAll(gestores_negocio_jdo);
+		
+		if (!gestores_it.contains(git)){
+			gestores_it.add(git);
+		}
+		
+		
+		if (!gestores_negocio.contains(gn)){
+			gestores_negocio.add(gn);
+		}
 		
 		req.setAttribute("clientes", cDao.getAllClientes());
 		req.setAttribute("gestores_it", gestores_it);
