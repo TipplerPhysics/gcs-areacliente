@@ -35,6 +35,11 @@ public class UserDao {
 		pm.close();
 
 	}
+	
+	public void logicalDelete(User u){
+		u.setErased(true);
+		createUser(u);
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
@@ -43,8 +48,28 @@ public class UserDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		String queryStr = "select from " + User.class.getName();
 		usuarios = (List<User>) pm.newQuery(queryStr).execute();
+		
+		pm.close();
 
 		return usuarios;
+	}
+	
+	public List<User> getAllNonDeletedUsers(){
+		
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+
+		String queryStr = "select from " + User.class.getName()
+				+ " where erased  == false";
+
+		List<User> users = (List<User>) pManager.newQuery(queryStr).execute();		
+
+		transaction.commit();
+		pManager.close();
+
+		return users;
 	}
 
 	public User getUserByMail(String email) {
@@ -109,7 +134,7 @@ public class UserDao {
 		transaction.begin();
 
 		String queryStr = "select from " + User.class.getName()
-				+ " WHERE permiso == :permiso";
+				+ " WHERE permiso == :permiso && erased == false";
 
 		List<User> agrupations = (List<User>) pManager.newQuery(queryStr)
 				.execute(permiso);

@@ -65,11 +65,12 @@ public class UserFilter implements Filter {
 				if (usuario != null) {
 					Integer permiso = usuario.getPermiso();
 					sesion.setAttribute("permiso", permiso);
+					chain.doFilter(req, resp);
 				} else {
-					sesion.setAttribute("permiso", 7);
+					response.sendRedirect("http://intranet.bbva.com/");
 				}
 
-				chain.doFilter(req, resp);
+				
 			}
 		} else {
 			if (url.contains("localhost")) {

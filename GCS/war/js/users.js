@@ -66,7 +66,7 @@ $(function() {
 		perPage : 5
 	});
 	
-	$('.alta_usuario').on('shown.bs.modal', function () {
+	$('.alta_usuario').on('loaded.bs.modal', function () {
 		editRow(id);
 	})
 
@@ -412,7 +412,7 @@ function editRow(id){
 	$("#permiso_select_modal").val(cpermiso);
 	
 	
-	window.setTimeout(function(){showModal()}, 750);
+	showModal();
 	
 }
 
