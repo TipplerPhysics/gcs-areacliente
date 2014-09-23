@@ -2,7 +2,7 @@
 
 <div class="gestion_demanda">
 
-	<img class="users_title_icon" src="../img/user.png"><h1>Gesti&oacute;n de peticiones</h1>
+	<h1>Gesti&oacute;n de peticiones</h1>
 	<!-- <button class="btn-atras" type="button">Atr&aacute;s</button>  -->
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
 	<hr/>
