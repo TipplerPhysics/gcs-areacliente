@@ -5,7 +5,7 @@
 
 <div class="clients">
 
-	<img class="users_title_icon" src="../img/user.png"><h1>Listado de Clientes</h1>
+	<h1>Listado de Clientes</h1>
 	<hr/>
 	<div class="leyenda_clientes">
 		<div class="color alta"></div><span>Criticidad Alta</span>

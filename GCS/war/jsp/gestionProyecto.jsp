@@ -3,7 +3,7 @@
 <div id="alta_proyecto">
 
 
-<img class="users_title_icon" src="../img/user.png">
+
 <h1>Gestión proyecto</h1>
 <span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
