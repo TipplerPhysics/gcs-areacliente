@@ -500,6 +500,16 @@ form .datepicker {
   text-align: center;
   margin-top: 20px;
 }
+.breadcrumbs {
+  display: inline-block;
+  height: 40px;
+  position: relative;
+}
+.breadcrumbs > span {
+  color: #0078d2;
+  cursor: pointer;
+  font-family: arial;
+}
 #sidebar {
   position: fixed;
   top: 50%;
@@ -861,6 +871,9 @@ form .datepicker {
   border-bottom: 2px solid #DCDCDC;
 }
 .newUserbox {
+  display: inline-block;
+  width: 500px;
+  float: right;
   margin-bottom: 10px;
   position: relative;
   text-align: right;
@@ -1081,6 +1094,7 @@ form .datepicker {
 }
 .clients .leyenda_clientes .media {
   background-color: #FDBD2C;
+  margin-top: 0px !important;
 }
 .clients .leyenda_clientes .baja {
   background-color: #86C82D;

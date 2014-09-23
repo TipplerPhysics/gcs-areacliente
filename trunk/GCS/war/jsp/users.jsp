@@ -9,6 +9,10 @@
 
 <hr />
 
+<div class="breadcrumbs">
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de usuarios </span>
+	</div>
+
 <div class="newUserbox">
 	<button id="newUserButton">
 		Nuevo Usuario<a class="user_span"></a>

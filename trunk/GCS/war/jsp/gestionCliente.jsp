@@ -7,6 +7,9 @@
 	
 	
 	<hr/>
+	<div class="breadcrumbs">
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de usuarios </span>
+	</div>
 	
 	<div class="newUserbox">
 		<c:if test="${sessionScope.permiso != 3 and sessionScope.permiso != 5 and sessionScope.permiso != 4}">
