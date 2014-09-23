@@ -5,7 +5,7 @@
 
 <img class="users_title_icon" src="../img/user.png">
 <h1>Gestión proyecto</h1>
-<span class="btn-atras" onclick="window.location.href='../../'"></span>
+<span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
 <hr/>
 
@@ -32,7 +32,7 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Nombre Proyecto:</span>
+						<span class="lbl">Código Proyecto:</span>
 						<input type="text" id="project_name" name="project_name" class="long readonly" unselectable="on" readonly="true">
 					</div>
 					

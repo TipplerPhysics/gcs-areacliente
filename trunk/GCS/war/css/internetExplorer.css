@@ -1,0 +1,16 @@
+.radio-container input[type=checkbox] + label span{
+		display:none !important;
+		background-color: red;
+	}
+	
+.radio-container input[type=checkbox]{
+		position:static;
+		margin-right:5px;
+	}
+	
+.modal-dialog{
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:100px;
+}
+	
