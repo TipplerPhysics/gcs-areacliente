@@ -29,7 +29,7 @@ public class GestionProyectoAction extends Action{
 		ProyectoDao pDao = ProyectoDao.getInstance();
 		List<Proyecto> projects = pDao.getAllProjects();
 		
-		List<Cliente> clientes = cDao.getAllClientes();
+		List<Cliente> clientes = cDao.getAllNonDeletedClients();
 		
 		req.setAttribute("clientes", clientes);
 		

@@ -27,6 +27,7 @@ public class DemandaModalAction extends Action{
 		
 		String git_str = req.getParameter("git");
 		String gn_str = req.getParameter("gn");
+		String cliente_str = req.getParameter("client");
 
 		UserDao uDao = UserDao.getInstance();
 		DemandaDao dDao = DemandaDao.getInstance();
@@ -34,6 +35,7 @@ public class DemandaModalAction extends Action{
 		
 		User git = uDao.getUserbyId(Long.parseLong(git_str));
 		User gn = uDao.getUserbyId(Long.parseLong(gn_str));
+		Cliente cliente = cDao.getClienteById(Long.parseLong(cliente_str));
 		
 		List<User> gestores_it_jdo = uDao.getUsersByPermisoStr(3);
 		List<User> gestores_negocio_jdo = uDao.getUsersByPermisoStr(4);
@@ -44,7 +46,9 @@ public class DemandaModalAction extends Action{
 		List<User> gestores_negocio = new ArrayList<User>();
 		gestores_negocio.addAll(gestores_negocio_jdo);
 		
-		List<Cliente> clientes = cDao.getAllClientes();
+		List<Cliente> clientes_jdo = cDao.getAllNonDeletedClients();
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		clientes.addAll(clientes_jdo);
 		
 		if (!gestores_it.contains(git)){
 			gestores_it.add(git);
@@ -53,6 +57,10 @@ public class DemandaModalAction extends Action{
 		
 		if (!gestores_negocio.contains(gn)){
 			gestores_negocio.add(gn);
+		}
+		
+		if (!clientes.contains(cliente)){
+			clientes.add(cliente);
 		}
 
 		String gestoresStr = "";

@@ -21,7 +21,7 @@ public class GestionClienteAction extends Action{
 			throws IOException {
 		
 		ClienteDao cDao = ClienteDao.getInstance();
-		List<Cliente> clientes = cDao.getAllClientes();
+		List<Cliente> clientes = cDao.getAllNonDeletedClients();
 		
 		req.setAttribute("clientes", clientes);
 				

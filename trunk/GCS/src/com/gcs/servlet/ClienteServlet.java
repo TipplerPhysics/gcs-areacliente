@@ -172,7 +172,7 @@ public class ClienteServlet extends HttpServlet {
 		try{
 			ClienteDao cDao = new ClienteDao();
 			Cliente c = cDao.getClienteById(Long.parseLong(id));
-			cDao.deleteClient(c);
+			cDao.logicalDelete(c);
 			
 			json.append("success", "true");
 		} catch (Exception e) {

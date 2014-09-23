@@ -114,7 +114,7 @@
 						
 						<div class="form-field">
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="coste" name="coste" class="long euro money">
+						<input type="text" aria-required="true" required="" readonly="" id="coste" name="coste" class="long euro money readonly">
 					</div>
 				</div>
 				
@@ -177,7 +177,7 @@
 										<c:if test="${sessionScope.permiso != 5}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do?git=${proyecto.gestor_it}&gn=${proyecto.gestor_negocio}"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>
+											<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do?git=${proyecto.gestor_it}&gn=${proyecto.gestor_negocio}&client=${proyecto.clienteKey}"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>
 																
 											<a class="papelera" name="${proyecto.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${proyecto.key.id}"></a>
 											

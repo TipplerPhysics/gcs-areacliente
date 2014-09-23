@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.User;
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.UserDao;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -31,6 +33,8 @@ public class ConfigurationServlet extends HttpServlet{
 			
 			if ("setUsersToNonErased".equals(accion)){
 				setUsersToNonErased(resp);
+			}else if ("setClientsToNonErased".equals(accion)){
+				setClientsToNonErased(resp);
 			}
 		}
 	}
@@ -47,6 +51,34 @@ public class ConfigurationServlet extends HttpServlet{
 			if (u.getErased()==null){
 				u.setErased(false);
 				uDao.createUser(u);
+			}
+		}
+		
+	
+		json.append("success", "true");		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+		
+		} catch (JSONException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	private void setClientsToNonErased(HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		
+		try {
+		
+		ClienteDao cDao = ClienteDao.getInstance();
+		List<Cliente> clients = cDao.getAllClientes();
+		
+		for (Cliente c:clients){
+			if (c.isErased()==null){
+				c.setErased(false);
+				cDao.createCliente(c);
 			}
 		}
 		
