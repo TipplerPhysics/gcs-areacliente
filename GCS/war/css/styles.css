@@ -10,7 +10,7 @@
 }
 .header-layout {
   padding: 0px;
-  background-color: #F9F9F9;
+  background-color: #F1F1F1;
   height: 175px;
   text-align: center;
 }
@@ -18,6 +18,9 @@
   display: inline-block;
   width: 980px;
   height: 175px;
+  box-shadow: 2px 2px 2px 0 #a3a3a3;
+  -moz-box-shadow: 2px 2px 2px 0 #a3a3a3;
+  -webkit-box-shadow: 2px 2px 2px 0 #a3a3a3;
   background-color: white;
   padding: 0 10px;
   margin-right: auto;
@@ -136,11 +139,14 @@ button.btn-default {
 }
 body {
   margin: 0px;
-  background-color: #F9F9F9;
+  background-color: #F1F1F1;
+}
+html {
+  background-color: #F1F1F1;
 }
 .body-layout {
   padding: 0px;
-  background-color: #F9F9F9;
+  background-color: #F1F1F1;
   text-align: center;
 }
 .body-container {
@@ -152,6 +158,9 @@ body {
   text-align: left;
   background-color: white;
   min-height: 570px;
+  box-shadow: 2px 2px 2px 0 #a3a3a3;
+  -moz-box-shadow: 2px 2px 2px 0 #a3a3a3;
+  -webkit-box-shadow: 2px 2px 2px 0 #a3a3a3;
 }
 p {
   font-family: Arial;
@@ -331,17 +340,17 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
   font-size: 12px;
 }
 .white-btn {
-  background: #f4f7f5;
-  background: -moz-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f7f5), color-stop(100%, #f4f7f5));
-  background: -webkit-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
-  background: -o-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
-  background: -ms-linear-gradient(top, #f4f7f5 0%, #f4f7f5 100%);
-  background: linear-gradient(to bottom, #f4f7f5 0%, #f4f7f5 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f4f7f5, endColorstr=#f4f7f5, GradientType=0);
+  background: #f1f1f1;
+  background: -moz-linear-gradient(top, #f1f1f1 0%, #f1f1f1 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f1f1f1), color-stop(100%, #f1f1f1));
+  background: -webkit-linear-gradient(top, #f1f1f1 0%, #f1f1f1 100%);
+  background: -o-linear-gradient(top, #f1f1f1 0%, #f1f1f1 100%);
+  background: -ms-linear-gradient(top, #f1f1f1 0%, #f1f1f1 100%);
+  background: linear-gradient(to bottom, #f1f1f1 0%, #f1f1f1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f1f1f1, endColorstr=#f1f1f1, GradientType=0);
+  background-color: #F1F1F1;
   border: 1px solid #dcdcdc;
   border-bottom: 0px;
-  background-color: #F4F7F5;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   color: #0065B7;
@@ -863,7 +872,7 @@ form .datepicker {
 }
 .newUserbox .new-user-form-holder {
   border: 1px solid #FFF;
-  background-color: #F4F7F5;
+  background-color: #F1F1F1;
   border-radius: 2px;
   overflow: hidden;
   height: 0px;
@@ -1736,7 +1745,7 @@ form textarea.error {
   margin: 0;
   padding: 0 5px 0;
   vertical-align: top;
-  color: #FF0000;
+  color: #CA0161;
   font-weight: bold;
 }
 .error-messages {
