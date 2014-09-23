@@ -7,6 +7,10 @@
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
 	<hr/>
 	
+	<div class="breadcrumbs">
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de peticiones </span>
+	</div>
+	
 	<div class="newUserbox">
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">

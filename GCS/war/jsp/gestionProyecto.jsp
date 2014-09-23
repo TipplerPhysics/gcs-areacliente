@@ -8,7 +8,9 @@
 <span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
 <hr/>
-
+<div class="breadcrumbs">
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de proyecto </span>
+	</div>
 <div class="newUserbox">
 	<button id="newUserButton">
 		Nuevo Proyecto<a class="proyecto_span"></a>

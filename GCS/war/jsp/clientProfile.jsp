@@ -6,6 +6,9 @@
 	<h1>Ficha Cliente</h1>
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
 	<hr/>
+	<div class="breadcrumbs">
+		<span onclick="window.location.href='../' ">Home</span> > <span> Ficha cliente </span>
+	</div>
 	<div class="summary">
 		<div class="img_div">
 		<c:choose>
