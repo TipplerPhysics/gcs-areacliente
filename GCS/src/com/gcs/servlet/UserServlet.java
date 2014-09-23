@@ -149,13 +149,29 @@ public class UserServlet extends HttpServlet {
 		
 		UserDao uDao = UserDao.getInstance();
 		User us = uDao.getUserByMail(email);
+		Boolean create = true;
+		User u = new User();
 		
-		if (us!=null){
-			json.append("failure", "true");
-			json.append("error", "Ya existe un usuario con este email");
-		}else{
+		if (us != null){
+			if (us.getErased()==false){
+				json.append("failure", "true");
+				json.append("error", "Ya existe un usuario con este email");
+				create = false;
+			}else{
+				u = us;
+			}
+		}		
 			
-            User u = new User(nombre,ap1,ap2,email,permiso,permisoStr,areas,dto);	
+		if (create){
+           // u = new User(nombre,ap1,ap2,email,permiso,permisoStr,areas,dto);	
+			u.setNombre(nombre);
+			u.setApellido1(ap1);
+			u.setApellido2(ap2);
+			u.setEmail(email);
+			u.setPermiso(permiso);
+			u.setPermisoStr(permisoStr);
+			u.setAreas(areas);
+			u.setDepartamento(dto);
             u.setErased(false);
             
 			uDao.createUser(u);

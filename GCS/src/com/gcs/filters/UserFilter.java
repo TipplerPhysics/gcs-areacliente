@@ -40,7 +40,7 @@ public class UserFilter implements Filter {
 
 		if (user != null) {
 			if (user.getEmail().contains("@bbva.com")
-					|| url.contains("localhost")) {
+					|| url.contains("localhost") || url.contains("8080")) {
 
 				String email = "";
 
@@ -49,8 +49,8 @@ public class UserFilter implements Filter {
 				com.gcs.beans.User usuario = uDao.getUserByMail(email);
 				HttpSession sesion = request.getSession();
 
-				if (url.contains("localhost")) {
-					req.setAttribute("entorno", "http://localhost:8888");
+				if (url.contains("localhost") || url.contains("8080")) {
+					req.setAttribute("entorno", "http://localhost:8080");
 				} else {
 					if (url.contains("pre.")) {
 						req.setAttribute("entorno",
@@ -67,13 +67,18 @@ public class UserFilter implements Filter {
 					sesion.setAttribute("permiso", permiso);
 					chain.doFilter(req, resp);
 				} else {
-					response.sendRedirect("http://intranet.bbva.com/");
+					if (url.contains("8080")){
+						chain.doFilter(req, resp);
+					}else{
+						response.sendRedirect("http://intranet.bbva.com/");
+					}
+					
 				}
 
 				
 			}
 		} else {
-			if (url.contains("localhost")) {
+			if (url.contains("localhost") || url.contains("8080")) {
 				chain.doFilter(req, resp);
 			} else {
 				response.sendRedirect("http://intranet.bbva.com/");

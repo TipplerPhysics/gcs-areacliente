@@ -8,6 +8,18 @@
 		<title>Portal GCS</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.structure.min.css" />
+  		<link rel="stylesheet" type="text/css" href="../components/bootstrap/select/bootstrap-select.css" />
+	  	<link rel="stylesheet" type="text/css" href="../css/styles.min.css" /> 	
+	  	<!--[if lte IE 9]>
+  			<link rel="stylesheet" type="text/css" href="../css/internetExplorer.css" /> 	
+	  	 <![endif]-->
+		
+		
       	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       	<!-- Custom UI: datepicker only -->
       	<script src="../tools/jquery-ui.min.js" type="text/javascript"></script>
@@ -17,12 +29,7 @@
 		<script src="../components/bootstrap/select/bootstrap-select.min.js" type="text/javascript"></script>
 		<script src="../js/dev/scripts.js" type="text/javascript"></script>		
 
-		<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.min.css" />
-		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.theme.min.css" />
-		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.structure.min.css" />
-  		<link rel="stylesheet" type="text/css" href="../components/bootstrap/select/bootstrap-select.css" />
-	  	<link rel="stylesheet" type="text/css" href="../css/styles.min.css" /> 
+		
 	  	
 	</head>
 	<body>
