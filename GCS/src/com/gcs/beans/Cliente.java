@@ -47,8 +47,19 @@ public class Cliente {
 	@Persistent
 	private Integer project_number;
 	
+	@Persistent
+	private Boolean erased;
 	
 	
+	
+	public Boolean isErased() {
+		return erased;
+	}
+
+	public void setErased(Boolean erased) {
+		this.erased = erased;
+	}
+
 	public Integer getProject_number() {
 		return project_number;
 	}

@@ -253,7 +253,7 @@
 										<td><span>${demanda.estado}</span></td>
 										<td><span>${demanda.cod_peticion}</span></td>
 										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-											<td><img class="vs" src="../img/vs.png"><a class="lapiz" data-target="#edit-demanda" href="../../demandaModal.do?git=${demanda.gestor_it}&gn=${demanda.gestor_negocio}" data-toggle="modal" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
+											<td><img class="vs" src="../img/vs.png"><a class="lapiz" data-target="#edit-demanda" href="../../demandaModal.do?git=${demanda.gestor_it}&gn=${demanda.gestor_negocio}&client=${demanda.clientekey}" data-toggle="modal" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
 										</c:if>
 									</tr>
 								</c:forEach>

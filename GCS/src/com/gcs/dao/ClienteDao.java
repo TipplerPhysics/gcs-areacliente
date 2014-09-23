@@ -1,5 +1,6 @@
 package com.gcs.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -8,6 +9,7 @@ import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Proyecto;
+import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -108,8 +110,35 @@ public class ClienteDao {
 		Query q = pm.newQuery("select from " + Cliente.class.getName());		
 		q.setOrdering("nombre asc");
 		clientes = (List<Cliente>) q.execute();
+		
+		pm.close();
 
 		return clientes;
+	}
+	
+public List<Cliente> getAllNonDeletedClients(){
+		
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+
+		String queryStr = "select from " + Cliente.class.getName()
+				+ " where erased  == false";
+
+		List<Cliente> clients = (List<Cliente>) pManager.newQuery(queryStr).execute();	
+		
+	
+
+		transaction.commit();
+		pManager.close();
+
+		return clients;
+	}
+
+	public void logicalDelete(Cliente c){
+		c.setErased(true);
+		createCliente(c);
 	}
 	
 	   public Cliente getClienteById(long l) {

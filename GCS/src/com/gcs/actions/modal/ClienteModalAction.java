@@ -18,12 +18,8 @@ public class ClienteModalAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
-		ClienteDao cDao = ClienteDao.getInstance();
-		List<Cliente> clientes = cDao.getAllClientes();
-		
-		req.setAttribute("clientes", clientes);
-				
+	
+	
 
 		return mapping.findForward("ok");
 	}
