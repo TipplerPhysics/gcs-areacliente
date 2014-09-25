@@ -119,19 +119,13 @@ public class ClienteDao {
 public List<Cliente> getAllNonDeletedClients(){
 		
 
-		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
-
-		String queryStr = "select from " + Cliente.class.getName()
-				+ " where erased  == false";
-
-		List<Cliente> clients = (List<Cliente>) pManager.newQuery(queryStr).execute();	
+		List<Cliente> clients_jdo = getAllClientes();
+		List<Cliente> clients = new ArrayList<Cliente>();
 		
-	
-
-		transaction.commit();
-		pManager.close();
+		
+		for (Cliente c:clients_jdo)
+			if (!c.isErased())
+				clients.add(c);
 
 		return clients;
 	}

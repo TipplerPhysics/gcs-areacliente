@@ -503,7 +503,8 @@ form .datepicker {
 .breadcrumbs {
   display: inline-block;
   height: 40px;
-  position: relative;
+  position: absolute;
+  z-index: 20;
 }
 .breadcrumbs > span {
   color: #0078d2;
@@ -871,9 +872,6 @@ form .datepicker {
   border-bottom: 2px solid #DCDCDC;
 }
 .newUserbox {
-  display: inline-block;
-  width: 500px;
-  float: right;
   margin-bottom: 10px;
   position: relative;
   text-align: right;
