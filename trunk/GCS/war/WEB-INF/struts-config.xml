@@ -62,6 +62,10 @@
 			<forward name="ok" path="/jsp/skeletons/gestionDemanda-skeleton.jsp" />
 		</action>
 		
+		<action path="/dashboard/gestionCostes" type="com.gcs.actions.GestionCostesAction">
+			<forward name="ok" path="/jsp/skeletons/gestionCostes-skeleton.jsp" />
+		</action>
+		
 		<action path="/dashboard/gestionProyecto" type="com.gcs.actions.GestionProyectoAction">
 			<forward name="ok" path="/jsp/skeletons/gestionProyecto-skeleton.jsp" />
 		</action>
