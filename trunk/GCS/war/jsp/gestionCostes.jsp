@@ -1,49 +1,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="gestion_cliente">
-
-	<h1>GestiÃ³n costes</h1>
+	<h1>Gestión costes</h1>
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
-	
 	
 	<hr/>
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> GestiÃ³n de costes </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de costes </span>
 	</div>
 	
-	<div class="newUserbox">
-		
-			<button id="newUserButton">
-				Nuevo Cliente<a class="user_span"></a>
-			</button>
+	<div class="newUserbox">		
 	
-		
-		
-			<button id="newProjectButton" onclick="location.href = './gestionProyecto.do';">
-				Nuevo Proyecto<a class="proyecto_span_fixed"></a>
-			</button>	
-		
-		
+		<button id="newUserButton">
+			Nuevo coste<a class="user_span"></a>
+		</button>
+
 		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
 			Descargar Tabla<a class="excel_span"></a>
 		</button>
 
-
 		<div class="new-user-form-holder">
-			<form id="new-client-form" name="new-client-form" action="/clienteServlet"
+			<form id="new-coste-form" name="new-client-form" action="/costeServlet"
 				method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
-						
-						
-						
-						
+
 					</div>
 					<div class="form-field-divider right">
-						
 							
-					</div>
-						 
+					</div>						 
 					<div id="message_div_cliente" class="message_div">
 						<span id="span_message_cliente" class="span_message"></span>
 					</div>
@@ -62,14 +47,11 @@
 					<thead>
 						<tr>
 							<th><span class="table-title">Fecha Entrada</span></th>
-							<th><span class="table-title">ID Cliente</span></th>
 							<th><span class="table-title">Cliente</span></th>
-							<th><span class="table-title">Referencia Global</span></th>
-							<th><span class="table-title">Tipo</span></th>
-							<th><span class="table-title">Criticidad</span></th>
-							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-								<th style="width: 110px;">&nbsp;</th>
-							</c:if>
+							<th><span class="table-title">Nombre Proyecto</span></th>
+							<th><span class="table-title">Proveedor GMM</span></th>
+							<th><span class="table-title">Gestor registrado</span></th>
+							<th style="width: 110px;">&nbsp;</th>
 						</tr>
 						<tr>
 							<th class="search-th"><input class="search col0"></th>
@@ -77,29 +59,26 @@
 							<th class="search-th"><input class="search col2"></th>
 							<th class="search-th"><input class="search col3"></th>
 							<th class="search-th"><input class="search col4"></th>
-							<th class="search-th"><input class="search col5"></th>
-							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-								<th style="width: 110px;">&nbsp;</th>
-							</c:if>
+							<th style="width: 110px;">&nbsp;</th>
 						</tr>
 					</thead>
 					<tbody id="myTable" cellspacing="0">
 						<c:choose>
-							<c:when test="${empty clientes}">
+							<c:when test="${empty costes}">
 								<tr>
-									<td><span>No existen clientes.</span></td>
+									<td><span>No existen costes.</span></td>
 								</tr>
 							</c:when>
 
 							<c:otherwise>
-								<c:forEach items="${clientes}" var="cliente">
-									<tr class="valid-result" id="row${cliente.key.id}" name="${cliente.key.id}" data-fecha-alta="${cliente.str_fecha_alta_cliente}" data-nombre="${cliente.nombre}" data-tipo="${cliente.tipo}" data-criticidad="${cliente.criticidad}" data-ref-global="${cliente.ref_global}" data-logo-url="${cliente.logo_url}" data-paises="${cliente.paises}">
-										<td><span>${cliente.str_fecha_alta_cliente}</span></td>
-										<td><span>${cliente.clientId}</span></td>
-										<td><span>${cliente.nombre}</span></td>
-										<td><span>${cliente.ref_global}</span></td>
-										<td><span>${cliente.tipo}</span></td>
-										<td><span>${cliente.criticidad}</span></td>
+								<c:forEach items="${costes}" var="costes">
+									<tr class="valid-result" id="row${costes.key.id}" name="${costes.key.id}">
+										<td><span></span></td>
+										<td><span></span></td>
+										<td><span></span></td>
+										<td><span></span></td>
+										<td><span></span></td>
+										<td><span></span></td>
 										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
