@@ -24,8 +24,75 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 
+						<div class="form-field">
+							<span class="lbl">Nombre proyectos<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" readonly value="" size="16" name="nombre_proyecto" id="nombre_proyecto">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Fecha alta costes<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_costes' name="fecha_alta_costes" id="fecha_alta_costes" required aria-required="true">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Número valoración:</span>
+							<div class="input">
+								<select>
+									<option>Dade capullo</option>
+									<option>Dade capullo</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Gestión de cambio:</span>
+							<div class="input">
+								<select>
+									<option>Dade capullo</option>
+									<option>Dade capullo</option>
+								</select>
+							</div>
+						</div>
+
 					</div>
 					<div class="form-field-divider right">
+					
+						<div class="form-field">
+							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" readonly value="" size="16" name="nombre_cliente" id="nombre_cliente">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Gestión de cambio:</span>
+							<div class="input">
+								<select>
+									<option>Dade capullo</option>
+									<option>Dade capullo</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Gestor IT-registro:</span>
+							<div class="input">
+								<input type="text" readonly value="" size="16" name="nombre_gestor" id="nombre_gestor">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Comentarios:</span>
+							<div class="input">
+								<textarea rows="4" cols="50" name="comentarios" id="comentarios">
+								
+								</textarea>
+							</div>
+						</div>
 							
 					</div>						 
 					<div id="message_div_cliente" class="message_div">
