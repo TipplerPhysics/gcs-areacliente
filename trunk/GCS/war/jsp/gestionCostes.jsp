@@ -8,21 +8,21 @@
 	
 	<hr/>
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de usuarios </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de costes </span>
 	</div>
 	
 	<div class="newUserbox">
-		<c:if test="${sessionScope.permiso != 3 and sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+		
 			<button id="newUserButton">
 				Nuevo Cliente<a class="user_span"></a>
 			</button>
-		</c:if>
+	
 		
-		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+		
 			<button id="newProjectButton" onclick="location.href = './gestionProyecto.do';">
 				Nuevo Proyecto<a class="proyecto_span_fixed"></a>
 			</button>	
-		</c:if>	
+		
 		
 		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
 			Descargar Tabla<a class="excel_span"></a>
@@ -142,7 +142,7 @@
 					<hr />
 				</div>
 				<div class="">
-					<p>Se eliminar�n todos los proyectos asociados.<p>
+					<p>Se eliminarán todos los proyectos asociados.<p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="pink-btn" id="deleteClient">Eliminar</button>
