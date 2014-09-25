@@ -9,7 +9,7 @@
 
 <hr/>
 <div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de proyecto </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span> > <span> Gestión de proyecto </span>
 	</div>
 <div class="newUserbox">
 	<button id="newUserButton">
@@ -115,8 +115,8 @@
 						</div>
 						
 						<div class="form-field">
-						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" readonly="" id="coste" name="coste" class="long euro money readonly">
+						<span class="lbl">Coste:</span>
+						<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
 					</div>
 				</div>
 				

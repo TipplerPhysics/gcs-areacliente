@@ -100,7 +100,7 @@
 						
 						<div class="form-field">
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" required="" id="coste_modal" name="coste" class="long euro">
+						<input type="text" aria-required="true" readonly="" required="" id="coste_modal" name="coste" class="long euro readonly">
 					</div>
 				</div>
 				

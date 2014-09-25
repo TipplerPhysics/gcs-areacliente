@@ -16,7 +16,7 @@
 				</li>
 				
 				<li class="menu">
-					<a class="no-underline" href="https://sites.google.com/a/bbva.com/onboarding/">
+					<a class="no-underline" href="https://gcs-arecliente.appspot.com">
 						<span class="menu-title">Clientes</span>
 					</a>
 				</li>
