@@ -20,8 +20,7 @@
 		</button>
 
 		<div class="new-user-form-holder">
-			<form id="new-coste-form" name="new-client-form" action="/costeServlet"
-				method="POST" novalidate="novalidate">
+			<form id="new-coste-form" name="new-client-form" action="/costeServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
 
