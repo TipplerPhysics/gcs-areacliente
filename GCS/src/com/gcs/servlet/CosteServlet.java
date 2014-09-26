@@ -11,9 +11,11 @@ import javax.servlet.http.HttpSession;
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
+import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.CosteDao;
 import com.gcs.dao.ProyectoDao;
+import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -109,8 +111,13 @@ public class CosteServlet extends HttpServlet {
 			c.setFecha_solicitud_valoracion(Utils.dateConverter(fecha_solicitud_valoracion));
 			c.setHoras_gestion(gestion_horas);
 			c.setCoste_gestion(gestion_coste);
-			if (!"default".equals(gestor_it))
+			if (!"default".equals(gestor_it)){
 				c.setGestor_it_key(Long.parseLong(gestor_it));
+				UserDao uDao = UserDao.getInstance();
+				User gestor_it_obj = uDao.getUserbyId(Long.parseLong(gestor_it));
+				c.setGestor_it_name(gestor_it_obj.getNombre() + " " + gestor_it_obj.getApellido1() + " " + gestor_it_obj.getApellido2());
+			}
+				
 			c.setProjectKey(Long.parseLong(project));
 			c.setProject_name(p.getCod_proyecto());
 			

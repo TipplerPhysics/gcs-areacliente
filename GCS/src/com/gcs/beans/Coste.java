@@ -44,6 +44,9 @@ public class Coste {
 	private Long gestor_it_key;
 	
 	@Persistent
+	private String gestor_it_name;
+	
+	@Persistent
 	private String num_valoracion;
 	
 	@Persistent
@@ -90,6 +93,14 @@ public class Coste {
 	
 	public Long getProjectKey() {
 		return projectKey;
+	}
+
+	public String getGestor_it_name() {
+		return gestor_it_name;
+	}
+
+	public void setGestor_it_name(String gestor_it_name) {
+		this.gestor_it_name = gestor_it_name;
 	}
 
 	public String getProject_name() {
