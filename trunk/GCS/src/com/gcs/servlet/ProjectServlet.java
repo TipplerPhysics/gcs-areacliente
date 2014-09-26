@@ -27,6 +27,7 @@ import com.gcs.beans.User;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -46,17 +47,39 @@ public class ProjectServlet extends HttpServlet{
 			if ("new".equals(accion)){
 				createProject(req,resp);
 			}else if ("update".equals(accion)){
-				editProject(req,resp);
+				editProject(req,resp);	
 			}else if ("delete".equals(accion)){
 				deleteProject(req,resp);
 			}else if ("xls".equals(accion)){
 				generateXLS(req,resp);
+			}else if ("getProjectsByClient".equals(accion)){
+				getProjectsByClient(req,resp);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 
 		
+	}
+	
+	private void getProjectsByClient(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
+		String id = req.getParameter("id");
+		
+		JSONArray jarray = new JSONArray();
+		
+		ProyectoDao pDao = ProyectoDao.getInstance();
+		List<Proyecto> projects = pDao.getProjectsByClient(Long.parseLong(id));
+		
+		for (Proyecto p:projects){
+			JSONObject json = new JSONObject();
+			json.append("id",p.getKey().getId());
+			json.append("name",p.getCod_proyecto());
+			jarray.put(json);			
+		}			
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(jarray);
 	}
 	
 	public void doPost (HttpServletRequest req, HttpServletResponse resp){
@@ -230,7 +253,7 @@ public class ProjectServlet extends HttpServlet{
 			String coste = req.getParameter("coste");
 			
 			if (fecha_alta_str.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
-					||gestor_it_str.equals("")||gestor_negocio_str.equals("")||coste.equals("")){
+					||gestor_it_str.equals("")||gestor_negocio_str.equals("")){
 				json.append("failure", "true");
 				json.append("error","Faltan campos obligatorios.");
 				
@@ -256,6 +279,9 @@ public class ProjectServlet extends HttpServlet{
 					
 					
 					pDao.createProject(p);
+					
+					json.append("success", "true");
+					json.append("id", p.getKey().getId());
 							
 			}
 		} catch (ParseException e) {
@@ -265,8 +291,7 @@ public class ProjectServlet extends HttpServlet{
 		
 		
 		
-		json.append("success", "true");
-		json.append("id", p.getKey().getId());
+		
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");

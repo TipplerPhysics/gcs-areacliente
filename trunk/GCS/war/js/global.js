@@ -31,7 +31,7 @@ var initDatepickers = function() {
 
 var initSelectpickers = function() {
 	// init all the datepickers which generally are always inside of a form.
-	$('form').find('.selectpicker').selectpicker();
+	$('html').find('.selectpicker').selectpicker();
 }
 
 // Convert a string date dd/mm/yyyy to yyyy/mm/dd.

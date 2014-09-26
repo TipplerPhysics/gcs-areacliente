@@ -85,9 +85,9 @@ $(function() {
 				}, 25);
 				setTimeout(function(){
 					$('#newUserButton').removeClass('white-btn');	
-					$('.user_span').removeClass('blue');
-					$('.demanda_span').removeClass('blue');
-					$('.proyecto_span').removeClass('blue');
+					$($('#newUserButton').children()[0]).removeClass('blue');
+					
+					
 					
 
 					var $form = $newUserButton.parent().find('form');
@@ -97,9 +97,8 @@ $(function() {
 		} else {
 			if ($('.new-user-form-holder').css('overflow')=="hidden"){
 				$('#newUserButton').addClass('white-btn');
-				$('.user_span').addClass('blue');
-				$('.demanda_span').addClass('blue');
-				$('.proyecto_span').addClass('blue');
+				$($('#newUserButton').children()[0]).addClass('blue');
+				
 				$('.new-user-form-holder').addClass('open');
 				if(userBoxSize > 0) {
 					setTimeout(function(){

@@ -312,6 +312,20 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover{
     }
 }
 
+.coste_span{
+	background-image: url("../img/pagosBlanco.png");
+    display: inline-block;
+    height: 15px;
+    margin-left: 10px;
+    vertical-align: text-bottom;
+    width: 15px;	
+}
+
+.coste_span.blue{
+	background-image: url("../img/pagosAzul.png");
+ 	
+}
+
 .user_span{
 	background-image: url("../img/user16.png");
     display: inline-block;
@@ -467,11 +481,34 @@ form .datepicker {
 	display: inline-block;
     height: 40px;
     position: absolute;
-    z-index:20;
+    z-index:1;
 
 	> span{
 		color: #0078d2;
 		cursor: pointer;
 		font-family: arial;
 	}
+}
+
+.form-field-divider{
+	display: inline-block;
+    vertical-align: top;
+    width: 48%;
+    
+    .form-field{
+    	width:100% !important;
+    	display: inline-block;
+    	text-align:left;
+    	
+    	.input {
+    	
+    		display:inline-block;
+    	
+    		> input,
+    		> textarea,
+    		> div{
+	    		width: 245px;
+	    	}
+    	}		    	
+    }
 }

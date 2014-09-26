@@ -36,6 +36,7 @@ public class ClienteDao {
 		if (c.getKey()==null){
 			c.setClientId("IDGLOBAL"+ String.format("%04d", cont));
 			isNewClient = true;
+			c.setErased(false);
 		}
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
