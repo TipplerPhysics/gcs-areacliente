@@ -229,10 +229,10 @@
 									<tr class="valid-result" id="row${coste.key.id}" name="${coste.key.id}">
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
+										<td><span>${coste.project_name}</span></td>
+										<td><span>${coste.equipos}</span></td>
 										<td><span>${coste.str_fecha_alta}</span></td>
-										<td><span>${coste.str_fecha_alta}</span></td>
-										<td><span>${coste.str_fecha_alta}</span></td>
-										<td><span>${coste.str_fecha_alta}</span></td>
+										
 										<td>										
 											<img class="vs" src="../img/vs.png">								
 											<a class="lapiz" name="${coste.key.id}" href="../clienteModal.do"	id="lapiz${coste.key.id}" data-toggle="modal" data-target="#edit-coste"></a>
