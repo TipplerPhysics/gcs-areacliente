@@ -25,8 +25,11 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Proyecto;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ProyectoDao;
 import com.gcs.utils.Utils;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -78,7 +81,7 @@ public class ClienteServlet extends HttpServlet {
 	public void returnNoPermission(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
 		JSONObject json = new JSONObject();
 		json.append("failure", "true");
-		json.append("error","No tienes los permisos para realizar esta operaci�n");
+		json.append("error","No tienes los permisos para realizar esta operación");
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
@@ -165,6 +168,8 @@ public class ClienteServlet extends HttpServlet {
 		}
 	}
 
+	
+	
 	private void deleteClient(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
 		String id = req.getParameter("id");
 		JSONObject json = new JSONObject();

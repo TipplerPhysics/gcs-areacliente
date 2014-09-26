@@ -386,6 +386,17 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
 .proyecto_span_fixed.blue {
   background-image: url("../img/nuevoP.png");
 }
+.coste_span {
+  background-image: url("../img/pagosBlanco.png");
+  display: inline-block;
+  height: 15px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+  width: 15px;
+}
+.coste_span.blue {
+  background-image: url("../img/pagosAzul.png");
+}
 .user_span {
   background-image: url("../img/user16.png");
   display: inline-block;
@@ -504,12 +515,30 @@ form .datepicker {
   display: inline-block;
   height: 40px;
   position: absolute;
-  z-index: 20;
+  z-index: 1;
 }
 .breadcrumbs > span {
   color: #0078d2;
   cursor: pointer;
   font-family: arial;
+}
+.form-field-divider {
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+}
+.form-field-divider .form-field {
+  width: 100% !important;
+  display: inline-block;
+  text-align: left;
+}
+.form-field-divider .form-field .input {
+  display: inline-block;
+}
+.form-field-divider .form-field .input > input,
+.form-field-divider .form-field .input > textarea,
+.form-field-divider .form-field .input > div {
+  width: 245px;
 }
 #sidebar {
   position: fixed;
@@ -1591,12 +1620,6 @@ form .datepicker {
 #edit_client_dialog {
   width: 800px;
 }
-#new_client_dialog .form-field-divider,
-#edit_client_dialog .form-field-divider {
-  display: inline-block;
-  vertical-align: top;
-  width: 48%;
-}
 #new_client_dialog .form-field-divider:first-child,
 #edit_client_dialog .form-field-divider:first-child {
   margin-right: 20px;
@@ -1927,7 +1950,7 @@ form textarea.error {
   width: 65px;
 }
 .profile_cont .summary {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .profile_cont .summary .img_div {
   height: 145px;
@@ -2029,4 +2052,51 @@ form textarea.error {
 }
 #alta_proyecto .modal_ajax .form-field div.input > input {
   width: 220px;
+}
+.gestion_coste .newUserbox .new-user-form-holder .form-container .form-field > span {
+  width: 114px;
+  vertical-align: top;
+  margin-right: 15px;
+}
+.gestion_coste .btn-atras {
+  float: right;
+  margin-top: 20px;
+}
+.gestion_coste textarea {
+  height: 60px;
+}
+.gestion_coste .form-field-down {
+  text-align: left;
+}
+.gestion_coste .form-field-down > span:first-child {
+  margin-left: 15px;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.gestion_coste .form-field-down .form-field {
+  width: 120px !important;
+  margin-left: 15px;
+}
+.gestion_coste .form-field-down .form-field .input.labels {
+  width: 100%;
+}
+.gestion_coste .form-field-down .form-field .input.labels .lbl:first-child {
+  margin-right: 32px;
+}
+.gestion_coste .form-field-down .form-field .horas {
+  width: 40px;
+  margin-right: 10px;
+}
+.gestion_coste .form-field-down .form-field .coste {
+  width: 65px;
+}
+.gestion_coste .form-field-down .form-field.total {
+  width: 130px !important;
+}
+.gestion_coste .form-field-down .form-field.total .input.total > .horas {
+  margin-right: 20px;
+}
+.gestion_coste .form-field-down .form-field.total .input span:first-child {
+  margin-right: 5px;
 }

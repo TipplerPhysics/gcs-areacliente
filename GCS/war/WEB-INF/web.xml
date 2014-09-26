@@ -36,6 +36,16 @@
 	    <url-pattern>/demandaServlet</url-pattern>
 	  </servlet-mapping>
 	  
+	   <servlet>
+	    <servlet-name>CosteServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.CosteServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>CosteServlet</servlet-name>
+	    <url-pattern>/costeServlet</url-pattern>
+	  </servlet-mapping>
+	  
 	  <servlet>
 	    <servlet-name>ConfigurationServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.ConfigurationServlet</servlet-class>
