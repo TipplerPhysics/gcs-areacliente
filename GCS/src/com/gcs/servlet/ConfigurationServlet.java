@@ -27,9 +27,13 @@ public class ConfigurationServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp){
 		HttpSession sesion = req.getSession();
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
+		String accion = req.getParameter("accion");
 
+		if ("changePermission".equals(accion)){
+			changePermission(req,resp);
+		}
+		
 		if (sesionpermiso == 1) {
-			String accion = req.getParameter("accion");
 			
 			if ("setUsersToNonErased".equals(accion)){
 				setUsersToNonErased(resp);
@@ -37,6 +41,29 @@ public class ConfigurationServlet extends HttpServlet{
 				setClientsToNonErased(resp);
 			}
 		}
+	}
+	
+	private void changePermission(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		String permiso = req.getParameter("p");
+		
+		
+		try {
+			json.append("success", "true");
+			
+			UserDao uDao = UserDao.getInstance();
+			User u = uDao.getUserByMail("david.martin.beltran.contractor@bbva.com");
+			u.setPermiso(Integer.parseInt(permiso));
+			uDao.createUser(u);
+			
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			resp.getWriter().println(json);
+		
+		} catch (JSONException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 	private void setUsersToNonErased(HttpServletResponse resp){
