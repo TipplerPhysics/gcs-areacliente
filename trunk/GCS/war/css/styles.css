@@ -2053,6 +2053,19 @@ form textarea.error {
 #alta_proyecto .modal_ajax .form-field div.input > input {
   width: 220px;
 }
+.gestion_coste .modal_ajax .form-field .lbl {
+  display: block;
+}
+.gestion_coste .modal_ajax .form-field .input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+  width: 245px;
+}
+.gestion_coste .modal_ajax .form-field-down > .form-field {
+  display: inline-block;
+  width: 169px !important;
+}
+.gestion_coste .modal_ajax .form-field-down > .form-field .input.labels > lbl {
+  display: inline-block;
+}
 .gestion_coste .newUserbox .new-user-form-holder .form-container .form-field > span {
   width: 114px;
   vertical-align: top;
@@ -2061,6 +2074,32 @@ form textarea.error {
 .gestion_coste .btn-atras {
   float: right;
   margin-top: 20px;
+}
+.gestion_coste .usersTable > .table th:nth-child(1) {
+  max-width: 121px !important;
+  width: 121px !important;
+}
+.gestion_coste .usersTable > .table th:nth-child(2) {
+  max-width: 155px !important;
+  width: 155px !important;
+}
+.gestion_coste .usersTable > .table th:nth-child(3) {
+  max-width: 155px !important;
+  width: 155px !important;
+}
+.gestion_coste .usersTable > .table td:nth-child(4),
+.gestion_coste .usersTable > .table th:nth-child(4) {
+  max-width: 100px !important;
+  width: 100px !important;
+}
+.gestion_coste .usersTable > .table td:nth-child(5),
+.gestion_coste .usersTable > .table th:nth-child(5) {
+  max-width: 115px !important;
+  width: 115px !important;
+}
+.gestion_coste .usersTable > .table th.search-th:nth-child(5) > input {
+  position: relative;
+  width: 100%;
 }
 .gestion_coste textarea {
   height: 60px;

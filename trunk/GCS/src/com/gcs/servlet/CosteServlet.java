@@ -126,6 +126,7 @@ public class CosteServlet extends HttpServlet {
 			
 			c.setCoste_total(total_coste);
 			c.setHoras_total(total_horas);
+			
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
 			

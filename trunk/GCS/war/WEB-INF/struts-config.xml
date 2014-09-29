@@ -29,6 +29,11 @@
 			
 		</action>
 		
+		<action path="/costeModal" type="com.gcs.actions.modal.CosteModalAction">
+			<forward name="ok" path="/jsp/modal/modal-coste.jsp" />
+			
+		</action>
+		
 		<action path="/userModal" type="com.gcs.actions.modal.UserModalAction">
 			<forward name="ok" path="/jsp/modal/modal-user.jsp" />
 			

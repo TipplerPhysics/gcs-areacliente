@@ -27,7 +27,81 @@ function getProjectsByClient(){
 	}	
 }
 
+function editCoste(){
+	var $currentRow = $('#row'+id);
+
+	var fecha_solicitud_val = $currentRow.data('fecha-solicitud-val');
+	var comentarios = $currentRow.data('comentarios');
+	var num_valoracion = $currentRow.data('num-valoracion');
+	var gestor_it = $currentRow.data('gestor-it');
+	var fecha_alta = $currentRow.data('fecha-alta');
+	
+	var equipo = $currentRow.data('equipo');
+	var num_control = $currentRow.data('num-control');
+	var nombre_proyecto = $currentRow.data('nombre-proyecto');
+	var nombre_cliente = $currentRow.data('nombre-cliente');
+	
+	var analisis_coste = $currentRow.data('analisis-coste');
+	var analisis_horas = $currentRow.data('analisis-horas');
+	var disenio_coste = $currentRow.data('disenio-coste');
+	var disenio_horas = $currentRow.data('disenio-horas');
+	
+	var construccion_coste = $currentRow.data('construccion-coste');
+	var construccion_horas = $currentRow.data('construccion-horas');
+	var pruebas_coste = $currentRow.data('pruebas-coste');
+	var pruebas_horas = $currentRow.data('pruebas-horas');
+	
+	var gestion_coste = $currentRow.data('gestion-coste');
+	var gestion_horas = $currentRow.data('gestion-horas');
+	var total_coste = $currentRow.data('total-coste');
+	var total_horas = $currentRow.data('total-horas');	
+	
+	
+	$('#cliente_modal').val(nombre_cliente);
+	$('#project_modal').val(nombre_proyecto);
+	$('#num_control_modal').val(num_control);
+	$('#equipo_modal').val(equipo);
+	
+	$('#fecha_alta_costes_modal').val(fecha_alta);
+	$('#gestor_it_modal').val(gestor_it);
+	$('#comentarios_modal').val(comentarios);	
+	$('#num_valoracion_modal').val(num_valoracion);
+	
+	$('#fecha_solicitud_valoracion_modal').val(fecha_solicitud_val);
+	$('#analisis_horas_modal').val(analisis_horas);
+	$('#analisis_coste_modal').val(analisis_coste);
+	
+	$('#disenio_horas_modal').val(disenio_horas);
+	$('#disenio_coste_modal').val(disenio_coste);
+	
+	$('#construccion_horas_modal').val(construccion_horas);
+	$('#construccion_coste_modal').val(construccion_coste);
+	
+	$('#pruebas_horas_modal').val(pruebas_horas);
+	$('#pruebas_coste_modal').val(pruebas_coste);
+	
+	$('#gestion_horas_modal').val(gestion_horas);
+	$('#gestion_coste_modal').val(gestion_coste);
+	
+	$('#total_horas_modal').val(total_horas);
+	$('#total_coste_modal').val(total_coste);
+	
+
+	
+	showModal();
+}
+
 $(function() {
+	
+	$('#edit-coste').on('loaded.bs.modal', function () {
+		editCoste(id);
+	})
+	
+	$('.gestion_coste').on('click', '.lapiz', function(e) {
+		id= $(this).attr('name');
+		
+	});
+	
 	$("#submit_cost_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-coste-form");		
@@ -51,7 +125,7 @@ $(function() {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("La petici&oacute;n ha sido creada de forma correcta con el c&oacute;digo de petici&oacute;n num: " + data.cod_peticion);
+					$('#span_message').html("El pago ha sido creado de forma correcta.);
 					$('#message_div').css('display','block');
 					
 					$('#buttons_new_demanda').css('display','none');

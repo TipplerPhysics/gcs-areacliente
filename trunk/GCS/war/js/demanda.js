@@ -49,7 +49,7 @@ $(function() {
 	
 	$('#edit-demanda').on('loaded.bs.modal', function () {
 		editRowDemanda(id);
-	})
+	});
 	
 	$('.gestion_demanda').on('click', '.lapiz', function(e) {
 		id= $(this).attr('name');

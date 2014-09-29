@@ -91,6 +91,22 @@ public class Coste {
 	@Persistent
 	private String horas_total;
 	
+	public String getCoste_total() {
+		return coste_total;
+	}
+
+	public void setCoste_total(String coste_total) {
+		this.coste_total = coste_total;
+	}
+
+	public String getHoras_total() {
+		return horas_total;
+	}
+
+	public void setHoras_total(String horas_total) {
+		this.horas_total = horas_total;
+	}
+
 	public Long getProjectKey() {
 		return projectKey;
 	}
@@ -123,21 +139,6 @@ public class Coste {
 		this.projectKey = projectKey;
 	}
 
-	public String getCoste_total() {
-		return coste_total;
-	}
-
-	public void setCoste_total(String coste_total) {
-		this.coste_total = coste_total;
-	}
-
-	public String getHoras_total() {
-		return horas_total;
-	}
-
-	public void setHoras_total(String horas_total) {
-		this.horas_total = horas_total;
-	}
 
 	public Key getKey() {
 		return key;
@@ -311,30 +312,9 @@ public class Coste {
 		this.coste_gestion = coste_gestion;
 	}
 
-	public String getTotal_horas() {
-		return total_horas;
-	}
-
-	public void setTotal_horas(String total_horas) {
-		this.total_horas = total_horas;
-	}
-
-	public String getTotal_coste() {
-		return total_coste;
-	}
-
-	public void setTotal_coste(String total_coste) {
-		this.total_coste = total_coste;
-	}
-
 	@Persistent
 	private String coste_gestion;
-	
-	@Persistent
-	private String total_horas;
-	
-	@Persistent
-	private String total_coste;
+
 	
 	
 	

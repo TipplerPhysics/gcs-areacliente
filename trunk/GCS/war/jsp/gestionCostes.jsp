@@ -180,17 +180,21 @@
 							</div>
 						</div>
 					</div>					 
-					<div id="message_div" class="message_div">
-						<span id="span_message" class="span_message"></span>
-					</div>
+					
 				</div>
 				
 			</form>
+			<div class="message-container">
+				<div id="message_div" class="message_div">
+					<span id="span_message" class="span_message"></span>
+				</div>
+			</div>
 			<div id="buttons_new">
 				<button type="submit" class="submit_form" id="submit_cost_form">Aceptar</button>
 				<button href="#" class="close-form">Cancelar</button>
 			</div>
 		</div>
+		
 	</div>
 	<div>	
 		<div>
@@ -226,25 +230,23 @@
 
 							<c:otherwise>
 								<c:forEach items="${costes}" var="coste">
-									<tr class="valid-result" id="row${coste.key.id}" name="${coste.key.id}">
+									<tr class="valid-result" id="row${coste.key.id}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}">
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
 										<td><span>${coste.project_name}</span></td>
 										<td><span>${coste.equipos}</span></td>
-										<td><span>${coste.str_fecha_alta}</span></td>
+										<td><span>${coste.gestor_it_name}</span></td>
 										
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${coste.key.id}" href="../clienteModal.do"	id="lapiz${coste.key.id}" data-toggle="modal" data-target="#edit-coste"></a>
+											<a class="lapiz" name="${coste.key.id}" href="../costeModal.do?git=${coste.gestor_it_key}"	id="lapiz${coste.key.id}" data-toggle="modal" data-target="#edit-coste"></a>
 									
 											<a class="papelera" name="${coste.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${coste.key.id}"></a>
 										</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
-						</c:choose>
-						
-						
+						</c:choose>						
 					</tbody>
 				</table>
 			</div>
@@ -255,9 +257,9 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="edit-client" tabindex="-1" role="dialog"
+	<div class="modal fade" id="edit-coste" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" id="edit_client_dialog">
+		<div class="modal-dialog" id="edit_coste_dialog">
 			<div class="modal-content">
 		
 			</div>

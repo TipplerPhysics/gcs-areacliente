@@ -113,9 +113,9 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="catalogacion_peticion" required aria-required="true">
+								<select class="selectpicker selected" name="catalogacion_peticion">
 									<option value="default">Seleccionar...</option>
 									<option value="Estandar">Est&aacute;ndar</option>
 									<option value="Compleja">Compleja</option>
@@ -175,22 +175,22 @@
 						
 						
 						<div class="form-field">
-							<span class="lbl">Fecha comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha comunicaci&oacute;n asignaci&oacute;n:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion" required>
+								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion">
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Hora comunicaci&oacute;n asignaci&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Hora comunicaci&oacute;n asignaci&oacute;n:</span>
 							<div class="input">
-								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion" required aria-required="true">
+								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion">
 										
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
 								<span class="time-span">:</span>
-								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion" required aria-required="true">
+								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion">
 								
 									
 									<c:forEach items="${minutosList}" var="min">
@@ -205,7 +205,7 @@
 			</form>
 			<div class="message-container">
 				<div id="message_div" class="message_div">
-					<span id="span_message" span_message></span>
+					<span id="span_message" class="span_message"></span>
 				</div>
 			</div>
 			<div id="buttons_new_demanda">
