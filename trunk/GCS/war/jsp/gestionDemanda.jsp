@@ -80,13 +80,17 @@
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
-									<option value="default">Seleccionar...</option>
-									<option value="Implantacion">Implantacion</option>
-									<option value="Migracion IA">Migracion IA</option>
-									<option value="Estandarizaci&oacute;n Clientes">Estandarizaci&oacute;n Clientes</option>
-									<option value="Evolutivo">Evolutivo</option>
-									<option value="Pruebas Cliente">Pruebas Cliente</option>
+									<option value="default">Seleccionar...</option>								
+									<option value="PRUC">PRUC</option>
+									<option value="CONS">CONS</option>
+									<option value="VIAB">VIAB</option>
+									<option value="IMPL">IMPL</option>
 									<option value="SEPA">SEPA</option>
+									<option value="MIGR-IA">MIGR-IA</option>
+									<option value="EVOL-C">EVOL-C</option>
+									<option value="IMPL-OB-C">IMPL-OB-C</option>
+									<option value="SEPA-OB-C">SEPA-OB-C</option>
+									<option value="MIGR-OB-C">MIGR-OB-C</option>	
 								</select>
 							</div>
 						</div>
