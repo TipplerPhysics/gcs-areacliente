@@ -106,7 +106,7 @@
 							<span class="lbl">Gestor de negocio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" id="gestor_negocio" name="gestor_negocio" required aria-required="true">
-								    <option value="default">Seleccionar</option>
+								    <option value="default">Seleccionar...</option>
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 									</c:forEach>					
