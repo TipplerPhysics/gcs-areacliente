@@ -1,5 +1,43 @@
+function sendEditCoste(){
+	var $form = $('#edit-coste-form');
+	var formURL = $form.attr("action");
+	 var $formData = $form.serialize();
+	 var postData= $formData+"&accion=update&id="+ id;
+	 
+	 if($form.valid()){
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success="true"){
+						$form.hide();
+						$('#span_message_modal').html('El coste ha sido modificado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#span_message_modal').html(data.error);
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').addClass("error");
+					}
+					
+				}
+			});
+	 }
+	 
+	 
+}
+
 function getProjectsByClient(){
 	var id = $("#input_cliente").val();
+	
 	
 	if (id!="default"){
 		var postData = "accion=getProjectsByClient&id="+id;
@@ -102,6 +140,35 @@ $(function() {
 		
 	});
 	
+	$('.gestion_coste').on('click', '.papelera', function(e) {
+		$('#deleteCoste').attr('name',$(this).attr('name'));
+	});
+	
+	$('#deleteCoste').on('click', function(e) {
+		var id= $(this).attr('name');
+		 var formURL = "/costeServlet?";
+		 var postData="accion=delete&id="+ id;
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					$('#row'+id).fadeOut("fast", function(){
+						$(this).remove();
+						$('#myTable').paginateMe({
+							pagerSelector : '#myPager',
+							showPrevNext : true,
+							hidePageNumbers : false,
+							perPage : 5
+						});
+					});
+					$('#confirm-delete').modal('hide');
+				}
+			});
+	});
+	
 	$("#submit_cost_form").on('click',function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-coste-form");		
@@ -125,7 +192,7 @@ $(function() {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El pago ha sido creado de forma correcta.);
+					$('#span_message').html("El pago ha sido creado de forma correcta.");
 					$('#message_div').css('display','block');
 					
 					$('#buttons_new_demanda').css('display','none');
@@ -134,7 +201,7 @@ $(function() {
 					$form.hide();
 					
 					setTimeout(function() { 
-						$( "#message_div" ).fadeOut( "slow", function() {
+						$("#message_div").fadeOut("slow", function() {
 							$('#span_message').html("");
 					  }); location.reload();}, 5000);
 				}else{

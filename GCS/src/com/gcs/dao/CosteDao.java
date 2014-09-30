@@ -6,6 +6,7 @@ import javax.jdo.PersistenceManager;
 
 import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
+import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 
 public class CosteDao {
@@ -39,5 +40,25 @@ public class CosteDao {
 		pm.deletePersistent(pm.getObjectById(c.getClass(), c.getKey().getId()));
 		pm.close();
 
+	}
+	
+public Coste getCostebyId(long l) {
+		
+		Coste coste;
+		try{			
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Coste coste_temp = pManager.getObjectById(Coste.class, l);
+
+		coste = pManager.detachCopy(coste_temp);
+		pManager.close();
+
+		}catch(Exception e){
+			coste=null;
+		}
+		
+		return coste;
+		
+		
 	}
 }

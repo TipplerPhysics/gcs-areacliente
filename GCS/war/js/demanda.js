@@ -21,24 +21,28 @@ function sendEditDemanda(){
 	var formURL = $form.attr("action");
 	 var $formData = $('#edit-demanda-form').serialize();
 	 var postData= $formData+"&accion=update&id="+ id;
-	 $.ajax(			
-		{
-			url : formURL,
-			type: "GET",
-			data : postData,
-			success:function(data, textStatus, jqXHR) 
+	 
+	 if ($form.valid()){
+		 $.ajax(			
 			{
-				$form.hide();
-				$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aocute;gina.');
-				$('.modal-footer').hide();
-				$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");;
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					$form.hide();
+					$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aocute;gina.');
+					$('.modal-footer').hide();
+					$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");;
 
-				setTimeout(function() { 
-					resetForm($form);
-					location.reload();
-				}, 1500);
-			}
-		});
+					setTimeout(function() { 
+						resetForm($form);
+						location.reload();
+					}, 1500);
+				}
+			});
+	 }
+
 }
 
 

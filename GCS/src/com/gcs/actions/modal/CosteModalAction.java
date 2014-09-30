@@ -20,7 +20,7 @@ public class CosteModalAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		try {
+		
 			UserDao uDao = UserDao.getInstance();
 
 			
@@ -36,10 +36,10 @@ public class CosteModalAction extends Action {
 			if (!gestores_it.contains(git)){
 				gestores_it.add(git);
 			}
+			
+			req.setAttribute("gestores_it", gestores_it);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 
 		return mapping.findForward("ok");
 	}

@@ -24,6 +24,7 @@ public class GestionClienteAction extends Action{
 		List<Cliente> clientes = cDao.getAllNonDeletedClients();
 		
 		req.setAttribute("clientes", clientes);
+		req.setCharacterEncoding("UTF-8");
 				
 
 		return mapping.findForward("ok");
