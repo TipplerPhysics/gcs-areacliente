@@ -223,10 +223,12 @@ public class ClienteServlet extends HttpServlet {
 			
 			String errorMsg = "";
 			
-			
-			if (!cDao.getClienteByRefGlobal(ref_global).equals(c)){
-				errorMsg = "Ya existe un usuario con esta referencia global";
+			if (cDao.getClienteByRefGlobal(ref_global)!=null) {
+				if (!cDao.getClienteByRefGlobal(ref_global).equals(c)){
+					errorMsg = "Ya existe un usuario con esta referencia global";
+				}
 			}
+			
 			
 		
 			if (errorMsg.equals("")){
