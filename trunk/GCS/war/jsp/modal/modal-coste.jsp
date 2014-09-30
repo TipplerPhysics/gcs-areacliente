@@ -1,15 +1,16 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<div class="modal_ajax">
 		<div class="">
 					<h2>Editar Cliente</h2>
 					<hr />
 				</div>
 				<div class="edit-user-form-holder">
-				<form id="new-coste-form" name="new-coste-form" action="/costeServlet" method="POST" novalidate="novalidate">
+				<form id="edit-coste-form" name="new-coste-form" action="/costeServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
 					
 						<div class="form-field">
-							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Cliente:</span>
 							<div class="input">
 								<input type="text" value="" disabled name="cliente" id="cliente_modal">
 							</div>
@@ -78,8 +79,8 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT-registro:</span>
 							<div class="input">
-								<select class="selectpicker" required aria-required="true"  id="gestor_it_modal" name="gestor_it">	
-								<option value="default" selected>Seleccionar...</option>
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_it">	
+								
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
@@ -163,19 +164,17 @@
 							</div>
 						</div>
 					</div>					 
-					<div id="message_div" class="message_div">
-						<span id="span_message" class="span_message"></span>
-					</div>
+					
 				</div>
 				
 			</form>
-			<div id="message_div_cliente_modal" class="message_div" style='margin-bottom:10px;'>
-						<span id="span_message_cliente_modal" class="span_message"></span>
+			<div id="message_div_modal" class="message_div" style='margin-bottom:10px;'>
+						<span id="span_message_modal" class="span_message"></span>
 			</div>
 			
 		</div>
 				<div class="modal-footer">
-					<button type="button" class="" id="edit_client_form_modal" onclick="sendEditClient();">Guardar</button>
+					<button type="button" class="" id="edit_coste_form_modal" onclick="sendEditCoste();">Guardar</button>
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 		</div>

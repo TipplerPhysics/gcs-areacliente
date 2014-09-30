@@ -15,7 +15,7 @@
 			Nuevo coste<a class="coste_span"></a>
 		</button>
 
-		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
+		<button id="excel_btn" onclick="window.location.href='../../costeServlet?accion=xls'">
 			Descargar Tabla<a class="excel_span"></a>
 		</button>
 
@@ -271,14 +271,14 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="">
-					<h2>Eliminar Cliente</h2>
+					<h2>Eliminar Coste</h2>
 					<hr />
 				</div>
 				<div class="">
-					<p>Se eliminarÃ¡n todos los proyectos asociados.<p>
+					<p>¿Está seguro que desea eliminar el coste?<p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="pink-btn" id="deleteClient">Eliminar</button>
+					<button type="button" class="pink-btn" id="deleteCoste">Eliminar</button>
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>

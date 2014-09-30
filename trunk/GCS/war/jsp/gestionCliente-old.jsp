@@ -2,13 +2,13 @@
 
 <div class="gestion_cliente">
 
-	<h1>Gesti&oacute;n cliente</h1>
+	<h1>Gestión cliente</h1>
 	<span class="btn-atras" onclick="window.location.href='../../'"></span>
 	
 	
 	<hr/>
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gesti&oacute;n de usuarios </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de usuarios </span>
 	</div>
 	
 	<div class="newUserbox">
@@ -251,7 +251,7 @@
 				</div>
 				<div class="">
 					<p>&iquest;Est&aacute; seguro que desea eliminar el cliente?<p>
-					<p>Se eliminarÃ¡n todos los proyectos asociados.<p>
+					<p>Se eliminarán todos los proyectos asociados.<p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="pink-btn" id="deleteClient">Eliminar</button>
