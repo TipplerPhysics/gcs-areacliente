@@ -27,7 +27,7 @@
 				
 				<div class="form-field-divider left">
 					<div class="form-field">
-						<span class="lbl">Fecha alta cliente<span class="required-asterisk">*</span>:</span>
+						<span class="lbl">Fecha alta proyecto<span class="required-asterisk">*</span>:</span>
 						<div class="input">
 							<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
 						</div>
