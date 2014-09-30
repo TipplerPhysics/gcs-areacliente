@@ -8,7 +8,7 @@
 	
 	<hr/>
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gesti&oacute;n de usuarios </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gesti&oacute;n de clientes </span>
 	</div>
 	
 	<div class="newUserbox">
