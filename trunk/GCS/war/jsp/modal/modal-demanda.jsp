@@ -61,8 +61,7 @@
 						<div class="form-field">
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true">
-									<option value="default">Seleccionar...</option>								
+								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true">							
 									<option value="PRUC">PRUC</option>
 									<option value="CONS">CONS</option>
 									<option value="VIAB">VIAB</option>
