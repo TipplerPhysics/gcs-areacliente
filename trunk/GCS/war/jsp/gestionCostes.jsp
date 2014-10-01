@@ -2,7 +2,7 @@
 
 <div class="gestion_coste">
 	<h1>Gestión costes</h1>
-	<span class="btn-atras" onclick="window.location.href='../../'"></span>
+	<span class="btn-atras" onclick="window.location.href='./gestionProyecto.do'"></span>
 	
 	<hr/>
 	<div class="breadcrumbs">
