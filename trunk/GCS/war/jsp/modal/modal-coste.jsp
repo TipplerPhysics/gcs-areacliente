@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<div class="modal_ajax">
 		<div class="">
-					<h2>Editar Cliente</h2>
+					<h2>Editar Coste</h2>
 					<hr />
 				</div>
 				<div class="edit-user-form-holder">
@@ -13,16 +13,16 @@
 					<div class="form-field-divider left">
 					
 						<div class="form-field">
-							<span class="lbl">Cliente:</span>
+							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" disabled name="cliente" id="cliente_modal">
+								<input type="text" value="" class="readonly" readonly  name="cliente" id="cliente_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Número de control:</span>
 							<div class="input">
-								<input type="text" value="" size="16" disabled name="numero_control" id="numero_control_modal">
+								<input type="text" value="" size="16" class="readonly" readonly name="numero_control" id="numero_control_modal">
 							</div>
 						</div>
 
@@ -58,29 +58,27 @@
 						<div class="form-field">
 							<span class="lbl">Nombre proyectos<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" disabled name="project" id="project_modal">						
+								<input type="text" value="" class="readonly" readonly name="project" id="project_modal">						
 							</div>
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Equipo:</span>
+							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="equipo_modal" name="equipo" class="long selectpicker">
-									<option value="default">Seleccionar...</option>
+								<select id="equipo_modal" name="equipo" class="long selectpicker selected">
 									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>
 									<option value="Solutions">Solutions</option>
 									<option value="Soporte Swift">Soporte Swift</option>
 									<option value="IS">IS</option>
 									<option value="Telemáticos">Telemáticos</option>
-									<option value="Gestor IT">Gestor IT</option>
-									
+									<option value="Gestor IT">Gestor IT</option>	
 								</select>
 							</div>
 						</div>
 										
 						<div class="form-field">
-							<span class="lbl">Gestor IT-registro:</span>
+							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker" id="gestor_it_modal" name="gestor_it">	
 								
@@ -162,8 +160,8 @@
 								<input id="total_horas_modal" name="total_horas" class="horas"/>
 								<input id="total_coste_modal" name="total_coste" class="coste"/>
 							</div>
-							<div class="input">
-								<span class="lbl">Total Horas</span><span class="lbl">Total Coste</span>
+							<div class="input labels">
+								<span class="lbl2">Total Horas</span><span class="lbl2">Total Coste</span>
 							</div>
 						</div>
 					</div>					 
