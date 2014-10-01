@@ -670,7 +670,7 @@ function sendEditCoste(){
 				{
 					if (data.success="true"){
 						$form.hide();
-						$('#span_message_modal').html('El coste ha sido modificado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('#span_message_modal').html('El coste ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 						$('.modal-footer').hide();
 						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
 
@@ -1874,7 +1874,7 @@ function sendEditUser(){
 						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 					}
 					$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
-					$form.find('#span_message_modal').html('El usuario ha sido modificado de forma correcta.<br/>En breve volvemos a la pagina.');
+					$form.find('#span_message_modal').html('El usuario ha sido modificado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 					$('#modal-footer_submit').css('display','none');
 					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
 
@@ -2019,7 +2019,7 @@ $(function() {
 							$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
 						}
 						$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
-						$form.find('#span_message_modal').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+						$form.find('#span_message_modal').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 						$('#modal-footer_submit').css('display','none');
 						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
 
@@ -2103,7 +2103,7 @@ $(function() {
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
 					$form.find('.form-container').find('div:not(#message_div)').hide(0);
-					$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la pagina.');
+					$form.find('#span_message').html('El usuario ha sido creado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 					$('#message_div').css('display','block').removeClass("error").addClass("success");;
 
 					setTimeout(function() { 
