@@ -102,7 +102,7 @@
 					<div class="form-field-down">
 						<span class="lbl">Horas/Fases:</span>
 						<div class="form-field">
-							<span class="lbl">Analisis:</span>
+							<span class="lbl">An&aacute;lisis:</span>
 							<div class="input">
 								<input id="analisis_horas_modal" name="analisis_horas" class="horas"/>
 								<input id="analisis_coste_modal" name="analisis_coste" class="coste"/>
