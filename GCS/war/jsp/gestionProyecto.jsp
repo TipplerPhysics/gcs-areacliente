@@ -118,8 +118,11 @@
 						</div>
 						
 						<div class="form-field">
-						<span class="lbl">Coste:</span>
+						<span class="lbl coste">Coste:</span>
 						<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
+						<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">
+							Nuevo coste
+						</button>
 					</div>
 				</div>
 				
@@ -206,6 +209,15 @@
 <div class="modal fade" id="edit-project" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="edit_user_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="new-costo" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="new_costo_dialog">
 		<div class="modal-content">
 			
 		</div>

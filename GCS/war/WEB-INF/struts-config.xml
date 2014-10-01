@@ -24,6 +24,10 @@
 			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
 		</action>
 		
+		<action path="/newCosteModal" type="com.gcs.actions.modal.NewCosteModalAction">
+			<forward name="ok" path="/jsp/modal/modal-new-coste.jsp" />			
+		</action>
+		
 		<action path="/demandaModal" type="com.gcs.actions.modal.DemandaModalAction">
 			<forward name="ok" path="/jsp/modal/modal-demanda.jsp" />
 			

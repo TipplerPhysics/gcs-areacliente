@@ -2041,6 +2041,18 @@ form textarea.error {
   display: inline-block;
   float: right;
 }
+#alta_proyecto .form-field-divider .form-field #coste {
+  width: 137px;
+  float: left;
+  margin-left: 51px;
+  margin-right: 20px;
+}
+#alta_proyecto .form-field-divider .form-field .lbl.coste {
+  float: left;
+}
+#alta_proyecto .form-field-divider .form-field #newCostoModalButton {
+  margin-right: 0px;
+}
 #alta_proyecto .modal_ajax .form-field {
   width: 100%;
   height: 40px;
@@ -2056,18 +2068,75 @@ form textarea.error {
 #alta_proyecto .modal_ajax .form-field div.input > input {
   width: 220px;
 }
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-divider.right {
+  height: 388px;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field {
+  height: 50px;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field .lbl {
+  display: block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input {
+  width: 90%;
+  float: left;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input input {
+  width: 100%;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+  width: 100%;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down {
+  text-align: middle;
+  display: block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .lbl {
+  display: block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field {
+  display: inline-block;
+  width: 162px;
+  height: 70px;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl {
+  display: inline-block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .horas {
+  width: 40px;
+  margin-right: 10px;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .coste {
+  width: 65px;
+}
+.gestion_coste .modal_ajax .form-field {
+  margin-bottom: 10px;
+}
 .gestion_coste .modal_ajax .form-field .lbl {
   display: block;
 }
-.gestion_coste .modal_ajax .form-field .input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+.gestion_coste .modal_ajax .form-field div.input {
+  width: 100%;
+}
+.gestion_coste .modal_ajax .form-field div.input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
   width: 245px;
 }
 .gestion_coste .modal_ajax .form-field-down > .form-field {
   display: inline-block;
   width: 169px !important;
 }
-.gestion_coste .modal_ajax .form-field-down > .form-field .input.labels > lbl {
+.gestion_coste .modal_ajax .form-field-down > .form-field .input.labels > .lbl {
   display: inline-block;
+}
+.form-field.total .input.labels > .lbl2 {
+  font-family: "BBVA Web Light";
+  font-size: 12px;
+  display: inline-block;
+  color: #333;
+  line-height: 1.42857;
+}
+.form-field.total .input.labels .lbl2:first-child {
+  margin-right: 10px;
 }
 .gestion_coste .newUserbox .new-user-form-holder .form-container .form-field > span {
   width: 114px;
