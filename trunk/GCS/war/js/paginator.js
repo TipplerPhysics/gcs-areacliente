@@ -57,6 +57,7 @@ $.fn.paginateMe = function(opts) {
 	pager.children().eq(1).addClass("active");
 	
 	
+	
 
 	children.hide();
 	children.slice(0, perPage).show();
@@ -66,12 +67,17 @@ $.fn.paginateMe = function(opts) {
 
 	
 	$(resumen).html('');
-	if (numItems>=5){
-		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
-	}else{
-		$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
-	}
 	
+	if (numItems>0) {
+		if (numItems>=5){
+			$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
+		}else{
+			$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
+		}
+	} else {
+		$(resumen).html('No hay resultados');
+	}
+		
 	
 
 	pager.find('li .page_link').click(function() {
@@ -131,10 +137,14 @@ $.fn.paginateMe = function(opts) {
 		
 		var ocursinpage2 = (((page+1)*5)>numItems) ? numItems : ((page+1)*5);
 		
-		if (numItems>=5){
-			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
-		}else{
-			$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+		if (numItems>0) {
+			if (numItems>=5){
+				$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+			}else{
+				$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+			}
+		} else {
+			$(resumen).html('No hay resultados');
 		}
 		
 	}
