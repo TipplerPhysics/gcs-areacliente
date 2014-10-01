@@ -1,3 +1,4 @@
+  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<div class="modal_ajax">
 	
@@ -61,7 +62,7 @@
 						<div class="form-field">
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true">							
+																<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true">							
 									<option value="PRUC">PRUC</option>
 									<option value="CONS">CONS</option>
 									<option value="VIAB">VIAB</option>
@@ -89,7 +90,7 @@
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true">
-									<option value="Pendiente de asignación">Pendiente de asignación</option>
+									<option value="Pendiente de asignación">Pendiente de asignaci&oacute;n</option>
 									<option value="Asignada">Asignada</option>
 									<option value="Devuelta">Devuelta</option>
 									<option value="Parada">Parada</option>
@@ -102,7 +103,7 @@
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" id="catalogacion_peticion_modal">
 									
-									<option value="Estandar">Estándar</option>
+									<option value="Estandar">Est&aacute;ndar</option>
 									<option value="Compleja">Compleja</option>
 									
 								</select>
@@ -110,7 +111,7 @@
 						</div>
 					</div><div class="form-field-divider right">
 						<div class="form-field">
-							<span class="align-top lbl">Motivo de catalogación:</span>
+							<span class="align-top lbl">Motivo de catalogaci&oacute;n:</span>
 							<div class='input'>
 								<textarea name="motivo_catalogacion" id="motivo_catalogacion_modal" class="long"></textarea>
 							</div>
@@ -122,13 +123,13 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Fecha solicitud asignación:</span>
+							<span class="lbl">Fecha solicitud asignaci&oacute;n:</span>
 							<div class="input">
 								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion_modal">
 							</div>
 						</div>
 						<div class="form-field horas">
-							<span class="lbl">Hora solicitud asignación:</span>
+							<span class="lbl">Hora solicitud asignaci&oacute;n:</span>
 							<div class="input">
 								<select class="selectpicker time hora" id="hora_solicitud_asignacion_modal" name="hora_solicitud_asignacion">
 										

@@ -328,6 +328,7 @@ public class CosteServlet extends HttpServlet {
 			String total_coste = req.getParameter("total_coste");
 			String total_horas = req.getParameter("total_horas");
 			String num_valoracion = req.getParameter("num_valoracion");
+			String num_control = req.getParameter("numero_control");
 
 			CosteDao cDao = CosteDao.getInstance();
 			ClienteDao clDao = ClienteDao.getInstance();
@@ -336,6 +337,8 @@ public class CosteServlet extends HttpServlet {
 			Proyecto p = pDao.getProjectbyId(Long.parseLong(project));
 
 			Cliente cliente_obj = clDao.getClienteById(Long.parseLong(cliente));
+			
+			c.setNum_control(num_control);
 			c.setCliente_name(cliente_obj.getNombre());
 			c.setClienteKey(Long.parseLong(cliente));
 			c.setCoste_analisis(analisis_coste);

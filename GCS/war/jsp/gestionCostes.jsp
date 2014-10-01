@@ -39,7 +39,7 @@
 						<div class="form-field">
 							<span class="lbl">Número de control:</span>
 							<div class="input">
-								<input type="text" value="" size="16" disabled name="numero_control" id="numero_control">
+								<input type="text" value="" readonly size="16" name="numero_control" id="numero_control" class="readonly">
 							</div>
 						</div>
 
@@ -82,9 +82,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Equipo:</span>
+							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="equipo" name="equipo" class="long selectpicker">
+								<select id="equipo" name="equipo" class="long selectpicker" required aria-required="true" onchange="getNum_control();">
 									<option value="default">Seleccionar...</option>
 									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>
@@ -99,7 +99,7 @@
 						</div>
 										
 						<div class="form-field">
-							<span class="lbl">Gestor IT-registro:</span>
+							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker" required aria-required="true"  id="gestor_it" name="gestor_it">	
 								<option value="default" selected>Seleccionar...</option>
@@ -230,7 +230,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${costes}" var="coste">
-									<tr class="valid-result" id="row${coste.key.id}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}">
+									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}">
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
 										<td><span>${coste.project_name}</span></td>

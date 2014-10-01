@@ -15,6 +15,9 @@
 	<button id="newUserButton">
 		Nuevo Proyecto<a class="proyecto_span"></a>
 	</button>
+	<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
+			Nuevo coste<a class="coste_span"></a>
+		</button>
 	<button id="excel_btn" onclick="window.location.href='../../projectServlet?accion=xls'">
 		Descargar Tabla<a class="excel_span"></a>
 	</button>

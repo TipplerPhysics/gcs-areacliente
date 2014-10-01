@@ -1,12 +1,12 @@
 package com.gcs.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
 import com.gcs.beans.Coste;
-import com.gcs.beans.Proyecto;
-import com.gcs.beans.User;
+import com.gcs.beans.Equipo;
 import com.gcs.persistence.PMF;
 
 public class CosteDao {
@@ -17,6 +17,25 @@ public class CosteDao {
 	
 	public void createCoste(Coste c) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		if (c.getKey()==null){
+			
+			EquipoDao eDao = EquipoDao.getInstance();
+			Equipo e = eDao.getEquipoByName(c.getEquipos());
+			Date hoy = new Date();
+			Integer hoy_anio = hoy.getYear()+1900;
+			Integer anio_ultimo = e.getUltima_escritura().getYear()+1900;
+			
+			if (hoy_anio.equals(anio_ultimo)){
+				e.setContador(e.getContador()+1);
+			}else{
+				e.setContador(0);
+			}
+			
+			
+			e.setUltima_escritura(new Date());
+			eDao.createEquipo(e);
+		}
 
 		try {
 			pm.makePersistent(c);
