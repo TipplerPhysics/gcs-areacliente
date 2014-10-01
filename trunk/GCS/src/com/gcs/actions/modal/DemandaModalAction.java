@@ -55,7 +55,7 @@ public class DemandaModalAction extends Action{
 			gestores_it.add(git);
 		}
 		
-		if (Utils.isNumeric(gn_str)){
+		if (!"".equals(gn_str) && Utils.isNumeric(gn_str)){
 			User gn = uDao.getUserbyId(Long.parseLong(gn_str));
 			if (!gestores_negocio.contains(gn)){
 				gestores_negocio.add(gn);

@@ -25,6 +25,16 @@
 	    <servlet-name>DefaultConf</servlet-name>
 	    <url-pattern>/defaultConf</url-pattern>
 	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>TeamServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.TeamServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>TeamServlet</servlet-name>
+	    <url-pattern>/teamServlet</url-pattern>
+	  </servlet-mapping>
 	
 	  <servlet>
 	    <servlet-name>DemandaServlet</servlet-name>

@@ -1,3 +1,31 @@
+function getNum_control(){
+var name = $("#equipo").val();
+	
+	
+	if (id!="default"){
+		var postData = "accion=getNumControl&equipo="+name;
+		var formURL = "/teamServlet";
+		$.ajax({
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) {
+				
+				if (data.success="true"){
+					var fecha = new Date();
+					var anio = fecha.getFullYear();
+					
+					var codigo = name.substring(0,3).toUpperCase() + "_" + anio + data.contador;
+					
+					$("#numero_control").val(codigo);
+					
+				}
+				
+			}
+		});
+	}	
+}
+
 function sendEditCoste(){
 	var $form = $('#edit-coste-form');
 	var formURL = $form.attr("action");
@@ -97,7 +125,7 @@ function editCoste(){
 	
 	$('#cliente_modal').val(nombre_cliente);
 	$('#project_modal').val(nombre_proyecto);
-	$('#num_control_modal').val(num_control);
+	$('#numero_control_modal').val(num_control);
 	$('#equipo_modal').val(equipo);
 	
 	$('#fecha_alta_costes_modal').val(fecha_alta);

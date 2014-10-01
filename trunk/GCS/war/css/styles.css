@@ -1182,6 +1182,9 @@ form .datepicker {
   color: #0065b7;
 }
 /* NUEVO CLIENTE  */
+#newCostoButton {
+  margin-right: 5px;
+}
 .gestion_demanda #botones_ext,
 .gestion_cliente #botones_ext {
   text-align: right;

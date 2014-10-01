@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
@@ -66,13 +67,19 @@ public class ProyectoDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Proyecto> getAllProjects() {
+		
+		List<Proyecto> projects;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("select from " + Proyecto.class.getName());		
+		q.setOrdering("fecha_alta desc");
+		projects = (List<Proyecto>) q.execute();
+		
+		pm.close();
 
-		List<Proyecto> proyectos;
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		String queryStr = "select from " + Proyecto.class.getName();
-		proyectos = (List<Proyecto>) pm.newQuery(queryStr).execute();
+		return projects;
 
-		return proyectos;
+		
 	}
 	
 public List<Proyecto> getProjectsByClient(Long id){

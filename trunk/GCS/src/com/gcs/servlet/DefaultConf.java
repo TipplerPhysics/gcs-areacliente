@@ -1,5 +1,7 @@
 package com.gcs.servlet;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,9 +10,11 @@ import javax.servlet.http.HttpSession;
 import com.gcs.beans.Cliente;
 import com.gcs.beans.ContadorCliente;
 import com.gcs.beans.ContadorDemanda;
+import com.gcs.beans.Equipo;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.ContadorDemandaDao;
+import com.gcs.dao.EquipoDao;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class DefaultConf extends HttpServlet {
@@ -47,6 +51,9 @@ public class DefaultConf extends HttpServlet {
 					ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 					ccDao.createContador(cc);	
 					json.append("success", "true");
+				}else if ("def_teams".equals(accion)){
+					createDefTeams();
+					json.append("success", "true");
 				}
 				
 			
@@ -78,6 +85,53 @@ public class DefaultConf extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		doGet(req, resp);
+	}
+	
+	private void createDefTeams(){
+			
+		EquipoDao eDao = EquipoDao.getInstance();
+		
+		Equipo e = new Equipo();		
+		e.setNombre("Innovery");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
+		
+		e = new Equipo();
+		e.setNombre("Capgemini");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
+		
+		e = new Equipo();
+		e.setNombre("Solutions");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
+		
+		e = new Equipo();
+		e.setNombre("Soporte Swift");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
+		
+		e = new Equipo();
+		e.setNombre("IS");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
+		
+		e = new Equipo();
+		e.setNombre("Telemáticos");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
+		
+		e = new Equipo();
+		e.setNombre("Gestor IT");
+		e.setContador(1);
+		e.setUltima_escritura(new Date());
+		eDao.createEquipo(e);
 	}
 
 }
