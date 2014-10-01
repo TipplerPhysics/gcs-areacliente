@@ -42,7 +42,7 @@ function sendEditCoste(){
 				{
 					if (data.success="true"){
 						$form.hide();
-						$('#span_message_modal').html('El coste ha sido modificado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('#span_message_modal').html('El coste ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 						$('.modal-footer').hide();
 						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
 
