@@ -6,7 +6,7 @@
 	
 	<hr/>
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de costes </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span> > <span onclick="window.location.href='./gestionProyecto.do' ">Gestión de proyectos</span> > <span> Gestión de costes </span>
 	</div>
 	
 	<div class="newUserbox">		
