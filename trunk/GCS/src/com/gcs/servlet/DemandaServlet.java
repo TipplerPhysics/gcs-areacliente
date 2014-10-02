@@ -415,7 +415,7 @@ public class DemandaServlet extends HttpServlet {
 				s.addCell(new Label(9, aux, d
 						.getStr_fecha_solicitud_asignacion()));
 				s.addCell(new Label(10, aux, d.getHora_solicitud_asignacion()));
-				if (d.getDevuelta().toString().equals(true))
+				if (d.getDevuelta().equals(true))
 					s.addCell(new Label(11, aux, "Si"));
 				else
 					s.addCell(new Label(11, aux, "No"));
@@ -429,7 +429,7 @@ public class DemandaServlet extends HttpServlet {
 
 				s.addCell(new Label(13, aux, d.getCatalogacion()));
 				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
-				s.addCell(new Label(15,aux,d.getHora_comunicacion()));
+				s.addCell(new Label(15,aux,d.getHora_comunicacion_asignacion()));
 
 				aux++;
 			}
