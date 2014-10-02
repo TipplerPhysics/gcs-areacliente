@@ -318,7 +318,7 @@ button {
   border-radius: 4px;
   color: #FFFFFF;
   cursor: pointer;
-  font: 12px/24px "BBVA Web Medium", arial, sans-serif;
+  font: 12px/24px "BBVA Web Medium", arial bold, sans-serif;
   padding: 2px 9px 2px 8px;
   position: relative;
   text-align: center;
