@@ -27,7 +27,7 @@ $(function() {
 
 		$(this).closest('tr').find('.search-th').find('input').each(function(){
 			if (!($(this).is($current_input)) && $(this).val().length != 0) {
-				console.log('multi');
+				
 			    multipleFilter = true;
 			}
 		});

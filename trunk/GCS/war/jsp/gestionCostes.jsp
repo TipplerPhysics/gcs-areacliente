@@ -12,11 +12,11 @@
 	<div class="newUserbox">		
 	
 		<button id="newUserButton">
-			Nuevo coste<a class="coste_span"></a>
+			Nuevo coste<span class="coste_span"></span>
 		</button>
 
 		<button id="excel_btn" onclick="window.location.href='../../costeServlet?accion=xls'">
-			Descargar Tabla<a class="excel_span"></a>
+			Descargar Tabla<span class="excel_span"></span>
 		</button>
 
 		<div class="new-user-form-holder">
@@ -27,7 +27,7 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient();">
+								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('');">
 									<option value="default">Seleccionar...</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>

@@ -14,7 +14,7 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient();">
+								<select id="input_cliente_modal" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('modal');">
 									<option value="default">Seleccionar...</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
@@ -117,7 +117,7 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="diseño_horas" name="diseño_horas" class="horas number"/><input id="diseño_coste" name="diseño_coste" class="coste number"/>
+								<input id="disenio_horas" name="diseño_horas" class="horas number"/><input id="disenio_coste" name="diseño_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -160,7 +160,7 @@
 								<input id="total_horas" name="total_horas" class="horas number"/><input id="total_coste" name="total_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
-								<span class="lbl">Total Horas</span><span class="lbl">Total Coste</span>
+								<span class="lbl total">Total Horas</span><span class="lbl">Total Coste</span>
 							</div>
 						</div>
 					

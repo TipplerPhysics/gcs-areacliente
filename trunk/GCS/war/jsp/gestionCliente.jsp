@@ -14,18 +14,18 @@
 	<div class="newUserbox">
 		<c:if test="${sessionScope.permiso != 3 and sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newUserButton">
-				Nuevo Cliente<a class="user_span"></a>
+				Nuevo Cliente<span class="user_span"></span>
 			</button>
 		</c:if>
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newProjectButton" onclick="location.href = './gestionProyecto.do';">
-				Nuevo Proyecto<a class="proyecto_span_fixed"></a>
+				Nuevo Proyecto<span class="proyecto_span_fixed"></span>
 			</button>	
 		</c:if>	
 		
 		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
-			Descargar Tabla<a class="excel_span"></a>
+			Descargar Tabla<span class="excel_span"></span>
 		</button>
 
 

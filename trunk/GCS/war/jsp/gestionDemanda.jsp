@@ -8,18 +8,18 @@
 	<hr/>
 	
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de peticiones </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span> Gesti&oacute;n de peticiones </span>
 	</div>
 	
 	<div class="newUserbox">
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newUserButton">
-				Nueva Petici&oacute;n<a class="demanda_span"></a>
+				Nueva Petici&oacute;n<span class="demanda_span"></span>
 			</button>
 		</c:if>
 		<button id="excel_btn" onclick="window.location.href='../../demandaServlet?accion=xls'">
-			Descargar Tabla<a class="excel_span"></a>
+			Descargar Tabla<span class="excel_span"></span>
 		</button>
 
 
@@ -294,7 +294,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="">
-					<h2>Eliminar petición</h2>
+					<h2>Eliminar peticiï¿½n</h2>
 					<hr />
 				</div>
 				<div class="">
