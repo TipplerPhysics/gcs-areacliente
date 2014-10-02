@@ -272,6 +272,13 @@ $(function() {
 							perPage : 5
 						});*/
 						
+						var options = $("#input_cliente");
+						
+						 options.append($("<option selected/>").val(data.id).text($('#client_name').val()));
+								
+						
+						options.selectpicker('refresh');
+						
 						$('#message_div_cliente').removeClass("error").addClass("success");
 						if ($('.new-user-form-holder').height()<190){
 							$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);

@@ -13,13 +13,13 @@
 	</div>
 <div class="newUserbox">
 	<button id="newUserButton">
-		Nuevo Proyecto<a class="proyecto_span"></a>
+		Nuevo Proyecto<span class="proyecto_span"></span>
 	</button>
 	<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
-			Nuevo coste<a class="coste_span"></a>
+			Nuevo coste<span class="coste_span"></span>
 		</button>
 	<button id="excel_btn" onclick="window.location.href='../../projectServlet?accion=xls'">
-		Descargar Tabla<a class="excel_span"></a>
+		Descargar Tabla<span class="excel_span"></span>
 	</button>
 
 
@@ -181,7 +181,7 @@
 										<td><span>${proyecto.clienteName}</span></td>
 										<td><span>${proyecto.clasificacion}</span></td>
 										<td><span>${proyecto.tipo}</span></td>
-										<td><span>${proyecto.coste} &#8364;</span></td>
+										<td><span>${proyecto.coste}<c:if test="${proyecto.coste eq ''}">0</c:if> &#8364;</span></td>
 										<c:if test="${sessionScope.permiso != 5}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								

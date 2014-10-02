@@ -15,10 +15,10 @@
 
 <div class="newUserbox">
 	<button id="newUserButton">
-		Nuevo Usuario<a class="user_span"></a>
+		Nuevo Usuario<span class="user_span"></span>
 	</button>
 	<button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'">
-		Descargar Tabla<a class="excel_span"></a>
+		Descargar Tabla<span class="excel_span"></span>
 	</button>
 
 

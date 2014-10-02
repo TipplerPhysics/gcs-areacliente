@@ -26,6 +26,64 @@ var name = $("#equipo").val();
 	}	
 }
 
+function sendNewCoste(){
+	
+	var $form = $("#new-coste-form");		
+	
+	if($form.valid()){		
+
+		var postData = $form.serialize() + "&accion=new";
+		var formURL = $form.attr("action");
+		
+		
+		$.ajax(
+		{
+		  url : formURL,
+		  type: "GET",
+		  data : postData,
+		  success:function(data, textStatus, jqXHR) 
+		  {
+				//data: return data from server
+			if (data.success==("true")){
+				
+				var coste_anal = (!isNaN(parseInt($('#analisis_coste').val())) ? parseInt($('#analisis_coste').val()) : 0);
+				var coste_disenio = (!isNaN(parseInt($('#disenio_coste').val())) ? parseInt($('#disenio_coste').val()) : 0);
+				var coste_constuccion = (!isNaN(parseInt($('#construccion_coste').val())) ? parseInt($('#construccion_coste').val()) : 0);
+				var coste_pruebas = (!isNaN(parseInt($('#pruebas_coste').val())) ? parseInt($('#pruebas_coste').val()) : 0);
+				var coste_gestion = (!isNaN(parseInt($('#gestion_coste').val())) ? parseInt($('#gestion_coste').val()) : 0);
+				
+				
+				$('#coste').val(coste_anal+coste_disenio+coste_constuccion+coste_pruebas+coste_gestion);
+				
+				$form.hide();
+				$('#span_message_modal').html('El coste ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+				$('.modal-footer').hide();
+				$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+				resetForm($form);
+				$('#new-costo').modal('hide');
+				
+			}else{
+				$('#message_div').removeClass("success").addClass("error");
+				if ($('.new-user-form-holder').height()<190){
+					$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
+				}
+				$('#span_message').html(data.error);
+				$('#message_div').css('display','block');
+			}
+		  },
+		  error: function(jqXHR, textStatus, errorThrown) 
+		  {
+			if (errorThrown.length > 0){
+				$('#span_message').html(errorThrown);
+				$('#message_div').addClass('error').removeClass('success');
+			}
+		  }
+		});
+		
+	}
+	return false;
+}
+
 function sendEditCoste(){
 	var $form = $('#edit-coste-form');
 	var formURL = $form.attr("action");
@@ -63,8 +121,15 @@ function sendEditCoste(){
 	 
 }
 
-function getProjectsByClient(){
-	var id = $("#input_cliente").val();
+function getProjectsByClient(pagina){
+	
+	var id;
+	if (pagina=="modal"){
+		var id = $("#input_cliente_modal").val();
+	}else{
+		var id = $("#input_cliente").val();
+	}
+	
 	
 	
 	if (id!="default"){
@@ -171,6 +236,8 @@ $(function() {
 	$('.gestion_coste').on('click', '.papelera', function(e) {
 		$('#deleteCoste').attr('name',$(this).attr('name'));
 	});
+	
+	
 	
 	$('#deleteCoste').on('click', function(e) {
 		var id= $(this).attr('name');

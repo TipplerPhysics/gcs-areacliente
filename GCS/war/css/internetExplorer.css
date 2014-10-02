@@ -14,3 +14,12 @@
 	margin-top:100px;
 }
 	
+#edit_coste_dialog{	
+	width:600px;
+}
+
+#edit_coste_dialog .bootstrap-select{
+	margin-left:0px;
+	float:left;
+
+}

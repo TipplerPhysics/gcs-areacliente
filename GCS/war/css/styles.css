@@ -388,11 +388,11 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
 }
 .coste_span {
   background-image: url("../img/pagosBlanco.png");
-  display: inline-block;
   height: 15px;
   margin-left: 10px;
   vertical-align: text-bottom;
   width: 15px;
+  display: inline-block;
 }
 .coste_span.blue {
   background-image: url("../img/pagosAzul.png");
@@ -431,7 +431,7 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
 }
 .bootstrap-select {
   float: right;
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
   width: 215px;
 }
 .bootstrap-select > .btn-default {
@@ -539,6 +539,16 @@ form .datepicker {
 .form-field-divider .form-field .input > textarea,
 .form-field-divider .form-field .input > div {
   width: 245px;
+}
+/* Clientes */
+.clients > div.search_div button {
+  float: right;
+  font-family: BBVA Web Medium, arial !important;
+  font-weight: normal !important;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 10px;
+  width: 165px;
 }
 #sidebar {
   position: fixed;
@@ -2069,7 +2079,7 @@ form textarea.error {
   width: 220px;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-divider.right {
-  height: 388px;
+  height: 276px;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field {
   height: 50px;
@@ -2088,11 +2098,12 @@ form textarea.error {
   width: 100%;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-down {
-  text-align: middle;
+  margin-left: 25px;
   display: block;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .lbl {
   display: block;
+  margin-top: 10px;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field {
   display: inline-block;
@@ -2101,6 +2112,12 @@ form textarea.error {
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl {
   display: inline-block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl:first-child {
+  margin-right: 20px;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl.total {
+  margin-right: 5px;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .horas {
   width: 40px;
