@@ -386,6 +386,17 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
 .proyecto_span_fixed.blue {
   background-image: url("../img/nuevoP.png");
 }
+.cliente_span {
+  background-image: url("../img/new-user-white.png");
+  height: 15px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+  width: 15px;
+  display: inline-block;
+}
+.cliente_span.blue {
+  background-image: url("../img/new-user-blue.png");
+}
 .coste_span {
   background-image: url("../img/pagosBlanco.png");
   height: 15px;
@@ -549,6 +560,12 @@ form .datepicker {
   font-weight: 700;
   margin-left: 10px;
   width: 165px;
+}
+#accion_menu.white {
+  background: none;
+  background-color: white;
+  color: #004b8c;
+  border: 1px solid;
 }
 #sidebar {
   position: fixed;
@@ -1074,7 +1091,7 @@ form .datepicker {
 }
 .clients > div.search_div #buscador_cliente {
   float: right;
-  margin-top: 10px;
+  margin-bottom: 5px;
   width: 166px;
 }
 .clients > div.search_div button {
@@ -1089,6 +1106,22 @@ form .datepicker {
   height: 20px;
   margin-left: 10px;
   vertical-align: sub;
+}
+.clients > div.search_div .btn-group {
+  float: right;
+}
+.clients > div.search_div .btn-group > button {
+  background: linear-gradient(to bottom, #0069b1 0px, #004b8c 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  color: white;
+}
+.clients > div.search_div .btn-group > .dropdown-menu > li > a {
+  padding: 3px 12px;
+}
+.clients > div.search_div .btn-group > .dropdown-menu > li > a > span {
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  margin-left: 0px !important;
+  margin-right: 5px;
 }
 .clients .selector {
   width: 385px;

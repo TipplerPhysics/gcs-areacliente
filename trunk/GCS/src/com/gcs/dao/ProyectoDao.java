@@ -1,5 +1,6 @@
 package com.gcs.dao;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import com.gcs.beans.Cliente;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
+import com.gcs.utils.Utils;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Key;
@@ -23,7 +25,7 @@ public class ProyectoDao {
 		return new ProyectoDao();
 	}
 	
-	public void createProject(Proyecto p){
+	public void createProject(Proyecto p) throws ParseException{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 		ClienteDao cDao = ClienteDao.getInstance();
@@ -35,6 +37,22 @@ public class ProyectoDao {
 		p.setClienteName(c.getNombre());
 		p.setGestor_it_name(gestor_it.getNombre()+ " " + gestor_it.getApellido1() + " " + gestor_it.getApellido2());
 		p.setGestor_negocio_name(gestor_negocio.getNombre()+ " " + gestor_negocio.getApellido1() + " " + gestor_negocio.getApellido2());
+		
+		if (p.getStr_fecha_inicio_valoracion() != null && !"".equals(p.getStr_fecha_inicio_valoracion())){
+			p.setFecha_inicio_valoracion(Utils.dateConverter(p.getStr_fecha_inicio_valoracion()));
+		}
+		
+		if (p.getStr_fecha_fin_valoracion() != null && !"".equals(p.getStr_fecha_fin_valoracion())){
+			p.setFecha_fin_valoracion(Utils.dateConverter(p.getStr_fecha_fin_valoracion()));
+		}
+		
+		if (p.getStr_fecha_inicio_viabilidad() != null && !"".equals(p.getStr_fecha_inicio_viabilidad())){
+			p.setFecha_inicio_viabilidad(Utils.dateConverter(p.getStr_fecha_inicio_viabilidad()));
+		}
+		
+		if (p.getStr_fecha_fin_viabilidad() != null && !"".equals(p.getStr_fecha_fin_viabilidad())){
+			p.setFecha_fin_viabilidad(Utils.dateConverter(p.getStr_fecha_fin_viabilidad()));
+		}
 		
 		if (p.getKey()==null){
 			Integer project_number = c.getProject_number();

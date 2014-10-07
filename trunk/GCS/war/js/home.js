@@ -1,3 +1,11 @@
+function  changeActionsButtonColor(){
+	if ($('#accion_menu').hasClass('white')){
+		$('#accion_menu').removeClass('white');
+	}else{
+		$('#accion_menu').addClass('white');
+	}
+}
+
 $(function() {
 	
 	$(window).scroll(function (event) {
@@ -11,7 +19,14 @@ $(function() {
 
 	    }
 	});
+		
 	
+	$('.clients').on('click', '#accion_menu', function(e) {
+		 changeActionsButtonColor();
+		
+	});
+	
+		
 	function drawLetters(){
 		var isEmpty;
 		var cajas = $('.clients_container').children();

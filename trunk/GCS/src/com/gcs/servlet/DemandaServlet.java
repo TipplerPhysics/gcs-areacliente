@@ -420,11 +420,14 @@ public class DemandaServlet extends HttpServlet {
 				else
 					s.addCell(new Label(11, aux, "No"));
 
-				u = uDao.getUserbyId(d.getGestor_it());
-				if (u!=null){
-					s.addCell(new Label(12, aux, u.getNombre() + " "
-							+ u.getApellido1() + " " + u.getApellido2()));
+				if (d.getGestor_it()!=null){
+					u = uDao.getUserbyId(d.getGestor_it());
+					if (u!=null){
+						s.addCell(new Label(12, aux, u.getNombre() + " "
+								+ u.getApellido1() + " " + u.getApellido2()));
+					}
 				}
+				
 				
 
 				s.addCell(new Label(13, aux, d.getCatalogacion()));

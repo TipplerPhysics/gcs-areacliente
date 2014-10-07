@@ -35,10 +35,36 @@
 				 
 		</c:if>
 	 -->
-	
-		<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gestión clientes<img src="../img/new-user-white.png"></button> 
 
-		<input type="text" class="long" name="buscador_cliente" id="buscador_cliente" placeholder="Introduzca cliente a buscar">
+ 
+	<input type="text" class="long" name="buscador_cliente" id="buscador_cliente" placeholder="Introduzca cliente a buscar">
+	
+	<!--  	
+ 	<c:choose>
+	 	<c:when test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+		 	<div class="btn-group">
+				  <button id="accion_menu" class="btn dropdown-toggle"
+				          type="button" data-toggle="dropdown">
+				    Acci&oacute;n <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu">
+				    	<li><a href="./dashboard/gestionCliente.do"><span class="cliente_span blue"></span>Gestión Clientes</a></li>
+				    	<li><a href="./dashboard/gestionProyecto.do"><span class="proyecto_span blue"></span>Gestión Proyectos</a></li>
+				    	<li><a href="./dashboard/gestionCostes.do"><span class="coste_span blue"></span>Gestión Costes</a></li>
+				  </ul>
+			</div>
+		</c:when>
+	 	<c:otherwise> 			
+			<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gestión clientes<img src="../img/new-user-white.png"></button> 
+	 
+	 	</c:otherwise>
+ 	</c:choose>
+ 	
+ 	 -->
+ 	 
+	<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gestión clientes<img src="../img/new-user-white.png"></button> 
+ 	 
+ 	
 	</div>
 	
 	

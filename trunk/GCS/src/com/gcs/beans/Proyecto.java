@@ -17,9 +17,6 @@ public class Proyecto {
 	private Key key;
 	
 	@Persistent
-	private String nombre;
-	
-	@Persistent
 	private String fecha_alta_str;
 	
 	@Persistent
@@ -55,14 +52,130 @@ public class Proyecto {
 	@Persistent
 	private String cod_proyecto;
 	
-	/*
 	@Persistent
-	private Set<Servicio> servicios;
-	*/
+	private String producto;
+	
+	@Persistent
+	private String conectividad;
+	
+	@Persistent
+	private Date fecha_inicio_valoracion;
+	
+	@Persistent
+	private String str_fecha_inicio_valoracion;
+	
+	@Persistent
+	private Date fecha_fin_valoracion;
+	
+	@Persistent
+	private String str_fecha_fin_valoracion;
+	
+	@Persistent
+	private Date fecha_inicio_viabilidad;
+	
+	@Persistent
+	private String str_fecha_inicio_viabilidad;
+	
+	@Persistent
+	private Date fecha_fin_viabilidad;
+	
+	@Persistent
+	private String str_fecha_fin_viabilidad;
+	
+	@Persistent
+	private String servicio;
 
 	public Proyecto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getProducto() {
+		return producto;
+	}
+
+	public void setProducto(String producto) {
+		this.producto = producto;
+	}
+
+	public String getConectividad() {
+		return conectividad;
+	}
+
+	public void setConectividad(String conectividad) {
+		this.conectividad = conectividad;
+	}
+
+	public Date getFecha_inicio_valoracion() {
+		return fecha_inicio_valoracion;
+	}
+
+	public void setFecha_inicio_valoracion(Date fecha_inicio_valoracion) {
+		this.fecha_inicio_valoracion = fecha_inicio_valoracion;
+	}
+
+	public String getStr_fecha_inicio_valoracion() {
+		return str_fecha_inicio_valoracion;
+	}
+
+	public void setStr_fecha_inicio_valoracion(String str_fecha_inicio_valoracion) {
+		this.str_fecha_inicio_valoracion = str_fecha_inicio_valoracion;
+	}
+
+	public Date getFecha_fin_valoracion() {
+		return fecha_fin_valoracion;
+	}
+
+	public void setFecha_fin_valoracion(Date fecha_fin_valoracion) {
+		this.fecha_fin_valoracion = fecha_fin_valoracion;
+	}
+
+	public String getStr_fecha_fin_valoracion() {
+		return str_fecha_fin_valoracion;
+	}
+
+	public void setStr_fecha_fin_valoracion(String str_fin_valoracion) {
+		this.str_fecha_fin_valoracion = str_fin_valoracion;
+	}
+
+	public Date getFecha_inicio_viabilidad() {
+		return fecha_inicio_viabilidad;
+	}
+
+	public void setFecha_inicio_viabilidad(Date fecha_inicio_viabilidad) {
+		this.fecha_inicio_viabilidad = fecha_inicio_viabilidad;
+	}
+
+	public String getStr_fecha_inicio_viabilidad() {
+		return str_fecha_inicio_viabilidad;
+	}
+
+	public void setStr_fecha_inicio_viabilidad(String str_fecha_inicio_viabilidad) {
+		this.str_fecha_inicio_viabilidad = str_fecha_inicio_viabilidad;
+	}
+
+	public Date getFecha_fin_viabilidad() {
+		return fecha_fin_viabilidad;
+	}
+
+	public void setFecha_fin_viabilidad(Date fecha_fin_viabilidad) {
+		this.fecha_fin_viabilidad = fecha_fin_viabilidad;
+	}
+
+	public String getStr_fecha_fin_viabilidad() {
+		return str_fecha_fin_viabilidad;
+	}
+
+	public void setStr_fecha_fin_viabilidad(String str_fecha_fin_viabilidad) {
+		this.str_fecha_fin_viabilidad = str_fecha_fin_viabilidad;
+	}
+
+	public String getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(String servicio) {
+		this.servicio = servicio;
 	}
 
 	public String getCod_proyecto() {
@@ -119,14 +232,6 @@ public class Proyecto {
 
 	public void setKey(Key key) {
 		this.key = key;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public String getFecha_alta_str() {
