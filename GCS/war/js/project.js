@@ -43,6 +43,27 @@ function modalCliente(){
 	var gestor_negocio = $currentRow.attr('data-gestor-negocio');
 	var coste = $currentRow.attr('data-coste');
 	
+	var producto = $currentRow.attr('data-producto');
+	var conectividad = $currentRow.attr('data-conectividad');
+	var servicio = $currentRow.attr('data-servicio');
+	
+	var fecha_ini_valoracion = $currentRow.attr('data-fecha-ini-valoracion');
+	var fecha_fin_valoracion = $currentRow.attr('data-fecha-fin-valoracion');
+	
+	var fecha_ini_viabilidad = $currentRow.attr('data-fecha-ini-viabilidad');
+	var fecha_fin_viabilidad = $currentRow.attr('data-fecha-fin-viabilidad');
+	
+	
+	$('#producto_modal').val(producto);
+	$('#conectividad_modal').val(conectividad);
+	$('#servicio_modal').val(servicio);
+	
+	$('#fecha_inicio_valoracion_modal').val(fecha_ini_valoracion);
+	$('#fecha_fin_valoracion_modal').val(fecha_fin_valoracion);
+	
+	$('#fecha_inicio_viabilidad_modal').val(fecha_ini_viabilidad);
+	$('#fecha_fin_viabilidad_modal').val(fecha_fin_viabilidad);
+	
 	$('#fecha_alta_cliente_modal').val(fecha_alta);
 	$('#project_name_modal').val(nombre);
 	$('#tipo_modal').val(tipo);

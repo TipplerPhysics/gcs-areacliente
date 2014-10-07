@@ -189,6 +189,16 @@ public class ProjectServlet extends HttpServlet{
 			if (p!=null){
 				String fecha_alta_str = req.getParameter("fecha_alta_cliente");
 				
+				String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
+				String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
+				
+				String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
+				String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+				
+				String producto = req.getParameter("producto");
+				String conectividad = req.getParameter("conectividad");
+				String servicio = req.getParameter("servicio");
+				
 				String tipo = req.getParameter("tipo");
 				String cliente = req.getParameter("cliente");
 				
@@ -197,25 +207,37 @@ public class ProjectServlet extends HttpServlet{
 				String gestor_negocio_str = req.getParameter("gestor_negocio");
 				String coste = req.getParameter("coste");
 				
-				List<Proyecto> projects = pDao.getAllProjects();
-				Boolean exist_project = false;
 				
 				
+				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
 				
-					p.setFecha_alta_str(fecha_alta_str);					
-					
-						p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
-									
+				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
 				
-					p.setTipo(tipo);
-					p.setClienteKey(Long.parseLong(cliente));
-					p.setClasificacion(Integer.parseInt(clasificacion));
-					p.setGestor_it(Long.parseLong(gestor_it_str));
-					p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
-					p.setCoste(coste);
-					
-					
-					pDao.createProject(p);
+				p.setProducto(producto);
+				
+				if (!"default".equals(conectividad))
+					p.setConectividad(conectividad);
+				
+				if (!"default".equals(servicio))
+					p.setServicio(servicio);
+				
+				
+				p.setFecha_alta_str(fecha_alta_str);					
+				
+				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
+								
+			
+				p.setTipo(tipo);
+				p.setClienteKey(Long.parseLong(cliente));
+				p.setClasificacion(Integer.parseInt(clasificacion));
+				p.setGestor_it(Long.parseLong(gestor_it_str));
+				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
+				p.setCoste(coste);
+				
+				
+				pDao.createProject(p);
 			
 				
 				json.append("success", "true");
@@ -244,6 +266,18 @@ public class ProjectServlet extends HttpServlet{
 			
 			String fecha_alta_str = req.getParameter("fecha_alta_cliente");
 			
+			String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
+			String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
+			
+			String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
+			String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+			
+			String producto = req.getParameter("producto");
+			String conectividad = req.getParameter("conectividad");
+			String servicio = req.getParameter("servicio");
+			
+			
+			
 			String tipo = req.getParameter("tipo");
 			String cliente = req.getParameter("cliente");
 			
@@ -259,29 +293,37 @@ public class ProjectServlet extends HttpServlet{
 				
 			}else{
 				
-				ProyectoDao pDao = ProyectoDao.getInstance();
+				ProyectoDao pDao = ProyectoDao.getInstance();				
 				
-				List<Proyecto> projects = pDao.getAllProjects();
-				Boolean exist_project = false;
+				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
+				
+				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				
+				p.setProducto(producto);
+				
+				if (!"default".equals(conectividad))
+					p.setConectividad(conectividad);
+				
+				if (!"default".equals(servicio))
+					p.setServicio(servicio);
+				
+				p.setFecha_alta_str(fecha_alta_str);					
+				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					
+				
+				p.setTipo(tipo);
+				p.setClienteKey(Long.parseLong(cliente));
+				p.setClasificacion(Integer.parseInt(clasificacion));
+				p.setGestor_it(Long.parseLong(gestor_it_str));
+				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
+				p.setCoste(coste);
 				
 				
+				pDao.createProject(p);
 				
-					
-					p.setFecha_alta_str(fecha_alta_str);					
-					p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					
-					
-					p.setTipo(tipo);
-					p.setClienteKey(Long.parseLong(cliente));
-					p.setClasificacion(Integer.parseInt(clasificacion));
-					p.setGestor_it(Long.parseLong(gestor_it_str));
-					p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
-					p.setCoste(coste);
-					
-					
-					pDao.createProject(p);
-					
-					json.append("success", "true");
-					json.append("id", p.getKey().getId());
+				json.append("success", "true");
+				json.append("id", p.getKey().getId());
 							
 			}
 		} catch (ParseException e) {

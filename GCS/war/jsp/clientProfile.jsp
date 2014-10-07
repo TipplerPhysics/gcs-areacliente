@@ -33,7 +33,7 @@
 	</div>
 	<h2>Proyectos asociados</h2>
 	<button id="newProjectButton" onclick="location.href = './dashboard/gestionProyecto.do';">
-				Nuevo Proyecto<a class="proyecto_span_fixed"></a>
+				Gesti&oacute;n Proyecto<a class="proyecto_span_fixed"></a>
 			</button>	
 	<hr/>
 	<div class="table">

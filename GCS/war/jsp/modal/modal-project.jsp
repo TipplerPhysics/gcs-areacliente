@@ -63,10 +63,8 @@
 								</select>
 							</div>
 						</div>
-				</div>
-				
-				<div class="form-field-divider right">
-					<div class="form-field">
+						
+						<div class="form-field">
 							<span class="lbl">Clasificaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker" name="clasificacion" id="clasificacion_modal" required aria-required="true">
@@ -103,6 +101,99 @@
 						<div class="form-field">
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
 						<input type="text" aria-required="true" readonly="" required="" id="coste_modal" name="coste" class="long euro readonly">
+					</div>
+				</div>
+				
+				<div class="form-field-divider right">
+					
+					
+					
+					<div class="form-field">
+						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
+						<div class="input">
+							<select class="selectpicker selected" id="producto_modal" name="producto" required aria-required="true">
+							   
+							    <option value="Global Netcash">Global Netcash</option>
+							    <option value="H2H">H2H</option>
+							    <option value="H2H-BancoRelay">H2H-BancoRelay</option>
+							    <option value="Swift-BancoRelay">Swift-BancoRelay</option>
+							    <option value="Swift-Fileact">Swift-Fileact</option>												
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Conectividad:</span>
+						<div class="input">
+							<select class="selectpicker" id="conectividad_modal" name="conectividad">
+							    <option value="default">Seleccionar</option>
+							    <option value="AS2">AS2</option>
+							    <option value="Fileact">Fileact</option>
+							    <option value="FTP">FTP</option>
+							    <option value="FTPS">FTPS</option>
+							    <option value="Host to Web">Host to Web</option>								    
+							    <option value="HTTPS">HTTPS</option>
+							    <option value="Macug">Macug</option>
+							    <option value="Score">Score</option>
+							    <option value="SFTP">SFTP</option>
+							    <option value="Webservices">Webservices</option>												
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha inicio valoraci&oacute;n:</span>
+						<div class="input">
+							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion_modal' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion_modal">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha fin valoraci&oacute;n:</span>
+						<div class="input">
+							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion_modal' name="fecha_fin_valoracion" id="fecha_fin_valoracion_modal">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha inicio viabilidad:</span>
+						<div class="input">
+							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_viabilidad_modal' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad_modal">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha fin viabilidad:</span>
+						<div class="input">
+							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_viabilidad_modal' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad_modal">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Servicio:</span>
+						<div class="input">
+							<select class="selectpicker" id="servicio_modal" name="servicio">
+							    <option value="default">Seleccionar</option>
+							    <option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
+							    <option value="C100 en confecci&oacute;n">C100 en confecci&oacute;n</option>
+							    <option value="PDTE Valoraci&oacute;n IT">PDTE Valoraci&oacute;n IT</option>
+							    <option value="PDTE Plan de Trabajo IT">PDTE Plan de Trabajo IT</option>
+							    <option value="PDTE Visto Bueno del CL del plan de trabajo">PDTE Visto Bueno del CL del plan de trabajo</option>								    
+							    <option value="En Desarrollo">En Desarrollo</option>
+							    <option value="En Test - Conectividad">En Test - Conectividad</option>
+							    <option value="En Test - Integraci&oacute;n">En Test - Integraci&oacute;n</option>
+							    <option value="En Test - Aceptaci&oacute;n">En Test - Aceptaci&oacute;n</option>
+							    <option value="Parado por Producto">Parado por Producto</option>
+							    <option value="Parado por Negocio">Parado por Negocio</option>
+							    <option value="Parado por IT">Parado por IT</option>
+							    <option value="Excluido por negocio">Excluido por negocio</option>							    
+							    <option value="Excluido por Timeout">Excluido por Timeout</option>
+							    <option value="PDTE Implantar">PDTE Implantar</option>
+							    <option value="En Penny Test">En Penny Test</option>
+							    <option value="Implementado con OK">Implementado con OK</option>
+							    <option value="Implementado sin OK">Implementado sin OK</option>												
+							</select>
+						</div>
 					</div>
 				</div>
 				

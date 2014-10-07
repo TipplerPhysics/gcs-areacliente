@@ -542,9 +542,10 @@
 		
 		#buscador_cliente{
 			float:right;
-			margin-top:10px;
+			margin-bottom:5px;
 			width: 166px;
 		}
+		
 	
 		button{
 			float:right;
@@ -558,6 +559,30 @@
 				height:20px;
 				margin-left: 10px;
 	    		vertical-align: sub;
+			}
+		}
+		
+		.btn-group{
+			float:right;
+			
+			> button{
+				 background: linear-gradient(to bottom, #0069b1 0px, #004b8c 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+				 color: white;				 
+			}
+			
+			> .dropdown-menu{
+				> li > a{
+					
+					padding:3px 12px;
+				
+					> span{
+					
+						background-repeat: no-repeat;
+						padding-left:20px;
+						margin-left:0px !important;
+						margin-right:5px;
+					}
+				} 
 			}
 		}
 	} 

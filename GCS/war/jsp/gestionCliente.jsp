@@ -20,7 +20,7 @@
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 			<button id="newProjectButton" onclick="location.href = './gestionProyecto.do';">
-				Nuevo Proyecto<span class="proyecto_span_fixed"></span>
+				Gesti&oacute;n Proyecto<span class="proyecto_span_fixed"></span>
 			</button>	
 		</c:if>	
 		
