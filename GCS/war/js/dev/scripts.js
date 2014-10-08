@@ -1418,10 +1418,7 @@ $(function() {
 		
 	});
 	
-	
-	
-	
-	
+		
 	function drawLetters(){
 		var isEmpty;
 		var cajas = $('.clients_container').children();
@@ -1696,7 +1693,55 @@ $(function() {
 	}
 };
 
-;function  sendEditProject(){
+;function edit_conectividad_form_modal(){
+	var $form = $('#edit-conectividad-form');
+	var formURL = $form.attr("action");
+	 var $formData = $form.serialize();
+	 var postData= $formData+"&accion=new&project_id="+ id+"&conect_id=";
+	 $.ajax(			
+		{
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				if (data.success=="true"){
+					
+				}
+			}
+		});
+}
+
+function loadEditModal(){
+	var accion = $('#select_edit_action').val();
+	
+	var git = $('#row'+id).data('gestor-it');
+	var gn = $('#row'+id).data('gestor-negocio');
+	var client = $('#row'+id).data('cliente');
+	
+	if (accion=='proyecto'){
+		$('#edit-action').modal('hide');
+		$('#edit-project').modal({
+			  remote: "../projectModal.do?git="+git+"&gn="+gn+"&client="+client
+			});
+		$('#edit-project').modal('show');
+		
+	}else if (accion=='coste'){
+		$('#edit-action').modal('hide');
+		
+	}else if (accion='conectividad'){
+		$('#edit-action').modal('hide');
+		$('#new-conectividad').modal({
+			  remote: "../loadConectivity.do?id="+id
+			})
+		$('#new-conectividad').modal('show');
+		
+	}else if (accion='servicios'){
+		$('#edit-action').modal('hide');
+	}
+}
+
+function  sendEditProject(){
 	var $form = $('#edit-project-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -1779,7 +1824,7 @@ function modalCliente(){
 
 $(function() {
 	$('#alta_proyecto').on('click', '.lapiz', function(e) {		
-		id= $(this).attr('name');	
+		id= $(this).attr('name');
 	});
 	
 	$('#alta_proyecto').on('loaded.bs.modal', function () {

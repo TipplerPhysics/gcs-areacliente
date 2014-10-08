@@ -162,15 +162,9 @@
 							<div class="input labels">
 								<span class="lbl total">Total Horas</span><span class="lbl">Total Coste</span>
 							</div>
-						</div>
-					
-					
-					
-					</div>	
-									 
-					
-				</div>
-				
+						</div>					
+					</div>						
+				</div>				
 			</form>
 			
 			<div style="margin-bottom:10px;" class="message_div" id="message_div_modal">
@@ -187,86 +181,3 @@
 	<div class="ajax_loader" id="ajax_loader">
 		<img src="../../img/ajax-loader.gif" />
 	</div>
-
-<script>
-$(function() {
-	$.extend($.validator.messages, {
-		required: "Este campo es obligatorio.",
-		remote: "Por favor, rellena este campo.",
-		email: "Por favor, escribe una direcci&oacuten de correo v&aacutelida.(Terminada en @bbva.com)",
-		url: "Por favor, escribe una URL válida.",
-		date: "Por favor, escribe una fecha válida.",
-		dateISO: "Por favor, escribe una fecha (ISO) válida.",
-		number: "Por favor, escribe un n&uacutemero v&aacutelido.",
-		digits: "Por favor, escribe s&oacutelo dígitos.",
-		creditcard: "Por favor, escribe un número de tarjeta válido.",
-		equalTo: "Por favor, escribe el mismo valor de nuevo.",
-		extension: "Por favor, escribe un valor con una extensión aceptada.",
-		maxlength: $.validator.format("Por favor, no escribas más de {0} caracteres."),
-		minlength: $.validator.format("Por favor, no escribas menos de {0} caracteres."),
-		rangelength: $.validator.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
-		range: $.validator.format("Por favor, escribe un valor entre {0} y {1}."),
-		max: $.validator.format("Por favor, escribe un valor menor o igual a {0}."),
-		min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}."),
-		nifES: "Por favor, escribe un NIF válido.",
-		nieES: "Por favor, escribe un NIE válido.",
-		cifES: "Por favor, escribe un CIF válido."
-	});
-
-	
-	
-	$.validator.addMethod("money", function(value, element) {
-		 return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
-		}, "Por favor, introduce una cifra v&aacute;lida");
-	
-	// One to rule the ... selects
-	$.validator.addMethod("selected", function(value, element){
-		var valid = false;
-
-		if(value != 'default') {
-			valid = true;
-			$(element).parent().find('.bootstrap-select').removeClass('error');
-		}else{
-			$(element).parent().find('.bootstrap-select').addClass('error');
-		}
-		return valid;
-	}, "Por favor, selecciona un valor.");
-
-	$.validator.addMethod('require-one', function(value, element) {
-		var valid = false;
-		var selector = 'input[name=' + $(element).attr('name') + ']';
-
-		$(element).closest('form').find(selector).each(function() {
-			if($(this).is(":checked")) {
-				valid = true;
-			}
-		});
-		
-		var modal =  $(element).attr('id').indexOf('modal') != -1;
-		if (valid==false) {
-			if (modal) {
-				$('#message_div_cliente_modal').addClass('error');
-				$('#span_message_cliente_modal').text('Debe seleccionar un pa\u00EDs');
-			} else {
-				$('#message_div_cliente').addClass('error');
-				$('#span_message_cliente').text('Debe seleccionar un pa\u00EDs');
-			}
-		} else {
-			if (modal) {
-				$('#message_div_cliente_modal').removeClass('error');
-				$('#span_message_cliente_modal').text('');
-			} else {
-				$('#message_div_cliente').removeClass('error');
-				$('#span_message_cliente').text('');
-				
-			}
-		}
-		
-			
-			
-		return valid;
-	},'Por favor, selecciona una opci&oacute;n.');
-
-	initValidator();
-});
-</script>
