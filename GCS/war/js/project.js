@@ -128,12 +128,69 @@ function modalCliente(){
 
 
 $(function() {
+	
+	//Nuevo proyecto
+	$('#producto').change(function(e){
+		//vaciamos el select
+		$("#conectividad").empty();
+		if ($('#producto').val().indexOf("H2H") >= 0) {
+			//case H2H / H2H-bancoRelay		
+			$("#conectividad").append(new Option("Seleccionar", "default"));
+			$("#conectividad").append(new Option("AS2", "AS2"));
+			$("#conectividad").append(new Option("FTP", "FTP"));
+			$("#conectividad").append(new Option("FTPS", "FTPS"));
+			$("#conectividad").append(new Option("SFTP", "SFTP"));
+			$("#conectividad").append(new Option("Webservices", "Webservices"));
+		} else if (($('#producto').val().indexOf("H2H") < 0) && ($('#producto').val().indexOf("default") < 0)) {
+			//case Swift-bancoRelay/ Swift Fileact			
+			$("#conectividad").append(new Option("Seleccionar", "default"));	
+			$("#conectividad").append(new Option("Score", "Score"));	
+			$("#conectividad").append(new Option("Macug", "Macug"));	
+		} else {
+			//case nada seleccionado
+			$("#conectividad").empty();
+			$("#conectividad").append(new Option("Seleccionar", "default"));
+		}
+		//repintamos el combo
+		$("#conectividad").selectpicker("refresh");
+	});
+	
+
+	
 	$('#alta_proyecto').on('click', '.lapiz', function(e) {		
 		id= $(this).attr('name');
 	});
 	
 	$('#alta_proyecto').on('loaded.bs.modal', function () {
 		modalCliente(id);
+
+		//Editar proyecto modal
+		$('#producto_modal').change(function(e){
+			alert("entraaaaaaaa");
+			//vaciamos el select
+			$("#conectividad_modal").empty();
+			if ($('#producto_modal').val().indexOf("H2H") >= 0) {
+				//case H2H / H2H-bancoRelay		
+				$("#conectividad_modal").append(new Option("Seleccionar", "default"));
+				$("#conectividad_modal").append(new Option("AS2", "AS2"));
+				$("#conectividad_modal").append(new Option("FTP", "FTP"));
+				$("#conectividad_modal").append(new Option("FTPS", "FTPS"));
+				$("#conectividad_modal").append(new Option("SFTP", "SFTP"));
+				$("#conectividad_modal").append(new Option("Webservices", "Webservices"));
+			} else if (($('#producto_modal').val().indexOf("H2H") < 0) && ($('#producto_modal').val().indexOf("default") < 0)) {
+				//case Swift-bancoRelay/ Swift Fileact			
+				$("#conectividad_modal").append(new Option("Seleccionar", "default"));	
+				$("#conectividad_modal").append(new Option("Score", "Score"));	
+				$("#conectividad_modal").append(new Option("Macug", "Macug"));	
+			} else {
+				//case nada seleccionado
+				$("#conectividad_modal").empty();
+				$("#conectividad_modal").append(new Option("Seleccionar", "default"));
+			}
+			//repintamos el combo
+			$("#conectividad_modal").selectpicker("refresh");
+		});
+		
 		
 	});
 	
