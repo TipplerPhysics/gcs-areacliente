@@ -275,8 +275,8 @@
 										<c:if test="${sessionScope.permiso != 5}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do?git=${proyecto.gestor_it}&gn=${proyecto.gestor_negocio}&client=${proyecto.clienteKey}"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>
-																
+										<!-- 	<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do?git=${proyecto.gestor_it}&gn=${proyecto.gestor_negocio}&client=${proyecto.clienteKey}"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>  -->
+											<a class="lapiz" name="${proyecto.key.id}" href="../jsp/modal/edit-action.jsp" id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-action"></a>				
 											<a class="papelera" name="${proyecto.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${proyecto.key.id}"></a>
 											
 										</td>
@@ -308,6 +308,16 @@
 <div class="modal fade" id="new-costo" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="new_costo_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="new-conectividad" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="new_conectividad_dialog">
 		<div class="modal-content">
 			
 		</div>

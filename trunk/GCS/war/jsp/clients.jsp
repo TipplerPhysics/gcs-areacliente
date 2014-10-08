@@ -39,7 +39,7 @@
  
 	<input type="text" class="long" name="buscador_cliente" id="buscador_cliente" placeholder="Introduzca cliente a buscar">
 	
-	<!--  	
+	
  	<c:choose>
 	 	<c:when test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 		 	<div class="btn-group">
@@ -60,10 +60,10 @@
 	 	</c:otherwise>
  	</c:choose>
  	
- 	 -->
+ 	<!-- 
  	 
 	<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gestión clientes<img src="../img/new-user-white.png"></button> 
- 	 
+ 	  -->
  	
 	</div>
 	
