@@ -1351,8 +1351,10 @@ function resetForm($form) {
 
 var initDatepickers = function() {
 	// init all the datepickers which generally are always inside of a form.
-	$('form').find('.datepicker').each(function(){
+	
+	$('.datepicker').each(function(){
 		var $datepicker = $(this);
+		
 		if($datepicker.hasClass('datefuture')) {
 			if($datepicker.val()) {
 				// already has a date.
@@ -1373,6 +1375,7 @@ var initDatepickers = function() {
 			});
 		}
 	});
+		
 }
 
 var initSelectpickers = function() {
@@ -1693,7 +1696,7 @@ $(function() {
 	}
 };
 
-;function edit_conectividad_form_modal(){
+;function sendEditConectividad(){
 	var $form = $('#edit-conectividad-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -1706,7 +1709,14 @@ $(function() {
 			success:function(data, textStatus, jqXHR) 
 			{
 				if (data.success=="true"){
-					
+					$form.hide();
+					$('#span_message_modal').html('La conectividad se ha guardado de forma correcta.');
+					$('.modal-footer').hide();
+					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+					setTimeout(function() { 
+						resetForm($form);
+						$('#new-conectividad').modal('hide');
+					}, 2000);
 				}
 			}
 		});
@@ -1733,8 +1743,10 @@ function loadEditModal(){
 		$('#edit-action').modal('hide');
 		$('#new-conectividad').modal({
 			  remote: "../loadConectivity.do?id="+id
-			})
+			});
 		$('#new-conectividad').modal('show');
+	
+		
 		
 	}else if (accion='servicios'){
 		$('#edit-action').modal('hide');
@@ -1856,12 +1868,22 @@ $(function() {
 		id= $(this).attr('name');
 	});
 	
+	
 	$('#alta_proyecto').on('loaded.bs.modal', function () {
 		modalCliente(id);
+	
+		//lanzamos el evento change al cargar 
+		$('#edit_project_form_modal').data("id",id);	
+		var $currentRow = $('#row'+id);
+		var producto = $currentRow.attr('data-producto');
+		var conectividad = $currentRow.attr('data-conectividad');
+		$('#producto_modal').val(producto);
+		$("#producto_modal").trigger("change");
+		$('#conectividad_modal').val(conectividad);
+		$('#conectividad_modal').selectpicker("refresh");
 
 		//Editar proyecto modal
 		$('#producto_modal').change(function(e){
-			alert("entraaaaaaaa");
 			//vaciamos el select
 			$("#conectividad_modal").empty();
 			if ($('#producto_modal').val().indexOf("H2H") >= 0) {
@@ -1872,15 +1894,11 @@ $(function() {
 				$("#conectividad_modal").append(new Option("FTPS", "FTPS"));
 				$("#conectividad_modal").append(new Option("SFTP", "SFTP"));
 				$("#conectividad_modal").append(new Option("Webservices", "Webservices"));
-			} else if (($('#producto_modal').val().indexOf("H2H") < 0) && ($('#producto_modal').val().indexOf("default") < 0)) {
+			} else {
 				//case Swift-bancoRelay/ Swift Fileact			
 				$("#conectividad_modal").append(new Option("Seleccionar", "default"));	
 				$("#conectividad_modal").append(new Option("Score", "Score"));	
-				$("#conectividad_modal").append(new Option("Macug", "Macug"));	
-			} else {
-				//case nada seleccionado
-				$("#conectividad_modal").empty();
-				$("#conectividad_modal").append(new Option("Seleccionar", "default"));
+				$("#conectividad_modal").append(new Option("Macug", "Macug"));			
 			}
 			//repintamos el combo
 			$("#conectividad_modal").selectpicker("refresh");
@@ -1888,6 +1906,7 @@ $(function() {
 		
 		
 	});
+	
 	
 	$('#alta_proyecto').on('click', '.papelera', function(e) {
 		$('#deleteProject').attr('name',$(this).attr('name'));

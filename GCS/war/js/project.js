@@ -12,12 +12,13 @@ function sendEditConectividad(){
 			{
 				if (data.success=="true"){
 					$form.hide();
-					$('#span_message_modal').html("Conectividad guardada de forma correcta.");
-					$('#message_div_modal').css('display','block');
-					$('#buttons_holder').css('display','none');
-										
-					resetForm($form);
-					$('#new-conectividad').modal('hide');
+					$('#span_message_modal').html('La conectividad se ha guardado de forma correcta.');
+					$('.modal-footer').hide();
+					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+					setTimeout(function() { 
+						resetForm($form);
+						$('#new-conectividad').modal('hide');
+					}, 2000);
 				}
 			}
 		});
