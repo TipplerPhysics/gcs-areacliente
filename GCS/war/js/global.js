@@ -5,8 +5,10 @@ $(function(){
 
 var initDatepickers = function() {
 	// init all the datepickers which generally are always inside of a form.
-	$('form').find('.datepicker').each(function(){
+	
+	$('.datepicker').each(function(){
 		var $datepicker = $(this);
+		
 		if($datepicker.hasClass('datefuture')) {
 			if($datepicker.val()) {
 				// already has a date.
@@ -27,6 +29,7 @@ var initDatepickers = function() {
 			});
 		}
 	});
+		
 }
 
 var initSelectpickers = function() {

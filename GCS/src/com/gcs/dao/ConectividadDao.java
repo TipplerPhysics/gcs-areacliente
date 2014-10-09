@@ -1,5 +1,6 @@
 package com.gcs.dao;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -8,6 +9,7 @@ import javax.jdo.Transaction;
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
 import com.gcs.persistence.PMF;
+import com.gcs.utils.Utils;
 
 public class ConectividadDao {
 	
@@ -16,7 +18,41 @@ public class ConectividadDao {
 	}
 	
 	
-	public void createConectividad(Conectividad c) {
+	public void createConectividad(Conectividad c) throws ParseException {
+		
+		if (c.getStr_reglas_firewall()!=null && !"".equals(c.getStr_reglas_firewall())){
+			c.setReglas_firewall(Utils.dateConverter(c.getStr_reglas_firewall()));
+		}
+		
+		if (c.getStr_fecha_fin_certificado()!=null && !"".equals(c.getStr_fecha_fin_certificado())){
+			c.setFecha_fin_certificado(Utils.dateConverter(c.getStr_fecha_fin_certificado()));
+		}
+		
+		if (c.getStr_fecha_fin_conectividad()!=null && !"".equals(c.getStr_fecha_fin_conectividad())){
+			c.setFecha_fin_conectividad(Utils.dateConverter(c.getStr_fecha_fin_conectividad()));
+		}
+		
+		
+		if (c.getStr_fecha_fin_infraestructura()!=null && !"".equals(c.getStr_fecha_fin_infraestructura())){
+			c.setFecha_fin_infraestructura(Utils.dateConverter(c.getStr_fecha_fin_infraestructura()));
+		}
+		
+		if (c.getStr_fecha_ini_infraestructura()!=null && !"".equals(c.getStr_fecha_ini_infraestructura())){
+			c.setFecha_ini_infraestructura(Utils.dateConverter(c.getStr_fecha_ini_infraestructura()));
+		}
+		
+		if (c.getStr_fecha_implantacion()!=null && !"".equals(c.getStr_fecha_implantacion())){
+			c.setFecha_implantacion(Utils.dateConverter(c.getStr_fecha_implantacion()));
+		}
+		
+		if (c.getStr_fecha_fin_seguridad()!=null && !"".equals(c.getStr_fecha_fin_seguridad())){
+			c.setFecha_fin_seguridad(Utils.dateConverter(c.getStr_fecha_fin_seguridad()));
+		}
+		
+		if (c.getStr_fecha_ini_seguridad()!=null && !"".equals(c.getStr_fecha_ini_seguridad())){
+			c.setFecha_ini_seguridad(Utils.dateConverter(c.getStr_fecha_ini_seguridad()));
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
 
 		try {
@@ -26,7 +62,7 @@ public class ConectividadDao {
 		}
 	}
 	
-	public Conectividad getConectividadByProject(String id) {
+	public Conectividad getConectividadByProject(Long id) {
 
 		Conectividad c = new Conectividad();
 
