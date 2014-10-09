@@ -169,8 +169,19 @@ $(function() {
 		id= $(this).attr('name');
 	});
 	
+	
 	$('#alta_proyecto').on('loaded.bs.modal', function () {
 		modalCliente(id);
+	
+		//lanzamos el evento change al cargar 
+		$('#edit_project_form_modal').data("id",id);	
+		var $currentRow = $('#row'+id);
+		var producto = $currentRow.attr('data-producto');
+		var conectividad = $currentRow.attr('data-conectividad');
+		$('#producto_modal').val(producto);
+		$("#producto_modal").trigger("change");
+		$('#conectividad_modal').val(conectividad);
+		$('#conectividad_modal').selectpicker("refresh");
 
 		//Editar proyecto modal
 		$('#producto_modal').change(function(e){
@@ -184,15 +195,11 @@ $(function() {
 				$("#conectividad_modal").append(new Option("FTPS", "FTPS"));
 				$("#conectividad_modal").append(new Option("SFTP", "SFTP"));
 				$("#conectividad_modal").append(new Option("Webservices", "Webservices"));
-			} else if (($('#producto_modal').val().indexOf("H2H") < 0) && ($('#producto_modal').val().indexOf("default") < 0)) {
+			} else {
 				//case Swift-bancoRelay/ Swift Fileact			
 				$("#conectividad_modal").append(new Option("Seleccionar", "default"));	
 				$("#conectividad_modal").append(new Option("Score", "Score"));	
-				$("#conectividad_modal").append(new Option("Macug", "Macug"));	
-			} else {
-				//case nada seleccionado
-				$("#conectividad_modal").empty();
-				$("#conectividad_modal").append(new Option("Seleccionar", "default"));
+				$("#conectividad_modal").append(new Option("Macug", "Macug"));			
 			}
 			//repintamos el combo
 			$("#conectividad_modal").selectpicker("refresh");
@@ -200,6 +207,7 @@ $(function() {
 		
 		
 	});
+	
 	
 	$('#alta_proyecto').on('click', '.papelera', function(e) {
 		$('#deleteProject').attr('name',$(this).attr('name'));
