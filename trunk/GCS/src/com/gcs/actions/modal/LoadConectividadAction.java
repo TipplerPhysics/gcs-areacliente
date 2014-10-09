@@ -26,13 +26,12 @@ public class LoadConectividadAction extends Action {
 		String id = req.getParameter("id");
 		
 		Proyecto p = pDao.getProjectbyId(Long.parseLong(id));
-		Conectividad c = cDao.getConectividadByProject(id);
+		Conectividad c = cDao.getConectividadByProject(Long.parseLong(id));
 		
 		req.setAttribute("conectividad", c);
+		req.setAttribute("project_name", p.getCod_proyecto());
 		
-		if (p.getProducto().contains("Swift")){
-			
-			req.setAttribute("project_name", p.getCod_proyecto());
+		if (p.getProducto().contains("Swift")){			
 			return mapping.findForward("swift");
 		}else{
 			return mapping.findForward("h2h");

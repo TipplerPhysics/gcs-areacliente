@@ -1,4 +1,4 @@
-function edit_conectividad_form_modal(){
+function sendEditConectividad(){
 	var $form = $('#edit-conectividad-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -11,7 +11,13 @@ function edit_conectividad_form_modal(){
 			success:function(data, textStatus, jqXHR) 
 			{
 				if (data.success=="true"){
-					
+					$form.hide();
+					$('#span_message_modal').html("Conectividad guardada de forma correcta.");
+					$('#message_div_modal').css('display','block');
+					$('#buttons_holder').css('display','none');
+										
+					resetForm($form);
+					$('#new-conectividad').modal('hide');
 				}
 			}
 		});
@@ -38,8 +44,10 @@ function loadEditModal(){
 		$('#edit-action').modal('hide');
 		$('#new-conectividad').modal({
 			  remote: "../loadConectivity.do?id="+id
-			})
+			});
 		$('#new-conectividad').modal('show');
+	
+		
 		
 	}else if (accion='servicios'){
 		$('#edit-action').modal('hide');
@@ -166,7 +174,6 @@ $(function() {
 
 		//Editar proyecto modal
 		$('#producto_modal').change(function(e){
-			alert("entraaaaaaaa");
 			//vaciamos el select
 			$("#conectividad_modal").empty();
 			if ($('#producto_modal').val().indexOf("H2H") >= 0) {

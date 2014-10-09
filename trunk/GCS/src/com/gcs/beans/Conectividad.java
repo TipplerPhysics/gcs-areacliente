@@ -229,5 +229,16 @@ public class Conectividad {
 	@Persistent
 	private Date fecha_fin_conectividad;
 	
+	public String getStr_fecha_fin_conectividad() {
+		return str_fecha_fin_conectividad;
+	}
+
+	public void setStr_fecha_fin_conectividad(String str_fecha_fin_conectividad) {
+		this.str_fecha_fin_conectividad = str_fecha_fin_conectividad;
+	}
+
+	@Persistent
+	private String str_fecha_fin_conectividad;
+	
 	
 }
