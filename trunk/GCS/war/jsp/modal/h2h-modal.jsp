@@ -72,7 +72,7 @@
 						<div class="form-field">
 							<span class="lbl">Reglas Firewall:</span>
 							<div class="input">
-								<input type="text" id="firewall_modal" name="firewall" data-target-id="firewall_modal" class="datepicker" size="16" value="${conectividad.reglas_firewall}" readonly="">
+								<input type="text" id="firewall_modal" name="firewall" data-target-id="firewall_modal" class="datepicker" size="16" value="${conectividad.str_reglas_firewall}" readonly="">
 							</div>
 						</div>	
 						
