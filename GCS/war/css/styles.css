@@ -2039,6 +2039,12 @@ form textarea.error {
   max-width: 20px !important;
   width: 20px !important;
 }
+#alta_proyecto .form-field-divider .form-field #coste {
+  float: left;
+  margin-left: 51px;
+  margin-right: 0px !important;
+  width: 244px !important;
+}
 #alta_proyecto .form-field > .input.conectividad > bootstrap-select {
   width: 100px !important;
   display: inline-block;
@@ -2060,6 +2066,26 @@ form textarea.error {
   margin-right: auto;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+#alta_proyecto #edit_project_modal .form-field {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions {
+  padding: 0 20px !important;
+  text-align: left;
+}
+#alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions h3 {
+  text-align: left;
+  color: #434a58;
+  font-size: 18px;
+  margin: 10px 0;
+}
+#alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions > #buttons_holder {
+  margin: 20px 0;
 }
 #alta_proyecto .btn-atras {
   float: right;
