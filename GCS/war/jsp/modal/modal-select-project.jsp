@@ -6,14 +6,13 @@
 	</div>
 	<div class="edit-user-form-holder">
 		<div class="form-field">
-			<span class="lbl">Proyecto:</span>
+			<span class="lbl">Proyecto<span class="required-asterisk">*</span>:</span>
 			<div class="input">
 				<select class="selectpicker selected" id="select_project_action" name="select_project_action">	
 					<option value="default">Seleccione...</option>							
 				</select>
 			</div>
 		</div>
-		
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="" id="edit_project_modal" onclick="">Aceptar</button>
