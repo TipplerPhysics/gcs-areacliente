@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<form action="">
-<div class="modal_ajax">
+<div class="modal_ajax" id="modal_costes_by_project">
 	<div class="">
 		<h2>Seleccione el coste que desea editar</h2>
 		<hr />
@@ -46,4 +45,10 @@
 	<button type="button" class="" onclick="loadCosteModal();">Guardar</button>
 	<button type="button" class="" data-dismiss="modal">Cancelar</button>
 </div>
-</form>
+
+<script>
+$(document).ready(function(){
+	$('input:checkbox, input:radio').checkbox();
+
+});
+</script>
