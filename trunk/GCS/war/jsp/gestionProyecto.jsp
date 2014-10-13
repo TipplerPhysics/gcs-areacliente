@@ -118,9 +118,6 @@
 					<div class="form-field">
 						<span class="lbl coste">Coste:</span>
 						<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
-						<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">
-							Nuevo coste
-						</button>
 					</div>
 				</div>
 				
@@ -218,6 +215,7 @@
 		<div id="buttons_holder">
 			<button type="submit" id="submit_project_form">Aceptar</button>
 			<button href="#" class="close-form">Cancelar</button>
+			<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
 		</div>
 	</div>
 </div>
