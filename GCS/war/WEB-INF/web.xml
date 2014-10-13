@@ -4,15 +4,7 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>GCS</display-name>
 
-	<servlet>
-		<servlet-name>action</servlet-name>
-		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
-		<init-param>
-			<param-name>config</param-name>
-			<param-value>/WEB-INF/struts-config.xml</param-value>
-		</init-param>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
+	
 	
 	<!-- LISTADO DE SERVLETS -->
 	
@@ -117,6 +109,16 @@
     </security-constraint>
     
     <!-- FILTROS -->
+    
+    <servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
 
 	<filter>
 	    <filter-name>userFilter</filter-name>

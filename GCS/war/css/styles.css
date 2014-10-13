@@ -272,6 +272,16 @@ a.mas:active {
   font-family: arial;
   margin-bottom: 20px;
 }
+label.ui-marmots-label-check,
+label.ui-marmots-label-radio {
+  -moz-user-select: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  height: 18px;
+  margin-bottom: 0;
+  width: 18px;
+}
 .radio-container {
   position: relative;
 }
@@ -2023,6 +2033,19 @@ form textarea.error {
 .profile_cont .summary > div > ul:first-child > li > span {
   color: #434a58;
   font-weight: 700;
+}
+#alta_proyecto .usersTable.costes > .table th:nth-child(1),
+#alta_proyecto .usersTable.costes > .table td:nth-child(1) {
+  max-width: 20px !important;
+  width: 20px !important;
+}
+#alta_proyecto .form-field > .input.conectividad > bootstrap-select {
+  width: 100px !important;
+  display: inline-block;
+  position: relative;
+}
+#alta_proyecto .form-field > .input.conectividad > button {
+  margin-right: 0px;
 }
 #alta_proyecto #new_conectividad_dialog {
   width: 700px;
