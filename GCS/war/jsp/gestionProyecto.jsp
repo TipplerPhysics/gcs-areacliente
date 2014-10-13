@@ -215,8 +215,14 @@
 		<div id="buttons_holder">
 			<button type="submit" id="submit_project_form">Aceptar</button>
 			<button href="#" class="close-form">Cancelar</button>
-			<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
-			<button type="button" data-target="#"          data-toggle="modal" href="../newCosteModal.do" id="newConectividadModalButton">Nueva conectividad</button>
+		</div>
+		
+		<div class="form-container relatedOptions">
+			<h3>Otras acciones relacionadas:</h3>
+			<div id="buttons_holder">
+				<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste<span class="coste_span"></span></button>
+				<button type="button" data-target="#new-conectividad" data-toggle="modal" href="../jsp/modal/modal-select-project.jsp" id="newConectividadModalButton">Nueva conectividad</button>
+			</div>
 		</div>
 	</div>
 </div>
