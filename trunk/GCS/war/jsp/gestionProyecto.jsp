@@ -216,6 +216,7 @@
 			<button type="submit" id="submit_project_form">Aceptar</button>
 			<button href="#" class="close-form">Cancelar</button>
 			<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
+			<button type="button" data-target="#"          data-toggle="modal" href="../newCosteModal.do" id="newConectividadModalButton">Nueva conectividad</button>
 		</div>
 	</div>
 </div>
