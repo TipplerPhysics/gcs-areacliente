@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<form action="">
 <div class="modal_ajax">
 	<div class="">
 		<h2>Seleccione el coste que desea editar</h2>
@@ -27,12 +28,9 @@
 				<c:forEach items="${costes}" var="coste">
 					<tr>
 						<td>							
-							<label class="ui-marmots-label-radio">
-								<input name="radio" id="${coste.key.id}" type="radio"/>
+							<label class="ui-marmots-label-radio" for="radio_${coste.key.id}">
+								<input name="radio" id="radio_${coste.key.id}" type="radio"/>
 							</label>
-						
-							
-							
 						</td>
 						<td><span>${coste.num_control}</span></td>
 						<td><span>${coste.equipos}</span></td>
@@ -48,5 +46,4 @@
 	<button type="button" class="" onclick="loadCosteModal();">Guardar</button>
 	<button type="button" class="" data-dismiss="modal">Cancelar</button>
 </div>
-
-
+</form>
