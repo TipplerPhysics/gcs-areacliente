@@ -8,7 +8,8 @@
 		<div class="form-field">
 			<span class="lbl">Proyecto:</span>
 			<div class="input">
-				<select class="selectpicker selected" id="select_project_action" name="select_project_action">								
+				<select class="selectpicker selected" id="select_project_action" name="select_project_action">	
+					<option value="default">Seleccione...</option>							
 				</select>
 			</div>
 		</div>
