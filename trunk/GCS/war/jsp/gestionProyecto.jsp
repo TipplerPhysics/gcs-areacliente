@@ -145,17 +145,8 @@
 						<span class="lbl">Conectividad:</span>
 						<div class="input">
 							<select class="selectpicker" id="conectividad" name="conectividad">
-							    <option value="default">Seleccionar</option>
-							    <option value="AS2">AS2</option>
-							    <option value="Fileact">Fileact</option>
-							    <option value="FTP">FTP</option>
-							    <option value="FTPS">FTPS</option>
-							    <option value="Host to Web">Host to Web</option>								    
-							    <option value="HTTPS">HTTPS</option>
-							    <option value="Macug">Macug</option>
-							    <option value="Score">Score</option>
-							    <option value="SFTP">SFTP</option>
-							    <option value="Webservices">Webservices</option>												
+							    <option value="default">-</option>
+							   												
 							</select>
 						</div>
 					</div>
@@ -308,6 +299,15 @@
 <div class="modal fade" id="new-costo" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="new_costo_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="coste-by-project" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="coste_by_project_dialog">
 		<div class="modal-content">
 			
 		</div>

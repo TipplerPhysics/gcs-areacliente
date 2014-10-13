@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Transaction;
 
+import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Equipo;
 import com.gcs.persistence.PMF;
@@ -13,6 +15,27 @@ public class CosteDao {
 	
 	public static CosteDao getInstance(){
 		return new CosteDao();
+	}
+	
+	public List<Coste> getCostesByProject(Long id) {
+
+		
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+
+		String queryStr = "select from " + Coste.class.getName()
+				+ " where projectKey  == :p1";
+
+		List<Coste> costes = (List<Coste>) pManager.newQuery(queryStr).execute(id);
+
+		
+		transaction.commit();
+		pManager.close();
+
+		return costes;
+
 	}
 	
 	public void createCoste(Coste c) {

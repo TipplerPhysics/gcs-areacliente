@@ -28,6 +28,13 @@
 			<forward name="ok" path="/jsp/modal/modal-new-coste.jsp" />			
 		</action>
 		
+		<action path="/costesByModal" type="com.gcs.actions.modal.CostesByProjectModalAction">
+			<forward name="ok" path="/jsp/modal/modal-costes-by-project.jsp" />			
+		</action>
+		
+		
+		
+		
 		<action path="/loadConectivity" type="com.gcs.actions.modal.LoadConectividadAction">
 			<forward name="h2h" path="/jsp/modal/h2h-modal.jsp" />
 			<forward name="swift" path="/jsp/modal/swift-modal.jsp" />			

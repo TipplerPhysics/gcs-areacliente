@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     cssmin: {
       add_banner: {
         options: {
-          banner: '/* BBVA Global Customer Solutions minified css file */'
+          banner: '/* BBVA STE minified css file */'
         },
         files: {
           'war/css/styles.min.css': ['war/css/styles.css']

@@ -1696,7 +1696,13 @@ $(function() {
 	}
 };
 
-;function sendEditConectividad(){
+;function loadCosteModal(){
+	var radios = $('#costes-by-project-table').find(":radio");
+	
+	
+}
+
+function sendEditConectividad(){
 	var $form = $('#edit-conectividad-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -1736,10 +1742,16 @@ function loadEditModal(){
 			});
 		$('#edit-project').modal('show');
 		
-	}else if (accion=='coste'){
+	}else if (accion=='costes'){
 		$('#edit-action').modal('hide');
+		$('#edit-project').modal({
+			  remote: "../costesByModal.do?project_id="+id
+			});
 		
-	}else if (accion='conectividad'){
+		
+		
+		
+	}else if (accion=='conectividad'){
 		$('#edit-action').modal('hide');
 		$('#new-conectividad').modal({
 			  remote: "../loadConectivity.do?id="+id
@@ -1748,7 +1760,7 @@ function loadEditModal(){
 	
 		
 		
-	}else if (accion='servicios'){
+	}else if (accion=='servicios'){
 		$('#edit-action').modal('hide');
 	}
 }
