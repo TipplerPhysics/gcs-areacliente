@@ -67,7 +67,7 @@ public class UserFilter implements Filter {
 					sesion.setAttribute("permiso", permiso);
 					chain.doFilter(req, resp);
 				} else {
-					if (url.contains("8080")){
+					if (url.contains("8888")){
 						chain.doFilter(req, resp);
 					}else{
 						response.sendRedirect("http://intranet.bbva.com/");
