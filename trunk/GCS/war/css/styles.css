@@ -2324,3 +2324,59 @@ form textarea.error {
 .gestion_coste .form-field-down .form-field.total .input span:first-child {
   margin-right: 5px;
 }
+.gestion_servicio #observaciones_modal {
+  height: 81px;
+}
+.gestion_servicio .usersTable > .table td:nth-child(2),
+.gestion_servicio .usersTable > .table th:nth-child(2) {
+  max-width: 200px;
+  width: 200px;
+}
+.gestion_servicio .usersTable > .table td:nth-child(3),
+.gestion_servicio .usersTable > .table th:nth-child(3) {
+  max-width: 200px;
+  width: 197px;
+}
+.gestion_servicio .usersTable > .table td:nth-child(4),
+.gestion_servicio .usersTable > .table th:nth-child(4) {
+  max-width: 150px;
+  width: 150px;
+}
+.gestion_servicio .usersTable > .table td:nth-child(5),
+.gestion_servicio .usersTable > .table th:nth-child(5) {
+  max-width: 150px;
+  width: 150px;
+  border-right: 1px solid #dcdcdc;
+}
+.gestion_servicio .usersTable > .table td:nth-child(5) > .search,
+.gestion_servicio .usersTable > .table th:nth-child(5) > .search {
+  width: 100%;
+}
+.gestion_servicio .usersTable > .table td:nth-child(6),
+.gestion_servicio .usersTable > .table th:nth-child(6) {
+  max-width: 100px;
+  width: 100px;
+}
+.gestion_servicio .usersTable > .table td:nth-child(7) {
+  padding-left: 0px;
+}
+.gestion_servicio .form-field-divider.left {
+  margin-right: 10px;
+}
+.gestion_servicio .form-field-divider .form-field > .lbl {
+  vertical-align: top;
+  margin-right: 20px !important;
+  width: 140px !important;
+}
+.gestion_servicio .form-field-divider .form-field > div.input,
+.gestion_servicio .form-field-divider .form-field input {
+  float: right;
+}
+.gestion_servicio #ref_local2 {
+  float: right;
+  margin: 10px 0px;
+}
+.gestion_servicio .btn-atras {
+  float: right;
+  margin-top: 25px;
+}

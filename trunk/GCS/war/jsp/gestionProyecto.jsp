@@ -45,7 +45,7 @@
 							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<option value="IMPL">IMPL</option>
 									<option value="SEPA">SEPA</option>
 									<option value="IMPL-OB-C">IMPL-OB-C</option>

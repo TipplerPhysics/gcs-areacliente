@@ -251,7 +251,7 @@
 				</div>
 				<div class="">
 					<p>&iquest;Est&aacute; seguro que desea eliminar el cliente?<p>
-					<p>Se eliminarán todos los proyectos asociados.<p>
+					<p>Se eliminar&aacute;n todos los proyectos asociados.<p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="pink-btn" id="deleteClient">Eliminar</button>

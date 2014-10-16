@@ -96,6 +96,10 @@
 		<action path="/dashboard/gestionCliente" type="com.gcs.actions.GestionClienteAction">
 			<forward name="ok" path="/jsp/skeletons/newClient-skeleton.jsp" />
 		</action>
+		
+		<action path="/dashboard/gestionServicio" type="com.gcs.actions.GestionServicioAction">
+			<forward name="ok" path="/jsp/skeletons/gestionServicio-skeleton.jsp" />
+		</action>
 	</action-mappings>	
 	
 	<plug-in className="org.apache.struts.tiles.TilesPlugin" >

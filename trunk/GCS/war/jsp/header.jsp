@@ -16,7 +16,7 @@
 				</li>
 				
 				<li class="menu">
-					<a class="no-underline" href="https://gcs-arecliente.appspot.com">
+					<a class="no-underline" href="https://gcs-areacliente.appspot.com">
 						<span class="menu-title">Clientes</span>
 					</a>
 				</li>

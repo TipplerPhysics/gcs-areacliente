@@ -78,7 +78,7 @@
 	    <url-pattern>/usersServlet</url-pattern>
 	  </servlet-mapping>
 	  
-	    <servlet>
+     <servlet>
 	    <servlet-name>ProyectoServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.ProjectServlet</servlet-class>
 	  </servlet>
@@ -86,6 +86,16 @@
 	  <servlet-mapping>
 	    <servlet-name>ProyectoServlet</servlet-name>
 	    <url-pattern>/projectServlet</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>ServicioServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.ServicioServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>ServicioServlet</servlet-name>
+	    <url-pattern>/serviceServlet</url-pattern>
 	  </servlet-mapping>
 	  
 	   <servlet>
