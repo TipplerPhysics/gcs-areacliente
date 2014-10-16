@@ -753,8 +753,12 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
   function clearMenus(e) {
     if (e && e.which === 3) return    
-    if ($(backdrop)[0]!=undefined)
-    	changeActionsButtonColor();
+    if ($(backdrop)[0]!=undefined){
+    	if ($('#accion_menu').hasClass('white')){
+    		changeActionsButtonColor();
+    	}
+    }
+    	
     $(backdrop).remove();    
     $(toggle).each(function () {
       var $parent = getParent($(this))

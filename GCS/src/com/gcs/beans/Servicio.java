@@ -15,9 +15,33 @@ public class Servicio {
 	@PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
+	
+	@Persistent
+	private Long gestor_it_key;
+	
+	@Persistent
+	private String gestor_it_name;	
 
 	@Persistent
+	private Long gestor_negocio_key;
+	
+	@Persistent
+	private String gestor_negocio_name;	
+
+	@Persistent
+	private Long cliente_key;
+	
+	@Persistent
+	private String cliente_name;
+
+	@Persistent
+	private String pais;
+	
+	@Persistent
 	private String cod_proyecto;
+	
+	@Persistent
+	private Long id_proyecto;
 	
 	@Persistent
 	private String servicio;
@@ -38,7 +62,10 @@ public class Servicio {
 	private String formato_local;
 	
 	@Persistent
-	private String referencia_local;
+	private String referencia_local1;
+	
+	@Persistent
+	private String referencia_local2;
 	
 	@Persistent
 	private Date fecha_ini_integradas;
@@ -126,6 +153,70 @@ public class Servicio {
 		this.key = key;
 	}
 
+	public Long getId_proyecto() {
+		return id_proyecto;
+	}
+	
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public Long getGestor_it_key() {
+		return gestor_it_key;
+	}
+
+	public void setGestor_it_key(Long gestor_it_key) {
+		this.gestor_it_key = gestor_it_key;
+	}
+
+	public String getGestor_it_name() {
+		return gestor_it_name;
+	}
+
+	public void setGestor_it_name(String gestor_it_name) {
+		this.gestor_it_name = gestor_it_name;
+	}
+
+	public Long getGestor_negocio_key() {
+		return gestor_negocio_key;
+	}
+
+	public void setGestor_negocio_key(Long gestor_negocio_key) {
+		this.gestor_negocio_key = gestor_negocio_key;
+	}
+
+	public String getGestor_negocio_name() {
+		return gestor_negocio_name;
+	}
+
+	public void setGestor_negocio_name(String gestor_negocio_name) {
+		this.gestor_negocio_name = gestor_negocio_name;
+	}
+
+	public Long getCliente_key() {
+		return cliente_key;
+	}
+
+	public void setCliente_key(Long cliente_key) {
+		this.cliente_key = cliente_key;
+	}
+
+	public String getCliente_name() {
+		return cliente_name;
+	}
+
+	public void setCliente_name(String cliente_name) {
+		this.cliente_name = cliente_name;
+	}
+
+	public void setId_proyecto(Long id_proyecto) {
+		this.id_proyecto = id_proyecto;
+	}
+
 	public String getCod_proyecto() {
 		return cod_proyecto;
 	}
@@ -182,12 +273,20 @@ public class Servicio {
 		this.formato_local = formato_local;
 	}
 
-	public String getReferencia_local() {
-		return referencia_local;
+	public String getReferencia_local1() {
+		return referencia_local1;
 	}
 
-	public void setReferencia_local(String referencia_local) {
-		this.referencia_local = referencia_local;
+	public void setReferencia_local1(String referencia_local1) {
+		this.referencia_local1 = referencia_local1;
+	}
+	
+	public String getReferencia_local2() {
+		return referencia_local2;
+	}
+
+	public void setReferencia_local2(String referencia_local2) {
+		this.referencia_local2 = referencia_local2;
 	}
 
 	public Date getFecha_ini_integradas() {
