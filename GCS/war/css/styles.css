@@ -2324,7 +2324,29 @@ form textarea.error {
 .gestion_coste .form-field-down .form-field.total .input span:first-child {
   margin-right: 5px;
 }
-.gestion_servicio #observaciones_modal {
+.gestion_servicio #edit_service_dialog {
+  width: 925px;
+}
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field {
+  margin-bottom: 10px;
+}
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field #observaciones_modal {
+  height: 69px;
+}
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field > .lbl {
+  margin-right: 0px !important;
+  vertical-align: inherit;
+}
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field .input,
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field input {
+  width: 246px;
+  float: rigth;
+}
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field .input > div,
+.gestion_servicio #edit_service_dialog .form-field-divider > .form-field input > div {
+  width: 100%;
+}
+.gestion_servicio #observaciones {
   height: 81px;
 }
 .gestion_servicio .usersTable > .table td:nth-child(2),
@@ -2375,6 +2397,9 @@ form textarea.error {
 .gestion_servicio #ref_local2 {
   float: right;
   margin: 10px 0px;
+}
+.gestion_servicio #ref_local2_modal {
+  margin-top: 10px;
 }
 .gestion_servicio .btn-atras {
   float: right;
