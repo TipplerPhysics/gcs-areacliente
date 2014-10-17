@@ -1,4 +1,77 @@
+function editServicio(id){	
+	showModal();
+}
+
+function sendEditServicio(){
+	var $form = $('#edit-servicio-form');
+	var formURL = $form.attr("action");
+	 var $formData = $form.serialize();
+	 var postData= $formData+"&accion=update&id="+ id;
+	 
+	 if($form.valid()){
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success="true"){
+						$form.hide();
+						$('#span_message_modal').html('El servicio ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#span_message_modal').html(data.error);
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').addClass("error");
+					}
+					
+				}
+			});
+	 }
+}
+
+function ajaxServicios(pais,target){
+	if (pais!="default"){
+		 var formURL = "/serviceServlet?";
+		 var postData="accion=getServicesByCountry&pais="+pais;
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success=="true"){
+						var servicios = data.servicios[0];
+						target.empty();
+						target.append(new Option("Seleccionar", "default"));
+						$.each(servicios, function (index, value) {
+							target.append(new Option(value, value));
+					    });	
+						target.selectpicker("refresh");
+					}					
+				}
+			});
+	}
+}
+
+
 $(function(){
+	
+	$('#edit-service').on('loaded.bs.modal', function () {
+		editServicio(id);
+	})
+	
+	$('.gestion_servicio').on('click', '.lapiz', function(e) {
+		id= $(this).attr('name');		
+	});
 	
 	$('#deleteServicio').on('click', function(e) {
 		var id= $(this).attr('name');
@@ -31,30 +104,20 @@ $(function(){
 	
 	$('#pais_servicio').change(function(e){
 		var pais = $('#pais_servicio').val();
+		var target = $('#servicio');
 		
-		if (pais!="default"){
-			 var formURL = "/serviceServlet?";
-			 var postData="accion=getServicesByCountry&pais="+pais;
-			 $.ajax(			
-				{
-					url : formURL,
-					type: "POST",
-					data : postData,
-					success:function(data, textStatus, jqXHR) 
-					{
-						if (data.success=="true"){
-							var servicios = data.servicios[0];
-							$("#servicio").empty();
-							$("#servicio").append(new Option("Seleccionar", "default"));
-							$.each(servicios, function (index, value) {
-								$("#servicio").append(new Option(value, value));
-						    });	
-							$("#servicio").selectpicker("refresh");
-						}					
-					}
-				});
-		}
+		ajaxServicios(pais,target);
+		
 	});
+	
+	$('.gestion_servicio').on('change', '#pais_servicio_modal', function(e) {
+		var pais = $('#pais_servicio_modal').val();
+		var target = $('#servicio_modal');
+		
+		ajaxServicios(pais,target);
+		
+	});
+	
 	
 	
 	$("#submit_service_form").on('click',function(e) {

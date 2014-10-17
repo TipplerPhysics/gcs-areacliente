@@ -20,7 +20,7 @@
 		</button>
 		
 		
-		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
+		<button id="excel_btn" onclick="window.location.href='../../serviceServlet?accion=xls'">
 			Descargar Tabla<span class="excel_span"></span>
 		</button>
 
@@ -100,19 +100,13 @@
 						
 						<div class="form-field">
 							<span class="lbl">Cod. servicio<span class="required-asterisk">*</span>:</span>
-							<div class="input">
-								<select class="selectpicker selected" name="cod_servicio" id="cod_servicio" required aria-required="true">
-									<option value="default">Seleccionar</option>		
-									<option value="1">1</option>									
-																	
-								</select>
-							</div>
+							<input type="text" id="cod_servicio" name="cod_servicio" class="long" required aria-required="true">
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Observaciones:</span>
 							<div class="input">
-								<textarea name="observaciones" id="observaciones_modal"></textarea>
+								<textarea name="observaciones" id="observaciones"></textarea>
 							</div>
 						</div>
 						
@@ -165,14 +159,14 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha inicio validacion:</span>
+							<span class="lbl">Fecha inicio validación:</span>
 							<div class="input">
 								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_validacion' name="fecha_inicio_validacion" id="fecha_inicio_validacion">
 							</div>
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha fin validacion:</span>
+							<span class="lbl">Fecha fin validación:</span>
 							<div class="input">
 								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_validacion' name="fecha_fin_validacion" id="fecha_fin_validacion">
 							</div>
@@ -200,7 +194,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha inicio operacion cliente:</span>
+							<span class="lbl">Fecha inicio operación cliente:</span>
 							<div class="input">
 								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_op_cliente' name="fecha_inicio_op_cliente" id="fecha_inicio_op_cliente">
 							</div>
@@ -293,7 +287,7 @@
 								
 								<td>										
 									<img class="vs" src="../img/vs.png">								
-									<a class="lapiz" name="${servicio.key.id}" href="../servicioModal.do"	id="lapiz${servicio.key.id}" data-toggle="modal" data-target="#edit-service"></a>
+									<a class="lapiz" name="${servicio.key.id}" href="../servicioModal.do?id=${servicio.key.id}"	id="lapiz${servicio.key.id}" data-toggle="modal" data-target="#edit-service"></a>
 									<a class="papelera" name="${servicio.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${servicio.key.id}"></a>
 								</td>
 								
