@@ -1,5 +1,41 @@
+function LoadModalService(){
+	id = $('#select_project_action').val();
+	
+	if (id!="default"){
+		$('#select-service').modal('hide');
+		$('#edit-service').modal({
+			  remote: "../servicioModal.do?id="+id
+			});
+		$('#edit-service').modal('show');
+	}
+	
+	
+}
+
 function loadCosteModal(){
 	var radios = $('#costes-by-project-table').find(":radio");
+	var a =0;
+	var sel = false;
+	var git;
+	
+	for (a=0; a<=radios.length-1;a++){
+		var r = radios[a];
+		if ($(r).parent().hasClass('on')){
+			id = $(r).attr('id').split("radio_")[1];
+			git = $(r).parent().data("git");
+			sel = true;
+		}
+	}
+	
+	if (sel){
+		$('#edit-project').modal('hide');
+		
+		$('#edit-costo').modal({
+			  remote: "../costeProjectModal.do?id="+id+"&git="+git
+			  
+			});
+		$('#edit-costo').modal('show');
+	}
 	
 	
 }
@@ -64,6 +100,10 @@ function loadEditModal(){
 		
 	}else if (accion=='servicios'){
 		$('#edit-action').modal('hide');
+		$('#select-service').modal({
+			  remote: "../projectService.do?id="+id
+			});
+		$('#select-service').modal('show');
 	}
 }
 
@@ -149,6 +189,31 @@ function modalCliente(){
 
 
 $(function() {
+	
+	
+	$('#alta_proyecto').on('click', '#edit_service_modal_button', function(e) {		
+		id= $('#select_project_action').val();
+		
+		$('#project-servicio').modal('hide');
+		
+		$('#new-servicio').modal({
+			  remote: "../loadService.do?id="+id
+			});
+		$('#new-servicio').modal('show');
+		
+		});
+	
+	$('#alta_proyecto').on('click', '#edit_project_modal_button', function(e) {		
+		id= $('#select_project_action').val();
+		
+		$('#project-conectividad').modal('hide');
+		
+		$('#new-conectividad').modal({
+			  remote: "../loadConectivity.do?id="+id
+			});
+		$('#new-conectividad').modal('show');
+		
+		});
 	
 	//Nuevo proyecto
 	$('#producto').change(function(e){
@@ -244,7 +309,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');

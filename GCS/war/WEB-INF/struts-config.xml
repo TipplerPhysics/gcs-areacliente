@@ -32,6 +32,18 @@
 			<forward name="ok" path="/jsp/modal/modal-costes-by-project.jsp" />			
 		</action>
 		
+		<action path="/projectConectivity" type="com.gcs.actions.modal.SelectProjectModalAction">
+			<forward name="ok" path="/jsp/modal/modal-select-project.jsp" />			
+		</action>
+		
+		<action path="/projectService" type="com.gcs.actions.modal.SelectServiceModalAction">
+			<forward name="ok" path="/jsp/modal/modal-select-project-service.jsp" />			
+		</action>
+		
+		<action path="/newService" type="com.gcs.actions.modal.NewServiceModalAction">
+			<forward name="ok" path="/jsp/modal/modal-new-servicio.jsp" />			
+		</action>
+		
 		
 		
 		
@@ -39,6 +51,8 @@
 			<forward name="h2h" path="/jsp/modal/h2h-modal.jsp" />
 			<forward name="swift" path="/jsp/modal/swift-modal.jsp" />			
 		</action>
+		
+	
 		
 		
 		
@@ -54,6 +68,11 @@
 		
 		<action path="/costeModal" type="com.gcs.actions.modal.CosteModalAction">
 			<forward name="ok" path="/jsp/modal/modal-coste.jsp" />
+			
+		</action>
+		
+		<action path="/costeProjectModal" type="com.gcs.actions.modal.CosteProjectModalAction">
+			<forward name="ok" path="/jsp/modal/modal-coste-project.jsp" />
 			
 		</action>
 		

@@ -23,3 +23,14 @@
 	float:left;
 
 }
+
+label.ui-marmots-label-check input {
+	visibility: hidden;
+}
+
+#new-user-form .form-field input,
+#new-user-form .form-field textarea,
+#new-user-form .form-field div.bootstrap-select {
+	float:right;
+}
+

@@ -8,7 +8,7 @@
 				<li><a href="${entorno}/admin/users.do"><span class="usuarios">Usuarios</span></a></li>
 			</c:if>
 			
-			<li><a href="${entorno}/dashboard/gestionDemanda.do"><span class="demanda">Demanda</span></a></li>
+			<!-- <li><a href="${entorno}/dashboard/gestionDemanda.do"><span class="demanda">Demanda</span></a></li>  -->
 			
 			<c:if test="${sessionScope.permiso == 1}">
 				<li><a href="#"><span class="informes">Informes</span></a></li>

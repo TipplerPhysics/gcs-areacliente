@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
@@ -52,6 +54,29 @@ public class ServicioDao {
 
 		return servicios;
 	}
+	
+	
+public List<Servicio> getServiciosByProject(Long id) {
+
+		
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+
+		String queryStr = "select from " + Servicio.class.getName()
+				+ " where id_proyecto  == :p1";
+
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute(id);
+
+		
+		transaction.commit();
+		pManager.close();
+
+		return servicios;
+
+	}
+	
 	
 	
 	public void createServicio(Servicio s){

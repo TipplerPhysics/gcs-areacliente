@@ -150,7 +150,7 @@ public class ClienteServlet extends HttpServlet {
 				s.addCell(new Label(6, aux, c.getTipo()));
 				if (!c.getPaises().isEmpty()){
 					String str_paises = c.getPaises().toString();
-					s.addCell(new Label(6, aux, c.getPaises().toString().substring(1, str_paises.length()-1)));
+					s.addCell(new Label(7, aux, c.getPaises().toString().substring(1, str_paises.length()-1)));
 				}
 				
 				

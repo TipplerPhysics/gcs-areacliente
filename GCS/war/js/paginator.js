@@ -1,8 +1,8 @@
 $.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
-		perPage : 5,
+		perPage : 10,
 		showPrevNext : false,
-		numbersPerPage : 5,
+		numbersperPage : 10,
 		hidePageNumbers : false
 	}, settings = $.extend(defaults, opts);
 
@@ -63,16 +63,16 @@ $.fn.paginateMe = function(opts) {
 	children.slice(0, perPage).show();
 	
 	var currentPage = pager.children().eq(1).children().html();
-	var ocursinpage = ((currentPage*5)>numItems) ? numItems : (currentPage*5);
+	var ocursinpage = ((currentPage*10)>numItems) ? numItems : (currentPage*10);
 
 	
 	$(resumen).html('');
 	
 	if (numItems>0) {
-		if (numItems>=5){
-			$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
+		if (numItems>=10){
+			$(resumen).html('Resultados '+ ((currentPage*10)-9) + " a " + ocursinpage + ' de '+ numItems);
 		}else{
-			$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
+			$(resumen).html('Resultados '+ ((currentPage*10)-9) + " a " + ocursinpage + ' de '+ numItems);
 		}
 	} else {
 		$(resumen).html('No hay resultados');
@@ -135,13 +135,13 @@ $.fn.paginateMe = function(opts) {
 		
 		$(resumen).html('');
 		
-		var ocursinpage2 = (((page+1)*5)>numItems) ? numItems : ((page+1)*5);
+		var ocursinpage2 = (((page+1)*10)>numItems) ? numItems : ((page+1)*10);
 		
-		if (numItems>0) {
-			if (numItems>=5){
-				$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+		if (numItems>0) {	
+			if (numItems>=10){
+				$(resumen).html('Resultados '+ (((page+1)*10)-9) + " a " + ocursinpage2 + ' de '+ numItems);
 			}else{
-				$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+				$(resumen).html('Resultados '+ (((page+1)*10)-9) + " a " + ocursinpage2 + ' de '+ numItems);
 			}
 		} else {
 			$(resumen).html('No hay resultados');

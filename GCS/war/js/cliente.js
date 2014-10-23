@@ -232,7 +232,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -269,7 +269,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});*/
 						
 						var options = $("#input_cliente");
@@ -402,7 +402,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});*/
 						
 						$('#message_div_cliente').removeClass("error").addClass("success");
