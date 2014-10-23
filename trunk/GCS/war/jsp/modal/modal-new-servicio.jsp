@@ -1,33 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-<div class="gestion_servicio">
-
-	<h1>Gesti&oacute;n servicio</h1>
-	<span class="btn-atras" onclick="window.location.href='../../'"></span>
-	
-	
-	<hr/>
-	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span>  > <span onclick="window.location.href='./gestionProyecto.do' ">Gestión de proyecto</span> > <span> Gestión de servicio </span>
-	</div>
-	
-	<div class="newUserbox">
-		<button id="newUserButton">
-			Nuevo Servicio<span class="service_span"></span>
-		</button>
-		
-		
-		<button id="excel_btn" onclick="window.location.href='../../serviceServlet?accion=xls'">
-			Descargar Tabla<span class="excel_span"></span>
-		</button>
-
-
-		<div class="new-user-form-holder">
-			<form id="new-service-form" name="new-service-form" action="/serviceServlet"
-				method="POST" novalidate="novalidate">
+	<div class="modal_ajax">
+		<div class="">
+					<h2>Nuevo Servicio</h2>
+					<hr />
+				</div>
+				<div class="edit-user-form-holder">
+				<form id="new-service-form" name="new-service-form" action="/serviceServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
@@ -65,7 +45,7 @@
 						<div class="form-field">
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true">
+								<select class="selectpicker selected" name="servicio" id="servicio_modal" required aria-required="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>
@@ -234,101 +214,24 @@
 								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_mig_infraestructura' name="fecha_mig_infraestructura" id="fecha_mig_infraestructura">
 							</div>
 						</div>
-					</div>					
+					</div>	
+					
 				</div>
 				
 			</form>
-			<div class="message-container">
-				<div class="message_div" id="message_div">
-					<span class="span_message" id="span_message"></span>
-				</div>
-			</div>
-			<div id="buttons_new">
-				<button type="submit" class="submit_form" id="submit_service_form">Aceptar</button>
-				<button href="#" class="close-form">Cancelar</button>
-			</div>
+			
+			
 		</div>
-	</div>
-	<div>	
-		<div>
-			<div class="table-responsive usersTable">
-				<table class="table">
-					<thead>
-						<tr>
-							<th><span class="table-title">Cod. Proyecto</span></th>
-							<th><span class="table-title">Servicio</span></th>
-							<th><span class="table-title">Estado</span></th>
-							<th><span class="table-title">Gestor IT</span></th>
-							<th><span class="table-title">Gestor Negocio</span></th>
-							<th><span class="table-title">Cliente</span></th>
-							
-							<th style="width: 110px;">&nbsp;</th>
-						</tr>
-						<tr>
-							<th class="search-th"><input class="search col0"></th>
-							<th class="search-th"><input class="search col1"></th>
-							<th class="search-th"><input class="search col2"></th>
-							<th class="search-th"><input class="search col3"></th>
-							<th class="search-th"><input class="search col4"></th>	
-							<th class="search-th"><input class="search col5"></th>						
-							<th style="width: 110px;">&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody id="myTable" cellspacing="0">
-					
-						<c:forEach items="${servicios}" var="servicio">
-							<tr class="valid-result" id="row${servicio.key.id}" name="${servicio.key.id}">
-								<td><span>${servicio.cod_proyecto}</span></td>
-								<td><span>${servicio.servicio}</span></td>
-								<td><span>${servicio.estado}</span></td>										
-								<td><span>${servicio.gestor_it_name}</span></td>
-								<td><span>${servicio.gestor_negocio_name}</span></td>
-								<td><span>${servicio.cliente_name}</span></td>
-								
-								<td>										
-									<img class="vs" src="../img/vs.png">								
-									<a class="lapiz" name="${servicio.key.id}" href="../servicioModal.do?id=${servicio.key.id}"	id="lapiz${servicio.key.id}" data-toggle="modal" data-target="#edit-service"></a>
-									<a class="papelera" name="${servicio.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${servicio.key.id}"></a>
-								</td>
-								
-							</tr>
-						</c:forEach>
-						
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-12 text-center">
-				<ul class="pagination" id="myPager"></ul>
-				<span class="pagesummary"></span>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="edit-service" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" id="edit_service_dialog">
-			<div class="modal-content">
+		<br/>
 		
+			<div class="modal-footer" id="buttons_new">
+				<button type="button" class="" id="submit_service_form" >Guardar</button>
+				<button type="button" class="" data-dismiss="modal">Cancelar</button>
 			</div>
 		</div>
-	</div>
-
-	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="">
-					<h2>Eliminar Servicio</h2>
-					<hr />
-				</div>
-				<div class="">
-					<p>&iquest;Est&aacute; seguro que desea eliminar el servicio?<p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="pink-btn" id="deleteServicio">Eliminar</button>
-					<button type="button" class="" data-dismiss="modal">Cancelar</button>
-				</div>
-			</div>
+		<div id="message_div" class="message_div" style='margin-bottom:10px;'>
+			<span id="span_message" class="span_message"></span>
 		</div>
-	</div>
+<div class="ajax_loader" id="ajax_loader">
+	<img src="../../img/ajax-loader.gif" />
 </div>

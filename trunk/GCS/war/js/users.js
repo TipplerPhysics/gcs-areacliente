@@ -63,7 +63,7 @@ $(function() {
 		pagerSelector : '#myPager',
 		showPrevNext : true,
 		hidePageNumbers : false,
-		perPage : 5
+		perPage : 10
 	});
 	
 	$('.alta_usuario').on('loaded.bs.modal', function () {
@@ -76,7 +76,9 @@ $(function() {
 	$('#newUserButton').click(function(e){
 		var $newUserButton = $(this);
 		if ($newUserButton.hasClass('white-btn')){
+			
 			if ($('.new-user-form-holder').css('overflow')=="visible"){
+				$('.message_div').removeClass("error");
 				$('.new-user-form-holder').css('overflow','hidden');
 				userBoxSize = $('.new-user-form-holder.open').outerHeight();
 				$('.new-user-form-holder.open').css('height', userBoxSize);
@@ -147,7 +149,7 @@ $(function() {
 						pagerSelector : '#myPager',
 						showPrevNext : true,
 						hidePageNumbers : false,
-						perPage : 5
+						perPage : 10
 					});
 				});
 				$('#confirm-delete').modal('hide');	        	
@@ -219,7 +221,7 @@ $(function() {
 						pagerSelector : '#myPager',
 						showPrevNext : true,
 						hidePageNumbers : false,
-						perPage : 5
+						perPage : 10
 					});
 				});
 				$('#confirm-delete').modal('hide');	        	

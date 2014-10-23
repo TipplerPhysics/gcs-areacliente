@@ -28,7 +28,7 @@
 					<tr>
 						<td>							
 							<label class="ui-marmots-label-radio" for="radio_${coste.key.id}">
-								<input name="radio" id="radio_${coste.key.id}" type="radio"/>
+								<input name="radio" id="radio_${coste.key.id}" data-git="${coste.gestor_it_key}" type="radio"/>
 							</label>
 						</td>
 						<td><span>${coste.num_control}</span></td>
@@ -42,7 +42,7 @@
 	
 </div>
 <div class="modal-footer">
-	<button type="button" class="" onclick="loadCosteModal();">Guardar</button>
+	<button type="button" class="" onclick="loadCosteModal();">Aceptar</button>
 	<button type="button" class="" data-dismiss="modal">Cancelar</button>
 </div>
 

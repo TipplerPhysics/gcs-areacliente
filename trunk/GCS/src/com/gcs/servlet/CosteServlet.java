@@ -21,6 +21,10 @@ import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import jxl.NumberCell;
+import jxl.write.Number;
+import jxl.format.CellFormat;
+import jxl.write.biff.NumberRecord;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Coste;
@@ -97,12 +101,25 @@ public class CosteServlet extends HttpServlet {
 
 			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
 			cellFont.setColour(Colour.WHITE);
+			
+			WritableFont cellFont2 = new WritableFont(WritableFont.TIMES, 12);
+			cellFont2.setColour(Colour.BLACK);
 
 			WritableCellFormat cellFormat = new WritableCellFormat(cellFont);
 			cellFormat.setBackground(Colour.BLUE);
 			cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 			cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
 			cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);
+			
+			WritableCellFormat cellFormatRight = new WritableCellFormat(cellFont2);
+		
+			
+			cellFormatRight.setAlignment(jxl.format.Alignment.RIGHT);
+			cellFormatRight.setVerticalAlignment(VerticalAlignment.CENTRE);
+			
+			// WritableCellFormat numberFormat=new WritableCellFormat(new  jxl.write.NumberFormat("#.##"));
+			// numberFormat.setShrinkToFit(true);
+
 
 			s.setColumnView(0, 20);
 			s.setColumnView(1, 30);
@@ -185,25 +202,31 @@ public class CosteServlet extends HttpServlet {
 				s.addCell(new Label(6, aux, c.getNum_valoracion()));
 				s.addCell(new Label(7, aux, c.getComentarios()));
 				s.addCell(new Label(8, aux, c.getStr_fecha_solicitud_valoracion()));
-				s.addCell(new Label(9, aux, c.getHoras_analisis()));
-				s.addCell(new Label(10, aux, c.getCoste_analisis()  + " €"));
-				s.addCell(new Label(11, aux, c.getHoras_diseño()));
-				s.addCell(new Label(12, aux, c.getCoste_diseño()  + " €"));
-				s.addCell(new Label(13, aux, c.getHoras_construccion()));
-				s.addCell(new Label(14, aux, c.getCoste_construccion()  + " €"));
+				if (!"".equals(c.getHoras_analisis()))
+					s.addCell(new Number(9, aux, Double.parseDouble(c.getHoras_analisis()),cellFormatRight));
+				if (!"".equals(c.getCoste_analisis()))
+					s.addCell(new Number(10, aux, Double.parseDouble(c.getCoste_analisis()),cellFormatRight));
+				if (!"".equals(c.getHoras_diseño()))
+					s.addCell(new Number(11, aux, Double.parseDouble(c.getHoras_diseño()),cellFormatRight));
+				if (!"".equals(c.getCoste_diseño()))
+					s.addCell(new Number(12, aux, Double.parseDouble(c.getCoste_diseño()),cellFormatRight));
+				if (!"".equals(c.getHoras_construccion()))
+					s.addCell(new Number(13, aux, Double.parseDouble(c.getHoras_construccion()),cellFormatRight));
+				if (!"".equals(c.getCoste_construccion()))
+					s.addCell(new Number(14, aux, Double.parseDouble(c.getCoste_construccion()),cellFormatRight));
+				if (!"".equals(c.getHoras_pruebas()))
+					s.addCell(new Number(15, aux, Double.parseDouble(c.getHoras_pruebas()),cellFormatRight));
+				if (!"".equals(c.getCoste_pruebas()))
+					s.addCell(new Number(16, aux, Double.parseDouble(c.getCoste_pruebas()),cellFormatRight));
+				if (!"".equals(c.getHoras_gestion()))
+					s.addCell(new Number(17, aux, Double.parseDouble(c.getHoras_gestion()),cellFormatRight));
+				if (!"".equals(c.getCoste_gestion()))
+					s.addCell(new Number(18, aux, Double.parseDouble(c.getCoste_gestion()),cellFormatRight));
+				if (!"".equals(c.getHoras_total()))
+					s.addCell(new Number(19, aux, Double.parseDouble(c.getHoras_total()),cellFormatRight));
+				if (!"".equals(c.getCoste_total()))
+					s.addCell(new Number(20, aux, Double.parseDouble(c.getCoste_total()),cellFormatRight));
 				
-				s.addCell(new Label(15, aux, c.getHoras_pruebas()));
-				s.addCell(new Label(16, aux, c.getCoste_pruebas()  + " €"));
-				
-				s.addCell(new Label(17, aux, c.getHoras_gestion()));
-				s.addCell(new Label(18, aux, c.getCoste_gestion()  + " €"));
-				
-				s.addCell(new Label(19, aux, c.getHoras_total()));
-				s.addCell(new Label(20, aux, c.getCoste_total()  + " €"));
-				
-
-				
-
 				aux++;
 			}
 

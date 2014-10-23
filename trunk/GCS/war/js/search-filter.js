@@ -67,7 +67,7 @@ $(function() {
 			pagerSelector : '#myPager',
 			showPrevNext : true,
 			hidePageNumbers : false,
-			perPage : 5
+			perPage : 10
 		});
 	});
 });

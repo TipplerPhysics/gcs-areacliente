@@ -407,6 +407,28 @@ button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
 .cliente_span.blue {
   background-image: url("../img/new-user-blue.png");
 }
+.demanda_span {
+  background-image: url("../img/gestion_white_small.png");
+  height: 15px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+  width: 15px;
+  display: inline-block;
+}
+.demanda_span.blue {
+  background-image: url("../img/gestion_blue_small.png");
+}
+.service_span {
+  background-image: url("../img/service-icon-white.png");
+  height: 15px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+  width: 15px;
+  display: inline-block;
+}
+.service_span.blue {
+  background-image: url("../img/service-icon-blue.png");
+}
 .coste_span {
   background-image: url("../img/pagosBlanco.png");
   height: 15px;
@@ -576,6 +598,10 @@ form .datepicker {
   background-color: white;
   color: #004b8c;
   border: 1px solid;
+}
+.radio-container label.ui-marmots-label-check,
+label.ui-marmots-label-radio {
+  width: auto;
 }
 #sidebar {
   position: fixed;
@@ -1312,12 +1338,12 @@ form .datepicker {
 .gestion_demanda .radio-div,
 .gestion_cliente .radio-div {
   text-align: left;
-  padding-left: 30px;
+  padding-left: 15px;
 }
 .gestion_demanda .radio-div > .radio-container,
 .gestion_cliente .radio-div > .radio-container {
   display: inline-block;
-  width: 32%;
+  width: 32.5%;
 }
 .gestion_demanda .radio-div > .radio-container label,
 .gestion_cliente .radio-div > .radio-container label {
@@ -1797,6 +1823,9 @@ form .datepicker {
 .modal_ajax #logo_url_modal {
   width: 275px !important;
 }
+.gestion_cliente #new-client-form .form-container .form-field-divider.right {
+  padding-right: 0px;
+}
 form #error-messages {
   margin-bottom: 10px;
 }
@@ -2034,6 +2063,15 @@ form textarea.error {
   color: #434a58;
   font-weight: 700;
 }
+#alta_proyecto #edit_service_dialog .modal_ajax .form-field {
+  height: auto;
+}
+#alta_proyecto #edit_service_dialog .modal_ajax .form-field div.input > input {
+  width: 100%;
+}
+#alta_proyecto #edit_service_dialog .modal_ajax .form-field #ref_local2_modal {
+  margin-top: 10px;
+}
 #alta_proyecto .usersTable.costes > .table th:nth-child(1),
 #alta_proyecto .usersTable.costes > .table td:nth-child(1) {
   max-width: 20px !important;
@@ -2174,52 +2212,84 @@ form textarea.error {
 #alta_proyecto .modal_ajax .form-field div.input > input {
   width: 220px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-divider.right {
+#buttons_holder {
+  text-align: center;
+}
+#select_service_dialog {
+  width: 600px;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-divider.right,
+.modal_ajax.nuevo_coste .form-field-divider.right {
   height: 276px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field,
+.modal_ajax.nuevo_coste .form-field {
   height: 50px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field .lbl {
-  display: block;
+#alta_proyecto .modal_ajax.nuevo_coste .form-field.total .input.total,
+.modal_ajax.nuevo_coste .form-field.total .input.total {
+  padding-top: 20px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field .lbl,
+.modal_ajax.nuevo_coste .form-field .lbl {
+  display: inline-block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input,
+.modal_ajax.nuevo_coste .form-field div.input {
   width: 90%;
   float: left;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input input {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input input,
+.modal_ajax.nuevo_coste .form-field div.input input {
   width: 100%;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field div.input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn),
+.modal_ajax.nuevo_coste .form-field div.input .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
   width: 100%;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down,
+.modal_ajax.nuevo_coste .form-field-down {
   margin-left: 25px;
-  display: block;
+  display: inline-block;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .lbl {
-  display: block;
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .lbl,
+.modal_ajax.nuevo_coste .form-field-down > .lbl {
+  display: block !important;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .lbl,
+.modal_ajax.nuevo_coste .form-field-down > .lbl {
+  display: inline-block;
   margin-top: 10px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .lbl.titulo,
+.modal_ajax.nuevo_coste .form-field-down > .lbl.titulo {
+  display: block;
+}
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field,
+.modal_ajax.nuevo_coste .form-field-down > .form-field {
   display: inline-block;
   width: 162px;
   height: 70px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl,
+.modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl {
   display: inline-block;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl:first-child {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl:first-child,
+.modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl:first-child {
   margin-right: 20px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl.total {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl.total,
+.modal_ajax.nuevo_coste .form-field-down > .form-field .input.labels > .lbl.total {
   margin-right: 5px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .horas {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .horas,
+.modal_ajax.nuevo_coste .form-field-down > .form-field .horas {
   width: 40px;
   margin-right: 10px;
 }
-#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .coste {
+#alta_proyecto .modal_ajax.nuevo_coste .form-field-down > .form-field .coste,
+.modal_ajax.nuevo_coste .form-field-down > .form-field .coste {
   width: 65px;
 }
 .gestion_coste .modal_ajax .form-field {
@@ -2324,28 +2394,6 @@ form textarea.error {
 .gestion_coste .form-field-down .form-field.total .input span:first-child {
   margin-right: 5px;
 }
-.gestion_servicio #edit_service_dialog {
-  width: 925px;
-}
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field {
-  margin-bottom: 10px;
-}
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field #observaciones_modal {
-  height: 69px;
-}
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field > .lbl {
-  margin-right: 0px !important;
-  vertical-align: inherit;
-}
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field .input,
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field input {
-  width: 246px;
-  float: rigth;
-}
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field .input > div,
-.gestion_servicio #edit_service_dialog .form-field-divider > .form-field input > div {
-  width: 100%;
-}
 .gestion_servicio #observaciones {
   height: 81px;
 }
@@ -2404,4 +2452,45 @@ form textarea.error {
 .gestion_servicio .btn-atras {
   float: right;
   margin-top: 25px;
+}
+#edit_service_dialog,
+#new_servicio_dialog {
+  width: 925px;
+}
+#edit_service_dialog .form-field-divider > .form-field,
+#new_servicio_dialog .form-field-divider > .form-field {
+  margin-bottom: 10px;
+}
+#edit_service_dialog .form-field-divider > .form-field #observaciones_modal,
+#new_servicio_dialog .form-field-divider > .form-field #observaciones_modal,
+#edit_service_dialog .form-field-divider > .form-field #observaciones,
+#new_servicio_dialog .form-field-divider > .form-field #observaciones {
+  height: 69px;
+}
+#edit_service_dialog .form-field-divider > .form-field > .lbl,
+#new_servicio_dialog .form-field-divider > .form-field > .lbl {
+  margin-right: 0px !important;
+  vertical-align: inherit;
+}
+#edit_service_dialog .form-field-divider > .form-field .input,
+#new_servicio_dialog .form-field-divider > .form-field .input,
+#edit_service_dialog .form-field-divider > .form-field input,
+#new_servicio_dialog .form-field-divider > .form-field input {
+  width: 246px;
+  float: rigth;
+}
+#edit_service_dialog .form-field-divider > .form-field .input > div,
+#new_servicio_dialog .form-field-divider > .form-field .input > div,
+#edit_service_dialog .form-field-divider > .form-field input > div,
+#new_servicio_dialog .form-field-divider > .form-field input > div {
+  width: 100%;
+}
+#alta_proyecto #new_servicio_dialog .modal_ajax .form-field {
+  height: auto;
+}
+#alta_proyecto #new_servicio_dialog .modal_ajax .form-field div.input > input {
+  width: 244px;
+}
+#alta_proyecto #new_servicio_dialog .modal_ajax .form-field #ref_local1 {
+  margin-bottom: 10px;
 }

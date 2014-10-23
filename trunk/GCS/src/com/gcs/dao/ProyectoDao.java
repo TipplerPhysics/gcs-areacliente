@@ -1,7 +1,6 @@
 package com.gcs.dao;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -10,12 +9,12 @@ import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Proyecto;
+import com.gcs.beans.Servicio;
 import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Key;
 
 public class ProyectoDao {
 	
@@ -78,6 +77,14 @@ public class ProyectoDao {
 	}
 	
 	public void deleteProject(Proyecto p){
+		
+		ServicioDao sDao = ServicioDao.getInstance();
+		List<Servicio> servicios = sDao.getServiciosByProject(p.getKey().getId());	
+		
+		for (Servicio s:servicios){
+			sDao.deleteServicio(s);
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent(pm.getObjectById(p.getClass(), p.getKey().getId()));
 		pm.close();

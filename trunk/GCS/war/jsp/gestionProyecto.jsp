@@ -12,12 +12,10 @@
 		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span> > <span> Gestión de proyecto </span>
 	</div>
 <div class="newUserbox">
-	<button id="newUserButton">
+	 <button id="newUserButton">
 		Nuevo Proyecto<span class="proyecto_span"></span>
-	</button>
-	<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
-			Nuevo coste<span class="coste_span"></span>
-		</button>
+	</button>  
+	
 	<button id="excel_btn" onclick="window.location.href='../../projectServlet?accion=xls'">
 		Descargar Tabla<span class="excel_span"></span>
 	</button>
@@ -220,8 +218,17 @@
 		<div class="form-container relatedOptions">
 			<h3>Otras acciones relacionadas:</h3>
 			<div id="buttons_holder">
-				<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste<span class="coste_span"></span></button>
-				<button type="button" data-target="#new-conectividad" data-toggle="modal" href="../jsp/modal/modal-select-project.jsp" id="newConectividadModalButton">Nueva conectividad</button>
+				<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
+				<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
+					Gestión coste</span>
+				</button>
+		
+				<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nueva conectividad</button>
+				
+				<button type="button" data-target="#new-servicio" data-toggle="modal" href="../newService.do" id="newServiceModalButton">Nuevo Servicio</button>
+				<button id="newServicioButton" onclick="window.location.href='./gestionServicio.do'">
+					Gestión servicio<span class="servicio_span"></span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -291,6 +298,23 @@
 	</div>
 </div>
 
+<div class="modal fade" id="edit-service" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="edit_service_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="select-service" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="select_service_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
 
 <div class="modal fade" id="edit-project" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
@@ -329,6 +353,33 @@
 	</div>
 </div>
 
+<div class="modal fade" id="new-servicio" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="new_servicio_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="project-conectividad" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="project-conectividad_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="project-servicio" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="project-servicio_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
 <div class="modal fade" id="edit-action" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="edit_action_dialog">
@@ -338,6 +389,14 @@
 	</div>
 </div>
 
+<div class="modal fade" id="edit-costo" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="edit_costo_dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">

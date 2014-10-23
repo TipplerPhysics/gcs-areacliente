@@ -90,7 +90,7 @@ $(function(){
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -102,9 +102,25 @@ $(function(){
 		$('#deleteServicio').attr('name',$(this).attr('name'));
 	});
 	
-	$('#pais_servicio').change(function(e){
+/*	$('#pais_servicio').change(function(e){
 		var pais = $('#pais_servicio').val();
 		var target = $('#servicio');
+		
+		ajaxServicios(pais,target);
+		
+	}); */
+	
+	
+	$('#new-service-form').on('change', '#pais_servicio', function(e) {
+		var pais = $('#pais_servicio').val();
+		var target = $('#servicio');
+		
+		ajaxServicios(pais,target);		
+	});
+	
+	$('#new-servicio').on('change', '#pais_servicio', function(e) {
+		var pais = $('#pais_servicio').val();
+		var target = $('#servicio_modal');
 		
 		ajaxServicios(pais,target);
 		
@@ -120,7 +136,9 @@ $(function(){
 	
 	
 	
-	$("#submit_service_form").on('click',function(e) {
+	
+	
+	$('body').on('click', '#submit_service_form', function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-service-form");
 		
@@ -138,12 +156,12 @@ $(function(){
 					//data: return data from server
 				if (data.success==("true")){
 					
-					$('#message_div').removeClass("error").addClass("success");
+					$('.message_div').removeClass("error").addClass("success");
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El servicio ha sido creado de forma correcta.");
-					$('#message_div').css('display','block');
+					$('.span_message').html("El servicio ha sido creado de forma correcta.");
+					$('.message_div').css('display','block');
 					
 					$('#buttons_new').css('display','none');
 					$('.message-container').css('display','block');
@@ -151,8 +169,8 @@ $(function(){
 					$form.hide();
 					
 					setTimeout(function() { 
-						$( "#message_div" ).fadeOut( "slow", function() {
-							$('#span_message').html("");
+						$( ".message_div" ).fadeOut( "slow", function() {
+							$('.span_message').html("");
 					  }); location.reload();}, 5000);
 				}else{
 					$('#message_div').removeClass("success").addClass("error");
@@ -173,6 +191,7 @@ $(function(){
 			});
 			
 		}
+		$('.selectpicker').selectpicker('refresh');
 		return false;
 	});
 });

@@ -232,7 +232,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -269,7 +269,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});*/
 						
 						var options = $("#input_cliente");
@@ -402,7 +402,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});*/
 						
 						$('#message_div_cliente').removeClass("error").addClass("success");
@@ -891,7 +891,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -968,6 +968,9 @@ $(document).on('hidden.bs.modal', function (e) {
 function showModal(){
 	initSelectpickers();
 	initDatepickers();
+
+	initValidator();
+	
 	$('#ajax_loader').css("display","none");
 	$('.modal_ajax').css("display","block");
 	
@@ -990,7 +993,7 @@ function sendEditDemanda(){
 				success:function(data, textStatus, jqXHR) 
 				{
 					$form.hide();
-					$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aocute;gina.');
+					$('#span_message_demanda_modal').html('La petici&oacute;n ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 					$('.modal-footer').hide();
 					$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");;
 
@@ -1092,7 +1095,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -1546,9 +1549,9 @@ $(function() {
 	
 });;$.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
-		perPage : 5,
+		perPage : 10,
 		showPrevNext : false,
-		numbersPerPage : 5,
+		numbersperPage : 10,
 		hidePageNumbers : false
 	}, settings = $.extend(defaults, opts);
 
@@ -1609,16 +1612,16 @@ $(function() {
 	children.slice(0, perPage).show();
 	
 	var currentPage = pager.children().eq(1).children().html();
-	var ocursinpage = ((currentPage*5)>numItems) ? numItems : (currentPage*5);
+	var ocursinpage = ((currentPage*10)>numItems) ? numItems : (currentPage*10);
 
 	
 	$(resumen).html('');
 	
 	if (numItems>0) {
-		if (numItems>=5){
-			$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
+		if (numItems>=10){
+			$(resumen).html('Resultados '+ ((currentPage*10)-9) + " a " + ocursinpage + ' de '+ numItems);
 		}else{
-			$(resumen).html('Resultados '+ ((currentPage*5)-4) + " a " + ocursinpage + ' de '+ numItems);
+			$(resumen).html('Resultados '+ ((currentPage*10)-9) + " a " + ocursinpage + ' de '+ numItems);
 		}
 	} else {
 		$(resumen).html('No hay resultados');
@@ -1681,13 +1684,13 @@ $(function() {
 		
 		$(resumen).html('');
 		
-		var ocursinpage2 = (((page+1)*5)>numItems) ? numItems : ((page+1)*5);
+		var ocursinpage2 = (((page+1)*10)>numItems) ? numItems : ((page+1)*10);
 		
-		if (numItems>0) {
-			if (numItems>=5){
-				$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+		if (numItems>0) {	
+			if (numItems>=10){
+				$(resumen).html('Resultados '+ (((page+1)*10)-9) + " a " + ocursinpage2 + ' de '+ numItems);
 			}else{
-				$(resumen).html('Resultados '+ (((page+1)*5)-4) + " a " + ocursinpage2 + ' de '+ numItems);
+				$(resumen).html('Resultados '+ (((page+1)*10)-9) + " a " + ocursinpage2 + ' de '+ numItems);
 			}
 		} else {
 			$(resumen).html('No hay resultados');
@@ -1696,8 +1699,44 @@ $(function() {
 	}
 };
 
-;function loadCosteModal(){
+;function LoadModalService(){
+	id = $('#select_project_action').val();
+	
+	if (id!="default"){
+		$('#select-service').modal('hide');
+		$('#edit-service').modal({
+			  remote: "../servicioModal.do?id="+id
+			});
+		$('#edit-service').modal('show');
+	}
+	
+	
+}
+
+function loadCosteModal(){
 	var radios = $('#costes-by-project-table').find(":radio");
+	var a =0;
+	var sel = false;
+	var git;
+	
+	for (a=0; a<=radios.length-1;a++){
+		var r = radios[a];
+		if ($(r).parent().hasClass('on')){
+			id = $(r).attr('id').split("radio_")[1];
+			git = $(r).parent().data("git");
+			sel = true;
+		}
+	}
+	
+	if (sel){
+		$('#edit-project').modal('hide');
+		
+		$('#edit-costo').modal({
+			  remote: "../costeProjectModal.do?id="+id+"&git="+git
+			  
+			});
+		$('#edit-costo').modal('show');
+	}
 	
 	
 }
@@ -1762,6 +1801,10 @@ function loadEditModal(){
 		
 	}else if (accion=='servicios'){
 		$('#edit-action').modal('hide');
+		$('#select-service').modal({
+			  remote: "../projectService.do?id="+id
+			});
+		$('#select-service').modal('show');
 	}
 }
 
@@ -1847,6 +1890,31 @@ function modalCliente(){
 
 
 $(function() {
+	
+	
+	$('#alta_proyecto').on('click', '#edit_service_modal_button', function(e) {		
+		id= $('#select_project_action').val();
+		
+		$('#project-servicio').modal('hide');
+		
+		$('#new-servicio').modal({
+			  remote: "../loadService.do?id="+id
+			});
+		$('#new-servicio').modal('show');
+		
+		});
+	
+	$('#alta_proyecto').on('click', '#edit_project_modal_button', function(e) {		
+		id= $('#select_project_action').val();
+		
+		$('#project-conectividad').modal('hide');
+		
+		$('#new-conectividad').modal({
+			  remote: "../loadConectivity.do?id="+id
+			});
+		$('#new-conectividad').modal('show');
+		
+		});
 	
 	//Nuevo proyecto
 	$('#producto').change(function(e){
@@ -1942,7 +2010,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -2078,7 +2146,7 @@ $(function() {
 			pagerSelector : '#myPager',
 			showPrevNext : true,
 			hidePageNumbers : false,
-			perPage : 5
+			perPage : 10
 		});
 	});
 });;function editServicio(id){	
@@ -2173,7 +2241,7 @@ $(function(){
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');
@@ -2185,9 +2253,25 @@ $(function(){
 		$('#deleteServicio').attr('name',$(this).attr('name'));
 	});
 	
-	$('#pais_servicio').change(function(e){
+/*	$('#pais_servicio').change(function(e){
 		var pais = $('#pais_servicio').val();
 		var target = $('#servicio');
+		
+		ajaxServicios(pais,target);
+		
+	}); */
+	
+	
+	$('#new-service-form').on('change', '#pais_servicio', function(e) {
+		var pais = $('#pais_servicio').val();
+		var target = $('#servicio');
+		
+		ajaxServicios(pais,target);		
+	});
+	
+	$('#new-servicio').on('change', '#pais_servicio', function(e) {
+		var pais = $('#pais_servicio').val();
+		var target = $('#servicio_modal');
 		
 		ajaxServicios(pais,target);
 		
@@ -2203,7 +2287,9 @@ $(function(){
 	
 	
 	
-	$("#submit_service_form").on('click',function(e) {
+	
+	
+	$('body').on('click', '#submit_service_form', function(e) {
 		e.preventDefault(); //STOP default action
 		var $form = $("#new-service-form");
 		
@@ -2221,12 +2307,12 @@ $(function(){
 					//data: return data from server
 				if (data.success==("true")){
 					
-					$('#message_div').removeClass("error").addClass("success");
+					$('.message_div').removeClass("error").addClass("success");
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El servicio ha sido creado de forma correcta.");
-					$('#message_div').css('display','block');
+					$('.span_message').html("El servicio ha sido creado de forma correcta.");
+					$('.message_div').css('display','block');
 					
 					$('#buttons_new').css('display','none');
 					$('.message-container').css('display','block');
@@ -2234,8 +2320,8 @@ $(function(){
 					$form.hide();
 					
 					setTimeout(function() { 
-						$( "#message_div" ).fadeOut( "slow", function() {
-							$('#span_message').html("");
+						$( ".message_div" ).fadeOut( "slow", function() {
+							$('.span_message').html("");
 					  }); location.reload();}, 5000);
 				}else{
 					$('#message_div').removeClass("success").addClass("error");
@@ -2256,6 +2342,7 @@ $(function(){
 			});
 			
 		}
+		$('.selectpicker').selectpicker('refresh');
 		return false;
 	});
 });;$(function() {
@@ -2333,7 +2420,7 @@ $(function() {
 		pagerSelector : '#myPager',
 		showPrevNext : true,
 		hidePageNumbers : false,
-		perPage : 5
+		perPage : 10
 	});
 	
 	$('.alta_usuario').on('loaded.bs.modal', function () {
@@ -2346,7 +2433,9 @@ $(function() {
 	$('#newUserButton').click(function(e){
 		var $newUserButton = $(this);
 		if ($newUserButton.hasClass('white-btn')){
+			
 			if ($('.new-user-form-holder').css('overflow')=="visible"){
+				$('.message_div').removeClass("error");
 				$('.new-user-form-holder').css('overflow','hidden');
 				userBoxSize = $('.new-user-form-holder.open').outerHeight();
 				$('.new-user-form-holder.open').css('height', userBoxSize);
@@ -2417,7 +2506,7 @@ $(function() {
 						pagerSelector : '#myPager',
 						showPrevNext : true,
 						hidePageNumbers : false,
-						perPage : 5
+						perPage : 10
 					});
 				});
 				$('#confirm-delete').modal('hide');	        	
@@ -2489,7 +2578,7 @@ $(function() {
 						pagerSelector : '#myPager',
 						showPrevNext : true,
 						hidePageNumbers : false,
-						perPage : 5
+						perPage : 10
 					});
 				});
 				$('#confirm-delete').modal('hide');	        	
@@ -2765,6 +2854,8 @@ function drawChecksAreas(str){
 	$.validator.addMethod("money", function(value, element) {
 		 return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
 		}, "Por favor, introduce una cifra v&aacute;lida");
+	
+
 	
 	// One to rule the ... selects
 	$.validator.addMethod("selected", function(value, element){

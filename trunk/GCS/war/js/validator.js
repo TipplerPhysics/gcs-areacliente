@@ -28,6 +28,8 @@ $(function() {
 		 return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
 		}, "Por favor, introduce una cifra v&aacute;lida");
 	
+
+	
 	// One to rule the ... selects
 	$.validator.addMethod("selected", function(value, element){
 		var valid = false;

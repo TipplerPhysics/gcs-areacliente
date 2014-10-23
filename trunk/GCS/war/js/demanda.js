@@ -31,7 +31,7 @@ function sendEditDemanda(){
 				success:function(data, textStatus, jqXHR) 
 				{
 					$form.hide();
-					$('#span_message_demanda_modal').html('La demanda ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aocute;gina.');
+					$('#span_message_demanda_modal').html('La petici&oacute;n ha sido modificada de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 					$('.modal-footer').hide();
 					$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");;
 
@@ -133,7 +133,7 @@ $(function() {
 							pagerSelector : '#myPager',
 							showPrevNext : true,
 							hidePageNumbers : false,
-							perPage : 5
+							perPage : 10
 						});
 					});
 					$('#confirm-delete').modal('hide');

@@ -67,8 +67,8 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
-							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
+							<span class="lbl">Referencia Global:</span>
+							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
 						
@@ -83,7 +83,7 @@
 						
 						
 					
-						<div class="form-field">	
+						<div class="form-field paises">	
 							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
 							<div class="radio-div">
 								<div class="radio-container">
@@ -211,7 +211,7 @@
 										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${cliente.key.id}" href="../serviceModal.do"	id="lapiz${cliente.key.id}" data-toggle="modal" data-target="#edit-client"></a>
+											<a class="lapiz" name="${cliente.key.id}" href="../clienteModal.do"	id="lapiz${cliente.key.id}" data-toggle="modal" data-target="#edit-client"></a>
 									
 											<c:if test="${sessionScope.permiso != 3}">
 												<a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a>

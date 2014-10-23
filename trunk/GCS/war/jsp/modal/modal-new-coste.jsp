@@ -24,7 +24,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Número de control:</span>
+							<span class="lbl">Código de control:</span>
 							<div class="input">
 								<input type="text" value="" readonly size="16" name="numero_control" id="numero_control" class="readonly">
 							</div>

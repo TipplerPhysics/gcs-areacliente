@@ -294,7 +294,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="">
-					<h2>Eliminar petici�n</h2>
+					<h2>Eliminar petici&oacute;n</h2>
 					<hr />
 				</div>
 				<div class="">
