@@ -4,12 +4,12 @@
 
 
 
-<h1>Gestión proyecto</h1>
+<h1>Gestiï¿½n proyecto</h1>
 <span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
 <hr/>
 <div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span> > <span> Gestión de proyecto </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestiï¿½n de clientes</span> > <span> Gestiï¿½n de proyecto </span>
 	</div>
 <div class="newUserbox">
 	 <button id="newUserButton">
@@ -35,7 +35,7 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Código Proyecto:</span>
+						<span class="lbl">Cï¿½digo Proyecto:</span>
 						<input type="text" id="project_name" name="project_name" class="long readonly" unselectable="on" readonly="true">
 					</div>
 					
@@ -68,7 +68,7 @@
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
 									</c:forEach>
@@ -80,7 +80,7 @@
 							<span class="lbl">Clasificaci&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="clasificacion" id="clasificacion" required aria-required="true">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -93,7 +93,7 @@
 							<span class="lbl">Gestor IT<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
-								<option value="default">Seleccionar...</option>
+								<option value="default">Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
@@ -105,7 +105,7 @@
 							<span class="lbl">Gestor de negocio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" id="gestor_negocio" name="gestor_negocio" required aria-required="true">
-								    <option value="default">Seleccionar...</option>
+								    <option value="default">Seleccionar</option>
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 									</c:forEach>					
@@ -113,14 +113,15 @@
 							</div>
 						</div>
 						
-					<div class="form-field">
-						<span class="lbl coste">Coste:</span>
-						<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
-					</div>
+					
 				</div>
 				
 				<div class="form-field-divider right">
 					
+					<div class="form-field">
+						<span class="lbl coste">Coste:</span>
+						<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
+					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
@@ -147,14 +148,14 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha inicio valoración:</span>
+						<span class="lbl">Fecha inicio valoraciï¿½n:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion">
 						</div>
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha fin valoración:</span>
+						<span class="lbl">Fecha fin valoraciï¿½n:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion' name="fecha_fin_valoracion" id="fecha_fin_valoracion">
 						</div>
@@ -174,32 +175,7 @@
 						</div>
 					</div>
 					
-					<div class="form-field">
-						<span class="lbl">Servicio:</span>
-						<div class="input">
-							<select class="selectpicker" id="servicio" name="servicio">
-							    <option value="default">Seleccionar</option>
-							    <option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
-							    <option value="C100 en confección">C100 en confección</option>
-							    <option value="PDTE Valoración IT">PDTE Valoración IT</option>
-							    <option value="PDTE Plan de Trabajo IT">PDTE Plan de Trabajo IT</option>
-							    <option value="PDTE Visto Bueno del CL del plan de trabajo">PDTE Visto Bueno del CL del plan de trabajo</option>								    
-							    <option value="En Desarrollo">En Desarrollo</option>
-							    <option value="En Test - Conectividad">En Test - Conectividad</option>
-							    <option value="En Test - Integración">En Test - Integración</option>
-							    <option value="En Test - Aceptación">En Test - Aceptación</option>
-							    <option value="Parado por Producto">Parado por Producto</option>
-							    <option value="Parado por Negocio">Parado por Negocio</option>
-							    <option value="Parado por IT">Parado por IT</option>
-							    <option value="Excluido por negocio">Excluido por negocio</option>							    
-							    <option value="Excluido por Timeout">Excluido por Timeout</option>
-							    <option value="PDTE Implantar">PDTE Implantar</option>
-							    <option value="En Penny Test">En Penny Test</option>
-							    <option value="Implementado con OK">Implementado con OK</option>
-							    <option value="Implementado sin OK">Implementado sin OK</option>												
-							</select>
-						</div>
-					</div>
+					
 				</div>
 				
 				<div id="message_div">
@@ -220,14 +196,14 @@
 			<div id="buttons_holder">
 				<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
 				<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
-					Gestión coste</span>
+					Gestiï¿½n coste</span>
 				</button>
 		
 				<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nueva conectividad</button>
 				
 				<button type="button" data-target="#new-servicio" data-toggle="modal" href="../newService.do" id="newServiceModalButton">Nuevo Servicio</button>
 				<button id="newServicioButton" onclick="window.location.href='./gestionServicio.do'">
-					Gestión servicio<span class="servicio_span"></span>
+					Gestiï¿½n servicio<span class="servicio_span"></span>
 				</button>
 			</div>
 		</div>
@@ -242,9 +218,9 @@
 				<thead>
 					<tr>
 						<th><span class="table-title">Fecha proyecto</span></th>
-						<th><span class="table-title">Código proyecto</span></th>
+						<th><span class="table-title">Cï¿½digo proyecto</span></th>
 						<th><span class="table-title">Cliente</span></th>
-						<th><span class="table-title">Clasificación</span></th>
+						<th><span class="table-title">Clasificaciï¿½n</span></th>
 						<th><span class="table-title">Tipo</span></th>
 						<th><span class="table-title">Coste</span></th>
 						<th style="width: 110px;">&nbsp;</th>
@@ -408,7 +384,7 @@
 			</div>
 			<div class="">
 				<p>&iquest;Est&aacute; seguro que desea eliminar al proyecto?</p>
-				<p>Se eliminarán todos los servicios asociados.</p>
+				<p>Se eliminarï¿½n todos los servicios asociados.</p>
 				
 			</div>
 			<div class="modal-footer">

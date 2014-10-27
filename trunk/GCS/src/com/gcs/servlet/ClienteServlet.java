@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jxl.Workbook;
+import jxl.WorkbookSettings;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
@@ -99,22 +100,30 @@ public class ClienteServlet extends HttpServlet {
 			resp.setHeader("Content-Disposition",
 					"attachment; filename=ClientesGCS.xls");
 			
+			WorkbookSettings ws = new WorkbookSettings();
+			
+			ws.setEncoding("Cp1252");
+			
 			WritableWorkbook w = Workbook.createWorkbook(resp
-					.getOutputStream());
+					.getOutputStream(),ws);
+			
 			
 			ClienteDao cDao = ClienteDao.getInstance();
 			List<Cliente> clientes = cDao.getAllClientes();
 			
 			WritableSheet s = w.createSheet("Clientes", 0);
-		
+			
+			
 			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
 		    cellFont.setColour(Colour.WHITE);
+		    
 		    
 		    WritableCellFormat cellFormat = new WritableCellFormat(cellFont);
 		    cellFormat.setBackground(Colour.BLUE);
 		    cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 		    cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
-		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);			
+		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);	
+		  
 			
 		    s.setColumnView(0, 35);
 		    s.setColumnView(1, 16);

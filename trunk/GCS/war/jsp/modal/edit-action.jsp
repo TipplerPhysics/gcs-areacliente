@@ -11,10 +11,10 @@
 			<div class="input">
 				<select class="selectpicker selected" id="select_edit_action" name="select_edit_action">
 				  	<option value="default">Seleccionar</option>
-				  	<option value="proyecto">Gestión de proyecto</option>
-				    <option value="costes">Gestión de costes</option>
-				    <option value="conectividad">Gestión de conectividad</option>
-				    <option value="servicios">Gestión de servicios</option>									
+				  	<option value="proyecto">Proyecto</option>
+				    <option value="costes">Costes</option>
+				    <option value="conectividad">Conectividad</option>
+				    <option value="servicios">Servicios</option>									
 				</select>
 			</div>
 		</div>

@@ -15,7 +15,7 @@
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="input_cliente_modal" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('modal');">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
 									</c:forEach>
@@ -41,7 +41,7 @@
 							<span class="lbl">Número valoración:</span>
 							<div class="input">
 								<select name="num_valoracion" class="long selectpicker">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -70,7 +70,7 @@
 							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="equipo" name="equipo" class="long selectpicker" required aria-required="true" onchange="getNum_control();">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>
 									<option value="Solutions">Solutions</option>
@@ -87,7 +87,7 @@
 							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker" required aria-required="true"  id="gestor_it" name="gestor_it">	
-								<option value="default" selected>Seleccionar...</option>
+								<option value="default" selected>Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>

@@ -57,7 +57,7 @@
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
 									</c:forEach>
@@ -80,7 +80,7 @@
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
-									<option value="default">Seleccionar...</option>								
+									<option value="default">Seleccionar</option>								
 									<option value="PRUC">PRUC</option>
 									<option value="CONS">CONS</option>
 									<option value="VIAB">VIAB</option>
@@ -120,7 +120,7 @@
 							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion">
-									<option value="default">Seleccionar...</option>
+									<option value="default">Seleccionar</option>
 									<option value="Estandar">Est&aacute;ndar</option>
 									<option value="Compleja">Compleja</option>
 									
@@ -169,7 +169,7 @@
 							<span class="lbl">Gestor IT pre-asignado:</span>
 							<div class="input">
 								<select class="selectpicker" id="gestor_it" name="gestor_it">	
-								<option value="default" selected>Seleccionar...</option>
+								<option value="default" selected>Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
@@ -357,8 +357,8 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
-							<input type="text" aria-required="true" required="" id="ref_global" name="ref_global" class="long" maxlength="11">
+							<span class="lbl">Referencia Global:</span>
+							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
 					</div><div class="form-field-divider right">

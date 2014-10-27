@@ -7,7 +7,7 @@ function drawChecks(str){
 			$('#argentina_check_modal').removeClass("checked");
 			$('#argentina_check_modal').next().removeClass("checked");
 		}				
-		if (str.indexOf("belgica")!=-1){
+		if (str.indexOf("lgica")!=-1){
 			$('#belgica_check_modal').attr("checked","checked");
 			$('#belgica_check_modal').next().addClass("checked");
 		}else{
@@ -49,14 +49,14 @@ function drawChecks(str){
 			$('#italia_check_modal').removeClass("checked");
 			$('#italia_check_modal').next().removeClass("checked");
 		}
-		if (str.indexOf("mexico")!=-1){
+		if (str.indexOf("xico")!=-1){
 			$('#mexico_check_modal').attr("checked","checked");
 			$('#mexico_check_modal').next().addClass("checked");
 		}else{
 			$('#mexico_check_modal').removeClass("checked");
 			$('#mexico_check_modal').next().removeClass("checked");
 		}
-		if (str.indexOf("peru")!=-1){
+		if (str.indexOf("per")!=-1){
 			$('#peru_check_modal').attr("checked","checked");
 			$('#peru_check_modal').next().addClass("checked");
 		}else{
@@ -968,9 +968,6 @@ $(document).on('hidden.bs.modal', function (e) {
 function showModal(){
 	initSelectpickers();
 	initDatepickers();
-
-	initValidator();
-	
 	$('#ajax_loader').css("display","none");
 	$('.modal_ajax').css("display","block");
 	
@@ -1347,6 +1344,7 @@ function resetForm($form) {
 	var validator = $form.validate();
 	validator.resetForm();
 	$form.find('.bootstrap-select.error').removeClass('error');
+	$form.find('.error-messages').remove();
 };$(function(){
 	initDatepickers();
 	initSelectpickers();
