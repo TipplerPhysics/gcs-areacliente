@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="gestion_coste">
-	<h1>Gestión costes</h1>
+	<h1>GestiÃ³n costes</h1>
 	<span class="btn-atras" onclick="window.location.href='./gestionProyecto.do'"></span>
 	
 	<hr/>
 	<div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span> > <span onclick="window.location.href='./gestionProyecto.do' ">Gestión de proyectos</span> > <span> Gestión de costes </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">GestiÃ³n de clientes</span> > <span onclick="window.location.href='./gestionProyecto.do' ">GestiÃ³n de proyectos</span> > <span> GestiÃ³n de costes </span>
 	</div>
 	
 	<div class="newUserbox">		
@@ -37,9 +38,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Código de control:</span>
+							<span class="lbl">CÃ³digo de control:</span>
 							<div class="input">
-								<input type="text" value="" readonly size="16" name="numero_control" id="numero_control" class="readonly">
+								<input type="text" value="" size="16" name="numero_control" id="numero_control">
 							</div>
 						</div>
 
@@ -51,9 +52,9 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Número valoración:</span>
+							<span class="lbl">NÃºmero valoraciÃ³n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="num_valoracion" class="long selectpicker">
+								<select name="num_valoracion" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -63,7 +64,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Fecha solicitud valoraciÃ³n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
 							</div>
@@ -84,15 +85,16 @@
 						<div class="form-field">
 							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="equipo" name="equipo" class="long selectpicker selected" required aria-required="true" onchange="getNum_control();">
+								<select id="equipo" name="equipo" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
-									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>
-									<option value="Solutions">Solutions</option>
-									<option value="Soporte Swift">Soporte Swift</option>
-									<option value="IS">IS</option>
-									<option value="Telemáticos">Telemáticos</option>
 									<option value="Gestor IT">Gestor IT</option>
+									<option value="Innovery">Innovery</option>
+									<option value="IS">IS</option>									
+									<option value="Solutions">Solutions</option>
+									<option value="Soporte Swift">Soporte Swift</option>									
+									<option value="TelemÃ¡ticos">TelemÃ¡ticos</option>
+									
 									
 								</select>
 							</div>
@@ -131,9 +133,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Diseño:</span>
+							<span class="lbl">DiseÃ±o:</span>
 							<div class="input">
-								<input id="diseño_horas" name="diseño_horas" class="horas number"/><input id="diseño_coste" name="diseño_coste" class="coste number"/>
+								<input id="diseÃ±o_horas" name="diseÃ±o_horas" class="horas number"/><input id="diseÃ±o_coste" name="diseÃ±o_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -141,7 +143,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Construcción:</span>
+							<span class="lbl">ConstrucciÃ³n:</span>
 							<div class="input">
 								<input id="construccion_horas" name="construccion_horas" class="horas number"/><input id="construccion_coste" name="construccion_coste" class="coste number"/>
 							</div>
@@ -161,7 +163,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Gestión:</span>
+							<span class="lbl">GestiÃ³n:</span>
 							<div class="input">
 								<input id="gestion_horas" name="gestion_horas" class="horas number"/><input id="gestion_coste" name="gestion_coste" class="coste number"/>
 							</div>
@@ -204,9 +206,9 @@
 						<tr>
 							<th><span class="table-title">Fecha Entrada</span></th>
 							<th><span class="table-title">Cliente</span></th>
-							<th><span class="table-title">Nombre Proyecto</span></th>
+							<th><span class="table-title">CÃ³digo Proyecto</span></th>
 							<th><span class="table-title">Equipo</span></th>
-							<th><span class="table-title">Gestor registrado</span></th>
+							<th><span class="table-title">Gestor IT-Registro</span></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
 						<tr>
@@ -230,7 +232,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${costes}" var="coste">
-									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}">
+									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseÃ±o}" data-disenio-coste="${coste.coste_diseÃ±o}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}">
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
 										<td><span>${coste.project_name}</span></td>
@@ -275,7 +277,7 @@
 					<hr />
 				</div>
 				<div class="">
-					<p>¿Está seguro que desea eliminar el coste?<p>
+					<p>Â¿EstÃ¡ seguro que desea eliminar el coste?<p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="pink-btn" id="deleteCoste">Eliminar</button>

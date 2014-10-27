@@ -100,6 +100,10 @@
 										id="chile_check"><label for="chile_check"><span></span>Chile</label>
 								</div>
 								<div class="radio-container">
+									<input type="checkbox" name='paises' value="China"
+										id="china_check"><label for="china_check"><span></span>China</label>
+								</div>
+								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Colombia"
 										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
 								</div>

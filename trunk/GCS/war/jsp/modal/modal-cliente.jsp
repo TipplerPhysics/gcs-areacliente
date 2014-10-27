@@ -76,6 +76,10 @@
 										id="chile_check_modal"><label for="chile_check_modal"><span></span>Chile</label>
 								</div>
 								<div class="radio-container">
+									<input type="checkbox" name='paises' value="China"
+										id="china_check_modal"><label for="china_check_modal"><span></span>China</label>
+								</div>
+								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Colombia"
 										id="colombia_check_modal"><label for="colombia_check_modal"><span></span>Colombia</label>
 								</div>

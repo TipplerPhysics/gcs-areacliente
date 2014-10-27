@@ -382,7 +382,7 @@ function editRow(id){
 	var $table = $currentRow.closest('table');
 	var $previousOpenEdit = $table.find('#edit-item-holder');
 	// Get the select box values.
-	areas= $currentRow.attr('data-area');
+	var areas= $currentRow.attr('data-area');
 	
 	if (areas.indexOf("Global Customer Service")!=-1){
 		areas= areas.replace("Global Customer Service","gcs");
