@@ -105,6 +105,10 @@
 			<forward name="ok" path="/jsp/skeletons/users-skeleton.jsp" />
 		</action>
 		
+		<action path="/admin/auditoria" type="com.gcs.actions.AuditoriaAction">
+			<forward name="ok" path="/jsp/skeletons/auditoria-skeleton.jsp" />
+		</action>
+		
 		<action path="/dashboard/gestionDemanda" type="com.gcs.actions.GestionDemandaAction">
 			<forward name="ok" path="/jsp/skeletons/gestionDemanda-skeleton.jsp" />
 		</action>

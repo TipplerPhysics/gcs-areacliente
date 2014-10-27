@@ -44,8 +44,8 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia Global<span class="required-asterisk">*</span>:</span>
-							<input type="text" aria-required="true" required="" id="ref_global_modal" name="ref_global" class="long" maxlength="11">
+							<span class="lbl">Referencia Global:</span>
+							<input type="text" minlength="11" id="ref_global_modal" name="ref_global" class="long" maxlength="11">
 						</div>
 						
 					</div><div class="form-field-divider right">
@@ -68,7 +68,7 @@
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="B�lgica"
+									<input type="checkbox" name='paises' value="Bélgica"
 										id="belgica_check_modal"><label for="belgica_check_modal"><span></span>B&eacute;lgica</label>
 								</div>
 								<div class="radio-container">
@@ -92,11 +92,11 @@
 										id="italia_check_modal"><label for="italia_check_modal"><span></span>Italia</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Mexico"
+									<input type="checkbox" name='paises' value="México"
 										id="mexico_check_modal"><label for="mexico_check_modal"><span></span>M&eacute;xico</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Peru"
+									<input type="checkbox" name='paises' value="Perú"
 										id="peru_check_modal"><label for="peru_check_modal"><span></span>Per&uacute;</label>
 								</div>
 								<div class="radio-container">

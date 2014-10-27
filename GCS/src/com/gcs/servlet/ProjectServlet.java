@@ -197,7 +197,7 @@ public class ProjectServlet extends HttpServlet{
 				
 				String producto = req.getParameter("producto");
 				String conectividad = req.getParameter("conectividad");
-				String servicio = req.getParameter("servicio");
+				
 				
 				String tipo = req.getParameter("tipo");
 				String cliente = req.getParameter("cliente");
@@ -220,8 +220,6 @@ public class ProjectServlet extends HttpServlet{
 				if (!"default".equals(conectividad))
 					p.setConectividad(conectividad);
 				
-				if (!"default".equals(servicio))
-					p.setServicio(servicio);
 				
 				
 				p.setFecha_alta_str(fecha_alta_str);					
@@ -274,7 +272,7 @@ public class ProjectServlet extends HttpServlet{
 			
 			String producto = req.getParameter("producto");
 			String conectividad = req.getParameter("conectividad");
-			String servicio = req.getParameter("servicio");
+			
 			
 			
 			
@@ -306,8 +304,6 @@ public class ProjectServlet extends HttpServlet{
 				if (!"default".equals(conectividad))
 					p.setConectividad(conectividad);
 				
-				if (!"default".equals(servicio))
-					p.setServicio(servicio);
 				
 				p.setFecha_alta_str(fecha_alta_str);					
 				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					

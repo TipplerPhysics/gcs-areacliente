@@ -39,6 +39,9 @@ public class ClienteDao {
 			c.setErased(false);
 		}
 		
+		LogsDao lDao = new LogsDao();
+		
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 

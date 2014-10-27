@@ -603,6 +603,10 @@ form .datepicker {
 label.ui-marmots-label-radio {
   width: auto;
 }
+.bootstrap-select.error button {
+  background: linear-gradient(to bottom, #f7e9e9 0px, #f7e9e9 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: 1px solid #e8e8e6;
+}
 #sidebar {
   position: fixed;
   top: 50%;
@@ -1816,9 +1820,6 @@ label.ui-marmots-label-radio {
 }
 .modal_ajax {
   display: none;
-}
-.modal_ajax label.error {
-  display: none !important;
 }
 .modal_ajax #logo_url_modal {
   width: 275px !important;

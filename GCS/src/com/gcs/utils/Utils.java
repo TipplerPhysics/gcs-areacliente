@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.gcs.beans.Log;
+import com.gcs.dao.LogsDao;
+
 public class Utils {
 	
 	public static boolean isNumeric(String str)  
@@ -78,4 +81,17 @@ public static List<String> getMinutosList(){
 		
 		return listaMinutos;
 	}
+
+	public static void writeLog (){
+		
+		Log log = new Log();
+		LogsDao lDao = LogsDao.getInstance();
+		Date fecha = new Date();
+		
+		log.setFecha(fecha);
+		
+		
+		
+	}
+
 }

@@ -12,7 +12,7 @@
 			
 			<c:if test="${sessionScope.permiso == 1}">
 				<li><a href="#"><span class="informes">Informes</span></a></li>
-				<li><a href="#"><span class="logs">Auditoría</span></a></li>	
+				<li><a href="${entorno}/admin/auditoria.do"><span class="logs">Auditorï¿½a</span></a></li>	
 			</c:if>		
 		</ul>
 	</div>
