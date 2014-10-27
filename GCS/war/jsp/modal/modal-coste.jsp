@@ -22,7 +22,7 @@
 						<div class="form-field">
 							<span class="lbl">Código de control:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="readonly" readonly name="numero_control" id="numero_control_modal">
+								<input type="text" value="" size="16"  name="numero_control" id="numero_control_modal">
 							</div>
 						</div>
 
@@ -34,9 +34,9 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Número valoración:</span>
+							<span class="lbl">Número valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="num_valoracion" id="num_valoracion_modal" class="long selectpicker">
+								<select name="num_valoracion" id="num_valoracion_modal" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -68,11 +68,12 @@
 								<select id="equipo_modal" name="equipo" class="long selectpicker selected">
 									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>
+									<option value="Gestor IT">Gestor IT</option>
+									<option value="Innovery">Innovery</option>
+									<option value="IS">IS</option>									
 									<option value="Solutions">Solutions</option>
-									<option value="Soporte Swift">Soporte Swift</option>
-									<option value="IS">IS</option>
+									<option value="Soporte Swift">Soporte Swift</option>									
 									<option value="Telemáticos">Telemáticos</option>
-									<option value="Gestor IT">Gestor IT</option>	
 								</select>
 							</div>
 						</div>

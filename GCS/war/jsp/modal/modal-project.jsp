@@ -24,7 +24,7 @@
 					
 					<div class="form-field">
 						<span class="lbl">C&oacute;digo Proyecto:</span>
-						<input type="text" id="project_name_modal" name="project_name" class="long readonly" readonly="true">
+						<input type="text" id="project_name_modal" name="project_name" class="long " >
 					</div>
 					
 					<div class="form-field">

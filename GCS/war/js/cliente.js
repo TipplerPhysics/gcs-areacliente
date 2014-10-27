@@ -20,7 +20,14 @@ function drawChecks(str){
 		}else{
 			$('#chile_check_modal').removeClass("checked");
 			$('#chile_check_modal').next().removeClass("checked");
-		}			
+		}		
+		if (str.indexOf("china")!=-1){
+			$('#china_check_modal').attr("checked","checked");
+			$('#china_check_modal').next().addClass("checked");
+		}else{
+			$('#china_check_modal').removeClass("checked");
+			$('#china_check_modal').next().removeClass("checked");
+		}		
 		if (str.indexOf("colombia")!=-1){
 			$('#colombia_check_modal').attr("checked","checked");
 			$('#colombia_check_modal').next().addClass("checked");

@@ -1232,7 +1232,7 @@ label.ui-marmots-label-radio {
 .message_div.error,
 #message_div.success,
 .message_div.success {
-  margin: 20px auto 0;
+  margin: 0 auto 0;
   position: inherit;
   display: block;
   opacity: 1;
@@ -2099,6 +2099,9 @@ form textarea.error {
   width: 75px;
   display: inline-block;
 }
+#alta_proyecto #new_conectividad_dialog .bootstrap-select {
+  width: 220px;
+}
 #alta_proyecto #edit_action_modal .form-field {
   width: 300px;
   margin-left: auto;
@@ -2116,6 +2119,16 @@ form textarea.error {
 #alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions {
   padding: 0 20px !important;
   text-align: left;
+}
+#alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions fieldset {
+  display: inline-block;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  text-align: left;
+  padding: 5px;
+}
+#alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions fieldset .lbl {
+  display: block;
 }
 #alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions h3 {
   text-align: left;
@@ -2218,6 +2231,12 @@ form textarea.error {
 }
 #select_service_dialog {
   width: 600px;
+}
+#edit_action_dialog {
+  width: 600px;
+}
+#newServicioButton {
+  margin-right: 5px !important;
 }
 #alta_proyecto .modal_ajax.nuevo_coste .form-field-divider.right,
 .modal_ajax.nuevo_coste .form-field-divider.right {

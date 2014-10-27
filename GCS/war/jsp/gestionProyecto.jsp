@@ -195,17 +195,28 @@
 		<div class="form-container relatedOptions">
 			<h3>Otras acciones relacionadas:</h3>
 			<div id="buttons_holder">
-				<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
-				<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
-					Gestión coste</span>
-				</button>
-		
-				<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nueva conectividad</button>
+			
+				<fieldset>
+					<span class="lbl">Coste</span>
+					<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo</button>
+					<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
+						Ver</span>
+					</button>
+				</fieldset>
 				
-				<button type="button" data-target="#new-servicio" data-toggle="modal" href="../newService.do" id="newServiceModalButton">Nuevo Servicio</button>
-				<button id="newServicioButton" onclick="window.location.href='./gestionServicio.do'">
-					Gestión servicio<span class="servicio_span"></span>
-				</button>
+				<fieldset>
+					<span class="lbl">Servicio</span>
+					<button type="button" data-target="#new-servicio" data-toggle="modal" href="../newService.do" id="newServiceModalButton">Nuevo</button>
+					<button id="newServicioButton" onclick="window.location.href='./gestionServicio.do'">
+						Ver<span class="servicio_span"></span>
+					</button>
+				</fieldset>
+				
+				<fieldset>
+					<span class="lbl">Conectividad</span>
+					<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nueva</button>
+				</fieldset>
+				
 			</div>
 		</div>
 	</div>

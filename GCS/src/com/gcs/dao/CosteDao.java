@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
+import com.gcs.beans.Demanda;
 import com.gcs.beans.Equipo;
 import com.gcs.persistence.PMF;
 
@@ -71,11 +73,15 @@ public class CosteDao {
 
 		List<Coste> costes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		String queryStr = "select from " + Coste.class.getName();
-		costes = (List<Coste>) pm.newQuery(queryStr).execute();
+		Query q = pm.newQuery("select from " + Coste.class.getName());
+		q.setOrdering("fecha_alta desc");
+		costes = (List<Coste>) q.execute();
 
 		return costes;
+		
 	}
+	
+	
 
 	public void deleteCoste(Coste c) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
