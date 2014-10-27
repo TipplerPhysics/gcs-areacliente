@@ -1,15 +1,16 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div id="alta_proyecto">
 
 
 
-<h1>Gesti�n proyecto</h1>
+<h1>Gestión proyecto</h1>
 <span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
 <hr/>
 <div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gesti�n de clientes</span> > <span> Gesti�n de proyecto </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gestión de clientes</span> > <span> Gestión de proyecto </span>
 	</div>
 <div class="newUserbox">
 	 <button id="newUserButton">
@@ -35,7 +36,7 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">C�digo Proyecto:</span>
+						<span class="lbl">Código Proyecto:</span>
 						<input type="text" id="project_name" name="project_name" class="long readonly" unselectable="on" readonly="true">
 					</div>
 					
@@ -148,14 +149,14 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha inicio valoraci�n:</span>
+						<span class="lbl">Fecha inicio valoración:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion">
 						</div>
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha fin valoraci�n:</span>
+						<span class="lbl">Fecha fin valoración:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion' name="fecha_fin_valoracion" id="fecha_fin_valoracion">
 						</div>
@@ -196,14 +197,14 @@
 			<div id="buttons_holder">
 				<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo coste</button>
 				<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
-					Gesti�n coste</span>
+					Gestión coste</span>
 				</button>
 		
 				<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nueva conectividad</button>
 				
 				<button type="button" data-target="#new-servicio" data-toggle="modal" href="../newService.do" id="newServiceModalButton">Nuevo Servicio</button>
 				<button id="newServicioButton" onclick="window.location.href='./gestionServicio.do'">
-					Gesti�n servicio<span class="servicio_span"></span>
+					Gestión servicio<span class="servicio_span"></span>
 				</button>
 			</div>
 		</div>
@@ -218,9 +219,9 @@
 				<thead>
 					<tr>
 						<th><span class="table-title">Fecha proyecto</span></th>
-						<th><span class="table-title">C�digo proyecto</span></th>
+						<th><span class="table-title">Código proyecto</span></th>
 						<th><span class="table-title">Cliente</span></th>
-						<th><span class="table-title">Clasificaci�n</span></th>
+						<th><span class="table-title">Clasificación</span></th>
 						<th><span class="table-title">Tipo</span></th>
 						<th><span class="table-title">Coste</span></th>
 						<th style="width: 110px;">&nbsp;</th>
@@ -384,7 +385,7 @@
 			</div>
 			<div class="">
 				<p>&iquest;Est&aacute; seguro que desea eliminar al proyecto?</p>
-				<p>Se eliminar�n todos los servicios asociados.</p>
+				<p>Se eliminarán todos los servicios asociados.</p>
 				
 			</div>
 			<div class="modal-footer">
