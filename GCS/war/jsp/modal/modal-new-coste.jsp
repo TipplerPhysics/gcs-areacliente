@@ -26,7 +26,7 @@
 						<div class="form-field">
 							<span class="lbl">Código de control:</span>
 							<div class="input">
-								<input type="text" value="" readonly size="16" name="numero_control" id="numero_control" class="readonly">
+								<input type="text" value=""  size="16" name="numero_control" id="numero_control">
 							</div>
 						</div>
 
@@ -69,7 +69,7 @@
 						<div class="form-field">
 							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="equipo" name="equipo" class="long selectpicker" required aria-required="true" onchange="getNum_control();">
+								<select id="equipo" name="equipo" class="long selectpicker" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>

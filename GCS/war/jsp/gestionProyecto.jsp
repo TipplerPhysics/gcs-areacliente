@@ -199,7 +199,7 @@
 					<span class="lbl">Coste</span>
 					<button type="button" data-target="#new-costo" data-toggle="modal" href="../newCosteModal.do" id="newCostoModalButton">Nuevo</button>
 					<button id="newCostoButton" onclick="window.location.href='./gestionCostes.do'">
-						Ver</span>
+						Ver
 					</button>
 				</fieldset>
 				

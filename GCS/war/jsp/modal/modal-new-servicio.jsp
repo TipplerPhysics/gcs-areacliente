@@ -224,11 +224,12 @@
 		</div>
 		<br/>
 		
-			<div class="modal-footer" id="buttons_new">
+			
+		</div>
+		<div class="modal-footer" id="buttons_new">
 				<button type="button" class="" id="submit_service_form" >Guardar</button>
 				<button type="button" class="" data-dismiss="modal">Cancelar</button>
 			</div>
-		</div>
 		<div id="message_div" class="message_div" style='margin-bottom:10px;'>
 			<span id="span_message" class="span_message"></span>
 		</div>
