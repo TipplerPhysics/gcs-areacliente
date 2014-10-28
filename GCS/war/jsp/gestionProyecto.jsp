@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div id="alta_proyecto">
 
 
 
-<h1>Gesti贸n proyecto</h1>
+<h1>Gesti髇 proyecto</h1>
 <span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
 <hr/>
 <div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gesti贸n de clientes</span> > <span> Gesti贸n de proyecto </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gesti髇 de clientes</span> > <span> Gesti髇 de proyecto </span>
 	</div>
 <div class="newUserbox">
 	 <button id="newUserButton">
@@ -36,7 +35,7 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">C贸digo Proyecto:</span>
+						<span class="lbl">C骴igo Proyecto:</span>
 						<input type="text" id="project_name" name="project_name" class="long readonly" unselectable="on" readonly="true">
 					</div>
 					
@@ -149,14 +148,14 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha inicio valoraci贸n:</span>
+						<span class="lbl">Fecha inicio valoraci髇:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion">
 						</div>
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha fin valoraci贸n:</span>
+						<span class="lbl">Fecha fin valoraci髇:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion' name="fecha_fin_valoracion" id="fecha_fin_valoracion">
 						</div>
@@ -230,9 +229,9 @@
 				<thead>
 					<tr>
 						<th><span class="table-title">Fecha proyecto</span></th>
-						<th><span class="table-title">C贸digo proyecto</span></th>
+						<th><span class="table-title">C骴igo proyecto</span></th>
 						<th><span class="table-title">Cliente</span></th>
-						<th><span class="table-title">Clasificaci贸n</span></th>
+						<th><span class="table-title">Clasificaci髇</span></th>
 						<th><span class="table-title">Tipo</span></th>
 						<th><span class="table-title">Coste</span></th>
 						<th style="width: 110px;">&nbsp;</th>

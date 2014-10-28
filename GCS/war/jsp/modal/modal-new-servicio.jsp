@@ -25,7 +25,7 @@
 						<div class="form-field">
 							<span class="lbl">Pais<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true">
+								<select class="selectpicker selected" name="pais" id="pais_servicio_new" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="Argentina">Argentina</option>
 									<option value="Bélgica">Bélgica</option>
@@ -45,7 +45,7 @@
 						<div class="form-field">
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="servicio" id="servicio_modal" required aria-required="true">
+								<select class="selectpicker selected" name="servicio" id="servicio_modal_new" required aria-required="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>
@@ -232,6 +232,3 @@
 		<div id="message_div" class="message_div" style='margin-bottom:10px;'>
 			<span id="span_message" class="span_message"></span>
 		</div>
-<div class="ajax_loader" id="ajax_loader">
-	<img src="../../img/ajax-loader.gif" />
-</div>

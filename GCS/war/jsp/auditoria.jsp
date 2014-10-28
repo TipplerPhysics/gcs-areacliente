@@ -16,17 +16,19 @@
 <hr />
 <div class="breadcrumbs"> <span onclick="window.location.href='../../' ">Home</span> > <span> Auditor&iacute;a </span> </div>
 <div class="newUserbox">
-  <button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'"> Descargar Tabla<span class="excel_span"></span> </button>
 </div>
 
 <div class="form-field historico">
-<span>Hist&oacute;tico:</span>
+<span class="lbl">Hist&oacute;rico:</span>
 	<select id="historico" class="long selected selectpicker" name="historico">
 		<option selected value="default">Seleccionar</option>
 		<option value="lastweek">Última semana</option>
 		<option value="lastmonth">Último mes</option>
 		<option value="lastthreemonths">Últimos tres meses</option>
 	</select>
+	
+	  <button id="excel_btn" onclick="window.location.href='../../usersServlet?accion=xls'"> Descargar Tabla<span class="excel_span"></span> </button>
+	
 </div>
 
 <div>

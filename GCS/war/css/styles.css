@@ -2514,3 +2514,17 @@ form textarea.error {
 #alta_proyecto #new_servicio_dialog .modal_ajax .form-field #ref_local1 {
   margin-bottom: 10px;
 }
+.auditoria .breadcrumbs {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.auditoria #excel_btn {
+  float: right;
+}
+.auditoria > .historico {
+  display: inline-block;
+  padding-bottom: 10px;
+  position: relative;
+  width: 100%;
+}

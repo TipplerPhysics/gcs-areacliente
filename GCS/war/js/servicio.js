@@ -56,6 +56,7 @@ function ajaxServicios(pais,target){
 							target.append(new Option(value, value));
 					    });	
 						target.selectpicker("refresh");
+						initSelectPickers();
 					}					
 				}
 			});
@@ -126,7 +127,15 @@ $(function(){
 		
 	});
 	
-	$('.gestion_servicio').on('change', '#pais_servicio_modal', function(e) {
+	$('#new-servicio').on('change', '#pais_servicio_new', function(e) {
+		var pais = $('#pais_servicio_new').val();
+		var target = $('#servicio_modal_new');
+		
+		ajaxServicios(pais,target);
+		
+	});
+	
+	$('html').on('change', '#pais_servicio_modal', function(e) {
 		var pais = $('#pais_servicio_modal').val();
 		var target = $('#servicio_modal');
 		
