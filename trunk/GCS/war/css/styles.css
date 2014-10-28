@@ -2211,6 +2211,9 @@ form textarea.error {
 #alta_proyecto .form-field-divider .form-field #newCostoModalButton {
   margin-right: 0px;
 }
+#alta_proyecto .modal_ajax {
+  display: inline-block !important;
+}
 #alta_proyecto .modal_ajax .form-field {
   width: 100%;
   height: 40px;
