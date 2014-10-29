@@ -11,6 +11,7 @@ import com.gcs.beans.Cliente;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
+import com.gcs.utils.Utils;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
@@ -22,7 +23,7 @@ public class ClienteDao {
 		return new ClienteDao();
 	}
 
-	public void createCliente(Cliente c) {
+	public void createCliente(Cliente c, String usermail) {
 		ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 		Integer cont = ccDao.getContadorValue();
 		
@@ -39,7 +40,6 @@ public class ClienteDao {
 			c.setErased(false);
 		}
 		
-		LogsDao lDao = new LogsDao();
 		
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -51,6 +51,21 @@ public class ClienteDao {
 			pm.close();
 			if (isNewClient)
 			ccDao.increaseCont();
+			
+			if (!usermail.equals("")){
+				if (c.isErased()){
+					Utils.writeLog(usermail, "Eliminó", "Cliente", c.getNombre());
+				}else{
+					if (isNewClient)
+						Utils.writeLog(usermail, "Creó", "Cliente", c.getNombre());
+					else{
+						Utils.writeLog(usermail, "Editó", "Cliente", c.getNombre());
+					}
+				}
+			}
+			
+			
+			
 		}
 	}
 	
@@ -134,9 +149,9 @@ public List<Cliente> getAllNonDeletedClients(){
 		return clients;
 	}
 
-	public void logicalDelete(Cliente c){
+	public void logicalDelete(Cliente c, String usermail){
 		c.setErased(true);
-		createCliente(c);
+		createCliente(c, usermail);
 	}
 	
 	   public Cliente getClienteById(long l) {
@@ -150,12 +165,12 @@ public List<Cliente> getAllNonDeletedClients(){
            return cliente;
    }
 	   
-		public void deleteClient(Cliente c){
+		public void deleteClient(Cliente c, String usermail){
 			ProyectoDao pDao = ProyectoDao.getInstance();
 			List<Proyecto> projects = pDao.getProjectsByClient(c.getKey().getId());
 			
 			for (Proyecto p:projects){
-				pDao.deleteProject(p);
+				pDao.deleteProject(p, usermail);
 			}
 			
 			PersistenceManager pm = PMF.get().getPersistenceManager();

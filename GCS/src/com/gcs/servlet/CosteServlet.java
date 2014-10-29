@@ -50,6 +50,9 @@ public class CosteServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		String accion = req.getParameter("accion");
 		JSONObject json = new JSONObject();
+		
+		HttpSession session = req.getSession();
+		String usermail = (String)session.getAttribute("usermail");
 
 		try {
 
@@ -66,11 +69,11 @@ public class CosteServlet extends HttpServlet {
 				resp.getWriter().println(json);
 			} else {
 				if (accion.equals("new")) {
-					createCoste(req, resp);
+					createCoste(req, resp,usermail);
 				} else if (accion.equals("delete")) {
-					deleteCoste(req, resp);
+					deleteCoste(req, resp,usermail);
 				} else if (accion.equals("update")) {
-					updateCoste(req, resp);
+					updateCoste(req, resp,usermail);
 				}else if (accion.equals("xls")) {
 					generateXLS(req, resp);
 				}
@@ -242,7 +245,7 @@ public class CosteServlet extends HttpServlet {
 
 	}
 
-	private void updateCoste(HttpServletRequest req, HttpServletResponse resp)
+	private void updateCoste(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 
 		JSONObject json = new JSONObject();
@@ -310,7 +313,7 @@ public class CosteServlet extends HttpServlet {
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
 
-			cDao.createCoste(c);
+			cDao.createCoste(c,usermail);
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -324,7 +327,7 @@ public class CosteServlet extends HttpServlet {
 
 	}
 
-	private void createCoste(HttpServletRequest req, HttpServletResponse resp)
+	private void createCoste(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 
 		JSONObject json = new JSONObject();
@@ -402,7 +405,7 @@ public class CosteServlet extends HttpServlet {
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
 
-			cDao.createCoste(c);
+			cDao.createCoste(c,usermail);
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -416,7 +419,7 @@ public class CosteServlet extends HttpServlet {
 
 	}
 
-	private void deleteCoste(HttpServletRequest req, HttpServletResponse resp)
+	private void deleteCoste(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 		String id = req.getParameter("id");
@@ -424,7 +427,7 @@ public class CosteServlet extends HttpServlet {
 
 		Coste c = cDao.getCostebyId(Long.parseLong(id));
 
-		cDao.deleteCoste(c);
+		cDao.deleteCoste(c,usermail);
 
 		json.append("success", "true");
 		resp.setCharacterEncoding("UTF-8");

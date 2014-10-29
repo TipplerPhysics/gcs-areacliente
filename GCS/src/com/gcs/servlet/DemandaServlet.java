@@ -45,11 +45,13 @@ public class DemandaServlet extends HttpServlet {
 
 		log.info("Dentro de servletDemanda");
 		String accion = req.getParameter("accion");
-
+		
+		
 		try {
 
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
+			String usermail = (String)sesion.getAttribute("usermail");
 
 			if (sesionpermiso > 2) {
 				json.append("failure", "true");
@@ -61,11 +63,11 @@ public class DemandaServlet extends HttpServlet {
 				resp.getWriter().println(json);
 			} else {
 				if (accion.equals("new")) {
-					createDemanda(req, resp);
+					createDemanda(req, resp,usermail);
 				} else if (accion.equals("delete")) {
-					deleteDemanda(req, resp);
+					deleteDemanda(req, resp,usermail);
 				} else if (accion.equals("update")) {
-					updateDemanda(req, resp);
+					updateDemanda(req, resp,usermail);
 				} else if (accion.equals("xls")) {
 					generateXLS(req, resp);
 				}
@@ -80,7 +82,7 @@ public class DemandaServlet extends HttpServlet {
 		doGet(req, resp);
 	}
 
-	private void deleteDemanda(HttpServletRequest req, HttpServletResponse resp)
+	private void deleteDemanda(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 
@@ -90,7 +92,7 @@ public class DemandaServlet extends HttpServlet {
 			Demanda d = dDao.getDemandaById(Long.parseLong(req
 					.getParameter("id")));
 
-			dDao.deleteDemanda(d);
+			dDao.deleteDemanda(d,usermail);
 			json.append("success", "true");
 		} catch (Exception e) {
 			json.append("failure", "true");
@@ -101,7 +103,7 @@ public class DemandaServlet extends HttpServlet {
 		resp.getWriter().println(json);
 	}
 
-	private void updateDemanda(HttpServletRequest req, HttpServletResponse resp)
+	private void updateDemanda(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 
@@ -177,7 +179,7 @@ public class DemandaServlet extends HttpServlet {
 				d.setStr_fecha_comunicacion(fecha_comunicacion_asignacion);
 			}			
 
-			dDao.createDemanda(d);
+			dDao.createDemanda(d,usermail);
 
 			json.append("success", "true");
 			json.append("id", d.getKey().getId());
@@ -207,7 +209,7 @@ public class DemandaServlet extends HttpServlet {
 
 	}
 
-	private void createDemanda(HttpServletRequest req, HttpServletResponse resp)
+	private void createDemanda(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 		
@@ -305,7 +307,7 @@ public class DemandaServlet extends HttpServlet {
 				d.setClientekey(Long.parseLong(cliente));
 			}
 
-			dDao.createDemandaAndIncreaseCount(d);
+			dDao.createDemandaAndIncreaseCount(d,usermail);
 
 			json.append("success", "true");
 			json.append("id", d.getKey().getId());

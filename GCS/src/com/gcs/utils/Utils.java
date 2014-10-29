@@ -4,13 +4,35 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import com.gcs.beans.Log;
+import com.gcs.beans.User;
 import com.gcs.dao.LogsDao;
+import com.gcs.dao.UserDao;
 
 public class Utils {
+	
+	public static void writeLog(String usermail, String accion, String entidad, String nombre_entidad){
+		
+		Log log = new Log();
+		LogsDao lDao = LogsDao.getInstance();
+			
+		UserDao uDao = UserDao.getInstance();
+		
+		User u = uDao.getUserByMail(usermail);
+		
+		log.setNombre_entidad(nombre_entidad);
+		log.setAccion(accion);
+		log.setEntidad(entidad);
+		log.setUsuario(u.getNombre() + " " + u.getApellido1() + " " + u.getApellido2());
+		log.setUsuario_mail(u.getEmail());
+		
+		
+		lDao.createLog(log);
+	}
 	
 	public static boolean isNumeric(String str)  
 	{  
@@ -52,6 +74,24 @@ public class Utils {
         return convertedDate;
 	}
 	
+	public static String dateConverterToStr(Date fecha){
+		
+		String convertedDate = fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + (fecha.getYear() + 1900);
+		
+        return convertedDate;
+	}
+	
+public static String CalendarConverterToStr(Calendar fecha){
+	  
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+      
+      String fecha_str =  dateFormat.format(fecha.getTime());
+      
+      return fecha_str;
+	}
+	
+	
+	
 	public static List<String> getHorasList(){
 		
 		List<String> listaHoras = new ArrayList();
@@ -82,16 +122,5 @@ public static List<String> getMinutosList(){
 		return listaMinutos;
 	}
 
-	public static void writeLog (){
-		
-		Log log = new Log();
-		LogsDao lDao = LogsDao.getInstance();
-		Date fecha = new Date();
-		
-		log.setFecha(fecha);
-		
-		
-		
-	}
-
+	
 }

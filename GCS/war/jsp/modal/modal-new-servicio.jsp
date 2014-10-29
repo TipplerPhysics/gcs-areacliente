@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-	<div class="modal_ajax">
+	<div class="modal_ajax" id="nuevo_servicio_modal"> 
 		<div class="">
 					<h2>Nuevo Servicio</h2>
 					<hr />

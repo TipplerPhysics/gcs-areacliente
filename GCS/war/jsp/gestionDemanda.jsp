@@ -119,7 +119,7 @@
 						<div class="form-field">
 							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="catalogacion_peticion">
+								<select class="selectpicker" name="catalogacion_peticion">
 									<option value="default">Seleccionar</option>
 									<option value="Estandar">Est&aacute;ndar</option>
 									<option value="Compleja">Compleja</option>

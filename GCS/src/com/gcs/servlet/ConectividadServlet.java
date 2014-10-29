@@ -6,6 +6,7 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Proyecto;
@@ -25,6 +26,10 @@ public class ConectividadServlet extends HttpServlet {
 		
 		JSONObject json = new JSONObject();
 		String project_id = req.getParameter("project_id");
+		
+		HttpSession sesion = req.getSession();
+		
+		String usermail = (String)sesion.getAttribute("usermail");
 		
 		try {
 		
@@ -64,7 +69,7 @@ public class ConectividadServlet extends HttpServlet {
 			c.setSeguridad(seguridad);
 			
 			try {
-				cDao.createConectividad(c);
+				cDao.createConectividad(c,usermail);
 			} catch (ParseException e) {
 				json.append("failure", "true");
 				

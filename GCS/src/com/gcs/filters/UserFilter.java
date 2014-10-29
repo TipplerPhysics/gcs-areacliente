@@ -65,8 +65,9 @@ public class UserFilter implements Filter {
 				if (usuario != null) {
 					Integer permiso = usuario.getPermiso();
 					String fullName = usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2();
+					String usermail = user.getEmail();
 					
-					sesion.setAttribute("nombreCompleto", fullName);
+					sesion.setAttribute("usermail", usermail);
 					sesion.setAttribute("permiso", permiso);
 					chain.doFilter(req, resp);
 				} else {

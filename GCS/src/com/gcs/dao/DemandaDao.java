@@ -9,6 +9,7 @@ import com.gcs.beans.Cliente;
 import com.gcs.beans.ContadorDemanda;
 import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
+import com.gcs.utils.Utils;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
@@ -20,11 +21,12 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         return new DemandaDao();
     }
 	
-	public void deleteDemanda(Demanda d){
+	public void deleteDemanda(Demanda d, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId())); 
 		pm.close();
 		
+		Utils.writeLog(usermail, "Eliminó", "Demanda", d.getCod_peticion());
 	}
 	
 	   public Demanda getDemandaById(long l) {
@@ -36,16 +38,18 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	       return demanda;
    }
 	   
-	public void createDemandaAndIncreaseCount(Demanda demanda){
+	public void createDemandaAndIncreaseCount(Demanda demanda, String usermail){
 		
-			createDemanda(demanda);
+			createDemanda(demanda,usermail);
 			ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();			
 			cdDao.increaseCont();
 		
 		
 	}
 	
-	public void  createDemanda(Demanda demanda){
+	public void  createDemanda(Demanda demanda, String usermail){
+		
+		Boolean isNew = false;
 		
 		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 		Integer count = cdDao.getContadorValue();
@@ -54,6 +58,7 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		if (demanda.getKey()==null){
 			String codPeticion = "PET_" + String.format("%07d", count);
 			demanda.setCod_peticion(codPeticion);
+			isNew=true;
 		}
 		
 		ClienteDao cDao = ClienteDao.getInstance();
@@ -74,6 +79,12 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			
 		} finally{
 			pm.close();
+			
+			if (isNew)
+				Utils.writeLog(usermail, "Creó", "Demanda", demanda.getCod_peticion());
+			else
+				Utils.writeLog(usermail, "Editó", "Demanda", demanda.getCod_peticion());
+
 		}
 	}
 

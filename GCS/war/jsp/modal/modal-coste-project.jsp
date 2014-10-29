@@ -20,9 +20,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Número de control:</span>
+							<span class="lbl">Código de control:</span>
 							<div class="input">
-								<input type="text" value="${coste.num_control}" size="16" class="readonly" readonly name="numero_control" id="numero_control_modal">
+								<input type="text" value="${coste.num_control}" size="16" name="numero_control" id="numero_control_modal">
 							</div>
 						</div>
 

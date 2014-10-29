@@ -18,6 +18,9 @@ public class Log {
 
 	@Persistent
 	private Date fecha;
+	
+	@Persistent
+	private String fecha_str;
 
 	@Persistent
 	private String usuario;
@@ -25,6 +28,31 @@ public class Log {
 	@Persistent
 	private String usuario_mail;
 	
+	@Persistent
+	private String accion;
+	
+	@Persistent
+	private String entidad;
+	
+	@Persistent
+	private String nombre_entidad;
+	
+	public String getFecha_str() {
+		return fecha_str;
+	}
+
+	public void setFecha_str(String fecha_str) {
+		this.fecha_str = fecha_str;
+	}
+
+	public String getNombre_entidad() {
+		return nombre_entidad;
+	}
+
+	public void setNombre_entidad(String nombre_entidad) {
+		this.nombre_entidad = nombre_entidad;
+	}
+
 	public Log() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -78,9 +106,5 @@ public class Log {
 		this.entidad = entidad;
 	}
 
-	@Persistent
-	private String accion;
 	
-	@Persistent
-	private String entidad;
 }

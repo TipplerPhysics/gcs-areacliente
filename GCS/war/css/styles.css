@@ -2211,9 +2211,6 @@ form textarea.error {
 #alta_proyecto .form-field-divider .form-field #newCostoModalButton {
   margin-right: 0px;
 }
-#alta_proyecto .modal_ajax {
-  display: inline-block !important;
-}
 #alta_proyecto .modal_ajax .form-field {
   width: 100%;
   height: 40px;
@@ -2228,6 +2225,9 @@ form textarea.error {
 }
 #alta_proyecto .modal_ajax .form-field div.input > input {
   width: 220px;
+}
+#alta_proyecto #nuevo_servicio_modal {
+  display: inline-block !important;
 }
 #buttons_holder {
   text-align: center;
@@ -2527,7 +2527,25 @@ form textarea.error {
 }
 .auditoria > .historico {
   display: inline-block;
-  padding-bottom: 10px;
+  padding-bottom: 10px !important;
   position: relative;
   width: 100%;
+}
+.auditoria td {
+  padding-left: 30px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.auditoria td .usuario_fecha {
+  width: 200px;
+  display: inline-block;
+}
+.auditoria td .log_accion {
+  display: inline-block;
+  margin-left: 200px;
+  vertical-align: super;
+}
+.auditoria td .accion {
+  width: 75px;
+  display: inline-block;
 }

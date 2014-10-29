@@ -43,15 +43,16 @@ public class ProjectServlet extends HttpServlet{
 
 			HttpSession sesion = req.getSession();
 			//int sesionpermiso = (int) sesion.getAttribute("permiso");
+			String usermail = (String)sesion.getAttribute("usermail");
 
 			if ("new".equals(accion)){
-				createProject(req,resp);
+				createProject(req,resp,usermail);
 			}else if ("update".equals(accion)){
-				editProject(req,resp);	
+				editProject(req,resp,usermail);	
 			}else if ("delete".equals(accion)){
-				deleteProject(req,resp);
+				deleteProject(req,resp,usermail);
 			}else if ("xls".equals(accion)){
-				generateXLS(req,resp);
+				generateXLS(req,resp,usermail);
 			}else if ("getProjectsByClient".equals(accion)){
 				getProjectsByClient(req,resp);
 			}
@@ -86,7 +87,7 @@ public class ProjectServlet extends HttpServlet{
 		doGet(req,resp);
 	}
 	
-	public void generateXLS(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void generateXLS(HttpServletRequest req, HttpServletResponse resp, String usermail) throws ServletException, IOException{
 		OutputStream out = null;
 		try {
 			resp.setContentType("application/vnd.ms-excel");
@@ -160,7 +161,7 @@ public class ProjectServlet extends HttpServlet{
 
 	}
 	
-	private void deleteProject(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+	private void deleteProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		
 		JSONObject json = new JSONObject();
 		ProyectoDao pDao = ProyectoDao.getInstance();	
@@ -168,7 +169,7 @@ public class ProjectServlet extends HttpServlet{
 		String id = req.getParameter("id");
 		
 		Proyecto p = pDao.getProjectbyId(Long.parseLong(id));
-		pDao.deleteProject(p);
+		pDao.deleteProject(p, usermail);
 		
 		json.append("success", "true");
 		resp.setCharacterEncoding("UTF-8");
@@ -176,7 +177,7 @@ public class ProjectServlet extends HttpServlet{
 		resp.getWriter().println(json);		
 	}
 	
-	private void editProject (HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+	private void editProject (HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		JSONObject json = new JSONObject();		
 		ProyectoDao pDao = ProyectoDao.getInstance();
 		
@@ -235,7 +236,7 @@ public class ProjectServlet extends HttpServlet{
 				p.setCoste(coste);
 				
 				
-				pDao.createProject(p);
+				pDao.createProject(p,usermail);
 			
 				
 				json.append("success", "true");
@@ -255,7 +256,7 @@ public class ProjectServlet extends HttpServlet{
 		
 	}
 	
-	private void createProject(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
+	private void createProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
 		Proyecto p = new Proyecto();
@@ -316,7 +317,7 @@ public class ProjectServlet extends HttpServlet{
 				p.setCoste(coste);
 				
 				
-				pDao.createProject(p);
+				pDao.createProject(p,usermail);
 				
 				json.append("success", "true");
 				json.append("id", p.getKey().getId());

@@ -7,6 +7,7 @@ import javax.jdo.Transaction;
 
 import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
+import com.gcs.utils.Utils;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Key;
@@ -19,13 +20,24 @@ public class UserDao {
 		return new UserDao();
 	}
 
-	public void createUser(User u) {
+	public void createUser(User u, String usermail) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Boolean isNew = false;
+		
+		if (u.getKey()==null)
+			isNew = true;
 
 		try {
 			pm.makePersistent(u);
 		} finally {
 			pm.close();
+			
+			if(u.getErased()==true)
+				Utils.writeLog(usermail, "Eliminó", "Usuario", u.getEmail());
+			else if (isNew)
+					Utils.writeLog(usermail, "Creó", "Usuario", u.getEmail());
+				else
+					Utils.writeLog(usermail, "Editó", "Usuario", u.getEmail());
 		}
 	}
 
@@ -36,9 +48,9 @@ public class UserDao {
 
 	}
 	
-	public void logicalDelete(User u){
+	public void logicalDelete(User u, String usermail){
 		u.setErased(true);
-		createUser(u);
+		createUser(u,usermail);
 	}
 
 	@SuppressWarnings("unchecked")
