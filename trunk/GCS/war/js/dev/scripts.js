@@ -1,4 +1,10 @@
-function drawChecks(str){
+$(function() {
+	
+	$('#historico').on('change', function(e) {
+		var accion = $(this).val();
+		window.location.replace("./auditoria.do?p="+accion);
+	});
+});function drawChecks(str){
 		str = str.toLowerCase();
 		if (str.indexOf("argentina")!=-1){
 			$('#argentina_check_modal').attr("checked","checked");

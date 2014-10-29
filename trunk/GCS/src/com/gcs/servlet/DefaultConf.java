@@ -27,6 +27,9 @@ public class DefaultConf extends HttpServlet {
 		
 		String accion = req.getParameter("accion");
 		
+		HttpSession session = req.getSession();
+		String usermail = (String)session.getAttribute("usermail");
+		
 
 		try {
 			HttpSession sesion = req.getSession();
@@ -39,7 +42,7 @@ public class DefaultConf extends HttpServlet {
 					ClienteDao cDao = ClienteDao.getInstance();				
 					Cliente cliente = new Cliente();			
 					cliente.setNombre("Cliente de Prueba");
-					cDao.createCliente(cliente);	
+					cDao.createCliente(cliente, usermail);	
 					json.append("success", "true");
 				}else if ("def_counter_demand".equals(accion)){
 					ContadorDemanda cd = new ContadorDemanda(1);

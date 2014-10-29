@@ -43,9 +43,12 @@ public class UserServlet extends HttpServlet {
 		
 		String accion = req.getParameter("accion");
 		
+		HttpSession sesion = req.getSession();
+		String usermail = (String)req.getAttribute("usermail");
+				
 		 try {
 			 
-			HttpSession sesion = req.getSession();
+		
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 			 
 			 if (sesionpermiso>2){
@@ -54,14 +57,14 @@ public class UserServlet extends HttpServlet {
 					
 					resp.setCharacterEncoding("UTF-8");
 			        resp.setContentType("application/json");       
-					resp.getWriter().println(json);
+					resp.getWriter().println(json); 
 			 }else{
 				 if (accion.equals("new")){
-						createUser(req,resp);
+						createUser(req,resp,usermail);
 					}else if (accion.equals("delete")){
-						deleteUser(req,resp);
+						deleteUser(req,resp,usermail);
 					}else if (accion.equals("update")){
-						updateUser(req,resp);
+						updateUser(req,resp,usermail);
 					}else if (accion.equals("xls")){
 						generateXLS(req,resp);
 					}
@@ -77,7 +80,7 @@ public class UserServlet extends HttpServlet {
 		doGet(req,resp);
 	}
 	
-	private void updateUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+	private void updateUser(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		JSONObject json = new JSONObject();
 		
 		String nombre = req.getParameter("nombre");
@@ -109,7 +112,7 @@ public class UserServlet extends HttpServlet {
 		u.setPermisoStr(permisoStr);
 		u.setPermiso(permiso);
 		
-		uDao.createUser(u);
+		uDao.createUser(u,usermail);
 		
 		json.append("success", "true");
 		json.append("id", u.getKey().getId());
@@ -125,7 +128,7 @@ public class UserServlet extends HttpServlet {
 		
 	}
 	
-	private void createUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+	private void createUser(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		JSONObject json = new JSONObject();
 		
 		try{
@@ -174,7 +177,7 @@ public class UserServlet extends HttpServlet {
 			u.setDepartamento(dto);
             u.setErased(false);
             
-			uDao.createUser(u);
+			uDao.createUser(u,usermail);
 			
 			json.append("success", "true");
 			json.append("id", u.getKey().getId());
@@ -206,14 +209,14 @@ public class UserServlet extends HttpServlet {
 		resp.getWriter().println(json);
 	}
 	
-	private void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException {
+	private void deleteUser(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 		
 		UserDao udao = UserDao.getInstance();
 		try{
 			User u = udao.getUserbyId(Long.parseLong(req.getParameter("id")));
 			
-			udao.logicalDelete(u);
+			udao.logicalDelete(u,usermail);
 			json.append("success", "true");
 		}catch(Exception e){
 			json.append("failure", "true");

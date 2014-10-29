@@ -27,23 +27,24 @@ public class ConfigurationServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp){
 		HttpSession sesion = req.getSession();
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
+		String usermail = (String) sesion.getAttribute("usermail");
 		String accion = req.getParameter("accion");
 
 		if ("changePermission".equals(accion)){
-			changePermission(req,resp);
+			changePermission(req,resp,usermail);
 		}
 		
 		if (sesionpermiso == 1) {
 			
 			if ("setUsersToNonErased".equals(accion)){
-				setUsersToNonErased(resp);
+				setUsersToNonErased(resp,usermail);
 			}else if ("setClientsToNonErased".equals(accion)){
-				setClientsToNonErased(resp);
+				setClientsToNonErased(resp,usermail);
 			}
 		}
 	}
 	
-	private void changePermission(HttpServletRequest req, HttpServletResponse resp){
+	private void changePermission(HttpServletRequest req, HttpServletResponse resp, String usermail){
 		JSONObject json = new JSONObject();
 		String permiso = req.getParameter("p");
 		
@@ -54,7 +55,7 @@ public class ConfigurationServlet extends HttpServlet{
 			UserDao uDao = UserDao.getInstance();
 			User u = uDao.getUserByMail("david.martin.beltran.contractor@bbva.com");
 			u.setPermiso(Integer.parseInt(permiso));
-			uDao.createUser(u);
+			uDao.createUser(u,usermail);
 			
 			resp.setCharacterEncoding("UTF-8");
 			resp.setContentType("application/json");
@@ -66,7 +67,7 @@ public class ConfigurationServlet extends HttpServlet{
 		}	
 	}
 	
-	private void setUsersToNonErased(HttpServletResponse resp){
+	private void setUsersToNonErased(HttpServletResponse resp, String usermail){
 		JSONObject json = new JSONObject();
 		
 		try {
@@ -77,7 +78,7 @@ public class ConfigurationServlet extends HttpServlet{
 		for (User u:users){
 			if (u.getErased()==null){
 				u.setErased(false);
-				uDao.createUser(u);
+				uDao.createUser(u,usermail);
 			}
 		}
 		
@@ -94,7 +95,7 @@ public class ConfigurationServlet extends HttpServlet{
 	}
 	
 	
-	private void setClientsToNonErased(HttpServletResponse resp){
+	private void setClientsToNonErased(HttpServletResponse resp,String usermail){
 		JSONObject json = new JSONObject();
 		
 		try {
@@ -105,7 +106,7 @@ public class ConfigurationServlet extends HttpServlet{
 		for (Cliente c:clients){
 			if (c.isErased()==null){
 				c.setErased(false);
-				cDao.createCliente(c);
+				cDao.createCliente(c,usermail);
 			}
 		}
 		

@@ -50,26 +50,27 @@ public class ClienteServlet extends HttpServlet {
 
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
+			String usermail = (String) sesion.getAttribute("usermail");
 
 			
 			
 				if (accion.equals("new")) {
 					if (sesionpermiso < 5) {
-						createClient(req,resp);
+						createClient(req,resp,usermail);
 					}else{
 						returnNoPermission(req, resp);
 					}
 				}else if (accion.equals("delete")){
 					if (sesionpermiso < 5) {
-						deleteClient(req,resp);
+						deleteClient(req,resp,usermail);
 					}else{
 						returnNoPermission(req, resp);
 					}
 					
 				}else if(accion.equals("edit")){
-					editClient(req,resp);
+					editClient(req,resp,usermail);
 				}else if (accion.equals("xls")){
-					generateXLS(req,resp);
+					generateXLS(req,resp,usermail);
 				}
 			
 			
@@ -92,7 +93,7 @@ public class ClienteServlet extends HttpServlet {
 		doGet(req,resp);
 	}
 	
-	private void generateXLS(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	private void generateXLS(HttpServletRequest req, HttpServletResponse resp, String usermail) throws ServletException, IOException{
 		
 		OutputStream out = null;
 		try {
@@ -179,14 +180,14 @@ public class ClienteServlet extends HttpServlet {
 
 	
 	
-	private void deleteClient(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+	private void deleteClient(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		String id = req.getParameter("id");
 		JSONObject json = new JSONObject();
 		
 		try{
 			ClienteDao cDao = new ClienteDao();
 			Cliente c = cDao.getClienteById(Long.parseLong(id));
-			cDao.logicalDelete(c);
+			cDao.logicalDelete(c,usermail);
 			
 			json.append("success", "true");
 		} catch (Exception e) {
@@ -199,7 +200,7 @@ public class ClienteServlet extends HttpServlet {
 		
 	}
 	
-	private void editClient(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
+	private void editClient(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		JSONObject json = new JSONObject();
 		
 		Cliente c = new Cliente();
@@ -252,7 +253,9 @@ public class ClienteServlet extends HttpServlet {
 				c.setStr_fecha_alta_cliente(fecha_entrada_peticion_ed);
 				c.setFecha_alta_cliente(Utils.dateConverter(fecha_entrada_peticion_ed));
 				
-				cDao.createCliente(c);
+				
+				
+				cDao.createCliente(c,usermail);
 				json.append("success", "true");		
 				json.append("id", c.getKey().getId());
 			}else{
@@ -281,7 +284,7 @@ public class ClienteServlet extends HttpServlet {
 		resp.getWriter().println(json);
 	}
 	
-	private void createClient(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
+	private void createClient(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
 		
@@ -341,7 +344,7 @@ public class ClienteServlet extends HttpServlet {
 				c.setPaises(paises_set);
 				
 				
-				cDao.createCliente(c);
+				cDao.createCliente(c,usermail);
 				json.append("success", "true");		
 				json.append("id", c.getKey().getId());
 			}else{

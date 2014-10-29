@@ -33,7 +33,8 @@ public class DemandaModalAction extends Action{
 		DemandaDao dDao = DemandaDao.getInstance();
 		ClienteDao cDao = ClienteDao.getInstance();
 		
-		User git = uDao.getUserbyId(Long.parseLong(git_str));
+		
+		
 		
 		
 		Cliente cliente = cDao.getClienteById(Long.parseLong(cliente_str));
@@ -51,9 +52,13 @@ public class DemandaModalAction extends Action{
 		List<Cliente> clientes = new ArrayList<Cliente>();
 		clientes.addAll(clientes_jdo);
 		
-		if (!gestores_it.contains(git)){
-			gestores_it.add(git);
+		if (!"".equals(git_str)){
+			User git = uDao.getUserbyId(Long.parseLong(git_str));
+			if (!gestores_it.contains(git)){
+				gestores_it.add(git);
+			}
 		}
+		
 		
 		if (!"".equals(gn_str) && Utils.isNumeric(gn_str)){
 			User gn = uDao.getUserbyId(Long.parseLong(gn_str));

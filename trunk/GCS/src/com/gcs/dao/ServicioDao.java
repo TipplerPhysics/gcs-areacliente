@@ -34,10 +34,12 @@ public class ServicioDao {
 	       return servicio;
   }
 	
-	public void deleteServicio(Servicio s){
+	public void deleteServicio(Servicio s, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent( pm.getObjectById( s.getClass(), s.getKey().getId())); 
 		pm.close();
+		
+		Utils.writeLog(usermail, "Eliminó", "Servicio", s.getCod_servicio());
 		
 	}
 	
@@ -79,8 +81,13 @@ public List<Servicio> getServiciosByProject(Long id) {
 	
 	
 	
-	public void createServicio(Servicio s){
+	public void createServicio(Servicio s, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
+		Boolean isNew = false;
+		
+		if (s.getKey()==null)
+			isNew = true;
+		
 		try {
 			if (s.getStr_fecha_ini_integradas()!=null && !"".equals(s.getStr_fecha_ini_integradas())){			
 				s.setFecha_ini_integradas(Utils.dateConverter(s.getStr_fecha_ini_integradas()));			
@@ -151,6 +158,11 @@ public List<Servicio> getServiciosByProject(Long id) {
 				
 			} finally{
 				pm.close();
+				
+				if (isNew)
+					Utils.writeLog(usermail, "Creó", "Servicio", s.getCod_servicio());
+				else
+					Utils.writeLog(usermail, "Editó", "Servicio", s.getCod_servicio());
 			}
 		}
 		

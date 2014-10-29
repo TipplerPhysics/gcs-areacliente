@@ -24,8 +24,13 @@ public class ProyectoDao {
 		return new ProyectoDao();
 	}
 	
-	public void createProject(Proyecto p) throws ParseException{
+	public void createProject(Proyecto p,String usermail) throws ParseException{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		Boolean isNew = false;
+		
+		if (p.getKey() == null)
+			isNew = true;
 		
 		ClienteDao cDao = ClienteDao.getInstance();
 		Cliente c = cDao.getClienteById(p.getClienteKey());
@@ -64,7 +69,7 @@ public class ProyectoDao {
 			p.setCod_proyecto(cod_proyecto);
 			
 			c.setProject_number(project_number);
-			cDao.createCliente(c);
+			cDao.createCliente(c,"");
 			
 			
 		}
@@ -73,21 +78,28 @@ public class ProyectoDao {
 			pm.makePersistent(p);
 		}finally{
 			pm.close();
+			
+			if (isNew)
+				Utils.writeLog(usermail, "Creó", "Proyecto", p.getCod_proyecto());
+			else
+				Utils.writeLog(usermail, "Editó", "Proyecto", p.getCod_proyecto());
 		}		
 	}
 	
-	public void deleteProject(Proyecto p){
+	public void deleteProject(Proyecto p, String usermail){
 		
 		ServicioDao sDao = ServicioDao.getInstance();
 		List<Servicio> servicios = sDao.getServiciosByProject(p.getKey().getId());	
 		
 		for (Servicio s:servicios){
-			sDao.deleteServicio(s);
+			sDao.deleteServicio(s,usermail);
 		}
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent(pm.getObjectById(p.getClass(), p.getKey().getId()));
 		pm.close();
+		
+		Utils.writeLog(usermail, "Eliminó", "Proyecto", p.getCod_proyecto());
 	}
 	
 	@SuppressWarnings("unchecked")

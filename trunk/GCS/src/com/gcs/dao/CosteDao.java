@@ -12,6 +12,7 @@ import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
 import com.gcs.beans.Equipo;
 import com.gcs.persistence.PMF;
+import com.gcs.utils.Utils;
 
 public class CosteDao {
 	
@@ -40,8 +41,13 @@ public class CosteDao {
 
 	}
 	
-	public void createCoste(Coste c) {
+	public void createCoste(Coste c, String usermail) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Boolean isNew = false;
+		
+		if (c.getKey()==null)
+			isNew=true;
+				
 		
 		if (c.getKey()==null){
 			
@@ -65,6 +71,11 @@ public class CosteDao {
 		try {
 			pm.makePersistent(c);
 		} finally {
+			if (isNew)
+				Utils.writeLog(usermail, "Creó", "Coste", c.getProject_name());
+			else
+				Utils.writeLog(usermail, "Editó", "Coste", c.getProject_name());
+			
 			pm.close();
 		}
 	}
@@ -83,10 +94,12 @@ public class CosteDao {
 	
 	
 
-	public void deleteCoste(Coste c) {
+	public void deleteCoste(Coste c, String usermail) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent(pm.getObjectById(c.getClass(), c.getKey().getId()));
 		pm.close();
+
+		Utils.writeLog(usermail, "Eliminó", "Coste", c.getProject_name());
 
 	}
 	

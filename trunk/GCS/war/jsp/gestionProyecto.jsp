@@ -395,7 +395,7 @@
 			</div>
 			<div class="">
 				<p>&iquest;Est&aacute; seguro que desea eliminar al proyecto?</p>
-				<p>Se eliminar√°n todos los servicios asociados.</p>
+				<p>Se eliminar·n todos los servicios asociados.</p>
 				
 			</div>
 			<div class="modal-footer">

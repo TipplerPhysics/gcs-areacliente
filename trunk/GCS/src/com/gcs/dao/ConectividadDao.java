@@ -18,7 +18,12 @@ public class ConectividadDao {
 	}
 	
 	
-	public void createConectividad(Conectividad c) throws ParseException {
+	public void createConectividad(Conectividad c, String usermail) throws ParseException {
+		
+		Boolean isNew = false;
+		
+		if (c.getKey() == null)
+			isNew = true;
 		
 		if (c.getStr_reglas_firewall()!=null && !"".equals(c.getStr_reglas_firewall())){
 			c.setReglas_firewall(Utils.dateConverter(c.getStr_reglas_firewall()));
@@ -59,6 +64,11 @@ public class ConectividadDao {
 			pm.makePersistent(c);
 		} finally {
 			pm.close();
+			
+			if (isNew)
+				Utils.writeLog(usermail, "Creó", "Conectividad", c.getNombre_proyecto());	
+			else
+				Utils.writeLog(usermail, "Editó", "Conectividad", c.getNombre_proyecto());
 		}
 	}
 	

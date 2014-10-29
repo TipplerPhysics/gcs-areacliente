@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jxl.Workbook;
 import jxl.format.Border;
@@ -41,16 +42,20 @@ public class ServicioServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		String accion = req.getParameter("accion");
 		
+		HttpSession sesion = req.getSession();
+		
+		String usermail = (String)sesion.getAttribute("usermail");
+		
 		try {
 		
 			if ("new".equals(accion)){				
-				createService(req,resp);				
+				createService(req,resp,usermail);				
 			}else if ("getServicesByCountry".equals(accion)){
 				getServicesByCountry(req,resp);
 			}else if ("delete".equals(accion)){
-				deleteServicio(req,resp);
+				deleteServicio(req,resp,usermail);
 			}else if ("update".equals(accion)){
-				updateServicio(req,resp);
+				updateServicio(req,resp,usermail);
 			}else if ("xls".equals(accion)){
 				generateXLS(req,resp);
 			}
@@ -199,7 +204,7 @@ public class ServicioServlet extends HttpServlet {
 		doPost(req,resp);
 	}
 	
-	public void updateServicio(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException{
+	public void updateServicio(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		String id = req.getParameter("id");
 		JSONObject json = new JSONObject();
 		
@@ -287,7 +292,7 @@ public class ServicioServlet extends HttpServlet {
 			s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			
 			
-			sDao.createServicio(s);
+			sDao.createServicio(s,usermail);
 			json.append("success", "true");
 			
 		}catch (Exception e){
@@ -301,12 +306,12 @@ public class ServicioServlet extends HttpServlet {
 		resp.getWriter().println(json);
 	}
 	
-	private void deleteServicio(HttpServletRequest req, HttpServletResponse resp){
+	private void deleteServicio(HttpServletRequest req, HttpServletResponse resp, String usermail){
 		String id = req.getParameter("id");
 		
 		ServicioDao sDao = ServicioDao.getInstance();
 		Servicio s = sDao.getServicioById(Long.parseLong(id));
-		sDao.deleteServicio(s);
+		sDao.deleteServicio(s,usermail);
 		
 		try{
 		
@@ -439,7 +444,7 @@ public class ServicioServlet extends HttpServlet {
 		
 	}
 	
-	private void createService(HttpServletRequest req, HttpServletResponse resp) throws IOException, JSONException{
+	private void createService(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
 		
@@ -524,7 +529,7 @@ public class ServicioServlet extends HttpServlet {
 			s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			
 			ServicioDao sDao = ServicioDao.getInstance();
-			sDao.createServicio(s);
+			sDao.createServicio(s,usermail);
 			json.append("success", "true");
 			
 		}catch (Exception e){
