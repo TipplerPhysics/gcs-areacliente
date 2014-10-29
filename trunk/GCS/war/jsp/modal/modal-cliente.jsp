@@ -142,6 +142,3 @@
 					<button type="button" class="" data-dismiss="modal">Cancelar</button>
 				</div>
 		</div>
-<div class="ajax_loader" id="ajax_loader">
-	<img src="../../img/ajax-loader.gif" />
-</div>
