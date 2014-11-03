@@ -21,12 +21,12 @@ function drawChecks(str){
 			$('#chile_check_modal').removeClass("checked");
 			$('#chile_check_modal').next().removeClass("checked");
 		}		
-		if (str.indexOf("china")!=-1){
-			$('#china_check_modal').attr("checked","checked");
-			$('#china_check_modal').next().addClass("checked");
+		if (str.indexOf("hong")!=-1){
+			$('#hong_kong_check_modal').attr("checked","checked");
+			$('#hong_kong_check_modal').next().addClass("checked");
 		}else{
-			$('#china_check_modal').removeClass("checked");
-			$('#china_check_modal').next().removeClass("checked");
+			$('#hong_kong_check_modal').removeClass("checked");
+			$('#hong_kong_check_modal').next().removeClass("checked");
 		}		
 		if (str.indexOf("colombia")!=-1){
 			$('#colombia_check_modal').attr("checked","checked");
@@ -299,7 +299,7 @@ $(function() {
 								$('#span_message_cliente').html("");
 						  });
 							$('#new-client').modal('toggle');	
-						}, 5000);
+						}, 3500);
 						
 					}else{
 						$('#message_div_cliente').removeClass("success").addClass("error");
@@ -360,7 +360,7 @@ $(function() {
 						
 						location.reload();
 
-						}, 5000);
+						}, 3500);
 					}else{
 						$('#message_div_cliente_modal').removeClass("success").addClass("error");
 						if ($('.edit-user-form-holder').height()<190){

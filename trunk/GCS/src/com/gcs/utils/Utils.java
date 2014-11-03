@@ -17,21 +17,24 @@ public class Utils {
 	
 	public static void writeLog(String usermail, String accion, String entidad, String nombre_entidad){
 		
-		Log log = new Log();
-		LogsDao lDao = LogsDao.getInstance();
+		if (!"".equals(usermail)){
+			Log log = new Log();
+			LogsDao lDao = LogsDao.getInstance();
+				
+			UserDao uDao = UserDao.getInstance();
 			
-		UserDao uDao = UserDao.getInstance();
-		
-		User u = uDao.getUserByMail(usermail);
-		
-		log.setNombre_entidad(nombre_entidad);
-		log.setAccion(accion);
-		log.setEntidad(entidad);
-		log.setUsuario(u.getNombre() + " " + u.getApellido1() + " " + u.getApellido2());
-		log.setUsuario_mail(u.getEmail());
-		
-		
-		lDao.createLog(log);
+			User u = uDao.getUserByMail(usermail);
+			
+			log.setNombre_entidad(nombre_entidad);
+			log.setAccion(accion);
+			log.setEntidad(entidad);
+			log.setUsuario(u.getNombre() + " " + u.getApellido1() + " " + u.getApellido2());
+			log.setUsuario_mail(u.getEmail());
+			
+			
+			lDao.createLog(log);
+		}
+	
 	}
 	
 	public static boolean isNumeric(String str)  

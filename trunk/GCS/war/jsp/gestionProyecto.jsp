@@ -213,7 +213,7 @@
 				
 				<fieldset>
 					<span class="lbl">Conectividad</span>
-					<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nueva</button>
+					<button type="button" data-target="#project-conectividad" data-toggle="modal" href="../projectConectivity.do" id="newConectividadModalButton">Nuevo</button>
 				</fieldset>
 				
 			</div>
@@ -388,7 +388,7 @@
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content noErase">
 			<div class="">
 				<h2>Eliminar proyecto</h2>
 				<hr />

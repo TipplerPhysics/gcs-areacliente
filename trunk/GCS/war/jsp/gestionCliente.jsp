@@ -67,7 +67,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Referencia Global:</span>
+							<span class="lbl">Referencia Global B2B:</span>
 							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="11">
 						</div>
 						
@@ -248,7 +248,7 @@
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content noErase">
 				<div class="">
 					<h2>Eliminar Cliente</h2>
 					<hr />

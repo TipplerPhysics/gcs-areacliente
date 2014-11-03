@@ -51,12 +51,14 @@ function ajaxServicios(pais,target){
 					if (data.success=="true"){
 						var servicios = data.servicios[0];
 						target.empty();
+						target.selectpicker("render");
 						target.append(new Option("Seleccionar", "default"));
 						$.each(servicios, function (index, value) {
 							target.append(new Option(value, value));
 					    });	
 						target.selectpicker("refresh");
-						initSelectPickers();
+						//target.$element.bind('DOMNodeInserted DOMNodeRemoved', $.proxy(target.reloadLi, target));
+
 					}					
 				}
 			});

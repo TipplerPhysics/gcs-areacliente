@@ -292,7 +292,7 @@
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content noErase">
 				<div class="">
 					<h2>Eliminar petici&oacute;n</h2>
 					<hr />
@@ -313,7 +313,7 @@
 	<div class="modal fade" id="new-client" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" id="new_client_dialog">
-			<div class="modal-content">
+			<div class="modal-content noErase">
 				<div class="">
 					<h2>Nuevo Cliente</h2>
 					<hr />

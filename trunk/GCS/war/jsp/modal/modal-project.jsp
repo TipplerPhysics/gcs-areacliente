@@ -98,15 +98,15 @@
 							</div>
 						</div>
 						
-						<div class="form-field">
-						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" readonly="" required="" id="coste_modal" name="coste" class="long euro readonly">
-					</div>
+					
 				</div>
 				
 				<div class="form-field-divider right">
 					
-					
+					<div class="form-field">
+						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
+						<input type="text" aria-required="true" readonly="" required="" id="coste_modal" name="coste" class="long euro readonly">
+					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
@@ -169,32 +169,7 @@
 						</div>
 					</div>
 					
-					<div class="form-field">
-						<span class="lbl">Servicio:</span>
-						<div class="input">
-							<select class="selectpicker" id="servicio_modal" name="servicio">
-							    <option value="default">Seleccionar</option>
-							    <option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
-							    <option value="C100 en confecci&oacute;n">C100 en confecci&oacute;n</option>
-							    <option value="PDTE Valoraci&oacute;n IT">PDTE Valoraci&oacute;n IT</option>
-							    <option value="PDTE Plan de Trabajo IT">PDTE Plan de Trabajo IT</option>
-							    <option value="PDTE Visto Bueno del CL del plan de trabajo">PDTE Visto Bueno del CL del plan de trabajo</option>								    
-							    <option value="En Desarrollo">En Desarrollo</option>
-							    <option value="En Test - Conectividad">En Test - Conectividad</option>
-							    <option value="En Test - Integraci&oacute;n">En Test - Integraci&oacute;n</option>
-							    <option value="En Test - Aceptaci&oacute;n">En Test - Aceptaci&oacute;n</option>
-							    <option value="Parado por Producto">Parado por Producto</option>
-							    <option value="Parado por Negocio">Parado por Negocio</option>
-							    <option value="Parado por IT">Parado por IT</option>
-							    <option value="Excluido por negocio">Excluido por negocio</option>							    
-							    <option value="Excluido por Timeout">Excluido por Timeout</option>
-							    <option value="PDTE Implantar">PDTE Implantar</option>
-							    <option value="En Penny Test">En Penny Test</option>
-							    <option value="Implementado con OK">Implementado con OK</option>
-							    <option value="Implementado sin OK">Implementado sin OK</option>												
-							</select>
-						</div>
-					</div>
+					
 				</div>
 				
 				<div id="message_div">

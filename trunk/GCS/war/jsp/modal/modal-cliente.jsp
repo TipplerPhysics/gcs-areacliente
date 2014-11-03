@@ -44,7 +44,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia Global:</span>
+							<span class="lbl">Referencia Global B2B:</span>
 							<input type="text" minlength="11" id="ref_global_modal" name="ref_global" class="long" maxlength="11">
 						</div>
 						
@@ -68,7 +68,7 @@
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="BÃ©lgica"
+									<input type="checkbox" name='paises' value="Bélgica"
 										id="belgica_check_modal"><label for="belgica_check_modal"><span></span>B&eacute;lgica</label>
 								</div>
 								<div class="radio-container">
@@ -76,8 +76,8 @@
 										id="chile_check_modal"><label for="chile_check_modal"><span></span>Chile</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="China"
-										id="china_check_modal"><label for="china_check_modal"><span></span>China</label>
+									<input type="checkbox" name='paises' value="Hong Kong"
+										id="hong_kong_check_modal"><label for="hong_kong_check_modal"><span></span>Hong Kong</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Colombia"

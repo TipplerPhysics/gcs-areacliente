@@ -44,14 +44,14 @@ public class UserServlet extends HttpServlet {
 		String accion = req.getParameter("accion");
 		
 		HttpSession sesion = req.getSession();
-		String usermail = (String)req.getAttribute("usermail");
+		String usermail = (String)sesion.getAttribute("usermail");
 				
 		 try {
 			 
 		
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 			 
-			 if (sesionpermiso>2){
+			 if (sesionpermiso>2){	
 					json.append("failure", "true");
 					json.append("error", "No tienes los permisos para realizar esta operación");
 					
