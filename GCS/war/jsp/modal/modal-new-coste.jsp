@@ -69,7 +69,7 @@
 						<div class="form-field">
 							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="equipo" name="equipo" class="long selectpicker" required aria-required="true">
+								<select id="equipo" name="equipo" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="Innovery">Innovery</option>
 									<option value="Capgemini">Capgemini</option>
@@ -86,7 +86,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" required aria-required="true"  id="gestor_it" name="gestor_it">	
+								<select class="selectpicker selected" required aria-required="true"  id="gestor_it" name="gestor_it">	
 								<option value="default" selected>Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
@@ -178,6 +178,4 @@
 			<button data-dismiss="modal" class="dismis_new_coste" type="button">Cancelar</button>
 		</div>	
 	</div>
-	<div class="ajax_loader" id="ajax_loader">
-		<img src="../../img/ajax-loader.gif" />
-	</div>
+	

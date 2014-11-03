@@ -41,7 +41,7 @@ $(function() {
 			$(element).parent().find('.bootstrap-select').addClass('error');
 		}
 		return valid;
-	}, "Por favor, selecciona un valor.");
+	}, "Este campo es obligatorio.");
 
 	$.validator.addMethod('require-one', function(value, element) {
 		var valid = false;

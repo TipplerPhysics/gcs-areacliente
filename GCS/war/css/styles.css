@@ -2230,7 +2230,10 @@ form textarea.error {
   display: inline-block !important;
 }
 #buttons_holder {
-  text-align: center;
+  text-align: right;
+}
+.relatedOptions > #buttons_holder {
+  text-align: left;
 }
 #select_service_dialog {
   width: 600px;
@@ -2416,6 +2419,9 @@ form textarea.error {
 }
 .gestion_coste .form-field-down .form-field.total .input span:first-child {
   margin-right: 5px;
+}
+.gestion_servicio .modal-dialog {
+  width: 600px;
 }
 .gestion_servicio #observaciones {
   height: 81px;

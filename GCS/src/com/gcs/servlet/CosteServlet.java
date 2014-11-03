@@ -273,11 +273,13 @@ public class CosteServlet extends HttpServlet {
 			String total_coste = req.getParameter("total_coste");
 			String total_horas = req.getParameter("total_horas");
 			String num_valoracion = req.getParameter("num_valoracion");
+			String num_control = req.getParameter("numero_control");
 
 			CosteDao cDao = CosteDao.getInstance();
 
 			Coste c = cDao.getCostebyId(Long.parseLong(id));
 
+			c.setNum_control(num_control);
 			c.setCoste_analisis(analisis_coste);
 			c.setHoras_analisis(analisis_horas);
 			c.setComentarios(comentarios);

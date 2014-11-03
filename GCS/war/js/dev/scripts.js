@@ -27,12 +27,12 @@ $(function() {
 			$('#chile_check_modal').removeClass("checked");
 			$('#chile_check_modal').next().removeClass("checked");
 		}		
-		if (str.indexOf("china")!=-1){
-			$('#china_check_modal').attr("checked","checked");
-			$('#china_check_modal').next().addClass("checked");
+		if (str.indexOf("hong")!=-1){
+			$('#hong_kong_check_modal').attr("checked","checked");
+			$('#hong_kong_check_modal').next().addClass("checked");
 		}else{
-			$('#china_check_modal').removeClass("checked");
-			$('#china_check_modal').next().removeClass("checked");
+			$('#hong_kong_check_modal').removeClass("checked");
+			$('#hong_kong_check_modal').next().removeClass("checked");
 		}		
 		if (str.indexOf("colombia")!=-1){
 			$('#colombia_check_modal').attr("checked","checked");
@@ -305,7 +305,7 @@ $(function() {
 								$('#span_message_cliente').html("");
 						  });
 							$('#new-client').modal('toggle');	
-						}, 5000);
+						}, 3500);
 						
 					}else{
 						$('#message_div_cliente').removeClass("success").addClass("error");
@@ -366,7 +366,7 @@ $(function() {
 						
 						location.reload();
 
-						}, 5000);
+						}, 3500);
 					}else{
 						$('#message_div_cliente_modal').removeClass("success").addClass("error");
 						if ($('.edit-user-form-holder').height()<190){
@@ -973,8 +973,19 @@ $(function() {
 ;var opciones_estado = "<option value='PDTE Doc Alcance en GCS'>PDTE Doc Alcance en GCS</option><option value='P-950 en confecci&oacute;n'>P-950 en confección</option><option value='PDTE Valoración IT'>PDTE Valoración IT</option><option value='PDTE Plan de Trabajo IT'>PDTE Plan de Trabajo IT</option><option value='PDTE Visto Bueno del CL del plan de trabajo'>PDTE Visto Bueno del CL del plan de trabajo</option><option value='En Desarrollo'>En Desarrollo</option><option value='En Test - Conectividad'>En Test - Conectividad</option><option value='En Test - Integración'>En Test - Integración</option><option value='En Test - Aceptación'>En Test - Aceptación</option><option value='Parado por Negocio - Producto'>Parado por Negocio - Producto</option><option value='Parado por Negocio'>Parado por Negocio</option><option value='Parado por IT'>Parado por IT</option><option value='Excluido por Negocio'>Excluido por Negocio</option><option value='Excluido por Timeout'>Excluido por Timeout</option><option value='PDTE Implantar'>PDTE Implantar</option><option value='En Penny Test'>En Penny Test</option><option value='Implementado con OK'>Implementado con OK</option><option value='Implementado sin OK'>Implementado sin OK</option>";
 var id;
 
-$(document).on('hidden.bs.modal', function (e) {
-	$(".modal-content").html();
+
+
+$(document).on('hide.bs.modal', function (e) {
+	//$(".modal-content").empty();
+	var contents = $(".modal-content");
+	
+	$.each(contents, function( index, value ) {
+		if (!($(value).hasClass('noErase'))){
+			$(value).empty();
+		}
+	});
+	
+	
 	$(e.target).removeData('bs.modal');	
 });
 
@@ -983,6 +994,8 @@ function showModal(){
 	initDatepickers();
 	$('#ajax_loader').css("display","none");
 	$('.modal_ajax').css("display","block");
+	
+	initValidator();
 	
 	
 }
@@ -2213,12 +2226,14 @@ function ajaxServicios(pais,target){
 					if (data.success=="true"){
 						var servicios = data.servicios[0];
 						target.empty();
+						target.selectpicker("render");
 						target.append(new Option("Seleccionar", "default"));
 						$.each(servicios, function (index, value) {
 							target.append(new Option(value, value));
 					    });	
 						target.selectpicker("refresh");
-						initSelectPickers();
+						//target.$element.bind('DOMNodeInserted DOMNodeRemoved', $.proxy(target.reloadLi, target));
+
 					}					
 				}
 			});
@@ -2888,7 +2903,7 @@ function drawChecksAreas(str){
 			$(element).parent().find('.bootstrap-select').addClass('error');
 		}
 		return valid;
-	}, "Por favor, selecciona un valor.");
+	}, "Este campo es obligatorio.");
 
 	$.validator.addMethod('require-one', function(value, element) {
 		var valid = false;

@@ -173,7 +173,7 @@
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content noErase">
 			<div class="">
 				<h2>Eliminar usuario</h2>
 				<hr />

@@ -77,6 +77,18 @@ public class ProyectoDao {
 		try{
 			pm.makePersistent(p);
 		}finally{
+			ServicioDao sDao = ServicioDao.getInstance();
+			List<Servicio> servicios = sDao.getServiciosByProject(p.getKey().getId());
+			
+			for (Servicio s:servicios){
+				s.setGestor_it_key(p.getGestor_it());
+				s.setGestor_it_name(p.getGestor_it_name());
+				s.setGestor_negocio_key(p.getGestor_negocio());
+				s.setGestor_negocio_name(p.getGestor_negocio_name());
+				
+				sDao.createServicio(s, "");
+			}
+			
 			pm.close();
 			
 			if (isNew)

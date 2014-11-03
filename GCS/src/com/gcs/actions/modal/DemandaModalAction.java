@@ -77,18 +77,18 @@ public class DemandaModalAction extends Action{
 		String gestoresStr = "";
 
 		if (!gestores_it.isEmpty()) {
-			for (User g : gestores_it) {
+			/*for (User g : gestores_it) {
 				gestoresStr += g.getNombre() + " " + g.getApellido1() + " "
 						+ g.getApellido2() + "(" + g.getKey().getId() + ")"
 						+ "-";
-			}
+			} */
 
 		}
 
 		req.setAttribute("clientes", clientes);
 		//req.setAttribute("gestores_demanda", gestores_demanda);
 		req.setAttribute("gestores_it", gestores_it);
-		req.setAttribute("gestoresStr", gestoresStr);
+		//req.setAttribute("gestoresStr", gestoresStr);
 		
 		req.setAttribute("gestores_negocio", gestores_negocio);
 

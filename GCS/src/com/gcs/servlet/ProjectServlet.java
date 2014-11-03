@@ -119,6 +119,15 @@ public class ProjectServlet extends HttpServlet{
 		    s.setColumnView(5, 30);
 		    s.setColumnView(6, 30);
 		    s.setColumnView(7, 20);
+		    
+		    s.setColumnView(8, 20);
+		    s.setColumnView(9, 20);
+		    s.setColumnView(10, 20);
+		    s.setColumnView(11, 20);
+		    s.setColumnView(12, 20);
+		    s.setColumnView(13, 20);
+		    
+		    
 		    s.setRowView(0, 900);
 						
 			s.addCell(new Label(0, 0, "FECHA ALTA",cellFormat));
@@ -129,6 +138,13 @@ public class ProjectServlet extends HttpServlet{
 			s.addCell(new Label(5, 0, "GESTOR IT",cellFormat));
 			s.addCell(new Label(6, 0, "GESTOR NEGOCIO",cellFormat));
 			s.addCell(new Label(7, 0, "COSTE",cellFormat));
+			
+			s.addCell(new Label(8, 0, "PRODUCTO",cellFormat));
+			s.addCell(new Label(9, 0, "CONECTIVIDAD",cellFormat));
+			s.addCell(new Label(10, 0, "FECHA INICIO VALORACION",cellFormat));
+			s.addCell(new Label(11, 0, "FECHA FIN VALORACION",cellFormat));
+			s.addCell(new Label(12, 0, "FECHA INICIO VIABILIDAD",cellFormat));
+			s.addCell(new Label(13, 0, "FECHA FIN VIABILIDAD",cellFormat));
 			
 			
 			int aux=1;
@@ -147,6 +163,12 @@ public class ProjectServlet extends HttpServlet{
 				s.addCell(new Label(6, aux, p.getGestor_negocio_name()));
 				s.addCell(new Label(7, aux, p.getCoste() + " €"));
 				
+				s.addCell(new Label(8, aux, p.getProducto()));
+				s.addCell(new Label(9, aux, p.getConectividad()));
+				s.addCell(new Label(10, aux, p.getStr_fecha_inicio_valoracion()));
+				s.addCell(new Label(11, aux, p.getStr_fecha_fin_valoracion()));
+				s.addCell(new Label(12, aux, p.getStr_fecha_inicio_viabilidad()));
+				s.addCell(new Label(13, aux, p.getStr_fecha_fin_viabilidad()));
 				aux++;
 			}		
 			

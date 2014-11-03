@@ -6,7 +6,7 @@
 <div class="gestion_servicio">
 
 	<h1>Gesti&oacute;n servicio</h1>
-	<span class="btn-atras" onclick="window.location.href='../../'"></span>
+	<span class="btn-atras" onclick="window.location.href='${entorno}/dashboard/gestionProyecto.do'"></span>
 	
 	
 	<hr/>
@@ -43,7 +43,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Pais<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true">
 									<option value="default">Seleccionar</option>
@@ -106,7 +106,7 @@
 						<div class="form-field">
 							<span class="lbl">Observaciones:</span>
 							<div class="input">
-								<textarea name="observaciones" id="observaciones"></textarea>
+								<textarea name="observaciones" maxlength="160" id="observaciones"></textarea>
 							</div>
 						</div>
 						
@@ -128,14 +128,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
+								<input type="text" value="" size="16" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_integradas' name="fecha_fin_integradas" id="fecha_fin_integradas">
+								<input type="text" value="" size="16" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
 							</div>
 						</div>
 						
@@ -147,28 +147,28 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio aceptación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_aceptacion' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion">
+								<input type="text" value="" size="16" class="datepicker fromTo" data-target-id='fecha_fin_aceptacion' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion">
 							</div>
 						</div>
 						
 						<div class="form-field">	
 							<span class="lbl">Fecha fin aceptación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_aceptacion' name="fecha_fin_aceptacion" id="fecha_fin_aceptacion">
+								<input type="text" value="" size="16" class="datepicker" name="fecha_fin_aceptacion" id="fecha_fin_aceptacion">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha inicio validación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_validacion' name="fecha_inicio_validacion" id="fecha_inicio_validacion">
+								<input type="text" value="" size="16" class="datepicker fromTo" data-target-id='fecha_fin_validacion' name="fecha_inicio_validacion" id="fecha_inicio_validacion">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin validación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_validacion' name="fecha_fin_validacion" id="fecha_fin_validacion">
+								<input type="text" value="" size="16" class="datepicker" name="fecha_fin_validacion" id="fecha_fin_validacion">
 							</div>
 						</div>
 						
@@ -182,21 +182,21 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio primera operación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_primera_op' name="fecha_inicio_primera_op" id="fecha_inicio_primera_op">
+								<input type="text" value="" size="16" class="datepicker fromTo" data-target-id='fecha_fin_primera_op' name="fecha_inicio_primera_op" id="fecha_inicio_primera_op">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin primera operación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_primera_op' name="fecha_fin_primera_op" id="fecha_fin_primera_op">
+								<input type="text" value="" size="16" class="datepicker"  name="fecha_fin_primera_op" id="fecha_fin_primera_op">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha inicio operación cliente:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_op_cliente' name="fecha_inicio_op_cliente" id="fecha_inicio_op_cliente">
+								<input type="text" value="" size="16" class="datepicker" name="fecha_inicio_op_cliente" id="fecha_inicio_op_cliente">
 							</div>
 						</div>
 						
@@ -210,14 +210,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha estimada pruebas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_pruebas' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas">
+								<input type="text" value="" size="16" class="datepicker fromTo" data-target-id='fecha_fin_pruebas' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha prevista fin pruebas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_pruebas' name="fecha_fin_pruebas" id="fecha_fin_pruebas">
+								<input type="text" value="" size="16" class="datepicker" name="fecha_fin_pruebas" id="fecha_fin_pruebas">
 							</div>
 						</div>
 						
@@ -255,7 +255,7 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th><span class="table-title">Cod. Proyecto</span></th>
+							<th><span class="table-title">Cód. Proyecto</span></th>
 							<th><span class="table-title">Servicio</span></th>
 							<th><span class="table-title">Estado</span></th>
 							<th><span class="table-title">Gestor IT</span></th>
@@ -316,7 +316,7 @@
 	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content noErase">
 				<div class="">
 					<h2>Eliminar Servicio</h2>
 					<hr />
