@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/com/gcs/beans/Coste.java=UTF-8
+encoding//src/com/gcs/servlet/CosteServlet.java=UTF-8
 encoding//war/html/extended-user.html=UTF-8
 encoding//war/jsp=ISO-8859-1
 encoding//war/jsp/clientProfile.jsp=ISO-8859-1
