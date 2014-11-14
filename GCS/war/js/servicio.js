@@ -52,9 +52,10 @@ function ajaxServicios(pais,target){
 						var servicios = data.servicios[0];
 						target.empty();
 						target.selectpicker("render");
-						target.append(new Option("Seleccionar", "default"));
+						target.empty();
+						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
 						$.each(servicios, function (index, value) {
-							target.append(new Option(value, value));
+							target.append($("<option></option>").attr("value",value).text(value));
 					    });	
 						target.selectpicker("refresh");
 						//target.$element.bind('DOMNodeInserted DOMNodeRemoved', $.proxy(target.reloadLi, target));

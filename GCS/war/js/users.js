@@ -70,6 +70,7 @@ $(function() {
 		editRow(id);
 	})
 
+//	if (isIE() != 8)
 	$('.selectpicker').selectpicker();
 
 	var userBoxSize = 0;

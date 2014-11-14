@@ -112,16 +112,17 @@
 								</select>
 							</div>
 						</div>
-						
+							
+						<div class="form-field">
+							<span class="lbl coste">Coste:</span>
+							<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
+						</div>
 					
 				</div>
 				
 				<div class="form-field-divider right">
 					
-					<div class="form-field">
-						<span class="lbl coste">Coste:</span>
-						<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
-					</div>
+					
 					
 					<div class="form-field">
 						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
@@ -148,14 +149,14 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha inicio valoración:</span>
+						<span class="lbl">Fecha inicio especificaciones:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion">
 						</div>
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha fin valoración:</span>
+						<span class="lbl">Fecha fin especificaciones:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion' name="fecha_fin_valoracion" id="fecha_fin_valoracion">
 						</div>
@@ -172,6 +173,20 @@
 						<span class="lbl">Fecha fin viabilidad:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_viabilidad' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha envio C100:</span>
+						<div class="input">
+							<input type="text" value="" size="16" class="datepicker" name="envio_c100" id="envio_c100">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha OK Negocio:</span>
+						<div class="input">
+							<input type="text" value="" size="16" class="datepicker" name="ok_negocio" id="ok_negocio">
 						</div>
 					</div>
 					

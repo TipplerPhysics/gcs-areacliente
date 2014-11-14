@@ -22,10 +22,10 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
-import com.gcs.beans.User;
+import com.gcs.dao.CosteDao;
 import com.gcs.dao.ProyectoDao;
-import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
@@ -34,6 +34,8 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class ProjectServlet extends HttpServlet{
 
 	private static final long serialVersionUID = -9001060985723788469L;
+	
+	
 	
 	public void doGet (HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
@@ -122,10 +124,13 @@ public class ProjectServlet extends HttpServlet{
 		    
 		    s.setColumnView(8, 20);
 		    s.setColumnView(9, 20);
-		    s.setColumnView(10, 20);
-		    s.setColumnView(11, 20);
-		    s.setColumnView(12, 20);
-		    s.setColumnView(13, 20);
+		    s.setColumnView(10, 30);
+		    s.setColumnView(11, 30);
+		    s.setColumnView(12, 30);
+		    s.setColumnView(13, 30);
+		    
+		    s.setColumnView(14, 30);
+		    s.setColumnView(15, 30);
 		    
 		    
 		    s.setRowView(0, 900);
@@ -145,6 +150,9 @@ public class ProjectServlet extends HttpServlet{
 			s.addCell(new Label(11, 0, "FECHA FIN VALORACION",cellFormat));
 			s.addCell(new Label(12, 0, "FECHA INICIO VIABILIDAD",cellFormat));
 			s.addCell(new Label(13, 0, "FECHA FIN VIABILIDAD",cellFormat));
+			
+			s.addCell(new Label(14, 0, "FECHA ENVIO C100",cellFormat));
+			s.addCell(new Label(15, 0, "FECHA OK NEGOCIO",cellFormat));
 			
 			
 			int aux=1;
@@ -169,6 +177,9 @@ public class ProjectServlet extends HttpServlet{
 				s.addCell(new Label(11, aux, p.getStr_fecha_fin_valoracion()));
 				s.addCell(new Label(12, aux, p.getStr_fecha_inicio_viabilidad()));
 				s.addCell(new Label(13, aux, p.getStr_fecha_fin_viabilidad()));
+				
+				s.addCell(new Label(14, aux, p.getStr_envioC100()));
+				s.addCell(new Label(15, aux, p.getStr_OKNegocio()));
 				aux++;
 			}		
 			
@@ -212,6 +223,9 @@ public class ProjectServlet extends HttpServlet{
 			if (p!=null){
 				String fecha_alta_str = req.getParameter("fecha_alta_cliente");
 				
+				String envioC100 = req.getParameter("envio_c100");
+				String ok_negocio = req.getParameter("ok_negocio");
+				
 				String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
 				String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
 				
@@ -248,7 +262,10 @@ public class ProjectServlet extends HttpServlet{
 				p.setFecha_alta_str(fecha_alta_str);					
 				
 				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
-								
+				
+				p.setStr_envioC100(envioC100);
+
+				p.setStr_OKNegocio(ok_negocio);
 			
 				p.setTipo(tipo);
 				p.setClienteKey(Long.parseLong(cliente));
@@ -287,6 +304,9 @@ public class ProjectServlet extends HttpServlet{
 			
 			String fecha_alta_str = req.getParameter("fecha_alta_cliente");
 			
+			String envioC100 = req.getParameter("envio_c100");
+			String ok_negocio = req.getParameter("ok_negocio");
+			
 			String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
 			String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
 			
@@ -314,7 +334,10 @@ public class ProjectServlet extends HttpServlet{
 				
 			}else{
 				
-				ProyectoDao pDao = ProyectoDao.getInstance();				
+				ProyectoDao pDao = ProyectoDao.getInstance();		
+				
+				p.setStr_envioC100(envioC100);
+				p.setStr_OKNegocio(ok_negocio);
 				
 				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
 				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);

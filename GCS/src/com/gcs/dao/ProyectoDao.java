@@ -8,6 +8,7 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.User;
@@ -22,6 +23,31 @@ public class ProyectoDao {
 
 	public static ProyectoDao getInstance(){
 		return new ProyectoDao();
+	}
+	
+	public String getCoste(Proyecto p){
+		
+		ProyectoDao pDao = ProyectoDao.getInstance();
+		CosteDao cDao = CosteDao.getInstance();
+		Double d = new Double(0);
+		
+		List<Coste> costes = cDao.getCostesByProject(p.getKey().getId());
+		
+		for (Coste c:costes){
+			if (!"".equals(c.getCoste_total()))
+			d += Double.parseDouble(c.getCoste_total());
+		}
+		
+		p.setCoste(d.toString());
+		try {
+			pDao.createProject(p, "");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return d.toString();
+		
 	}
 	
 	public void createProject(Proyecto p,String usermail) throws ParseException{
@@ -41,6 +67,12 @@ public class ProyectoDao {
 		p.setClienteName(c.getNombre());
 		p.setGestor_it_name(gestor_it.getNombre()+ " " + gestor_it.getApellido1() + " " + gestor_it.getApellido2());
 		p.setGestor_negocio_name(gestor_negocio.getNombre()+ " " + gestor_negocio.getApellido1() + " " + gestor_negocio.getApellido2());
+		
+		if (p.getStr_envioC100() != null && !"".equals(p.getStr_envioC100()))
+			p.setEnvioC100(Utils.dateConverter(p.getStr_envioC100()));
+		
+		if (p.getStr_OKNegocio() != null && !"".equals(p.getStr_OKNegocio()))
+			p.setOkNegocio(Utils.dateConverter(p.getStr_OKNegocio()));
 		
 		if (p.getStr_fecha_inicio_valoracion() != null && !"".equals(p.getStr_fecha_inicio_valoracion())){
 			p.setFecha_inicio_valoracion(Utils.dateConverter(p.getStr_fecha_inicio_valoracion()));

@@ -98,15 +98,15 @@
 							</div>
 						</div>
 						
-					
+					<div class="form-field">
+						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
+						<input type="text" aria-required="true" readonly="" value="${coste}" id="coste_modal" name="coste" class="long euro readonly">
+					</div>
 				</div>
 				
 				<div class="form-field-divider right">
 					
-					<div class="form-field">
-						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
-						<input type="text" aria-required="true" readonly="" required="" id="coste_modal" name="coste" class="long euro readonly">
-					</div>
+					
 					
 					<div class="form-field">
 						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
@@ -142,14 +142,14 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha inicio valoraci&oacute;n:</span>
+						<span class="lbl">Fecha inicio especificaciones:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion_modal' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Fecha fin valoraci&oacute;n:</span>
+						<span class="lbl">Fecha fin especificaciones:</span>
 						<div class="input">
 							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion_modal' name="fecha_fin_valoracion" id="fecha_fin_valoracion_modal">
 						</div>
@@ -169,7 +169,19 @@
 						</div>
 					</div>
 					
+					<div class="form-field">
+						<span class="lbl">Fecha envio C100:</span>
+						<div class="input">
+							<input type="text" value="${proyecto.str_envioC100}" size="16" class="datepicker" name="envio_c100" id="envio_c100_modal">
+						</div>
+					</div>
 					
+					<div class="form-field">
+						<span class="lbl">Fecha OK Negocio:</span>
+						<div class="input">
+							<input type="text" value="${proyecto.str_OKNegocio}" size="16" class="datepicker" name="ok_negocio" id="ok_negocio_modal">
+						</div>
+					</div>
 				</div>
 				
 				<div id="message_div">

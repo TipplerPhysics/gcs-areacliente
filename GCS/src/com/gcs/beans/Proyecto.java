@@ -84,10 +84,54 @@ public class Proyecto {
 	
 	@Persistent
 	private String servicio;
+	
+	@Persistent
+	private Date envioC100;
+	
+	@Persistent
+	private String str_envioC100;
+	
+	@Persistent
+	private Date okNegocio;
+	
+	@Persistent
+	private String str_OKNegocio;
 
 	public Proyecto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Date getEnvioC100() {
+		return envioC100;
+	}
+
+	public void setEnvioC100(Date envioC100) {
+		this.envioC100 = envioC100;
+	}
+
+	public String getStr_envioC100() {
+		return str_envioC100;
+	}
+
+	public void setStr_envioC100(String str_envioC100) {
+		this.str_envioC100 = str_envioC100;
+	}
+
+	public Date getOkNegocio() {
+		return okNegocio;
+	}
+
+	public void setOkNegocio(Date okNegocio) {
+		this.okNegocio = okNegocio;
+	}
+
+	public String getStr_OKNegocio() {
+		return str_OKNegocio;
+	}
+
+	public void setStr_OKNegocio(String str_OKNegocio) {
+		this.str_OKNegocio = str_OKNegocio;
 	}
 
 	public String getProducto() {
