@@ -34,6 +34,7 @@ var initDatepickers = function() {
 
 var initSelectpickers = function() {
 	// init all the datepickers which generally are always inside of a form.
+	//if (isIE() != 8)
 	$('html').find('.selectpicker').selectpicker();
 }
 

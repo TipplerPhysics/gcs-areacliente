@@ -1407,6 +1407,7 @@ var initDatepickers = function() {
 
 var initSelectpickers = function() {
 	// init all the datepickers which generally are always inside of a form.
+	//if (isIE() != 8)
 	$('html').find('.selectpicker').selectpicker();
 }
 
@@ -1427,6 +1428,11 @@ var getIsoDate = function(dateString) {
 		$('#accion_menu').addClass('white');
 	}
 }
+
+function isIE () {
+	  var myNav = navigator.userAgent.toLowerCase();
+	  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+	}
 
 $(function() {
 	
@@ -1801,7 +1807,7 @@ function loadEditModal(){
 	if (accion=='proyecto'){
 		$('#edit-action').modal('hide');
 		$('#edit-project').modal({
-			  remote: "../projectModal.do?git="+git+"&gn="+gn+"&client="+client
+			  remote: "../projectModal.do?git="+git+"&gn="+gn+"&client="+client+"&id="+id
 			});
 		$('#edit-project').modal('show');
 		
@@ -1946,24 +1952,30 @@ $(function() {
 		$("#conectividad").empty();
 		if ($('#producto').val().indexOf("H2H") >= 0) {
 			//case H2H / H2H-bancoRelay		
-			$("#conectividad").append(new Option("Seleccionar", "default"));
-			$("#conectividad").append(new Option("AS2", "AS2"));
-			$("#conectividad").append(new Option("FTP", "FTP"));
-			$("#conectividad").append(new Option("FTPS", "FTPS"));
-			$("#conectividad").append(new Option("SFTP", "SFTP"));
-			$("#conectividad").append(new Option("Webservices", "Webservices"));
+			$("#conectividad").append($("<option></option>").attr("value","default").text("Seleccionar"));
+			$("#conectividad").append($("<option></option>").attr("value","AS2").text("AS2"));
+			$("#conectividad").append($("<option></option>").attr("value","FTP").text("FTP"));
+			$("#conectividad").append($("<option></option>").attr("value","FTPS").text("FTPS"));
+			$("#conectividad").append($("<option></option>").attr("value","SFTP").text("SFTP"));
+			$("#conectividad").append($("<option></option>").attr("value","Webservices").text("Webservices"));
+			
+			
+			
 		} else if (($('#producto').val().indexOf("H2H") < 0) && ($('#producto').val().indexOf("default") < 0)) {
-			//case Swift-bancoRelay/ Swift Fileact			
-			$("#conectividad").append(new Option("Seleccionar", "default"));	
-			$("#conectividad").append(new Option("Score", "Score"));	
-			$("#conectividad").append(new Option("Macug", "Macug"));	
+			//case Swift-bancoRelay/ Swift Fileact		
+			$("#conectividad").append($("<option></option>").attr("value","Seleccionar").text("default"));
+			$("#conectividad").append($("<option></option>").attr("value","Score").text("Score"));
+			$("#conectividad").append($("<option></option>").attr("value","Macug").text("Macug"));
+			
 		} else {
 			//case nada seleccionado
 			$("#conectividad").empty();
-			$("#conectividad").append(new Option("Seleccionar", "default"));
+			$("#conectividad").append($("<option></option>").attr("value","Seleccionar").text("default"));
+
 		}
 		//repintamos el combo
 		$("#conectividad").selectpicker("refresh");
+		
 	});
 	
 
@@ -2227,9 +2239,10 @@ function ajaxServicios(pais,target){
 						var servicios = data.servicios[0];
 						target.empty();
 						target.selectpicker("render");
-						target.append(new Option("Seleccionar", "default"));
+						target.empty();
+						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
 						$.each(servicios, function (index, value) {
-							target.append(new Option(value, value));
+							target.append($("<option></option>").attr("value",value).text(value));
 					    });	
 						target.selectpicker("refresh");
 						//target.$element.bind('DOMNodeInserted DOMNodeRemoved', $.proxy(target.reloadLi, target));
@@ -2462,6 +2475,7 @@ $(function() {
 		editRow(id);
 	})
 
+//	if (isIE() != 8)
 	$('.selectpicker').selectpicker();
 
 	var userBoxSize = 0;

@@ -6,6 +6,11 @@ function  changeActionsButtonColor(){
 	}
 }
 
+function isIE () {
+	  var myNav = navigator.userAgent.toLowerCase();
+	  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+	}
+
 $(function() {
 	
 	$(window).scroll(function (event) {
@@ -110,17 +115,14 @@ $(function() {
 		var val = $('#tip_crit').val();
 		var cajas = $('.client_box');
 		var a;
-		if (val=="0"){
+		if (val=="Premium"){
 			for (a = 0; a<=cajas.length-1; a++){
-				$(cajas[a]).removeClass('crit_h');
+				if (!$(cajas[a]).hasClass('premium'))
+					$(cajas[a]).css('display','none');
 			}
 		}else{
 			for (a = 0; a<=cajas.length-1; a++){
-				if (! $(cajas[a]).hasClass("crit_"+val)){
-					$(cajas[a]).addClass('crit_h');
-				}else{
-					$(cajas[a]).removeClass('crit_h');
-				}				
+				$(cajas[a]).css('display','inline-table');
 			} 
 		}	
 		

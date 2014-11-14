@@ -13,8 +13,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
 
 public class ProyectoModalAction extends Action {
@@ -29,12 +31,16 @@ public class ProyectoModalAction extends Action {
 		String git_str = req.getParameter("git");
 		String gn_str = req.getParameter("gn");
 		
+		String id = req.getParameter("id");
+		
 		
 		String cliente_str = req.getParameter("client");
 		Cliente cliente = cDao.getClienteById(Long.parseLong(cliente_str));
 		
 		List<Cliente> clientes_jdo = cDao.getAllNonDeletedClients();
 		List<Cliente> clientes = new ArrayList<Cliente>();
+		
+		
 		
 		clientes.addAll(clientes_jdo);
 		
@@ -65,9 +71,25 @@ public class ProyectoModalAction extends Action {
 			clientes.add(cliente);
 		}
 		
+		String coste="";
+		Proyecto p = new Proyecto();
+		
+		if (!"".equals(id)){
+			ProyectoDao pDao = ProyectoDao.getInstance();
+			p = pDao.getProjectbyId(Long.parseLong(id));
+			
+			coste = pDao.getCoste(p);
+			
+			
+		}
+		
 		req.setAttribute("clientes", clientes);
 		req.setAttribute("gestores_it", gestores_it);
 		req.setAttribute("gestores_negocio", gestores_negocio);
+		req.setAttribute("coste", coste);
+		req.setAttribute("proyecto", p);
+		
+		
 
 		return mapping.findForward("ok");
 		

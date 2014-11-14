@@ -2064,6 +2064,9 @@ form textarea.error {
   color: #434a58;
   font-weight: 700;
 }
+#alta_proyecto #edit_user_dialog .form-field .bootstrap-select {
+  width: 220px;
+}
 #alta_proyecto #edit_service_dialog .modal_ajax .form-field {
   height: auto;
 }
