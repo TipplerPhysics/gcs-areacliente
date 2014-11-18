@@ -122,11 +122,7 @@
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Venezuela"
 										id="venezuela_check_modal"><label for="venezuela_check_modal"><span></span>Venezuela</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Redex"
-										id="redex_check_modal"><label for="redex_check_modal"><span></span>Redex</label>
-								</div>								
+								</div>							
 							</div>
 						</div>				
 					</div>					
