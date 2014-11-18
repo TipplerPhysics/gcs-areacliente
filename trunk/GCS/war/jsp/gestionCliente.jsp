@@ -80,9 +80,6 @@
 							<input type="text" id="logo_url" name="logo_url" class="long">
 						</div>
 						
-						
-						
-					
 						<div class="form-field paises">	
 							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
 							<div class="radio-div">
@@ -100,8 +97,8 @@
 										id="chile_check"><label for="chile_check"><span></span>Chile</label>
 								</div>
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="China"
-										id="china_check"><label for="china_check"><span></span>China</label>
+									<input type="checkbox" name='paises' value="Hong Kong"
+										id="hong_kong_check"><label for="hong_kong_check"><span></span>Hong Kong</label>
 								</div>
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Colombia"
@@ -147,11 +144,6 @@
 									<input type="checkbox" name='paises' value="Venezuela"
 										id="venezuela_check"><label for="venezuela_check"><span></span>Venezuela</label>
 								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Redex"
-										id="redex_check"><label for="redex_check"><span></span>Redex</label>
-								</div>
-								
 							</div>
 						</div>
 						 
@@ -176,7 +168,7 @@
 							<th><span class="table-title">Fecha Entrada</span></th>
 							<th><span class="table-title">ID Cliente</span></th>
 							<th><span class="table-title">Cliente</span></th>
-							<th><span class="table-title">Referencia Global</span></th>
+							<th><span class="table-title">Referencia Global B2B</span></th>
 							<th><span class="table-title">Tipo</span></th>
 							<th><span class="table-title">Criticidad</span></th>
 							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
