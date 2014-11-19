@@ -12,7 +12,7 @@
 					<div class="form-field-divider left">
 					
 						<div class="form-field">
-							<span class="lbl">Cod. de proyecto<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Cód. de proyecto<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 							
 							<input type="text" id="cod_proyecto_modal" value="${servicio.cod_proyecto}" class="readonly" readonly  name="cod_proyecto" class="long">
@@ -22,7 +22,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Pais<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="pais" id="pais_servicio_modal" required aria-required="true">
 									<option value="Argentina"  ${servicio.pais == 'Argentina' ? 'selected' : ''}>Argentina</option>
@@ -80,7 +80,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Cod. servicio<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" name="cod_servicio" class="long" required aria-required="true">
 
 						</div>
