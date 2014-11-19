@@ -175,10 +175,10 @@
 						<div class="form-field total">
 						<span class="lbl"></span>
 							<div class="input total">
-								<input id="total_horas" name="total_horas" class="horas number"/><input id="total_coste" name="total_coste" class="coste number"/>
+								<input id="total_horas" name="total_horas" class="horas number" required aria-required="true"/><input id="total_coste" name="total_coste" class="coste number"/>
 							</div>
 							<div class="input">
-								<span class="lbl">Total Horas</span><span class="lbl">Total Coste</span>
+								<span class="lbl">Total Horas<span class="required-asterisk">*</span></span><span class="lbl">Total Coste</span>
 							</div>
 						</div>
 					</div>					 
