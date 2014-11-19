@@ -127,7 +127,7 @@ public class ClienteDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		
 		Query q = pm.newQuery("select from " + Cliente.class.getName());		
-		q.setOrdering("nombre asc");
+		q.setOrdering("fecha_alta_cliente desc");
 		clientes = (List<Cliente>) q.execute();
 		
 		pm.close();
