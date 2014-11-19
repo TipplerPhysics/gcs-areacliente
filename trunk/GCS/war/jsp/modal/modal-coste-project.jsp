@@ -157,11 +157,11 @@
 						<div class="form-field total">
 						<span class="lbl"></span>
 							<div class="input total">
-								<input id="total_horas_modal" name="total_horas" class="horas" value="${coste.horas_total}"/>
+								<input id="total_horas_modal" name="total_horas" class="horas" value="${coste.horas_total}" required aria-required="true"/>
 								<input id="total_coste_modal" name="total_coste" class="coste" value="${coste.coste_total}"/>
 							</div>
 							<div class="input labels">
-								<span class="lbl2">Total Horas</span><span class="lbl2">Total Coste</span>
+								<span class="lbl2">Total Horas<span class="required-asterisk">*</span></span><span class="lbl2">Total Coste</span>
 							</div>
 						</div>
 					</div>					 
