@@ -49,7 +49,7 @@ $(function() {
 					    	isValid = false;
 						}
 				    }else{
-				    	if(text != cont.substring(0, textLength)){
+				    	if(cont.indexOf(text)==-1){
 					    	isValid = false;
 						}
 				    }				    
