@@ -287,7 +287,7 @@ $(function() {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El pago ha sido creado de forma correcta.");
+					$('#span_message').html("El coste ha sido creado de forma correcta.");
 					$('#message_div').css('display','block');
 					
 					$('#buttons_new_demanda').css('display','none');
