@@ -88,7 +88,7 @@
 						<div class="form-field">
 							<span class="lbl">Observaciones:</span>
 							<div class="input">
-								<textarea name="observaciones"  maxlength="160" id="observaciones_modal">${servicio.observaciones}</textarea>
+								<textarea name="observaciones"  maxlength="500" id="observaciones_modal">${servicio.observaciones}</textarea>
 							</div>
 						</div>
 						
