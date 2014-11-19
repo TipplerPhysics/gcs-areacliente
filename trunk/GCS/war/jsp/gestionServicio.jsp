@@ -31,7 +31,7 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
-							<span class="lbl">Cod. de proyecto<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Cód. de proyecto<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" required aria-required="true">
 									<option value="default">Seleccionar</option>	
@@ -99,7 +99,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Cod. servicio<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio" name="cod_servicio" class="long" required aria-required="true">
 						</div>
 						
