@@ -18,7 +18,7 @@
 						</div>						
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
-							<input type="text" aria-required="true" required="" id="client_name_modal" name="client_name" class="long">
+							<input type="text" aria-required="true" required="" id="client_name_modal" name="client_name" maxlength="25" class="long">
 						</div>
 						<div class="form-field">
 							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
@@ -45,7 +45,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Referencia Global B2B:</span>
-							<input type="text" minlength="11" id="ref_global_modal" name="ref_global" class="long" maxlength="11">
+							<input type="text" minlength="11" id="ref_global_modal" name="ref_global" class="long" maxlength="25">
 						</div>
 						
 					</div><div class="form-field-divider right">
@@ -56,7 +56,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
-							<input type="text" id="logo_url_modal" name="logo_url" class="long">
+							<input type="text" id="logo_url_modal" name="logo_url" class="long" maxlength="25">
 						</div>
 						
 						<div class="form-field">	

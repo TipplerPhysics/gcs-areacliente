@@ -15,21 +15,20 @@
 						<input type="hidden" id="id_modal" name="id" value="">
 						<div class="form-container">
 							<div class="form-field">
-								<span for="nombre" class="lbl">Nombre<span class="required-asterisk">*</span>:</span><input class="long" type="text"
-									name="nombre" id="nombre_modal" required aria-required="true">
+								<span for="nombre" class="lbl">Nombre<span class="required-asterisk">*</span>:</span>
+								<input class="long" type="text" name="nombre" maxlength="25" id="nombre_modal" required aria-required="true">
 							</div>
 							<div class="form-field">
-								<span  class="lbl">Apellido 1<span class="required-asterisk">*</span>:</span><input class="long" type="text" name="ap1"
-									id="ap1_modal" required aria-required="true">
+								<span  class="lbl">Apellido 1<span class="required-asterisk">*</span>:</span>
+								<input class="long" type="text" name="ap1" maxlength="25" id="ap1_modal" required aria-required="true">
 							</div>
 							<div class="form-field">
-								<span class="lbl">Apellido 2:</span><input class="long" type="text" name="ap2"
-									id="ap2_modal">
+								<span class="lbl">Apellido 2:</span>
+								<input class="long" type="text" name="ap2" maxlength="25" id="ap2_modal">
 							</div>
 							<div class="form-field">
-								<span class="lbl">E-mail<span class="required-asterisk">*</span>:</span><input class="long email no_message_error" type="text"
-									name="email" id="email_modal" required aria-required="true"
-									data-type="email">
+								<span class="lbl">E-mail<span class="required-asterisk">*</span>:</span>
+								<input class="long email no_message_error" type="text" name="email" maxlength="25" id="email_modal" required aria-required="true" data-type="email">
 							</div>
 							<div class="form-field">
 								<span class="lbl">Departamento<span class="required-asterisk">*</span>:</span>

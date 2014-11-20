@@ -28,19 +28,19 @@
 			<div class="form-container">
 				<div class="form-field">
 					<span for="nombre">Nombre<span class="required-asterisk">*</span>:</span><input class="long" type="text"
-						name="nombre" id="nombre" required aria-required="true">
+						name="nombre" id="nombre" maxlength="25" required aria-required="true">
 				</div>
 				<div class="form-field">
 					<span>Apellido 1<span class="required-asterisk">*</span>:</span><input class="long" type="text" name="ap1"
-						id="ap1" required aria-required="true">
+						id="ap1" maxlength="25" required aria-required="true">
 				</div>
 				<div class="form-field">
 					<span>Apellido 2:</span><input class="long" type="text" name="ap2"
-						id="ap2">
+						id="ap2" maxlength="25">
 				</div>
 				<div class="form-field">
 					<span>E-mail<span class="required-asterisk">*</span>:</span><input class="long email" type="text"
-						name="email" id="email" required aria-required="true"
+						name="email" id="email" maxlength="25" required aria-required="true"
 						data-type="email">
 				</div>
 				<div class="form-field">
