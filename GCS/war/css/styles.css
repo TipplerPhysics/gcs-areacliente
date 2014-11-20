@@ -2415,13 +2415,13 @@ form textarea.error {
   width: 65px;
 }
 .gestion_coste .form-field-down .form-field.total {
-  width: 130px !important;
+  width: 145px !important;
 }
 .gestion_coste .form-field-down .form-field.total .input.total > .horas {
-  margin-right: 20px;
+  margin-right: 34px;
 }
 .gestion_coste .form-field-down .form-field.total .input span:first-child {
-  margin-right: 5px;
+  margin-right: 0px;
 }
 .gestion_servicio .modal-dialog {
   width: 600px;

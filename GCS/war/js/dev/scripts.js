@@ -935,7 +935,7 @@ $(function() {
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);
 					}
-					$('#span_message').html("El pago ha sido creado de forma correcta.");
+					$('#span_message').html("El coste ha sido creado de forma correcta.");
 					$('#message_div').css('display','block');
 					
 					$('#buttons_new_demanda').css('display','none');
@@ -1538,17 +1538,14 @@ $(function() {
 		var val = $('#tip_crit').val();
 		var cajas = $('.client_box');
 		var a;
-		if (val=="0"){
+		if (val=="Premium"){
 			for (a = 0; a<=cajas.length-1; a++){
-				$(cajas[a]).removeClass('crit_h');
+				if (!$(cajas[a]).hasClass('premium'))
+					$(cajas[a]).css('display','none');
 			}
 		}else{
 			for (a = 0; a<=cajas.length-1; a++){
-				if (! $(cajas[a]).hasClass("crit_"+val)){
-					$(cajas[a]).addClass('crit_h');
-				}else{
-					$(cajas[a]).removeClass('crit_h');
-				}				
+				$(cajas[a]).css('display','inline-table');
 			} 
 		}	
 		
@@ -2164,7 +2161,7 @@ $(function() {
 					    	isValid = false;
 						}
 				    }else{
-				    	if(text != cont.substring(0, textLength)){
+				    	if(cont.indexOf(text)==-1){
 					    	isValid = false;
 						}
 				    }				    
