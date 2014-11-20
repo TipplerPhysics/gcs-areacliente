@@ -385,6 +385,10 @@
 										id="chile_check"><label for="chile_check"><span></span>Chile</label>
 								</div>
 								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Hong Kong"
+										id="hong_kong_check"><label for="hong_kong_check"><span></span>Hong Kong</label>
+								</div>								
+								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Colombia"
 										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
 								</div>
@@ -427,10 +431,6 @@
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Venezuela"
 										id="venezuela_check"><label for="venezuela_check"><span></span>Venezuela</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Redex"
-										id="redex_check"><label for="redex_check"><span></span>Redex</label>
 								</div>
 								
 							</div>
