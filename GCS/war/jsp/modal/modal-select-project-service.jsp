@@ -10,7 +10,7 @@
 	</div>
 	<div class="edit-user-form-holder">
 		<div class="form-field">
-			<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
+			<span class="lbl">Servicio:</span>
 			<div class="input">
 				<select class="selectpicker selected" id="select_project_action" name="select_project_action">	
 					<option value="default">Seleccione</option>	
