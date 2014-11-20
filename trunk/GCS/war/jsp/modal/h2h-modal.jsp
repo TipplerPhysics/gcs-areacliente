@@ -20,21 +20,21 @@
 					<div class="form-field">
 							<span class="lbl">Fecha inicio infraestructura:</span>
 							<div class="input">
-								<input type="text" id="fecha_ini_infra_modal" name="fecha_ini_infra" data-target-id="fecha_ini_infra_modal" class="datepicker" size="16" value="${conectividad.str_fecha_ini_infraestructura}" readonly="">
+								<input type="text" id="fecha_ini_infra_modal" name="fecha_ini_infra" data-target-id="fecha_ini_infra_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_ini_infraestructura}" readonly="">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin infraestructura:</span>
 							<div class="input">
-								<input type="text" id="fecha_fin_infra_modal" name="fecha_fin_infra" data-target-id="fecha_fin_infra_modal" class="datepicker" size="16" value="${conectividad.str_fecha_fin_infraestructura}" readonly="">
+								<input type="text" id="fecha_fin_infra_modal" name="fecha_fin_infra" data-target-id="fecha_fin_infra_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_fin_infraestructura}" readonly="">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha implantación</span>
 							<div class="input">
-								<input type="text" id="fecha_implantacion_modal" name="fecha_implantacion" data-target-id="fecha_implantacion_modal" class="datepicker" size="16" value="${conectividad.str_fecha_implantacion}" readonly="">
+								<input type="text" id="fecha_implantacion_modal" name="fecha_implantacion" data-target-id="fecha_implantacion_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_implantacion}" readonly="">
 							</div>
 						</div>
 						
@@ -58,35 +58,35 @@
 					<div class="form-field">
 							<span class="lbl">Fecha inicio seguridad:</span>
 							<div class="input">
-								<input type="text" id="ini_seguridad_modal" name="ini_seguridad" data-target-id="ini_seguridad_modal" class="datepicker" size="16" value="${conectividad.str_fecha_ini_seguridad}" readonly="">
+								<input type="text" id="ini_seguridad_modal" name="ini_seguridad" data-target-id="ini_seguridad_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_ini_seguridad}" readonly="">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin seguridad:</span>
 							<div class="input">
-								<input type="text" id="fin_seguridad_modal" name="fin_seguridad" data-target-id="fin_seguridad_modal" class="datepicker" size="16" value="${conectividad.str_fecha_fin_seguridad}" readonly="">
+								<input type="text" id="fin_seguridad_modal" name="fin_seguridad" data-target-id="fin_seguridad_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_fin_seguridad}" readonly="">
 							</div>
 						</div>	
 						
 						<div class="form-field">
 							<span class="lbl">Reglas Firewall:</span>
 							<div class="input">
-								<input type="text" id="firewall_modal" name="firewall" data-target-id="firewall_modal" class="datepicker" size="16" value="${conectividad.str_reglas_firewall}" readonly="">
+								<input type="text" id="firewall_modal" name="firewall" data-target-id="firewall_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_reglas_firewall}" readonly="">
 							</div>
 						</div>	
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin certificado:</span>
 							<div class="input">
-								<input type="text" id="fin_certificado_modal" name="fin_certificado" data-target-id="fin_certificado_modal" class="datepicker" size="16" value="${conectividad.str_fecha_fin_certificado}" readonly="">
+								<input type="text" id="fin_certificado_modal" name="fin_certificado" data-target-id="fin_certificado_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_fin_certificado}" readonly="">
 							</div>
 						</div>	
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin conectividad:</span>
 							<div class="input">
-								<input type="text" id="fin_conectividad_modal" name="fin_conectividad" data-target-id="fin_conectividad_modal" class="datepicker" size="16" value="${conectividad.str_fecha_fin_certificado}" readonly="">
+								<input type="text" id="fin_conectividad_modal" name="fin_conectividad" data-target-id="fin_conectividad_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_fin_certificado}" readonly="">
 							</div>
 						</div>	
 					

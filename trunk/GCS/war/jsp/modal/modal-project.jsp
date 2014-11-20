@@ -18,13 +18,13 @@
 					<div class="form-field">
 						<span class="lbl">Fecha alta proyecto<span class="required-asterisk">*</span>:</span>
 						<div class="input">
-							<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente_modal" required aria-required="true">
+							<input type="text" readonly="" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente_modal" required aria-required="true">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">C&oacute;digo Proyecto:</span>
-						<input type="text" id="project_name_modal" name="project_name" class="long " >
+						<input type="text" id="project_name_modal" name="project_name" class="long "  maxlength="25">
 					</div>
 					
 					<div class="form-field">
@@ -144,42 +144,42 @@
 					<div class="form-field">
 						<span class="lbl">Fecha inicio especificaciones:</span>
 						<div class="input">
-							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_valoracion_modal' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion_modal">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_valoracion_modal' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha fin especificaciones:</span>
 						<div class="input">
-							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_valoracion_modal' name="fecha_fin_valoracion" id="fecha_fin_valoracion_modal">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_valoracion_modal' name="fecha_fin_valoracion" id="fecha_fin_valoracion_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha inicio viabilidad:</span>
 						<div class="input">
-							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_viabilidad_modal' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad_modal">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_viabilidad_modal' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha fin viabilidad:</span>
 						<div class="input">
-							<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_fin_viabilidad_modal' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad_modal">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_viabilidad_modal' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha envio C100:</span>
 						<div class="input">
-							<input type="text" value="${proyecto.str_envioC100}" size="16" class="datepicker" name="envio_c100" id="envio_c100_modal">
+							<input type="text" value="${proyecto.str_envioC100}" size="16" maxlength="25" class="datepicker" name="envio_c100" id="envio_c100_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha OK Negocio:</span>
 						<div class="input">
-							<input type="text" value="${proyecto.str_OKNegocio}" size="16" class="datepicker" name="ok_negocio" id="ok_negocio_modal">
+							<input type="text" value="${proyecto.str_OKNegocio}" size="16" maxlength="25" class="datepicker" name="ok_negocio" id="ok_negocio_modal">
 						</div>
 					</div>
 				</div>

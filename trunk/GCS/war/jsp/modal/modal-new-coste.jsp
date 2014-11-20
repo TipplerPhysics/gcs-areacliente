@@ -26,7 +26,7 @@
 						<div class="form-field">
 							<span class="lbl">Código de control:</span>
 							<div class="input">
-								<input type="text" value=""  size="16" name="numero_control" id="numero_control">
+								<input type="text" value=""  size="16" maxlength="25" name="numero_control" id="numero_control">
 							</div>
 						</div>
 
@@ -34,7 +34,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha alta costes<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_alta_costes' name="fecha_alta_costes" id="fecha_alta_costes" required aria-required="true">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_alta_costes' name="fecha_alta_costes" id="fecha_alta_costes" required aria-required="true">
 							</div>
 						</div>
 						<div class="form-field">
@@ -52,7 +52,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
 							</div>
 						</div>
 					</div>

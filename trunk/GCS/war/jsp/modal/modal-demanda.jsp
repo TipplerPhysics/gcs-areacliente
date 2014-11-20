@@ -14,7 +14,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha entrada petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion_modal" required aria-required="true">
+								<input type="text" readonly="" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_solicitud_asignacion' name="fecha_entrada_peticion" id="fecha_entrada_peticion_modal" required aria-required="true">
 							</div>
 						</div>
 						<div class="form-field horas">
@@ -125,7 +125,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha solicitud asignaci&oacute;n:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion_modal">
+								<input type="text" readonly="" value="" size="16" maxlength="25" class="datepicker" name="fecha_solicitud_asignacion" id="fecha_solicitud_asignacion_modal">
 							</div>
 						</div>
 						<div class="form-field horas">
@@ -163,7 +163,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha comunicaci&oacute;n asignaci&oacute;n:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion_modal">
+								<input type="text" readonly="" value="" size="16" maxlength="25" class="datepicker" name="fecha_comunicacion_asignacion" id="fecha_comunicacion_asignacion_modal">
 							</div>
 						</div>
 						<div class="form-field horas">

@@ -37,12 +37,12 @@
 						<div class="form-field">
 							<span class="lbl">Fecha alta cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
+								<input type="text" readonly="" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente" required aria-required="true">
 							</div>
 						</div>						
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
-							<input type="text" aria-required="true" required="" id="client_name" name="client_name" class="long">
+							<input type="text" aria-required="true" required="" id="client_name" name="client_name" maxlength="25" class="long">
 						</div>
 						<div class="form-field">
 							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
@@ -77,7 +77,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
-							<input type="text" id="logo_url" name="logo_url" class="long">
+							<input type="text" id="logo_url" name="logo_url" class="long" maxlength="25">
 						</div>
 						
 						<div class="form-field paises">	
