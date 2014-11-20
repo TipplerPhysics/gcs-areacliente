@@ -1,14 +1,14 @@
 function LoadModalService(){
 	id = $('#select_project_action').val();
 	
-	if (id!="default"){
-		$('#select-service').modal('hide');
-		$('#edit-service').modal({
-			  remote: "../servicioModal.do?id="+id
-			});
-		$('#edit-service').modal('show');
-	}
-	
+
+	$('#select-service').modal('hide');
+	$('#edit-service').modal({
+		  remote: "../servicioModal.do?id="+id
+		});
+	$('#edit-service').modal('show');
+
+
 	
 }
 
