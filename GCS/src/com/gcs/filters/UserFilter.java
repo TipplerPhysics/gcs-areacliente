@@ -71,22 +71,23 @@ public class UserFilter implements Filter {
 					sesion.setAttribute("permiso", permiso);
 					chain.doFilter(req, resp);
 				} else {
-					if (url.contains("8888")){
+					/*if (url.contains("8888")){
 						chain.doFilter(req, resp);
 					}else{
 						response.sendRedirect("http://intranet.bbva.com/");
-					}
-					
+					}*/
+					response.sendRedirect("http://intranet.bbva.com/");
 				}
 
 				
 			}
 		} else {
-			if (url.contains("localhost") || url.contains("8888")) {
+			/*if (url.contains("localhost") || url.contains("8888")) {
 				chain.doFilter(req, resp);
 			} else {
 				response.sendRedirect("http://intranet.bbva.com/");
-			}
+			}*/
+			response.sendRedirect("http://intranet.bbva.com/");
 		}
 
 	}
