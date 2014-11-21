@@ -86,7 +86,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha fin conectividad:</span>
 							<div class="input">
-								<input type="text" id="fin_conectividad_modal" name="fin_conectividad" data-target-id="fin_conectividad_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_fin_certificado}" readonly="">
+								<input type="text" id="fin_conectividad_modal" name="fin_conectividad" data-target-id="fin_conectividad_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_fin_conectividad}" readonly="">
 							</div>
 						</div>	
 					
