@@ -298,7 +298,7 @@ public class ClienteServlet extends HttpServlet {
 			String nombre = req.getParameter("client_name");
 			String criticidad = req.getParameter("criticidad");		
 			String str_fecha_alta_cliente = req.getParameter("fecha_alta_cliente");
-			String logo_url = req.getParameter("logo_url");			
+			String logo_url = req.getParameter("logo_url");
 			String ref_global = req.getParameter("ref_global").toUpperCase();
 			String tipo = req.getParameter("tipo");
 			String[] paises = req.getParameterValues("paises");
@@ -324,22 +324,26 @@ public class ClienteServlet extends HttpServlet {
 				errorStr += "Ya existe un cliente con este nombre";			
 			}
 			
-			c = cDao.getClienteByRefGlobal(ref_global);
-			if (c!=null){
-				if (!errorStr.equals(""))
+			c = new Cliente();		
+			if(ref_global!=""){
+				Cliente aux = new Cliente();	
+				aux = cDao.getClienteByRefGlobal(ref_global);
+				if (aux!=null){
 					errorStr += " </br> ";
-				errorStr += "Ya existe un cliente con esta referencia global";			
+					errorStr += "Ya existe un cliente con esta referencia global";			
+				}else{
+
+					c.setRef_global(ref_global); // ref golbal colocada aqui para poder hacer el campo opcional
+				}
 			}
 			
-			
 			if (errorStr.equals("")){
-				c = new Cliente();
 				c.setNombre(nombre);
 				c.setCriticidad(criticidad);
 				c.setStr_fecha_alta_cliente(str_fecha_alta_cliente);
 				c.setFecha_alta_cliente(Utils.dateConverter(str_fecha_alta_cliente));
 				c.setLogo_url(logo_url);
-				c.setRef_global(ref_global);
+				//c.setRef_global(ref_global);
 				c.setTipo(tipo);
 				c.setPaises(paises_set);
 				
