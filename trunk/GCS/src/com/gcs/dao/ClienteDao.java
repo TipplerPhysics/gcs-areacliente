@@ -135,6 +135,8 @@ public class ClienteDao {
 		return clientes;
 	}
 	
+
+	
 public List<Cliente> getAllNonDeletedClients(){
 		
 
@@ -148,6 +150,28 @@ public List<Cliente> getAllNonDeletedClients(){
 
 		return clients;
 	}
+@SuppressWarnings("unchecked")
+public List<Cliente> getAllNonDeletedClientsAlphabet(){
+	
+	List<Cliente> clients_jdo;
+	PersistenceManager pm = PMF.get().getPersistenceManager();		
+	
+	Query q = pm.newQuery("select from " + Cliente.class.getName());		
+	q.setOrdering("nombre asc");
+	clients_jdo = (List<Cliente>) q.execute();
+	
+	
+
+	List<Cliente> clients = new ArrayList<Cliente>();
+	
+	
+	for (Cliente c:clients_jdo)
+		if (!c.isErased())
+			clients.add(c);
+
+	pm.close();
+	return clients;
+}
 
 	public void logicalDelete(Cliente c, String usermail){
 		c.setErased(true);
