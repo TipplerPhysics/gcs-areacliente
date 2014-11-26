@@ -232,7 +232,7 @@ $(function() {
 			
 		} else if (($('#producto').val().indexOf("H2H") < 0) && ($('#producto').val().indexOf("default") < 0)) {
 			//case Swift-bancoRelay/ Swift Fileact		
-			$("#conectividad").append($("<option></option>").attr("value","Seleccionar").text("default"));
+			$("#conectividad").append($("<option></option>").attr("value","default").text("Seleccionar"));
 			$("#conectividad").append($("<option></option>").attr("value","Score").text("Score"));
 			$("#conectividad").append($("<option></option>").attr("value","Macug").text("Macug"));
 			
