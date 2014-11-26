@@ -23,7 +23,7 @@ public class ClientsAction extends Action {
 			throws IOException {
 
 		ClienteDao cDao = ClienteDao.getInstance();
-		List<Cliente> clientes = cDao.getAllNonDeletedClients();
+		List<Cliente> clientes = cDao.getAllNonDeletedClientsAlphabet();
 		
 		
 		
