@@ -157,10 +157,16 @@ public class ProyectoDao {
 		projects = (List<Proyecto>) q.execute();
 		
 		pm.close();
-
-		return projects;
-
 		
+		ProyectoDao pDao = ProyectoDao.getInstance();
+		Proyecto proyecto = null;
+		for(int i = 0; i < projects.size(); i++) {
+			proyecto = projects.get(i);
+			String coste = pDao.getCoste(proyecto);
+			proyecto.setCoste(coste);
+		}
+
+		return projects;	
 	}
 	
 public List<Proyecto> getProjectsByClient(Long id){
