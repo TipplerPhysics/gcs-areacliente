@@ -52,6 +52,7 @@ public class ConectividadServlet extends HttpServlet {
 			String firewall = req.getParameter("firewall");
 			String fin_certificado = req.getParameter("fin_certificado");
 			String fin_conectividad = req.getParameter("fin_conectividad");
+			String estado = req.getParameter("estado");
 			
 			c.setStr_reglas_firewall(firewall);
 			c.setStr_fecha_fin_certificado(fin_certificado);
@@ -64,6 +65,7 @@ public class ConectividadServlet extends HttpServlet {
 			c.setStr_fecha_ini_seguridad(ini_seguridad);
 			c.setKey_proyecto(Long.parseLong(project_id));
 			c.setNombre_proyecto(p.getCod_proyecto());
+			c.setEstado(estado);
 			
 			
 			c.setSeguridad(seguridad);
