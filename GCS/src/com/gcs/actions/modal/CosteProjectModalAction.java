@@ -48,8 +48,6 @@ public class CosteProjectModalAction extends Action {
 			
 			req.setAttribute("gestores_it", gestores_it);
 			req.setAttribute("coste", c);
-			req.setAttribute("git", git_str);
-
 		
 
 		return mapping.findForward("ok");
