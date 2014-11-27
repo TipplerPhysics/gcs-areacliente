@@ -17,23 +17,18 @@ import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.format.VerticalAlignment;
 import jxl.write.Label;
+import jxl.write.Number;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
-import jxl.NumberCell;
-import jxl.write.Number;
-import jxl.format.CellFormat;
-import jxl.write.biff.NumberRecord;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Coste;
-import com.gcs.beans.Demanda;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.CosteDao;
-import com.gcs.dao.DemandaDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
@@ -436,5 +431,17 @@ public class CosteServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 	}
+	
+	
+	/*private void updateProjectCoste(String idProyecto) {
+		CosteDao cDao = CosteDao.getInstance();
+		
+		List<Coste> costes = cDao.getCostesByProject(id);
+		List<Coste> costes = cDao.getCostesByProject(p.getKey().getId());
+		
+		ProyectoDao pDao = ProyectoDao.getInstance();
+		
+		pDao.
+	}*/
 
 }

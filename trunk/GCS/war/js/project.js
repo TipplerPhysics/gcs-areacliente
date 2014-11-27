@@ -22,7 +22,7 @@ function loadCosteModal(){
 		var r = radios[a];
 		if ($(r).parent().hasClass('on')){
 			id = $(r).attr('id').split("radio_")[1];
-			git = $(r).parent().data("git");
+			git = $(r).data("git");
 			sel = true;
 		}
 	}

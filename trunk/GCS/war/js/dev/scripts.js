@@ -738,6 +738,9 @@ function sendEditCoste(){
 	 var $formData = $form.serialize();
 	 var postData= $formData+"&accion=update&id="+ id;
 	 
+	 console.log($('#gestor_it_modal').val());
+	 console.log($('#equipo_modal').val());
+	 
 	 if($form.valid()){
 		 $.ajax(			
 			{
@@ -843,6 +846,7 @@ function editCoste(){
 	
 	$('#fecha_alta_costes_modal').val(fecha_alta);
 	$('#gestor_it_modal').val(gestor_it);
+	console.log('editCoste ' + gestor_it);
 	$('#comentarios_modal').val(comentarios);	
 	$('#num_valoracion_modal').val(num_valoracion);
 	
@@ -1750,7 +1754,7 @@ function loadCosteModal(){
 		var r = radios[a];
 		if ($(r).parent().hasClass('on')){
 			id = $(r).attr('id').split("radio_")[1];
-			git = $(r).parent().data("git");
+			git = $(r).data("git");
 			sel = true;
 		}
 	}
@@ -1960,7 +1964,7 @@ $(function() {
 			
 		} else if (($('#producto').val().indexOf("H2H") < 0) && ($('#producto').val().indexOf("default") < 0)) {
 			//case Swift-bancoRelay/ Swift Fileact		
-			$("#conectividad").append($("<option></option>").attr("value","Seleccionar").text("default"));
+			$("#conectividad").append($("<option></option>").attr("value","default").text("Seleccionar"));
 			$("#conectividad").append($("<option></option>").attr("value","Score").text("Score"));
 			$("#conectividad").append($("<option></option>").attr("value","Macug").text("Macug"));
 			
@@ -2875,24 +2879,24 @@ function drawChecksAreas(str){
 	$.extend($.validator.messages, {
 		required: "Este campo es obligatorio.",
 		remote: "Por favor, rellena este campo.",
-		email: "Por favor, escribe una direcci&oacuten de correo v&aacutelida.(Terminada en @bbva.com)",
-		url: "Por favor, escribe una URL válida.",
-		date: "Por favor, escribe una fecha válida.",
-		dateISO: "Por favor, escribe una fecha (ISO) válida.",
-		number: "Por favor, escribe un n&uacutemero v&aacutelido.",
-		digits: "Por favor, escribe s&oacutelo dígitos.",
-		creditcard: "Por favor, escribe un número de tarjeta válido.",
+		email: "Por favor, escribe una direcci&oacute;n de correo v&aacute;lida.(Terminada en @bbva.com)",
+		url: "Por favor, escribe una URL v&aacute;lida.",
+		date: "Por favor, escribe una fecha v�lida.",
+		dateISO: "Por favor, escribe una fecha (ISO) v�lida.",
+		number: "Por favor, escribe un n&uacutemero v&aacute;lido.",
+		digits: "Por favor, escribe s&oacute;lo d&iacute;gitos.",
+		creditcard: "Por favor, escribe un n&uacute;mero de tarjeta v&aacute;lido.",
 		equalTo: "Por favor, escribe el mismo valor de nuevo.",
-		extension: "Por favor, escribe un valor con una extensión aceptada.",
-		maxlength: $.validator.format("Por favor, no escribas más de {0} caracteres."),
+		extension: "Por favor, escribe un valor con una extensi&oacute;n aceptada.",
+		maxlength: $.validator.format("Por favor, no escribas m&aacute;s de {0} caracteres."),
 		minlength: $.validator.format("Por favor, no escribas menos de {0} caracteres."),
 		rangelength: $.validator.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
 		range: $.validator.format("Por favor, escribe un valor entre {0} y {1}."),
 		max: $.validator.format("Por favor, escribe un valor menor o igual a {0}."),
 		min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}."),
-		nifES: "Por favor, escribe un NIF válido.",
-		nieES: "Por favor, escribe un NIE válido.",
-		cifES: "Por favor, escribe un CIF válido."
+		nifES: "Por favor, escribe un NIF v&aacute;lido.",
+		nieES: "Por favor, escribe un NIE v&aacute;lido.",
+		cifES: "Por favor, escribe un CIF v&aacute;lido."
 	});
 
 	
