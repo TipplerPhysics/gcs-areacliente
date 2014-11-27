@@ -1868,47 +1868,49 @@ function  sendEditProject(){
 
 function modalCliente(){
 	
-	$('#edit_project_form_modal').data("id",id);	
-	
-	var $currentRow = $('#row'+id);
-	var fecha_alta = $currentRow.attr('data-fecha-alta');
-	var nombre = $currentRow.attr('data-nombre');
-	var tipo = $currentRow.attr('data-tipo');
-	var cliente = $currentRow.attr('data-cliente');
-	var clasificacion = $currentRow.attr('data-clasificacion');
-	var gestor_it = $currentRow.attr('data-gestor-it');
-	var gestor_negocio = $currentRow.attr('data-gestor-negocio');
-	var coste = $currentRow.attr('data-coste');
-	
-	var producto = $currentRow.attr('data-producto');
-	var conectividad = $currentRow.attr('data-conectividad');
-	var servicio = $currentRow.attr('data-servicio');
-	
-	var fecha_ini_valoracion = $currentRow.attr('data-fecha-ini-valoracion');
-	var fecha_fin_valoracion = $currentRow.attr('data-fecha-fin-valoracion');
-	
-	var fecha_ini_viabilidad = $currentRow.attr('data-fecha-ini-viabilidad');
-	var fecha_fin_viabilidad = $currentRow.attr('data-fecha-fin-viabilidad');
-	
-	
-	$('#producto_modal').val(producto);
-	$('#conectividad_modal').val(conectividad);
-	$('#servicio_modal').val(servicio);
-	
-	$('#fecha_inicio_valoracion_modal').val(fecha_ini_valoracion);
-	$('#fecha_fin_valoracion_modal').val(fecha_fin_valoracion);
-	
-	$('#fecha_inicio_viabilidad_modal').val(fecha_ini_viabilidad);
-	$('#fecha_fin_viabilidad_modal').val(fecha_fin_viabilidad);
-	
-	$('#fecha_alta_cliente_modal').val(fecha_alta);
-	$('#project_name_modal').val(nombre);
-	$('#tipo_modal').val(tipo);
-	$('#input_cliente_modal').val(cliente);
-	$('#clasificacion_modal').val(clasificacion);
-	$('#gestor_it_modal').val(gestor_it);
-	$('#gestor_negocio_modal').val(gestor_negocio);
-	$('#coste_modal').val(coste);
+	if($('#edit-project-form').length > 0) {
+		// carga datos al formulario de edicion de proyecto
+		$('#edit_project_form_modal').data("id",id);	
+		var $currentRow = $('#row'+id);
+		var fecha_alta = $currentRow.attr('data-fecha-alta');
+		var nombre = $currentRow.attr('data-nombre');
+		var tipo = $currentRow.attr('data-tipo');
+		var cliente = $currentRow.attr('data-cliente');
+		var clasificacion = $currentRow.attr('data-clasificacion');
+		var gestor_it = $currentRow.attr('data-gestor-it');
+		var gestor_negocio = $currentRow.attr('data-gestor-negocio');
+		var coste = $currentRow.attr('data-coste');
+		
+		var producto = $currentRow.attr('data-producto');
+		var conectividad = $currentRow.attr('data-conectividad');
+		var servicio = $currentRow.attr('data-servicio');
+		
+		var fecha_ini_valoracion = $currentRow.attr('data-fecha-ini-valoracion');
+		var fecha_fin_valoracion = $currentRow.attr('data-fecha-fin-valoracion');
+		
+		var fecha_ini_viabilidad = $currentRow.attr('data-fecha-ini-viabilidad');
+		var fecha_fin_viabilidad = $currentRow.attr('data-fecha-fin-viabilidad');
+		
+		
+		$('#producto_modal').val(producto);
+		$('#conectividad_modal').val(conectividad);
+		$('#servicio_modal').val(servicio);
+		
+		$('#fecha_inicio_valoracion_modal').val(fecha_ini_valoracion);
+		$('#fecha_fin_valoracion_modal').val(fecha_fin_valoracion);
+		
+		$('#fecha_inicio_viabilidad_modal').val(fecha_ini_viabilidad);
+		$('#fecha_fin_viabilidad_modal').val(fecha_fin_viabilidad);
+		
+		$('#fecha_alta_cliente_modal').val(fecha_alta);
+		$('#project_name_modal').val(nombre);
+		$('#tipo_modal').val(tipo);
+		$('#input_cliente_modal').val(cliente);
+		$('#clasificacion_modal').val(clasificacion);
+		$('#gestor_it_modal').val(gestor_it);
+		$('#gestor_negocio_modal').val(gestor_negocio);
+		$('#coste_modal').val(coste);
+	}
 	
 	showModal();
 	

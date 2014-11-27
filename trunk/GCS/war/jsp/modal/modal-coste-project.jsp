@@ -41,7 +41,7 @@
 									<option value="1" <c:if test="${coste.num_valoracion eq '1'}">selected</c:if>>1</option>
 									<option value="2" <c:if test="${coste.num_valoracion eq '2'}">selected</c:if>>2</option>
 									<option value="3" <c:if test="${coste.num_valoracion eq '3'}">selected</c:if>>3</option>
-									<option value="4" <c:if test="${coste.num_valoracion eq '1'}">selected</c:if>>4</option>
+									<option value="4" <c:if test="${coste.num_valoracion eq '4'}">selected</c:if>>4</option>
 								</select>
 							</div>
 						</div>
@@ -83,7 +83,7 @@
 								<select class="selectpicker selected" id="gestor_it_modal" name="gestor_it">	
 								
 									<c:forEach items="${gestores_it}" var="user">
-										<option value="${user.key.id}" <c:if test="${coste.gestor_it_key eq git}">selected</c:if>>${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
+										<option value="${user.key.id}" <c:if test="${coste.gestor_it_key eq user.key.id}">selected</c:if>>${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
 								</select>
 							</div>
@@ -155,13 +155,13 @@
 						</div>
 						
 						<div class="form-field total">
-						<span class="lbl"></span>
-							<div class="input total">
+						<span class="lbl">Total:</span>
+							<div class="input">
 								<input id="total_horas_modal" name="total_horas" class="horas" value="${coste.horas_total}" required aria-required="true"/>
 								<input id="total_coste_modal" name="total_coste" class="coste" value="${coste.coste_total}"/>
 							</div>
 							<div class="input labels">
-								<span class="lbl2">Total Horas<span class="required-asterisk">*</span></span><span class="lbl2">Total Coste</span>
+								<span class="lbl req">Horas<span class="required-asterisk">*</span></span><span class="lbl">Coste</span>
 							</div>
 						</div>
 					</div>					 

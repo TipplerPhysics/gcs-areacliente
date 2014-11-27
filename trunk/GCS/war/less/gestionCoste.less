@@ -1,6 +1,6 @@
 #alta_proyecto .modal_ajax.nuevo_coste, .modal_ajax.nuevo_coste, {
 	.form-field-divider.right {
-	    height: 276px;
+	    height: 260px;
 	}
 
 	.form-field{
@@ -44,10 +44,12 @@
 			> .lbl{
 				display:inline-block;
 				margin-top:10px;
+				margin-bottom:10px;
 			}
 			
 			> .lbl.titulo{
 				display:block;
+				margin-bottom: 10px;
 			}
 		
 			> .form-field{
@@ -59,7 +61,11 @@
 					display: inline-block;
 					
 					&:first-child{
-						margin-right:20px;
+						margin-right:25px;
+					}
+					
+					&.req {
+						margin-right:12px;
 					}
 					
 					&.total{
@@ -90,6 +96,10 @@
 		
 			.lbl{
 				display: block;
+				
+				&.strong {
+					font-weight: bold;
+				}
 			}
 			
 			div.input{
@@ -123,6 +133,10 @@
 		display: inline-block;
 		color: #333;
     	line-height: 1.42857;
+    	
+    	&.strong {
+			font-weight: bold;
+		}
 	}
 	
 	
@@ -205,7 +219,10 @@
 				width:100%;
 			
 				.lbl:first-child{
-					margin-right:32px;
+					margin-right:25px;
+				}
+				.lbl.req {
+					margin-right:12px;
 				}
 			}
 		

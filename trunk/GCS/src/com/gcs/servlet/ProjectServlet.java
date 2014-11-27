@@ -169,7 +169,7 @@ public class ProjectServlet extends HttpServlet{
 				s.addCell(new Label(4, aux, Integer.toString(p.getClasificacion())));
 				s.addCell(new Label(5, aux, p.getGestor_it_name()));
 				s.addCell(new Label(6, aux, p.getGestor_negocio_name()));
-				s.addCell(new Label(7, aux, p.getCoste() + " â‚¬"));
+				s.addCell(new Label(7, aux, p.getCoste() + " €"));
 				
 				s.addCell(new Label(8, aux, p.getProducto()));
 				s.addCell(new Label(9, aux, p.getConectividad()));
