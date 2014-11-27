@@ -18,10 +18,10 @@ public class StaticConfig {
 					new Config("Negocio - Global Customer Service (Incluye HDR)", "Negocio - Global Customer Service (Incluye HDR)"),
 					new Config("Negocio - Global Product", "Negocio - Global Product"),
 					new Config("Negocio - Global Sales", "Negocio - Global Sales"),
-					new Config("IT C&IB - CTO - Soluciones T&eacute;cnicas", "IT C&IB - CTO - Soluciones T&eacute;cnicas"),
+					new Config("IT C&IB - CTO - Soluciones T閏nicas", "IT C&IB - CTO - Soluciones T閏nicas"),
 					new Config("IT C&IB - CTO - Arquitectura Funcional", "IT C&IB - CTO - Arquitectura Funcional"),
 					new Config("IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)", "IT C&IB - CTO - Operaciones y Soporte (Sop Swift, CAU)"),
-					new Config("IT C&IB - Control y Gesti&oacute;n", "IT C&IB - Control y Gesti&oacute;n"),
+					new Config("IT C&IB - Control y Gesti髇", "IT C&IB - Control y Gesti髇"),
 					new Config("IT C&IB - E- commerce C&IB", "IT C&IB - E- commerce C&IB"),
 					new Config("IT C&IB - GCC Lending GTB & CFO", "IT C&IB - GCC Lending GTB & CFO"),
 					new Config("IT C&IB - GTB - Global Customer Solutions", "IT C&IB - GTB - Global Customer Solutions"),
@@ -34,15 +34,15 @@ public class StaticConfig {
 					new Config("Saldos y movimientos", "Saldos y movimientos"),
 					new Config("Pago a Proveedores", "Pago a Proveedores"),
 					new Config("Transferencias", "Transferencias"),
-					new Config("N贸minas", "N贸minas"),
-					new Config("D茅bito Directo", "D茅bito Directo"),
-					new Config("Publicaci贸n de deuda de recaudos (Cliente-Banco)", "Publicaci贸n de deuda de recaudos (Cliente-Banco)"),
-					new Config("Custodia de t铆tulos", "Custodia de t铆tulos"),
-					new Config("Recaudaciones Hist贸rico", "Recaudaciones Hist贸rico"),
+					new Config("N髆inas", "N髆inas"),
+					new Config("D閎ito Directo", "D閎ito Directo"),
+					new Config("Publicaci髇 de deuda de recaudos (Cliente-Banco)", "Publicaci髇 de deuda de recaudos (Cliente-Banco)"),
+					new Config("Custodia de t韙ulos", "Custodia de t韙ulos"),
+					new Config("Recaudaciones Hist髍ico", "Recaudaciones Hist髍ico"),
 					new Config("Recaudo Deuda Publi", "Recaudo Deuda Publi"),
 					new Config("Recaudo FMT Extendido", "Recaudo FMT Extendido"),
-					new Config("Publicaci贸n Recaudadora CUR", "Publicaci贸n Recaudadora CUR"),
-					new Config("Informaci贸n de cheques", "Informaci贸n de cheques")
+					new Config("Publicaci髇 Recaudadora CUR", "Publicaci髇 Recaudadora CUR"),
+					new Config("Informaci髇 de cheques", "Informaci髇 de cheques")
 					));
 	
 	static public ArrayList<Config> servicios_belgica =
@@ -55,8 +55,8 @@ public class StaticConfig {
 	static public ArrayList<Config> servicios_chile =
 			new ArrayList<Config>(Arrays.asList(
 					new Config("Pago a Proveedores", "Pago a Proveedores"),
-					new Config("Transferencias Dom茅sticas", "Transferencias Dom茅sticas"),
-					new Config("N贸minas", "N贸minas")					
+					new Config("Transferencias Dom閟ticas", "Transferencias Dom閟ticas"),
+					new Config("N髆inas", "N髆inas")					
 					));
 	
 	static public ArrayList<Config> servicios_colombia =
@@ -64,7 +64,7 @@ public class StaticConfig {
 					new Config("Pago a Proveedores", "Pago a Proveedores"),
 					new Config("Transferencias", "Transferencias"),
 					new Config("Recaudos", "Recaudos"),
-					new Config("N贸minas", "N贸minas")					
+					new Config("N髆inas", "N髆inas")					
 					));
 	
 	static public ArrayList<Config> servicios_espania =
@@ -73,16 +73,16 @@ public class StaticConfig {
 					new Config("Recibos domiciliados", "Recibos domiciliados"),
 					new Config("Devol.efectos descontados en fichero", "Devol.efectos descontados en fichero"),
 					new Config("Efectos al descuento", "Efectos al descuento"),	
-					new Config("N贸minas", "N贸minas"),	
-					new Config("Transferencias dom茅sticas", "Transferencias dom茅sticas"),	
+					new Config("N髆inas", "N髆inas"),	
+					new Config("Transferencias dom閟ticas", "Transferencias dom閟ticas"),	
 					new Config("Cheques", "Cheques"),	
 					new Config("Transferencias urgentes (OMF)", "Transferencias urgentes (OMF)"),	
-					new Config("N贸minas en fichero 34.1", "N贸minas en fichero 34.1"),	
+					new Config("N髆inas en fichero 34.1", "N髆inas en fichero 34.1"),	
 					new Config("Cheques en fichero 34.1", "Cheques en fichero 34.1"),	
 					new Config("Transferencias en fichero 34.1", "Transferencias en fichero 34.1"),	
 					new Config("Transferencia sepa 34,12", "Transferencia sepa 34,12"),	
 					new Config("Transferencias EUR (FIT)", "Transferencias EUR (FIT)"),	
-					new Config("N贸minas (FIM)", "N贸minas (FIM)"),	
+					new Config("N髆inas (FIM)", "N髆inas (FIM)"),	
 					new Config("Saldos y movimientos", "Saldos y movimientos"),	
 					new Config("Anticipos de credito", "Anticipos de credito"),	
 					new Config("Devoluciones de antic.cred.via fichero", "Devoluciones de antic.cred.via fichero"),	
@@ -90,11 +90,11 @@ public class StaticConfig {
 					new Config("Pagos certificados", "Pagos certificados"),	
 					new Config("Confirming", "Confirming"),
 					new Config("Pagos domiciliados", "Pagos domiciliados"),
-					new Config("Informaci贸n facturas factoring", "Informaci贸n facturas factoring"),
+					new Config("Informaci髇 facturas factoring", "Informaci髇 facturas factoring"),
 					new Config("Factoring", "Factoring"),
 					new Config("Confirming en divisa", "Confirming en divisa"),
-					new Config("Informaci贸n l铆nea confirming", "Informaci贸n l铆nea confirming"),
-					new Config("Mvtos.tarjeta cr茅dito en fichero", "Mvtos.tarjeta cr茅dito en fichero"),
+					new Config("Informaci髇 l韓ea confirming", "Informaci髇 l韓ea confirming"),
+					new Config("Mvtos.tarjeta cr閐ito en fichero", "Mvtos.tarjeta cr閐ito en fichero"),
 					new Config("Transferencias Internacionales", "Transferencias Internacionales"),
 					new Config("Euroconfirming", "Euroconfirming"),
 					new Config("Adeudos directos C19.14 SEPA", "Adeudos directos C19.14 SEPA"),
@@ -103,15 +103,15 @@ public class StaticConfig {
 					new Config("Adeudos directos C19.44 SEPA", "Adeudos directos C19.44 SEPA"),
 					new Config("C19.44 Cancelaciones/Retrocesiones SEPA", "C19.44 Cancelaciones/Retrocesiones SEPA"),
 					new Config("Impag.Cuaderno 19.44 (SEPA B2B)", "Impag.Cuaderno 19.44 (SEPA B2B)"),
-					new Config("Mvtos.del d铆a en fichero (MT942)", "Mvtos.del d铆a en fichero (MT942)"),
-					new Config("Infor Facturaci贸n Comercios en fichero", "Infor Facturaci贸n Comercios en fichero")				
+					new Config("Mvtos.del d韆 en fichero (MT942)", "Mvtos.del d韆 en fichero (MT942)"),
+					new Config("Infor Facturaci髇 Comercios en fichero", "Infor Facturaci髇 Comercios en fichero")				
 					));
 	
 	static public ArrayList<Config> servicios_uk =
 			new ArrayList<Config>(Arrays.asList(
-					new Config("Pagos chaps-tesoreria mismo d铆a londres", "Pagos chaps-tesoreria mismo d铆a londres"),
+					new Config("Pagos chaps-tesoreria mismo d韆 londres", "Pagos chaps-tesoreria mismo d韆 londres"),
 					new Config("Pagos nacionales londres", "Pagos nacionales londres"),
-					new Config("Pagos n贸minas bacs londres", "Pagos n贸minas bacs londres"),
+					new Config("Pagos n髆inas bacs londres", "Pagos n髆inas bacs londres"),
 					new Config("Pagos internacionales londres", "Pagos internacionales londres"),
 					new Config("Transferencias SEPA Londres", "Transferencias SEPA Londres"),
 					new Config("Mvtos. Ctas. Pers. en Fichero", "Mvtos. Ctas. Pers. en Fichero")
@@ -120,8 +120,8 @@ public class StaticConfig {
 	static public ArrayList<Config> servicios_mexico =
 			new ArrayList<Config>(Arrays.asList(
 					new Config("Pago a Proveedores (SIT)", "Pago a Proveedores (SIT)"),
-					new Config("N贸minas", "N贸minas"),
-					new Config("Protecci贸n de Cheques", "Protecci贸n de Cheques"),
+					new Config("N髆inas", "N髆inas"),
+					new Config("Protecci髇 de Cheques", "Protecci髇 de Cheques"),
 					new Config("Domiciliaciones", "Domiciliaciones"),			
 					new Config("ABC Proveedores (crediproveedores/Confirming)", "ABC Proveedores (crediproveedores/Confirming)"),	
 					new Config("ABC Documentos (crediproveedores/Confirming)", "ABC Documentos (crediproveedores/Confirming)"),	
@@ -133,19 +133,19 @@ public class StaticConfig {
 	static public ArrayList<Config> servicios_eeuu =
 			new ArrayList<Config>(Arrays.asList(
 					new Config("Pagos (payment) - n.y.", "Pagos (payment) - n.y."),
-					new Config("Pagos Dom茅sticos ACH NY", "Pagos Dom茅sticos ACH NY"),
+					new Config("Pagos Dom閟ticos ACH NY", "Pagos Dom閟ticos ACH NY"),
 					new Config("Saldos y movimientos", "Saldos y movimientos")
 					));
 	
 	static public ArrayList<Config> servicios_francia =
 			new ArrayList<Config>(Arrays.asList(
-					new Config("Pago n贸minas - Paris", "Pago n贸minas - Paris"),
+					new Config("Pago n髆inas - Paris", "Pago n髆inas - Paris"),
 					new Config("Mvtos. Ctas. Pers. en Fichero", "Mvtos. Ctas. Pers. en Fichero"),
 					new Config("Saldos y movimientos- ETEBAC", "Saldos y movimientos- ETEBAC"),
 					new Config("Transferencias tesoreria - paris", "Transferencias tesoreria - paris"),
 					new Config("Pago proveedores - paris", "Pago proveedores - paris"),
-					new Config("SEPA Par铆s", "SEPA Par铆s"),
-					new Config("N贸minas SEPA Par铆s", "N贸minas SEPA Par铆s"),
+					new Config("SEPA Par韘", "SEPA Par韘"),
+					new Config("N髆inas SEPA Par韘", "N髆inas SEPA Par韘"),
 					new Config("Pagos internacionales - paris", "Pagos internacionales - paris")
 					
 					
@@ -155,10 +155,10 @@ public class StaticConfig {
 			new ArrayList<Config>(Arrays.asList(
 					new Config("Pago a Proveedores", "Pago a Proveedores"),
 					new Config("Transferencias Domesticas", "Transferencias Domesticas"),
-					new Config("N贸minas", "N贸minas"),
+					new Config("N髆inas", "N髆inas"),
 					new Config("Factoring", "Factoring"),
 					new Config("Transferencias Internacionales (TEX Macug)", "Transferencias Internacionales (TEX Macug)"),
-					new Config("TEC Macug (confirmaci贸n de trf. Int.)/CONFIRMACION MCUG", "TEC Macug (confirmaci贸n de trf. Int.)/CONFIRMACION MCUG")
+					new Config("TEC Macug (confirmaci髇 de trf. Int.)/CONFIRMACION MCUG", "TEC Macug (confirmaci髇 de trf. Int.)/CONFIRMACION MCUG")
 				));
 	
 
@@ -166,24 +166,24 @@ public class StaticConfig {
 			new ArrayList<Config>(Arrays.asList(
 					new Config("Transferencias Domesticas", "Transferencias Domesticas"),
 					new Config("Ret. Tra. domestic", "Ret. Tra. domestic"),
-					new Config("N贸minas (ordenados)", "N贸minas (ordenados)"),
+					new Config("N髆inas (ordenados)", "N髆inas (ordenados)"),
 					new Config("Ret. Ordenados", "Ret. Ordenados"),
-					new Config("Transferencias Dom茅sticas Urgentes", "Transferencias Dom茅sticas Urgentes"),
+					new Config("Transferencias Dom閟ticas Urgentes", "Transferencias Dom閟ticas Urgentes"),
 					new Config("Transferencias SEPA", "Transferencias SEPA"),
 					new Config("Retrocesiones Transferencias SEPA", "Retrocesiones Transferencias SEPA"),
-					new Config("N贸minas SEPA", "N贸minas SEPA"),
-					new Config("Retrocesiones N贸minas SEPA", "Retrocesiones N贸minas SEPA"),
+					new Config("N髆inas SEPA", "N髆inas SEPA"),
+					new Config("Retrocesiones N髆inas SEPA", "Retrocesiones N髆inas SEPA"),
 					new Config("Transferencias urgentes", "Transferencias urgentes"),
 					new Config("TRF Urgentes (retorno)", "TRF Urgentes (retorno)"),
-					new Config("N贸minas urgentes", "N贸minas urgentes"),
+					new Config("N髆inas urgentes", "N髆inas urgentes"),
 					new Config("Transferencias Internacionales", "Transferencias Internacionales"),
 					new Config("Retorno TRF Intern", "Retorno TRF Intern"),
 					new Config("Confirming", "Confirming"),
 					new Config("Retorno confirming", "Retorno confirming"),
-					new Config("SEPA DD - Rejei莽oes", "SEPA DD - Rejei莽oes"),
-					new Config("SEPA DD - Devolu莽oes", "SEPA DD - Devolu莽oes"),
+					new Config("SEPA DD - Rejei鏾es", "SEPA DD - Rejei鏾es"),
+					new Config("SEPA DD - Devolu珲es", "SEPA DD - Devolu珲es"),
 					new Config("SEPA DD - Reembolsos", "SEPA DD - Reembolsos"),
-					new Config("SEPA DD - Devolu莽ao Reversoes", "SEPA DD - Devolu莽ao Reversoes"),
+					new Config("SEPA DD - Devolu鏰o Reversoes", "SEPA DD - Devolu鏰o Reversoes"),
 					new Config("Saldos y movimientos", "Saldos y movimientos")
 				));
 	
@@ -191,7 +191,7 @@ public class StaticConfig {
 			new ArrayList<Config>(Arrays.asList(
 					new Config("Pago a Proveedores", "Pago a Proveedores"),
 					new Config("Transferencias", "Transferencias"),
-					new Config("N贸minas", "N贸minas")					
+					new Config("N髆inas", "N髆inas")					
 				));
 	
 	

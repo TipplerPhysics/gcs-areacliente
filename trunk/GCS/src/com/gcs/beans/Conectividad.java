@@ -67,6 +67,9 @@ public class Conectividad {
 	@Persistent
 	private String str_fecha_fin_seguridad;
 	
+	@Persistent
+	private String estado;
+	
 	public Conectividad() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -224,6 +227,14 @@ public class Conectividad {
 
 	public void setFecha_fin_conectividad(Date fecha_fin_conectividad) {
 		this.fecha_fin_conectividad = fecha_fin_conectividad;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	@Persistent
