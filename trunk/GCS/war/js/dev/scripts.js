@@ -738,9 +738,6 @@ function sendEditCoste(){
 	 var $formData = $form.serialize();
 	 var postData= $formData+"&accion=update&id="+ id;
 	 
-	 console.log($('#gestor_it_modal').val());
-	 console.log($('#equipo_modal').val());
-	 
 	 if($form.valid()){
 		 $.ajax(			
 			{
@@ -846,7 +843,6 @@ function editCoste(){
 	
 	$('#fecha_alta_costes_modal').val(fecha_alta);
 	$('#gestor_it_modal').val(gestor_it);
-	console.log('editCoste ' + gestor_it);
 	$('#comentarios_modal').val(comentarios);	
 	$('#num_valoracion_modal').val(num_valoracion);
 	
