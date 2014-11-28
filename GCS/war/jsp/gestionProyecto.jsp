@@ -151,28 +151,28 @@
 					<div class="form-field">
 						<span class="lbl">Fecha inicio especificaciones:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_valoracion' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo"  data-target-id='fecha_fin_valoracion' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha fin especificaciones:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_valoracion' name="fecha_fin_valoracion" id="fecha_fin_valoracion">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_valoracion" id="fecha_fin_valoracion">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha inicio viabilidad:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_viabilidad' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_viabilidad' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha fin viabilidad:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_viabilidad' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_viabilidad" id="fecha_fin_viabilidad">
 						</div>
 					</div>
 					

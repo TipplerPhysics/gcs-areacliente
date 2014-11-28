@@ -110,14 +110,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio integradas:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_integradas}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_integradas_modal' name="fecha_inicio_integradas" id="fecha_inicio_integradas_modal">
+								<input type="text" value="${servicio.str_fecha_ini_integradas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas_modal' name="fecha_inicio_integradas" id="fecha_inicio_integradas_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_fin_integradas}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_integradas_modal' name="fecha_fin_integradas" id="fecha_fin_integradas_modal">
+								<input type="text" value="${servicio.str_fecha_fin_integradas}" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas_modal">
 							</div>
 						</div>
 						
@@ -129,28 +129,28 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio aceptación:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_aceptacion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_aceptacion_modal' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion_modal">
+								<input type="text" value="${servicio.str_fecha_ini_aceptacion}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_aceptacion_modal' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">	
 							<span class="lbl">Fecha fin aceptación:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_fin_aceptacion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_aceptacion_modal' name="fecha_fin_aceptacion" id="fecha_fin_aceptacion_modal">
+								<input type="text" value="${servicio.str_fecha_fin_aceptacion}" size="16" maxlength="25" class="datepicker" name="fecha_fin_aceptacion" id="fecha_fin_aceptacion_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha inicio validación:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_validacion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_validacion_modal' name="fecha_inicio_validacion" id="fecha_inicio_validacion_modal">
+								<input type="text" value="${servicio.str_fecha_ini_validacion}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_validacion_modal' name="fecha_inicio_validacion" id="fecha_inicio_validacion_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin validación:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_fin_validacion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_validacion_modal' name="fecha_fin_validacion" id="fecha_fin_validacion_modal">
+								<input type="text" value="${servicio.str_fecha_fin_validacion}" size="16" maxlength="25" class="datepicker" name="fecha_fin_validacion" id="fecha_fin_validacion_modal">
 							</div>
 						</div>
 						
@@ -164,14 +164,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio primera operación:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_primera_operacion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_primera_op_modal' name="fecha_inicio_primera_op" id="fecha_inicio_primera_op_modal">
+								<input type="text" value="${servicio.str_fecha_ini_primera_operacion}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_primera_op_modal' name="fecha_inicio_primera_op" id="fecha_inicio_primera_op_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin primera operación:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_fin_primera_operacion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_primera_op_modal' name="fecha_fin_primera_op" id="fecha_fin_primera_op_modal">
+								<input type="text" value="${servicio.str_fecha_fin_primera_operacion}" size="16" maxlength="25" class="datepicker" name="fecha_fin_primera_op" id="fecha_fin_primera_op_modal">
 							</div>
 						</div>
 						
@@ -192,14 +192,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha estimada pruebas:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_pruebas}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_pruebas_modal' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas_modal">
+								<input type="text" value="${servicio.str_fecha_ini_pruebas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_pruebas_modal' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha prevista fin pruebas:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_fecha_fin_pruebas}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_pruebas_modal' name="fecha_fin_pruebas" id="fecha_fin_pruebas_modal">
+								<input type="text" value="${servicio.str_fecha_fin_pruebas}" size="16" maxlength="25" class="datepicker" name="fecha_fin_pruebas" id="fecha_fin_pruebas_modal">
 							</div>
 						</div>
 						

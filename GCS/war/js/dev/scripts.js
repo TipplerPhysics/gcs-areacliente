@@ -1397,6 +1397,7 @@ var initDatepickers = function() {
 		}
 		if($datepicker.hasClass('fromTo')){
 			var $targetDatepicker = $('#'+$datepicker.data('target-id'));
+			
 			$datepicker.on('change.fromTo', function(){
 				$targetDatepicker.datepicker('option', 'minDate', $datepicker.datepicker('getDate'));
 			});

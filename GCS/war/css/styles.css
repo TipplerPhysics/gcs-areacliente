@@ -697,6 +697,7 @@ label.ui-marmots-label-radio {
 }
 .usersTable > .table > thead:first-child > tr:first-child > th {
   border-top: 1px solid #dcdcdc !important;
+  white-space: nowrap;
 }
 .usersTable > .table > #myTable .editing,
 .usersTable > .table > #myTable .extended-row {

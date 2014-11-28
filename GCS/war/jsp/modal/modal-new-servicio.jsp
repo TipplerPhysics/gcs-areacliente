@@ -108,14 +108,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_integradas' name="fecha_fin_integradas" id="fecha_fin_integradas">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
 							</div>
 						</div>
 						
@@ -127,28 +127,28 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio aceptación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_aceptacion' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_aceptacion' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion">
 							</div>
 						</div>
 						
 						<div class="form-field">	
 							<span class="lbl">Fecha fin aceptación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_aceptacion' name="fecha_fin_aceptacion" id="fecha_fin_aceptacion">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_aceptacion" id="fecha_fin_aceptacion">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha inicio validación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_validacion' name="fecha_inicio_validacion" id="fecha_inicio_validacion">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_validacion' name="fecha_inicio_validacion" id="fecha_inicio_validacion">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin validación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_validacion' name="fecha_fin_validacion" id="fecha_fin_validacion">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_validacion" id="fecha_fin_validacion">
 							</div>
 						</div>
 						
@@ -162,14 +162,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha inicio primera operación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" class="datepicker" data-target-id='fecha_inicio_primera_op' name="fecha_inicio_primera_op" id="fecha_inicio_primera_op">
+								<input type="text" value="" size="16" class="datepicker fromTo" data-target-id='fecha_fin_primera_op' name="fecha_inicio_primera_op" id="fecha_inicio_primera_op">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha fin primera operación:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_primera_op' name="fecha_fin_primera_op" id="fecha_fin_primera_op">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_primera_op" id="fecha_fin_primera_op">
 							</div>
 						</div>
 						
@@ -190,14 +190,14 @@
 						<div class="form-field">
 							<span class="lbl">Fecha estimada pruebas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_pruebas' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_pruebas' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha prevista fin pruebas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_pruebas' name="fecha_fin_pruebas" id="fecha_fin_pruebas">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_pruebas" id="fecha_fin_pruebas">
 							</div>
 						</div>
 						
