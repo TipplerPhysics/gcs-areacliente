@@ -104,11 +104,11 @@ public class ConectividadDao {
 		Transaction transaction = pManager.currentTransaction();
 		transaction.begin();
 		
-		String queryStr = "select from " + Conectividad.class.getName();
-				//+ " where estado == ':p1'";
+		String queryStr = "select from " + Conectividad.class.getName()
+				+ " where estado == '" + estado +  "'";
 		
 		@SuppressWarnings({ "unchecked", "unused" })
-		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute(estado);
+		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute();
 		
 		if (conectividades.isEmpty()) {
 		
@@ -124,8 +124,7 @@ public class ConectividadDao {
 		transaction.begin();
 		
 		String queryStr = "select from " + Conectividad.class.getName()
-				//+ " where estadoImplantacion  =="+EstadoImplantacion;
-		+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
+				+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
 		
 		@SuppressWarnings({ "unchecked", "unused" })
 		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute();

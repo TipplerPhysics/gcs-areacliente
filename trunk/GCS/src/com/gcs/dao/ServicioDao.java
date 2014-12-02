@@ -171,17 +171,15 @@ public List<Servicio> getServiciosByProject(Long id) {
 	}
 	
 	public List<Servicio> getServiciosByEstado(String estado){
-		
-		
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		Transaction transaction = pManager.currentTransaction();
 		transaction.begin();
 		
-		String queryStr = "select from " + Servicio.class.getName();
-				//+ " where estado like ':p1'";
+		String queryStr = "select from " + Servicio.class.getName()
+				+ " where estado == '" + estado +  "'";
 		
 		@SuppressWarnings({ "unchecked", "unused" })
-		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute(estado);
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
 		
 		if (servicios.isEmpty()) {
 		
@@ -190,36 +188,14 @@ public List<Servicio> getServiciosByProject(Long id) {
 		return servicios;
 	}
 	
-	/*public Servicio getServicioByEstadoImplantacion(String EstadoImplantacion){
-		
-		Servicio c = new Servicio();
-		
-		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
-		
-		String queryStr = "select from " + Servicio.class.getName()
-				+ " where estadoImplantacion  =="+EstadoImplantacion;
-		
-		@SuppressWarnings({ "unchecked", "unused" })
-		List<Servicio> servicio = (List<Servicio>) pManager.newQuery(queryStr).execute(EstadoImplantacion);
-		
-		if (servicio.isEmpty()) {
-		
-			c = null;
-		}
-		return c;
-	}*/
 	
-public List<Servicio> getServicioEnCurso(){
+	public List<Servicio> getServicioEnCurso(){
 		
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		Transaction transaction = pManager.currentTransaction();
 		transaction.begin();
 		
-		String queryStr = "select from " + Servicio.class.getName()
-				//+ " where estadoImplantacion  =="+EstadoImplantacion;
-		//+ " where estado  == 'Pendiente Impl.' OR estado  == 'Penny Test' AND estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
+		String queryStr = "select from " + Servicio.class.getName()				
 		+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
 				
 		@SuppressWarnings({ "unchecked", "unused" })
