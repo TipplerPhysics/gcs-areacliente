@@ -47,7 +47,6 @@ public class ClienteServlet extends HttpServlet {
 		String accion = req.getParameter("accion");
 
 		try {
-
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 			String usermail = (String) sesion.getAttribute("usermail");

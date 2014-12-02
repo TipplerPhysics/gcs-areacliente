@@ -70,6 +70,18 @@ public class Conectividad {
 	@Persistent
 	private String estado;
 	
+	@Persistent
+	private String estadoImplantacion;
+	
+	@Persistent
+	private String estadoSubida;
+	
+	@Persistent
+	private String detalleSubida;
+	
+	@Persistent
+	private Boolean subidaCalendada;
+	
 	public Conectividad() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -251,5 +263,34 @@ public class Conectividad {
 	@Persistent
 	private String str_fecha_fin_conectividad;
 	
+	public String getEstadoImplantacion() {
+		return estadoImplantacion;
+	}
+
+	public void setEstadoImplantacion(String estadoImplantacion) {
+		this.estadoImplantacion = estadoImplantacion;
+	}
+	public String getEstadoSubida() {
+		return estadoSubida;
+	}
+
+	public void setEstadoSubida(String estadoSubida) {
+		this.estadoSubida = estadoSubida;
+	}
 	
+	public String getdetalleSubida() {
+		return detalleSubida;
+	}
+
+	public void setdetalleSubida(String detalleSubida) {
+		this.detalleSubida = detalleSubida;
+	}
+	
+	public Boolean subidaCalendada() {
+		return subidaCalendada;
+	}
+
+	public void setsubidaCalendada(Boolean subidaCalendada) {
+		this.subidaCalendada = subidaCalendada;
+	}
 }
