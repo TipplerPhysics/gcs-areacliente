@@ -207,4 +207,20 @@ public List<Servicio> getServiciosByProject(Long id) {
 		}
 		return servicios;
 	}
+	
+public Servicio getServicioById(String key){
+		
+	 Long keyAux = Long.parseLong(key);
+	
+	 PersistenceManager pManager = PMF.get().getPersistenceManager();
+	 Servicio servicio_temp = pManager.getObjectById(Servicio.class, keyAux);	      
+	 Servicio servicio = pManager.detachCopy(servicio_temp);  
+     pManager.close();
+	
+	
+			
+	
+	return servicio;
+		
+	}
 }

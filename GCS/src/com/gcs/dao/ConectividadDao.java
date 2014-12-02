@@ -8,6 +8,7 @@ import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
+import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
 
@@ -134,6 +135,21 @@ public class ConectividadDao {
 			conectividades = null;
 		}
 		return conectividades;
+	}
+	
+	public Conectividad getConectividadById(String key){
+		
+		 Long keyAux = Long.parseLong(key);		
+		 PersistenceManager pManager = PMF.get().getPersistenceManager();
+		 Conectividad conectividad_temp = pManager.getObjectById(Conectividad.class, keyAux);	      
+		 Conectividad conectividad = pManager.detachCopy(conectividad_temp);  
+	     pManager.close();
+		
+		
+				
+		
+		return conectividad;
+		
 	}
 
 }
