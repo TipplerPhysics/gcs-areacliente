@@ -18,6 +18,18 @@ public class Implantacion {
 	private Long clientekey;
 	
 	@Persistent
+	private Key conectividadkey;
+	
+	@Persistent
+	private Key serviciokey;
+	
+	@Persistent
+	private Long proyectokey;
+	
+	@Persistent
+	private Date fecha_implantacion;
+	
+	@Persistent
 	private String clienteName;
 	
 	@Persistent
@@ -25,6 +37,9 @@ public class Implantacion {
 	
 	@Persistent
 	private String gestor_it_name;
+	
+	@Persistent
+	private String estado;
 	
 	@Persistent
 	private String estadoSubida;
@@ -52,6 +67,13 @@ public class Implantacion {
 
 	public void setClienteName(String clienteName) {
 		this.clienteName = clienteName;
+	}
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	public String getEstadoSubida() {
@@ -125,6 +147,36 @@ public class Implantacion {
 
 	public void setClientekey(Long clientekey) {
 		this.clientekey = clientekey;
+	}
+	public Key getConectividadkey() {
+		return conectividadkey;
+	}
+
+	public void setConectividadkey(Key conectividadkey) {
+		this.conectividadkey = conectividadkey;
+	}
+	public Key getServiciokey() {
+		return serviciokey;
+	}
+
+	public void setServiciokey(Key serviciokey) {
+		this.serviciokey = serviciokey;
+	}
+	
+	public Long getProyectokey() {
+		return proyectokey;
+	}
+
+	public void setProyectokey(Long proyectokey) {
+		this.proyectokey = proyectokey;
+	}
+	
+	public Date getFecha_implantacion() {
+		return fecha_implantacion;
+	}
+
+	public void setFecha_implantacion(Date fecha_implantacion) {
+		this.fecha_implantacion = fecha_implantacion;
 	}
 	public Long getGestor_negocio() {
 		return gestor_negocio;
