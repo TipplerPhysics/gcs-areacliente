@@ -12,19 +12,13 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Implantacion;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
-import com.gcs.beans.User;
-import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
-import com.gcs.dao.ImplantacionDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
-import com.gcs.dao.UserDao;
-import com.gcs.utils.Utils;
 
 public class RegistroImplantacionesAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
