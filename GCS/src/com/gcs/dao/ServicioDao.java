@@ -8,6 +8,7 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
 import com.gcs.beans.Proyecto;
@@ -167,5 +168,67 @@ public List<Servicio> getServiciosByProject(Long id) {
 		}
 		
 		
+	}
+	
+	public List<Servicio> getServiciosByEstado(String estado){
+		
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+		
+		String queryStr = "select from " + Servicio.class.getName();
+				//+ " where estado like ':p1'";
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute(estado);
+		
+		if (servicios.isEmpty()) {
+		
+			servicios = null;
+		}
+		return servicios;
+	}
+	
+	/*public Servicio getServicioByEstadoImplantacion(String EstadoImplantacion){
+		
+		Servicio c = new Servicio();
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+		
+		String queryStr = "select from " + Servicio.class.getName()
+				+ " where estadoImplantacion  =="+EstadoImplantacion;
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Servicio> servicio = (List<Servicio>) pManager.newQuery(queryStr).execute(EstadoImplantacion);
+		
+		if (servicio.isEmpty()) {
+		
+			c = null;
+		}
+		return c;
+	}*/
+	
+public List<Servicio> getServicioEnCurso(){
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+		
+		String queryStr = "select from " + Servicio.class.getName()
+				//+ " where estadoImplantacion  =="+EstadoImplantacion;
+		//+ " where estado  == 'Pendiente Impl.' OR estado  == 'Penny Test' AND estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
+		+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
+				
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
+		
+		if (servicios.isEmpty()) {
+		
+			servicios = null;
+		}
+		return servicios;
 	}
 }

@@ -97,5 +97,44 @@ public class ConectividadDao {
 		return c;
 
 	}
+	
+	public List<Conectividad> getConectividadesByEstado(String estado){
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+		
+		String queryStr = "select from " + Conectividad.class.getName();
+				//+ " where estado == ':p1'";
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute(estado);
+		
+		if (conectividades.isEmpty()) {
+		
+			conectividades = null;
+		}
+		return conectividades;
+	}
+	
+	public List<Conectividad> getConectividadEnCurso(){
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+		
+		String queryStr = "select from " + Conectividad.class.getName()
+				//+ " where estadoImplantacion  =="+EstadoImplantacion;
+		+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute();
+		
+		if (conectividades.isEmpty()) {
+		
+			conectividades = null;
+		}
+		return conectividades;
+	}
 
 }

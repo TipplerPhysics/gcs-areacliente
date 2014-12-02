@@ -1,0 +1,530 @@
+/* NUEVO CLIENTE  */
+
+#newCostoButton{
+	margin-right:5px;
+}
+
+.gestion_demanda, .gestion_cliente{
+	#botones_ext{
+		text-align:right;	
+	}
+	
+	.usersTable {
+	
+		> .table > #myTable{
+		.tipo_ed {
+		    position: relative;
+		    top: 5px;
+		    width: 100px;
+		}
+		.estado_ed {
+		    position: relative;
+		    top: 5px;
+		    width: 290px;
+		}
+	} 
+	
+		> .table th:nth-child(5),
+	    > .table td:nth-child(5) {
+		    width:85px;
+		    
+		    > input {
+			    position: relative;
+			    width: 120%;
+			}
+		}
+		
+		> .table th:last-child > input{
+			width:100%;
+		}
+	}
+	#extended-cliente > .form-field > .fecha,
+	#extended-cliente > .form-field > .tiempo,
+	#extended-demanda > .form-field > .fecha,
+	#extended-demanda > .form-field > .tiempo
+	{
+		display:inline-block;
+		vertical-align: text-top;
+		.bootstrap-select.time{
+			width:85px;		
+		}
+		
+		#fecha_solicitud_asignacion_ed{
+			width: 115px;
+		}
+	}
+	
+	#extended-cliente > .form-field .lbl,
+	#extended-demanda > .form-field .lbl
+	{
+		font-weight:100;
+		margin-right:20px;
+	}
+	
+	.radio-div {
+				
+					text-align:left;
+					padding-left:15px;
+				
+					> .radio-container{
+						display:inline-block;
+						width:32.5%;
+						
+						label{
+							color: #434a58;
+							font-family:"BBVA Web Light";
+							font-size:12px;
+							margin-right:10px;
+							font-weight:100;
+						}
+					}
+				}
+				
+	#edit-demanda-form .form-container,
+	#new-demanda-form .form-container,
+	#new-client-form .form-container
+	{
+		text-align: left;
+		.form-field-divider {
+			vertical-align: top;
+			display: inline-block;
+			width: 50%;
+			padding-left: 10px;
+			&.left {
+				padding-left: 25px;
+			}
+			&.right {
+				padding-right: 25px;
+			}
+			.form-field {
+				display: block;
+				width: 100%;
+				
+				&.cliente{
+					.input {
+						> button{
+							margin-right:0px;
+							vertical-align:top;
+						}
+						
+						> div {
+							width: 192px !important;
+						}
+					}
+				}
+				
+				.lbl {
+					position: inherit;
+					top: 0;
+					left: 0;
+					margin-right: 10px;
+					vertical-align:middle;
+				}
+				.input {
+					vertical-align: top;
+					display: inline-block;
+					width: 250px;
+				}
+				
+				
+				.radio-field{
+				
+					
+					height: 40px;
+    				padding-top: 10px;
+    				display:inline-block;
+					
+					label{
+						color: #434a58;
+					    font-family: "BBVA Web Light";
+					    font-size: 12px;
+					    font-weight: 100;
+					    margin-right: 10px;
+					}
+					
+					input{
+						margin-right:5px;
+					}
+				
+					span{
+						
+						color: #434a58;
+						font-family:"BBVA Web Light";
+						font-size:12px;
+					}
+				} 
+			}
+		}
+	}
+
+	#edit-demanda > .modal-dialog{
+		width: 670px;
+	}
+
+	#edit-demanda-form{
+
+		.form-container{
+
+			.input {
+				> div{
+					width:100% !important;
+					
+					&.hora{
+						float:left;
+					}
+					&.minutos{
+						float:right;
+						position:relative;
+					}
+				}
+				
+				.time-span{
+					margin: 0 5px;
+				}
+			}
+
+			textarea{
+				width:100%;
+			}
+
+			div.time{
+				width:115px !important;
+				
+				
+			}
+			
+			
+
+			.form-field-divider .form-field.cliente .input > div#input_cliente_modal{
+				width:100% !important;
+			}
+		}
+	} 
+
+
+
+
+	.newUserbox .new-user-form-holder .form-container .form-field  .lbl,
+	.newUserbox .edit-user-form-holder .form-container .form-field  .lbl,
+	#extended-cliente > .form-field,
+	#extended-demanda > .form-field {
+		margin-bottom: 20px;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		.lbl {
+			width:110px;
+			margin-right:10px;	
+			color: #434a58;		 
+			display: inline-block;
+			font-family: "BBVA Web Light";
+			font-size: 12px;
+			text-align: left;
+			
+			&.time-span {
+				display: inline-block;
+			    margin-left: 20px;
+			    margin-right: 17px;
+			    position: relative;
+			    top: -5px;
+			    width: 5px;
+			}
+		}
+		.tiempo {
+			.lbl {
+				width: 80px;
+			}
+		}
+	}
+	
+	.newUserbox .new-user-form-holder .form-container .form-field  .bootstrap-select.time,
+	.newUserbox .edit-user-form-holder .form-container .form-field  .bootstrap-select.time {
+		width:114px !important;
+		display:inline-block;
+	}
+
+	
+			
+	.form-field.textarea textarea{
+		height:80px;
+		resize: none;
+	}
+	
+	.form-field.double > div > .bootstrap-select{
+		width: 245px !important;	
+	}
+	
+	.form-field {
+		.input {
+			vertical-align: top;
+			display: inline-block;
+			width: 110px;
+			margin-right: 20px;
+			&.long {
+				width: 320px;
+			}
+		}
+		.fecha , .form-field .tiempo{	 
+			height:45px;
+
+		 	.bootstrap-select.time:first-child{
+		 		margin-left:20px;
+		 	}
+
+			> .add-on{
+				display: inline-block;
+				left: 206px;
+				position: relative;
+				top: -30px;
+				width: 40px;
+			}
+			
+		}
+	}
+	
+	.newUserbox .new-user-form-holder .form-container .form-field > span,
+	.newUserbox .edit-user-form-holder .form-container .form-field > span {
+		width: 106px;
+	}
+}
+
+.newUserbox >.new-user-form-holder .form-field > .input > .bootstrap-select,
+.newUserbox >.edit-user-form-holder .form-field > .input > .bootstrap-select {
+	float:none !important;
+}
+
+.gestion_cliente_ext{
+
+	.span-cliente{
+		width:290px;
+		display:inline-block;
+	}
+		
+	.span-ref-global{
+		width:140px;
+		display:inline-block;
+	}
+	
+	.span-tipo{
+		width:85px;
+		display:inline-block;
+	}
+	
+	.span-crit{
+		width:85px;
+		display:inline-block;
+	}
+	
+	#id_cliente_ext{
+		padding-top:10px;
+		padding-left:5px;
+	}
+
+	#logo_url_ext, #ref_local_ext{
+		width: 300px;
+	}
+
+	.radio-field{
+		
+		display:inline-block;
+		
+		> .lbl{
+			width:70px !important;
+		}
+	}
+	
+	.radio-div{
+		
+		display:inline-block;
+	
+		.radio-container{
+			width: 125px !important;
+			padding-left: 0px !important;
+		
+		> label {
+			color: #434a58;
+		    font-family: "BBVA Web Light";
+		    font-size: 12px;
+		    font-weight: 100;
+		    margin-right: 10px;
+		}
+	}
+}
+	
+} 
+
+.gestion_demanda{
+	
+	
+	
+	.usersTable > .table td:nth-child(6), .usersTable > .table th:nth-child(6){
+		width:105px !important;
+	}
+
+	.usersTable > .table td:nth-child(4), .usersTable > .table th:nth-child(4){
+		max-width:100px !important;
+	}
+	
+	.usersTable > .table td:nth-child(3), .usersTable > .table th:nth-child(3){
+		max-width:75;
+	}
+	
+	.usersTable > .table td:nth-child(2), .usersTable > .table th:nth-child(2){
+		max-width:300px;
+		width:300px;
+	}
+}
+
+.gestion_cliente {
+	.usersTable > .table td:nth-child(4), .usersTable > .table th:nth-child(4){
+			width: 150px !important;
+		}
+	.usersTable > .table td:nth-child(6), .usersTable > .table th:nth-child(6){
+		border-right:0px;
+	
+	}
+}	
+
+#table-responsive{
+	 .table > .table-title th:nth-child(5) {
+		 border-right: 1px solid #dcdcdc;
+	}
+}
+
+#new_client_dialog, #edit_client_dialog{
+		width:800px;
+		
+		
+		
+		.form-field-divider:first-child{
+			margin-right:20px;
+		}
+		
+		.form-field{
+			.radio-field{
+				float: right;
+				display:inline-block;
+				width:175px;
+				
+				label{
+					font-family: Arial;
+					font-size:14px;
+					font-weight: 100;
+					margin-right:20px;
+				}
+			}
+		
+			.radio-div{
+				padding-left:12px !important;
+				
+				
+			}
+			
+			.bootstrap-select.error > button{
+				background:none;
+				background-color:#F7E9E9;
+			}
+			
+			margin-bottom:20px;
+			
+			> input, .input{
+				width: 180px;
+				margin-right:0px;
+				float:right;
+				height:30px;
+				
+				#fecha_alta_cliente, #fecha_alta_cliente_modal{
+					width:100%;
+				}
+				
+				div.bootstrap-select {
+					width:100%;
+				}
+			}
+		
+		
+		}
+		
+	}
+
+	.modal-dialog.editUser{width:950px;}
+
+#edit_user_dialog{
+	
+	width: 850px;
+
+	form#edit-user-form .form-field{
+		display: inline-block;
+		width: 47%;
+		text-align:left;
+		margin-bottom: 10px;
+		
+		input{
+			float:right;
+			width: 250px;
+		}
+		
+		.bootstrap-select{
+			width: 250px;	
+			float: right;
+		}
+	}
+
+	form#edit-user-form .form-field:nth-child(2n+1){
+		margin-right:30px;
+	}	
+	
+	form#edit-user-form .form-fieldset{
+		display: block;
+   		margin: 10px auto 0;
+    	text-align: left;
+    	width: 90%;
+	}
+	
+	form#edit-user-form .form-fieldset .radio-container-holder{
+		border: 1px solid #dcdcdc;
+    	border-radius: 4px;
+    	display: inline-block;
+    	padding: 15px 20px 10px;
+    	width: 765px;
+    }
+    
+    form#edit-user-form .form-fieldset .radio-container{
+    	display: inline-block;
+    	height: 30px;
+    	margin: 5px 0;
+    	padding: 0 20px;
+    	width: 32.333%;
+    	label{
+    	font-family: "BBVA Web Light";
+    	font-size: 12px;
+    	font-weight:100;
+    	}
+    }
+}	
+
+.message-container{
+			display: none;
+			text-align: center;
+			margin: 20px;
+			background-color:#FFF;
+			padding:30px;
+			border: 1px solid #dcdcdc;
+			border-radius:2px;
+}
+
+.modal_ajax{
+	display:none;
+	
+	label.error{
+		
+	}
+	
+	#logo_url_modal{
+		width:275px !important;
+	}
+}
+
+.gestion_cliente #new-client-form .form-container .form-field-divider.right{
+	padding-right:0px;
+}

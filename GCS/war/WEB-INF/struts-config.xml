@@ -128,6 +128,10 @@
 		<action path="/dashboard/gestionServicio" type="com.gcs.actions.GestionServicioAction">
 			<forward name="ok" path="/jsp/skeletons/gestionServicio-skeleton.jsp" />
 		</action>
+
+		<action path="/dashboard/gestionImplantaciones" type="com.gcs.actions.RegistroImplantacionesAction">
+			<forward name="ok" path="/jsp/skeletons/gestionImplantaciones-skeleton.jsp" />
+		</action>
 	</action-mappings>	
 	
 	<plug-in className="org.apache.struts.tiles.TilesPlugin" >

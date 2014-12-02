@@ -145,6 +145,18 @@ public class Servicio {
 	@Persistent
 	private String str_fecha_fin_pruebas;
 	
+	@Persistent
+	private String estadoImplantacion;
+	
+	@Persistent
+	private String estadoSubida;
+	
+	@Persistent
+	private String detalleSubida;
+	
+	@Persistent
+	private Boolean subidaCalendada;
+	
 	public Key getKey() {
 		return key;
 	}
@@ -239,6 +251,36 @@ public class Servicio {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getEstadoImplantacion() {
+		return estadoImplantacion;
+	}
+
+	public void setEstadoImplantacion(String estadoImplantacion) {
+		this.estadoImplantacion = estadoImplantacion;
+	}
+	public String getEstadoSubida() {
+		return estadoSubida;
+	}
+
+	public void setEstadoSubida(String estadoSubida) {
+		this.estadoSubida = estadoSubida;
+	}
+	
+	public String getdetalleSubida() {
+		return detalleSubida;
+	}
+
+	public void setdetalleSubida(String detalleSubida) {
+		this.detalleSubida = detalleSubida;
+	}
+	
+	public Boolean subidaCalendada() {
+		return subidaCalendada;
+	}
+
+	public void setsubidaCalendada(Boolean subidaCalendada) {
+		this.subidaCalendada = subidaCalendada;
 	}
 
 	public String getCod_servicio() {
