@@ -4,8 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -28,9 +26,7 @@ import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Implantacion;
 import com.gcs.beans.User;
-import com.gcs.dao.ImplantacionDao;
 import com.gcs.dao.UserDao;
-import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -47,7 +43,7 @@ public class ImplantacionServlet extends HttpServlet {
 		String accion = req.getParameter("accion");
 		
 		
-		try {
+		/*try {
 
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
@@ -76,14 +72,14 @@ public class ImplantacionServlet extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		doGet(req, resp);
 	}
 
-	private void deleteImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
+	/*private void deleteImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 
@@ -102,9 +98,9 @@ public class ImplantacionServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
-	}
+	}*/
 
-	private void updateImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
+	/*private void updateImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 
@@ -174,9 +170,9 @@ public class ImplantacionServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 
-	}
+	}*/
 	
-	private void updateEstadoSubida(HttpServletRequest req, HttpServletResponse resp)
+	/*private void updateEstadoSubida(HttpServletRequest req, HttpServletResponse resp)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();
 		
@@ -211,7 +207,7 @@ public class ImplantacionServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
-	}
+	}*/
 	
 	private void createImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
@@ -317,7 +313,7 @@ public class ImplantacionServlet extends HttpServlet {
 		resp.getWriter().println(json);*/
 	}
 
-	public void generateXLS(HttpServletRequest req, HttpServletResponse resp)
+	/*public void generateXLS(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		OutputStream out = null;
 		try {
@@ -380,7 +376,7 @@ public class ImplantacionServlet extends HttpServlet {
 			UserDao uDao = UserDao.getInstance();
 			User u = new User();
 
-			int aux = 1;
+			int aux = 1;*/
 
 			/*for (Implantacion d : demandas) {
 				
@@ -428,7 +424,7 @@ public class ImplantacionServlet extends HttpServlet {
 				aux++;
 			}*/
 
-			w.write();
+	/*		w.write();
 			w.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -438,7 +434,7 @@ public class ImplantacionServlet extends HttpServlet {
 				out.close();
 		}
 
-	}
+	}*/
 
 	private boolean isLong(String input) {
 		try {
