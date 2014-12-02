@@ -15,11 +15,13 @@ import org.apache.struts.action.ActionMapping;
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Implantacion;
+import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.ImplantacionDao;
+import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
@@ -31,6 +33,7 @@ public class RegistroImplantacionesAction extends Action {
 
 		ConectividadDao cDao = ConectividadDao.getInstance();
 		ServicioDao sDao = ServicioDao.getInstance();
+		ProyectoDao pDao = ProyectoDao.getInstance();
 		
 		List<Conectividad> conectividades = cDao.getConectividadEnCurso();
 		List<Servicio> servicios = sDao.getServicioEnCurso();
@@ -42,37 +45,60 @@ public class RegistroImplantacionesAction extends Action {
 		
 		List<Implantacion> implantaciones = new ArrayList<Implantacion>();
 		
-		if (!conectividades.isEmpty()) {
+		if (conectividades !=null && !conectividades.isEmpty()) {
 			Implantacion impl = null;
+			Proyecto p = null;
 			for (Conectividad c : conectividades) {
+				p = pDao.getProjectbyId(c.getKey_proyecto());
 				impl = new Implantacion();
-				//impl.setConectividadKey(c.getKey().getId());
 				// clave conectividad
+				impl.setConectividadkey(c.getKey());				
 				// clave proyecto
+				impl.setProyectokey(c.getKey_proyecto());
 				// fecha implantacion 
+				impl.setFecha_implantacion(c.getFecha_implantacion());
 				// nombre cliente
+				impl.setClienteName(p.getClienteName());
 				// estado
+				impl.setEstado(c.getEstado());
 				// gestor it
+				impl.setGestor_it_name(p.getGestor_it_name());
 				// nombre conectividad
+				impl.setConectividad(p.getConectividad());
 				// estado subida
+				impl.setEstadoSubida(c.getEstadoSubida());
 				// detalle subida
+				impl.setDetalleSubida(c.getdetalleSubida());
+				
 				implantaciones.add(impl);
 			}
 		}
 		
-		if (!servicios.isEmpty()) {
+		if (servicios !=null && !servicios.isEmpty()) {
 			Implantacion impl = null;
+			Proyecto p = null;
 			for (Servicio s : servicios) {
+				p = pDao.getProjectbyId(s.getId_proyecto());
 				impl = new Implantacion();
 				// clave servicio
+				impl.setServiciokey(s.getKey());
 				// clave proyecto
+				impl.setProyectokey(s.getId_proyecto());
 				// fecha implantacion 
+				impl.setFecha_implantacion(s.getFecha_implantacion_produccion());
 				// nombre cliente
+				impl.setClienteName(p.getClienteName());
 				// estado
+				impl.setEstado(s.getEstado());
 				// gestor it
+				impl.setGestor_it_name(p.getGestor_it_name());
 				// nombre servicio
+				impl.setServicio(s.getServicio());
 				// estado subida
+				impl.setEstadoSubida(s.getEstadoSubida());
 				// detalle subida
+				impl.setDetalleSubida(s.getdetalleSubida());
+				
 				implantaciones.add(impl);
 			}
 		}
