@@ -137,6 +137,7 @@
 			<forward name="email1" path="/jsp/modal/modal-implementacion-email1.jsp" />
 			<forward name="email2" path="/jsp/modal/modal-implementacion-email2.jsp" />
 			<forward name="email3" path="/jsp/modal/modal-implementacion-email3.jsp" />
+			<forward name="email4" path="/jsp/modal/modal-implementacion-email4.jsp" />
 		</action>
 		
 		<!-- <action path="/loadDb" type="com.gcs.actions.loaddb.LoadDbAction">
