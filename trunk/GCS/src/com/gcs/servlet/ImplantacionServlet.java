@@ -1,9 +1,9 @@
 package com.gcs.servlet;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -14,19 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jxl.Workbook;
-import jxl.format.Border;
-import jxl.format.BorderLineStyle;
-import jxl.format.Colour;
-import jxl.format.VerticalAlignment;
-import jxl.write.Label;
-import jxl.write.WritableCellFormat;
-import jxl.write.WritableFont;
-import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
-import com.gcs.beans.Implantacion;
-import com.gcs.beans.User;
-import com.gcs.dao.UserDao;
+import com.gcs.beans.Conectividad;
+import com.gcs.beans.Servicio;
+import com.gcs.dao.ConectividadDao;
+import com.gcs.dao.ServicioDao;
+import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -35,6 +29,8 @@ public class ImplantacionServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(ImplantacionServlet.class.getName());
 
 	private static final long serialVersionUID = 1L;
+	
+	private static final String CALENDADA = "Calendada";
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
@@ -42,8 +38,7 @@ public class ImplantacionServlet extends HttpServlet {
 		log.info("Dentro de servletImplantacion");
 		String accion = req.getParameter("accion");
 		
-		
-		/*try {
+		try {
 
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
@@ -52,33 +47,321 @@ public class ImplantacionServlet extends HttpServlet {
 			if (sesionpermiso > 2) {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operaciÃ³n");
+						"No tienes los permisos para realizar esta operación");
 
 				resp.setCharacterEncoding("UTF-8");
 				resp.setContentType("application/json");
 				resp.getWriter().println(json);
 			} else {
-				if (accion.equals("new")) {
-					createImplantacion(req, resp,usermail);
-					
-				} else if (accion.equals("delete")) {
-					deleteImplantacion(req, resp,usermail);
-				} else if (accion.equals("update")) {
-					updateImplantacion(req, resp,usermail);
+				if (accion.equals("solicitud")) {
+					generarSolicitud(req, resp, usermail);					
+				} else if (accion.equals("confirmacion")) {
+					generarConfirmacion(req, resp, usermail);
+				} else if (accion.equals("produccion")) {
+					generarProduccion(req, resp, usermail);
 				} else if (accion.equals("xls")) {
 					generateXLS(req, resp);
 				}
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}		
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		doGet(req, resp);
 	}
 
+	private void generarSolicitud(HttpServletRequest req, HttpServletResponse resp, String usermail)
+			throws JSONException, IOException {
+		JSONObject json = new JSONObject();
+
+		try {
+			
+			String serviciosParam = req.getParameter("servicios");
+			String conectividadesParam = req.getParameter("conectividades");
+			String tipoSubida = req.getParameter("tipo_subida");
+			String fechaImplantacion = req.getParameter("fecha_implantacion");
+			
+			//Proceso parametros de codigos de conectividades y de servicios
+			String[] conectividadesArray = conectividadesParam.split(",");
+			String[] serviciosArray = serviciosParam.split(",");
+			List<String> conectividadesList = Arrays.asList(conectividadesArray);
+			List<String> serviciosList = Arrays.asList(serviciosArray);
+			
+			// Actualiza el estado de las Conectividades
+			ConectividadDao cDao = ConectividadDao.getInstance();
+			
+			for(String c : conectividadesList) {
+				Conectividad cObj = cDao.getConectividadById(c);
+				if(cObj != null) {
+					cObj.setEstadoImplantacion("Solicitado");
+					cObj.setEstadoSubida("OK");
+					cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacion));
+					cObj.setStr_fecha_implantacion(fechaImplantacion);
+					if(CALENDADA.equals(tipoSubida)) {
+						cObj.setsubidaCalendada(true);
+					}
+					else {
+						cObj.setsubidaCalendada(false);
+					}
+					cDao.createConectividad(cObj, usermail);
+				}
+			}
+			
+			// Actualiza el estado de las Servicios
+			ServicioDao sDao = ServicioDao.getInstance();
+			
+			for(String s : serviciosList) {
+				Servicio sObj = sDao.getServicioById(s);
+				if(sObj != null) {
+					sObj.setEstadoImplantacion("Solicitado");
+					sObj.setEstadoSubida("OK");
+					sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacion));
+					sObj.setStr_fecha_implantacion_produccion(fechaImplantacion);
+					if(CALENDADA.equals(tipoSubida)) {
+						sObj.setsubidaCalendada(true);
+					}
+					else {
+						sObj.setsubidaCalendada(false);
+					}
+					sDao.createServicio(sObj, usermail);
+				}
+			}
+			
+			// TODO send email solicitud
+			
+			json.append("success", "true");
+		}catch (Exception e) {
+			json.append("failure", "true");
+		}
+
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
+	private void generarConfirmacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
+			throws JSONException, IOException {
+		JSONObject json = new JSONObject();
+
+		try {
+			String serviciosParam = req.getParameter("servicios");
+			String conectividadesParam = req.getParameter("conectividades");
+			
+			//Proceso parametros de codigos de conectividades y de servicios
+			String[] conectividadesArray = conectividadesParam.split(",");
+			String[] serviciosArray = serviciosParam.split(",");
+			List<String> conectividadesList = Arrays.asList(conectividadesArray);
+			List<String> serviciosList = Arrays.asList(serviciosArray);
+			
+			// Actualiza el estado de las Conectividades
+			ConectividadDao cDao = ConectividadDao.getInstance();
+			
+			for(String c : conectividadesList) {
+				Conectividad cObj = cDao.getConectividadById(c);
+				if(cObj != null) {
+					cObj.setEstado("En Penny Test");
+					cObj.setEstadoImplantacion("Confirmado");
+					cDao.createConectividad(cObj, usermail);
+				}
+			}
+			
+			// Actualiza el estado de las Servicios
+			ServicioDao sDao = ServicioDao.getInstance();
+			
+			for(String s : serviciosList) {
+				Servicio sObj = sDao.getServicioById(s);
+				if(sObj != null) {
+					sObj.setEstado("En Penny Test");
+					sObj.setEstadoImplantacion("Confirmado");
+					sDao.createServicio(sObj, usermail);
+				}
+			}
+			
+			// TODO send email confirmacion
+			
+			json.append("success", "true");
+		}catch (Exception e) {
+			json.append("failure", "true");
+		}
+
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
+	private void generarProduccion(HttpServletRequest req, HttpServletResponse resp, String usermail)
+			throws JSONException, IOException {
+		JSONObject json = new JSONObject();
+
+		try {
+			String serviciosParam = req.getParameter("servicios");
+			String conectividadesParam = req.getParameter("conectividades");
+			
+			//Proceso parametros de codigos de conectividades y de servicios
+			String[] conectividadesArray = conectividadesParam.split(",");
+			String[] serviciosArray = serviciosParam.split(",");
+			List<String> conectividadesList = Arrays.asList(conectividadesArray);
+			List<String> serviciosList = Arrays.asList(serviciosArray);
+			
+			// Actualiza el estado de las Conectividades
+			ConectividadDao cDao = ConectividadDao.getInstance();
+			
+			for(String c : conectividadesList) {
+				Conectividad cObj = cDao.getConectividadById(c);
+				if(cObj != null) {
+					cObj.setEstadoImplantacion("Produccion");
+					cDao.createConectividad(cObj, usermail);
+				}
+			}
+			
+			// Actualiza el estado de las Servicios
+			ServicioDao sDao = ServicioDao.getInstance();
+			
+			for(String s : serviciosList) {
+				Servicio sObj = sDao.getServicioById(s);
+				if(sObj != null) {
+					sObj.setEstadoImplantacion("Produccion");
+					sDao.createServicio(sObj, usermail);
+				}
+			}
+						
+			// TODO send email produccion
+			
+			json.append("success", "true");
+		} catch (Exception e) {
+			json.append("failure", "true");
+		}
+
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
+	public void generateXLS(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		OutputStream out = null;
+		try {
+			resp.setContentType("application/vnd.ms-excel");
+			resp.setHeader("Content-Disposition",
+					"attachment; filename=RegistroImplantacionesGCS.xls");
+
+			WritableWorkbook w = Workbook
+					.createWorkbook(resp.getOutputStream());
+
+			/*ImplantacionDao dDao = ImplantacionDao.getInstance();
+			List<Implantacion> demandas = dDao.getAllImplantaciones();
+
+			WritableSheet s = w.createSheet("Registro de implantaciones", 0);
+
+			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
+			cellFont.setColour(Colour.WHITE);
+
+			WritableCellFormat cellFormat = new WritableCellFormat(cellFont);
+			cellFormat.setBackground(Colour.BLUE);
+			cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+			cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
+			cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);
+
+			s.setColumnView(0, 16);
+			s.setColumnView(1, 30);
+			s.setColumnView(2, 10);
+			s.setColumnView(3, 50);
+			s.setColumnView(4, 30);
+			s.setColumnView(5, 30);
+			s.setColumnView(6, 70);
+			s.setColumnView(7, 70);
+			s.setColumnView(8, 30);
+			s.setColumnView(9, 25);
+			s.setColumnView(10, 20);
+			s.setColumnView(11, 15);
+			s.setColumnView(12, 30);
+			s.setColumnView(13, 30);
+			s.setColumnView(14, 30);
+			s.setColumnView(15, 30);
+			s.setRowView(0, 900);
+
+			s.addCell(new Label(0, 0, "FECHA_SUBIDA", cellFormat));
+			s.addCell(new Label(1, 0, "CLIENTE", cellFormat));
+			s.addCell(new Label(2, 0, "ESTADO", cellFormat));
+			s.addCell(new Label(3, 0, "GESTORIT", cellFormat));
+			s.addCell(new Label(4, 0, "FECHA ENTRADA", cellFormat));
+			s.addCell(new Label(5, 0, "HORA ENTRADA", cellFormat));
+			s.addCell(new Label(6, 0, "MOTIVO DE CATALOGACION", cellFormat));
+			s.addCell(new Label(7, 0, "COMENTARIOS", cellFormat));
+			s.addCell(new Label(8, 0, "GESTOR DE NEGOCIO", cellFormat));
+			s.addCell(new Label(9, 0, "FECHA DE SOLICITUD", cellFormat));
+			s.addCell(new Label(10, 0, "HORA DE SOLICITUD", cellFormat));
+			s.addCell(new Label(11, 0, "DEVUELTA", cellFormat));
+			s.addCell(new Label(12, 0, "GESTOR IT", cellFormat));
+			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",cellFormat));
+			s.addCell(new Label(14, 0, "FECHA COMUNICACION", cellFormat));
+			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));
+
+			UserDao uDao = UserDao.getInstance();
+			User u = new User();
+
+			int aux = 1;
+
+			for (Implantacion d : demandas) {
+				
+				s.addCell(new Label(0, aux, d.getCod_peticion()));
+				s.addCell(new Label(1, aux, d.getClienteName()));
+				s.addCell(new Label(2, aux, d.getTipo()));
+				s.addCell(new Label(3, aux, d.getEstado()));
+				s.addCell(new Label(4, aux, d.getStr_fecha_entrada_peticion()));
+				s.addCell(new Label(5, aux, d.getHora_entrada_peticion()));
+				s.addCell(new Label(6, aux, d.getMotivo_catalogacion()));
+				s.addCell(new Label(7, aux, d.getComentarios()));
+
+				if (d.getGestor_negocio()!=null){
+					u = uDao.getUserbyId(d.getGestor_negocio());
+					if (u!=null){
+						s.addCell(new Label(8, aux, u.getNombre() + " "
+								+ u.getApellido1() + " " + u.getApellido2()));
+					}
+					
+				}
+				
+
+				s.addCell(new Label(9, aux, d
+						.getStr_fecha_solicitud_asignacion()));
+				s.addCell(new Label(10, aux, d.getHora_solicitud_asignacion()));
+				if (d.getDevuelta().equals(true))
+					s.addCell(new Label(11, aux, "Si"));
+				else
+					s.addCell(new Label(11, aux, "No"));
+
+				if (d.getGestor_it()!=null){
+					u = uDao.getUserbyId(d.getGestor_it());
+					if (u!=null){
+						s.addCell(new Label(12, aux, u.getNombre() + " "
+								+ u.getApellido1() + " " + u.getApellido2()));
+					}
+				}
+				
+				
+
+				s.addCell(new Label(13, aux, d.getCatalogacion()));
+				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
+				s.addCell(new Label(15,aux,d.getHora_comunicacion_asignacion()));
+
+				aux++;
+			}*/
+
+			w.write();
+			w.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ServletException("Exception in Excel", e);
+		} finally {
+			if (out != null)
+				out.close();
+		}
+
+	}
+	
 	/*private void deleteImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
 			throws JSONException, IOException {
 		JSONObject json = new JSONObject();

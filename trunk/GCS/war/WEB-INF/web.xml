@@ -117,6 +117,26 @@
 	    <servlet-name>ClienteServlet</servlet-name>
 	    <url-pattern>/clienteServlet</url-pattern>
 	  </servlet-mapping>
+	  
+	  <servlet>
+	    <servlet-name>ImplantacionServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.ImplantacionServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>ImplantacionServlet</servlet-name>
+	    <url-pattern>/implantacionServlet</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
+        <servlet-name>GoboServlet</servlet-name>
+        <servlet-class>gobo.GoboServlet</servlet-class>
+	  </servlet>
+	  
+	  <servlet-mapping>
+        <servlet-name>GoboServlet</servlet-name>
+        <url-pattern>*.gobo</url-pattern>
+      </servlet-mapping>
 	
     <security-constraint>
         <web-resource-collection>

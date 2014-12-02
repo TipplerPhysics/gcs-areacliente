@@ -59,10 +59,7 @@ public class ServicioDao {
 	}
 	
 	
-public List<Servicio> getServiciosByProject(Long id) {
-
-		
-
+	public List<Servicio> getServiciosByProject(Long id) {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		Transaction transaction = pManager.currentTransaction();
 		transaction.begin();
@@ -77,10 +74,7 @@ public List<Servicio> getServiciosByProject(Long id) {
 		pManager.close();
 
 		return servicios;
-
 	}
-	
-	
 	
 	public void createServicio(Servicio s, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
