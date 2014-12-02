@@ -23,26 +23,19 @@ import com.gcs.dao.ServicioDao;
 import com.gcs.dao.UserDao;
 
 
-public class ImplementacionModalAction extends Action {
+public class ImplantacionModalAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {	
 		
-		String serviciosParam = "6082498324856832,6082498324856832";
-		String conectividadesParam = "6645448278278144,6645448278278144";
+		String serviciosParam = req.getParameter("servicios");
+		String conectividadesParam = req.getParameter("conectividades");
 		
-		List<String> conectividadesList = new ArrayList<>();
-		List<String> serviciosList = new ArrayList<>();
-		
-		//Proceso parametros para obtener un listado de codigos de conectividades y un listado de codigos de servicios
-		
+		//Proceso parametros de codigos de conectividades y de servicios
 		String[] conectividadesArray = conectividadesParam.split(",");
 		String[] serviciosArray = serviciosParam.split(",");
-		
-		//Convertimos ArrayList de Strings en Lista de Strings
-		
-		conectividadesList = Arrays.asList(conectividadesArray);
-		serviciosList = Arrays.asList(serviciosArray);
+		List<String> conectividadesList = Arrays.asList(conectividadesArray);
+		List<String> serviciosList = Arrays.asList(serviciosArray);
 		
 		//Declaro variables para guardar el último estado de Conectividades y Servicios
 		String ultimoEstadoServicio = "";
@@ -64,44 +57,35 @@ public class ImplementacionModalAction extends Action {
 		}
 		
 		//FOR de Servicios
-				ServicioDao sDao = ServicioDao.getInstance();
-				
-				for(String s : serviciosList) {
-					Servicio sObj = sDao.getServicioById(s);
-					if(sObj != null) {
-						servicios.add(sObj);
-						ultimoEstadoServicio = sObj.getEstadoImplantacion();
-					}
-				}
+		ServicioDao sDao = ServicioDao.getInstance();
+		
+		for(String s : serviciosList) {
+			Servicio sObj = sDao.getServicioById(s);
+			if(sObj != null) {
+				servicios.add(sObj);
+				ultimoEstadoServicio = sObj.getEstadoImplantacion();
+			}
+		}
 		
 		//comprobar el estado de las conectividades y servicios - - tiene que ser igual. EQUAL 		
-		if((ultimoEstadoConectividad == ultimoEstadoServicio)&&(ultimoEstadoConectividad.equals("Solicitado"))){
+		if( (ultimoEstadoConectividad == null) && (ultimoEstadoServicio == null) ) {
+			req.setAttribute("servicios", serviciosParam);
+			req.setAttribute("conectividades", conectividadesParam);
 			
 			return mapping.findForward("email1");
-		
-		}else if((ultimoEstadoConectividad.equals(ultimoEstadoServicio))&&(ultimoEstadoConectividad.equals("Confirmado"))){
-			
+		}
+		else if( ultimoEstadoConectividad.equals(ultimoEstadoServicio) && ultimoEstadoConectividad.equals("Solicitado") ){
 			return mapping.findForward("email2");
 			
-		}else if((ultimoEstadoConectividad.equals(ultimoEstadoServicio))&&(ultimoEstadoConectividad.equals("Produccion"))){
-			
-			return mapping.findForward("email3");
-			
-		}else if(ultimoEstadoConectividad.equals(ultimoEstadoServicio)){
-			
-			return mapping.findForward("email4");
-			
-		}else{
+		}
+		else if( ultimoEstadoConectividad.equals(ultimoEstadoServicio) && ultimoEstadoConectividad.equals("Confirmado") ){
+			return mapping.findForward("email3");			
+		}
+		else{
 			//msg de error ya que tenemos Implementaciones en diferentes estados de implantacion
 			 System.out.println("Error implementaciones en diferentes estados de implantacion");
 			 return null;
 		}
-		
-		
-			
-		
-		
-		
 		
 		
 		/*ClienteDao cDao = ClienteDao.getInstance();

@@ -12,16 +12,19 @@ public class Implantacion {
 	
 	
 	@Persistent
-	private Key conectividadkey;
+	private Long conectividadkey;
 	
 	@Persistent
-	private Key serviciokey;
+	private Long serviciokey;
 	
 	@Persistent
 	private Long proyectokey;
 	
 	@Persistent
 	private Date fecha_implantacion;
+	
+	@Persistent
+	private String fecha_implantacion_str;
 	
 	@Persistent
 	private String clienteName;
@@ -112,18 +115,18 @@ public class Implantacion {
 		this.conectividad = conectividad;
 	}
 
-	public Key getConectividadkey() {
+	public Long getConectividadkey() {
 		return conectividadkey;
 	}
 
-	public void setConectividadkey(Key conectividadkey) {
+	public void setConectividadkey(Long conectividadkey) {
 		this.conectividadkey = conectividadkey;
 	}
-	public Key getServiciokey() {
+	public Long getServiciokey() {
 		return serviciokey;
 	}
 
-	public void setServiciokey(Key serviciokey) {
+	public void setServiciokey(Long serviciokey) {
 		this.serviciokey = serviciokey;
 	}
 	
@@ -141,6 +144,14 @@ public class Implantacion {
 
 	public void setFecha_implantacion(Date fecha_implantacion) {
 		this.fecha_implantacion = fecha_implantacion;
+	}
+	
+	public String getFecha_implantacion_str() {
+		return fecha_implantacion_str;
+	}
+
+	public void setFecha_implantacion_str(String fecha_implantacion_str) {
+		this.fecha_implantacion_str = fecha_implantacion_str;
 	}
 	
 	/*public Long getGestor_negocio() {

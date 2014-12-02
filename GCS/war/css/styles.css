@@ -2439,6 +2439,13 @@ form textarea.error {
 .gestion_coste .form-field-down .form-field.total .input span:first-child {
   margin-right: 0px;
 }
+#send_email_dialog {
+  width: 750px;
+}
+#send_email_dialog .modal_ajax {
+  display: block;
+  height: auto;
+}
 .gestion_servicio .modal-dialog {
   width: 600px;
 }

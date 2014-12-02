@@ -2,6 +2,7 @@ package com.gcs.actions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.gcs.beans.Servicio;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
+import com.gcs.utils.Utils;
 
 public class RegistroImplantacionesAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -46,11 +48,13 @@ public class RegistroImplantacionesAction extends Action {
 				p = pDao.getProjectbyId(c.getKey_proyecto());
 				impl = new Implantacion();
 				// clave conectividad
-				impl.setConectividadkey(c.getKey());				
+				impl.setConectividadkey(c.getKey().getId());				
 				// clave proyecto
 				impl.setProyectokey(c.getKey_proyecto());
 				// fecha implantacion 
-				impl.setFecha_implantacion(c.getFecha_implantacion());
+				Date fechaImplantacion = c.getFecha_implantacion();
+				impl.setFecha_implantacion(fechaImplantacion);
+				impl.setFecha_implantacion_str(Utils.dateConverterToStr(fechaImplantacion));
 				// nombre cliente
 				impl.setClienteName(p.getClienteName());
 				// estado
@@ -75,11 +79,13 @@ public class RegistroImplantacionesAction extends Action {
 				p = pDao.getProjectbyId(s.getId_proyecto());
 				impl = new Implantacion();
 				// clave servicio
-				impl.setServiciokey(s.getKey());
+				impl.setServiciokey(s.getKey().getId());
 				// clave proyecto
 				impl.setProyectokey(s.getId_proyecto());
 				// fecha implantacion 
-				impl.setFecha_implantacion(s.getFecha_implantacion_produccion());
+				Date fechaImplantacion = s.getFecha_implantacion_produccion();
+				impl.setFecha_implantacion(fechaImplantacion);
+				impl.setFecha_implantacion_str(Utils.dateConverterToStr(fechaImplantacion));
 				// nombre cliente
 				impl.setClienteName(p.getClienteName());
 				// estado
@@ -96,43 +102,9 @@ public class RegistroImplantacionesAction extends Action {
 				implantaciones.add(impl);
 			}
 		}
-		
-		
+				
 		req.setAttribute("implantacionList", implantaciones);
 		
-		
-		
-		/*UserDao uDao = UserDao.getInstance();
-		ImplantacionDao dDao = ImplantacionDao.getInstance();
-		ClienteDao cDao = ClienteDao.getInstance();
-		List<User> gestores_demanda = uDao.getUsersByPermisoStr(2);
-		List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-		List<User> gestores_negocio = uDao.getUsersByPermisoStr(4);
-		List<Cliente> clientes = cDao.getAllClientes();
-
-		String gestoresStr = "";
-
-		if (!gestores_it.isEmpty()) {
-			for (User g : gestores_it) {
-				gestoresStr += g.getNombre() + " " + g.getApellido1() + " "
-						+ g.getApellido2() + "(" + g.getKey().getId() + ")"
-						+ "-";
-			}
-
-		}
-
-		req.setAttribute("clientes", clientes);
-		//req.setAttribute("gestores_demanda", gestores_demanda);
-		req.setAttribute("gestores_it", gestores_it);
-		//req.setAttribute("gestoresStr", gestoresStr);
-		
-		req.setAttribute("gestores_negocio", gestores_negocio);
-
-		//req.setAttribute("horasList", Utils.getHorasList());
-		//req.setAttribute("minutosList", Utils.getMinutosList());*/
-
-		//req.setAttribute("implantacionList", dDao.getAllImplantaciones());
-
 		return mapping.findForward("ok");
 	}
 }
