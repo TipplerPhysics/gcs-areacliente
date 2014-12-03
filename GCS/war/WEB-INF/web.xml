@@ -128,16 +128,6 @@
 	    <url-pattern>/implantacionServlet</url-pattern>
 	  </servlet-mapping>
 	  
-	  <servlet>
-        <servlet-name>GoboServlet</servlet-name>
-        <servlet-class>gobo.GoboServlet</servlet-class>
-	  </servlet>
-	  
-	  <servlet-mapping>
-        <servlet-name>GoboServlet</servlet-name>
-        <url-pattern>*.gobo</url-pattern>
-      </servlet-mapping>
-	
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
