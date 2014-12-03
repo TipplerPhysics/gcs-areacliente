@@ -17,12 +17,26 @@ import jxl.Workbook;
 import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Conectividad;
+import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.dao.ConectividadDao;
+import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
+
+
+//envio mail
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class ImplantacionServlet extends HttpServlet {
 	
@@ -31,6 +45,8 @@ public class ImplantacionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String CALENDADA = "Calendada";
+	
+	private static String FechasDeImplantaciones = "";
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
@@ -80,14 +96,19 @@ public class ImplantacionServlet extends HttpServlet {
 			
 			String serviciosParam = req.getParameter("servicios");
 			String conectividadesParam = req.getParameter("conectividades");
+			String proyectosParam = req.getParameter("proyectos");
 			String tipoSubida = req.getParameter("tipo_subida");
-			String fechaImplantacion = req.getParameter("fecha_implantacion");
+			String fechaImplantacion = req.getParameter("fecha_implantacion");			
+			
 			
 			//Proceso parametros de codigos de conectividades y de servicios
 			String[] conectividadesArray = conectividadesParam.split(",");
 			String[] serviciosArray = serviciosParam.split(",");
+			String[] proyectosArray = proyectosParam.split(",");
 			List<String> conectividadesList = Arrays.asList(conectividadesArray);
 			List<String> serviciosList = Arrays.asList(serviciosArray);
+			List<String> proyectosList = Arrays.asList(proyectosArray);
+							
 			
 			// Actualiza el estado de las Conectividades
 			ConectividadDao cDao = ConectividadDao.getInstance();
@@ -131,6 +152,51 @@ public class ImplantacionServlet extends HttpServlet {
 			
 			// TODO send email solicitud
 			
+			Properties props = new Properties();
+	        Session session = Session.getDefaultInstance(props, null);
+	        ProyectoDao pDao = ProyectoDao.getInstance();
+	        Proyecto p = null;
+	        String msgBody = "";
+	        msgBody +="<ul>";
+	        
+	        	for(String c : conectividadesList){
+	        		Conectividad cObj = cDao.getConectividadById(c);
+	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
+	        		msgBody +="Conectividades solicitadas:<br/>";
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+"PAIS"+", "+p.getConectividad();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
+	        	}
+	        	
+	        	for(String s : serviciosList){
+	        		Servicio sObj = sDao.getServicioById(s);
+	        		p = pDao.getProjectbyId(sObj.getId_proyecto());
+	        		msgBody +="<br/><br/>Servicios solicitados:<br/>";
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+sObj.getPais()+", "+sObj.getServicio();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+sObj.getdetalleSubida();	        		
+	        	}
+	        	
+	        msgBody +="</ul>";
+	        
+	        try {
+	            //Message msg = new MimeMessage(session);
+	            MimeMessage msg = new MimeMessage(session);
+	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
+	            msg.addRecipient(Message.RecipientType.TO,
+	                             new InternetAddress(usermail, "Mr. User"));
+	            msg.setSubject("Implantaciones solicitadas");
+	            //msg.setText(msgBody);
+	            msg.setContent(msgBody, "text/html; charset=utf-8");
+	            Transport.send(msg);
+
+	        } catch (AddressException e) {
+	            // ...
+	        } 
+			
+		
 			json.append("success", "true");
 		}catch (Exception e) {
 			json.append("failure", "true");
@@ -180,6 +246,49 @@ public class ImplantacionServlet extends HttpServlet {
 			}
 			
 			// TODO send email confirmacion
+			Properties props = new Properties();
+	        Session session = Session.getDefaultInstance(props, null);
+	        ProyectoDao pDao = ProyectoDao.getInstance();
+	        Proyecto p = null;
+	        String msgBody = "";
+	        msgBody +="<ul>";
+	        
+	        	for(String c : conectividadesList){
+	        		Conectividad cObj = cDao.getConectividadById(c);
+	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
+	        		msgBody +="Conectividades confirmadas:<br/>";
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+"PAIS"+", "+p.getConectividad();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
+	        	}
+	        	
+	        	for(String s : serviciosList){
+	        		Servicio sObj = sDao.getServicioById(s);
+	        		p = pDao.getProjectbyId(sObj.getId_proyecto());
+	        		msgBody +="<br/><br/>Servicios confirmados:<br/>";
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+sObj.getPais()+", "+sObj.getServicio();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+sObj.getdetalleSubida();	        		
+	        	}
+	        	
+	        msgBody +="</ul>";
+	        
+	        try {
+	            //Message msg = new MimeMessage(session);
+	            MimeMessage msg = new MimeMessage(session);
+	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
+	            msg.addRecipient(Message.RecipientType.TO,
+	                             new InternetAddress(usermail, "Mr. User"));
+	            msg.setSubject("Implantaciones confirmadas");
+	            //msg.setText(msgBody);
+	            msg.setContent(msgBody, "text/html; charset=utf-8");
+	            Transport.send(msg);
+
+	        } catch (AddressException e) {
+	            // ...
+	        } 
 			
 			json.append("success", "true");
 		}catch (Exception e) {
@@ -227,8 +336,51 @@ public class ImplantacionServlet extends HttpServlet {
 				}
 			}
 						
-			// TODO send email produccion
+			// TODO send email produccion, descomentar si es necesario
 			
+			/*Properties props = new Properties();
+	        Session session = Session.getDefaultInstance(props, null);
+	        ProyectoDao pDao = ProyectoDao.getInstance();
+	        Proyecto p = null;
+	        String msgBody = "";
+	        msgBody +="<ul>";
+	        
+	        	for(String c : conectividadesList){
+	        		Conectividad cObj = cDao.getConectividadById(c);
+	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
+	        		msgBody +="Conectividades en producción:<br/>";
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+"PAIS"+", "+p.getConectividad();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
+	        	}
+	        	
+	        	for(String s : serviciosList){
+	        		Servicio sObj = sDao.getServicioById(s);
+	        		p = pDao.getProjectbyId(sObj.getId_proyecto());
+	        		msgBody +="<br/><br/>Servicios en producción:<br/>";
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+sObj.getPais()+", "+sObj.getServicio();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+sObj.getdetalleSubida();	        		
+	        	}
+	        	
+	        msgBody +="</ul>";
+	        
+	        try {
+	            //Message msg = new MimeMessage(session);
+	            MimeMessage msg = new MimeMessage(session);
+	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
+	            msg.addRecipient(Message.RecipientType.TO,
+	                             new InternetAddress(usermail, "Mr. User"));
+	            msg.setSubject("Implantaciones en Producción");
+	            //msg.setText(msgBody);
+	            msg.setContent(msgBody, "text/html; charset=utf-8");
+	            Transport.send(msg);
+
+	        } catch (AddressException e) {
+	            // ...
+	        } */
 			json.append("success", "true");
 		} catch (Exception e) {
 			json.append("failure", "true");
