@@ -5,8 +5,15 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,20 +30,9 @@ import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
+
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
-
-
-//envio mail
-import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class ImplantacionServlet extends HttpServlet {
 	
@@ -44,9 +40,16 @@ public class ImplantacionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
+	private static final String VACIO = "";
 	private static final String CALENDADA = "Calendada";
-	
-	private static String FechasDeImplantaciones = "";
+	private static final String OK = "OK";
+	private static final String KO = "KO";
+	private static final String SOLICITADO = "Solicitado";
+	private static final String CONFIRMADO = "Confirmado";
+	private static final String PRODUCCION = "Produccion";
+	private static final String PENNY_TEST = "En Penny Test";
+	private static final String PENDIENTE_IMPL = "PDTE Implantar";
+		
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
@@ -69,11 +72,11 @@ public class ImplantacionServlet extends HttpServlet {
 				resp.setContentType("application/json");
 				resp.getWriter().println(json);
 			} else {
-				if (accion.equals("solicitud")) {
+				if (SOLICITADO.equals(accion)) {
 					generarSolicitud(req, resp, usermail);					
-				} else if (accion.equals("confirmacion")) {
+				} else if (CONFIRMADO.equals(accion)) {
 					generarConfirmacion(req, resp, usermail);
-				} else if (accion.equals("produccion")) {
+				} else if (PRODUCCION.equals(accion)) {
 					generarProduccion(req, resp, usermail);
 				} else if (accion.equals("xls")) {
 					generateXLS(req, resp);
@@ -94,64 +97,68 @@ public class ImplantacionServlet extends HttpServlet {
 
 		try {
 			
+			String tipoSubida = req.getParameter("tipo_subida");
+			String fechaImplantacion = req.getParameter("fecha_implantacion");
 			String serviciosParam = req.getParameter("servicios");
 			String conectividadesParam = req.getParameter("conectividades");
-			String proyectosParam = req.getParameter("proyectos");
-			String tipoSubida = req.getParameter("tipo_subida");
-			String fechaImplantacion = req.getParameter("fecha_implantacion");			
-			
 			
 			//Proceso parametros de codigos de conectividades y de servicios
-			String[] conectividadesArray = conectividadesParam.split(",");
-			String[] serviciosArray = serviciosParam.split(",");
-			String[] proyectosArray = proyectosParam.split(",");
-			List<String> conectividadesList = Arrays.asList(conectividadesArray);
-			List<String> serviciosList = Arrays.asList(serviciosArray);
-			List<String> proyectosList = Arrays.asList(proyectosArray);
-							
+			List<String> conectividadesList = new ArrayList<>();
+			if(!VACIO.equals(conectividadesParam)) {
+				String[] conectividadesArray = conectividadesParam.split(",");
+				conectividadesList = Arrays.asList(conectividadesArray);
+			}
 			
-			// Actualiza el estado de las Conectividades
+			List<String> serviciosList = new ArrayList<>();
+			if(!VACIO.equals(serviciosParam)) {
+				String[] serviciosArray = serviciosParam.split(",");
+				serviciosList = Arrays.asList(serviciosArray);
+			}
+			
+			ServicioDao sDao = ServicioDao.getInstance();
 			ConectividadDao cDao = ConectividadDao.getInstance();
 			
-			for(String c : conectividadesList) {
-				Conectividad cObj = cDao.getConectividadById(c);
-				if(cObj != null) {
-					cObj.setEstadoImplantacion("Solicitado");
-					cObj.setEstadoSubida("OK");
-					cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacion));
-					cObj.setStr_fecha_implantacion(fechaImplantacion);
-					if(CALENDADA.equals(tipoSubida)) {
-						cObj.setsubidaCalendada(true);
+			// Actualiza el estado de las Conectividades
+			if(conectividadesList.size() > 0) {				
+				for(String c : conectividadesList) {
+					Conectividad cObj = cDao.getConectividadById(c);
+					if(cObj != null) {
+						cObj.setEstadoImplantacion(SOLICITADO);
+						cObj.setEstadoSubida(OK);
+						cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacion));
+						cObj.setStr_fecha_implantacion(fechaImplantacion);
+						if(CALENDADA.equals(tipoSubida)) {
+							cObj.setsubidaCalendada(true);
+						}
+						else {
+							cObj.setsubidaCalendada(false);
+						}
+						cDao.createConectividad(cObj, usermail);
 					}
-					else {
-						cObj.setsubidaCalendada(false);
-					}
-					cDao.createConectividad(cObj, usermail);
 				}
 			}
 			
 			// Actualiza el estado de las Servicios
-			ServicioDao sDao = ServicioDao.getInstance();
-			
-			for(String s : serviciosList) {
-				Servicio sObj = sDao.getServicioById(s);
-				if(sObj != null) {
-					sObj.setEstadoImplantacion("Solicitado");
-					sObj.setEstadoSubida("OK");
-					sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacion));
-					sObj.setStr_fecha_implantacion_produccion(fechaImplantacion);
-					if(CALENDADA.equals(tipoSubida)) {
-						sObj.setsubidaCalendada(true);
+			if(serviciosList.size() > 0) {							
+				for(String s : serviciosList) {
+					Servicio sObj = sDao.getServicioById(s);
+					if(sObj != null) {
+						sObj.setEstadoImplantacion(SOLICITADO);
+						sObj.setEstadoSubida(OK);
+						sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacion));
+						sObj.setStr_fecha_implantacion_produccion(fechaImplantacion);
+						if(CALENDADA.equals(tipoSubida)) {
+							sObj.setsubidaCalendada(true);
+						}
+						else {
+							sObj.setsubidaCalendada(false);
+						}
+						sDao.createServicio(sObj, usermail);
 					}
-					else {
-						sObj.setsubidaCalendada(false);
-					}
-					sDao.createServicio(sObj, usermail);
 				}
 			}
 			
 			// TODO send email solicitud
-			
 			Properties props = new Properties();
 	        Session session = Session.getDefaultInstance(props, null);
 	        ProyectoDao pDao = ProyectoDao.getInstance();
@@ -186,17 +193,17 @@ public class ImplantacionServlet extends HttpServlet {
 	            MimeMessage msg = new MimeMessage(session);
 	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
 	            msg.addRecipient(Message.RecipientType.TO,
-	                             new InternetAddress(usermail, "Mr. User"));
+	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));
 	            msg.setSubject("Implantaciones solicitadas");
 	            //msg.setText(msgBody);
 	            msg.setContent(msgBody, "text/html; charset=utf-8");
 	            Transport.send(msg);
 
 	        } catch (AddressException e) {
-	            // ...
+	        	e.printStackTrace();
 	        } 
+					
 			
-		
 			json.append("success", "true");
 		}catch (Exception e) {
 			json.append("failure", "true");
@@ -216,32 +223,42 @@ public class ImplantacionServlet extends HttpServlet {
 			String conectividadesParam = req.getParameter("conectividades");
 			
 			//Proceso parametros de codigos de conectividades y de servicios
-			String[] conectividadesArray = conectividadesParam.split(",");
-			String[] serviciosArray = serviciosParam.split(",");
-			List<String> conectividadesList = Arrays.asList(conectividadesArray);
-			List<String> serviciosList = Arrays.asList(serviciosArray);
+			List<String> conectividadesList = new ArrayList<>();
+			if(!VACIO.equals(conectividadesParam)) {
+				String[] conectividadesArray = conectividadesParam.split(",");
+				conectividadesList = Arrays.asList(conectividadesArray);
+			}
+			
+			List<String> serviciosList = new ArrayList<>();
+			if(!VACIO.equals(serviciosParam)) {
+				String[] serviciosArray = serviciosParam.split(",");
+				serviciosList = Arrays.asList(serviciosArray);
+			}
+			
+			ConectividadDao cDao = ConectividadDao.getInstance();	
+			ServicioDao sDao = ServicioDao.getInstance();			
 			
 			// Actualiza el estado de las Conectividades
-			ConectividadDao cDao = ConectividadDao.getInstance();
-			
-			for(String c : conectividadesList) {
-				Conectividad cObj = cDao.getConectividadById(c);
-				if(cObj != null) {
-					cObj.setEstado("En Penny Test");
-					cObj.setEstadoImplantacion("Confirmado");
-					cDao.createConectividad(cObj, usermail);
+			if(conectividadesList.size() > 0) {
+				for(String c : conectividadesList) {
+					Conectividad cObj = cDao.getConectividadById(c);
+					if(cObj != null) {
+						cObj.setEstado(PENNY_TEST);
+						cObj.setEstadoImplantacion(CONFIRMADO);
+						cDao.createConectividad(cObj, usermail);
+					}
 				}
 			}
 			
 			// Actualiza el estado de las Servicios
-			ServicioDao sDao = ServicioDao.getInstance();
-			
-			for(String s : serviciosList) {
-				Servicio sObj = sDao.getServicioById(s);
-				if(sObj != null) {
-					sObj.setEstado("En Penny Test");
-					sObj.setEstadoImplantacion("Confirmado");
-					sDao.createServicio(sObj, usermail);
+			if(serviciosList.size() > 0) {
+				for(String s : serviciosList) {
+					Servicio sObj = sDao.getServicioById(s);
+					if(sObj != null) {
+						sObj.setEstado("En Penny Test");
+						sObj.setEstadoImplantacion(CONFIRMADO);
+						sDao.createServicio(sObj, usermail);
+					}
 				}
 			}
 			
@@ -280,14 +297,14 @@ public class ImplantacionServlet extends HttpServlet {
 	            MimeMessage msg = new MimeMessage(session);
 	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
 	            msg.addRecipient(Message.RecipientType.TO,
-	                             new InternetAddress(usermail, "Mr. User"));
+	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));
 	            msg.setSubject("Implantaciones confirmadas");
 	            //msg.setText(msgBody);
 	            msg.setContent(msgBody, "text/html; charset=utf-8");
 	            Transport.send(msg);
 
 	        } catch (AddressException e) {
-	            // ...
+	           e.printStackTrace();
 	        } 
 			
 			json.append("success", "true");
@@ -309,78 +326,60 @@ public class ImplantacionServlet extends HttpServlet {
 			String conectividadesParam = req.getParameter("conectividades");
 			
 			//Proceso parametros de codigos de conectividades y de servicios
-			String[] conectividadesArray = conectividadesParam.split(",");
-			String[] serviciosArray = serviciosParam.split(",");
-			List<String> conectividadesList = Arrays.asList(conectividadesArray);
-			List<String> serviciosList = Arrays.asList(serviciosArray);
+			List<String> conectividadesList = new ArrayList<>();
+			if(!VACIO.equals(conectividadesParam)) {
+				String[] conectividadesArray = conectividadesParam.split(",");
+				conectividadesList = Arrays.asList(conectividadesArray);
+			}
+			
+			List<String> serviciosList = new ArrayList<>();
+			if(!VACIO.equals(serviciosParam)) {
+				String[] serviciosArray = serviciosParam.split(",");
+				serviciosList = Arrays.asList(serviciosArray);
+			}
 			
 			// Actualiza el estado de las Conectividades
-			ConectividadDao cDao = ConectividadDao.getInstance();
-			
-			for(String c : conectividadesList) {
-				Conectividad cObj = cDao.getConectividadById(c);
-				if(cObj != null) {
-					cObj.setEstadoImplantacion("Produccion");
-					cDao.createConectividad(cObj, usermail);
+			if(conectividadesList.size() > 0) {
+				ConectividadDao cDao = ConectividadDao.getInstance();			
+				for(String c : conectividadesList) {
+					Conectividad cObj = cDao.getConectividadById(c);
+					if(cObj != null) {
+						if(KO.equals(cObj.getEstadoSubida())) {
+							cObj.setEstado(PENDIENTE_IMPL);
+							cObj.setEstadoImplantacion(null);
+							cObj.setEstadoSubida(null);
+						}
+						else {
+							cObj.setEstadoImplantacion(PRODUCCION);
+						}
+						
+						cDao.createConectividad(cObj, usermail);
+					}
 				}
 			}
 			
 			// Actualiza el estado de las Servicios
-			ServicioDao sDao = ServicioDao.getInstance();
-			
-			for(String s : serviciosList) {
-				Servicio sObj = sDao.getServicioById(s);
-				if(sObj != null) {
-					sObj.setEstadoImplantacion("Produccion");
-					sDao.createServicio(sObj, usermail);
+			if(serviciosList.size() > 0) {
+				ServicioDao sDao = ServicioDao.getInstance();
+				for(String s : serviciosList) {
+					Servicio sObj = sDao.getServicioById(s);
+					if(sObj != null) {
+						if(KO.equals(sObj.getEstadoSubida())) {
+							sObj.setEstado(PENDIENTE_IMPL);
+							sObj.setEstadoImplantacion(null);
+							sObj.setEstadoSubida(null);
+						}
+						else {
+							sObj.setEstadoImplantacion(PRODUCCION);
+						}
+						
+						sDao.createServicio(sObj, usermail);
+					}
 				}
 			}
 						
-			// TODO send email produccion, descomentar si es necesario
+			// TODO generar informe
 			
-			/*Properties props = new Properties();
-	        Session session = Session.getDefaultInstance(props, null);
-	        ProyectoDao pDao = ProyectoDao.getInstance();
-	        Proyecto p = null;
-	        String msgBody = "";
-	        msgBody +="<ul>";
-	        
-	        	for(String c : conectividadesList){
-	        		Conectividad cObj = cDao.getConectividadById(c);
-	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
-	        		msgBody +="Conectividades en producción:<br/>";
-	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
-	        		msgBody +="</li>";
-	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
-	        	}
-	        	
-	        	for(String s : serviciosList){
-	        		Servicio sObj = sDao.getServicioById(s);
-	        		p = pDao.getProjectbyId(sObj.getId_proyecto());
-	        		msgBody +="<br/><br/>Servicios en producción:<br/>";
-	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+sObj.getPais()+", "+sObj.getServicio();
-	        		msgBody +="</li>";
-	        		msgBody +="<br/>"+sObj.getdetalleSubida();	        		
-	        	}
-	        	
-	        msgBody +="</ul>";
-	        
-	        try {
-	            //Message msg = new MimeMessage(session);
-	            MimeMessage msg = new MimeMessage(session);
-	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
-	            msg.addRecipient(Message.RecipientType.TO,
-	                             new InternetAddress(usermail, "Mr. User"));
-	            msg.setSubject("Implantaciones en Producción");
-	            //msg.setText(msgBody);
-	            msg.setContent(msgBody, "text/html; charset=utf-8");
-	            Transport.send(msg);
-
-	        } catch (AddressException e) {
-	            // ...
-	        } */
 			json.append("success", "true");
 		} catch (Exception e) {
 			json.append("failure", "true");

@@ -7,11 +7,7 @@
 			initSelectpickers();
 			initDatepickers();
 		});
-		
-		
 	</script>
-	
-	
 
 	<div class="modal_ajax">
 		<div class="">

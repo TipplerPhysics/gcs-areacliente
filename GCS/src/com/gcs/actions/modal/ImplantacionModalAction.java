@@ -13,57 +13,78 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Servicio;
-import com.gcs.beans.User;
-import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.ServicioDao;
-import com.gcs.dao.UserDao;
 
 
 public class ImplantacionModalAction extends Action {
+	
+	private static final String VACIO = "";
+	private static final String SOLICITADO = "Solicitado";
+	private static final String CONFIRMADO = "Confirmado";
+	private static final String OK = "OK";
+	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {	
 		
+		// Modal de notificacion de informe generado.
+		String informe = req.getParameter("informe");		
+		if(OK.equals(informe)) {
+			return mapping.findForward("informe");			
+		}
+		
+		// Resto de modales de envío de emails.
 		String serviciosParam = req.getParameter("servicios");
 		String conectividadesParam = req.getParameter("conectividades");
 		
 		//Proceso parametros de codigos de conectividades y de servicios
-		String[] conectividadesArray = conectividadesParam.split(",");
-		String[] serviciosArray = serviciosParam.split(",");
-		List<String> conectividadesList = Arrays.asList(conectividadesArray);
-		List<String> serviciosList = Arrays.asList(serviciosArray);
+		List<String> conectividadesList = new ArrayList<>();
+		if(!VACIO.equals(conectividadesParam)) {
+			String[] conectividadesArray = conectividadesParam.split(",");
+			conectividadesList = Arrays.asList(conectividadesArray);
+		}
+		
+		List<String> serviciosList = new ArrayList<>();
+		if(!VACIO.equals(serviciosParam)) {
+			String[] serviciosArray = serviciosParam.split(",");
+			serviciosList = Arrays.asList(serviciosArray);
+		}
 		
 		//Declaro variables para guardar el último estado de Conectividades y Servicios
-		String ultimoEstadoServicio = "";
-		String ultimoEstadoConectividad = "";
+		String ultimoEstadoServicio = null;
+		String ultimoEstadoConectividad = null;
+		String ultimaFechaImplantacion = null;
 		
 		//Recuperar los servicios y las conectividades
 		List<Conectividad> conectividades = new ArrayList<>();
 		List<Servicio> servicios = new ArrayList<>();
 		
 		//FOR de Conectividades
-		ConectividadDao cDao = ConectividadDao.getInstance();
-		
-		for(String c : conectividadesList) {
-			Conectividad cObj = cDao.getConectividadById(c);
-			if(cObj != null) {
-				conectividades.add(cObj);
-				ultimoEstadoConectividad = cObj.getEstadoImplantacion();
+		if(conectividadesList.size() > 0) {
+			ConectividadDao cDao = ConectividadDao.getInstance();
+			for(String c : conectividadesList) {
+				Conectividad cObj = cDao.getConectividadById(c);
+				if(cObj != null) {
+					conectividades.add(cObj);
+					ultimoEstadoConectividad = cObj.getEstadoImplantacion();
+					ultimaFechaImplantacion = cObj.getStr_fecha_implantacion();
+				}
 			}
 		}
 		
 		//FOR de Servicios
-		ServicioDao sDao = ServicioDao.getInstance();
-		
-		for(String s : serviciosList) {
-			Servicio sObj = sDao.getServicioById(s);
-			if(sObj != null) {
-				servicios.add(sObj);
-				ultimoEstadoServicio = sObj.getEstadoImplantacion();
+		if(serviciosList.size() > 0) {
+			ServicioDao sDao = ServicioDao.getInstance();
+			for(String s : serviciosList) {
+				Servicio sObj = sDao.getServicioById(s);
+				if(sObj != null) {
+					servicios.add(sObj);
+					ultimoEstadoServicio = sObj.getEstadoImplantacion();
+					ultimaFechaImplantacion = sObj.getStr_fecha_implantacion_produccion();
+				}
 			}
 		}
 		
@@ -74,11 +95,18 @@ public class ImplantacionModalAction extends Action {
 			
 			return mapping.findForward("email1");
 		}
-		else if( ultimoEstadoConectividad.equals(ultimoEstadoServicio) && ultimoEstadoConectividad.equals("Solicitado") ){
-			return mapping.findForward("email2");
+		else if( SOLICITADO.equals(ultimoEstadoServicio) || SOLICITADO.equals(ultimoEstadoConectividad) ){
+			req.setAttribute("servicios", serviciosParam);
+			req.setAttribute("conectividades", conectividadesParam);
+			req.setAttribute("fecha_implantacion", ultimaFechaImplantacion);
 			
+			return mapping.findForward("email2");			
 		}
-		else if( ultimoEstadoConectividad.equals(ultimoEstadoServicio) && ultimoEstadoConectividad.equals("Confirmado") ){
+		else if( CONFIRMADO.equals(ultimoEstadoServicio) || CONFIRMADO.equals(ultimoEstadoConectividad) ){
+			req.setAttribute("servicios", serviciosParam);
+			req.setAttribute("conectividades", conectividadesParam);
+			req.setAttribute("fecha_implantacion", ultimaFechaImplantacion);
+			
 			return mapping.findForward("email3");			
 		}
 		else{
@@ -86,17 +114,5 @@ public class ImplantacionModalAction extends Action {
 			 System.out.println("Error implementaciones en diferentes estados de implantacion");
 			 return null;
 		}
-		
-		
-		/*ClienteDao cDao = ClienteDao.getInstance();
-		List<Cliente> clientes = cDao.getAllNonDeletedClients();
-		
-		UserDao uDao = UserDao.getInstance();
-		List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-		
-		req.setAttribute("clientes", clientes);
-		req.setAttribute("gestores_it", gestores_it);*/
-
-		
 	}
 }

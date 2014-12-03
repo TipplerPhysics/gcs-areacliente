@@ -23,20 +23,38 @@ import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
 
 public class RegistroImplantacionesAction extends Action {
+	
+	private static final String PENDIENTE_IMPL = "PDTE Implantar";
+	
+	private static final String CONFIRMADO = "Confirmado";
+	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-
+		
 		ConectividadDao cDao = ConectividadDao.getInstance();
 		ServicioDao sDao = ServicioDao.getInstance();
 		ProyectoDao pDao = ProyectoDao.getInstance();
 		
-		List<Conectividad> conectividades = cDao.getConectividadEnCurso();
-		List<Servicio> servicios = sDao.getServicioEnCurso();
+		Boolean implantacionEnCurso = false;
+		Boolean puedeGenerarInforme = false;
+		
+		List<Conectividad> conectividades = cDao.getConectividadesEnCurso();
+		List<Servicio> servicios = sDao.getServiciosEnCurso();
 		
 		if(conectividades == null && servicios == null) {
-			conectividades = cDao.getConectividadesByEstado("PDTE Implantar");
-			servicios = sDao.getServiciosByEstado("PDTE Implantar");
+			conectividades = cDao.getConectividadesByEstado(PENDIENTE_IMPL);
+			servicios = sDao.getServiciosByEstado(PENDIENTE_IMPL);
+		}
+		else {
+			implantacionEnCurso = true;
+			
+			// checkea si los servicios y conectividades en curso estan en estado confirmado
+			List<Conectividad> conectividadesConfirmado = cDao.getConectividadesByEstadoImplantacion(CONFIRMADO);
+			List<Servicio> servicioConfirmado = sDao.getServiciosByEstadoImplantacion(CONFIRMADO);
+			if(conectividadesConfirmado != null || servicioConfirmado != null) {
+				puedeGenerarInforme = true;
+			}
 		}
 		
 		List<Implantacion> implantaciones = new ArrayList<Implantacion>();
@@ -103,6 +121,8 @@ public class RegistroImplantacionesAction extends Action {
 			}
 		}
 				
+		req.setAttribute("implantacionEnCurso", implantacionEnCurso);
+		req.setAttribute("puedeGenerarInforme", puedeGenerarInforme);		
 		req.setAttribute("implantacionList", implantaciones);
 		
 		return mapping.findForward("ok");

@@ -14,8 +14,11 @@
 	<div class="newUserbox">
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-			<button id="sendMailButton">
+			<button id="sendMailButton" <c:if test="${puedeGenerarInforme == 'true'}"> disabled="true"</c:if>>
 				Enviar correo Negocio<span class="demanda_span"></span>
+			</button>
+			<button id="generarInformeButton" <c:if test="${puedeGenerarInforme == 'false'}"> disabled="true"</c:if>>
+				Generar informe<span class="demanda_span"></span>
 			</button>
 		</c:if>
 		<button id="excel_btn" onclick="window.location.href='../../implantacionServlet?accion=xls'">
@@ -43,7 +46,7 @@
 						<tr>
 							<th>
 								<label for="check_all_implantaciones">&nbsp;</label>
-								<input type="checkbox" name="check_all_implantaciones" id="check_all_implantaciones" />
+								<input type="checkbox" name="check_all_implantaciones" id="check_all_implantaciones" <c:if test="${implantacionEnCurso == 'true'}"> checked="true" disabled="true"</c:if> />
 							</th>
 							<th class="search-th"><input class="search col0 search_anywhere"></th>
 							<th class="search-th"><input class="search col1"></th>
@@ -69,7 +72,7 @@
 									<tr class="valid-result" id="row${loop.index}" data-servicio-id="${implantacion.serviciokey}" data-conectividad-id="${implantacion.conectividadkey}" >
 										<td>
 											<label for="check${loop.index}">&nbsp;</label>
-											<input type="checkbox" name="check${loop.index}" value="" id="check${loop.index}" />						
+											<input type="checkbox" name="check${loop.index}" value="" id="check${loop.index}" <c:if test="${implantacionEnCurso == true}"> checked="true" disabled="true"</c:if> />						
 										</td>
 										<td><span>${implantacion.fecha_implantacion_str}</span></td>
 										<td><span>${implantacion.clienteName}</span></td>
@@ -98,6 +101,14 @@
 <!--  Editar Demadna hola-->
 		
 	<div class="modal fade" id="send-email-implantacion" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="send_email_dialog">
+			<div class="modal-content">
+				
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="redirect-informe" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" id="send_email_dialog">
 			<div class="modal-content">

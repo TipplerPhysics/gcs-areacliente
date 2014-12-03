@@ -4,15 +4,15 @@ import java.text.ParseException;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.Transaction;
 
-import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
-import com.gcs.beans.Demanda;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
 
 public class ConectividadDao {
+	
+	private static final String SOLICITADO = "Solicitado";
+	private static final String CONFIRMADO = "Confirmado";
 	
 	public static ConectividadDao getInstance() {
 		return new ConectividadDao();
@@ -78,9 +78,7 @@ public class ConectividadDao {
 		Conectividad c = new Conectividad();
 
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
-
+		
 		String queryStr = "select from " + Conectividad.class.getName()
 				+ " where key_proyecto  == :p1";
 
@@ -91,19 +89,15 @@ public class ConectividadDao {
 		} else {
 			c = null;
 		}
-
-		transaction.commit();
+		
 		pManager.close();
 
 		return c;
-
 	}
 	
 	public List<Conectividad> getConectividadesByEstado(String estado){
 		
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
 		
 		String queryStr = "select from " + Conectividad.class.getName()
 				+ " where estado == '" + estado +  "'";
@@ -112,44 +106,58 @@ public class ConectividadDao {
 		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute();
 		
 		if (conectividades.isEmpty()) {
-		
 			conectividades = null;
 		}
+		
+		pManager.close();
+		
 		return conectividades;
 	}
 	
-	public List<Conectividad> getConectividadEnCurso(){
+	public List<Conectividad> getConectividadesByEstadoImplantacion(String estado){
 		
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
 		
 		String queryStr = "select from " + Conectividad.class.getName()
-				+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
+				+ " where estadoImplantacion == '" + estado +  "'";
 		
 		@SuppressWarnings({ "unchecked", "unused" })
 		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute();
 		
 		if (conectividades.isEmpty()) {
-		
 			conectividades = null;
 		}
+		
+		pManager.close();
+		
 		return conectividades;
 	}
 	
+	public List<Conectividad> getConectividadesEnCurso(){
+		
+		List<Conectividad> conectividadSolicitado = getConectividadesByEstadoImplantacion(SOLICITADO);
+		List<Conectividad> conectividadConfirmado = getConectividadesByEstadoImplantacion(CONFIRMADO);
+		
+		if(conectividadSolicitado != null) {
+			return conectividadSolicitado;
+		}
+		else if(conectividadConfirmado != null){
+			return conectividadConfirmado;
+		}
+		else {
+			return null;
+		}
+	}
+	
 	public Conectividad getConectividadById(String key){
-		
-		 Long keyAux = Long.parseLong(key);		
-		 PersistenceManager pManager = PMF.get().getPersistenceManager();
-		 Conectividad conectividad_temp = pManager.getObjectById(Conectividad.class, keyAux);	      
-		 Conectividad conectividad = pManager.detachCopy(conectividad_temp);  
-	     pManager.close();
-		
-		
-				
-		
+		Long keyAux = Long.parseLong(key);
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Conectividad conectividad_temp = pManager.getObjectById(
+				Conectividad.class, keyAux);
+		Conectividad conectividad = pManager.detachCopy(conectividad_temp);
+		pManager.close();
+
 		return conectividad;
-		
 	}
 
 }
