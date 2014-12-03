@@ -20,7 +20,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
 public class ServicioDao {
 	
-	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	private static final String SOLICITADO = "Solicitado";
+	private static final String CONFIRMADO = "Confirmado";
 
 	public static ServicioDao getInstance() {
 		return new ServicioDao();
@@ -61,16 +62,12 @@ public class ServicioDao {
 	
 	public List<Servicio> getServiciosByProject(Long id) {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
-
+		
 		String queryStr = "select from " + Servicio.class.getName()
 				+ " where id_proyecto  == :p1";
 
 		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute(id);
 
-		
-		transaction.commit();
 		pManager.close();
 
 		return servicios;
@@ -145,7 +142,6 @@ public class ServicioDao {
 			}
 		
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			try {
@@ -166,8 +162,6 @@ public class ServicioDao {
 	
 	public List<Servicio> getServiciosByEstado(String estado){
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
 		
 		String queryStr = "select from " + Servicio.class.getName()
 				+ " where estado == '" + estado +  "'";
@@ -176,45 +170,58 @@ public class ServicioDao {
 		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
 		
 		if (servicios.isEmpty()) {
-		
 			servicios = null;
 		}
+		
+		pManager.close();
+		
 		return servicios;
 	}
 	
-	
-	public List<Servicio> getServicioEnCurso(){
-		
+	public List<Servicio> getServiciosByEstadoImplantacion(String estado){
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
 		
-		String queryStr = "select from " + Servicio.class.getName()				
-		+ " where estadoImplantacion  == 'Solicitado' || estadoImplantacion  == 'Confirmado'";
-				
+		String queryStr = "select from " + Servicio.class.getName()
+				+ " where estadoImplantacion == '" + estado +  "'";
+		
 		@SuppressWarnings({ "unchecked", "unused" })
 		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
 		
 		if (servicios.isEmpty()) {
-		
 			servicios = null;
 		}
+		
+		pManager.close();
+		
 		return servicios;
 	}
 	
-public Servicio getServicioById(String key){
+	
+	public List<Servicio> getServiciosEnCurso(){
 		
-	 Long keyAux = Long.parseLong(key);
-	
-	 PersistenceManager pManager = PMF.get().getPersistenceManager();
-	 Servicio servicio_temp = pManager.getObjectById(Servicio.class, keyAux);	      
-	 Servicio servicio = pManager.detachCopy(servicio_temp);  
-     pManager.close();
-	
-	
-			
-	
-	return servicio;
+		List<Servicio> servicioSolicitado = getServiciosByEstadoImplantacion(SOLICITADO);
+		List<Servicio> servicioConfirmado = getServiciosByEstadoImplantacion(CONFIRMADO);
 		
+		if(servicioSolicitado != null) {
+			return servicioSolicitado;
+		}
+		else if(servicioConfirmado != null){
+			return servicioConfirmado;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public Servicio getServicioById(String key){
+
+		Long keyAux = Long.parseLong(key);
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Servicio servicio_temp = pManager.getObjectById(Servicio.class, keyAux);
+		Servicio servicio = pManager.detachCopy(servicio_temp);
+		pManager.close();
+
+		return servicio;		
 	}
 }

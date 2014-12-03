@@ -1586,7 +1586,7 @@ $(function() {
 		
 		var formURL = $form.attr("action");
 		var $formData = $form.serialize();
-		var postData= $formData+"&accion=solicitud&servicios="+ servicios+"&conectividades="+conectividades+"&tipo_subida="+tipo_subida+"&fecha_implantacion="+fecha_implantacion ;
+		var postData= $formData+"&accion=Solicitado&servicios="+ servicios+"&conectividades="+conectividades+"&tipo_subida="+tipo_subida+"&fecha_implantacion="+fecha_implantacion ;
 		$.ajax(			
 			{
 				url : formURL,
@@ -1611,6 +1611,74 @@ $(function() {
 	}
 }
 
+function sendEmailConfirmacion(){
+	var $form = $('#send-email-confirmacion-form');
+	
+	var servicios = $form.data('servicios');
+	var conectividades = $form.data('conectividades');	
+	
+	var formURL = $form.attr("action");
+	var $formData = $form.serialize();
+	var postData= $formData+"&accion=Confirmado&servicios="+ servicios+"&conectividades="+conectividades;
+	$.ajax(			
+		{
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				if (data.success=="true"){
+					$form.hide();
+					$('#span_message_modal').html('La confirmaci&oacute;n de implantaci&oacute;n se ha registrado de manera correcta.');
+					$('.modal-footer').hide();
+					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+					setTimeout(function() { 
+						resetForm($form);
+						$('#send-email-implantacion').modal('hide');
+						
+						location.reload();
+					}, 2000);
+				}
+			}
+		});	
+}
+
+function sendEmailProduccion(){
+	var $form = $('#send-email-produccion-form');
+	
+	var servicios = $form.data('servicios');
+	var conectividades = $form.data('conectividades');	
+	
+	var formURL = $form.attr("action");
+	var $formData = $form.serialize();
+	var postData= $formData+"&accion=Produccion&servicios="+ servicios+"&conectividades="+conectividades;
+	$.ajax(			
+		{
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				if (data.success=="true"){
+					$('#send-email-implantacion').modal('hide');
+					
+					$('#redirect-informe').modal({
+						  remote: "../sendMailImplantacion.do?informe=OK"
+					});
+					$('#redirect-informe').modal('show');
+				}
+			}
+		});	
+}
+
+function showInforme() {
+	location.href="../informeImplantacion.do";
+}
+
+function reloadImplantaciones() {
+	location.reload();
+}
+
 $(function() {
 	
 	$('#check_all_implantaciones').on('change', function(e) {
@@ -1624,7 +1692,7 @@ $(function() {
 		}
 	});
 	
-	$('#sendMailButton').on('click', function(e) {
+	$('#sendMailButton, #generarInformeButton').on('click', function(e) {
 		console.log("sendMail");
 		
 		var servicios = "";
