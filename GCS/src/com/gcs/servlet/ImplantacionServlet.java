@@ -164,7 +164,7 @@ public class ImplantacionServlet extends HttpServlet {
 	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
 	        		msgBody +="Conectividades solicitadas:<br/>";
 	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+"PAIS"+", "+p.getConectividad();
+	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
 	        		msgBody +="</li>";
 	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
 	        	}
@@ -258,7 +258,7 @@ public class ImplantacionServlet extends HttpServlet {
 	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
 	        		msgBody +="Conectividades confirmadas:<br/>";
 	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+"PAIS"+", "+p.getConectividad();
+	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
 	        		msgBody +="</li>";
 	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
 	        	}
@@ -350,7 +350,7 @@ public class ImplantacionServlet extends HttpServlet {
 	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
 	        		msgBody +="Conectividades en producción:<br/>";
 	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+"PAIS"+", "+p.getConectividad();
+	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
 	        		msgBody +="</li>";
 	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
 	        	}
