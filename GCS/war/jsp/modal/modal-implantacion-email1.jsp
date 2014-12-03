@@ -7,7 +7,11 @@
 			initSelectpickers();
 			initDatepickers();
 		});
+		
+		
 	</script>
+	
+	
 
 	<div class="modal_ajax">
 		<div class="">
@@ -31,7 +35,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha:</span>
 							<div class="input">
-								<input type="text" id="fecha_implantacion" name="fecha_implantacion" class="datepicker " size="16" maxlength="25"  readonly="">
+								<input type="text" id="fecha_implantacion" name="fecha_implantacion" class="datepicker " size="16" maxlength="25"  readonly="" required="true" >
 							</div>
 						</div>
 					</div>								 					
