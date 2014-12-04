@@ -21,16 +21,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jxl.Workbook;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
+import jxl.format.VerticalAlignment;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
+import com.gcs.beans.User;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
+import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
-
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -401,9 +410,12 @@ public class ImplantacionServlet extends HttpServlet {
 			WritableWorkbook w = Workbook
 					.createWorkbook(resp.getOutputStream());
 
-			/*ImplantacionDao dDao = ImplantacionDao.getInstance();
-			List<Implantacion> demandas = dDao.getAllImplantaciones();
-
+			ConectividadDao cDao = ConectividadDao.getInstance();
+			List<Conectividad> conectividades = cDao.getAllConectividades();
+			
+			ServicioDao sDao = ServicioDao.getInstance();
+			List<Servicio> servicios = sDao.getAllServicios();
+			
 			WritableSheet s = w.createSheet("Registro de implantaciones", 0);
 
 			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
@@ -421,7 +433,7 @@ public class ImplantacionServlet extends HttpServlet {
 			s.setColumnView(3, 50);
 			s.setColumnView(4, 30);
 			s.setColumnView(5, 30);
-			s.setColumnView(6, 70);
+			/*s.setColumnView(6, 70);
 			s.setColumnView(7, 70);
 			s.setColumnView(8, 30);
 			s.setColumnView(9, 25);
@@ -430,16 +442,16 @@ public class ImplantacionServlet extends HttpServlet {
 			s.setColumnView(12, 30);
 			s.setColumnView(13, 30);
 			s.setColumnView(14, 30);
-			s.setColumnView(15, 30);
+			s.setColumnView(15, 30);*/
 			s.setRowView(0, 900);
 
 			s.addCell(new Label(0, 0, "FECHA_SUBIDA", cellFormat));
 			s.addCell(new Label(1, 0, "CLIENTE", cellFormat));
 			s.addCell(new Label(2, 0, "ESTADO", cellFormat));
 			s.addCell(new Label(3, 0, "GESTORIT", cellFormat));
-			s.addCell(new Label(4, 0, "FECHA ENTRADA", cellFormat));
-			s.addCell(new Label(5, 0, "HORA ENTRADA", cellFormat));
-			s.addCell(new Label(6, 0, "MOTIVO DE CATALOGACION", cellFormat));
+			s.addCell(new Label(4, 0, "SERVICIO", cellFormat));
+			s.addCell(new Label(5, 0, "CONECTIVIDAD", cellFormat));
+			/*s.addCell(new Label(6, 0, "MOTIVO DE CATALOGACION", cellFormat));
 			s.addCell(new Label(7, 0, "COMENTARIOS", cellFormat));
 			s.addCell(new Label(8, 0, "GESTOR DE NEGOCIO", cellFormat));
 			s.addCell(new Label(9, 0, "FECHA DE SOLICITUD", cellFormat));
@@ -448,58 +460,42 @@ public class ImplantacionServlet extends HttpServlet {
 			s.addCell(new Label(12, 0, "GESTOR IT", cellFormat));
 			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",cellFormat));
 			s.addCell(new Label(14, 0, "FECHA COMUNICACION", cellFormat));
-			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));
+			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));*/
 
-			UserDao uDao = UserDao.getInstance();
-			User u = new User();
+			//UserDao uDao = UserDao.getInstance();
+			//User u = new User();
 
 			int aux = 1;
-
-			for (Implantacion d : demandas) {
+			
+			ProyectoDao pDao = ProyectoDao.getInstance();
+	        Proyecto p = null;
+			for (Conectividad c : conectividades) {
+				if(c.getEstado().indexOf("PDTE Implantar")!=-1){
+				p = pDao.getProjectbyId(c.getKey_proyecto());
 				
-				s.addCell(new Label(0, aux, d.getCod_peticion()));
-				s.addCell(new Label(1, aux, d.getClienteName()));
-				s.addCell(new Label(2, aux, d.getTipo()));
-				s.addCell(new Label(3, aux, d.getEstado()));
-				s.addCell(new Label(4, aux, d.getStr_fecha_entrada_peticion()));
-				s.addCell(new Label(5, aux, d.getHora_entrada_peticion()));
-				s.addCell(new Label(6, aux, d.getMotivo_catalogacion()));
-				s.addCell(new Label(7, aux, d.getComentarios()));
-
-				if (d.getGestor_negocio()!=null){
-					u = uDao.getUserbyId(d.getGestor_negocio());
-					if (u!=null){
-						s.addCell(new Label(8, aux, u.getNombre() + " "
-								+ u.getApellido1() + " " + u.getApellido2()));
-					}
-					
-				}
-				
-
-				s.addCell(new Label(9, aux, d
-						.getStr_fecha_solicitud_asignacion()));
-				s.addCell(new Label(10, aux, d.getHora_solicitud_asignacion()));
-				if (d.getDevuelta().equals(true))
-					s.addCell(new Label(11, aux, "Si"));
-				else
-					s.addCell(new Label(11, aux, "No"));
-
-				if (d.getGestor_it()!=null){
-					u = uDao.getUserbyId(d.getGestor_it());
-					if (u!=null){
-						s.addCell(new Label(12, aux, u.getNombre() + " "
-								+ u.getApellido1() + " " + u.getApellido2()));
-					}
-				}
-				
-				
-
-				s.addCell(new Label(13, aux, d.getCatalogacion()));
-				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
-				s.addCell(new Label(15,aux,d.getHora_comunicacion_asignacion()));
-
+				s.addCell(new Label(0, aux, c.getStr_fecha_implantacion()));
+				s.addCell(new Label(1, aux, p.getClienteName()));
+				s.addCell(new Label(2, aux, c.getEstado()));
+				s.addCell(new Label(3, aux, p.getGestor_it_name()));
+				s.addCell(new Label(5, aux, p.getConectividad()));
+		
 				aux++;
-			}*/
+				}
+			}
+			int aux1 = aux;
+			for (Servicio serv : servicios) {
+				if(serv.getEstado().indexOf("PDTE Implantar")!=-1){
+				p = pDao.getProjectbyId(serv.getId_proyecto());
+				
+				s.addCell(new Label(0, aux1, serv.getStr_fecha_implantacion_produccion()));
+				s.addCell(new Label(1, aux1, p.getClienteName()));
+				s.addCell(new Label(2, aux1, serv.getEstado()));
+				s.addCell(new Label(3, aux1, p.getGestor_it_name()));
+				s.addCell(new Label(4, aux1, serv.getServicio()));
+		
+				aux1++;
+				}
+			}
 
 			w.write();
 			w.close();
