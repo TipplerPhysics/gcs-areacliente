@@ -2458,6 +2458,57 @@ form textarea.error {
   display: block;
   height: auto;
 }
+#send-email-solicitud-form .info,
+#send-email-confirmacion-form .info,
+#send-email-produccion-form .info {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+#send-email-solicitud-form .form-field-divider,
+#send-email-confirmacion-form .form-field-divider,
+#send-email-produccion-form .form-field-divider {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+#send-email-solicitud-form .form-field-divider .form-field .lbl,
+#send-email-confirmacion-form .form-field-divider .form-field .lbl,
+#send-email-produccion-form .form-field-divider .form-field .lbl {
+  display: inline-block;
+  width: 160px;
+}
+#send-email-solicitud-form .form-field-divider .form-field .lbl.mini,
+#send-email-confirmacion-form .form-field-divider .form-field .lbl.mini,
+#send-email-produccion-form .form-field-divider .form-field .lbl.mini {
+  width: 80px;
+}
+#send-email-solicitud-form .form-field-divider .form-field .input,
+#send-email-confirmacion-form .form-field-divider .form-field .input,
+#send-email-produccion-form .form-field-divider .form-field .input {
+  width: 50%;
+}
+#send-email-solicitud-form .form-field-divider .form-field .input input,
+#send-email-confirmacion-form .form-field-divider .form-field .input input,
+#send-email-produccion-form .form-field-divider .form-field .input input {
+  width: 180px;
+}
+#send-email-solicitud-form .form-field-divider .form-field .input .bootstrap-select:not([class*=span]):not([class*=col-]):not([class*=form-control]):not(.input-group-btn),
+#send-email-confirmacion-form .form-field-divider .form-field .input .bootstrap-select:not([class*=span]):not([class*=col-]):not([class*=form-control]):not(.input-group-btn),
+#send-email-produccion-form .form-field-divider .form-field .input .bootstrap-select:not([class*=span]):not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+  width: 180px;
+}
+#redirect-informe .info span {
+  text-align: center;
+  display: block;
+}
+#redirect-informe .info.first {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+#redirect-informe .info.last {
+  margin-bottom: 30px;
+}
 .gestion_servicio .modal-dialog {
   width: 600px;
 }

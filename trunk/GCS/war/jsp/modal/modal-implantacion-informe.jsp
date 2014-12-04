@@ -6,11 +6,11 @@
 	<div class="modal_ajax">
 		<div class="new-user-form-holder">
 		
-			<div>
+			<div class="info first">
 				<span>El informe se ha generado correctamente.</span>
 			</div>
-			<div>
-				<span>¿Desea consultarlo en el repositorio?</span>
+			<div class="info last">
+				<span>&iquest;Desea consultarlo en el repositorio?</span>
 			</div>			
 			
 		</div>

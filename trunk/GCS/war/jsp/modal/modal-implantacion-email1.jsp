@@ -6,6 +6,7 @@
 		$(function() {
 			initSelectpickers();
 			initDatepickers();
+			initValidator();
 		});
 	</script>
 
@@ -19,7 +20,7 @@
 				<div class="form-container">
 					<div class="form-field-divider left">
 						<div class="form-field">
-							<span class="lbl">Indique el tipo de subida:</span>
+							<span class="lbl">Indique el tipo de subida<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select name="tipo_subida" id="tipo_subida" class="long selectpicker">																	
 									<option value="Calendada">Calendada</option>
@@ -29,7 +30,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha:</span>
+							<span class="lbl">Fecha<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" id="fecha_implantacion" name="fecha_implantacion" class="datepicker datefuture" size="16" maxlength="25"  readonly="" required aria-required="true" >
 							</div>

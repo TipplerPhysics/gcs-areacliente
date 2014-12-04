@@ -140,6 +140,11 @@
 			<forward name="informe" path="/jsp/modal/modal-implantacion-informe.jsp" />
 		</action>
 		
+		<action path="/dashboard/informeImplantacion" type="com.gcs.actions.InformeImplantacionesAction">
+			<forward name="ok" path="/jsp/skeletons/informeImplantaciones-skeleton.jsp" />
+		</action>
+		
+		
 	</action-mappings>	
 	
 	<plug-in className="org.apache.struts.tiles.TilesPlugin" >
