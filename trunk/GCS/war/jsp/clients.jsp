@@ -50,7 +50,7 @@
 				  <ul class="dropdown-menu">
   				    	<li><a href="./dashboard/gestionDemanda.do"><span class="demanda_span blue"></span>Gestión Demanda</a></li>				  
 				    	<li><a href="./dashboard/gestionCliente.do"><span class="cliente_span blue"></span>Gestión Clientes</a></li>
-				    	<li><a href="./dashboard/gestionImplantaciones.do"><span class="cliente_span blue"></span>Registro implantaciones</a></li>
+				    	<li><a href="./dashboard/informeImplantacion.do"><span class="demanda_span blue"></span>Registro implantaciones</a></li>
 				    	<li><a href="./dashboard/gestionProyecto.do"><span class="proyecto_span blue"></span>Gestión Proyectos</a></li>
 				    	<li><a href="./dashboard/gestionServicio.do"><span class="service_span blue"></span>Gestión Servicios</a></li>
 				    	<li><a href="./dashboard/gestionCostes.do"><span class="coste_span blue"></span>Gestión Costes</a></li>

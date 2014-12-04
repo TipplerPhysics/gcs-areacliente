@@ -31,7 +31,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha:</span>
 							<div class="input">
-								<input type="text" id="fecha_implantacion" name="fecha_implantacion" class="datepicker " size="16" maxlength="25"  readonly="" required="true" >
+								<input type="text" id="fecha_implantacion" name="fecha_implantacion" class="datepicker datefuture" size="16" maxlength="25"  readonly="" required aria-required="true" >
 							</div>
 						</div>
 					</div>								 					
