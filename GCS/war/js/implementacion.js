@@ -95,7 +95,7 @@ function sendEmailProduccion(){
 }
 
 function showInforme() {
-	location.href="../informeImplantacion.do";
+	location.href="../dashboard/informeImplantacion.do";
 }
 
 function reloadImplantaciones() {

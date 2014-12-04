@@ -34,11 +34,9 @@ import jxl.write.WritableWorkbook;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
-import com.gcs.beans.User;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
-import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -134,6 +132,7 @@ public class ImplantacionServlet extends HttpServlet {
 					if(cObj != null) {
 						cObj.setEstadoImplantacion(SOLICITADO);
 						cObj.setEstadoSubida(OK);
+						cObj.setdetalleSubida("");
 						cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacion));
 						cObj.setStr_fecha_implantacion(fechaImplantacion);
 						if(CALENDADA.equals(tipoSubida)) {
@@ -154,6 +153,7 @@ public class ImplantacionServlet extends HttpServlet {
 					if(sObj != null) {
 						sObj.setEstadoImplantacion(SOLICITADO);
 						sObj.setEstadoSubida(OK);
+						sObj.setdetalleSubida("");
 						sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacion));
 						sObj.setStr_fecha_implantacion_produccion(fechaImplantacion);
 						if(CALENDADA.equals(tipoSubida)) {
@@ -167,7 +167,7 @@ public class ImplantacionServlet extends HttpServlet {
 				}
 			}
 			
-			// TODO send email solicitud
+			// send email solicitud
 			Properties props = new Properties();
 	        Session session = Session.getDefaultInstance(props, null);
 	        ProyectoDao pDao = ProyectoDao.getInstance();
@@ -175,26 +175,30 @@ public class ImplantacionServlet extends HttpServlet {
 	        String msgBody = "";
 	        msgBody +="<ul>";
 	        
-	        	for(String c : conectividadesList){
-	        		Conectividad cObj = cDao.getConectividadById(c);
-	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
-	        		msgBody +="Conectividades solicitadas:<br/>";
-	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
-	        		msgBody +="</li>";
-	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
-	        	}
-	        	
-	        	for(String s : serviciosList){
+	        if(serviciosList.size() > 0) {		
+		        msgBody +="<br/>Servicios solicitados:<br/>";
+		        for(String s : serviciosList){
 	        		Servicio sObj = sDao.getServicioById(s);
 	        		p = pDao.getProjectbyId(sObj.getId_proyecto());
-	        		msgBody +="<br/><br/>Servicios solicitados:<br/>";
 	        		msgBody +="<li>";
 	        		msgBody +=p.getClienteName()+", "+sObj.getPais()+", "+sObj.getServicio();
 	        		msgBody +="</li>";
 	        		msgBody +="<br/>"+sObj.getdetalleSubida();	        		
 	        	}
-	        	
+	        }
+	        
+	        if(conectividadesList.size() > 0) {	
+	        	msgBody +="<br/>Conectividades solicitadas:<br/>";
+	        	for(String c : conectividadesList){
+	        		Conectividad cObj = cDao.getConectividadById(c);
+	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
+	        	}
+	        }
+	        
 	        msgBody +="</ul>";
 	        
 	        try {
@@ -208,13 +212,14 @@ public class ImplantacionServlet extends HttpServlet {
 	            msg.setContent(msgBody, "text/html; charset=utf-8");
 	            Transport.send(msg);
 
-	        } catch (AddressException e) {
+	        } 
+	        catch (AddressException e) {
 	        	e.printStackTrace();
 	        } 
-					
-			
+								
 			json.append("success", "true");
-		}catch (Exception e) {
+		}
+		catch (Exception e) {
 			json.append("failure", "true");
 		}
 
@@ -271,7 +276,7 @@ public class ImplantacionServlet extends HttpServlet {
 				}
 			}
 			
-			// TODO send email confirmacion
+			// send email confirmacion
 			Properties props = new Properties();
 	        Session session = Session.getDefaultInstance(props, null);
 	        ProyectoDao pDao = ProyectoDao.getInstance();
@@ -279,25 +284,28 @@ public class ImplantacionServlet extends HttpServlet {
 	        String msgBody = "";
 	        msgBody +="<ul>";
 	        
-	        	for(String c : conectividadesList){
-	        		Conectividad cObj = cDao.getConectividadById(c);
-	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
-	        		msgBody +="Conectividades confirmadas:<br/>";
-	        		msgBody +="<li>";
-	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
-	        		msgBody +="</li>";
-	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
-	        	}
-	        	
-	        	for(String s : serviciosList){
+	        if(serviciosList.size() > 0) {
+	        	msgBody +="<br/>Servicios confirmados:<br/>";
+		        for(String s : serviciosList){
 	        		Servicio sObj = sDao.getServicioById(s);
 	        		p = pDao.getProjectbyId(sObj.getId_proyecto());
-	        		msgBody +="<br/><br/>Servicios confirmados:<br/>";
 	        		msgBody +="<li>";
 	        		msgBody +=p.getClienteName()+", "+sObj.getPais()+", "+sObj.getServicio();
 	        		msgBody +="</li>";
 	        		msgBody +="<br/>"+sObj.getdetalleSubida();	        		
 	        	}
+	        }
+	        if(conectividadesList.size() > 0) {
+	        	msgBody +="Conectividades confirmadas:<br/>";
+	        	for(String c : conectividadesList){
+	        		Conectividad cObj = cDao.getConectividadById(c);
+	        		p = pDao.getProjectbyId(cObj.getKey_proyecto());
+	        		msgBody +="<li>";
+	        		msgBody +=p.getClienteName()+", "+p.getConectividad();
+	        		msgBody +="</li>";
+	        		msgBody +="<br/>"+cObj.getdetalleSubida();	        		
+	        	}
+	        }
 	        	
 	        msgBody +="</ul>";
 	        
@@ -317,7 +325,8 @@ public class ImplantacionServlet extends HttpServlet {
 	        } 
 			
 			json.append("success", "true");
-		}catch (Exception e) {
+		}
+		catch (Exception e) {
 			json.append("failure", "true");
 		}
 
@@ -409,12 +418,17 @@ public class ImplantacionServlet extends HttpServlet {
 
 			WritableWorkbook w = Workbook
 					.createWorkbook(resp.getOutputStream());
-
-			ConectividadDao cDao = ConectividadDao.getInstance();
-			List<Conectividad> conectividades = cDao.getAllConectividades();
 			
+			ConectividadDao cDao = ConectividadDao.getInstance();
 			ServicioDao sDao = ServicioDao.getInstance();
-			List<Servicio> servicios = sDao.getAllServicios();
+			
+			List<Conectividad> conectividades = cDao.getConectividadesEnCurso();
+			List<Servicio> servicios = sDao.getServiciosEnCurso();
+			
+			if(conectividades == null && servicios == null) {
+				conectividades = cDao.getConectividadesByEstado(PENDIENTE_IMPL);
+				servicios = sDao.getServiciosByEstado(PENDIENTE_IMPL);
+			}
 			
 			WritableSheet s = w.createSheet("Registro de implantaciones", 0);
 
@@ -433,16 +447,6 @@ public class ImplantacionServlet extends HttpServlet {
 			s.setColumnView(3, 50);
 			s.setColumnView(4, 30);
 			s.setColumnView(5, 30);
-			/*s.setColumnView(6, 70);
-			s.setColumnView(7, 70);
-			s.setColumnView(8, 30);
-			s.setColumnView(9, 25);
-			s.setColumnView(10, 20);
-			s.setColumnView(11, 15);
-			s.setColumnView(12, 30);
-			s.setColumnView(13, 30);
-			s.setColumnView(14, 30);
-			s.setColumnView(15, 30);*/
 			s.setRowView(0, 900);
 
 			s.addCell(new Label(0, 0, "FECHA_SUBIDA", cellFormat));
@@ -451,49 +455,36 @@ public class ImplantacionServlet extends HttpServlet {
 			s.addCell(new Label(3, 0, "GESTORIT", cellFormat));
 			s.addCell(new Label(4, 0, "SERVICIO", cellFormat));
 			s.addCell(new Label(5, 0, "CONECTIVIDAD", cellFormat));
-			/*s.addCell(new Label(6, 0, "MOTIVO DE CATALOGACION", cellFormat));
-			s.addCell(new Label(7, 0, "COMENTARIOS", cellFormat));
-			s.addCell(new Label(8, 0, "GESTOR DE NEGOCIO", cellFormat));
-			s.addCell(new Label(9, 0, "FECHA DE SOLICITUD", cellFormat));
-			s.addCell(new Label(10, 0, "HORA DE SOLICITUD", cellFormat));
-			s.addCell(new Label(11, 0, "DEVUELTA", cellFormat));
-			s.addCell(new Label(12, 0, "GESTOR IT", cellFormat));
-			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",cellFormat));
-			s.addCell(new Label(14, 0, "FECHA COMUNICACION", cellFormat));
-			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));*/
-
-			//UserDao uDao = UserDao.getInstance();
-			//User u = new User();
 
 			int aux = 1;
 			
 			ProyectoDao pDao = ProyectoDao.getInstance();
 	        Proyecto p = null;
-			for (Conectividad c : conectividades) {
-				if(c.getEstado().indexOf("PDTE Implantar")!=-1){
-				p = pDao.getProjectbyId(c.getKey_proyecto());
-				
-				s.addCell(new Label(0, aux, c.getStr_fecha_implantacion()));
-				s.addCell(new Label(1, aux, p.getClienteName()));
-				s.addCell(new Label(2, aux, c.getEstado()));
-				s.addCell(new Label(3, aux, p.getGestor_it_name()));
-				s.addCell(new Label(5, aux, p.getConectividad()));
-		
-				aux++;
+	        if (conectividades !=null && !conectividades.isEmpty()) {
+				for (Conectividad c : conectividades) {
+					p = pDao.getProjectbyId(c.getKey_proyecto());
+					
+					s.addCell(new Label(0, aux, c.getStr_fecha_implantacion()));
+					s.addCell(new Label(1, aux, p.getClienteName()));
+					s.addCell(new Label(2, aux, c.getEstado()));
+					s.addCell(new Label(3, aux, p.getGestor_it_name()));
+					s.addCell(new Label(5, aux, p.getConectividad()));
+			
+					aux++;
 				}
-			}
+	        }
 			int aux1 = aux;
-			for (Servicio serv : servicios) {
-				if(serv.getEstado().indexOf("PDTE Implantar")!=-1){
-				p = pDao.getProjectbyId(serv.getId_proyecto());
-				
-				s.addCell(new Label(0, aux1, serv.getStr_fecha_implantacion_produccion()));
-				s.addCell(new Label(1, aux1, p.getClienteName()));
-				s.addCell(new Label(2, aux1, serv.getEstado()));
-				s.addCell(new Label(3, aux1, p.getGestor_it_name()));
-				s.addCell(new Label(4, aux1, serv.getServicio()));
-		
-				aux1++;
+			if (servicios !=null && !servicios.isEmpty()) {
+				for (Servicio serv : servicios) {
+					p = pDao.getProjectbyId(serv.getId_proyecto());
+					
+					s.addCell(new Label(0, aux1, serv.getStr_fecha_implantacion_produccion()));
+					s.addCell(new Label(1, aux1, p.getClienteName()));
+					s.addCell(new Label(2, aux1, serv.getEstado()));
+					s.addCell(new Label(3, aux1, p.getGestor_it_name()));
+					s.addCell(new Label(4, aux1, serv.getServicio()));
+			
+					aux1++;					
 				}
 			}
 
@@ -509,369 +500,4 @@ public class ImplantacionServlet extends HttpServlet {
 
 	}
 	
-	/*private void deleteImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
-			throws JSONException, IOException {
-		JSONObject json = new JSONObject();
-
-		ImplantacionDao dDao = ImplantacionDao.getInstance();
-
-		try {
-			Implantacion d = dDao.getImplantacionById(Long.parseLong(req
-					.getParameter("id")));
-
-			dDao.deleteImplantacion(d,usermail);
-			json.append("success", "true");
-		} catch (Exception e) {
-			json.append("failure", "true");
-		}
-
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		resp.getWriter().println(json);
-	}*/
-
-	/*private void updateImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
-			throws JSONException, IOException {
-		JSONObject json = new JSONObject();
-
-		try {
-			
-			log.info("Dentro de updateImplantacion");
-
-			String idStr = req.getParameter("id");
-			Long id = Long.parseLong(idStr);
-
-			ImplantacionDao dDao = ImplantacionDao.getInstance();
-			Implantacion d = dDao.getImplantacionById(id);
-
-			
-			String gestor_negocio = req.getParameter("gestor_negocio");
-			
-			
-			
-			String cliente = req.getParameter("cliente");
-			String estado = req.getParameter("estado");
-			String gestor_it = req.getParameter("gestor_it");
-			
-			
-			d.setClientekey(Long.parseLong(cliente));
-			//d.setEstado(estado);
-			d.setGestor_it(Long.parseLong(gestor_it));
-			
-			
-			
-			if (!"".equals(gestor_negocio) && gestor_negocio!=null)
-				
-				d.setGestor_negocio(Long.parseLong(gestor_negocio));
-			
-			
-			
-			
-			
-			
-			
-						
-
-			dDao.createImplantacion(d,usermail);
-
-			json.append("success", "true");
-			json.append("id", d.getKey().getId());
-			json.append("servicio", d.getServicio());
-
-		} catch (Exception e) {
-			log.warning("Error en updateImplantacion");
-			log.warning((e.toString()));
-		//	log.warning((e.fillInStackTrace().toString()));
-			
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			PrintStream ps = new PrintStream(baos);
-			e.printStackTrace(ps);
-			String content = baos.toString("ISO-8859-1"); // e.g. ISO-8859-1
-			
-		
-			log.warning(content);
-			
-			json.append("failure", "true");
-			json.append("error", "Se ha producido un error inesperado");
-
-		}
-		
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		resp.getWriter().println(json);
-
-	}*/
-	
-	/*private void updateEstadoSubida(HttpServletRequest req, HttpServletResponse resp)
-			throws JSONException, IOException {
-		JSONObject json = new JSONObject();
-		
-		try{
-			
-			log.info("Dentro de updateEstadoSubida");
-			
-
-			String idStr = req.getParameter("id");
-			Long id = Long.parseLong(idStr);
-
-			ImplantacionDao dDao = ImplantacionDao.getInstance();
-			Implantacion d = dDao.getImplantacionById(id);		
-			
-			String estadoSubida = req.getParameter("estadoSubida");
-			String detalleSubida = req.getParameter("detalleSubida");
-			
-			d.setEstadoSubida(estadoSubida);
-			d.setDetalleSubida(detalleSubida);
-			
-			dDao.createImplantacion(d,estadoSubida);
-
-			json.append("success", "true");
-			json.append("id", d.getKey().getId());
-			json.append("servicio", d.getServicio());
-			
-		}catch (Exception e) {
-			
-			
-		}
-		
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		resp.getWriter().println(json);
-	}*/
-	
-	private void createImplantacion(HttpServletRequest req, HttpServletResponse resp, String usermail)
-			throws JSONException, IOException {
-		JSONObject json = new JSONObject();
-		
-		
-
-		/*Implantacion d = new Implantacion();
-
-		try {
-			
-			String motivo_catalogacion = req.getParameter("motivo_catalogacion");
-			String comentarios = req.getParameter("comentarios");
-			String fecha_entrada_peticion = req.getParameter("fecha_entrada_peticion");
-
-			String hora_peticion = req.getParameter("hora_peticion");
-			String min_peticion = req.getParameter("min_peticion");
-			String gestor_negocio = req.getParameter("gestor_negocio");
-			String cliente = req.getParameter("cliente");
-			String tipo = req.getParameter("tipo");
-			String devuelta = req.getParameter("devuelta");
-			Boolean devBool = false;
-			if (devuelta.equals("SI"))
-				devBool = true;
-			String fecha_solicitud_asignacion = req.getParameter("fecha_solicitud_asignacion");
-
-			String hora_solicitud_asignacion = req.getParameter("hora_solicitud_asignacion");
-			String min_solicitud_asignacion = req.getParameter("min_solicitud_asignacion");
-			String estado = req.getParameter("estado");
-			String gestor_it = req.getParameter("gestor_it");
-			String catalogacion_peticion = req.getParameter("catalogacion_peticion");
-			
-			String hora_comunicacion_asignacion = req.getParameter("hora_comunicacion_asignacion");
-			
-			String min_comunicacion_asignacion = req.getParameter("min_comunicacion_asignacion");
-			
-			String fecha_comunicacion_asignacion = req.getParameter("fecha_comunicacion_asignacion");
-			
-			
-			
-
-			ImplantacionDao dDao = ImplantacionDao.getInstance();
-
-			
-			
-			
-			
-			d.setCatalogacion(catalogacion_peticion);
-			d.setComentarios(comentarios);
-			d.setDevuelta(devBool);
-			d.setEstado(estado);
-			d.setFecha_entrada_peticion(Utils
-					.dateConverter(fecha_entrada_peticion));
-			if (!"".equals(fecha_solicitud_asignacion)) {
-				d.setFecha_solicitud_asignacion(Utils
-						.dateConverter(fecha_solicitud_asignacion));
-			}
-			d.setStr_fecha_entrada_peticion(fecha_entrada_peticion);
-			d.setStr_fecha_solicitud_asignacion(fecha_solicitud_asignacion);
-			if (!"default".equals(gestor_it))
-				d.setGestor_it(Long.parseLong(gestor_it));
-			if (isLong(gestor_negocio)) {
-				d.setGestor_negocio(Long.parseLong(gestor_negocio));
-			}
-			d.setHora_comunicacion_asignacion(hora_comunicacion_asignacion+":"+ min_comunicacion_asignacion);
-			
-			if (!"".equals(fecha_comunicacion_asignacion)){
-				d.setFecha_comunicacion_asignacion(Utils
-						.dateConverter(fecha_comunicacion_asignacion));
-			}
-			d.setStr_fecha_comunicacion_asignacion(fecha_comunicacion_asignacion);
-			d.setHora_entrada_peticion(hora_peticion + ":" + min_peticion);
-			if (!hora_solicitud_asignacion.equals("default") && !min_solicitud_asignacion.equals("default"))
-				d.setHora_solicitud_asignacion(hora_solicitud_asignacion + ":"	+ min_solicitud_asignacion);
-			d.setMotivo_catalogacion(motivo_catalogacion);
-			d.setTipo(tipo);
-			d.setMotivo_catalogacion(motivo_catalogacion);
-			d.setComentarios(comentarios);
-			if (cliente.equals("default")) {
-				d.setClientekey(Long.parseLong("1"));
-			} else {
-				d.setClientekey(Long.parseLong(cliente));
-			}
-
-			dDao.createImplantacionAndIncreaseCount(d,usermail);
-
-			json.append("success", "true");
-			json.append("id", d.getKey().getId());
-			json.append("servicio", d.getServicio());
-
-		} catch (ParseException e) {
-			json.append("success", "false");
-			json.append("error", "Se ha producido un error inesperado.");
-			e.printStackTrace();
-		} catch (Exception e) {
-			json.append("success", "true");
-			json.append("id", d.getKey().getId());
-			json.append("servicio", d.getServicio());
-		}
-
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		resp.getWriter().println(json);*/
-	}
-
-	/*public void generateXLS(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		OutputStream out = null;
-		try {
-			resp.setContentType("application/vnd.ms-excel");
-			resp.setHeader("Content-Disposition",
-					"attachment; filename=RegistroImplantacionesGCS.xls");
-
-			WritableWorkbook w = Workbook
-					.createWorkbook(resp.getOutputStream());
-
-			ImplantacionDao dDao = ImplantacionDao.getInstance();
-			List<Implantacion> demandas = dDao.getAllImplantaciones();
-
-			WritableSheet s = w.createSheet("Registro de implantaciones", 0);
-
-			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
-			cellFont.setColour(Colour.WHITE);
-
-			WritableCellFormat cellFormat = new WritableCellFormat(cellFont);
-			cellFormat.setBackground(Colour.BLUE);
-			cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
-			cellFormat.setAlignment(jxl.format.Alignment.CENTRE);
-			cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);
-
-			s.setColumnView(0, 16);
-			s.setColumnView(1, 30);
-			s.setColumnView(2, 10);
-			s.setColumnView(3, 50);
-			s.setColumnView(4, 30);
-			s.setColumnView(5, 30);
-			s.setColumnView(6, 70);
-			s.setColumnView(7, 70);
-			s.setColumnView(8, 30);
-			s.setColumnView(9, 25);
-			s.setColumnView(10, 20);
-			s.setColumnView(11, 15);
-			s.setColumnView(12, 30);
-			s.setColumnView(13, 30);
-			s.setColumnView(14, 30);
-			s.setColumnView(15, 30);
-			s.setRowView(0, 900);
-
-			s.addCell(new Label(0, 0, "FECHA_SUBIDA", cellFormat));
-			s.addCell(new Label(1, 0, "CLIENTE", cellFormat));
-			s.addCell(new Label(2, 0, "ESTADO", cellFormat));
-			s.addCell(new Label(3, 0, "GESTORIT", cellFormat));
-			s.addCell(new Label(4, 0, "FECHA ENTRADA", cellFormat));
-			s.addCell(new Label(5, 0, "HORA ENTRADA", cellFormat));
-			s.addCell(new Label(6, 0, "MOTIVO DE CATALOGACION", cellFormat));
-			s.addCell(new Label(7, 0, "COMENTARIOS", cellFormat));
-			s.addCell(new Label(8, 0, "GESTOR DE NEGOCIO", cellFormat));
-			s.addCell(new Label(9, 0, "FECHA DE SOLICITUD", cellFormat));
-			s.addCell(new Label(10, 0, "HORA DE SOLICITUD", cellFormat));
-			s.addCell(new Label(11, 0, "DEVUELTA", cellFormat));
-			s.addCell(new Label(12, 0, "GESTOR IT", cellFormat));
-			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",cellFormat));
-			s.addCell(new Label(14, 0, "FECHA COMUNICACION", cellFormat));
-			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));
-
-			UserDao uDao = UserDao.getInstance();
-			User u = new User();
-
-			int aux = 1;*/
-
-			/*for (Implantacion d : demandas) {
-				
-				s.addCell(new Label(0, aux, d.getCod_peticion()));
-				s.addCell(new Label(1, aux, d.getClienteName()));
-				s.addCell(new Label(2, aux, d.getTipo()));
-				s.addCell(new Label(3, aux, d.getEstado()));
-				s.addCell(new Label(4, aux, d.getStr_fecha_entrada_peticion()));
-				s.addCell(new Label(5, aux, d.getHora_entrada_peticion()));
-				s.addCell(new Label(6, aux, d.getMotivo_catalogacion()));
-				s.addCell(new Label(7, aux, d.getComentarios()));
-
-				if (d.getGestor_negocio()!=null){
-					u = uDao.getUserbyId(d.getGestor_negocio());
-					if (u!=null){
-						s.addCell(new Label(8, aux, u.getNombre() + " "
-								+ u.getApellido1() + " " + u.getApellido2()));
-					}
-					
-				}
-				
-
-				s.addCell(new Label(9, aux, d
-						.getStr_fecha_solicitud_asignacion()));
-				s.addCell(new Label(10, aux, d.getHora_solicitud_asignacion()));
-				if (d.getDevuelta().equals(true))
-					s.addCell(new Label(11, aux, "Si"));
-				else
-					s.addCell(new Label(11, aux, "No"));
-
-				if (d.getGestor_it()!=null){
-					u = uDao.getUserbyId(d.getGestor_it());
-					if (u!=null){
-						s.addCell(new Label(12, aux, u.getNombre() + " "
-								+ u.getApellido1() + " " + u.getApellido2()));
-					}
-				}
-				
-				
-
-				s.addCell(new Label(13, aux, d.getCatalogacion()));
-				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
-				s.addCell(new Label(15,aux,d.getHora_comunicacion_asignacion()));
-
-				aux++;
-			}*/
-
-	/*		w.write();
-			w.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new ServletException("Exception in Excel", e);
-		} finally {
-			if (out != null)
-				out.close();
-		}
-
-	}*/
-
-	private boolean isLong(String input) {
-		try {
-			Long.parseLong(input);
-		} catch (Exception e) {
-			return false;
-		}
-		return true;
-	}
 }

@@ -259,3 +259,58 @@
 		height: auto;
 	}
 }
+
+#send-email-solicitud-form, 
+#send-email-confirmacion-form, 
+#send-email-produccion-form {
+	
+	.info {
+		display: block;
+		margin-top: 15px;
+		margin-bottom: 10px;
+		font-size: 13px;
+	}
+
+	.form-field-divider {
+		margin-top: 20px;
+		margin-bottom: 5px;
+		
+		.form-field .lbl {
+			display: inline-block;
+			width: 160px;
+			
+			&.mini {
+				width: 80px;
+			}
+		}
+		.form-field .input {
+			width: 50%;
+			
+			input {
+				width: 180px;
+			}
+		
+			.bootstrap-select:not([class*=span]):not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+				width: 180px;
+			}
+		}
+	}
+}
+
+#redirect-informe {
+	.info {
+		span {
+			text-align: center;
+			display: block;
+		}
+		
+		&.first {
+			margin-top: 30px;
+			margin-bottom: 10px;
+		}
+		
+		&.last {
+			margin-bottom: 30px;
+		}
+	}
+}
