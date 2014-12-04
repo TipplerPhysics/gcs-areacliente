@@ -269,15 +269,19 @@ button {
     text-align: center;
     text-shadow: none;
     vertical-align: middle;
-    height: 30px;
-    
-    
-   
+    height: 30px;   
 }
 
+
+
 button:not(.selectpicker):not(.white-btn):not(.pink-btn):hover{
-    	.linear-gradient(#0069b1, #004b8c);
-    }
+    .linear-gradient(#0069b1, #004b8c);
+}
+
+button[disabled], button[disabled]:not(.selectpicker):not(.white-btn):not(.pink-btn):hover {
+	.linear-gradient(#B2D5EB, #B2CCE1);
+	border: 1px solid #A3C2DC;
+}
 
 .selectpicker > span.filter-option{
 	 font-family: Arial, sans-serif;

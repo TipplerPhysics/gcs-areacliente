@@ -71,8 +71,10 @@ public class RegistroImplantacionesAction extends Action {
 				impl.setProyectokey(c.getKey_proyecto());
 				// fecha implantacion 
 				Date fechaImplantacion = c.getFecha_implantacion();
-				impl.setFecha_implantacion(fechaImplantacion);
-				impl.setFecha_implantacion_str(Utils.dateConverterToStr(fechaImplantacion));
+				if(fechaImplantacion != null) {
+					impl.setFecha_implantacion(fechaImplantacion);
+					impl.setFecha_implantacion_str(Utils.dateConverterToStr(fechaImplantacion));
+				}
 				// nombre cliente
 				impl.setClienteName(p.getClienteName());
 				// estado
@@ -102,8 +104,10 @@ public class RegistroImplantacionesAction extends Action {
 				impl.setProyectokey(s.getId_proyecto());
 				// fecha implantacion 
 				Date fechaImplantacion = s.getFecha_implantacion_produccion();
-				impl.setFecha_implantacion(fechaImplantacion);
-				impl.setFecha_implantacion_str(Utils.dateConverterToStr(fechaImplantacion));
+				if(fechaImplantacion != null) {
+					impl.setFecha_implantacion(fechaImplantacion);
+					impl.setFecha_implantacion_str(Utils.dateConverterToStr(fechaImplantacion));
+				}
 				// nombre cliente
 				impl.setClienteName(p.getClienteName());
 				// estado

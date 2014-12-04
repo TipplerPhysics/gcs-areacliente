@@ -105,18 +105,27 @@ function reloadImplantaciones() {
 $(function() {
 	
 	$('#check_all_implantaciones').on('change', function(e) {
-		if($('#check_all_implantaciones:checked').length == 0) {
-			$('tbody').find('input:checkbox').attr("checked", true);
-			$('tbody').find('label').addClass('on');
+		if($('#check_all_implantaciones').checkbox('checked')) {
+			$('tbody').find('input:checkbox').checkbox('uncheck');	
+			$('#sendMailButton').attr("disabled", true);
 		}
 		else {
-			$('tbody').find('input:checkbox').attr("checked", false);
-			$('tbody').find('label').removeClass('on');
+			$('tbody').find('input:checkbox').checkbox('check');
+			$('#sendMailButton').attr("disabled", false);
+		}
+	});
+	
+	$('input:checkbox.inner').on('change', function(e) {
+		if($(this).checkbox('checked')) {
+			$('#sendMailButton').attr("disabled", true);
+			$('#check_all_implantaciones').checkbox('uncheck');
+		}
+		else {
+			$('#sendMailButton').attr("disabled", false);			
 		}
 	});
 	
 	$('#sendMailButton, #generarInformeButton').on('click', function(e) {
-		console.log("sendMail");
 		
 		var servicios = "";
 		var conectividades = "";
@@ -140,51 +149,9 @@ $(function() {
 			$('#send-email-implantacion').modal('show');
 		}
 		else {
-			alert("Seleccione una conectividad/servicio")
+			alert("Seleccione una conectividad/servicio");
 		}	
 		
 	});
 	
-	
-/*	function loadEditModal(){
-		var accion = $('#select_edit_action').val();
-		
-		var git = $('#row'+id).data('gestor-it');
-		var gn = $('#row'+id).data('gestor-negocio');
-		var client = $('#row'+id).data('cliente');
-		
-		if (accion=='proyecto'){
-			$('#edit-action').modal('hide');
-			$('#edit-project').modal({
-				  remote: "../projectModal.do?git="+git+"&gn="+gn+"&client="+client+"&id="+id
-				});
-			$('#edit-project').modal('show');
-			
-		}else if (accion=='costes'){
-			$('#edit-action').modal('hide');
-			$('#edit-project').modal({
-				  remote: "../costesByModal.do?project_id="+id
-				});
-			
-			
-			
-			
-		}else if (accion=='conectividad'){
-			$('#edit-action').modal('hide');
-			$('#new-conectividad').modal({
-				  remote: "../loadConectivity.do?id="+id
-				});
-			$('#new-conectividad').modal('show');
-		
-			
-			
-		}else if (accion=='servicios'){
-			$('#edit-action').modal('hide');
-			$('#select-service').modal({
-				  remote: "../projectService.do?id="+id
-				});
-			$('#select-service').modal('show');
-		}
-	}
-	*/
 });

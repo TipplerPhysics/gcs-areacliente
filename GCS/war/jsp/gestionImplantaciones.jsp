@@ -14,7 +14,7 @@
 	<div class="newUserbox">
 		
 		<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-			<button id="sendMailButton" <c:if test="${puedeGenerarInforme == 'true'}"> disabled="true"</c:if>>
+			<button id="sendMailButton" <c:if test="${puedeGenerarInforme == 'true'}"> disabled="true"</c:if> <c:if test="${implantacionEnCurso == 'false'}"> disabled="true"</c:if>>
 				Enviar correo Negocio<span class="demanda_span"></span>
 			</button>
 			<button id="generarInformeButton" <c:if test="${puedeGenerarInforme == 'false'}"> disabled="true"</c:if>>
@@ -72,7 +72,7 @@
 									<tr class="valid-result" id="row${loop.index}" data-servicio-id="${implantacion.serviciokey}" data-conectividad-id="${implantacion.conectividadkey}" >
 										<td>
 											<label for="check${loop.index}">&nbsp;</label>
-											<input type="checkbox" name="check${loop.index}" value="" id="check${loop.index}" <c:if test="${implantacionEnCurso == true}"> checked="true" disabled="true"</c:if> />						
+											<input type="checkbox" class="inner" name="check${loop.index}" value="" id="check${loop.index}" <c:if test="${implantacionEnCurso == true}"> checked="true" disabled="true"</c:if> />						
 										</td>
 										<td><span>${implantacion.fecha_implantacion_str}</span></td>
 										<td><span>${implantacion.clienteName}</span></td>
@@ -116,5 +116,5 @@
 			</div>
 		</div>
 	</div>
-
+	
 </div>
