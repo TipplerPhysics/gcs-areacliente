@@ -1,5 +1,7 @@
 package com.gcs.beans;
 
+import java.util.Date;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -23,6 +25,9 @@ public class Informe {
 	
 	@Persistent
 	private String dia_implantacion;
+	
+	@Persistent
+	private Date fecha_generado;
 	
 	@Persistent
 	private String tipo_subida;
@@ -69,5 +74,13 @@ public class Informe {
 	
 	public void setDiaImplantacion(String dia_implantacion) {
 		this.dia_implantacion = dia_implantacion;
+	}
+	
+	public Date getFecha_generado() {
+		return fecha_generado;
+	}
+
+	public void setFecha_generado(Date fecha_generado) {
+		this.fecha_generado = fecha_generado;
 	}
 }
