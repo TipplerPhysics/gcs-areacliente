@@ -53,7 +53,7 @@ public class InformeDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		
 		Query q = pm.newQuery("select from " + Informe.class.getName());		
-		//q.setOrdering("nombre asc");
+		//q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		
 		pm.close();
