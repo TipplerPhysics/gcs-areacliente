@@ -12,30 +12,83 @@
 	</div>
 	<form id="report-form" name="report-form" action="/InformeServlet"
 				method="POST" novalidate="novalidate">
-		<select id="informe_select_anyo" class="long selected selectpicker" name="anyo">
-				<c:forEach items="${Anyos}" var="anyo">		         	
-					<option value="${anyo.value}">${anyo.value}</option>
-				</c:forEach>
-		</select>
 		
-		<select id="informe_select_mes" class="long selected selectpicker" name="mes">
-				<c:forEach items="${Meses}" var="mes">		         	
-					<option value="${mes.value}">${mes.value}</option>
-				</c:forEach>
-		</select>
-		
-		<select id="informe_select_dia" class="long selected selectpicker" name="dia">
-				<c:forEach items="${Dias}" var="dia">		         	
-					<option value="${dia.value}">${dia.value}</option>
-				</c:forEach>
-		</select>
-		
-		<select id="tipo_subida" class="long selected selectpicker" name="tipo">
-				<c:forEach items="${Tipo}" var="tipo">		         	
-					<option value="${tipo.value}">${tipo.value}</option>
-				</c:forEach>
-		</select>
-		</form>
+		<div class="form-field">
+                        <span class="lbl">Seleccione año:<span class="required-asterisk">*</span>:</span>
+                        <div class="input">
+                        
+                            <select class="selectpicker selected" name="anyos" id="anyo-pruebas" data-live-search="true" onchange="cargaMeses()">
+                            
+                                <c:choose>
+                                        <c:when test="${empty informes}">
+                                            <option value="default">No hay Informes generados</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="default">Seleccionar</option>
+                                            <c:forEach items="${informes}" var="i">                            
+                                                <option value="${i.anyo_implantacion}" data-informeid="${i.key.id}">${i.anyo_implantacion}</option>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                </c:choose>
+                            </select>
+                        </div>
+		</div>
+
+		<div class="form-field">
+                        <span class="lbl">Seleccione mes:<span class="required-asterisk">*</span>:</span>
+                        <div class="input">
+                        
+                            <select class="selectpicker selected" name="meses" id="mes-pruebas" data-live-search="true" onchange="cargaDias()">
+                            
+                                
+                                       
+                                        
+                                            <option value="default">Seleccionar</option>
+                                            <c:forEach items="${informes}" var="i">                            
+                                                <option value="${i.mes_implantacion}" data-informeid="${i.key.id}">${i.mes_implantacion}</option>
+                                            </c:forEach>
+                                        
+                                
+                            </select>
+                        </div>
+		</div>
+	<div class="form-field">
+                        <span class="lbl">Seleccione día:<span class="required-asterisk">*</span>:</span>
+                        <div class="input">
+                        
+                            <select class="selectpicker selected" name="dias" id="dia-pruebas" data-live-search="true" onchange="cargaTipo()">
+                            
+                                
+                                        
+                                       
+                                            <option value="default">Seleccionar</option>
+                                            <c:forEach items="${informes}" var="i">                            
+                                                <option value="${i.dia_implantacion}" data-informeid="${i.key.id}">${i.dia_implantacion}</option>
+                                            </c:forEach>
+                                        
+                                
+                            </select>
+                        </div>
+		</div>
+		<div class="form-field">
+                        <span class="lbl">Seleccione tipo de subida:<span class="required-asterisk">*</span>:</span>
+                        <div class="input">
+                        
+                            <select class="selectpicker selected" name="tipos" id="tipo-pruebas" data-live-search="true">
+                            
+                                
+                                        
+                                        
+                                            <option value="default">Seleccionar</option>
+                                            <c:forEach items="${informes}" var="i">                            
+                                                <option value="${i.tipo_subida}" data-informeid="${i.key.id}">${i.tipo_subida}</option>
+                                            </c:forEach>
+                                        
+                               
+                            </select>
+                        </div>
+		</div>
+	</form>
 		
 		<div id="ultimo_informe">
 			<!--Preview del último informe-->
