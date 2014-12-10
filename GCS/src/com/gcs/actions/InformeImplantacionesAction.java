@@ -30,7 +30,7 @@ public class InformeImplantacionesAction extends Action {
 		
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> informes = iDao.getAllInformes();
-		List<String> Anyos= new ArrayList<String>();
+		List<String> anyos= new ArrayList<String>();
 		
 		if(informes.isEmpty()){
 			
@@ -40,8 +40,8 @@ public class InformeImplantacionesAction extends Action {
 		
 			for (Informe i : informes) {
 			
-				if(Anyos.indexOf(i.getAnyoImplantacion())==-1){
-					Anyos.add(i.getAnyoImplantacion());
+				if(anyos.indexOf(i.getAnyoImplantacion())==-1){
+					anyos.add(i.getAnyoImplantacion());
 				}
 			
 			}
@@ -51,7 +51,7 @@ public class InformeImplantacionesAction extends Action {
 			Comparator<String> comparador = Collections.reverseOrder();
 			Collections.sort(Anyos, comparador);*/
 			
-			req.setAttribute("informe_select_anyo", Anyos);
+			req.setAttribute("anyos", anyos);
 		
 			// TODO: obtener el ultimo informe generado
 			Informe ultimo = informes.get(informes.size()-1);
