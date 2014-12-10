@@ -1,18 +1,24 @@
 package com.gcs.beans;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable
 public class Informe {
 
 	@PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
+	
+	@Persistent
+	private String informeId;
 	
 	@Persistent
 	private String texto_informe;
@@ -32,8 +38,26 @@ public class Informe {
 	@Persistent
 	private String tipo_subida;
 	
+	
+	
+	public Informe() {
+		super();
+	};
+	
 	public Key getKey() {
 		return key;
+	}
+	
+	public void setKey(Key key) {
+		this.key = key;
+	}
+	
+	public String getInformeId() {
+		return informeId;
+	}
+
+	public void setInformeId(String informeId) {
+		this.informeId = informeId;
 	}
 	
 	public String getTextoInforme() {
