@@ -1,4 +1,4 @@
-function cargaMeses(){	
+/*function cargaMeses(){	
 	var $form = $('#report-form');
 	var formURL = $form.attr("action");
 	var $formData = $form.serialize();
@@ -118,4 +118,4 @@ function cargaTipos(){
 			});
 
 	}
-}
+}*/
