@@ -32,11 +32,11 @@ public class InformeImplantacionesAction extends Action {
 		List<Informe> informes = iDao.getAllInformes();
 		List<String> anyos= new ArrayList<String>();
 		
-		if(informes.isEmpty()){
+		//if(informes.isEmpty()){
 			
-			return mapping.findForward("ok");
+		//	return mapping.findForward("ok");
 			
-		}else{
+	//	}else{
 		
 			for (Informe i : informes) {
 			
@@ -68,4 +68,4 @@ public class InformeImplantacionesAction extends Action {
 			return mapping.findForward("ok");
 		}
 	}
-}
+
