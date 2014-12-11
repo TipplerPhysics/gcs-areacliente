@@ -1,6 +1,7 @@
 package com.gcs.dao;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -52,7 +53,7 @@ public class InformeDao {
 		List<Informe> informes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		
-		Query q = pm.newQuery("select from " + Informe.class.getName());		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName());		
 		//q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		
@@ -60,4 +61,91 @@ public class InformeDao {
 
 		return informes;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Informe> getAllInformesByAnio(String Anio) {
+
+		List<Informe> informes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + "WHERE anyo_implantacion=="+Anio);		
+		//q.setOrdering("fecha_generado desc");
+		informes = (List<Informe>) q.execute();
+		
+		pm.close();
+
+		return informes;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Informe> getAllInformesByMes(String Anio, String Mes) {
+
+		List<Informe> informes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + "WHERE anyo_implantacion=="+Anio+" AND mes_implantacion=="+Mes);		
+		//q.setOrdering("fecha_generado desc");
+		informes = (List<Informe>) q.execute();
+		
+		pm.close();
+
+		return informes;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Informe> getAllInformesByDate(String Anio, String Mes,String Dia) {
+
+		List<Informe> informes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + "WHERE anyo_implantacion=="+Anio+" AND mes_implantacion=="+Mes+" AND dia_implantacion=="+Dia);
+		//q.setOrdering("fecha_generado desc");
+		informes = (List<Informe>) q.execute();
+		
+		pm.close();
+
+		return informes;
+	}
+	
+	public List<String> getMonthsForInforme(String calendada, String Anio){
+		
+		List <String> Meses = new ArrayList<String>();
+		
+		InformeDao iDao = InformeDao.getInstance();
+		
+		List<Informe> informes = iDao.getAllInformesByAnio(Anio);
+		
+		for (Informe inf : informes){
+			String mes =  inf.getMesImplantacion();
+			boolean existe = false;
+			for (String mesarr:Meses){
+				if(mesarr.equals(mes))existe=true;
+			}
+			if (!existe)Meses.add(mes);
+		}	
+		
+		return Meses;
+	}
+	
+	public List<String> getDaysForInforme(String calendada, String Anio, String Month){
+		
+		List <String> Dias = new ArrayList<String>();
+		
+		InformeDao iDao = InformeDao.getInstance();
+		
+		List<Informe> informes = iDao.getAllInformesByMes(Anio, Month);
+		
+		for (Informe inf : informes){
+			String dia =  inf.getDiaImplantacion();
+			boolean existe = false;
+			for (String dialis:Dias){
+				if(dialis.equals(dia))existe=true;
+			}
+			if (!existe)Dias.add(dia);
+		}
+		
+		
+		return Dias;
+	}
+	
 }
