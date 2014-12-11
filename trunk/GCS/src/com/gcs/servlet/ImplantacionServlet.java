@@ -32,9 +32,11 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 import com.gcs.beans.Conectividad;
+import com.gcs.beans.Informe;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.dao.ConectividadDao;
+import com.gcs.dao.InformeDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
@@ -396,7 +398,50 @@ public class ImplantacionServlet extends HttpServlet {
 				}
 			}
 						
-			// TODO generar informe
+			// TODO generar informe linkar servicios y conectividades asociadas
+			InformeDao inDao = InformeDao.getInstance();
+			Informe infor = new Informe();
+			Boolean tipoSubida;
+			String fechaImplantacion;
+			String texto_informe ;
+			
+			if(!VACIO.equals(conectividadesParam)) {
+				ConectividadDao cDao = ConectividadDao.getInstance();
+				String a  = conectividadesList.get(0);
+				Conectividad conect = cDao.getConectividadById(a);
+				tipoSubida = conect.subidaCalendada();
+				fechaImplantacion = conect.getStr_fecha_implantacion();
+				texto_informe = conect.getdetalleSubida();
+				
+			}else{
+				ServicioDao cDao = ServicioDao.getInstance();
+				String a  = serviciosList.get(0);
+				Servicio serv = cDao.getServicioById(a);
+				tipoSubida = serv.subidaCalendada();
+				fechaImplantacion = serv.getStr_fecha_implantacion_produccion();
+				texto_informe = serv.getdetalleSubida();
+				
+			}
+			
+			
+			infor.setAnyoImplantacion(fechaImplantacion.substring(6,10));
+			infor.setMesImplantacion(fechaImplantacion.substring(3, 5));
+			infor.setDiaImplantacion(fechaImplantacion.substring(0, 2));
+			if (tipoSubida){
+				infor.setTipoSubida("Calendada");
+			}else {
+				infor.setTipoSubida("No calendada");
+			}			
+			infor.setTextoInforme(texto_informe);
+			
+			
+			
+			
+			inDao.createInforme(infor, usermail);
+			
+			
+			
+			
 			
 			json.append("success", "true");
 		} catch (Exception e) {
