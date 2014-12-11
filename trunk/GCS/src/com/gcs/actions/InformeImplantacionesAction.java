@@ -34,7 +34,7 @@ public class InformeImplantacionesAction extends Action {
 		
 		if(informes.isEmpty()){
 			
-			return mapping.findForward("ko");
+			return mapping.findForward("ok");
 			
 		}else{
 		
