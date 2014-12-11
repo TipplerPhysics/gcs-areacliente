@@ -67,5 +67,5 @@ public class InformeImplantacionesAction extends Action {
 		
 			return mapping.findForward("ok");
 		}
-	}
-
+	//}
+}
