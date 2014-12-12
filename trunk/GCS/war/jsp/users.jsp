@@ -40,7 +40,7 @@
 				</div>
 				<div class="form-field">
 					<span>E-mail<span class="required-asterisk">*</span>:</span><input class="long email" type="text"
-						name="email" id="email" maxlength="25" required aria-required="true"
+						name="email" id="email" maxlength="35" required aria-required="true"
 						data-type="email">
 				</div>
 				<div class="form-field">
