@@ -1,121 +1,111 @@
-function cargaMeses(){	
-	var $form = $('#report-form');
-	var formURL = $form.attr("action");
-	var $formData = $form.serialize();
-	var postData= $formData+"&accion=update&id="+ id;
-	
-	
-	if($form.valid()){
-		 $.ajax(	
-				 
+$(function(){
+	$('#report-form').on('change','#informe_select_anyo', function (e){
+		
+		 var option = $(this).find(":selected");
+		 var anio = option.val();
+		 var formURL = "/informeServlet";
+		 var postData="accion=getMonths&year="+ anio;
+		 
+		 $.ajax({
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
 			{
-				url : formURL,
-				type: "POST",
-				data : postData,
-				success:function(data, textStatus, jqXHR) 
+				var Mes =data.Meses[0];
+				var x = document.getElementById("informe_select_mes");
+				/*Elimina las opciones presentadas hasta el momento*/
+				if(Mes[0]!=""){
+					var cont;
+					for(cont=0;cont<x.length;++cont)
+					x.remove(cont);
+				}
 				
-				{
-					var informes = $('#informes');
-					var anyoselect = $('#anyo-pruebas').attr("data-en");
-					var meses="";
-					// Add options
-				    for (var i in informes {
-				    	if(anyoselect==i.anyo_implantacion){
-				    		if(meses.indexOf(i.mes_implantacion)!=-1){
-				    			$('#mes-pruebas').append('<option value=' + i.mes_implantacion + '>' + i.mes_implantacion + '</option>');
-				    			meses +=i.mes_implantacion+", ";
-				    		}
-				    	}
-				    }
-				},
-				 error:function(data, textStatus, jqXHR){
-					  if (errorThrown.length > 0){
-							$('#span_message_informe').html(errorThrown);
-							$('#message_div_informe').addClass('error').removeClass('success');
-						}
-				  }
+		    	var option1 = document.createElement('option');
+		    	option1.text = "Seleciona dia";
+		    	x.add(option1);
+				/*Aniade las nuevas opciones para el determinado anio*/
+				var a;
+			    for (a in Mes){
+			    	var option = document.createElement('option');
+			    	option.text = option.value = Mes[a];
+			    	x.add(option);
+			    }
+			
+			},
+			error:function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus);
+				console.log(errorThrown);
+				console.log("failure");
+			}
+		});
+	});
+	$('#report-form').on('change','#informe_select_mes', function (e){
+		
+		 var option = $(this).find(":selected");
+		 var month = option.val();
+		 var anio = $('#informe_select_anyo').find(":selected").val();
+		 var formURL = "/informeServlet";
+		 var postData="accion=getDays&year="+ anio +"&month="+month;
+		 
+		 $.ajax({
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				var Dias =data.Dias[0];
+				var x = document.getElementById("informe_select_dia");
+				/*Elimina las opciones presentadas hasta el momento*/
+				if(Dias[0]!=""){
+					var cont;
+					for(cont=0;cont<x.length;++cont)
+					x.remove(cont);
+				}
 				
-			});
+		    	var option1 = document.createElement('option');
+		    	option1.text = "Seleciona dia";
+		    	x.add(option1);
+				/*Aniade las nuevas opciones para el determinado mes*/
+				var a;
+			    for (a in Dias){
+			    	var option = document.createElement('option');
+			    	option.text = option.value = Dias[a];
+			    	x.add(option);
+			    }
 
-	}
-}
-
-function cargaDias(){	
-	var $form = $('#report-form');
-	var formURL = $form.attr("action");
-	var $formData = $form.serialize();
-	var postData= $formData+"&accion=update&id="+ id;
-	
-	
-	if($form.valid()){
-		 $.ajax(	
+			
+			},
+			error:function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus);
+				console.log(errorThrown);
+				console.log("failure");
+			}
+		});
+	});	 
+	$('#report-form').on('change','#informe_select_dia', function (e){
+				
+				 var day = $(this).find(":selected").val();
+				 var anio = $('#informe_select_anyo').find(":selected").val();
+				 var month = $('#informe_select_mes').find(":selected").val();
 				 
-			{
-				url : formURL,
-				type: "POST",
-				data : postData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					var informes = $('#informes');
-					var messelect = $('#mes-pruebas').attr("data-en");
-					var dias="";
-					// Add options
-				    for (var i in informes {
-				    	if(messelect==i.mes_implantacion){
-				    		if(dias.indexOf(i.dia_implantacion)!=-1){
-				    			$('#dia-pruebas').append('<option value=' + i.dia_implantacion + '>' + i.dia_implantacion + '</option>');
-				    			dias +=i.dia_implantacion+", ";
-				    		}
-				    	}
-				    }
-				},
-				 error:function(data, textStatus, jqXHR){
-					  if (errorThrown.length > 0){
-							$('#span_message_informe').html(errorThrown);
-							$('#message_div_informe').addClass('error').removeClass('success');
-						}
-				  }
-			});
-
-	}
-}
-
-function cargaTipos(){	
-	var $form = $('#report-form');
-	var formURL = $form.attr("action");
-	var $formData = $form.serialize();
-	var postData= $formData+"&accion=update&id="+ id;
-	
-	
-	if($form.valid()){
-		 $.ajax(	
+				 var formURL = "/informeServlet";
+				 var postData="accion=getInforme&year="+ anio +"&month="+month+"&day="+day;
 				 
-			{
-				url : formURL,
-				type: "POST",
-				data : postData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					var informes = $('#informes');
-					var diaselect = $('#dia-pruebas').attr("data-en");
-					var tiposubida="";
-					// Add options
-				    for (var i in informes) {
-				    	if(diaselect==i.dia_implantacion){
-				    		if(tiposubida.indexOf(i.tipo_subida)!=-1){
-				    			$('#tipo-pruebas').append('<option value=' + i.tipo_subida + '>' + i.tipo_subida + '</option>');
-				    			tiposubida += i.tipo_subida+", ";
-				    		}
-				    	}
-				    }
-				},
-				 error:function(data, textStatus, jqXHR){
-					  if (errorThrown.length > 0){
-							$('#span_message_informe').html(errorThrown);
-							$('#message_div_informe').addClass('error').removeClass('success');
-						}
-				  }
+				 $.ajax({
+					url : formURL,
+					type: "GET",
+					data : postData,
+					success:function(data, textStatus, jqXHR) 
+					{
+						var informe =data.informe;
+										
+					},
+					error:function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus);
+						console.log(errorThrown);
+						console.log("failure");
+					}
 			});
-
-	}
-}
+	});
+});
