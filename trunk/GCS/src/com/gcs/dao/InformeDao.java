@@ -83,8 +83,7 @@ public class InformeDao {
 
 		List<Informe> informes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
-		
-		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' AND mes_implantacion=='"+Mes+"'");		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' && mes_implantacion=='"+Mes+"'");		
 		//q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		
@@ -99,7 +98,7 @@ public class InformeDao {
 		List<Informe> informes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		
-		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' AND mes_implantacion=='"+Mes+"' AND dia_implantacion=='"+Dia+"'");
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' && mes_implantacion=='"+Mes+"' && dia_implantacion=='"+Dia+"'");
 		//q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		

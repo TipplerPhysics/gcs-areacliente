@@ -2,6 +2,7 @@ package com.gcs.servlet;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +49,11 @@ public class InformeServlet extends HttpServlet {
 
 	private static final Logger log = Logger.getLogger(InformeServlet.class.getName());
 
+	public void doPost(HttpServletRequest req, HttpServletResponse resp){
+		doGet(req,resp);
+	}
+	
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
 
@@ -70,7 +76,10 @@ public class InformeServlet extends HttpServlet {
 				resp.getWriter().println(json);
 			} else {
 				
-				cargarDatos(req, resp);
+				//cargarDatos(req, resp);if (accion.equals("getMoths"))
+				if (accion.equals("getMonths"))obtenerMeses(req, resp);
+				if (accion.equals("getDays"))obtenerDias(req, resp);
+				if (accion.equals("getInforme"))obtenerInforme(req, resp);
 				
 				
 			}
@@ -79,51 +88,83 @@ public class InformeServlet extends HttpServlet {
 		}		
 	}
 	
-	private void cargarDatos(HttpServletRequest req, HttpServletResponse resp)
-		throws JSONException, IOException {
-		
+	private void obtenerMeses(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
-		InformeDao iDao = InformeDao.getInstance();
-		List<Informe> informes = iDao.getAllInformes();
-		List<String> Meses= new ArrayList<String>();
-		List<String> Dias= new ArrayList<String>();
-		List<String> Tipo= new ArrayList<String>();
-		
 		try{
-			
 		
-			if(informes.isEmpty()){
-				json.append("error","No hay ningún informe generado");
-			
-			}else{
-			
-			for (Informe i : informes) {
-				if(Meses.indexOf(i.getMesImplantacion())==-1){
-					Meses.add(i.getMesImplantacion());
-				}
-				if(Dias.indexOf(i.getDiaImplantacion())==-1){
-					Dias.add(i.getDiaImplantacion());
-				}
-				if(Tipo.indexOf(i.getTipoSubida())==-1){
-					Tipo.add(i.getTipoSubida());
-				}
 		
-			}
-			
-			json.append("Meses", Meses);
-			json.append("Dias", Dias);
-			json.append("Tipo", Tipo);
-			json.append("success", "true");
-			
-			}
-		}catch (Exception e) {
-			json.append("failure", "true");
+		String anio = req.getParameter("year");
+		InformeDao iDao = InformeDao.getInstance();
+		List<String> Meses = iDao.getMonthsForInforme("Calendada", anio);
+		
+		
+		json.append("Meses", Meses);
+		json.append("success", "true");
+		} catch (JSONException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
 		}
+		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
+	}
+	
+	private void obtenerDias(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
+		JSONObject json = new JSONObject();
+		try{
 		
 		
+		String anio = req.getParameter("year");
+		String mes = req.getParameter("month");
+		InformeDao iDao = InformeDao.getInstance();
+		List<String> Dias = iDao.getDaysForInforme("Calendada", anio,mes);
+		
+		
+		json.append("Dias", Dias);
+		json.append("success", "true");
+		} catch (JSONException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
+		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
+	private void obtenerInforme(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
+		JSONObject json = new JSONObject();
+		try{
+		
+		
+		String anio = req.getParameter("year");
+		String mes = req.getParameter("month");
+		String dia = req.getParameter("day");
+		InformeDao iDao = InformeDao.getInstance();
+		List<Informe> Informes = iDao.getAllInformesByDate(anio, mes, dia);
+		
+		//TODO generar pdf y guardarlo
+		
+		
+		
+		
+		
+		String NombreInforme = "";
+		json.append("Nombre", NombreInforme);
+		json.append("Informes", Informes);
+		json.append("success", "true");
+		} catch (JSONException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
+		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
 	}
 
 }
