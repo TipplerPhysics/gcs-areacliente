@@ -95,7 +95,7 @@ public class InformeServlet extends HttpServlet {
 		
 		String anio = req.getParameter("year");
 		InformeDao iDao = InformeDao.getInstance();
-		List<String> Meses = iDao.getMonthsForInforme("Calendada", anio);
+		List<String> Meses = iDao.getMonthsForInforme("All", anio);
 		
 		
 		json.append("Meses", Meses);
@@ -119,7 +119,7 @@ public class InformeServlet extends HttpServlet {
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
 		InformeDao iDao = InformeDao.getInstance();
-		List<String> Dias = iDao.getDaysForInforme("Calendada", anio,mes);
+		List<String> Dias = iDao.getDaysForInforme("All", anio,mes);
 		
 		
 		json.append("Dias", Dias);
@@ -143,8 +143,9 @@ public class InformeServlet extends HttpServlet {
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
 		String dia = req.getParameter("day");
+		String calenda = req.getParameter("calendada");
 		InformeDao iDao = InformeDao.getInstance();
-		List<Informe> Informes = iDao.getAllInformesByDate(anio, mes, dia);
+		List<Informe> Informes = iDao.getAllInformesByDate(calenda,anio, mes, dia);
 		
 		//TODO generar pdf y guardarlo
 		
