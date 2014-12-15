@@ -93,12 +93,12 @@ public class InformeDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Informe> getAllInformesByDate(String Anio, String Mes,String Dia) {
+	public List<Informe> getAllInformesByDate(String Calendada, String Anio, String Mes,String Dia) {
 
 		List<Informe> informes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		
-		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' && mes_implantacion=='"+Mes+"' && dia_implantacion=='"+Dia+"'");
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' && mes_implantacion=='"+Mes+"' && dia_implantacion=='"+Dia+"' &&tipo_subida=='"+Calendada+"'");
 		//q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		
