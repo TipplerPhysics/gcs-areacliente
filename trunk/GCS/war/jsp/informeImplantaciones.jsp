@@ -45,18 +45,19 @@
 			<div class="form-field">
                 <span class="lbl">Seleccione d&iacute;a:<span class="required-asterisk">*</span>:</span>
                     <div class="input">
-						<select id="informe_select_dia" name="dia" >
-							<option value="default">Primero selecciona mes</option>
-						</select>
-			</div></div>
-			<div class="form-field">
-                <span class="lbl">Seleccione tipo de subida:<span class="required-asterisk">*</span>:</span>
-                    <div class="input">
-						<select id="informe_select_calendada">
+                    		<select id="informe_select_calendada">
 							<option value="default">Tipo de subida</option>
 							<option value="Calendada">Calendada</option>
 							<option value="No Calendada">No calendada</option>
 
+						</select>
+						
+			</div></div>
+			<div class="form-field">
+                <span class="lbl">Seleccione tipo de subida:<span class="required-asterisk">*</span>:</span>
+                    <div class="input">
+						<select id="informe_select_dia" name="dia" >
+							<option value="default">Primero selecciona mes</option>
 						</select>
 					</div></div>
 		</div>
