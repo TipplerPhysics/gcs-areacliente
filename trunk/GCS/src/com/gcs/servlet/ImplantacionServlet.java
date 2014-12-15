@@ -58,8 +58,9 @@ public class ImplantacionServlet extends HttpServlet {
 	private static final String PRODUCCION = "Produccion";
 	private static final String PENNY_TEST = "En Penny Test";
 	private static final String PENDIENTE_IMPL = "PDTE Implantar";
-		
+	private String recipient = "david.martin.beltran.contractor@bbva.com ,recipient2@gmail.com ,recipient3@gmail.com ";	
 
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
 
@@ -96,6 +97,7 @@ public class ImplantacionServlet extends HttpServlet {
 		}		
 	}
 
+	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		doGet(req, resp);
 	}
@@ -203,12 +205,20 @@ public class ImplantacionServlet extends HttpServlet {
 	        
 	        msgBody +="</ul>";
 	        
+	        String[] recipientList = recipient.split(",");
+	        InternetAddress[] recipientAddress = new InternetAddress[recipientList.length];
+	        int counter = 0;
+	        for (String recipient : recipientList) {
+	            recipientAddress[counter] = new InternetAddress(recipient.trim());
+	            counter++;
+	        }
 	        try {
 	            //Message msg = new MimeMessage(session);
 	            MimeMessage msg = new MimeMessage(session);
 	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
-	            msg.addRecipient(Message.RecipientType.TO,
-	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));
+	           /* msg.addRecipient(Message.RecipientType.TO,
+	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));*/
+	            msg.setRecipients(Message.RecipientType.TO, recipientAddress);
 	            msg.setSubject("Implantaciones solicitadas");
 	            //msg.setText(msgBody);
 	            msg.setContent(msgBody, "text/html; charset=utf-8");
@@ -311,12 +321,20 @@ public class ImplantacionServlet extends HttpServlet {
 	        	
 	        msgBody +="</ul>";
 	        
+	        String[] recipientList = recipient.split(",");
+	        InternetAddress[] recipientAddress = new InternetAddress[recipientList.length];
+	        int counter = 0;
+	        for (String recipient : recipientList) {
+	            recipientAddress[counter] = new InternetAddress(recipient.trim());
+	            counter++;
+	        }
 	        try {
 	            //Message msg = new MimeMessage(session);
 	            MimeMessage msg = new MimeMessage(session);
 	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
-	            msg.addRecipient(Message.RecipientType.TO,
-	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));
+	            /*msg.addRecipient(Message.RecipientType.TO,
+	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));*/
+	            msg.setRecipients(Message.RecipientType.TO, recipientAddress);
 	            msg.setSubject("Implantaciones confirmadas");
 	            //msg.setText(msgBody);
 	            msg.setContent(msgBody, "text/html; charset=utf-8");
