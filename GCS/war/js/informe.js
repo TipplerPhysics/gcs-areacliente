@@ -73,7 +73,7 @@ $(function(){
 					/*Elimina las opciones presentadas hasta el momento*/
 					if(Dias[0]!=""){
 						var cont;
-						for(cont=0;cont<x.option.length;++cont)
+						for(cont=0;cont<=x.options.length;++cont)
 						x.remove(0);
 					}
 					
@@ -116,7 +116,22 @@ $(function(){
 							data : postData,
 							success:function(data, textStatus, jqXHR) 
 							{
-								var informe =data.informe;
+								  var pdf = new PDFJS.PDFDoc(data);
+								  var page = pdf.getPage(1);
+								  var scale = 1.5;
+
+								  //
+								  // Prepare canvas using PDF page dimensions
+								  //
+								  var canvas = document.getElementById('the-canvas');
+								  var context = canvas.getContext('2d');
+								  canvas.height = page.height * scale;
+								  canvas.width = page.width * scale;
+
+								  //
+								  // Render PDF page into canvas context
+								  //
+								  page.startRendering(context);
 												
 							},
 							error:function(jqXHR, textStatus, errorThrown) {

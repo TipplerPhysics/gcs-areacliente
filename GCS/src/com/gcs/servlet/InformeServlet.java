@@ -43,29 +43,30 @@ import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
-
-import com.itextpdf.text.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
+
 
 public class InformeServlet extends HttpServlet {
 	
 
 	private static final Logger log = Logger.getLogger(InformeServlet.class.getName());
-	public static String archivo = System.getProperty("user.dir")+"/archivo.pdf";
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
 	}
 	
-	
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
 
+
 		log.info("Dentro de servletInforme");
 		String accion = req.getParameter("accion");
+
 		
 		try {
 
@@ -144,8 +145,9 @@ public class InformeServlet extends HttpServlet {
 	
 	private void obtenerInforme(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
-		try{
-		
+
+			
+		resp.setContentType("application/pdf");
 		
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
@@ -156,22 +158,16 @@ public class InformeServlet extends HttpServlet {
 		
 		//TODO generar pdf y guardarlo
 		
+		try {
+		   Document document = new Document();
+		   PdfWriter.getInstance(document, resp.getOutputStream());
+		   document.open();
+		   document.add(new Paragraph("This is a paragraph"));
+		   document.close();
+		  } catch (DocumentException e) {
+		   e.printStackTrace();
+		  }
 
-		
-		
-		String NombreInforme = "";
-		json.append("Nombre", NombreInforme);
-		json.append("Informes", Informes);
-		json.append("success", "true");
-		} catch (JSONException e) {
-			json.append("success", "false");
-			json.append("error", "Se ha producido un error inesperado.");
-			e.printStackTrace();
-		}
-		
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		resp.getWriter().println(json);
 	}
 
 }
