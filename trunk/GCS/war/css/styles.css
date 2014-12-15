@@ -2551,6 +2551,12 @@ label.ui-marmots-label-radio {
 #report-form {
   margin-top: 50px;
 }
+.form-field-divider .form-field {
+  display: inline-block;
+  text-align: left;
+  width: 100% !important;
+  margin-bottom: 15px;
+}
 .gestion_servicio .modal-dialog {
   width: 600px;
 }

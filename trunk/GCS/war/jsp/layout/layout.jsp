@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="../tools/css/jquery-ui.structure.min.css" />
   		<link rel="stylesheet" type="text/css" href="../components/bootstrap/select/bootstrap-select.css" />
   		<link rel="stylesheet" type="text/css" href="../components/checkbox/jquery.marmots-checkbox.css" />
+  		<link rel="stylesheet" type="text/css" href="../tools/web/viewer.css" />
   		
 	  	<link rel="stylesheet" type="text/css" href="../css/styles.min.css" /> 
 	  		
@@ -36,7 +37,9 @@
 		<script src="../components/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<script src="../components/checkbox/jquery.marmots-checkbox.js" type="text/javascript"></script>
 		<script src="../components/bootstrap/select/bootstrap-select.min.js" type="text/javascript"></script>
-		<script src="../js/dev/scripts.js" type="text/javascript"></script>		
+		<script src="../js/dev/scripts.js" type="text/javascript"></script>
+		<script src="../tools/web/viewer.js" type="text/javascript"></script>
+			
 
 		
 	  	

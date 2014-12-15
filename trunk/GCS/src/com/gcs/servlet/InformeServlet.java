@@ -1,5 +1,7 @@
 package com.gcs.servlet;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
@@ -16,6 +18,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,10 +46,13 @@ import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+
+
 
 
 
@@ -147,7 +153,6 @@ public class InformeServlet extends HttpServlet {
 		JSONObject json = new JSONObject();
 
 			
-		resp.setContentType("application/pdf");
 		
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
@@ -156,17 +161,44 @@ public class InformeServlet extends HttpServlet {
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> Informes = iDao.getAllInformesByDate(calenda,anio, mes, dia);
 		
-		//TODO generar pdf y guardarlo
+		if(!Informes.isEmpty()){
 		
 		try {
+			/*
+			 String msg = "your message";
+
+		      Document document = new Document();
+		      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		      PdfWriter.getInstance(document, baos);
+		      document.open();
+		      document.add(new Paragraph(msg));
+		      document.add(Chunk.NEWLINE);
+		      document.add(new Paragraph("a paragraph"));
+		      document.close();
+
+		      resp.setHeader("Expires", "0");
+		      resp.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
+		      resp.setHeader("Pragma", "public");
+
+		      resp.setContentType("application/pdf");
+
+		      resp.setContentLength(baos.size());
+
+		      ServletOutputStream out = resp.getOutputStream();
+		      baos.writeTo(out);
+		      out.flush();*/
+		   Informe inf =Informes.get(0);
 		   Document document = new Document();
 		   PdfWriter.getInstance(document, resp.getOutputStream());
 		   document.open();
-		   document.add(new Paragraph("This is a paragraph"));
+		   document.add(new Paragraph("Se ha llevado a cabo satisfactoriamente la implementación del día:  "+inf.getDiaImplantacion()+"/"+inf.getMesImplantacion()+"/"+inf.getAnyoImplantacion()));
 		   document.close();
+			resp.setContentType("application/pdf");
+			resp.addHeader("Content-Disposition", "attachment; filename=hello.pdf");
 		  } catch (DocumentException e) {
 		   e.printStackTrace();
 		  }
+		}
 
 	}
 
