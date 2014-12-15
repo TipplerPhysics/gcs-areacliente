@@ -16,7 +16,7 @@
 				<div class="form-field">
 					<span class="lbl">Seleccione a&ntilde;o<span class="required-asterisk">*</span>:</span>
 						<div class="input">
-							<select id="informe_select_anyo" class="selectpicker" name="anyo_sel">
+							<select id="informe_select_anyo"  name="anyo_sel">
 								<c:choose>
 									<c:when test="${empty anyos}">
 										<option value="default">No hay informes</option>
@@ -34,7 +34,7 @@
 		<div class="form-field">
             <span class="lbl">Seleccione mes:<span class="required-asterisk">*</span>:</span>
                 <div class="input">
-					<select id="informe_select_mes" class="selectpicker">
+					<select id="informe_select_mes" >
 						<option value="default">Primero selecciona a&ntildeo</option>
 					</select>
 				</div>
@@ -45,17 +45,18 @@
 			<div class="form-field">
                 <span class="lbl">Seleccione d&iacute;a:<span class="required-asterisk">*</span>:</span>
                     <div class="input">
-						<select id="informe_select_dia" name="dia" class="selectpicker">
+						<select id="informe_select_dia" name="dia" >
 							<option value="default">Primero selecciona mes</option>
 						</select>
 			</div></div>
 			<div class="form-field">
                 <span class="lbl">Seleccione tipo de subida:<span class="required-asterisk">*</span>:</span>
                     <div class="input">
-						<select id="tipo_subida" class="long selected selectpicker" name="tipo">
-							<c:forEach items="${Tipo}" var="tipo">		         	
-								<option value="${tipo.value}">${tipo.value}</option>
-							</c:forEach>
+						<select id="informe_select_calendada">
+							<option value="default">Tipo de subida</option>
+							<option value="Calendada">Calendada</option>
+							<option value="No Calendada">No calendada</option>
+
 						</select>
 					</div></div>
 		</div>
