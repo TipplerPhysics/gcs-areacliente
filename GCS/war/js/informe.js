@@ -73,7 +73,7 @@ $(function(){
 					/*Elimina las opciones presentadas hasta el momento*/
 					if(Dias[0]!=""){
 						var cont;
-						for(cont=0;cont<x.length;++cont)
+						for(cont=0;cont<x.option.length;++cont)
 						x.remove(0);
 					}
 					

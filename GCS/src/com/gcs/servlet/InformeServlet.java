@@ -44,11 +44,18 @@ import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class InformeServlet extends HttpServlet {
 	
 
 	private static final Logger log = Logger.getLogger(InformeServlet.class.getName());
-
+	public static String archivo = System.getProperty("user.dir")+"/archivo.pdf";
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
 	}
@@ -149,8 +156,7 @@ public class InformeServlet extends HttpServlet {
 		
 		//TODO generar pdf y guardarlo
 		
-		
-		
+
 		
 		
 		String NombreInforme = "";
