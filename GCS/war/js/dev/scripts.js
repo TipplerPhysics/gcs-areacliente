@@ -1845,27 +1845,34 @@ $(function() {
 						 
 						 $.ajax({
 							url : formURL,
-							type: "GET",
+							type: "POST",
 							data : postData,
 							success:function(data, textStatus, jqXHR) 
 							{
-								  var pdf = new PDFJS.PDFDoc(data);
-								  var page = pdf.getPage(1);
-								  var scale = 1.5;
-
-								  //
-								  // Prepare canvas using PDF page dimensions
-								  //
-								  var canvas = document.getElementById('the-canvas');
-								  var context = canvas.getContext('2d');
-								  canvas.height = page.height * scale;
-								  canvas.width = page.width * scale;
-
-								  //
-								  // Render PDF page into canvas context
-								  //
-								  page.startRendering(context);
-												
+//								  var pdf = new PDFJS.PDFDoc(data);
+//								  var page = pdf.getPage(1);
+//								  var scale = 1.5;
+//
+//								  //
+//								  // Prepare canvas using PDF page dimensions
+//								  //
+//								  var canvas = document.getElementById('the-canvas');
+//								  var context = canvas.getContext('2d');
+//								  canvas.height = page.height * scale;
+//								  canvas.width = page.width * scale;
+//
+//								  //
+//								  // Render PDF page into canvas context
+//								  //
+//								  page.startRendering(context);
+//									var pdf =data;
+//									var ventana = document.getElementById("heloo");
+//									$(ventana).append($(pdf));
+									//
+								//window.open(data, "_system");
+									if(data!=""&&data!=null){
+										location.href="../../informeServlet?accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+									}
 							},
 							error:function(jqXHR, textStatus, errorThrown) {
 								console.log(textStatus);
