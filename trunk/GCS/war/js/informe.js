@@ -169,7 +169,9 @@ $(function(){
 				data : postData,
 				success:function(data, textStatus, jqXHR) 
 				{
-					var informe =data.informe;
+					if(data!=""&&data!=null){
+						location.href="../../informeServlet?accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+					}
 									
 				},
 				error:function(jqXHR, textStatus, errorThrown) {
