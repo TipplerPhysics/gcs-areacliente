@@ -46,12 +46,15 @@ import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-
+import com.itextpdf.text.FontFactory;
 
 
 
@@ -215,37 +218,24 @@ public class InformeServlet extends HttpServlet {
 		if(!Informes.isEmpty()){
 		
 		try {
-			/*
-			 String msg = "your message";
 
-		      Document document = new Document();
-		      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		      PdfWriter.getInstance(document, baos);
-		      document.open();
-		      document.add(new Paragraph(msg));
-		      document.add(Chunk.NEWLINE);
-		      document.add(new Paragraph("a paragraph"));
-		      document.close();
-
-		      resp.setHeader("Expires", "0");
-		      resp.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
-		      resp.setHeader("Pragma", "public");
-
-		      resp.setContentType("application/pdf");
-
-		      resp.setContentLength(baos.size());
-
-		      ServletOutputStream out = resp.getOutputStream();
-		      baos.writeTo(out);
-		      out.flush();*/
 		   Informe inf =Informes.get(0);
 		   Document document = new Document();
 		   PdfWriter.getInstance(document, resp.getOutputStream());
 		   document.open();
+		   
+		   Image bbva = Image.getInstance("img/logo_bbva.png");
+		   bbva.scaleToFit(78, 45);
+		   bbva.setAlignment(Chunk.ALIGN_LEFT);
+		   document.add(bbva);
+		   Paragraph header =new Paragraph("Solicitudes desplegadas en producción",FontFactory.getFont("arial",22,Font.BOLD,BaseColor.BLACK));
+		   header.setAlignment(Chunk.ALIGN_CENTER);
+		   document.add(header); 
+		   
 		   document.add(new Paragraph("Se ha llevado a cabo satisfactoriamente la implementación del día:  "+inf.getDiaImplantacion()+"/"+inf.getMesImplantacion()+"/"+inf.getAnyoImplantacion()));
 		   document.close();
-			resp.setContentType("text/plain");
-			//resp.addHeader("Content-Disposition", "attachment; filename=hello.pdf");
+		   
+
 		  } catch (DocumentException e) {
 		   e.printStackTrace();
 		  }

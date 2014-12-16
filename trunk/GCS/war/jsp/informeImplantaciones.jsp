@@ -58,7 +58,10 @@
 		
 	</div>
 	
-<iframe id="iframepdf" url="" width="100%" height="800px"></iframe>
+<!--<iframe id="iframepdf" src=""  width="100%" height="800px"></iframe>-->
+<div id="pdfRenderer" style="height:800px;"></div>
+
+
 </form>
 
 </div>	

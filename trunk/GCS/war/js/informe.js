@@ -150,7 +150,14 @@ $(function(){
 							success:function(data, textStatus, jqXHR) 
 							{
 										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-										$('#iframepdf').attr('src',formURL);
+										//$('#iframepdf').attr('src',formURL);
+										var pdf = new PDFObject({
+											  url: formURL,
+											  id: "pdfRendered",
+											  pdfOpenParams: {
+											    view: "FitH"
+											  }
+											}).embed("pdfRenderer");
 							},
 							error:function(jqXHR, textStatus, errorThrown) {
 								console.log(textStatus);
