@@ -62,6 +62,20 @@ public class InformeDao {
 		return informes;
 	}
 	
+	public List<Informe> getAllInformesC(String Calendada) {
+
+		List<Informe> informes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName()+" WHERE tipo_subida=='"+Calendada+"'");		
+		//q.setOrdering("fecha_generado desc");
+		informes = (List<Informe>) q.execute();
+		
+		pm.close();
+
+		return informes;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Informe> getAllInformesByAnio(String Anio) {
 
@@ -79,11 +93,41 @@ public class InformeDao {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Informe> getAllInformesByAnio(String Calendada,String Anio) {
+
+		List<Informe> informes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		String petic = "SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' &&tipo_subida=='"+Calendada+"'";
+		Query q = pm.newQuery(petic);		
+		//q.setOrdering("fecha_generado desc");
+		informes = (List<Informe>) q.execute();
+		
+		pm.close();
+
+		return informes;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Informe> getAllInformesByMes(String Anio, String Mes) {
 
 		List<Informe> informes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' && mes_implantacion=='"+Mes+"'");		
+		//q.setOrdering("fecha_generado desc");
+		informes = (List<Informe>) q.execute();
+		
+		pm.close();
+
+		return informes;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Informe> getAllInformesByMes(String Calendada ,String Anio, String Mes) {
+
+		List<Informe> informes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		Query q = pm.newQuery("SELECT from " + Informe.class.getName() + " WHERE anyo_implantacion=='"+Anio+"' && mes_implantacion=='"+Mes+"' &&tipo_subida=='"+Calendada+"'");		
 		//q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		
@@ -112,9 +156,12 @@ public class InformeDao {
 		List <String> Meses = new ArrayList<String>();
 		
 		InformeDao iDao = InformeDao.getInstance();
-		
-		List<Informe> informes = iDao.getAllInformesByAnio(Anio);
-		
+		List<Informe> informes;
+		if (calendada==null||calendada==""||calendada=="All"||calendada=="all"){
+			informes = iDao.getAllInformesByAnio(Anio);
+		}else{
+			informes = iDao.getAllInformesByAnio(calendada, Anio);
+		}
 		for (Informe inf : informes){
 			String mes =  inf.getMesImplantacion();
 			boolean existe = false;
@@ -132,8 +179,14 @@ public class InformeDao {
 		List <String> Dias = new ArrayList<String>();
 		
 		InformeDao iDao = InformeDao.getInstance();
+		List<Informe> informes;
 		
-		List<Informe> informes = iDao.getAllInformesByMes(Anio, Month);
+		if (calendada==null||calendada==""||calendada=="All"||calendada=="all"){
+			informes = iDao.getAllInformesByMes(Anio, Month);	
+		}else{
+			informes = iDao.getAllInformesByMes(calendada,Anio, Month);
+		}
+		
 		
 		for (Informe inf : informes){
 			String dia =  inf.getDiaImplantacion();
@@ -146,6 +199,33 @@ public class InformeDao {
 		
 		
 		return Dias;
+	}
+	
+	public List<String> getYearsForInforme(String calendada){
+		
+		List <String> Anios = new ArrayList<String>();
+		
+		InformeDao iDao = InformeDao.getInstance();
+		List<Informe> informes;
+		
+		if (calendada==null||calendada==""||calendada=="All"||calendada=="all"){
+			informes = iDao.getAllInformes();	
+		}else{
+			informes = iDao.getAllInformesC(calendada);
+		}
+		
+		
+		for (Informe inf : informes){
+			String anio =  inf.getAnyoImplantacion();
+			boolean existe = false;
+			for (String aniolis:Anios){
+				if(aniolis.equals(anio))existe=true;
+			}
+			if (!existe)Anios.add(anio);
+		}
+		
+		
+		return Anios;
 	}
 	
 }

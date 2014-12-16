@@ -1736,9 +1736,12 @@ $(function() {
 		
 		 var option = $(this).find(":selected");
 		 var anio = option.val();
+		 var calendada = $('#informe_select_calendada').find(":selected").val();
+		 
+		 
 		 if(anio != "default"){
 			 var formURL = "/informeServlet";
-			 var postData="accion=getMonths&year="+ anio;
+			 var postData="accion=getMonths&year="+ anio+"&calendada="+calendada;
 			 
 			 $.ajax({
 				url : formURL,
@@ -1789,11 +1792,12 @@ $(function() {
 	$('#report-form').on('change','#informe_select_mes', function (e){
 		
 		 var option = $(this).find(":selected");
+		 var calendada = $('#informe_select_calendada').find(":selected").val();
 		 var month = option.val();
 		 if (month !="default"){
 			 var anio = $('#informe_select_anyo').find(":selected").val();
 			 var formURL = "/informeServlet";
-			 var postData="accion=getDays&year="+ anio +"&month="+month;
+			 var postData="accion=getDays&year="+ anio +"&month="+month+"&calendada="+calendada;
 			 
 			 $.ajax({
 				url : formURL,
@@ -1849,27 +1853,6 @@ $(function() {
 							data : postData,
 							success:function(data, textStatus, jqXHR) 
 							{
-//								  var pdf = new PDFJS.PDFDoc(data);
-//								  var page = pdf.getPage(1);
-//								  var scale = 1.5;
-//
-//								  //
-//								  // Prepare canvas using PDF page dimensions
-//								  //
-//								  var canvas = document.getElementById('the-canvas');
-//								  var context = canvas.getContext('2d');
-//								  canvas.height = page.height * scale;
-//								  canvas.width = page.width * scale;
-//
-//								  //
-//								  // Render PDF page into canvas context
-//								  //
-//								  page.startRendering(context);
-//									var pdf =data;
-//									var ventana = document.getElementById("heloo");
-//									$(ventana).append($(pdf));
-									//
-								//window.open(data, "_system");
 									if(data!=""&&data!=null){
 										location.href="../../informeServlet?accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 									}
@@ -1887,9 +1870,9 @@ $(function() {
 				 
 	});
 	$('#report-form').on('change','#informe_select_calendada', function (e){
-		var dia = $('#informe_select_dia').find(":selected").val();
 		var calendada = $('#informe_select_calendada').find(":selected").val();
-		if(dia!="" && dia!=null && dia!="default" &&calendada!="default"){
+		if(calendada!="default"){
+			/*
 			 var anio = $('#informe_select_anyo').find(":selected").val();
 			 var month = $('#informe_select_mes').find(":selected").val();
 			 
@@ -1902,7 +1885,9 @@ $(function() {
 				data : postData,
 				success:function(data, textStatus, jqXHR) 
 				{
-					var informe =data.informe;
+					if(data!=""&&data!=null){
+						location.href="../../informeServlet?accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+					}
 									
 				},
 				error:function(jqXHR, textStatus, errorThrown) {
@@ -1910,7 +1895,67 @@ $(function() {
 					console.log(errorThrown);
 					console.log("failure");
 				}
+			 });*/
+			
+			 var formURL = "/informeServlet";
+			 var postData="accion=getYears"+"&calendada="+calendada;
+			 
+			 $.ajax({
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					var x = document.getElementById("informe_select_anyo");
+					var Anios = data.Anios[0];
+					if(Anios[0]==""||Anios[0]==null)alert("No existen informes con esas caracteristicas");
+					var cont;
+					for(cont=0;cont<=x.options.length;++cont)
+					x.remove(0);
+					
+			    	var option1 = document.createElement('option');
+			    	option1.text = "Seleciona a\u00f1o";
+			    	option1.value = "default";
+			    	x.add(option1);
+			    	
+					var a;
+				    for (a in Anios){
+				    	var option = document.createElement('option');
+				    	option.text = option.value = Anios[a];
+				    	x.add(option);
+				    }
+					
+				},
+				error:function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus);
+					console.log(errorThrown);
+					console.log("failure");
+				}
 			 });
+			
+		}else{
+			var x = document.getElementById("informe_select_anyo");
+			var y = document.getElementById("informe_select_mes");
+			var z = document.getElementById("informe_select_dia");
+			var cont;
+			for(cont=0;cont<=x.options.length;++cont) x.remove(0);
+			for(cont=0;cont<=y.options.length;++cont) y.remove(0);
+			for(cont=0;cont<=z.options.length;++cont) z.remove(0);
+			
+	    	var option1 = document.createElement('option');
+	    	option1.text = "Primero selecciona tipo subida";
+	    	option1.value = "default";
+	    	x.add(option1);
+			
+	    	var option1 = document.createElement('option');
+	    	option1.text = "Primero selecciona a\u00f1o";
+	    	option1.value = "default";
+	    	y.add(option1);
+	    	
+	    	var option2 = document.createElement('option');
+	    	option2.text = "Primero selecciona mes";
+	    	option2.value = "default";
+	    	z.add(option2);
 		}
 	});
 });;$.fn.paginateMe = function(opts) {
