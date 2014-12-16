@@ -94,12 +94,35 @@ public class InformeServlet extends HttpServlet {
 				if (accion.equals("getMonths"))obtenerMeses(req, resp);
 				if (accion.equals("getDays"))obtenerDias(req, resp);
 				if (accion.equals("getInforme"))obtenerInforme(req, resp);
-				
+				if (accion.equals("getYears"))obtenerAnios(req, resp);
 				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
+	}
+	
+	private void obtenerAnios(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
+		JSONObject json = new JSONObject();
+		try{
+		
+		
+		String calendada = req.getParameter("calendada");
+		InformeDao iDao = InformeDao.getInstance();
+		List<String> Anios = iDao.getYearsForInforme(calendada);
+		
+		
+		json.append("Anios", Anios);
+		json.append("success", "true");
+		} catch (JSONException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
+		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
 	}
 	
 	private void obtenerMeses(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
@@ -132,8 +155,9 @@ public class InformeServlet extends HttpServlet {
 		
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
+		String calendada = req.getParameter("calendada");
 		InformeDao iDao = InformeDao.getInstance();
-		List<String> Dias = iDao.getDaysForInforme("All", anio,mes);
+		List<String> Dias = iDao.getDaysForInforme(calendada, anio,mes);
 		
 		
 		json.append("Dias", Dias);
