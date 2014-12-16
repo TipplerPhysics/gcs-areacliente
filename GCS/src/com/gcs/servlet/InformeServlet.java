@@ -60,6 +60,7 @@ public class InformeServlet extends HttpServlet {
 	
 
 	private static final Logger log = Logger.getLogger(InformeServlet.class.getName());
+	private String[] fech = new String[5];
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
@@ -95,13 +96,34 @@ public class InformeServlet extends HttpServlet {
 				if (accion.equals("getDays"))obtenerDias(req, resp);
 				if (accion.equals("getInforme"))obtenerInforme(req, resp);
 				if (accion.equals("getYears"))obtenerAnios(req, resp);
+				if (accion.equals("getDefault"))obtenerDefault(req, resp);
 				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
 	}
-	
+	private void obtenerDefault(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
+		JSONObject json = new JSONObject();
+		try{
+		
+		
+		
+		
+		json.append("Anio",fech[0]);
+		json.append("Mes", fech[1]);
+		json.append("Dia", fech[2]);
+		json.append("Calendada", fech[3]);
+		} catch (JSONException e) {
+			json.append("success", "false");
+			json.append("error", "Se ha producido un error inesperado.");
+			e.printStackTrace();
+		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
 	private void obtenerAnios(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		try{
@@ -182,6 +204,11 @@ public class InformeServlet extends HttpServlet {
 		String mes = req.getParameter("month");
 		String dia = req.getParameter("day");
 		String calenda = req.getParameter("calendada");
+		fech[0]=anio;
+		fech[1]=mes;
+		fech[2]=dia;
+		fech[3]=calenda;
+		
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> Informes = iDao.getAllInformesByDate(calenda,anio, mes, dia);
 		
@@ -217,8 +244,8 @@ public class InformeServlet extends HttpServlet {
 		   document.open();
 		   document.add(new Paragraph("Se ha llevado a cabo satisfactoriamente la implementación del día:  "+inf.getDiaImplantacion()+"/"+inf.getMesImplantacion()+"/"+inf.getAnyoImplantacion()));
 		   document.close();
-			resp.setContentType("application/pdf");
-			resp.addHeader("Content-Disposition", "attachment; filename=hello.pdf");
+			resp.setContentType("text/plain");
+			//resp.addHeader("Content-Disposition", "attachment; filename=hello.pdf");
 		  } catch (DocumentException e) {
 		   e.printStackTrace();
 		  }

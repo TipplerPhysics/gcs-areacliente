@@ -57,6 +57,8 @@
 		</div>
 		
 	</div>
+	
+<iframe id="iframepdf" url="" width="100%" height="800px"></iframe>
 </form>
 
 </div>	
