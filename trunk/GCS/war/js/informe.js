@@ -1,4 +1,33 @@
 $(function(){
+	
+	
+	var calendada = $('#iframepdf').find("src").val();
+	var y = document.getElementById("iframepdf");
+	if (true){
+		var formURL = "/informeServlet";
+		 var postData="accion=getDefault";
+		 
+		 $.ajax({
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				var anio = data.Anio;
+				var month = data.Mes;
+				var day = data.Dia;
+				var calendada = data.Calendada;
+				var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+				$('#iframepdf').attr('src',formURL);
+			},
+			error:function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus);
+				console.log(errorThrown);
+				console.log("failure");
+			}
+		});
+	}
+	
 	$('#report-form').on('change','#informe_select_anyo', function (e){
 		
 		 var option = $(this).find(":selected");
@@ -120,9 +149,8 @@ $(function(){
 							data : postData,
 							success:function(data, textStatus, jqXHR) 
 							{
-									if(data!=""&&data!=null){
-										location.href="../../informeServlet?accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-									}
+										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+										$('#iframepdf').attr('src',formURL);
 							},
 							error:function(jqXHR, textStatus, errorThrown) {
 								console.log(textStatus);
@@ -139,30 +167,6 @@ $(function(){
 	$('#report-form').on('change','#informe_select_calendada', function (e){
 		var calendada = $('#informe_select_calendada').find(":selected").val();
 		if(calendada!="default"){
-			/*
-			 var anio = $('#informe_select_anyo').find(":selected").val();
-			 var month = $('#informe_select_mes').find(":selected").val();
-			 
-			 var formURL = "/informeServlet";
-			 var postData="accion=getInforme&year="+ anio +"&month="+month+"&day="+dia+"&calendada="+calendada;
-			 
-			 $.ajax({
-				url : formURL,
-				type: "GET",
-				data : postData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					if(data!=""&&data!=null){
-						location.href="../../informeServlet?accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-					}
-									
-				},
-				error:function(jqXHR, textStatus, errorThrown) {
-					console.log(textStatus);
-					console.log(errorThrown);
-					console.log("failure");
-				}
-			 });*/
 			
 			 var formURL = "/informeServlet";
 			 var postData="accion=getYears"+"&calendada="+calendada;
