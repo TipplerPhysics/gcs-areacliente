@@ -59,8 +59,9 @@
 	</div>
 	
 <!--<iframe id="iframepdf" src=""  width="100%" height="800px"></iframe>-->
-<div id="pdfRenderer" style="height:800px;"></div>
-
+<!--<div id="pdfRenderer" style="height:800px;"></div>-->
+<input type="hidden" id="UserAgent"/>
+<div id="iframepdf" style="height:800px;"></div>
 
 </form>
 
