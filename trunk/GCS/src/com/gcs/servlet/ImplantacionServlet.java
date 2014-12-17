@@ -49,6 +49,8 @@ public class ImplantacionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
+	public static String[] fech = new String[4];
+	
 	private static final String VACIO = "";
 	private static final String CALENDADA = "Calendada";
 	private static final String OK = "OK";
@@ -447,12 +449,17 @@ public class ImplantacionServlet extends HttpServlet {
 			infor.setServiciosID(serviciosList);
 			infor.setConectividadesID(conectividadesList);
 			infor.setAnyoImplantacion(fechaImplantacion.substring(6,10));
+			fech[0] = fechaImplantacion.substring(6,10);
 			infor.setMesImplantacion(fechaImplantacion.substring(3, 5));
+			fech[1] = fechaImplantacion.substring(3, 5);
 			infor.setDiaImplantacion(fechaImplantacion.substring(0, 2));
+			fech[2] = fechaImplantacion.substring(0, 2);
 			if (tipoSubida){
 				infor.setTipoSubida("Calendada");
+				fech[3]= "Calendada";
 			}else {
 				infor.setTipoSubida("No calendada");
+				fech[3] = "No calendada";
 			}			
 			infor.setTextoInforme(texto_informe);
 			
