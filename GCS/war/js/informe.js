@@ -1,7 +1,8 @@
 $(function(){
 	
 	
-	var calendada = $('#iframepdf').find("src").val();
+	//var calendada = $('#iframepdf').find("src").val();
+	console.log("Muestro calendada"+calendada);
 	var y = document.getElementById("iframepdf");
 	if (true){
 		var formURL = "/informeServlet";
@@ -28,7 +29,7 @@ $(function(){
 				}
 				else {
 					console.log("entro en else ultimo");
-				    embed += ' src="' + formURL + '">';
+				    embed += ' data="' + formURL + '">';
 				}
 				embed += '</object>';
 				console.log("Muestro la var embed"+embed);
