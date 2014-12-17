@@ -2,7 +2,7 @@ $(function(){
 	
 	
 	//var calendada = $('#iframepdf').find("src").val();
-	console.log("Muestro calendada"+calendada);
+	//console.log("Muestro calendada"+calendada);
 	var y = document.getElementById("iframepdf");
 	if (true){
 		var formURL = "/informeServlet";
