@@ -10,7 +10,7 @@
 		<span onclick="window.location.href='../../' ">Home</span> > <span> Pase a producci&oacute;n </span>
 	</div>
 	
-	<form id="report-form" name="report-form" action="/informeServlet"	method="POST" novalidate="novalidate">
+	<form id="report-form" name="report-form" action="/InformeServlet"	method="POST" novalidate="novalidate">
 		<div class="form-container">
 			<div class="form-field-divider left">
 				<div class="form-field">
