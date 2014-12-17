@@ -31,8 +31,9 @@ $(function(){
 				    embed += ' data="' + formURL + '">';
 				}
 				embed += '</object>';
+				console.log("Muestro la var embed"+embed);
 				$("#iframepdf").html(embed);
-					
+				console.log("llego al set html");
 			},
 			error:function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus);
