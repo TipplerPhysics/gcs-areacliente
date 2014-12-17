@@ -1,8 +1,7 @@
 $(function(){
 	
-	
-	//var calendada = $('#iframepdf').find("src").val();
-	
+	/*
+	var calendada = $('#iframepdf').find("src").val();
 	var y = document.getElementById("iframepdf");
 	if (true){
 		var formURL = "/informeServlet";
@@ -18,9 +17,13 @@ $(function(){
 				var month = data.Mes;
 				var day = data.Dia;
 				var calendada = data.Calendada;
+				
 				var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 				var userAgent = $('#UserAgent').val(navigator.userAgent);
-				
+				console.log($('#UserAgent').val()+" estoy aki");
+				$('#iframepdf').attr('src',formURL);
+				*/
+				/*
 				var embed = '<object type="application/pdf" width="100%" height="100%"';
 				if($('#UserAgent').val().toString().indexOf("IE")!=-1){
 					embed += '><param name="src" value="' + formURL + '"/>';
@@ -28,13 +31,13 @@ $(function(){
 				    embed += ' src="' + formURL + '">';
 				}
 				else {
-					
-				    embed += ' data="' + formURL + '"><embed src="'+formURL+'" type="application/pdf" />';
+					console.log("entro en else ultimo");
+				    embed += ' src="' + formURL + '">';
 				}
 				embed += '</object>';
-				
+				console.log("Muestro la var embed"+embed);
 				$("#iframepdf").html(embed);
-				
+				console.log("llego al set html");*//*
 			},
 			error:function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus);
@@ -42,7 +45,7 @@ $(function(){
 				console.log("failure");
 			}
 		});
-	}
+	}*/
 	
 	$('#report-form').on('change','#informe_select_anyo', function (e){
 		
@@ -67,12 +70,13 @@ $(function(){
 					if(Mes[0]!=""){
 						var cont;
 						var lim = x.options.length;
-						for(cont=0;cont<=x.options.length;++cont)
+						for(cont=0;cont<lim;++cont)
 						x.remove(0);
 					}
 					var y = document.getElementById("informe_select_dia");
 					var cont;
-					for(cont=0;cont<=y.options.length;++cont) y.remove(0);
+					var lim =y.options.length;
+					for(cont=0;cont<lim;++cont) y.remove(0);
 					
 					
 			    	var option1 = document.createElement('option');
@@ -122,8 +126,8 @@ $(function(){
 					/*Elimina las opciones presentadas hasta el momento*/
 					if(Dias[0]!=""){
 						var cont;
-						for(cont=0;cont<=x.options.length;++cont)
-						x.remove(0);
+						var deb =x.options.length;
+						for(cont=0;cont<deb;++cont)x.remove(0);
 					}
 					
 			    	var option1 = document.createElement('option');
@@ -158,14 +162,23 @@ $(function(){
 					 if (day!=""&&day!=null&&day!="default"){
 						 var formURL = "/informeServlet";
 						 var postData="accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-						 
+						 /*
 						 $.ajax({
 							url : formURL,
 							type: "POST",
 							data : postData,
 							success:function(data, textStatus, jqXHR) 
-							{
+							{*/
 										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+										$('#iframepdf').attr('src',formURL);
+										/*var pdf = new PDFObject({
+											  url: formURL,
+											  id: "pdfRendered",
+											  pdfOpenParams: {
+											    view: "FitH"
+											  }
+											}).embed("pdfRenderer");*/
+						/*	},
 										$('#iframepdf').attr('src',formURL);
 							},
 							error:function(jqXHR, textStatus, errorThrown) {
@@ -173,7 +186,7 @@ $(function(){
 								console.log(errorThrown);
 								console.log("failure");
 							}
-						 });
+						 });*/
 					 }
 				 }else{
 					 alert("Seleccione si es calendada o no");
@@ -194,22 +207,67 @@ $(function(){
 				success:function(data, textStatus, jqXHR) 
 				{
 					var x = document.getElementById("informe_select_anyo");
+					var y = document.getElementById("informe_select_mes");
+					var z = document.getElementById("informe_select_dia");
 					var Anios = data.Anios[0];
-					if(Anios[0]==""||Anios[0]==null)alert("No existen informes con esas caracteristicas");
-					var cont;
-					for(cont=0;cont<=x.options.length;++cont)
-					x.remove(0);
-					
-			    	var option1 = document.createElement('option');
-			    	option1.text = "Seleciona a\u00f1o";
-			    	option1.value = "default";
-			    	x.add(option1);
-			    	
-					var a;
-				    for (a in Anios){
-				    	var option = document.createElement('option');
-				    	option.text = option.value = Anios[a];
-				    	x.add(option);
+					if(Anios[0]==""||Anios[0]==null){
+						alert("No existen informes con esas caracteristicas");
+						var deb = x.options.length;
+						for(cont=0;cont<deb;++cont) x.remove(0);
+						deb = y.options.length;
+						for(cont=0;cont<deb;++cont) y.remove(0);
+						deb = z.options.length;
+						for(cont=0;cont<deb;++cont){
+							z.remove(0);
+						}
+						
+				    	var option1 = document.createElement('option');
+				    	option1.text = "Primero selecciona tipo subida";
+				    	option1.value = "default";
+				    	x.add(option1);
+				    	
+				    	var option2 = document.createElement('option');
+				    	option2.text = "Primero selecciona a\u00f1o";
+				    	option2.value = "default";
+				    	y.add(option2);
+				    	
+				    	var option3 = document.createElement('option');
+				    	option3.text = "Primero selecciona mes";
+				    	option3.value = "default";
+				    	z.add(option3);
+				    	
+					}else{
+						var cont;
+						var deb = x.options.length;
+						for(cont=0;cont<deb;++cont) x.remove(0);
+						deb = y.options.length;
+						for(cont=0;cont<deb;++cont) y.remove(0);
+						deb = z.options.length;
+						for(cont=0;cont<deb;++cont){
+							z.remove(0);
+						}
+						
+				    	var option1 = document.createElement('option');
+				    	option1.text = "Seleciona a\u00f1o";
+				    	option1.value = "default";
+				    	x.add(option1);
+				    	
+				    	var option2 = document.createElement('option');
+				    	option2.text = "Primero selecciona a\u00f1o";
+				    	option2.value = "default";
+				    	y.add(option2);
+				    	
+				    	var option3 = document.createElement('option');
+				    	option3.text = "Primero selecciona mes";
+				    	option3.value = "default";
+				    	z.add(option3);
+				    	
+						var a;
+					    for (a in Anios){
+					    	var option = document.createElement('option');
+					    	option.text = option.value = Anios[a];
+					    	x.add(option);
+					    }
 				    }
 					
 				},
@@ -225,24 +283,29 @@ $(function(){
 			var y = document.getElementById("informe_select_mes");
 			var z = document.getElementById("informe_select_dia");
 			var cont;
-			for(cont=0;cont<=x.options.length;++cont) x.remove(0);
-			for(cont=0;cont<=y.options.length;++cont) y.remove(0);
-			for(cont=0;cont<=z.options.length;++cont) z.remove(0);
+			var deb = x.options.length;
+			for(cont=0;cont<deb;++cont) x.remove(0);
+			deb = y.options.length;
+			for(cont=0;cont<deb;++cont) y.remove(0);
+			deb = z.options.length;
+			for(cont=0;cont<deb;++cont){
+				z.remove(0);
+			}
 			
 	    	var option1 = document.createElement('option');
 	    	option1.text = "Primero selecciona tipo subida";
 	    	option1.value = "default";
 	    	x.add(option1);
 			
-	    	var option1 = document.createElement('option');
-	    	option1.text = "Primero selecciona a\u00f1o";
-	    	option1.value = "default";
-	    	y.add(option1);
-	    	
 	    	var option2 = document.createElement('option');
-	    	option2.text = "Primero selecciona mes";
+	    	option2.text = "Primero selecciona a\u00f1o";
 	    	option2.value = "default";
-	    	z.add(option2);
+	    	y.add(option2);
+	    	
+	    	var option3 = document.createElement('option');
+	    	option3.text = "Primero selecciona mes";
+	    	option3.value = "default";
+	    	z.add(option3);
 		}
 	});
 });
