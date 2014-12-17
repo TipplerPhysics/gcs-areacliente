@@ -1,6 +1,6 @@
 $(function(){
 	
-	/*
+	
 	var calendada = $('#iframepdf').find("src").val();
 	var y = document.getElementById("iframepdf");
 	if (true){
@@ -22,8 +22,9 @@ $(function(){
 				var userAgent = $('#UserAgent').val(navigator.userAgent);
 				console.log($('#UserAgent').val()+" estoy aki");
 				$('#iframepdf').attr('src',formURL);
-				*/
-				/*
+				var descarg = "window.location.href='../.."+formURL+"'";
+				$('#down_btn').attr('onclick',descarg);
+				/*"window.location.href='../../logsServlet?accion=xls'"
 				var embed = '<object type="application/pdf" width="100%" height="100%"';
 				if($('#UserAgent').val().toString().indexOf("IE")!=-1){
 					embed += '><param name="src" value="' + formURL + '"/>';
@@ -37,7 +38,7 @@ $(function(){
 				embed += '</object>';
 				console.log("Muestro la var embed"+embed);
 				$("#iframepdf").html(embed);
-				console.log("llego al set html");*//*
+				console.log("llego al set html");*/
 			},
 			error:function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus);
@@ -45,7 +46,7 @@ $(function(){
 				console.log("failure");
 			}
 		});
-	}*/
+	}
 	
 	$('#report-form').on('change','#informe_select_anyo', function (e){
 		
@@ -171,6 +172,8 @@ $(function(){
 							{*/
 										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 										$('#iframepdf').attr('src',formURL);
+										var descarg = "window.location.href='"+formURL+"'";
+										$('#down_btn').attr('onclick',descarg);
 										/*var pdf = new PDFObject({
 											  url: formURL,
 											  id: "pdfRendered",
