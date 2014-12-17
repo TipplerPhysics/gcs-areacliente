@@ -18,7 +18,20 @@ $(function(){
 				var day = data.Dia;
 				var calendada = data.Calendada;
 				var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-				$('#iframepdf').attr('src',formURL);
+				var userAgent = $('#UserAgent').val(navigator.userAgent);
+				
+				var embed = '<object type="application/pdf" width="100%" height="100%"';
+				if($('#UserAgent').val().toString().indexOf("IE")!=-1){
+					embed += '><param name="src" value="' + formURL + '"/>';
+				}else if ($('#UserAgent').val().toString().indexOf("chrome")!=-1) {
+				    embed += ' src="' + formURL + '">';
+				}
+				else {
+				    embed += ' data="' + formURL + '">';
+				}
+				embed += '</object>';
+				$("#iframepdf").html(embed);
+					
 			},
 			error:function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus);
@@ -150,14 +163,7 @@ $(function(){
 							success:function(data, textStatus, jqXHR) 
 							{
 										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-										//$('#iframepdf').attr('src',formURL);
-										var pdf = new PDFObject({
-											  url: formURL,
-											  id: "pdfRendered",
-											  pdfOpenParams: {
-											    view: "FitH"
-											  }
-											}).embed("pdfRenderer");
+										$('#iframepdf').attr('src',formURL);
 							},
 							error:function(jqXHR, textStatus, errorThrown) {
 								console.log(textStatus);
