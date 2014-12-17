@@ -55,7 +55,7 @@
 					</div>
 			</div>
 		</div>
-		
+		 <button id="down_btn"> Descargar</button>
 	</div>
 	
 <iframe id="iframepdf" width="100%" height="800px"></iframe>
