@@ -4,7 +4,7 @@ $(function(){
 	var calendada = $('#iframepdf').find("src").val();
 	var y = document.getElementById("iframepdf");
 	if (true){
-		var formURL = "/InformeServlet";
+		var formURL = "/informeServlet";
 		 var postData="accion=getDefault";
 		 
 		 $.ajax({
@@ -18,7 +18,7 @@ $(function(){
 				var day = data.Dia;
 				var calendada = data.Calendada;
 				
-				var formURL = "/InformeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+				var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 				var userAgent = $('#UserAgent').val(navigator.userAgent);
 				console.log($('#UserAgent').val()+" estoy aki");
 				$('#iframepdf').attr('src',formURL);
@@ -56,7 +56,7 @@ $(function(){
 		 
 		 
 		 if(anio != "default"){
-			 var formURL = "/InformeServlet";
+			 var formURL = "/informeServlet";
 			 var postData="accion=getMonths&year="+ anio+"&calendada="+calendada;
 			 
 			 $.ajax({
@@ -113,7 +113,7 @@ $(function(){
 		 var month = option.val();
 		 if (month !="default"){
 			 var anio = $('#informe_select_anyo').find(":selected").val();
-			 var formURL = "/InformeServlet";
+			 var formURL = "/informeServlet";
 			 var postData="accion=getDays&year="+ anio +"&month="+month+"&calendada="+calendada;
 			 
 			 $.ajax({
@@ -161,7 +161,7 @@ $(function(){
 				 var calendada = $('#informe_select_calendada').find(":selected").val();
 				 if (calendada!=""&&calendada!=null&&calendada!="default"){
 					 if (day!=""&&day!=null&&day!="default"){
-						 var formURL = "/InformeServlet";
+						 var formURL = "/informeServlet";
 						 var postData="accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 						 /*
 						 $.ajax({
@@ -170,7 +170,7 @@ $(function(){
 							data : postData,
 							success:function(data, textStatus, jqXHR) 
 							{*/
-										var formURL = "/InformeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 										$('#iframepdf').attr('src',formURL);
 										var descarg = "window.location.href='"+formURL+"'";
 										$('#down_btn').attr('onclick',descarg);
@@ -200,7 +200,7 @@ $(function(){
 		var calendada = $('#informe_select_calendada').find(":selected").val();
 		if(calendada!="default"){
 			
-			 var formURL = "/InformeServlet";
+			 var formURL = "/informeServlet";
 			 var postData="accion=getYears"+"&calendada="+calendada;
 			 
 			 $.ajax({
