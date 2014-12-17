@@ -20,7 +20,7 @@
                     		<select id="informe_select_calendada">
 								<option value="default">Tipo de subida</option>
 								<option value="Calendada">Calendada</option>
-								<option value="No Calendada">No calendada</option>
+								<option value="No calendada">No calendada</option>
 							</select>
 						
 					</div>
@@ -58,9 +58,12 @@
 		
 	</div>
 	
+<iframe id="iframepdf" width="100%" height="800px"></iframe>
 
+
+<!--<div id="iframepdf" style="height:800px;"></div>-->
 <input type="hidden" id="UserAgent"/>
-<div id="iframepdf" style="height:800px;"></div>
+
 
 </form>
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.mail.Message;
@@ -65,7 +66,7 @@ public class InformeServlet extends HttpServlet {
 	
 
 	private static final Logger log = Logger.getLogger(InformeServlet.class.getName());
-	private String[] fech = new String[5];
+	
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
@@ -113,12 +114,16 @@ public class InformeServlet extends HttpServlet {
 		try{
 		
 		
+		if(ImplantacionServlet.fech[0]!=null){
+			json.append("Anio",ImplantacionServlet.fech[0]);
+			json.append("Mes", ImplantacionServlet.fech[1]);
+			json.append("Dia", ImplantacionServlet.fech[2]);
+			json.append("Calendada", ImplantacionServlet.fech[3]);
+		}else{
+			json.append("success", "false");
+			json.append("error", "todavia no se ha generado un informe");
+		}
 		
-		
-		json.append("Anio",fech[0]);
-		json.append("Mes", fech[1]);
-		json.append("Dia", fech[2]);
-		json.append("Calendada", fech[3]);
 		} catch (JSONException e) {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
@@ -202,59 +207,97 @@ public class InformeServlet extends HttpServlet {
 	
 	private void obtenerInforme(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
-
-			
-		
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
 		String dia = req.getParameter("day");
 		String calenda = req.getParameter("calendada");
-		fech[0]=anio;
-		fech[1]=mes;
-		fech[2]=dia;
-		fech[3]=calenda;
+		
+		resp.setContentType("application/pdf");
+		resp.addHeader("Content-Disposition", "inline; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
+		resp.setHeader("Cache-Control", "no-cache");  
+		resp.setDateHeader("Expires", 0);  
+		resp.setHeader("Pragma", "No-cache");   
+
+
 		
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> Informes = iDao.getAllInformesByDate(calenda,anio, mes, dia);
 		Informe inf =Informes.get(0);
 		
 		
-		String name;
-		String pais;
-		String producto;
-		String detalle;
-		String estado;
-		String comentario;
+		List<String> name = new ArrayList<String>();
+		List<String> estado = new ArrayList<String>();
+		List<String> detalle = new ArrayList<String>();
+		List<String> comentSub = new ArrayList<String>();
+		List<String> nameCli = new ArrayList<String>();
+		List<String> pais = new ArrayList<String>();
+		List<String> producto = new ArrayList<String>();
 		
 		
 		List<String>conectividades = inf.getConectividadesId();
 		List<String>servicios = inf.getServiciosId();
-		
-		for (String a : servicios ){
-			ServicioDao cDao = ServicioDao.getInstance();
-			Servicio serv = cDao.getServicioById(a);
-			name = serv.getCliente_name();
-			estado = serv.getEstadoSubida();
-			comentario = serv.getdetalleSubida();
-			
-			long ident = serv.getCliente_key();
-			
-			ClienteDao cliDao = ClienteDao.getInstance();
-			Cliente cliente = cliDao.getClienteById(ident);
-
-		}	
-		
-		for (String a : conectividades ){
-			ConectividadDao cDao = ConectividadDao.getInstance();
-			Conectividad serv = cDao.getConectividadById(a);
-
-
-
+		if(!servicios.isEmpty()){
+			for (String a : servicios ){
+				ServicioDao cDao = ServicioDao.getInstance();
+				Servicio serv = cDao.getServicioById(a);
+				
+				nameCli.add(serv.getCliente_name());
+				estado.add(serv.getEstadoSubida());
+				detalle.add(serv.getObservaciones());
+				comentSub.add(serv.getdetalleSubida());
+				
+				long ident = serv.getId_proyecto();
+				ProyectoDao projDao = ProyectoDao.getInstance();
+				Proyecto proj = projDao.getProjectbyId(ident);
+				
+				producto.add(proj.getProducto());
+				name.add(proj.getServicio());
+				
+				long identCli = serv.getCliente_key();
+				ClienteDao cliDao = ClienteDao.getInstance();
+				Cliente cliente = cliDao.getClienteById(identCli);
+				
+				Set<String> Paises = cliente.getPaises();
+				
+				if(Paises.size()>1){
+					pais.add("Varios Paises");
+				}else{
+					pais.add(Paises.toString());
+				}
+			}	
 		}
-			
-			
-
-		if(!Informes.isEmpty()){
+		
+		if(!conectividades.isEmpty()){
+			for (String a : conectividades ){
+				ConectividadDao cDao = ConectividadDao.getInstance();
+				Conectividad conect = cDao.getConectividadById(a);
+				
+				comentSub.add(conect.getdetalleSubida());
+				estado.add(conect.getEstadoSubida());			
+				detalle.add("");
+				
+				long ident = conect.getKey_proyecto();
+				ProyectoDao projDao = ProyectoDao.getInstance();
+				Proyecto proj = projDao.getProjectbyId(ident);
+	
+				producto.add(proj.getProducto());
+				name.add(proj.getConectividad());
+				
+				long identCli = proj.getClienteKey();
+				ClienteDao cliDao = ClienteDao.getInstance();
+				Cliente cliente = cliDao.getClienteById(identCli);
+				
+				nameCli.add(cliente.getNombre());
+				Set<String> Paises = cliente.getPaises();
+				
+				if(Paises.size()>1){
+					pais.add("Varios Paises");
+				}else{
+					pais.add(Paises.toString());
+				}
+	
+			}
+		}
 		
 		try {
 
@@ -272,14 +315,24 @@ public class InformeServlet extends HttpServlet {
 		   document.add(header); 
 		   
 		   document.add(new Paragraph("Sudida confimada y ejecutada solicidata por el equipo de Global Customer Services:"));
+		   document.add(new Paragraph(" "));
 		   
-		   document.close();
+		   for(int i=0;i<estado.size();i++){
+			   document.add(new Paragraph(" "));
+			   document.add(new Paragraph("*  "+nameCli.get(i)+","+pais.get(i)+","+producto.get(i)));
+			   document.add(new Paragraph(" "));   
+			   document.add(new Paragraph(detalle.get(i)));
+			   document.add(new Paragraph(" "));
+			   document.add(new Paragraph("Subida "+estado.get(i)));
+		   }
 		   
 
+		   
+		   document.close();
 		  } catch (DocumentException e) {
 		   e.printStackTrace();
 		  }
-		}
+
 
 	}
 
