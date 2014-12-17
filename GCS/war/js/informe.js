@@ -28,7 +28,7 @@ $(function(){
 				}
 				else {
 					console.log("entro en else ultimo");
-				    embed += ' data="' + formURL + '">';
+				    embed += ' src="' + formURL + '">';
 				}
 				embed += '</object>';
 				console.log("Muestro la var embed"+embed);
