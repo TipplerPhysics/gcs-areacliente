@@ -29,7 +29,7 @@ $(function(){
 				}
 				else {
 					
-				    embed += ' data="' + formURL + '">';
+				    embed += ' data="' + formURL + '"><embed src="'+formURL+'" type="application/pdf" />';
 				}
 				embed += '</object>';
 				
