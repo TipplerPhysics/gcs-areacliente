@@ -35,10 +35,12 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Informe;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.InformeDao;
 import com.gcs.dao.ProyectoDao;
@@ -214,12 +216,49 @@ public class InformeServlet extends HttpServlet {
 		
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> Informes = iDao.getAllInformesByDate(calenda,anio, mes, dia);
+		Informe inf =Informes.get(0);
 		
+		
+		String name;
+		String pais;
+		String producto;
+		String detalle;
+		String estado;
+		String comentario;
+		
+		
+		List<String>conectividades = inf.getConectividadesId();
+		List<String>servicios = inf.getServiciosId();
+		
+		for (String a : servicios ){
+			ServicioDao cDao = ServicioDao.getInstance();
+			Servicio serv = cDao.getServicioById(a);
+			name = serv.getCliente_name();
+			estado = serv.getEstadoSubida();
+			comentario = serv.getdetalleSubida();
+			
+			long ident = serv.getCliente_key();
+			
+			ClienteDao cliDao = ClienteDao.getInstance();
+			Cliente cliente = cliDao.getClienteById(ident);
+
+		}	
+		
+		for (String a : conectividades ){
+			ConectividadDao cDao = ConectividadDao.getInstance();
+			Conectividad serv = cDao.getConectividadById(a);
+
+
+
+		}
+			
+			
+
 		if(!Informes.isEmpty()){
 		
 		try {
 
-		   Informe inf =Informes.get(0);
+		   
 		   Document document = new Document();
 		   PdfWriter.getInstance(document, resp.getOutputStream());
 		   document.open();
@@ -232,7 +271,8 @@ public class InformeServlet extends HttpServlet {
 		   header.setAlignment(Chunk.ALIGN_CENTER);
 		   document.add(header); 
 		   
-		   document.add(new Paragraph("Se ha llevado a cabo satisfactoriamente la implementación del día:  "+inf.getDiaImplantacion()+"/"+inf.getMesImplantacion()+"/"+inf.getAnyoImplantacion()));
+		   document.add(new Paragraph("Sudida confimada y ejecutada solicidata por el equipo de Global Customer Services:"));
+		   
 		   document.close();
 		   
 
