@@ -19,7 +19,7 @@ $(function(){
 				var calendada = data.Calendada;
 				var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 				var userAgent = $('#UserAgent').val(navigator.userAgent);
-				
+				console.log($('#UserAgent').val()+" estoy aki");
 				var embed = '<object type="application/pdf" width="100%" height="100%"';
 				if($('#UserAgent').val().toString().indexOf("IE")!=-1){
 					embed += '><param name="src" value="' + formURL + '"/>';
@@ -27,6 +27,7 @@ $(function(){
 				    embed += ' src="' + formURL + '">';
 				}
 				else {
+					console.log("entro en else ultimo");
 				    embed += ' data="' + formURL + '">';
 				}
 				embed += '</object>';
