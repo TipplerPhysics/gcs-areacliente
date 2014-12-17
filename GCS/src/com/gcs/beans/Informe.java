@@ -1,6 +1,7 @@
 package com.gcs.beans;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -38,6 +39,13 @@ public class Informe {
 	@Persistent
 	private String tipo_subida;
 	
+	@Persistent
+	private List<String> conectividades_id;
+	
+	@Persistent
+	private List<String> servicios_id;
+	
+	
 	
 	
 	public Informe() {
@@ -74,6 +82,22 @@ public class Informe {
 	
 	public void setTipoSubida(String tipo_subida) {
 		this.tipo_subida = tipo_subida;
+	}
+	
+	public List<String> getServiciosId() {
+		return servicios_id;
+	}
+	
+	public void setServiciosID(List<String>serv) {
+		this.servicios_id = serv;
+	}
+	
+	public List<String> getConectividadesId() {
+		return conectividades_id;
+	}
+	
+	public void setConectividadesID(List<String> conect) {
+		this.conectividades_id = conect;
 	}
 	
 	public String getAnyoImplantacion() {

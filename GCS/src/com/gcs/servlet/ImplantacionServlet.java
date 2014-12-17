@@ -419,29 +419,33 @@ public class ImplantacionServlet extends HttpServlet {
 			// TODO generar informe linkar servicios y conectividades asociadas
 			InformeDao inDao = InformeDao.getInstance();
 			Informe infor = new Informe();
-			Boolean tipoSubida;
-			String fechaImplantacion;
-			String texto_informe ;
+			Boolean tipoSubida = true;
+			String fechaImplantacion="";
+			String texto_informe = "" ;
+			String ID;
 			
-			if(!VACIO.equals(conectividadesParam)) {
+
+			
+			if(!conectividadesList.isEmpty()) {
 				ConectividadDao cDao = ConectividadDao.getInstance();
-				String a  = conectividadesList.get(0);
-				Conectividad conect = cDao.getConectividadById(a);
+				ID  = conectividadesList.get(0);
+				Conectividad conect = cDao.getConectividadById(ID);
 				tipoSubida = conect.subidaCalendada();
 				fechaImplantacion = conect.getStr_fecha_implantacion();
 				texto_informe = conect.getdetalleSubida();
 				
 			}else{
+			if(!serviciosList.isEmpty()){
 				ServicioDao cDao = ServicioDao.getInstance();
-				String a  = serviciosList.get(0);
-				Servicio serv = cDao.getServicioById(a);
+				ID  = serviciosList.get(0);
+				Servicio serv = cDao.getServicioById(ID);
 				tipoSubida = serv.subidaCalendada();
 				fechaImplantacion = serv.getStr_fecha_implantacion_produccion();
 				texto_informe = serv.getdetalleSubida();
-				
-			}
-			
-			
+			}}
+					
+			infor.setServiciosID(serviciosList);
+			infor.setConectividadesID(conectividadesList);
 			infor.setAnyoImplantacion(fechaImplantacion.substring(6,10));
 			infor.setMesImplantacion(fechaImplantacion.substring(3, 5));
 			infor.setDiaImplantacion(fechaImplantacion.substring(0, 2));
@@ -452,9 +456,8 @@ public class ImplantacionServlet extends HttpServlet {
 			}			
 			infor.setTextoInforme(texto_informe);
 			
-			
-			
-			
+
+						
 			inDao.createInforme(infor, usermail);
 			
 			
