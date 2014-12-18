@@ -15,7 +15,7 @@
 			<div class="form-field-divider left">
 				<div class="form-field">
 				
-					<span class="lbl">Seleccione tipo de subida:<span class="required-asterisk">*</span>:</span>
+					<span class="lbl">Seleccione tipo de subida:</span>
                 
                     <div class="input">
                     		<select id="informe_select_calendada" class="selectInforme">
@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="form-field">
-					<span class="lbl">Seleccione a&ntilde;o<span class="required-asterisk">*</span>:</span>
+					<span class="lbl">Seleccione a&ntilde;o:</span>
 						<div class="input">
 							<select id="informe_select_anyo" class="selectInforme"  name="anyo_sel">
 								<option value="default">Seleccione primero tipo subida</option>
@@ -40,7 +40,7 @@
 		<div class="form-field-divider right">
 
 			<div class="form-field">
-	            <span class="lbl informe">Seleccione mes:<span class="required-asterisk">*</span>:</span>
+	            <span class="lbl informe">Seleccione mes:</span>
 	                <div class="input">
 						<select id="informe_select_mes" class="selectInforme">
 							<option value="default">Primero selecciona a&ntildeo</option>
@@ -48,7 +48,7 @@
 					</div>
 			</div>	
 			<div class="form-field">
-                <span class="lbl informe">Seleccione d&iacute;a:<span class="required-asterisk">*</span>:</span>
+                <span class="lbl informe">Seleccione d&iacute;a:</span>
                     <div class="input">
 						<select id="informe_select_dia" name="dia" class="selectInforme">
 							<option value="default">Primero selecciona mes</option>
