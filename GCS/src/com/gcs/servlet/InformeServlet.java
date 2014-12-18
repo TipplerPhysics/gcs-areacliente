@@ -100,7 +100,8 @@ public class InformeServlet extends HttpServlet {
 				//cargarDatos(req, resp);if (accion.equals("getMoths"))
 				if (accion.equals("getMonths"))obtenerMeses(req, resp);
 				if (accion.equals("getDays"))obtenerDias(req, resp);
-				if (accion.equals("getInforme"))obtenerInforme(req, resp);
+				if (accion.equals("getInforme"))obtenerInforme(req, resp,false);
+				if (accion.equals("getInformeDown"))obtenerInforme(req, resp,true);
 				if (accion.equals("getYears"))obtenerAnios(req, resp);
 				if (accion.equals("getDefault"))obtenerDefault(req, resp);
 				
@@ -205,7 +206,7 @@ public class InformeServlet extends HttpServlet {
 		resp.getWriter().println(json);
 	}
 	
-	private void obtenerInforme(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
+	private void obtenerInforme(HttpServletRequest req, HttpServletResponse resp,boolean Descarg)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
@@ -213,7 +214,11 @@ public class InformeServlet extends HttpServlet {
 		String calenda = req.getParameter("calendada");
 		
 		resp.setContentType("application/pdf");
-		resp.addHeader("Content-Disposition", "inline; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
+		if(Descarg){
+			resp.addHeader("Content-Disposition", "attachment; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
+		}else{
+			resp.addHeader("Content-Disposition", "inline; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
+		}
 		resp.setHeader("Cache-Control", "no-cache");  
 		resp.setDateHeader("Expires", 0);  
 		resp.setHeader("Pragma", "No-cache");   
