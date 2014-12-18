@@ -319,7 +319,7 @@ public class InformeServlet extends HttpServlet {
 		   header.setAlignment(Chunk.ALIGN_CENTER);
 		   document.add(header); 
 		   
-		   document.add(new Paragraph("Sudida confimada y ejecutada solicidata por el equipo de Global Customer Services:"));
+		   document.add(new Paragraph("Subida confirmada y ejecutada solicitada por el equipo de Global Customer Services:"));
 		   document.add(new Paragraph(" "));
 		   
 		   for(int i=0;i<estado.size();i++){
