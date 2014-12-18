@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="gestion_coste">
+<div class="gestion_implantacion">
 
 	<h1>Registro de implantaciones</h1>
 	<!-- <button class="btn-atras" type="button">Atr&aacute;s</button>  -->
