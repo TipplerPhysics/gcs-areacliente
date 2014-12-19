@@ -56,7 +56,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
-							<input type="text" id="logo_url_modal" name="logo_url" class="long" maxlength="50">
+							<input type="text" id="logo_url_modal" name="logo_url" class="long" >
 						</div>
 						
 						<div class="form-field">	

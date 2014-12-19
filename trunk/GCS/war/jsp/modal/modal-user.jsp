@@ -28,7 +28,7 @@
 							</div>
 							<div class="form-field">
 								<span class="lbl">E-mail<span class="required-asterisk">*</span>:</span>
-								<input class="long email no_message_error" type="text" name="email" maxlength="25" id="email_modal" required aria-required="true" data-type="email">
+								<input class="long email no_message_error" type="text" name="email"  id="email_modal" required aria-required="true" data-type="email">
 							</div>
 							<div class="form-field">
 								<span class="lbl">Departamento<span class="required-asterisk">*</span>:</span>
