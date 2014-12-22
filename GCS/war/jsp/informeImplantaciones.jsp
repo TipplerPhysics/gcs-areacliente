@@ -26,10 +26,10 @@
 						
 					</div>
 				</div>
-				<div class="form-field" style="margin-left:53px;">
+				<div class="form-field" >
 					<span class="lbl">Seleccione a&ntilde;o:<span class="required-asterisk">*</span></span>
 						<div class="input">
-							<select id="informe_select_anyo" class="selectInforme"  name="anyo_sel">
+							<select id="informe_select_anyo" class="selectInforme"  name="anyo_sel" style="margin-left:53px;">
 								<option value="default">Seleccione primero tipo subida</option>
 							</select>
 						</div>
@@ -47,10 +47,10 @@
 						</select>
 					</div>
 			</div>	
-			<div class="form-field" style="margin-left:6px;">
+			<div class="form-field" >
                 <span class="lbl informe">Seleccione d&iacute;a:<span class="required-asterisk">*</span></span>
                     <div class="input">
-						<select id="informe_select_dia" name="dia" class="selectInforme">
+						<select id="informe_select_dia" name="dia" class="selectInforme" style="margin-left:6px;">
 							<option value="default">Primero selecciona mes</option>
 						</select>
 					</div>
