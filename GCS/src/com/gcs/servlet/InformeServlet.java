@@ -219,9 +219,19 @@ public class InformeServlet extends HttpServlet {
 		}else{
 			resp.addHeader("Content-Disposition", "inline; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
 		}
-		resp.setHeader("Cache-Control", "no-cache");  
-		resp.setDateHeader("Expires", 0);  
-		resp.setHeader("Pragma", "No-cache");   
+		
+		String userAgent = req.getHeader("User-Agent");
+		System.out.println("userAgent "+userAgent);
+		
+		if(userAgent.indexOf("MSIE")==-1){
+			resp.setHeader("Cache-Control", "no-cache");  
+			resp.setDateHeader("Expires", 0);  
+			resp.setHeader("Pragma", "No-cache");
+		}else{
+			resp.setHeader("Cache-Control", "public");  
+			resp.setDateHeader("Expires", 0);  
+			resp.setHeader("Pragma", "public");
+		}
 
 
 		
