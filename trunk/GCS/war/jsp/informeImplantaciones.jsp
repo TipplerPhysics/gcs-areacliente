@@ -26,7 +26,7 @@
 						
 					</div>
 				</div>
-				<div class="form-fielddownfirst">
+				<div class="form-field">
 					<span class="lbl">Seleccione a&ntilde;o:<span class="required-asterisk">*</span></span>
 						<div class="input">
 							<select id="informe_select_anyo" class="selectInforme"  name="anyo_sel">
@@ -47,7 +47,7 @@
 						</select>
 					</div>
 			</div>	
-			<div class="form-fielddownnext">
+			<div class="form-field">
                 <span class="lbl informe">Seleccione d&iacute;a:<span class="required-asterisk">*</span></span>
                     <div class="input">
 						<select id="informe_select_dia" name="dia" class="selectInforme">
