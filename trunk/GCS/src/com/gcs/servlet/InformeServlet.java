@@ -221,7 +221,7 @@ public class InformeServlet extends HttpServlet {
 		}
 		
 		String userAgent = req.getHeader("User-Agent");
-		System.out.println("userAgent "+userAgent);
+		//System.out.println("userAgent "+userAgent);
 		
 		if(userAgent.indexOf("MSIE")==-1){
 			resp.setHeader("Cache-Control", "no-cache");  
