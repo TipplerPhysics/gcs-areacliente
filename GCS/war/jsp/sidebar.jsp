@@ -12,7 +12,7 @@
 			<!-- <li><a href="${entorno}/dashboard/gestionDemanda.do"><span class="demanda">Demanda</span></a></li>  -->
 			
 			<c:if test="${sessionScope.permiso == 1}">
-				<li><a href="${entorno}/dashboard/gestionImplantaciones.do"><span class="informes">Informes</span></a></li>
+				<li><a href="${entorno}/dashboard/gestionImplantaciones.do"><span class="informes">Registro</span></a></li>
 				<li><a href="${entorno}/admin/auditoria.do"><span class="logs">Auditoría</span></a></li>	
 			</c:if>		
 		</ul>
