@@ -1,7 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-
 
 <div class="clients">
 
@@ -30,7 +29,7 @@
 	<div class="search_div">
 	<!-- 
 		<c:if test="${sessionScope.permiso <= 6}">
-				<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gesti髇 de demanda<img src="../img/gestion.png"></button>  
+				<button onclick="location.href = './dashboard/gestionDemanda.do';" id="btn_gestion_demanda">Gesti贸n de demanda<img src="../img/gestion.png"></button>  
 			
 				 
 		</c:if>
@@ -48,26 +47,26 @@
 				    Acci&oacute;n <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu">
-  				    	<li><a href="./dashboard/gestionDemanda.do"><span class="demanda_span blue"></span>Gesti髇 Demanda</a></li>				  
-				    	<li><a href="./dashboard/gestionCliente.do"><span class="cliente_span blue"></span>Gesti髇 Clientes</a></li>
+  				    	<li><a href="./dashboard/gestionDemanda.do"><span class="demanda_span blue"></span>Gesti贸n Demanda</a></li>				  
+				    	<li><a href="./dashboard/gestionCliente.do"><span class="cliente_span blue"></span>Gesti贸n Clientes</a></li>
 				    	<li><a href="./dashboard/informeImplantacion.do"><span class="demanda_span blue"></span>Registro implantaciones</a></li>
-				    	<li><a href="./dashboard/gestionProyecto.do"><span class="proyecto_span blue"></span>Gesti髇 Proyectos</a></li>
-				    	<li><a href="./dashboard/gestionServicio.do"><span class="service_span blue"></span>Gesti髇 Servicios</a></li>
-				    	<li><a href="./dashboard/gestionCostes.do"><span class="coste_span blue"></span>Gesti髇 Costes</a></li>
+				    	<li><a href="./dashboard/gestionProyecto.do"><span class="proyecto_span blue"></span>Gesti贸n Proyectos</a></li>
+				    	<li><a href="./dashboard/gestionServicio.do"><span class="service_span blue"></span>Gesti贸n Servicios</a></li>
+				    	<li><a href="./dashboard/gestionCostes.do"><span class="coste_span blue"></span>Gesti贸n Costes</a></li>
 				    	
 				    	
 				  </ul>
 			</div>
 		</c:when>
 	 	<c:otherwise> 			
-			<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gesti髇 clientes<img src="../img/new-user-white.png"></button> 
+			<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gesti贸n clientes<img src="../img/new-user-white.png"></button> 
 	 
 	 	</c:otherwise>
  	</c:choose>
  	
  	<!-- 
  	 
-	<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gesti髇 clientes<img src="../img/new-user-white.png"></button> 
+	<button onclick="location.href = './dashboard/gestionCliente.do';" id="btn_alta_cliente">Gesti贸n clientes<img src="../img/new-user-white.png"></button> 
  	  -->
  	
 	</div>

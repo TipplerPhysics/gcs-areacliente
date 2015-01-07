@@ -1,15 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div id="alta_proyecto">
 
 
 
-<h1>Gesti髇 proyecto</h1>
+<h1>Gesti贸n proyecto</h1>
 <span class="btn-atras" onclick="window.location.href='../dashboard/gestionCliente.do'"></span>
 
 <hr/>
 <div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gesti髇 de clientes</span> > <span> Gesti髇 de proyecto </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span onclick="window.location.href='./gestionCliente.do' ">Gesti贸n de clientes</span> > <span> Gesti锟絥 de proyecto </span>
 	</div>
 <div class="newUserbox">
 	 <button id="newUserButton">
@@ -35,7 +36,7 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">C骴igo Proyecto:</span>
+						<span class="lbl">C贸digo Proyecto:</span>
 						<input type="text" id="project_name" name="project_name" class="long readonly" unselectable="on" readonly="true" maxlength="25">
 					</div>
 					
@@ -244,9 +245,9 @@
 				<thead>
 					<tr>
 						<th><span class="table-title">Fecha proyecto</span></th>
-						<th><span class="table-title">C骴igo proyecto</span></th>
+						<th><span class="table-title">C贸digo proyecto</span></th>
 						<th><span class="table-title">Cliente</span></th>
-						<th><span class="table-title">Clasificaci髇</span></th>
+						<th><span class="table-title">Clasificaci贸n</span></th>
 						<th><span class="table-title">Tipo</span></th>
 						<th><span class="table-title">Coste</span></th>
 						<th style="width: 110px;">&nbsp;</th>
@@ -410,7 +411,7 @@
 			</div>
 			<div class="">
 				<p>&iquest;Est&aacute; seguro que desea eliminar al proyecto?</p>
-				<p>Se eliminar醤 todos los servicios asociados.</p>
+				<p>Se eliminar谩n todos los servicios asociados.</p>
 				
 			</div>
 			<div class="modal-footer">
