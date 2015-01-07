@@ -1750,28 +1750,14 @@ $(function() {
 				var month = data.Mes;
 				var day = data.Dia;
 				var calendada = data.Calendada;
-				
-				var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-				var userAgent = $('#UserAgent').val(navigator.userAgent);
-				console.log($('#UserAgent').val()+" estoy aki");
-				$('#iframepdf').attr('src',formURL);
-				var descarg = "window.location.href='../.."+formURL+"'";
-				$('#down_btn').attr('onclick',descarg);
-				/*"window.location.href='../../logsServlet?accion=xls'"
-				var embed = '<object type="application/pdf" width="100%" height="100%"';
-				if($('#UserAgent').val().toString().indexOf("IE")!=-1){
-					embed += '><param name="src" value="' + formURL + '"/>';
-				}else if ($('#UserAgent').val().toString().indexOf("chrome")!=-1) {
-				    embed += ' src="' + formURL + '">';
+				if(calendada!="Calendada"&&calendada!="No calendada"){
+					$('#iframepdf').attr('title',"No se encuentra el PDF");
+				}else{
+					var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+					$('#iframepdf').attr('src',formURL);
+					 var descarg = "/informeServlet?"+"accion=getInformeDown&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+					$('#down_btn').attr('href',descarg);
 				}
-				else {
-					console.log("entro en else ultimo");
-				    embed += ' src="' + formURL + '">';
-				}
-				embed += '</object>';
-				console.log("Muestro la var embed"+embed);
-				$("#iframepdf").html(embed);
-				console.log("llego al set html");*/
 			},
 			error:function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus);
@@ -1837,7 +1823,30 @@ $(function() {
 					console.log("failure");
 				}
 			});
+		}else{
+
+			var y = document.getElementById("informe_select_mes");
+			var z = document.getElementById("informe_select_dia");
+			var cont;
+
+			var deb = y.options.length;
+			for(cont=0;cont<deb;++cont) y.remove(0);
+			deb = z.options.length;
+			for(cont=0;cont<deb;++cont){
+				z.remove(0);
 			}
+
+			
+	    	var option2 = document.createElement('option');
+	    	option2.text = "Primero selecciona a\u00f1o";
+	    	option2.value = "default";
+	    	y.add(option2);
+	    	
+	    	var option3 = document.createElement('option');
+	    	option3.text = "Primero selecciona mes";
+	    	option3.value = "default";
+	    	z.add(option3);
+		}
 	});
 	$('#report-form').on('change','#informe_select_mes', function (e){
 		
@@ -1884,7 +1893,20 @@ $(function() {
 					console.log("failure");
 				}
 			});
+		}else{
+			var z = document.getElementById("informe_select_dia");
+			var cont;
+
+			var deb = z.options.length;
+			for(cont=0;cont<deb;++cont){
+				z.remove(0);
 			}
+	    	
+	    	var option3 = document.createElement('option');
+	    	option3.text = "Primero selecciona mes";
+	    	option3.value = "default";
+	    	z.add(option3);
+		}
 	});	 
 	$('#report-form').on('change','#informe_select_dia', function (e){
 				
@@ -1896,33 +1918,10 @@ $(function() {
 					 if (day!=""&&day!=null&&day!="default"){
 						 var formURL = "/informeServlet";
 						 var postData="accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-						 /*
-						 $.ajax({
-							url : formURL,
-							type: "POST",
-							data : postData,
-							success:function(data, textStatus, jqXHR) 
-							{*/
-										var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
-										$('#iframepdf').attr('src',formURL);
-										var descarg = "window.location.href='"+formURL+"'";
-										$('#down_btn').attr('onclick',descarg);
-										/*var pdf = new PDFObject({
-											  url: formURL,
-											  id: "pdfRendered",
-											  pdfOpenParams: {
-											    view: "FitH"
-											  }
-											}).embed("pdfRenderer");*/
-						/*	},
-										$('#iframepdf').attr('src',formURL);
-							},
-							error:function(jqXHR, textStatus, errorThrown) {
-								console.log(textStatus);
-								console.log(errorThrown);
-								console.log("failure");
-							}
-						 });*/
+						 var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+						 $('#iframepdf').attr('src',formURL);
+						 var descarg = "/informeServlet?"+"accion=getInformeDown&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
+							$('#down_btn').attr('href',descarg);
 					 }
 				 }else{
 					 alert("Seleccione si es calendada o no");
