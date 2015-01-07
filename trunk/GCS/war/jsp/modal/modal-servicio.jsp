@@ -32,6 +32,7 @@
 									<option value="España" ${servicio.pais == 'España' ? 'selected' : ''}>España</option>									
 									<option value="EEUU" ${servicio.pais == 'EEUU' ? 'selected' : ''}>EEUU</option>
 									<option value="Francia" ${servicio.pais == 'Francia' ? 'selected' : ''}>Francia</option>
+									<option value="México" ${servicio.pais == 'México' ? 'selected' : ''}>México</option>
 									<option value="Perú" ${servicio.pais == 'Perú' ? 'selected' : ''}>Perú</option>
 									<option value="Portugal" ${servicio.pais == 'Portugal' ? 'selected' : ''}>Portugal</option>
 									<option value="UK" ${servicio.pais == 'UK' ? 'selected' : ''}>UK</option>

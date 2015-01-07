@@ -34,7 +34,7 @@
 									<option value="España">España</option>									
 									<option value="EEUU">EEUU</option>
 									<option value="Francia">Francia</option>
-									<option value="Mexico">Mexico</option>
+									<option value="México">México</option>
 									<option value="Perú">Perú</option>
 									<option value="Portugal">Portugal</option>
 									<option value="UK">UK</option>
