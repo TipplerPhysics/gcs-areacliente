@@ -96,6 +96,9 @@ public class Proyecto {
 	
 	@Persistent
 	private String str_OKNegocio;
+	
+	@Persistent
+	private String urlDocGoogleDrive;
 
 	public Proyecto() {
 		super();
@@ -325,6 +328,14 @@ public class Proyecto {
 	public void setCoste(String coste) {
 		this.coste = coste;
 	}
+
+	public String getUrlDocGoogleDrive() {
+		return urlDocGoogleDrive;
+	}
+
+	public void setUrlDocGoogleDrive(String urlDocGoogleDrive) {
+		this.urlDocGoogleDrive = urlDocGoogleDrive;
+	}		
 	
 	@Override
 	public boolean equals(Object object_b) {
@@ -337,6 +348,6 @@ public class Proyecto {
 		 // Custom equality check here.
 		    return this.key.equals(object_a.key);
 		      
-	}	
+	}
 	
 }

@@ -1101,6 +1101,7 @@ label.ui-marmots-label-radio {
   font-size: 12px;
   color: #434A58;
   text-align: left;
+  line-height: 1.2em;
 }
 .newUserbox .new-user-form-holder .form-container .form-field .long {
   width: 245px;

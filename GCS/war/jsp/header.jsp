@@ -29,7 +29,7 @@
 				
 				<li class="menu">
 					<a class="no-underline" href="https://sites.google.com/a/bbva.com/portal-gcs/home/informes-de-gestion">
-						<span class="menu-title">Informes Gestión</span>
+						<span class="menu-title">Informes GestiÃ³n</span>
 					</a>
 				</li>
 				

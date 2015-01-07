@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -19,11 +20,11 @@
 		</div>
 		<div>
 			<ul>
-				<li>Código de proyecto:</li>
+				<li>CÃ³digo de proyecto:</li>
 				<li>Gestor de negocio:</li>
 				<li>Gestor IT:</li>
 				<li>Estado:</li>
-				<li>Fecha implantación:</li>
+				<li>Fecha implantaciÃ³n:</li>
 			</ul>
 		</div>
 	</div>

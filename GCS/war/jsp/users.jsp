@@ -1,8 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="alta_usuario">
-
-
 
 <h1>Gesti&oacute;n de usuarios</h1>
 <span class="btn-atras" onclick="window.location.href='../../'"></span>
@@ -10,7 +9,7 @@
 <hr />
 
 <div class="breadcrumbs">
-		<span onclick="window.location.href='../../' ">Home</span> > <span> Gestión de usuarios </span>
+		<span onclick="window.location.href='../../' ">Home</span> > <span> GestiÃ³n de usuarios </span>
 	</div>
 
 <div class="newUserbox">
