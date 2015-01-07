@@ -5,8 +5,11 @@
 
 <div class="profile_cont" id="user_profile">
 	<h1>Ficha Cliente</h1>
-	<span class="btn-atras" onclick="window.location.href='../../'"></span>
+	<span class="btn-atras" onclick="window.location.href='./clientProfile.do?id=${cliente.key.id}'"></span>
 	<hr/>
+	<div class="breadcrumbs">
+		<span onclick="window.location.href='../' ">Home</span> > <span onclick="window.location.href='../clientProfile.do?id=${cliente.key.id}'"> Ficha cliente </span> > <span>Detalle Proyecto</span>
+	</div>
 	<div class="summary">
 		<div class="img_div">
 		<c:choose>
