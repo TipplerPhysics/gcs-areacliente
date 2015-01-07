@@ -217,8 +217,7 @@ public class ImplantacionServlet extends HttpServlet {
 	        try {
 	            //Message msg = new MimeMessage(session);
 	            MimeMessage msg = new MimeMessage(session);
-	            String nombre = usermail.substring(0, usermail.indexOf('@')).replace('.', ' ');
-	            msg.setFrom(new InternetAddress(usermail, nombre));
+	            msg.setFrom(new InternetAddress(usermail, ObtenerNombre(usermail)));
 	           /* msg.addRecipient(Message.RecipientType.TO,
 	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));*/
 	            msg.setRecipients(Message.RecipientType.TO, recipientAddress);
@@ -334,8 +333,7 @@ public class ImplantacionServlet extends HttpServlet {
 	        try {
 	            //Message msg = new MimeMessage(session);
 	            MimeMessage msg = new MimeMessage(session);
-	            String nombre = usermail.substring(0, usermail.indexOf('@')).replace('.', ' ');
-	            msg.setFrom(new InternetAddress(usermail, nombre));
+	            msg.setFrom(new InternetAddress(usermail, ObtenerNombre(usermail)));
 	            /*msg.addRecipient(Message.RecipientType.TO,
 	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));*/
 	            msg.setRecipients(Message.RecipientType.TO, recipientAddress);
@@ -573,6 +571,20 @@ public class ImplantacionServlet extends HttpServlet {
 				out.close();
 		}
 
+	}
+	
+	
+	public String ObtenerNombre (String nombre) {
+		String name1 = nombre.substring(0, nombre.indexOf('@')).replace('.', ' '), name2 = "";
+		String[] caracteres = name1.split(" ");
+		
+		for (String p: caracteres) {
+			name1 = p.toUpperCase().replace(p.substring(1).toUpperCase(), p.substring(1,p.length()).toLowerCase());
+		    name2 += name1 + " ";
+		}
+		
+		name2 = name2.substring(0, name2.length()-1);
+		return name2;
 	}
 		
 }
