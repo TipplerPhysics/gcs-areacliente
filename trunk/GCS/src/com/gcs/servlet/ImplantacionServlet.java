@@ -78,7 +78,7 @@ public class ImplantacionServlet extends HttpServlet {
 			if (sesionpermiso > 2) {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operación");
+						"No tienes los permisos para realizar esta operaciÃ³n");
 
 				resp.setCharacterEncoding("UTF-8");
 				resp.setContentType("application/json");
@@ -217,7 +217,8 @@ public class ImplantacionServlet extends HttpServlet {
 	        try {
 	            //Message msg = new MimeMessage(session);
 	            MimeMessage msg = new MimeMessage(session);
-	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
+	            String nombre = usermail.substring(0, usermail.indexOf('@')).replace('.', ' ');
+	            msg.setFrom(new InternetAddress(usermail, nombre));
 	           /* msg.addRecipient(Message.RecipientType.TO,
 	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));*/
 	            msg.setRecipients(Message.RecipientType.TO, recipientAddress);
@@ -333,7 +334,8 @@ public class ImplantacionServlet extends HttpServlet {
 	        try {
 	            //Message msg = new MimeMessage(session);
 	            MimeMessage msg = new MimeMessage(session);
-	            msg.setFrom(new InternetAddress("david.martin.beltran.contractor@bbva.com", "Example.com Admin"));
+	            String nombre = usermail.substring(0, usermail.indexOf('@')).replace('.', ' ');
+	            msg.setFrom(new InternetAddress(usermail, nombre));
 	            /*msg.addRecipient(Message.RecipientType.TO,
 	                             new InternetAddress("david.martin.beltran.contractor@bbva.com", "Mr. User"));*/
 	            msg.setRecipients(Message.RecipientType.TO, recipientAddress);
@@ -572,5 +574,5 @@ public class ImplantacionServlet extends HttpServlet {
 		}
 
 	}
-	
+		
 }

@@ -26,7 +26,7 @@ public class InformeImplantacionesAction extends Action {
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
-		// TODO: obtener valores del select de años. Obtener todos los años para los que hay informes.
+		// TODO: obtener valores del select de aÃ±os. Obtener todos los aÃ±os para los que hay informes.
 		
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> informes = iDao.getAllInformes();
@@ -64,7 +64,7 @@ public class InformeImplantacionesAction extends Action {
 		
 			
 			
-			// El resto de combos se cargan via AJAX a través de un servlet
+			// El resto de combos se cargan via AJAX a travÃ©s de un servlet
 		
 		
 			return mapping.findForward("ok");

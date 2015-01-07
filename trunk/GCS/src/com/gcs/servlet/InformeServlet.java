@@ -90,7 +90,7 @@ public class InformeServlet extends HttpServlet {
 			if (sesionpermiso > 2) {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operación");
+						"No tienes los permisos para realizar esta operaciÃ³n");
 
 				resp.setCharacterEncoding("UTF-8");
 				resp.setContentType("application/json");
@@ -325,7 +325,7 @@ public class InformeServlet extends HttpServlet {
 		   bbva.scaleToFit(78, 45);
 		   bbva.setAlignment(Chunk.ALIGN_LEFT);
 		   document.add(bbva);
-		   Paragraph header =new Paragraph("Solicitudes desplegadas en producción",FontFactory.getFont("arial",22,Font.BOLD,BaseColor.BLACK));
+		   Paragraph header =new Paragraph("Solicitudes desplegadas en producciÃ³n",FontFactory.getFont("arial",22,Font.BOLD,BaseColor.BLACK));
 		   header.setAlignment(Chunk.ALIGN_CENTER);
 		   document.add(header); 
 		   
