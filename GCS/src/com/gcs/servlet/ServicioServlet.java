@@ -335,8 +335,6 @@ public class ServicioServlet extends HttpServlet {
 		
 		ArrayList<String> result = new ArrayList<String>();
 		
-		
-		
 			switch(pais){
 				case "Argentina":
 					servicios = StaticConfig.servicios_argentina; 
@@ -344,7 +342,6 @@ public class ServicioServlet extends HttpServlet {
 						result.add(servicios.get(a).getValue());
 					}				
 					break;
-				
 				case "Bélgica":
 					servicios = StaticConfig.servicios_belgica; 
 					for (int a =0; a<=servicios.size()-1; a++){
@@ -375,7 +372,7 @@ public class ServicioServlet extends HttpServlet {
 						result.add(servicios.get(a).getValue());
 					}				
 					break;
-				case "Mexico":
+				case "México":
 					servicios = StaticConfig.servicios_mexico; 
 					for (int a =0; a<=servicios.size()-1; a++){
 						result.add(servicios.get(a).getValue());
