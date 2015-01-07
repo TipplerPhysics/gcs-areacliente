@@ -95,6 +95,18 @@ public class ConectividadDao {
 		return c;
 	}
 	
+	public List<Conectividad> getConectividadesByProject(Long id) {
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		String queryStr = "select from " + Conectividad.class.getName()
+				+ " where key_proyecto  == :p1";
+
+		List<Conectividad> conectividad = (List<Conectividad>) pManager.newQuery(queryStr).execute(id);
+		
+		pManager.close();
+
+		return conectividad;
+	}
 	public List<Conectividad> getConectividadesByEstado(String estado){
 		
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
