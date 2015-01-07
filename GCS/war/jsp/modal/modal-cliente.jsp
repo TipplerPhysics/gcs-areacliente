@@ -68,7 +68,7 @@
 								</div>
 								
 								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Bélgica"
+									<input type="checkbox" name='paises' value="BÃ©lgica"
 										id="belgica_check_modal"><label for="belgica_check_modal"><span></span>B&eacute;lgica</label>
 								</div>
 								<div class="radio-container">

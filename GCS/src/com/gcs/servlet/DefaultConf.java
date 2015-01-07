@@ -66,7 +66,7 @@ public class DefaultConf extends HttpServlet {
 			} else {
 				json.append("failure", "true");
 				json.append("error",
-						"No tienes los permisos para realizar esta operaci�n");
+						"No tienes los permisos para realizar esta operación");
 			}
 			resp.setCharacterEncoding("UTF-8");
 			resp.setContentType("application/json");

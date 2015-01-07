@@ -36,7 +36,7 @@ public class ImplantacionModalAction extends Action {
 			return mapping.findForward("informe");			
 		}
 		
-		// Resto de modales de envío de emails.
+		// Resto de modales de envÃ­o de emails.
 		String serviciosParam = req.getParameter("servicios");
 		String conectividadesParam = req.getParameter("conectividades");
 		
@@ -53,7 +53,7 @@ public class ImplantacionModalAction extends Action {
 			serviciosList = Arrays.asList(serviciosArray);
 		}
 		
-		//Declaro variables para guardar el último estado de Conectividades y Servicios
+		//Declaro variables para guardar el Ãºltimo estado de Conectividades y Servicios
 		String ultimoEstadoServicio = null;
 		String ultimoEstadoConectividad = null;
 		String ultimaFechaImplantacion = null;
