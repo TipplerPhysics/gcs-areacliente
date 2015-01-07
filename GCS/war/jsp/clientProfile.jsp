@@ -23,11 +23,23 @@
 		</div>
 		<div>
 			<ul>
-				<li>Cliente: <span>${cliente.nombre}</span></li>
-				<li>IDGLOBAL: <span>${cliente.clientId}</span></li>
-				<li>Referencia Global: <span>${cliente.ref_global}</span></li>
-				<li>Tipo: <span>${cliente.tipo}</span></li>
-				<li>Criticidad: <span>${cliente.criticidad}</span></li>
+				<li>En producci&oacuten: <span>Unknow</span></li>
+				<li>En implementaci&oacuten: <span>Unknow</span></li>
+				<li>Pa&iacuteses: <span>
+					<c:forEach items="${cliente.paises}" var="pais">
+						${pais}&nbsp
+					</c:forEach>
+				</span></li>
+				<li>Producto:<span><ul>
+					<c:forEach items="${productos}" var="producto">
+						<li>${producto}</li>
+					</c:forEach>
+				</ul></span></li><c:forEach items="${productos}"><br /></c:forEach>
+				<li>Proyecto:<br />&nbsp&nbsp&nbsp&nbsp&nbsp <span>
+					<c:forEach items="${projects}" var="proyecto">
+						<a href='../'>${proyecto.cod_proyecto}</a>&nbsp
+					</c:forEach>
+				</span></li>
 			</ul>
 			
 		</div>
@@ -40,19 +52,35 @@
 	<div class="table">
 		<table style="width:100%">
 			<tr class="header">
-			  <td>Nombre proyecto</td>
-			  <td>Tipo de proyecto</td> 
-			  <td>Gestor IT</td>
-			  <td>Gestor Negocio</td>
-			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  <td>Producto</td>
+			  <td>Conectividad</td> 
+			  <td>Pa&iacutes</td>
+			  <td>Formato fichero</td>
+			  <td>Servicio</td>
+			  <td>Estado</td>
+			  <td>Codigo proyecto</td>
+			  
 			</tr>	
 			<c:forEach items="${projects}" var="p">
 				<tr class="body">
-			 		 <td>${p.cod_proyecto}</td>
-			 		 <td>${p.tipo}</td>
-			 		 <td>${p.gestor_it_name}</td>
-			 		 <td>${p.gestor_negocio_name}</td>
-			 		 <td><a class="mas" name="${p.key.id}"></a></td>
+			 		 <td>${p.producto}</td>
+					 <td>${p.conectividad}</td>
+			 		 <td>
+			 		 	<c:forEach items="${cliente.paises}" var="pais">
+							${pais}&nbsp
+						</c:forEach>
+					 </td>
+			 		 <td>un</td>
+			 		
+			 		 <td>
+			 		 	<c:forEach items="${servicios}" var="servicio">
+							${servicio.cod_servicio}&nbsp
+						</c:forEach>
+					 </td>
+			 		 <td>${p.servicio}</td>
+			 		 <td><a href='../'>${p.cod_proyecto}</a>&nbsp</td>
+			 		 
+			 		 <!--<td><a class="mas" name="${p.key.id}"></a></td>-->
 			</c:forEach>		
 		</table>
 	</div>
