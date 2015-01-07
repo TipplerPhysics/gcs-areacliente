@@ -11,7 +11,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Proyecto;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ProyectoDao;
 
 public class ProjectProfileAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -21,12 +23,19 @@ public class ProjectProfileAction extends Action{
 		ClienteDao cDao = ClienteDao.getInstance();
 		
 
-		String id_str = req.getParameter("id");
+		String id_str = req.getParameter("idCli");
 		
 		Cliente c = cDao.getClienteById(Long.parseLong(id_str));
 		
 		req.setAttribute("cliente", c);
 		
+		ProyectoDao proDao = ProyectoDao.getInstance();
+
+		String idPro = req.getParameter("id");
+		
+		Proyecto proyecto = proDao.getProjectbyId(Long.parseLong(idPro));
+		
+		req.setAttribute("proyecto", proyecto);
 		return mapping.findForward("ok");
 	}
 }

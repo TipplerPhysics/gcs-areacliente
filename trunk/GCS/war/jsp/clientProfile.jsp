@@ -37,7 +37,7 @@
 				</ul></span></li><c:forEach items="${productos}"><br /></c:forEach>
 				<li>Proyecto:<br />&nbsp&nbsp&nbsp&nbsp&nbsp <span>
 					<c:forEach items="${projects}" var="proyecto">
-						<a href='../'>${proyecto.cod_proyecto}</a>&nbsp
+						<a href='../projectProfile.do?id=${proyecto.key.id}&idCli=${cliente.key.id}'>${proyecto.cod_proyecto}</a>&nbsp
 					</c:forEach>
 				</span></li>
 			</ul>
@@ -60,28 +60,51 @@
 			  <td>Estado</td>
 			  <td>Codigo proyecto</td>
 			  
-			</tr>	
-			<c:forEach items="${projects}" var="p">
-				<tr class="body">
-			 		 <td>${p.producto}</td>
-					 <td>${p.conectividad}</td>
-			 		 <td>
-			 		 	<c:forEach items="${cliente.paises}" var="pais">
-							${pais}&nbsp
-						</c:forEach>
-					 </td>
-			 		 <td>un</td>
-			 		
-			 		 <td>
-			 		 	<c:forEach items="${servicios}" var="servicio">
-							${servicio.cod_servicio}&nbsp
-						</c:forEach>
-					 </td>
-			 		 <td>${p.servicio}</td>
-			 		 <td><a href='../'>${p.cod_proyecto}</a>&nbsp</td>
-			 		 
-			 		 <!--<td><a class="mas" name="${p.key.id}"></a></td>-->
+			</tr>
+			<tr class='body'>	
+			<c:forEach items="${servicios}" var="servicio">
+				<c:forEach items="${proyectos}" var="pro">
+					<c:choose>
+						<c:when test="${pro.key.id==servicio.id_proyecto}">
+
+					 		 <td>${pro.producto}</td>
+							 <td></td>
+					 		 <td>
+					 		 	<c:forEach items="${cliente.paises}" var="pais">
+									${pais}&nbsp
+								</c:forEach>
+							 </td>
+					 		 <td>${servicio.cod_servicio}</td>
+					 		 <td></td>
+					 		 <td>${servicio.estado} con ${servicio.estadoSubida}</td>
+					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
+					 		 
+						</c:when>
+					</c:choose>	
+				</c:forEach>
+			</c:forEach>
+			<c:forEach items="${conectividades}" var="conectividad">
+				<c:forEach items="${proyectos}" var="pro">
+					<c:choose>
+						<c:when test="${pro.key.id==conectividad.key_proyecto}">
+
+					 		 <td>${pro.producto}</td>
+							 <td>${pro.conectividad}</td>
+					 		 <td>
+					 		 	<c:forEach items="${cliente.paises}" var="pais">
+									${pais}&nbsp
+								</c:forEach>
+							 </td>
+					 		 <td></td>
+					 		 <td></td>
+					 		 <td>${conectividad.estado} con ${conectividad.estadoSubida}</td>
+					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
+					 		 
+						</c:when>
+					</c:choose>	
+				</c:forEach>
 			</c:forEach>		
+			</tr>		
 		</table>
 	</div>
 </div>
