@@ -4,7 +4,7 @@
 
 
 <div class="profile_cont" id="user_profile">
-	<h1>Ficha Cliente</h1>
+	<h1>Ficha Proyecto</h1>
 	<span class="btn-atras" onclick="window.location.href='./clientProfile.do?id=${cliente.key.id}'"></span>
 	<hr/>
 	<div class="breadcrumbs">
@@ -23,11 +23,18 @@
 		</div>
 		<div>
 			<ul>
-				<li>Código de proyecto:${proyecto.cod_proyecto}</li>
-				<li>Gestor de negocio:${proyecto.gestor_negocio_name}</li>
-				<li>Gestor IT:${proyecto.gestor_it_name}</li>
-				<li>Estado:${proyecto.servicio}</li>
-				<li>Fecha implantación:${proyecto.okNegocio}</li>
+				<li>Código de proyecto:<span>&nbsp&nbsp${proyecto.cod_proyecto}</span></li>
+				<li>Gestor de negocio:<span>&nbsp&nbsp&nbsp${proyecto.gestor_negocio_name}</span></li>
+				<li>Gestor IT:<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${proyecto.gestor_it_name}</span></li>
+				<li>Estado:<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${conectserv.estado}</span></li>
+				<li>Fecha implantación:<span>&nbsp
+				
+				<c:set var="string" value="${proyecto.okNegocio}" />
+				
+				${fn:substring(string, 8, 11)}
+				${fn:substring(string, 4, 8)}
+				${fn:substring(string, 30, 34)}
+				</span></li>
 			</ul>
 		</div>
 	</div>
