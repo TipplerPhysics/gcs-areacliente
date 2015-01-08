@@ -325,10 +325,17 @@ public class InformeServlet extends HttpServlet {
 		   bbva.scaleToFit(78, 45);
 		   bbva.setAlignment(Chunk.ALIGN_LEFT);
 		   document.add(bbva);
+		   document.add(new Paragraph(" "));
+		   Paragraph date = new Paragraph(new Paragraph("Fecha: " + dia + "-" + mes + "-" + anio));	  
+		   date.setAlignment(Chunk.ALIGN_RIGHT);
+		   document.add(date);
+		   document.add(new Paragraph(" "));
+		   document.add(new Paragraph("Pase a producción"));
+		   document.add(new Paragraph(" "));
 		   Paragraph header =new Paragraph("Solicitudes desplegadas en producción",FontFactory.getFont("arial",22,Font.BOLD,BaseColor.BLACK));
 		   header.setAlignment(Chunk.ALIGN_CENTER);
 		   document.add(header); 
-		   
+		   document.add(new Paragraph(" "));
 		   document.add(new Paragraph("Subida confirmada y ejecutada solicitada por el equipo de Global Customer Services:"));
 		   document.add(new Paragraph(" "));
 		   
