@@ -47,11 +47,12 @@ public class InformeImplantacionesAction extends Action {
 				if (!existe)anyos.add(i.getAnyoImplantacion());
 			
 			}
+			
 			//Bloque para ordenar sino viniera ordenado desde el Dao
 		
-			/*Collections.sort(Anyos);
+			/*Collections.sort(anyos);
 			Comparator<String> comparador = Collections.reverseOrder();
-			Collections.sort(Anyos, comparador);*/
+			Collections.sort(anyos, comparador);*/
 			
 			req.setAttribute("anyos", anyos);
 		

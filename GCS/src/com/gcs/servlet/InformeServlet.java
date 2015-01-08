@@ -113,8 +113,7 @@ public class InformeServlet extends HttpServlet {
 	private void obtenerDefault(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		try{
-		
-		
+			
 		if(ImplantacionServlet.fech[0]!=null){
 			json.append("Anio",ImplantacionServlet.fech[0]);
 			json.append("Mes", ImplantacionServlet.fech[1]);
@@ -164,8 +163,9 @@ public class InformeServlet extends HttpServlet {
 		
 		
 		String anio = req.getParameter("year");
+		String calendada = req.getParameter("calendada");
 		InformeDao iDao = InformeDao.getInstance();
-		List<String> Meses = iDao.getMonthsForInforme("All", anio);
+		List<String> Meses = iDao.getMonthsForInforme(calendada, anio);
 		
 		
 		json.append("Meses", Meses);
