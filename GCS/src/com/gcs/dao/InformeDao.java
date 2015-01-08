@@ -174,8 +174,8 @@ public class InformeDao {
 		}	
 		
 		Collections.sort(Meses);
-		Comparator<String> comparador = Collections.reverseOrder();
-		Collections.sort(Meses, comparador);
+		//Comparator<String> comparador = Collections.reverseOrder();
+		//Collections.sort(Meses, comparador);
 		
 		return Meses;
 	}
@@ -204,8 +204,8 @@ public class InformeDao {
 		}
 		
 		Collections.sort(Dias);
-		Comparator<String> comparador = Collections.reverseOrder();
-		Collections.sort(Dias, comparador);
+		//Comparator<String> comparador = Collections.reverseOrder();
+		//Collections.sort(Dias, comparador);
 		
 		return Dias;
 	}
