@@ -2,6 +2,8 @@ package com.gcs.dao;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -171,6 +173,10 @@ public class InformeDao {
 			if (!existe)Meses.add(mes);
 		}	
 		
+		Collections.sort(Meses);
+		Comparator<String> comparador = Collections.reverseOrder();
+		Collections.sort(Meses, comparador);
+		
 		return Meses;
 	}
 	
@@ -197,6 +203,9 @@ public class InformeDao {
 			if (!existe)Dias.add(dia);
 		}
 		
+		Collections.sort(Dias);
+		Comparator<String> comparador = Collections.reverseOrder();
+		Collections.sort(Dias, comparador);
 		
 		return Dias;
 	}
@@ -224,6 +233,9 @@ public class InformeDao {
 			if (!existe)Anios.add(anio);
 		}
 		
+		Collections.sort(Anios);
+		Comparator<String> comparador = Collections.reverseOrder();
+		Collections.sort(Anios, comparador);
 		
 		return Anios;
 	}
