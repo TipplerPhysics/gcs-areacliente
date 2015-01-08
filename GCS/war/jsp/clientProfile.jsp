@@ -23,8 +23,27 @@
 		</div>
 		<div>
 			<ul>
-				<li>En producci&oacuten: <span>Unknow</span></li>
-				<li>En implementaci&oacuten: <span>Unknow</span></li>
+				<li>En producci&oacuten: <span>
+				<c:choose>
+					<c:when test="${enproduccion}">
+						S&iacute
+					</c:when>
+					<c:otherwise>
+						No
+					</c:otherwise>
+				</c:choose>
+				
+</span></li>
+				<li>En implementaci&oacuten: <span>
+								<c:choose>
+					<c:when test="${enimplementacion}">
+						S&iacute
+					</c:when>
+					<c:otherwise>
+						No
+					</c:otherwise>
+				</c:choose>
+				</span></li>
 				<li>Pa&iacuteses: <span>
 					<c:forEach items="${cliente.paises}" var="pais">
 						${pais}&nbsp
@@ -97,7 +116,7 @@
 							 </td>
 					 		 <td></td>
 					 		 <td></td>
-					 		 <td>${conectividad.estado} con ${conectividad.estadoSubida}</td>
+					 		 <td>${conectividad.estado} </td>
 					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
 					 		</tr>
 						</c:when>
