@@ -23,11 +23,11 @@
 		</div>
 		<div>
 			<ul>
-				<li>Código de proyecto:</li>
-				<li>Gestor de negocio:</li>
-				<li>Gestor IT:</li>
-				<li>Estado:</li>
-				<li>Fecha implantación:</li>
+				<li>Código de proyecto:${proyecto.cod_proyecto}</li>
+				<li>Gestor de negocio:${proyecto.gestor_negocio_name}</li>
+				<li>Gestor IT:${proyecto.gestor_it_name}</li>
+				<li>Estado:${proyecto.servicio}</li>
+				<li>Fecha implantación:${proyecto.okNegocio}</li>
 			</ul>
 		</div>
 	</div>
