@@ -44,7 +44,7 @@
 			
 		</div>
 	</div>
-	<h2>Proyectos asociados</h2>
+<h2> Conectividades y servicios asociados</h2>
 	<button id="newProjectButton" onclick="location.href = './dashboard/gestionProyecto.do';">
 				Gesti&oacute;n Proyecto<a class="proyecto_span_fixed"></a>
 			</button>	
@@ -63,10 +63,10 @@
 			</tr>
 			<tr class='body'>	
 			<c:forEach items="${servicios}" var="servicio">
-				<c:forEach items="${proyectos}" var="pro">
+				<c:forEach items="${projects}" var="pro">
 					<c:choose>
 						<c:when test="${pro.key.id==servicio.id_proyecto}">
-
+							<tr class="valid-result" id="row${servicio.key.id}">
 					 		 <td>${pro.producto}</td>
 							 <td></td>
 					 		 <td>
@@ -78,16 +78,16 @@
 					 		 <td></td>
 					 		 <td>${servicio.estado} con ${servicio.estadoSubida}</td>
 					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
-					 		 
+					 		</tr>
 						</c:when>
 					</c:choose>	
 				</c:forEach>
 			</c:forEach>
 			<c:forEach items="${conectividades}" var="conectividad">
-				<c:forEach items="${proyectos}" var="pro">
+				<c:forEach items="${projects}" var="pro">
 					<c:choose>
 						<c:when test="${pro.key.id==conectividad.key_proyecto}">
-
+							<tr class="valid-result" id="row${conectividad.key.id}">
 					 		 <td>${pro.producto}</td>
 							 <td>${pro.conectividad}</td>
 					 		 <td>
@@ -99,7 +99,7 @@
 					 		 <td></td>
 					 		 <td>${conectividad.estado} con ${conectividad.estadoSubida}</td>
 					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
-					 		 
+					 		</tr>
 						</c:when>
 					</c:choose>	
 				</c:forEach>
