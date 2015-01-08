@@ -61,6 +61,29 @@ public class ClientProfileAction extends Action{
 			req.setAttribute("conectividades", conectividades);
 			req.setAttribute("productos", productos);
 			
+			boolean enproduccion = false;
+			boolean enimplementacion = true;
+			
+			for (Servicio ser : servicios){
+				if(ser.getEstadoImplantacion()!=null&&ser.getEstado()!=null){
+					if(ser.getEstadoImplantacion().equals("Produccion"))enproduccion=true;
+					if(ser.getEstado().equals("Parado")||ser.getEstado().equals("Excluido"))enimplementacion=false;
+				}
+			}
+			
+			for (Conectividad ser : conectividades){
+				if(ser.getEstadoImplantacion()!=null&&ser.getEstado()!=null){
+					if(ser.getEstadoImplantacion().equals("Produccion"))enproduccion=true;
+					if(ser.getEstado().equals("Parado")||ser.getEstado().equals("Excluido"))enimplementacion=false;
+				}
+			}
+			
+			
+			req.setAttribute("enproduccion", enproduccion);
+			req.setAttribute("enimplementacion", enimplementacion);
+			
+			
+			
 			return mapping.findForward("ok");
 		}catch(Exception e){
 			return  mapping.findForward("ko");
