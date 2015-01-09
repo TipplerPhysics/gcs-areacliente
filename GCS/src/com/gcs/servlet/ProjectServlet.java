@@ -22,9 +22,7 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
-import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
-import com.gcs.dao.CosteDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
@@ -34,8 +32,6 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class ProjectServlet extends HttpServlet{
 
 	private static final long serialVersionUID = -9001060985723788469L;
-	
-	
 	
 	public void doGet (HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
