@@ -63,15 +63,15 @@ import com.itextpdf.text.FontFactory;
 
 
 public class InformeServlet extends HttpServlet {
-	
+
 
 	private static final Logger log = Logger.getLogger(InformeServlet.class.getName());
-	
-	
+
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
 	}
-	
+
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		JSONObject json = new JSONObject();
@@ -80,7 +80,7 @@ public class InformeServlet extends HttpServlet {
 		log.info("Dentro de servletInforme");
 		String accion = req.getParameter("accion");
 
-		
+
 		try {
 
 			HttpSession sesion = req.getSession();
@@ -96,7 +96,7 @@ public class InformeServlet extends HttpServlet {
 				resp.setContentType("application/json");
 				resp.getWriter().println(json);
 			} else {
-				
+
 				//cargarDatos(req, resp);if (accion.equals("getMoths"))
 				if (accion.equals("getMonths"))obtenerMeses(req, resp);
 				if (accion.equals("getDays"))obtenerDias(req, resp);
@@ -104,7 +104,7 @@ public class InformeServlet extends HttpServlet {
 				if (accion.equals("getInformeDown"))obtenerInforme(req, resp,true);
 				if (accion.equals("getYears"))obtenerAnios(req, resp);
 				if (accion.equals("getDefault"))obtenerDefault(req, resp);
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,23 +113,33 @@ public class InformeServlet extends HttpServlet {
 	private void obtenerDefault(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		try{
-			
-		if(ImplantacionServlet.fech[0]!=null){
+			InformeDao iDao = InformeDao.getInstance();
+			List<Informe> informes = iDao.getAllInformes();
+			Informe ultimo = informes.get(informes.size()-1);
+
+			if(!informes.isEmpty()){
+				json.append("Anio", ultimo.getAnyoImplantacion());
+				json.append("Mes", ultimo.getMesImplantacion());
+				json.append("Dia", ultimo.getDiaImplantacion());
+				json.append("Calendada", ultimo.getTipoSubida());
+			}
+			/*if(ImplantacionServlet.fech[0]!=null){
 			json.append("Anio",ImplantacionServlet.fech[0]);
 			json.append("Mes", ImplantacionServlet.fech[1]);
 			json.append("Dia", ImplantacionServlet.fech[2]);
 			json.append("Calendada", ImplantacionServlet.fech[3]);
-		}else{
-			json.append("success", "false");
-			json.append("error", "todavia no se ha generado un informe");
-		}
-		
+		}*/
+			else{
+				json.append("success", "false");
+				json.append("error", "todavia no se ha generado un informe");
+			}
+
 		} catch (JSONException e) {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
 			e.printStackTrace();
 		}
-		
+
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
@@ -137,92 +147,92 @@ public class InformeServlet extends HttpServlet {
 	private void obtenerAnios(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		try{
-		
-		
-		String calendada = req.getParameter("calendada");
-		InformeDao iDao = InformeDao.getInstance();
-		List<String> Anios = iDao.getYearsForInforme(calendada);
-		
-		
-		json.append("Anios", Anios);
-		json.append("success", "true");
+
+
+			String calendada = req.getParameter("calendada");
+			InformeDao iDao = InformeDao.getInstance();
+			List<String> Anios = iDao.getYearsForInforme(calendada);
+
+
+			json.append("Anios", Anios);
+			json.append("success", "true");
 		} catch (JSONException e) {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
 			e.printStackTrace();
 		}
-		
+
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 	}
-	
+
 	private void obtenerMeses(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		try{
-		
-		
-		String anio = req.getParameter("year");
-		String calendada = req.getParameter("calendada");
-		InformeDao iDao = InformeDao.getInstance();
-		List<String> Meses = iDao.getMonthsForInforme(calendada, anio);
-		
-		
-		json.append("Meses", Meses);
-		json.append("success", "true");
+
+
+			String anio = req.getParameter("year");
+			String calendada = req.getParameter("calendada");
+			InformeDao iDao = InformeDao.getInstance();
+			List<String> Meses = iDao.getMonthsForInforme(calendada, anio);
+
+
+			json.append("Meses", Meses);
+			json.append("success", "true");
 		} catch (JSONException e) {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
 			e.printStackTrace();
 		}
-		
+
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 	}
-	
+
 	private void obtenerDias(HttpServletRequest req, HttpServletResponse resp)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		try{
-		
-		
-		String anio = req.getParameter("year");
-		String mes = req.getParameter("month");
-		String calendada = req.getParameter("calendada");
-		InformeDao iDao = InformeDao.getInstance();
-		List<String> Dias = iDao.getDaysForInforme(calendada, anio,mes);
-		
-		
-		json.append("Dias", Dias);
-		json.append("success", "true");
+
+
+			String anio = req.getParameter("year");
+			String mes = req.getParameter("month");
+			String calendada = req.getParameter("calendada");
+			InformeDao iDao = InformeDao.getInstance();
+			List<String> Dias = iDao.getDaysForInforme(calendada, anio,mes);
+
+
+			json.append("Dias", Dias);
+			json.append("success", "true");
 		} catch (JSONException e) {
 			json.append("success", "false");
 			json.append("error", "Se ha producido un error inesperado.");
 			e.printStackTrace();
 		}
-		
+
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 	}
-	
+
 	private void obtenerInforme(HttpServletRequest req, HttpServletResponse resp,boolean Descarg)throws JSONException, IOException {		
 		JSONObject json = new JSONObject();
 		String anio = req.getParameter("year");
 		String mes = req.getParameter("month");
 		String dia = req.getParameter("day");
 		String calenda = req.getParameter("calendada");
-		
+
 		resp.setContentType("application/pdf");
 		if(Descarg){
 			resp.addHeader("Content-Disposition", "attachment; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
 		}else{
 			resp.addHeader("Content-Disposition", "inline; filename=informe"+anio+"/"+mes+"/"+dia+".pdf");
 		}
-		
+
 		String userAgent = req.getHeader("User-Agent");
 		//System.out.println("userAgent "+userAgent);
-		
+
 		if(userAgent.indexOf("MSIE")==-1){
 			resp.setHeader("Cache-Control", "no-cache");  
 			resp.setDateHeader("Expires", 0);  
@@ -234,12 +244,12 @@ public class InformeServlet extends HttpServlet {
 		}
 
 
-		
+
 		InformeDao iDao = InformeDao.getInstance();
 		List<Informe> Informes = iDao.getAllInformesByDate(calenda,anio, mes, dia);
 		Informe inf =Informes.get(0);
-		
-		
+
+
 		List<String> name = new ArrayList<String>();
 		List<String> estado = new ArrayList<String>();
 		List<String> detalle = new ArrayList<String>();
@@ -247,33 +257,33 @@ public class InformeServlet extends HttpServlet {
 		List<String> nameCli = new ArrayList<String>();
 		List<String> pais = new ArrayList<String>();
 		List<String> producto = new ArrayList<String>();
-		
-		
+
+
 		List<String>conectividades = inf.getConectividadesId();
 		List<String>servicios = inf.getServiciosId();
 		if(!servicios.isEmpty()){
 			for (String a : servicios ){
 				ServicioDao cDao = ServicioDao.getInstance();
 				Servicio serv = cDao.getServicioById(a);
-				
+
 				nameCli.add(serv.getCliente_name());
 				estado.add(serv.getEstadoSubida());
 				detalle.add(serv.getObservaciones());
 				comentSub.add(serv.getdetalleSubida());
-				
+
 				long ident = serv.getId_proyecto();
 				ProyectoDao projDao = ProyectoDao.getInstance();
 				Proyecto proj = projDao.getProjectbyId(ident);
-				
+
 				producto.add(proj.getProducto());
 				name.add(proj.getServicio());
-				
+
 				long identCli = serv.getCliente_key();
 				ClienteDao cliDao = ClienteDao.getInstance();
 				Cliente cliente = cliDao.getClienteById(identCli);
-				
+
 				Set<String> Paises = cliente.getPaises();
-				
+
 				if(Paises.size()>1){
 					pais.add("Varios Paises");
 				}else{
@@ -281,79 +291,79 @@ public class InformeServlet extends HttpServlet {
 				}
 			}	
 		}
-		
+
 		if(!conectividades.isEmpty()){
 			for (String a : conectividades ){
 				ConectividadDao cDao = ConectividadDao.getInstance();
 				Conectividad conect = cDao.getConectividadById(a);
-				
+
 				comentSub.add(conect.getdetalleSubida());
 				estado.add(conect.getEstadoSubida());			
 				detalle.add("");
-				
+
 				long ident = conect.getKey_proyecto();
 				ProyectoDao projDao = ProyectoDao.getInstance();
 				Proyecto proj = projDao.getProjectbyId(ident);
-	
+
 				producto.add(proj.getProducto());
 				name.add(proj.getConectividad());
-				
+
 				long identCli = proj.getClienteKey();
 				ClienteDao cliDao = ClienteDao.getInstance();
 				Cliente cliente = cliDao.getClienteById(identCli);
-				
+
 				nameCli.add(cliente.getNombre());
 				Set<String> Paises = cliente.getPaises();
-				
+
 				if(Paises.size()>1){
 					pais.add("Varios Paises");
 				}else{
 					pais.add(Paises.toString());
 				}
-	
+
 			}
 		}
-		
+
 		try {
 
-		   
-		   Document document = new Document();
-		   PdfWriter.getInstance(document, resp.getOutputStream());
-		   document.open();
-		   
-		   Image bbva = Image.getInstance("img/logo_bbva.png");
-		   bbva.scaleToFit(78, 45);
-		   bbva.setAlignment(Chunk.ALIGN_LEFT);
-		   document.add(bbva);
-		   document.add(new Paragraph(" "));
-		   Paragraph date = new Paragraph(new Paragraph("Fecha: " + dia + "-" + mes + "-" + anio));	  
-		   date.setAlignment(Chunk.ALIGN_RIGHT);
-		   document.add(date);
-		   document.add(new Paragraph(" "));
-		   document.add(new Paragraph("Pase a producción"));
-		   document.add(new Paragraph(" "));
-		   Paragraph header =new Paragraph("Solicitudes desplegadas en producción",FontFactory.getFont("arial",22,Font.BOLD,BaseColor.BLACK));
-		   header.setAlignment(Chunk.ALIGN_CENTER);
-		   document.add(header); 
-		   document.add(new Paragraph(" "));
-		   document.add(new Paragraph("Subida confirmada y ejecutada solicitada por el equipo de Global Customer Services:"));
-		   document.add(new Paragraph(" "));
-		   
-		   for(int i=0;i<estado.size();i++){
-			   document.add(new Paragraph(" "));
-			   document.add(new Paragraph("*  "+nameCli.get(i)+","+pais.get(i)+","+producto.get(i)));
-			   document.add(new Paragraph(" "));   
-			   document.add(new Paragraph(detalle.get(i)));
-			   document.add(new Paragraph(" "));
-			   document.add(new Paragraph("Subida "+estado.get(i)));
-		   }
-		   
 
-		   
-		   document.close();
-		  } catch (DocumentException e) {
-		   e.printStackTrace();
-		  }
+			Document document = new Document();
+			PdfWriter.getInstance(document, resp.getOutputStream());
+			document.open();
+
+			Image bbva = Image.getInstance("img/logo_bbva.png");
+			bbva.scaleToFit(78, 45);
+			bbva.setAlignment(Chunk.ALIGN_LEFT);
+			document.add(bbva);
+			document.add(new Paragraph(" "));
+			Paragraph date = new Paragraph(new Paragraph("Fecha: " + dia + "-" + mes + "-" + anio));	  
+			date.setAlignment(Chunk.ALIGN_RIGHT);
+			document.add(date);
+			document.add(new Paragraph(" "));
+			document.add(new Paragraph("Pase a producción"));
+			document.add(new Paragraph(" "));
+			Paragraph header =new Paragraph("Solicitudes desplegadas en producción",FontFactory.getFont("arial",22,Font.BOLD,BaseColor.BLACK));
+			header.setAlignment(Chunk.ALIGN_CENTER);
+			document.add(header); 
+			document.add(new Paragraph(" "));
+			document.add(new Paragraph("Subida confirmada y ejecutada solicitada por el equipo de Global Customer Services:"));
+			document.add(new Paragraph(" "));
+
+			for(int i=0;i<estado.size();i++){
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph("*  "+nameCli.get(i)+","+pais.get(i)+","+producto.get(i)));
+				document.add(new Paragraph(" "));   
+				document.add(new Paragraph(detalle.get(i)));
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph("Subida "+estado.get(i)));
+			}
+
+
+
+			document.close();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
 
 
 	}
