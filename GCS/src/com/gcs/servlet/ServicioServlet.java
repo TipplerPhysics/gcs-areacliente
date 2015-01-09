@@ -217,8 +217,9 @@ public class ServicioServlet extends HttpServlet {
 			ProyectoDao pDao = ProyectoDao.getInstance();
 			//Proyecto p = pDao.getProjectbyId(Long.parseLong(project_id));
 			
-			String servicio = req.getParameter("servicio");
 			String estado = req.getParameter("estado");
+			String servicio = req.getParameter("servicio");			
+			
 			String cod_servicio = req.getParameter("cod_servicio");
 			
 			String observaciones = req.getParameter("observaciones");
