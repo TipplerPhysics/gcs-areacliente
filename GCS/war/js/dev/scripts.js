@@ -1671,6 +1671,78 @@ function sendEmailProduccion(){
 		});	
 }
 
+function sendEmailProduccion(){
+	var $form = $('#send-email-produccion-form');
+	
+	var servicios = $form.data('servicios');
+	var conectividades = $form.data('conectividades');	
+	
+	var formURL = $form.attr("action");
+	var $formData = $form.serialize();
+	var postData= $formData+"&accion=Produccion&servicios="+ servicios+"&conectividades="+conectividades;
+	$.ajax(			
+		{
+			url : formURL,
+			type: "GET",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				if (data.success=="true"){
+					$('#send-email-implantacion').modal('hide');
+					
+					$('#redirect-informe').modal({
+						  remote: "../sendMailImplantacion.do?informe=OK"
+					});
+					$('#redirect-informe').modal('show');
+				}
+			}
+		});	
+}
+
+function sendEditImplementacion(){
+	
+	var id = $(this).data('id');
+	var $form = $("#updateimp"+id);
+	
+	if($form.valid()){			
+		
+		var postData = $form.serialize() + "&accion=update&id="+id;
+		var formURL = $form.attr("action");
+		$.ajax(
+		{
+		  url : formURL,
+		  type: "GET",
+		  data : postData,
+		  success:function(data, textStatus, jqXHR) 
+		  {
+				//TODO
+			  if (data.success==("true")){
+					if ($('.edit-user-form-holder').height()<190){
+						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
+					}
+					$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
+					
+					$form.find('#span_message_modal').html('La implementaci&oacuten ha sido modificado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+					$('#modal-footer_submit').css('display','none');
+					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
+
+					setTimeout(function() { 
+						resetForm($form);
+						location.reload();
+					}, 1500);
+				}else{
+					$('#message_div_modal').removeClass("success").addClass("error");
+					if ($('.edit-user-form-holder').height()<190){
+						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
+					}
+					$('#span_message_modal').html(data.error);
+					$('#message_div_modal').css('display','block');
+				}
+		  }
+		},'html');
+	}
+}
+
 function showInforme() {
 	location.href="../dashboard/informeImplantacion.do";
 }

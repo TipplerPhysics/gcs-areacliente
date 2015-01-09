@@ -82,9 +82,53 @@
 										<td><span>${implantacion.servicio}</span></td>
 										<td><span>${implantacion.conectividad}</span></td>
 										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-											<td>												
+											<td>
+											<c:forEach items="${conectividades}" var="conectividad">
+											<c:if test="${conectividad.key.id==implantacion.conectividadkey}">
+											<c:if test="${conectividad.estadoImp eq 'Solicitado'}">
+											hola
+											</c:if>
+											</c:if>
+											</c:forEach>
+											
+											<c:forEach items="${servicios}" var="servicio">
+											<c:if test="${servicio.key.id==implantacion.serviciokey}">
+											<c:if test="${servicio.estadoImplantacion eq 'Solicitado'}">
+											<a class="lapiz"  data-toggle="modal" data-target="#edit-client"></a>
+											</c:if>
+											</c:if>
+											</c:forEach>
 											</td>
 										</c:if>
+									</tr>
+									<tr>
+										<td></td>
+										<td style='height:auto;'>
+											<div style='width:400px'>
+											<c:forEach items="${servicios}" var="servicio">
+											<c:if test="${servicio.key.id==implantacion.serviciokey}">
+											<c:if test="${servicio.estadoImplantacion eq 'Solicitado'}">
+											<form id='updateimp${servicio.key.id}' 
+												<div class='form-field'>
+													<span>Estado subida:</span>
+													<select id="estadoSubid" class="selectpicker selected" name="estadoSubid" >							
+														<option value="OK" ${servicio.estadoSubida == 'OK' ? 'selected' : ''}>OK</option>									
+														<option value="KO" ${servicio.estadoSubida == 'KO' ? 'selected' : ''}>KO</option>	
+													</select>
+												</div>
+												
+												<div class='form-field' style='height:20%;'>
+													<span> Detalles:</span>
+													<textarea placeholder='Introduzca texto'>${servicio.detalleSubida}</textarea>
+												</div>
+												<button type='button' data-id='${servicio.key.id}' onclick=sendEditImplementacion()> Aceptar</button>
+											</form>
+											</c:if>
+											</c:if>
+											</c:forEach>
+												
+											</div>
+										</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
