@@ -98,7 +98,7 @@ public class Proyecto {
 	private String str_OKNegocio;
 	
 	@Persistent
-	private String urlDocGoogleDrive;
+	private String url_doc_google_drive;
 
 	public Proyecto() {
 		super();
@@ -329,13 +329,13 @@ public class Proyecto {
 		this.coste = coste;
 	}
 
-	public String getUrlDocGoogleDrive() {
-		return urlDocGoogleDrive;
+	public String getUrl_doc_google_drive() {
+		return url_doc_google_drive;
 	}
 
-	public void setUrlDocGoogleDrive(String urlDocGoogleDrive) {
-		this.urlDocGoogleDrive = urlDocGoogleDrive;
-	}		
+	public void setUrl_doc_google_drive(String url_doc_google_drive) {
+		this.url_doc_google_drive = url_doc_google_drive;
+	}
 	
 	@Override
 	public boolean equals(Object object_b) {

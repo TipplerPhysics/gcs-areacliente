@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -23,11 +23,11 @@
 		</div>
 		<div>
 			<ul>
-				<li>Código de proyecto:<span>&nbsp&nbsp${proyecto.cod_proyecto}</span></li>
-				<li>Gestor de negocio:<span>&nbsp&nbsp&nbsp${proyecto.gestor_negocio_name}</span></li>
-				<li>Gestor IT:<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${proyecto.gestor_it_name}</span></li>
-				<li>Estado:<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${conectserv.estado}</span></li>
-				<li>Fecha implantación:<span>&nbsp
+				<li><span class="title">Código de proyecto:</span><span class="info">${proyecto.cod_proyecto}</span></li>
+				<li><span class="title">Gestor de negocio:</span><span class="info">${proyecto.gestor_negocio_name}</span></li>
+				<li><span class="title">Gestor IT:</span><span class="info">${proyecto.gestor_it_name}</span></li>
+				<li><span class="title">Estado:</span><span class="info">${conectserv.estado}</span></li>
+				<li><span class="title">Fecha implantación:</span><span class="info">
 				
 				<c:set var="string" value="${proyecto.okNegocio}" />
 				
@@ -36,6 +36,9 @@
 				${fn:substring(string, 30, 34)}
 				</span></li>
 			</ul>
+			<c:if test="${proyecto.url_doc_google_drive != null}">
+				<a class="drive-link" href="${proyecto.url_doc_google_drive}" target="_blank">Abrir Documentación - Google Drive ></a>
+			</c:if>
 		</div>
 	</div>
 	

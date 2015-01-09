@@ -102,6 +102,11 @@
 						<span class="lbl">Coste<span class="required-asterisk">*</span>:</span>
 						<input type="text" aria-required="true" readonly="" value="${coste}" id="coste_modal" name="coste" class="long euro readonly">
 					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Url carpeta Google Drive:</span>
+						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
+					</div>
 				</div>
 				
 				<div class="form-field-divider right">

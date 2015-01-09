@@ -43,27 +43,30 @@ public class ProjectProfileAction extends Action{
 		
 		ServicioDao servicioDao = ServicioDao.getInstance();
 		List<Servicio> servicios = servicioDao.getServiciosByProject(Long.parseLong(idPro));
-		Servicio servicio = new Servicio();
-		if (!servicios.isEmpty())servicio=servicios.get(0);
+		Servicio servicio = null;
+		if (!servicios.isEmpty()) {
+			servicio=servicios.get(0);
+		}
 		
 		ConectividadDao conectDao = ConectividadDao.getInstance();
 		List<Conectividad> conectividades = conectDao.getConectividadesByProject(Long.parseLong(idPro));
-		Conectividad conectividad = new Conectividad();
-		if (!conectividades.isEmpty())conectividad= conectividades.get(0);
-		
-		if(conectividad.getEstado().equals("")||conectividad.getEstado().equals(null)){
-			if(servicio.getEstado().equals("")||servicio.getEstado().equals(null)){
-				conectividad.setEstado(" ");
-				req.setAttribute("conectserv", conectividad);
-			}else{
-				req.setAttribute("conectserv", servicio);
-			}
-		}else{
-		req.setAttribute("conectserv", conectividad);
+		Conectividad conectividad = null;
+		if (!conectividades.isEmpty()) {
+			conectividad= conectividades.get(0);
 		}
 		
+		if(conectividad != null && !conectividad.getEstado().equals("")  && !conectividad.getEstado().equals(null)){
+			req.setAttribute("conectserv", conectividad);
+		}
+		else if(conectividad != null && !servicio.getEstado().equals("") && !servicio.getEstado().equals(null)){
+			req.setAttribute("conectserv", servicio);
+		}
+		else {
+			conectividad = new Conectividad();
+			conectividad.setEstado(" ");
+			req.setAttribute("conectserv", conectividad);
+		}
 		
-		return mapping.findForward("ok");
-		
+		return mapping.findForward("ok");		
 	}
 }

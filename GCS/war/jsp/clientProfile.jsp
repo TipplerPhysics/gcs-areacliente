@@ -23,7 +23,7 @@
 		</div>
 		<div>
 			<ul>
-				<li>En producci&oacuten: <span>
+				<li>En producci&oacuten: <span class="info">
 				<c:choose>
 					<c:when test="${enproduccion}">
 						S&iacute
@@ -34,7 +34,7 @@
 				</c:choose>
 				
 </span></li>
-				<li>En implementaci&oacuten: <span>
+				<li>En implementaci&oacuten: <span class="info">
 								<c:choose>
 					<c:when test="${enimplementacion}">
 						S&iacute
@@ -44,17 +44,17 @@
 					</c:otherwise>
 				</c:choose>
 				</span></li>
-				<li>Pa&iacuteses: <span>
+				<li>Pa&iacuteses: <span class="info">
 					<c:forEach items="${cliente.paises}" var="pais">
 						${pais}&nbsp
 					</c:forEach>
 				</span></li>
-				<li>Producto:<span><ul>
+				<li>Producto:<span class="info"><ul>
 					<c:forEach items="${productos}" var="producto">
 						<li>${producto}</li>
 					</c:forEach>
 				</ul></span></li><c:forEach items="${productos}"><br /></c:forEach>
-				<li>Proyecto:<br />&nbsp&nbsp&nbsp&nbsp&nbsp <span>
+				<li>Proyecto:<br /><span class="info proyectos">
 					<c:forEach items="${projects}" var="proyecto">
 						<a href='../projectProfile.do?id=${proyecto.key.id}&idCli=${cliente.key.id}'>${proyecto.cod_proyecto}</a>&nbsp
 					</c:forEach>
@@ -80,7 +80,14 @@
 			  <td>Codigo proyecto</td>
 			  
 			</tr>
-			<tr class='body'>	
+			<tr class='body'>
+			<c:choose>
+			<c:when test="${empty servicios && empty conectividades}">
+				<tr>
+					<td>No existen registros.</td>
+				</tr>
+			</c:when>
+			<c:otherwise>	
 			<c:forEach items="${servicios}" var="servicio">
 				<c:forEach items="${projects}" var="pro">
 					<c:choose>
@@ -122,7 +129,9 @@
 						</c:when>
 					</c:choose>	
 				</c:forEach>
-			</c:forEach>		
+			</c:forEach>
+			</c:otherwise>		
+			</c:choose>
 			</tr>		
 		</table>
 	</div>
