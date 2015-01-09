@@ -3,11 +3,13 @@ package com.gcs.beans;
 import java.util.Date;
 import java.util.Set;
 
+import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.Key;
 
 
@@ -51,6 +53,16 @@ public class Cliente {
 	@Persistent
 	private Boolean erased;
 	
+	
+
+    @Persistent
+    @Extension
+    (vendorName="datanucleus", key="gae.unindexed", value="true")
+    private String imageType;
+
+    @Persistent
+    private Blob image;
+
 	
 	
 	public Boolean isErased() {
@@ -153,6 +165,30 @@ public class Cliente {
 	public void setClientId(String clientId) {
 		this.clientId = clientId;
 	}
+	
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public byte[] getImage() {
+        if (image == null) {
+            return null;
+        }
+
+        return image.getBytes();
+    }
+    
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public void setImage(byte[] bytes) {
+        this.image = new Blob(bytes);
+    }
+
+
+    
 	
 	@Override
 	public boolean equals(Object object_b) {
