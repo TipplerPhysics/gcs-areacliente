@@ -1753,6 +1753,45 @@ $(function() {
 				if(calendada!="Calendada"&&calendada!="No calendada"){
 					$('#iframepdf').attr('title',"No se encuentra el PDF");
 				}else{
+					
+					var ca = document.getElementById("informe_select_calendada");					
+					var x = document.getElementById("informe_select_anyo");
+					var y = document.getElementById("informe_select_mes");
+					var z = document.getElementById("informe_select_dia");
+					var cont;
+					var deb = x.options.length;
+					for(cont=0;cont<deb;++cont) x.remove(0);
+					deb = y.options.length;
+					for(cont=0;cont<deb;++cont) y.remove(0);
+					deb = z.options.length;
+					for(cont=0;cont<deb;++cont){
+						z.remove(0);
+					}
+					deb = ca.options.length;
+					for(cont=0;cont<deb;++cont){
+						ca.remove(0);
+					}
+					
+					var op1 = document.createElement('option');
+			    	op1.text = calendada;
+			    	op1.value = "default";
+			    	ca.add(op1);
+					
+			    	var op2 = document.createElement('option');
+			    	op2.text = anio;
+			    	op2.value = "default";
+			    	x.add(op2);
+					
+			    	var op3 = document.createElement('option');
+			    	op3.text = month;
+			    	op3.value = "default";
+			    	y.add(op3);
+			    	
+			    	var op4 = document.createElement('option');
+			    	op4.text = day;
+			    	op4.value = "default";
+			    	z.add(op4);
+			    	
 					var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 					$('#iframepdf').attr('src',formURL);
 					 var descarg = "/informeServlet?"+"accion=getInformeDown&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
