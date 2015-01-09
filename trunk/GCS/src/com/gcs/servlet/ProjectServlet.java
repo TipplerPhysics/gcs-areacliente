@@ -239,6 +239,7 @@ public class ProjectServlet extends HttpServlet{
 				String gestor_it_str = req.getParameter("gestor_it");
 				String gestor_negocio_str = req.getParameter("gestor_negocio");
 				String coste = req.getParameter("coste");
+				String url_doc_google_drive = req.getParameter("url_doc_google_drive");
 				
 				
 				
@@ -269,7 +270,7 @@ public class ProjectServlet extends HttpServlet{
 				p.setGestor_it(Long.parseLong(gestor_it_str));
 				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
 				p.setCoste(coste);
-				
+				p.setUrl_doc_google_drive(url_doc_google_drive);				
 				
 				pDao.createProject(p,usermail);
 			
@@ -322,6 +323,7 @@ public class ProjectServlet extends HttpServlet{
 			String gestor_it_str = req.getParameter("gestor_it");
 			String gestor_negocio_str = req.getParameter("gestor_negocio");
 			String coste = req.getParameter("coste");
+			String url_doc_google_drive = req.getParameter("url_doc_google_drive");
 			
 			if (fecha_alta_str.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
 					||gestor_it_str.equals("")||gestor_negocio_str.equals("")){
@@ -356,6 +358,7 @@ public class ProjectServlet extends HttpServlet{
 				p.setGestor_it(Long.parseLong(gestor_it_str));
 				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
 				p.setCoste(coste);
+				p.setUrl_doc_google_drive(url_doc_google_drive);
 				
 				
 				pDao.createProject(p,usermail);

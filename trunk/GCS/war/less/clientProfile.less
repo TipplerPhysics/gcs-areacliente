@@ -70,14 +70,29 @@
 			vertical-align: top;
 			padding-top:0px;
 			
+			.drive-link {
+				font-weight:bold;
+				margin-left: 25px;
+			}
+			
 			> ul:first-child{
 				>li{
 					height:25px;
 					color:#0b5394;
 					
 					>span{
-						color:#434a58;
-						font-weight:700;
+						&.title {
+							display: inline-block;
+							width: 140px;
+						}
+						&.info {
+							color:#434a58;
+							font-weight:700;
+							
+						}
+						&.proyectos {
+							margin-left: 25px;
+						}
 					}
 				}
 			}

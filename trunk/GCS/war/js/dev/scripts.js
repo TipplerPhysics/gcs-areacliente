@@ -2470,6 +2470,7 @@ function modalCliente(){
 		
 		var fecha_ini_viabilidad = $currentRow.attr('data-fecha-ini-viabilidad');
 		var fecha_fin_viabilidad = $currentRow.attr('data-fecha-fin-viabilidad');
+		var url_doc_google_drive = $currentRow.attr('data-url-doc-google-drive');
 		
 		
 		$('#producto_modal').val(producto);
@@ -2490,6 +2491,7 @@ function modalCliente(){
 		$('#gestor_it_modal').val(gestor_it);
 		$('#gestor_negocio_modal').val(gestor_negocio);
 		$('#coste_modal').val(coste);
+		$('#url_doc_google_drive_modal').val(url_doc_google_drive);
 	}
 	
 	showModal();
