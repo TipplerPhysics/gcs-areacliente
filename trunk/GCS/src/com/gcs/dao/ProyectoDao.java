@@ -101,14 +101,13 @@ public class ProyectoDao {
 			p.setCod_proyecto(cod_proyecto);
 			
 			c.setProject_number(project_number);
-			cDao.createCliente(c,"");
-			
-			
+			cDao.createCliente(c,"");		
 		}
 		
 		try{
 			pm.makePersistent(p);
-		}finally{
+		}
+		finally{
 			ServicioDao sDao = ServicioDao.getInstance();
 			List<Servicio> servicios = sDao.getServiciosByProject(p.getKey().getId());
 			
@@ -216,6 +215,6 @@ public Proyecto getProjectbyId(long l) {
 		
 		return project_name;
 	}
-
+	
 }
 

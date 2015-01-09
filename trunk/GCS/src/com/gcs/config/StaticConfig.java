@@ -144,11 +144,12 @@ public class StaticConfig {
 					new Config("Saldos y movimientos- ETEBAC", "Saldos y movimientos- ETEBAC"),
 					new Config("Transferencias tesoreria - paris", "Transferencias tesoreria - paris"),
 					new Config("Pago proveedores - paris", "Pago proveedores - paris"),
+					new Config("CANCEL./RETR. CORE (SEPA) PARIS", "CANCEL./RETR. CORE (SEPA) PARIS"),
+					new Config("ADEUDOS CORE (SEPA) PARIS", "ADEUDOS CORE (SEPA) PARIS"),
+					new Config("ADEUDOS B2B (SEPA) PARIS", "ADEUDOS B2B (SEPA) PARIS"),
 					new Config("SEPA París", "SEPA París"),
 					new Config("Nóminas SEPA París", "Nóminas SEPA París"),
 					new Config("Pagos internacionales - paris", "Pagos internacionales - paris")
-					
-					
 					));
 	
 	static public ArrayList<Config> servicios_peru =
