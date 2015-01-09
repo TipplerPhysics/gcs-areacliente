@@ -27,12 +27,11 @@ public class ProyectoModalAction extends Action {
 		
 		ClienteDao cDao = ClienteDao.getInstance();
 		UserDao uDao = UserDao.getInstance();
-		
+			
 		String git_str = req.getParameter("git");
 		String gn_str = req.getParameter("gn");
 		
 		String id = req.getParameter("id");
-		
 		
 		String cliente_str = req.getParameter("client");
 		Cliente cliente = cDao.getClienteById(Long.parseLong(cliente_str));
@@ -66,11 +65,9 @@ public class ProyectoModalAction extends Action {
 		if (!gestores_negocio.contains(gn)){
 			gestores_negocio.add(gn);
 		}
-		
 		if (!clientes.contains(cliente)){
 			clientes.add(cliente);
 		}
-		
 		String coste="";
 		Proyecto p = new Proyecto();
 		
