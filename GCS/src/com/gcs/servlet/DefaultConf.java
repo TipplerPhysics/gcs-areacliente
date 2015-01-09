@@ -1,6 +1,11 @@
 package com.gcs.servlet;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +16,14 @@ import com.gcs.beans.Cliente;
 import com.gcs.beans.ContadorCliente;
 import com.gcs.beans.ContadorDemanda;
 import com.gcs.beans.Equipo;
+import com.gcs.beans.FechaCalendada;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.EquipoDao;
+import com.gcs.dao.FechaCalendadaDao;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
+
 
 public class DefaultConf extends HttpServlet {
 
@@ -57,6 +65,9 @@ public class DefaultConf extends HttpServlet {
 				}else if ("def_teams".equals(accion)){
 					createDefTeams();
 					json.append("success", "true");
+				}else if ("inic_fechas".equals(accion)){
+					inicFechas(req,resp);
+					json.append("success", "true");
 				}
 				
 			
@@ -88,6 +99,35 @@ public class DefaultConf extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		doGet(req, resp);
+	}
+	
+	private void inicFechas(HttpServletRequest req, HttpServletResponse resp) throws InterruptedException{
+		
+		   String link = req.getParameter("link");
+		      
+		      try {
+		    	  
+		    	  
+		          URL myURL = new URL(link);
+
+		          InputStreamReader a = new InputStreamReader(myURL.openStream());
+		          BufferedReader in = new BufferedReader(a);
+		             
+		          String inputLine = new String();
+		          
+		          FechaCalendadaDao fechDao = FechaCalendadaDao.getInstance();
+		          FechaCalendada fecha = new FechaCalendada();
+		          
+		          
+		          while ((inputLine = in.readLine()) != null){
+		        	  fecha = new FechaCalendada();
+		        	  String fechaStr = inputLine;
+		        	  fecha.setStr_fecha(fechaStr);
+		        	  fechDao.createFechaCalendada(fecha);
+		          }
+		      }catch(Exception e){
+		          e.printStackTrace();
+		      }
 	}
 	
 	private void createDefTeams(){
