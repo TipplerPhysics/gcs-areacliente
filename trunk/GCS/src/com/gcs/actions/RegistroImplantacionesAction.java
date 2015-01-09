@@ -41,7 +41,8 @@ public class RegistroImplantacionesAction extends Action {
 		
 		List<Conectividad> conectividades = cDao.getConectividadesEnCurso();
 		List<Servicio> servicios = sDao.getServiciosEnCurso();
-		
+		req.setAttribute("conectividades", conectividades);
+		req.setAttribute("servicios", servicios);
 		if(conectividades == null && servicios == null) {
 			conectividades = cDao.getConectividadesByEstado(PENDIENTE_IMPL);
 			servicios = sDao.getServiciosByEstado(PENDIENTE_IMPL);

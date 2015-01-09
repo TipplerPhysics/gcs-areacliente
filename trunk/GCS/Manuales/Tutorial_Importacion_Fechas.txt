@@ -1,0 +1,45 @@
+
+
+
+
+Para poder importar fechas calendadas tendremos que escribir:
+
+	-   La dirección al servidor
+			por ejemplo: 
+			http://localhost:8888
+	
+	-   La dirección al servlet de actiones por defecto
+			en nuestro caso       /defaultConf
+			
+	-   La accion a realizar en este caso inic_fechas
+	
+	
+	-   El link al archivo html que contiene el texto a importar este link tiene que dar acceso directo al archivo
+	es decir solo tiene que mostrar un texto html, ver notas en la parte de abajo.
+	
+		Para que la importación se haga de manera satisfactoria habrá que poner el archivo vacio,
+		únicamente contendrá las fechas en formato dd/mm/aaaa una por cada línea.
+		Por ejemplo:
+		
+			23/12/1991
+			31/01/2015
+			
+	
+	-  Después añadiremos todo lo requerido con sus correpondientes símbolos, al principio del servlet un "/"
+	al principio de accion un "?" y al principio de link un "&"  
+	
+		Ejemplo
+		http://localhost:8888/defaultConf?accion=inic_fechas&link=https://www.dropbox.com/s/5c4zbl5kmw7mdxo/hello.htm?dl=1
+
+
+
+
+
+Nota. Cómo generar un link sobre un archivo local.
+-----------------------------------------------------
+
+Lo más facil es utilizar el dropbox, para ello subiremos el archivo html o htm le daremos a compartir,
+con lo que nos saldrá un enlace despues en ese enlace cambiaremos el flag dl de 0 a 1
+
+ejemplo:
+https://www.dropbox.com/s/5c4zbl5kmw7mdxo/hello.htm?dl=1
