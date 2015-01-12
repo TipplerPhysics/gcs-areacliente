@@ -117,7 +117,8 @@ public class ImplantacionServlet extends HttpServlet {
 		try {
 			
 			String tipoSubida = req.getParameter("tipo_subida");
-			String fechaImplantacion = req.getParameter("fecha_implantacion");
+			String fechaImplantacionCalendada = req.getParameter("fecha_implantacion_calendada");
+			String fechaImplantacionNoCalendada = req.getParameter("fecha_implantacion_no_calendada");
 			String serviciosParam = req.getParameter("servicios");
 			String conectividadesParam = req.getParameter("conectividades");
 			
@@ -145,13 +146,15 @@ public class ImplantacionServlet extends HttpServlet {
 						cObj.setEstadoImplantacion(SOLICITADO);
 						cObj.setEstadoSubida(OK);
 						cObj.setdetalleSubida("");
-						cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacion));
-						cObj.setStr_fecha_implantacion(fechaImplantacion);
 						if(CALENDADA.equals(tipoSubida)) {
 							cObj.setsubidaCalendada(true);
+							cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacionCalendada));
+							cObj.setStr_fecha_implantacion(fechaImplantacionCalendada);
 						}
 						else {
 							cObj.setsubidaCalendada(false);
+							cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacionNoCalendada));
+							cObj.setStr_fecha_implantacion(fechaImplantacionNoCalendada);
 						}
 						cDao.createConectividad(cObj, usermail);
 					}
@@ -166,13 +169,15 @@ public class ImplantacionServlet extends HttpServlet {
 						sObj.setEstadoImplantacion(SOLICITADO);
 						sObj.setEstadoSubida(OK);
 						sObj.setdetalleSubida("");
-						sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacion));
-						sObj.setStr_fecha_implantacion_produccion(fechaImplantacion);
 						if(CALENDADA.equals(tipoSubida)) {
 							sObj.setsubidaCalendada(true);
+							sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacionCalendada));
+							sObj.setStr_fecha_implantacion_produccion(fechaImplantacionCalendada);
 						}
 						else {
 							sObj.setsubidaCalendada(false);
+							sObj.setFecha_implantacion_produccion(Utils.dateConverter(fechaImplantacionNoCalendada));
+							sObj.setStr_fecha_implantacion_produccion(fechaImplantacionNoCalendada);
 						}
 						sDao.createServicio(sObj, usermail);
 					}

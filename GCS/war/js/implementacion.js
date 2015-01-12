@@ -5,11 +5,12 @@ function sendEmailSolicitud(){
 		var servicios = $form.data('servicios');
 		var conectividades = $form.data('conectividades');
 		var tipo_subida = $('#tipo_subida').val();
-		var fecha_implantacion = $('#fecha_implantacion').val();
+		var fecha_implantacion_calendada = $('#fecha_implantacion_calendada').val();
+		var fecha_implantacion_no_calendada = $('#fecha_implantacion_no_calendada').val();
 		
 		var formURL = $form.attr("action");
 		var $formData = $form.serialize();
-		var postData= $formData+"&accion=Solicitado&servicios="+ servicios+"&conectividades="+conectividades+"&tipo_subida="+tipo_subida+"&fecha_implantacion="+fecha_implantacion ;
+		var postData= $formData+"&accion=Solicitado&servicios="+ servicios+"&conectividades="+conectividades+"&tipo_subida="+tipo_subida+"&fecha_implantacion_calendada="+fecha_implantacion_calendada+"&fecha_implantacion_no_calendada="+fecha_implantacion_no_calendada ;
 		$.ajax(			
 			{
 				url : formURL,
@@ -134,26 +135,12 @@ function reloadImplantaciones() {
 
 $(function() {
 	
-
 	$('.modifHolder').slideUp(0);
 	
-	
-	
-
-    
-    
 	$('.dropbutton').on('click',function(e){
 		var id = $(this).data('id');
 		
 		var adf = $('#line'+id).css('overflow');
-		
-		/*if ($('#line'+id).css('overflow')=="visible"){
-			$('#line'+id).css('overflow','hidden');
-		}else{
-			$('#line'+id).css('overflow','visible');
-		}*/
-		
-		
 		
 		if ($('#line'+id).hasClass('oculto')){
 			$('#line'+id).slideDown();
@@ -164,7 +151,6 @@ $(function() {
 			$('#line'+id).slideUp();
 			$('#line'+id).addClass('oculto');			
 		}
-		
 		
 	});
 	
