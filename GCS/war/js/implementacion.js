@@ -131,11 +131,17 @@ function reloadImplantaciones() {
 	location.reload();
 }
 
+
 $(function() {
 	
 
 	$('.modifHolder').slideUp(0);
 	
+	
+	
+
+    
+    
 	$('.dropbutton').on('click',function(e){
 		var id = $(this).data('id');
 		

@@ -1,6 +1,8 @@
 package com.gcs.dao;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -55,6 +57,52 @@ public class FechaCalendadaDao {
 			pm.close();
 
 			return Fechas;
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<FechaCalendada> getAllFutureFechas() {
+
+			List<FechaCalendada> Fechas;
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			
+			Date fecha = new Date();
+			Query q = pm.newQuery("select from " + FechaCalendada.class.getName());
+			Fechas = (List<FechaCalendada>) q.execute();
+			List <FechaCalendada> fechasDesp = new ArrayList();
+			
+			
+			for (FechaCalendada fech :Fechas){
+				if (fech.getFecha().compareTo(fecha)>=0)fechasDesp.add(fech);
+			}
+			
+			pm.close();
+
+			return fechasDesp;
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<String> getAllFutureFechasStr() {
+
+			List<FechaCalendada> Fechas;
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			
+			Date fecha = new Date();
+			Query q = pm.newQuery("select from " + FechaCalendada.class.getName());
+			q.setOrdering("fecha asc");
+			Fechas = (List<FechaCalendada>) q.execute();
+			
+			
+			List <String> fechasDesp = new ArrayList<String>();
+			
+			
+			for (FechaCalendada fech :Fechas){
+				if (fech.getFecha().compareTo(fecha)>=0)fechasDesp.add(fech.getStr_fecha());
+			}
+			
+			
+			pm.close();
+
+			return fechasDesp;
 		}
 		
 		public void deleteAll(){

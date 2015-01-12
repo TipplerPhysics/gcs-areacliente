@@ -94,9 +94,10 @@ public class ImplantacionModalAction extends Action {
 		if( (ultimoEstadoConectividad == null) && (ultimoEstadoServicio == null) ) {
 			
 			FechaCalendadaDao fechDao = FechaCalendadaDao.getInstance();
-			List<FechaCalendada> fechas = fechDao.getAllFechas();
-			
+			List<FechaCalendada> fechas = fechDao.getAllFutureFechas();
+			List<String> fechasStr = fechDao.getAllFutureFechasStr();
 			req.setAttribute("fechas",fechas);
+			req.setAttribute("fechasStr",fechasStr);
 			req.setAttribute("servicios", serviciosParam);
 			req.setAttribute("conectividades", conectividadesParam);
 			
