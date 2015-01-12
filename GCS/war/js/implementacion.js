@@ -203,23 +203,34 @@ $(function() {
 	});
 	
 	$('#check_all_implantaciones').on('change', function(e) {
-		if($('#check_all_implantaciones').checkbox('checked')) {
-			$('tbody').find('input:checkbox').checkbox('uncheck');	
-			$('#sendMailButton').attr("disabled", true);
-		}
-		else {
+		if($('#check_all_implantaciones').checkbox('isChecked2')) {
 			$('tbody').find('input:checkbox').checkbox('check');
 			$('#sendMailButton').attr("disabled", false);
+		}
+		else {
+			$('tbody').find('input:checkbox').checkbox('uncheck');	
+			$('#sendMailButton').attr("disabled", true);
 		}
 	});
 	
 	$('input:checkbox.inner').on('change', function(e) {
-		if($(this).checkbox('checked')) {
-			$('#sendMailButton').attr("disabled", true);
-			$('#check_all_implantaciones').checkbox('uncheck');
+		if($(this).checkbox('isChecked2')) {
+			$('#sendMailButton').attr("disabled", false);
 		}
 		else {
-			$('#sendMailButton').attr("disabled", false);			
+			var checkedCounter = 0;
+			$('input:checkbox.inner').each(function() {
+				if($(this).checkbox('isChecked2')) {
+					checkedCounter++;
+				}
+			});
+			if(checkedCounter == 0) {
+				$('#sendMailButton').attr("disabled", true);
+				$('#check_all_implantaciones').checkbox('uncheck');
+			}
+			else {
+				$('#check_all_implantaciones').checkbox('uncheck');
+			}
 		}
 	});
 	
@@ -228,16 +239,18 @@ $(function() {
 		var servicios = "";
 		var conectividades = "";
 		
-		$('tbody').find('input:checkbox:checked').each(function() {
-			var trow = $(this).closest('tr');
-			var servicioId = trow.data('servicio-id');
-			if(servicioId != null && servicioId != "") {
-				servicios = servicios + servicioId + ",";
+		$('tbody').find('input:checkbox.inner').each(function() {
+			if($(this).checkbox('isChecked2')) {
+				var trow = $(this).closest('tr');
+				var servicioId = trow.data('servicio-id');
+				if(servicioId != null && servicioId != "") {
+					servicios = servicios + servicioId + ",";
+				}
+				var conectividadId = trow.data('conectividad-id');
+				if(conectividadId != null && conectividadId != "") {
+					conectividades = conectividades + conectividadId + ",";
+				}	
 			}
-			var conectividadId = trow.data('conectividad-id');
-			if(conectividadId != null && conectividadId != "") {
-				conectividades = conectividades + conectividadId + ",";
-			}			
 		});
 
 		if((servicios != "") || (conectividades != "")) {

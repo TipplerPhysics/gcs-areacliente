@@ -199,7 +199,7 @@ public class Cliente {
 		    Cliente object_a = (Cliente) object_b;
 		    
 		 // Custom equality check here.
-		    return this.nombre.equals(object_a.nombre)
-		        && this.ref_global.equals(object_a.ref_global);
+		    return this.nombre.equals(object_a.nombre);
+		        //&& this.ref_global.equals(object_a.ref_global);
 	}	
 }

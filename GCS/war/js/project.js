@@ -148,6 +148,7 @@ function modalCliente(){
 		var nombre = $currentRow.attr('data-nombre');
 		var tipo = $currentRow.attr('data-tipo');
 		var cliente = $currentRow.attr('data-cliente');
+		var cliente_name = $currentRow.attr('data-cliente-name');
 		var clasificacion = $currentRow.attr('data-clasificacion');
 		var gestor_it = $currentRow.attr('data-gestor-it');
 		var gestor_negocio = $currentRow.attr('data-gestor-negocio');
@@ -178,7 +179,7 @@ function modalCliente(){
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#project_name_modal').val(nombre);
 		$('#tipo_modal').val(tipo);
-		$('#input_cliente_modal').val(cliente);
+		$('#input_cliente_modal').val(cliente_name);
 		$('#clasificacion_modal').val(clasificacion);
 		$('#gestor_it_modal').val(gestor_it);
 		$('#gestor_negocio_modal').val(gestor_negocio);

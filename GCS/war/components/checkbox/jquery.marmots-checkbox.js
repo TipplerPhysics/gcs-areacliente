@@ -97,6 +97,9 @@
 			this._label().removeClass('on');
 			this._label().removeClass('ui-marmots-label-' + this._type());
 		},
+		isChecked2 : function() {
+			return this._label().hasClass('on');
+		},
 		isChecked : function() {
 			return this.element.is(':checked');
 		},

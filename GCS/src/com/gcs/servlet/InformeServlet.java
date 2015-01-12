@@ -118,20 +118,30 @@ public class InformeServlet extends HttpServlet {
 			Informe ultimo = informes.get(informes.size()-1);
 
 			if(!informes.isEmpty()){
+				String calendada = ultimo.getTipoSubida();
+				String anio = ultimo.getAnyoImplantacion();
+				String mes = ultimo.getMesImplantacion();
+				
 				json.append("Anio", ultimo.getAnyoImplantacion());
 				json.append("Mes", ultimo.getMesImplantacion());
 				json.append("Dia", ultimo.getDiaImplantacion());
 				json.append("Calendada", ultimo.getTipoSubida());
+				
+				List<String> Anios = iDao.getYearsForInforme(calendada);
+				json.append("Anios", Anios);
+				
+				List<String> Meses = iDao.getMonthsForInforme(calendada, anio);
+				json.append("Meses", Meses);
+				
+				List<String> Dias = iDao.getDaysForInforme(calendada, anio, mes);
+				json.append("Dias", Dias);
 			}
-			/*if(ImplantacionServlet.fech[0]!=null){
-			json.append("Anio",ImplantacionServlet.fech[0]);
-			json.append("Mes", ImplantacionServlet.fech[1]);
-			json.append("Dia", ImplantacionServlet.fech[2]);
-			json.append("Calendada", ImplantacionServlet.fech[3]);
-		}*/
-			else{
-				json.append("success", "false");
-				json.append("error", "todavia no se ha generado un informe");
+			else {
+				json.append("Anio",ImplantacionServlet.fech[0]);
+				json.append("Mes", ImplantacionServlet.fech[1]);
+				json.append("Dia", ImplantacionServlet.fech[2]);
+				json.append("Calendada", ImplantacionServlet.fech[3]);
+				json.append("success", "true");
 			}
 
 		} catch (JSONException e) {

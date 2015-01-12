@@ -141,6 +141,7 @@
 			<forward name="email1" path="/jsp/modal/modal-implantacion-email1.jsp" />
 			<forward name="email2" path="/jsp/modal/modal-implantacion-email2.jsp" />
 			<forward name="email3" path="/jsp/modal/modal-implantacion-email3.jsp" />
+			<forward name="error" path="/jsp/modal/modal-implantacion-error.jsp" />
 			<forward name="informe" path="/jsp/modal/modal-implantacion-informe.jsp" />
 		</action>
 		
