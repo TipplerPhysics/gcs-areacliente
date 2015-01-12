@@ -277,7 +277,12 @@ public class InformeServlet extends HttpServlet {
 				Servicio serv = cDao.getServicioById(a);
 
 				nameCli.add(serv.getCliente_name());
-				estado.add(serv.getEstadoSubida());
+				if(serv.getEstadoSubida() == null) {
+					estado.add("KO");
+				}
+				else {
+					estado.add(serv.getEstadoSubida());
+				}
 				detalle.add(serv.getObservaciones());
 				comentSub.add(serv.getdetalleSubida());
 
@@ -308,7 +313,12 @@ public class InformeServlet extends HttpServlet {
 				Conectividad conect = cDao.getConectividadById(a);
 
 				comentSub.add(conect.getdetalleSubida());
-				estado.add(conect.getEstadoSubida());			
+				if(conect.getEstadoSubida() == null) {
+					estado.add("KO");
+				}
+				else {
+					estado.add(conect.getEstadoSubida());
+				}	
 				detalle.add("");
 
 				long ident = conect.getKey_proyecto();
@@ -335,8 +345,6 @@ public class InformeServlet extends HttpServlet {
 		}
 
 		try {
-
-
 			Document document = new Document();
 			PdfWriter.getInstance(document, resp.getOutputStream());
 			document.open();
@@ -362,13 +370,17 @@ public class InformeServlet extends HttpServlet {
 			for(int i=0;i<estado.size();i++){
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("*  "+nameCli.get(i)+","+pais.get(i)+","+producto.get(i)));
-				document.add(new Paragraph(" "));   
-				document.add(new Paragraph(detalle.get(i)));
+				if(detalle.get(i).length() > 0) {
+					document.add(new Paragraph(" "));   
+					document.add(new Paragraph("       " + detalle.get(i)));
+				}
 				document.add(new Paragraph(" "));
-				document.add(new Paragraph("Subida "+estado.get(i)));
+				document.add(new Paragraph("       " + "Subida "+estado.get(i)));
+				if(comentSub.get(i).length() > 0) {
+					document.add(new Paragraph(" "));   
+					document.add(new Paragraph("" + comentSub.get(i)));
+				}
 			}
-
-
 
 			document.close();
 		} catch (DocumentException e) {
