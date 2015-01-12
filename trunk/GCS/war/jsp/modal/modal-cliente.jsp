@@ -13,12 +13,12 @@
 						<div class="form-field">
 							<span class="lbl">Fecha alta cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" readonly="" value="" size="16" class="datepicker" data-target-id='fecha_alta_cliente' name="fecha_alta_cliente" id="fecha_alta_cliente_modal" required aria-required="true">
+								<input type="text" id="fecha_alta_cliente_modal" value="" size="16" class="readonly" readonly name="fecha_alta_cliente" >
 							</div>
-						</div>						
+						</div>												
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
-							<input type="text" aria-required="true" required="" id="client_name_modal" name="client_name" maxlength="25" class="long">
+							<input type="text" id="client_name_modal" value="" size="25" class="readonly" readonly name="client_name" >
 						</div>
 						<div class="form-field">
 							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>

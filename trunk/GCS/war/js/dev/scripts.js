@@ -1780,23 +1780,34 @@ $(function() {
 	});
 	
 	$('#check_all_implantaciones').on('change', function(e) {
-		if($('#check_all_implantaciones').checkbox('checked')) {
-			$('tbody').find('input:checkbox').checkbox('uncheck');	
-			$('#sendMailButton').attr("disabled", true);
-		}
-		else {
+		if($('#check_all_implantaciones').checkbox('isChecked2')) {
 			$('tbody').find('input:checkbox').checkbox('check');
 			$('#sendMailButton').attr("disabled", false);
+		}
+		else {
+			$('tbody').find('input:checkbox').checkbox('uncheck');	
+			$('#sendMailButton').attr("disabled", true);
 		}
 	});
 	
 	$('input:checkbox.inner').on('change', function(e) {
-		if($(this).checkbox('checked')) {
-			$('#sendMailButton').attr("disabled", true);
-			$('#check_all_implantaciones').checkbox('uncheck');
+		if($(this).checkbox('isChecked2')) {
+			$('#sendMailButton').attr("disabled", false);
 		}
 		else {
-			$('#sendMailButton').attr("disabled", false);			
+			var checkedCounter = 0;
+			$('input:checkbox.inner').each(function() {
+				if($(this).checkbox('isChecked2')) {
+					checkedCounter++;
+				}
+			});
+			if(checkedCounter == 0) {
+				$('#sendMailButton').attr("disabled", true);
+				$('#check_all_implantaciones').checkbox('uncheck');
+			}
+			else {
+				$('#check_all_implantaciones').checkbox('uncheck');
+			}
 		}
 	});
 	
@@ -1805,16 +1816,18 @@ $(function() {
 		var servicios = "";
 		var conectividades = "";
 		
-		$('tbody').find('input:checkbox:checked').each(function() {
-			var trow = $(this).closest('tr');
-			var servicioId = trow.data('servicio-id');
-			if(servicioId != null && servicioId != "") {
-				servicios = servicios + servicioId + ",";
+		$('tbody').find('input:checkbox.inner').each(function() {
+			if($(this).checkbox('isChecked2')) {
+				var trow = $(this).closest('tr');
+				var servicioId = trow.data('servicio-id');
+				if(servicioId != null && servicioId != "") {
+					servicios = servicios + servicioId + ",";
+				}
+				var conectividadId = trow.data('conectividad-id');
+				if(conectividadId != null && conectividadId != "") {
+					conectividades = conectividades + conectividadId + ",";
+				}	
 			}
-			var conectividadId = trow.data('conectividad-id');
-			if(conectividadId != null && conectividadId != "") {
-				conectividades = conectividades + conectividadId + ",";
-			}			
 		});
 
 		if((servicios != "") || (conectividades != "")) {
@@ -1831,10 +1844,9 @@ $(function() {
 	
 });;$(function(){
 	
-	
-	var calendada = $('#iframepdf').find("src").val();
-	var y = document.getElementById("iframepdf");
-	if (true){
+	if($('#iframepdf').length > 0) {
+		var calendada = $('#iframepdf').find("src").val();
+		var y = document.getElementById("iframepdf");
 		var formURL = "/informeServlet";
 		 var postData="accion=getDefault";
 		 
@@ -1847,10 +1859,14 @@ $(function() {
 				var anio = data.Anio;
 				var month = data.Mes;
 				var day = data.Dia;
+				var anios = data.Anios;
+				var meses = data.Meses;
+				var dias = data.Dias;
 				var calendada = data.Calendada;
 				if(calendada!="Calendada"&&calendada!="No calendada"){
 					$('#iframepdf').attr('title',"No se encuentra el PDF");
-				}else{
+				}
+				else{
 					
 					var ca = document.getElementById("informe_select_calendada");					
 					var x = document.getElementById("informe_select_anyo");
@@ -1865,22 +1881,49 @@ $(function() {
 					for(cont=0;cont<deb;++cont){
 						z.remove(0);
 					}
-					deb = ca.options.length;
-					for(cont=0;cont<deb;++cont){
-						ca.remove(0);
+					
+					$(ca).find('option').each(function() {
+						if($(this).prop('value') == calendada) {
+							$(this).attr('selected', 'selected');
+						}
+					});
+					
+					$(x).append('<option value="default">Selecciona a&ntilde;o</option>');
+					for(cont=0;cont<anios[0].length;++cont){
+						if(parseInt(anios[0][cont]) == parseInt(anio)) {
+							$(x).append('<option value="' + anios[0][cont] + '" selected>'+ anios[0][cont] +'</option>');
+						}
+						else {
+							$(x).append('<option value="' + anios[0][cont] + '">'+ anios[0][cont] +'</option>');
+						}
 					}
 					
-					var op1 = document.createElement('option');
-			    	op1.text = calendada;
-			    	op1.value = "default";
-			    	ca.add(op1);
+					$(y).append('<option value="default">Selecciona mes</option>');
+					for(cont=0;cont<meses[0].length;++cont){
+						if(parseInt(meses[0][cont]) == parseInt(month)) {
+							$(y).append('<option value="' + meses[0][cont] + '" selected>'+ meses[0][cont] +'</option>');
+						}
+						else {
+							$(y).append('<option value="' + meses[0][cont] + '">'+ meses[0][cont] +'</option>');
+						}
+					}
 					
-			    	var op2 = document.createElement('option');
+					$(z).append('<option value="default">Selecciona d&iacute;a</option>');
+					for(cont=0;cont<dias[0].length;++cont){
+						if(parseInt(dias[0][cont]) == parseInt(day)) {
+							$(z).append('<option value="' + dias[0][cont] + '" selected>'+ dias[0][cont] +'</option>');
+						}
+						else {
+							$(z).append('<option value="' + dias[0][cont] + '">'+ dias[0][cont] +'</option>');
+						}
+					}
+					
+			    	/*var op2 = document.createElement('option');
 			    	op2.text = anio;
 			    	op2.value = "default";
-			    	x.add(op2);
+			    	x.add(op2);*/
 					
-			    	var op3 = document.createElement('option');
+			    	/*var op3 = document.createElement('option');
 			    	op3.text = month;
 			    	op3.value = "default";
 			    	y.add(op3);
@@ -1888,7 +1931,7 @@ $(function() {
 			    	var op4 = document.createElement('option');
 			    	op4.text = day;
 			    	op4.value = "default";
-			    	z.add(op4);
+			    	z.add(op4);*/
 			    	
 					var formURL = "/informeServlet?"+"accion=getInforme&year="+ anio +"&month="+month+"&day="+day+"&calendada="+calendada;
 					$('#iframepdf').attr('src',formURL);
@@ -2482,6 +2525,7 @@ function modalCliente(){
 		var nombre = $currentRow.attr('data-nombre');
 		var tipo = $currentRow.attr('data-tipo');
 		var cliente = $currentRow.attr('data-cliente');
+		var cliente_name = $currentRow.attr('data-cliente-name');
 		var clasificacion = $currentRow.attr('data-clasificacion');
 		var gestor_it = $currentRow.attr('data-gestor-it');
 		var gestor_negocio = $currentRow.attr('data-gestor-negocio');
@@ -2512,7 +2556,7 @@ function modalCliente(){
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#project_name_modal').val(nombre);
 		$('#tipo_modal').val(tipo);
-		$('#input_cliente_modal').val(cliente);
+		$('#input_cliente_modal').val(cliente_name);
 		$('#clasificacion_modal').val(clasificacion);
 		$('#gestor_it_modal').val(gestor_it);
 		$('#gestor_negocio_modal').val(gestor_negocio);

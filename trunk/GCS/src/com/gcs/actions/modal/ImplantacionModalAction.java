@@ -120,7 +120,11 @@ public class ImplantacionModalAction extends Action {
 		else{
 			//msg de error ya que tenemos Implementaciones en diferentes estados de implantacion
 			 System.out.println("Error implementaciones en diferentes estados de implantacion");
-			 return null;
+			 req.setAttribute("servicios", serviciosParam);
+			 req.setAttribute("conectividades", conectividadesParam);
+			 req.setAttribute("ultimoEstadoConectividad", ultimoEstadoConectividad);
+			 req.setAttribute("ultimoEstadoServicio", ultimoEstadoServicio);
+			 return mapping.findForward("error");
 		}
 	}
 }
