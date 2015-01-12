@@ -22,14 +22,30 @@
 						<div class="form-field">
 							<span class="lbl">Indique el tipo de subida<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_subida" id="tipo_subida" class="long selectpicker">																	
+								<select name="tipo_subida" id="tipo_subida" class="long selectpicker">	
+									<option value="default">Seleccione</option>					
 									<option value="Calendada">Calendada</option>
 									<option value="No Calendada">No Calendada</option>									
 								</select>
 							</div>
 						</div>
-						
-						<div class="form-field">
+						<div class="form-field" id='field-container-Default'>
+							<span class="lbl">Fecha<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" disabled />
+							</div>
+						</div>
+						<div class="form-field hidden" id='field-container-fechaCalendada'>
+							<span class="lbl">Fecha<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="fecha_implantacion"  class="long selectpicker">																	
+									<c:forEach items='${fechasStr}' var="fecha">
+										<option value="${fecha}">${fecha}</option>
+									</c:forEach>								
+								</select>
+							</div>
+						</div>
+						<div class="form-field hidden" id='field-container-fechaNoCalendada'>
 							<span class="lbl">Fecha<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" id="fecha_implantacion" name="fecha_implantacion" class="datepicker datefuture" size="16" maxlength="25"  readonly="" required aria-required="true" >
@@ -48,4 +64,25 @@
 			<button type="button" class="" data-dismiss="modal">Cancelar</button>
 		</div>
 </div>
-	
+<script>
+	$('#tipo_subida').on('change',function(e){
+		var tipo= $(this).find(':selected').val();
+		if(tipo == 'Calendada'){
+			$('#field-container-fechaCalendada').removeClass('hidden');
+			$('#field-container-Default').addClass('hidden');
+			$('#field-container-fechaNoCalendada').addClass('hidden');
+		}else{
+			if(tipo == 'No Calendada'){
+				$('#field-container-fechaNoCalendada').removeClass('hidden');
+				$('#field-container-Default').addClass('hidden');
+				$('#field-container-fechaCalendada').addClass('hidden');
+			}else{
+				$('#field-container-Default').removeClass('hidden');
+				$('#field-container-fechaNoCalendada').addClass('hidden');
+				$('#field-container-fechaCalendada').addClass('hidden');
+			}
+		}
+		
+		
+	});
+</script>
