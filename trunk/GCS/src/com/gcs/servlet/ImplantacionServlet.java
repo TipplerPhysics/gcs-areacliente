@@ -2,6 +2,7 @@ package com.gcs.servlet;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -92,6 +93,8 @@ public class ImplantacionServlet extends HttpServlet {
 					generarProduccion(req, resp, usermail);
 				} else if (accion.equals("xls")) {
 					generateXLS(req, resp);
+				}else if (accion.equals("modif")) {
+					modifImplementacion(req, resp,usermail);
 				}
 			}
 		} catch (Exception e) {
@@ -585,6 +588,41 @@ public class ImplantacionServlet extends HttpServlet {
 		
 		name2 = name2.substring(0, name2.length()-1);
 		return name2;
+	}
+	private void modifImplementacion(HttpServletRequest req, HttpServletResponse resp,String usermail) throws ParseException, IOException{
+		
+		JSONObject json = new JSONObject();
+		String id = req.getParameter("id");
+		String tipo = req.getParameter("tipo");
+		String detalleSubida = req.getParameter("detalleSubid");
+		String estadoSubida = req.getParameter("estadoSubid");
+		
+		if(tipo.equals("servicio")){
+			ServicioDao servicioDao = ServicioDao.getInstance();
+			Servicio servicio = servicioDao.getServicioById(Long.parseLong(id));
+			servicio.setdetalleSubida(detalleSubida);
+			servicio.setEstadoSubida(estadoSubida);
+			servicioDao.createServicio(servicio, usermail);	
+		}
+		
+		if(tipo.equals("conectividad")){
+			ConectividadDao conectDao = ConectividadDao.getInstance();
+			Conectividad conect = conectDao.getConectividadById(id);
+			conect.setdetalleSubida(detalleSubida);
+			conect.setEstadoSubida(estadoSubida);
+			conectDao.createConectividad(conect, usermail);
+		}
+			
+		
+		try {
+			json.append("success", "true");
+			resp.setCharacterEncoding("UTF-8");
+	        resp.setContentType("application/json");
+	    	resp.getWriter().println(json);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 }

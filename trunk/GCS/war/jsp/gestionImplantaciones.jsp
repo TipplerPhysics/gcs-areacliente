@@ -85,8 +85,8 @@
 											<td>
 											<c:forEach items="${conectividades}" var="conectividad">
 											<c:if test="${conectividad.key.id==implantacion.conectividadkey}">
-											<c:if test="${conectividad.estadoImp eq 'Solicitado'}">
-											hola
+											<c:if test="${conectividad.estadoImplantacion eq 'Solicitado'}">
+											<a class="lapiz dropbutton" data-id=${conectividad.key.id}></a>
 											</c:if>
 											</c:if>
 											</c:forEach>
@@ -94,42 +94,81 @@
 											<c:forEach items="${servicios}" var="servicio">
 											<c:if test="${servicio.key.id==implantacion.serviciokey}">
 											<c:if test="${servicio.estadoImplantacion eq 'Solicitado'}">
-											<a class="lapiz"  data-toggle="modal" data-target="#edit-client"></a>
+											<a class="lapiz dropbutton" data-id=${servicio.key.id} ></a>
 											</c:if>
 											</c:if>
 											</c:forEach>
 											</td>
 										</c:if>
 									</tr>
-									<tr>
-										<td></td>
-										<td style='height:auto;'>
-											<div style='width:400px'>
-											<c:forEach items="${servicios}" var="servicio">
-											<c:if test="${servicio.key.id==implantacion.serviciokey}">
-											<c:if test="${servicio.estadoImplantacion eq 'Solicitado'}">
-											<form id='updateimp${servicio.key.id}' 
-												<div class='form-field'>
-													<span>Estado subida:</span>
-													<select id="estadoSubid" class="selectpicker selected" name="estadoSubid" >							
-														<option value="OK" ${servicio.estadoSubida == 'OK' ? 'selected' : ''}>OK</option>									
-														<option value="KO" ${servicio.estadoSubida == 'KO' ? 'selected' : ''}>KO</option>	
-													</select>
-												</div>
-												
-												<div class='form-field' style='height:20%;'>
-													<span> Detalles:</span>
-													<textarea placeholder='Introduzca texto'>${servicio.detalleSubida}</textarea>
-												</div>
-												<button type='button' data-id='${servicio.key.id}' onclick=sendEditImplementacion()> Aceptar</button>
-											</form>
-											</c:if>
-											</c:if>
-											</c:forEach>
-												
-											</div>
-										</td>
-									</tr>
+										<c:forEach items="${conectividades}" var="conectividad">
+										<c:if test="${conectividad.key.id==implantacion.conectividadkey}">
+										<c:if test="${conectividad.estadoImplantacion eq 'Solicitado'}">
+											<tr id="line${conectividad.key.id}" class="modifHolder oculto">
+												<td></td>
+												<td style='height:auto;'>
+													<div style='width:400px'>
+														<form id='updateimp${conectividad.key.id}' 
+															<div class='form-field'>
+																<span>Estado subida:</span>
+																<select id="estadoSubid" class="selectpicker selected" name="estadoSubid" >							
+																	<option value="OK" ${conectividad.estadoSubida == 'OK' ? 'selected' : ''}>OK</option>									
+																	<option value="KO" ${conectividad.estadoSubida == 'KO' ? 'selected' : ''}>KO</option>	
+																</select>
+															</div>
+															
+															<div class='form-field' style='height:20%;'>
+																<span> Detalles:</span>
+																<textarea placeholder='Introduzca texto' name="detalleSubid">${conectividad.detalleSubida}</textarea>
+															</div>
+													</div>
+													<td></td><td></td><td>
+															<button type='button' data-id='${conectividad.key.id}' data-tipo='conectividad' class="subidaModifImp"> Aceptar</button>
+															<button class="close-form">Cancelar</button>
+													</td>
+													</form>													
+												</td>
+											</tr>
+										</c:if>
+										</c:if>
+										</c:forEach>
+									<c:forEach items="${servicios}" var="servicio">
+									<c:if test="${servicio.key.id==implantacion.serviciokey}">
+									<c:if test="${servicio.estadoImplantacion eq 'Solicitado'}">
+										
+										
+										<tr id="line${servicio.key.id}" class="modifHolder oculto">
+									
+											<td></td>
+											<td style='height:auto;'>
+												<div style='width:400px'>
+													<form id='updateimp${servicio.key.id}' 
+														<div class='form-field'>
+															<span>Estado subida:</span>
+															<select id="estadoSubid" class="selectpicker selected" name="estadoSubid" >							
+																<option value="OK" ${servicio.estadoSubida == 'OK' ? 'selected' : ''}>OK</option>									
+																<option value="KO" ${servicio.estadoSubida == 'KO' ? 'selected' : ''}>KO</option>	
+															</select>
+														</div>
+														
+														<div class='form-field' style='height:20%;'>
+															<span> Detalles:</span>
+															<textarea placeholder='Introduzca texto' name="detalleSubid">${servicio.detalleSubida}</textarea>
+														</div>
+													
+
+													</div>
+													<td></td><td></td><td>
+														<button type='button' data-id='${servicio.key.id}' data-tipo='servicio' class="subidaModifImp"> Aceptar</button>
+														<button class="close-form">Cancelar</button>
+													</td>
+												</form>
+														
+											</td>
+										</tr>
+									</c:if>
+									</c:if>
+									</c:forEach>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>

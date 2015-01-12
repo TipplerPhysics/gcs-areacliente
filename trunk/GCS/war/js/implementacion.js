@@ -122,49 +122,6 @@ function sendEmailProduccion(){
 		});	
 }
 
-function sendEditImplementacion(){
-	
-	var id = $(this).data('id');
-	var $form = $("#updateimp"+id);
-	
-	if($form.valid()){			
-		
-		var postData = $form.serialize() + "&accion=update&id="+id;
-		var formURL = $form.attr("action");
-		$.ajax(
-		{
-		  url : formURL,
-		  type: "GET",
-		  data : postData,
-		  success:function(data, textStatus, jqXHR) 
-		  {
-				//TODO
-			  if (data.success==("true")){
-					if ($('.edit-user-form-holder').height()<190){
-						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
-					}
-					$form.find('.form-container').find('div:not(#message_div_modal)').hide(0);
-					
-					$form.find('#span_message_modal').html('La implementaci&oacuten ha sido modificado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
-					$('#modal-footer_submit').css('display','none');
-					$('#message_div_modal').css('display','block').removeClass("error").addClass("success");;
-
-					setTimeout(function() { 
-						resetForm($form);
-						location.reload();
-					}, 1500);
-				}else{
-					$('#message_div_modal').removeClass("success").addClass("error");
-					if ($('.edit-user-form-holder').height()<190){
-						$('.edit-user-form-holder').height($('.edit-user-form-holder').height()+35);
-					}
-					$('#span_message_modal').html(data.error);
-					$('#message_div_modal').css('display','block');
-				}
-		  }
-		},'html');
-	}
-}
 
 function showInforme() {
 	location.href="../dashboard/informeImplantacion.do";
@@ -175,6 +132,69 @@ function reloadImplantaciones() {
 }
 
 $(function() {
+	
+
+	$('.modifHolder').slideUp(0);
+	
+	$('.dropbutton').on('click',function(e){
+		var id = $(this).data('id');
+		
+		var adf = $('#line'+id).css('overflow');
+		
+		/*if ($('#line'+id).css('overflow')=="visible"){
+			$('#line'+id).css('overflow','hidden');
+		}else{
+			$('#line'+id).css('overflow','visible');
+		}*/
+		
+		
+		
+		if ($('#line'+id).hasClass('oculto')){
+			$('#line'+id).slideDown();
+			$('#line'+id).removeClass('oculto');
+
+		}else{
+			var adasdfasdff = $('#line'+id).css('overflow');
+			$('#line'+id).slideUp();
+			$('#line'+id).addClass('oculto');			
+		}
+		
+		
+	});
+	
+	$('.subidaModifImp').on('click', function(e) {
+		
+		var link = $(this);
+		var id = $(this).data('id');
+		$('#line'+id).slideUp();
+		$('#line'+id).addClass('oculto');	
+		var tipo = $(this).data('tipo');
+		var $form = $("#updateimp"+id);
+		
+		
+		if($form.valid()){			
+			
+			var postData = $form.serialize() + "&accion=modif&id="+id+"&tipo="+tipo;
+			var formURL = "/implantacionServlet?";
+			$.ajax(
+			{
+			  url : formURL,
+			  type: "GET",
+			  data : postData,
+			  success:function(data, textStatus, jqXHR) 
+			  {
+					//TODO
+				  if (data.success==("true")){
+					  
+					  
+					}else{
+						$('#span_message_modal').html(data.error);
+
+					}
+			  }
+			},'html');
+		}
+	});
 	
 	$('#check_all_implantaciones').on('change', function(e) {
 		if($('#check_all_implantaciones').checkbox('checked')) {
