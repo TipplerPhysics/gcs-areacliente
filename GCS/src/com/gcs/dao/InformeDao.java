@@ -56,7 +56,7 @@ public class InformeDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		
 		Query q = pm.newQuery("SELECT from " + Informe.class.getName());		
-		//q.setOrdering("fecha_generado desc");
+		q.setOrdering("fecha_generado desc");
 		informes = (List<Informe>) q.execute();
 		
 		pm.close();

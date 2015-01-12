@@ -2,9 +2,12 @@ package com.gcs.servlet;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -465,6 +468,10 @@ public class ImplantacionServlet extends HttpServlet {
 				fech[3] = "No calendada";
 			}			
 			infor.setTextoInforme(texto_informe);
+			
+			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = formatter.parse(fechaImplantacion.substring(0,2) + "/" + fechaImplantacion.substring(3,5)  + "/" + fechaImplantacion.substring(6,10));
+			infor.setFecha_generado(date);
 			
 
 						
