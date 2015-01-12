@@ -14,8 +14,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Conectividad;
+import com.gcs.beans.FechaCalendada;
 import com.gcs.beans.Servicio;
 import com.gcs.dao.ConectividadDao;
+import com.gcs.dao.FechaCalendadaDao;
 import com.gcs.dao.ServicioDao;
 
 
@@ -90,6 +92,11 @@ public class ImplantacionModalAction extends Action {
 		
 		//comprobar el estado de las conectividades y servicios - - tiene que ser igual. EQUAL 		
 		if( (ultimoEstadoConectividad == null) && (ultimoEstadoServicio == null) ) {
+			
+			FechaCalendadaDao fechDao = FechaCalendadaDao.getInstance();
+			List<FechaCalendada> fechas = fechDao.getAllFechas();
+			
+			req.setAttribute("fechas",fechas);
 			req.setAttribute("servicios", serviciosParam);
 			req.setAttribute("conectividades", conectividadesParam);
 			

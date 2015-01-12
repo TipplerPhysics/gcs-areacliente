@@ -49,7 +49,6 @@ public class FechaCalendadaDao {
 			
 			
 			Query q = pm.newQuery("select from " + FechaCalendada.class.getName());
-			q.setOrdering("name asc");
 			Fechas = (List<FechaCalendada>) q.execute();
 			
 			
