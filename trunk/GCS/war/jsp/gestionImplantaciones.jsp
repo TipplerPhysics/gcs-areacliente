@@ -105,10 +105,9 @@
 										<c:if test="${conectividad.key.id==implantacion.conectividadkey}">
 										<c:if test="${conectividad.estadoImplantacion eq 'Solicitado'}">
 											<tr id="line${conectividad.key.id}" class="modifHolder oculto">
-												<td></td>
-												<td style='height:auto;'>
-													<div style='width:400px'>
-														<form id='updateimp${conectividad.key.id}' 
+												<td class="edit-impl-row" colspan="8">
+													<form id='updateimp${conectividad.key.id}' >
+														<div class="controls">
 															<div class='form-field'>
 																<span>Estado subida:</span>
 																<select id="estadoSubid" class="selectpicker selected" name="estadoSubid" >							
@@ -117,15 +116,15 @@
 																</select>
 															</div>
 															
-															<div class='form-field' style='height:20%;'>
-																<span> Detalles:</span>
+															<div class='form-field'>
+																<span class="top"> Detalles:</span>
 																<textarea placeholder='Introduzca texto' name="detalleSubid">${conectividad.detalleSubida}</textarea>
 															</div>
-													</div>
-													<td></td><td></td><td>
-															<button type='button' data-id='${conectividad.key.id}' data-tipo='conectividad' class="subidaModifImp"> Aceptar</button>
-															<button class="close-form">Cancelar</button>
-													</td>
+														</div>
+														<div class="buttons">
+																<button type='button' data-id='${conectividad.key.id}' data-tipo='conectividad' class="subidaModifImp"> Aceptar</button>
+																<button type='button' class="dropbutton" data-id=${conectividad.key.id}>Cancelar</button>
+														</div>
 													</form>													
 												</td>
 											</tr>
@@ -138,11 +137,9 @@
 										
 										
 										<tr id="line${servicio.key.id}" class="modifHolder oculto">
-									
-											<td></td>
-											<td style='height:auto;'>
-												<div style='width:400px'>
-													<form id='updateimp${servicio.key.id}' 
+											<td class="edit-impl-row" colspan="8">
+												<form id='updateimp${servicio.key.id}' 
+													<div class="controls">
 														<div class='form-field'>
 															<span>Estado subida:</span>
 															<select id="estadoSubid" class="selectpicker selected" name="estadoSubid" >							
@@ -151,19 +148,16 @@
 															</select>
 														</div>
 														
-														<div class='form-field' style='height:20%;'>
-															<span> Detalles:</span>
+														<div class='form-field'>
+															<span class="top"> Detalles:</span>
 															<textarea placeholder='Introduzca texto' name="detalleSubid">${servicio.detalleSubida}</textarea>
 														</div>
-													
-
 													</div>
-													<td></td><td></td><td>
+													<div class="buttons">
 														<button type='button' data-id='${servicio.key.id}' data-tipo='servicio' class="subidaModifImp"> Aceptar</button>
-														<button class="close-form">Cancelar</button>
-													</td>
+														<button type='button' class=" dropbutton" data-id=${servicio.key.id}>Cancelar</button>
+													</div>
 												</form>
-														
 											</td>
 										</tr>
 									</c:if>
