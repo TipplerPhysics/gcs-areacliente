@@ -403,17 +403,18 @@ public class CosteServlet extends HttpServlet {
 				c.setNum_valoracion(num_valoracion);
 
 			cDao.createCoste(c,usermail);
-
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			json.append("success", "true");
+			
+		} catch (Exception e) {
 			e.printStackTrace();
+			json.append("success", "false");
+			json.append("error", "Ha ocurrido un error.");
+			json.append("errorDetail", e.getStackTrace());
 		}
-
-		json.append("success", "true");
+		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
-
 	}
 
 	private void deleteCoste(HttpServletRequest req, HttpServletResponse resp, String usermail)
@@ -430,18 +431,6 @@ public class CosteServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
-	}
-	
-	
-	/*private void updateProjectCoste(String idProyecto) {
-		CosteDao cDao = CosteDao.getInstance();
-		
-		List<Coste> costes = cDao.getCostesByProject(id);
-		List<Coste> costes = cDao.getCostesByProject(p.getKey().getId());
-		
-		ProyectoDao pDao = ProyectoDao.getInstance();
-		
-		pDao.
-	}*/
+	}	
 
 }

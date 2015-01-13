@@ -69,11 +69,6 @@ public class DefaultConf extends HttpServlet {
 					inicFechas(req,resp);
 					json.append("success", "true");
 				}
-				
-			
-				
-				
-				
 			} else {
 				json.append("failure", "true");
 				json.append("error",
