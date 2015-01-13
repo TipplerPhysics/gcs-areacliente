@@ -377,8 +377,8 @@ public class InformeServlet extends HttpServlet {
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("       " + "Subida "+estado.get(i)));
 				if(comentSub.get(i).length() > 0) {
-					document.add(new Paragraph(" "));   
-					document.add(new Paragraph("" + comentSub.get(i)));
+					document.add(new Paragraph(" ")); 
+					document.add(new Paragraph("       " + comentSub.get(i)));
 				}
 			}
 
