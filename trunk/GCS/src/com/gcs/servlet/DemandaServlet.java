@@ -175,8 +175,8 @@ public class DemandaServlet extends HttpServlet {
 			
 			
 			if (!"".equals(fecha_comunicacion_asignacion)){
-				d.setFecha_comunicacion(Utils.dateConverter(fecha_comunicacion_asignacion));
-				d.setStr_fecha_comunicacion(fecha_comunicacion_asignacion);
+				d.setFecha_comunicacion_asignacion(Utils.dateConverter(fecha_comunicacion_asignacion));
+				d.setStr_fecha_comunicacion_asignacion(fecha_comunicacion_asignacion);
 			}			
 
 			dDao.createDemanda(d,usermail);
