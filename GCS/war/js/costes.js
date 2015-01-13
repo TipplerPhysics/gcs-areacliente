@@ -300,6 +300,7 @@ $(function() {
 							$('#span_message').html("");
 					  }); location.reload();}, 5000);
 				}else{
+					$('.message-container').show();
 					$('#message_div').removeClass("success").addClass("error");
 					if ($('.new-user-form-holder').height()<190){
 						$('.new-user-form-holder').height($('.new-user-form-holder').height()+35);

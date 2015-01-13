@@ -2675,3 +2675,32 @@ label.ui-marmots-label-radio {
   width: 75px;
   display: inline-block;
 }
+.table > tbody > tr > td.edit-impl-row {
+  height: auto;
+  width: 100px;
+  padding: 5px;
+}
+.table > tbody > tr > td.edit-impl-row .controls {
+  width: 100%;
+  display: inline-block;
+}
+.table > tbody > tr > td.edit-impl-row .controls .form-field {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.table > tbody > tr > td.edit-impl-row .controls .form-field > span {
+  width: 105px;
+  display: inline-block;
+}
+.table > tbody > tr > td.edit-impl-row .controls .form-field > span.top {
+  vertical-align: top;
+}
+.table > tbody > tr > td.edit-impl-row .controls .form-field textarea {
+  width: 88%;
+  height: 70px;
+}
+.table > tbody > tr > td.edit-impl-row .buttons {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
