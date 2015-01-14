@@ -1,0 +1,5 @@
+https://sites.google.com/site/gdocs2direct/
+
+https://docs.google.com/uc?export=download&id=0B54qx8vIqLAGY2R5U3FkTXpMeTQ
+
+http://localhost:8888/defaultConf?accion=proyectos&driveid=0B54qx8vIqLAGY2R5U3FkTXpMeTQ
