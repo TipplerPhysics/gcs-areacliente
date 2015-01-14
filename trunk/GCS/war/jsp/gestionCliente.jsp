@@ -78,7 +78,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Logo-url:</span>
-							<input type="text" id="logo_url" name="logo_url" class="long" maxlength="25">
+							<input type="text" id="logo_url" name="logo_url" class="long">
 						</div>
 						
 						<div class="form-field paises">	
