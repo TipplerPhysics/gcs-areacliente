@@ -159,6 +159,21 @@ public class User implements Serializable {
 		return result;
 	}
 	
+	public String getFullName() {
+		String out = "";
+		if(nombre != null && nombre.length() > 0) {
+			out = nombre;
+		}
+		if(apellido1 != null && apellido1.length() > 0) {
+			out += " " + apellido1;
+		}
+		if(apellido2 != null && apellido2.length() > 0) {
+			out += " " + apellido2;
+		}
+		
+		return out;
+	}
+	
 	@Override
 	public boolean equals(Object object_b) {
 		 if (!(object_b instanceof User)) {

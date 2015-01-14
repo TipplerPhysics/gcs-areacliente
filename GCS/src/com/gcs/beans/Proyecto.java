@@ -349,5 +349,31 @@ public class Proyecto {
 		    return this.key.equals(object_a.key);
 		      
 	}
+
+	@Override
+	public String toString() {
+		return " key: " + key + "\r\n fecha_alta_str: " + fecha_alta_str
+				+ "\r\n fecha_alta: " + fecha_alta + "\r\n clienteKey: " + clienteKey
+				+ "\r\n clienteName: " + clienteName + "\r\n clasificacion: "
+				+ clasificacion + "\r\n gestor_it: " + gestor_it
+				+ "\r\n gestor_it_name: " + gestor_it_name + "\r\n gestor_negocio: "
+				+ gestor_negocio + "\r\n gestor_negocio_name: "
+				+ gestor_negocio_name + "\r\n coste: " + coste + "\r\n tipo: " + tipo
+				+ "\r\n cod_proyecto: " + cod_proyecto + "\r\n producto: " + producto
+				+ "\r\n conectividad: " + conectividad
+				+ "\r\n fecha_inicio_valoracion: " + fecha_inicio_valoracion
+				+ "\r\n str_fecha_inicio_valoracion: "
+				+ str_fecha_inicio_valoracion + "\r\n fecha_fin_valoracion: "
+				+ fecha_fin_valoracion + "\r\n str_fecha_fin_valoracion: "
+				+ str_fecha_fin_valoracion + "\r\n fecha_inicio_viabilidad: "
+				+ fecha_inicio_viabilidad + "\r\n str_fecha_inicio_viabilidad: "
+				+ str_fecha_inicio_viabilidad + "\r\n fecha_fin_viabilidad: "
+				+ fecha_fin_viabilidad + "\r\n str_fecha_fin_viabilidad: "
+				+ str_fecha_fin_viabilidad + "\r\n servicio: " + servicio
+				+ "\r\n envioC100: " + envioC100 + "\r\n str_envioC100: "
+				+ str_envioC100 + "\r\n okNegocio: " + okNegocio
+				+ "\r\n str_OKNegocio: " + str_OKNegocio
+				+ "\r\n url_doc_google_drive: " + url_doc_google_drive + "";
+	}
 	
 }
