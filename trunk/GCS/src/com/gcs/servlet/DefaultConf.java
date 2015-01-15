@@ -7,7 +7,9 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,11 +29,8 @@ import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.EquipoDao;
 import com.gcs.dao.FechaCalendadaDao;
 import com.gcs.dao.ProyectoDao;
-import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 
 public class DefaultConf extends HttpServlet {
@@ -82,7 +81,12 @@ public class DefaultConf extends HttpServlet {
 					result = loadProyectos(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
+				}else if ("clientes".equals(accion)){
+					result = loadClientes(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
 				}
+				// TODO añadir usuarios
 			} else {
 				json.append("failure", "true");
 				json.append("error",
@@ -110,6 +114,127 @@ public class DefaultConf extends HttpServlet {
 		doGet(req, resp);
 	}
 	
+	// TODO completar para usuarios
+	/*private String loadUsuarios(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+				
+	}*/
+	
+	private String loadClientes(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+
+		boolean save = false;
+		String saveParam = req.getParameter("save"); 
+		if(saveParam != null && saveParam.equals("true")) {
+			save = true;
+		}
+		String link = "/datadocs/clientes____.csv";
+		
+		String result = "";
+		try {
+			
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+
+			String inputLine = new String();
+
+			ClienteDao clientesDao = ClienteDao.getInstance();
+			Cliente cliente = null;
+			
+			int counter = 0;
+			boolean error = false;
+
+			while ((inputLine = in.readLine()) != null) {
+				error = false;
+				
+				String line = inputLine;
+				String[] clienteSplit = line.split(";", -1);
+
+				boolean procesar = true;
+				if (clienteSplit.length < 19) {
+					procesar = false;
+				}
+				String codigo = clienteSplit[0];
+				if (esNuloVacio(codigo)) {
+					procesar = false;
+					break;
+				}
+
+				if (procesar) {
+					//String fechaAlta = proyectoSplit[1];
+					// TODO: sacar columnas del array a variables. revisar las propiedades del objeto en Cliente.java
+					String nombre = clienteSplit[1];
+					String ref_global = clienteSplit[1];
+					String criticidad = clienteSplit[1];
+					String str_fecha_alta_cliente = null;
+					String logo_url = null;
+					String tipo = null;
+					Set<String> paises_set = null;//new HashSet<String>();
+					
+					
+					cliente = clientesDao.getClienteByName(nombre);
+					List<Cliente> clientes = clientesDao.getAllClientes();
+					Boolean exist_client = false;
+					
+					for (Cliente cl:clientes){
+						if (cl.getNombre().toLowerCase().equals(nombre.toLowerCase())){
+							exist_client = true;
+						}
+					}
+										
+					if (exist_client){
+						result += "Ya existe un cliente con este nombre \r\n";		
+						error = true;
+					}
+					
+					cliente = new Cliente();		
+					if(ref_global!=""){
+						Cliente aux = new Cliente();	
+						aux = clientesDao.getClienteByRefGlobal(ref_global);
+						if (aux!=null){
+							result += "Ya existe un cliente con esta referencia global \r\n";
+							error = true;
+						}else{
+							cliente.setRef_global(ref_global); // ref golbal colocada aqui para poder hacer el campo opcional
+						}
+					}
+					
+					if(!esNuloVacio(nombre)) {
+						cliente.setNombre(nombre);
+					}
+					else {
+						result += "Error nombre \r\n";
+						error = true;
+					}
+					// TODO: check criticidad 
+					cliente.setCriticidad(criticidad);
+					// TODO: check fecha alta 
+					cliente.setStr_fecha_alta_cliente(str_fecha_alta_cliente);
+					cliente.setFecha_alta_cliente(Utils.dateConverter(str_fecha_alta_cliente));
+					cliente.setLogo_url(logo_url);
+					// TODO: check tipo 
+					cliente.setTipo(tipo);
+					// TODO: check paises 
+					cliente.setPaises(paises_set);
+					
+					if(!error) {
+						result += cliente.toString() + "\r\n\r\n";
+					}
+					else {
+						result += "\r\n";
+					}
+					
+					if(save) {
+						clientesDao.createCliente(cliente, usermail);
+					}
+				}
+				counter++;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
 	private String loadProyectos(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 
 		boolean save = false;
@@ -127,122 +252,124 @@ public class DefaultConf extends HttpServlet {
 
 			String inputLine = new String();
 
-			ClienteDao clienteDao = ClienteDao.getInstance();
 			ProyectoDao proyectoDao = ProyectoDao.getInstance();
-			UserDao userDao = UserDao.getInstance();
-
-			List<User> gestores_it = userDao.getUsersByPermisoStr(3);
-			List<User> gestores_negocio = userDao.getUsersByPermisoStr(4);
-
 			Proyecto proyecto = null;
-			User gestorItObj = null;
-			User gestorNegocioObj = null;
-			Cliente cliente = null;
-
-			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 			
 			int counter = 0;
+			boolean error = false;
 
 			while ((inputLine = in.readLine()) != null) {
+				error = false;
+				
 				String line = inputLine;
 				String[] proyectoSplit = line.split(";", -1);
 
 				boolean procesar = true;
-				if (proyectoSplit.length < 16) {
+				if (proyectoSplit.length < 19) {
 					procesar = false;
 				}
 				String codigo = proyectoSplit[0];
-				if (codigo == null || codigo.equals("")) {
+				if (esNuloVacio(codigo)) {
 					procesar = false;
+					break;
 				}
 
 				if (procesar) {
 					String fechaAlta = proyectoSplit[1];
-					String clienteName = proyectoSplit[2];
-					String tipo = proyectoSplit[3];
-					String producto = proyectoSplit[4];
-					String conectividad = proyectoSplit[5];
-					String gestorIt = proyectoSplit[6];
-					String gestorNegocio = proyectoSplit[7];
-					String clasificacion = proyectoSplit[8];
-					String coste = proyectoSplit[9];
-					String inicioEspecificaciones = proyectoSplit[10];
-					String finEspecificaciones = proyectoSplit[11];
-					String c100 = proyectoSplit[12];
-					String okNegocio = proyectoSplit[13];
-					String solicitudViabilidad = proyectoSplit[14];
-					String finViabilidad = proyectoSplit[15];
+					String clienteKey = proyectoSplit[2];
+					String clienteName = proyectoSplit[3];
+					String tipo = proyectoSplit[4];
+					String producto = proyectoSplit[5];
+					String conectividad = proyectoSplit[6];
+					String gestorItKey = proyectoSplit[7];
+					String gestorItName = proyectoSplit[8];
+					String gestorNegocioKey = proyectoSplit[9];
+					String gestorNegocioName = proyectoSplit[10];
+					String clasificacion = proyectoSplit[11];
+					String coste = proyectoSplit[12];
+					String inicioEspecificaciones = proyectoSplit[13];
+					String finEspecificaciones = proyectoSplit[14];
+					String c100 = proyectoSplit[15];
+					String okNegocio = proyectoSplit[16];
+					String solicitudViabilidad = proyectoSplit[17];
+					String finViabilidad = proyectoSplit[18];
 
 					proyecto = new Proyecto();
-
+					
+					result += counter + " :\r\n";
+					
+					proyecto.setStr_envioC100(c100);
+					proyecto.setStr_OKNegocio(okNegocio);
+					
+					proyecto.setStr_fecha_fin_valoracion(finEspecificaciones);
+					proyecto.setStr_fecha_inicio_valoracion(inicioEspecificaciones);
+					
+					proyecto.setStr_fecha_fin_viabilidad(finViabilidad);
+					proyecto.setStr_fecha_inicio_viabilidad(solicitudViabilidad);
+					
+					if(!esNuloVacio(producto)) {
+						proyecto.setProducto(producto);
+					}
+					else {
+						result += "Error producto \r\n";
+						error = true;
+					}
+					
+					proyecto.setConectividad(conectividad);
+					
 					if (isThisDateValid(fechaAlta, "dd/MM/yyyy")) {
 						proyecto.setFecha_alta_str(fechaAlta);
 						proyecto.setFecha_alta(Utils.dateConverter(fechaAlta));
 					}
-
-					cliente = clienteDao.getClienteByName(clienteName);
-					if (cliente != null) {
-						proyecto.setClienteKey(cliente.getKey().getId());
-						proyecto.setClienteName(cliente.getNombre());
-					}
-
-					proyecto.setTipo(tipo);
-					proyecto.setProducto(producto);
-					proyecto.setConectividad(conectividad);
-
-					gestorItObj = findUserByName(gestores_it, gestorIt);
-					if (gestorItObj != null) {
-						proyecto.setGestor_it(gestorItObj.getKey().getId());
-						proyecto.setGestor_it_name(gestorItObj.getFullName());
-					}
-
-					gestorNegocioObj = findUserByName(gestores_negocio,
-							gestorNegocio);
-					if (gestorNegocioObj != null) {
-						proyecto.setGestor_negocio(gestorNegocioObj.getKey()
-								.getId());
-						proyecto.setGestor_negocio_name(gestorNegocioObj
-								.getFullName());
-					}
-
-					proyecto.setClasificacion(Integer.parseInt(clasificacion));
-					proyecto.setCoste(coste); // añadir decimales
-
-					if (isThisDateValid(inicioEspecificaciones, "dd/MM/yyyy")) {
-						proyecto.setStr_fecha_inicio_valoracion(inicioEspecificaciones);
-						proyecto.setFecha_inicio_valoracion(Utils
-								.dateConverter(inicioEspecificaciones));
-					}
-
-					if (isThisDateValid(finEspecificaciones, "dd/MM/yyyy")) {
-						proyecto.setStr_fecha_fin_valoracion(finEspecificaciones);
-						proyecto.setFecha_fin_valoracion(Utils
-								.dateConverter(finEspecificaciones));
-					}
-
-					if (isThisDateValid(c100, "dd/MM/yyyy")) {
-						proyecto.setStr_envioC100(c100);
-						proyecto.setEnvioC100(Utils.dateConverter(c100));
-					}
-					if (isThisDateValid(okNegocio, "dd/MM/yyyy")) {
-						proyecto.setStr_OKNegocio(okNegocio);
-						proyecto.setOkNegocio(Utils.dateConverter(okNegocio));
-					}
-
-					if (isThisDateValid(solicitudViabilidad, "dd/MM/yyyy")) {
-						proyecto.setStr_fecha_inicio_viabilidad(solicitudViabilidad);
-						proyecto.setFecha_inicio_viabilidad(Utils
-								.dateConverter(solicitudViabilidad));
-					}
-
-					if (isThisDateValid(finViabilidad, "dd/MM/yyyy")) {
-						proyecto.setStr_fecha_fin_viabilidad(finViabilidad);
-						proyecto.setFecha_fin_viabilidad(Utils
-								.dateConverter(finViabilidad));
-					}
+					else {
+						result += "Error fecha alta \r\n";
+						error = true;
+					}				
 					
+					if(!esNuloVacio(tipo)) {
+						proyecto.setTipo(tipo);
+					}
+					else {
+						result += "Error tipo \r\n";
+						error = true;
+					}
+					if(!esNuloVacio(clienteKey)) {
+						proyecto.setClienteKey(Long.parseLong(clienteKey));
+					}
+					else {
+						result += "Error cliente \r\n";
+						error = true;
+					}
+					if(!esNuloVacio(clasificacion)) {
+						proyecto.setClasificacion(Integer.parseInt(clasificacion));
+					}
+					else {
+						result += "Error clasificacion \r\n";
+						error = true;
+					}
+					if(!esNuloVacio(gestorItKey)) {
+						proyecto.setGestor_it(Long.parseLong(gestorItKey));
+					}
+					else {
+						result += "Error gestor it \r\n";
+						error = true;
+					}
+					if(!esNuloVacio(gestorNegocioKey)) {
+						proyecto.setGestor_negocio(Long.parseLong(gestorNegocioKey));
+					}
+					else {
+						result += "Error gestor negocio \r\n";
+						error = true;
+					}
+					proyecto.setCoste(coste);
+					//proyecto.setUrl_doc_google_drive(url_doc_google_drive);
 					
-					result += counter + " :\r\n" + proyecto.toString() + "\r\n\r\n";
+					if(!error) {
+						result += proyecto.toString() + "\r\n\r\n";
+					}
+					else {
+						result += "\r\n";
+					}
 					
 					if(save) {
 						proyectoDao.createProject(proyecto, usermail);
@@ -342,6 +469,14 @@ public class DefaultConf extends HttpServlet {
 		}
 		return null;
 	}
+	
+	public boolean esNuloVacio(String string) {
+		if(string == null || "".equals(string)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean isThisDateValid(String dateToValidate, String dateFormat){
 		 
 		if(dateToValidate == null || "".equals(dateToValidate)){

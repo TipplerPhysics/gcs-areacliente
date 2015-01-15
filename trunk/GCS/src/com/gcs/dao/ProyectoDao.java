@@ -65,8 +65,8 @@ public class ProyectoDao {
 		User gestor_negocio = uDao.getUserbyId(p.getGestor_negocio());
 		
 		p.setClienteName(c.getNombre());
-		p.setGestor_it_name(gestor_it.getNombre()+ " " + gestor_it.getApellido1() + " " + gestor_it.getApellido2());
-		p.setGestor_negocio_name(gestor_negocio.getNombre()+ " " + gestor_negocio.getApellido1() + " " + gestor_negocio.getApellido2());
+		p.setGestor_it_name(gestor_it.getFullName());
+		p.setGestor_negocio_name(gestor_negocio.getFullName());
 		
 		if (p.getStr_envioC100() != null && !"".equals(p.getStr_envioC100()))
 			p.setEnvioC100(Utils.dateConverter(p.getStr_envioC100()));
