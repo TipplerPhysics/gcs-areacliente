@@ -219,62 +219,49 @@ public class ProjectServlet extends HttpServlet{
 			if (p!=null){
 				String fecha_alta_str = req.getParameter("fecha_alta_cliente");
 				
-				String envioC100 = req.getParameter("envio_c100");
-				String ok_negocio = req.getParameter("ok_negocio");
-				
-				String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
-				String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
-				
-				String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
-				String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
-				
-				String producto = req.getParameter("producto");
-				String conectividad = req.getParameter("conectividad");
-				
-				
 				String tipo = req.getParameter("tipo");
-				String cliente = req.getParameter("cliente");
 				
+				//String cliente = req.getParameter("cliente");
 				String clasificacion = req.getParameter("clasificacion");
 				String gestor_it_str = req.getParameter("gestor_it");
 				String gestor_negocio_str = req.getParameter("gestor_negocio");
 				String coste = req.getParameter("coste");
 				String url_doc_google_drive = req.getParameter("url_doc_google_drive");
+				String producto = req.getParameter("producto");
+				String conectividad = req.getParameter("conectividad");
+				String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
+				String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");	
+				String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
+				String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+				String envioC100 = req.getParameter("envio_c100");
+				String ok_negocio = req.getParameter("ok_negocio");
 				
+				String cliente_nombre = req.getParameter("cliente_id");
 				
-				
-				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
-				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
-				
-				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
-				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
-				
-				p.setProducto(producto);
-				
-				if (!"default".equals(conectividad))
-					p.setConectividad(conectividad);
-				
-				
+
 				
 				p.setFecha_alta_str(fecha_alta_str);					
-				
 				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
 				
-				p.setStr_envioC100(envioC100);
-
-				p.setStr_OKNegocio(ok_negocio);
-			
 				p.setTipo(tipo);
-				p.setClienteKey(Long.parseLong(cliente));
+				p.setClienteKey(Long.parseLong(cliente_nombre));
 				p.setClasificacion(Integer.parseInt(clasificacion));
 				p.setGestor_it(Long.parseLong(gestor_it_str));
 				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
 				p.setCoste(coste);
 				p.setUrl_doc_google_drive(url_doc_google_drive);				
-				
+				p.setProducto(producto);
+				if (!"default".equals(conectividad))
+					p.setConectividad(conectividad);			
+				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
+				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_envioC100(envioC100);
+				p.setStr_OKNegocio(ok_negocio);
+					
 				pDao.createProject(p,usermail);
 			
-				
 				json.append("success", "true");
 				json.append("id", p.getKey().getId());
 				
@@ -318,6 +305,7 @@ public class ProjectServlet extends HttpServlet{
 			
 			String tipo = req.getParameter("tipo");
 			String cliente = req.getParameter("cliente");
+
 			
 			String clasificacion = req.getParameter("clasificacion");
 			String gestor_it_str = req.getParameter("gestor_it");
