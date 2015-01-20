@@ -30,13 +30,14 @@
 					<div class="form-field">
 							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" id="tipo_modal" readonly="" class="readonly" maxlength="25">
+								<input type="text" id="tipo_modal" name="tipo" readonly="" class="readonly" maxlength="25">
 							</div>
 						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">	
+								<input type="hidden" id="input_cliente_id"  readonly name="cliente_id" class="readonly" value="hiddenValue" maxlength="25">							
 								<input type="text" id="input_cliente_modal"  readonly name="cliente" class="readonly" maxlength="25">
 							</div>
 						</div>
