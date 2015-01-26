@@ -125,7 +125,7 @@ function getProjectsByClient(pagina){
 	
 	var id;
 	if (pagina=="modal"){
-		var id = $("#input_cliente_modal").val();
+		var id = $("#input_cliente_id").val();
 	}else{
 		var id = $("#input_cliente").val();
 	}
