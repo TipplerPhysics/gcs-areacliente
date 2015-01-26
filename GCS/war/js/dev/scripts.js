@@ -773,7 +773,7 @@ function getProjectsByClient(pagina){
 	
 	var id;
 	if (pagina=="modal"){
-		var id = $("#input_cliente_modal").val();
+		var id = $("#input_cliente_id").val();
 	}else{
 		var id = $("#input_cliente").val();
 	}
@@ -2546,6 +2546,7 @@ function modalCliente(){
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#project_name_modal').val(nombre);
 		$('#tipo_modal').val(tipo);
+		$('#input_cliente_id').val(cliente);
 		$('#input_cliente_modal').val(cliente_name);
 		$('#clasificacion_modal').val(clasificacion);
 		$('#gestor_it_modal').val(gestor_it);

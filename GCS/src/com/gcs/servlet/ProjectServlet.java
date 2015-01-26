@@ -267,9 +267,10 @@ public class ProjectServlet extends HttpServlet{
 				
 			}
 			
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			json.append("failure", "true");
 			json.append("error", "Se ha producido un error inesperado");
+			json.append("errordetail", e.getStackTrace());
 			e.printStackTrace();
 		}	
 			
