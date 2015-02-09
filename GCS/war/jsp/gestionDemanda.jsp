@@ -359,7 +359,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Referencia Global:</span>
-							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="30">
+							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="26">
 						</div>
 						
 					</div><div class="form-field-divider right">
