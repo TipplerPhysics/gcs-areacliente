@@ -18,7 +18,12 @@
 
 	<action-mappings>	
 	
-	
+	<action path="/clients2" type="com.gcs.actions.ClientsAction2"
+			name="clientsForm2">
+			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
+			<forward name="ko" path="/jsp/skeletons/clients-skeleton2.jsp" />
+		</action>
+		
 		<action path="/clients" type="com.gcs.actions.ClientsAction"
 			name="clientsForm">
 			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
@@ -149,6 +154,9 @@
 			<forward name="ok" path="/jsp/skeletons/informeImplantaciones-skeleton.jsp" />
 		</action>
 		
+		<action path="/dashboard/informeImplantacion2" type="com.gcs.actions.InformeImplantacionesAction2">
+			<forward name="ok" path="/jsp/skeletons/informeImplantaciones-skeleton2.jsp" />
+		</action>
 		
 	</action-mappings>	
 	

@@ -202,5 +202,14 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			pm.close();
 			
 		}
+		
+		public void deleteClientAll(String usermail){
+			ClienteDao cDao= ClienteDao.getInstance();
+			List<Cliente> clientes = cDao.getAllClientes();
+				for (Cliente cl:clientes){
+					cDao.deleteClient(cl, usermail);
+			}
+						
+		}
 
 }
