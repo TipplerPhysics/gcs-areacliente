@@ -107,7 +107,7 @@
 						<div class="form-field">
 							<span class="lbl">Análisis:</span>
 							<div class="input">
-								<input id="analisis_horas" name="analisis_horas" class="horas number"/><input id="analisis_coste" name="analisis_coste" class="coste number"/>
+								<input id="analisis_horas" name="analisis_horas" class="horas number calcHorasMod"/><input id="analisis_coste" name="analisis_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -117,7 +117,7 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="disenio_horas" name="diseño_horas" class="horas number"/><input id="disenio_coste" name="diseño_coste" class="coste number"/>
+								<input id="disenio_horas" name="diseño_horas" class="horas number calcHorasMod"/><input id="disenio_coste" name="diseño_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -127,7 +127,7 @@
 						<div class="form-field">
 							<span class="lbl">Construcción:</span>
 							<div class="input">
-								<input id="construccion_horas" name="construccion_horas" class="horas number"/><input id="construccion_coste" name="construccion_coste" class="coste number"/>
+								<input id="construccion_horas" name="construccion_horas" class="horas number calcHorasMod"/><input id="construccion_coste" name="construccion_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -137,7 +137,7 @@
 						<div class="form-field">
 							<span class="lbl">Pruebas:</span>
 							<div class="input">
-								<input id="pruebas_horas" name="pruebas_horas" class="horas number"/><input id="pruebas_coste" name="pruebas_coste" class="coste number"/>
+								<input id="pruebas_horas" name="pruebas_horas" class="horas number calcHorasMod"/><input id="pruebas_coste" name="pruebas_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -147,7 +147,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestión:</span>
 							<div class="input">
-								<input id="gestion_horas" name="gestion_horas" class="horas number"/><input id="gestion_coste" name="gestion_coste" class="coste number"/>
+								<input id="gestion_horas" name="gestion_horas" class="horas number calcHorasMod"/><input id="gestion_coste" name="gestion_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -157,7 +157,7 @@
 						<div class="form-field">
 						<span class="lbl">Total:</span>
 							<div class="input">
-								<input id="total_horas" name="total_horas" class="horas" required aria-required="true"/><input id="total_coste" name="total_coste" class="coste"/>
+								<input id="total_horas" readonly name="total_horas" class="horas" required aria-required="true"/><input id="total_coste" name="total_coste" class="coste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl req">Horas<span class="required-asterisk">*</span></span><span class="lbl">Coste</span>
@@ -179,3 +179,22 @@
 		</div>	
 	</div>
 	
+
+<script>
+
+	$('.calcHorasMod').on('change', function(e) {
+		var a =parseInt($('#analisis_horas').val());
+		if (isNaN(a))a=0;
+		var b =parseInt($('#disenio_horas').val());
+		if (isNaN(b))b=0;
+		var c = parseInt($('#construccion_horas').val());
+		if (isNaN(c))c=0;
+		var d = parseInt($('#pruebas_horas').val());
+		if (isNaN(d))d=0;
+		var e = parseInt($('#gestion_horas').val());
+		if (isNaN(e))e=0;
+		var stringSuma = a+b+c+d+e;
+		$('#total_horas').val(stringSuma.toString());
+	});
+	
+</script>

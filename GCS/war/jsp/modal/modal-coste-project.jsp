@@ -102,7 +102,7 @@
 						<div class="form-field">
 							<span class="lbl">An&aacute;lisis:</span>
 							<div class="input">
-								<input id="analisis_horas_modal" name="analisis_horas" class="horas" value="${coste.horas_analisis}"/>
+								<input id="analisis_horas_modal" name="analisis_horas" class="horas calcHorasMod" value="${coste.horas_analisis}"/>
 								<input id="analisis_coste_modal" name="analisis_coste" class="coste" value="${coste.coste_analisis}"/>
 							</div>
 							<div class="input labels">
@@ -113,7 +113,7 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="disenio_horas_modal" name="diseño_horas" class="horas" value="${coste.horas_diseño}"/>
+								<input id="disenio_horas_modal" name="diseño_horas" class="horas calcHorasMod" value="${coste.horas_diseño}"/>
 								<input id="disenio_coste_modal" name="diseño_coste" class="coste" value="${coste.coste_diseño}"/>
 							</div>
 							<div class="input labels">
@@ -124,7 +124,7 @@
 						<div class="form-field">
 							<span class="lbl">Construcción:</span>
 							<div class="input">
-								<input id="construccion_horas_modal" name="construccion_horas" class="horas" value="${coste.horas_construccion}"/>
+								<input id="construccion_horas_modal" name="construccion_horas" class="horas calcHorasMod" value="${coste.horas_construccion}"/>
 								<input id="construccion_coste_modal" name="construccion_coste" class="coste" value="${coste.coste_construccion}"/>
 							</div>
 							<div class="input labels">
@@ -135,7 +135,7 @@
 						<div class="form-field">
 							<span class="lbl">Pruebas:</span>
 							<div class="input">
-								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas" value="${coste.horas_pruebas}"/>
+								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas calcHorasMod" value="${coste.horas_pruebas}"/>
 								<input id="pruebas_coste_modal" name="pruebas_coste" class="coste" value="${coste.coste_pruebas}"/>
 							</div>
 							<div class="input labels">
@@ -146,7 +146,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestión:</span>
 							<div class="input">
-								<input id="gestion_horas_modal" name="gestion_horas" class="horas" value="${coste.horas_gestion}"/>
+								<input id="gestion_horas_modal" name="gestion_horas" class="horas calcHorasMod" value="${coste.horas_gestion}"/>
 								<input id="gestion_coste_modal" name="gestion_coste" class="coste" value="${coste.coste_gestion}"/>
 							</div>
 							<div class="input labels">
@@ -157,7 +157,7 @@
 						<div class="form-field total">
 						<span class="lbl">Total:</span>
 							<div class="input">
-								<input id="total_horas_modal" name="total_horas" class="horas" value="${coste.horas_total}" required aria-required="true"/>
+								<input id="total_horas_modal" name="total_horas" class="horas" value="${coste.horas_total}" readonly required aria-required="true"/>
 								<input id="total_coste_modal" name="total_coste" class="coste" value="${coste.coste_total}"/>
 							</div>
 							<div class="input labels">
@@ -182,3 +182,22 @@
 <div class="ajax_loader" id="ajax_loader">
 	<img src="../../img/ajax-loader.gif" />
 </div>
+
+<script>
+
+	$('.calcHorasMod').on('change', function(e) {
+		var a =parseInt($('#analisis_horas_modal').val());
+		if (isNaN(a))a=0;
+		var b =parseInt($('#disenio_horas_modal').val());
+		if (isNaN(b))b=0;
+		var c = parseInt($('#construccion_horas_modal').val());
+		if (isNaN(c))c=0;
+		var d = parseInt($('#pruebas_horas_modal').val());
+		if (isNaN(d))d=0;
+		var e = parseInt($('#gestion_horas_modal').val());
+		if (isNaN(e))e=0;
+		var stringSuma = a+b+c+d+e;
+		$('#total_horas_modal').val(stringSuma.toString());
+	});
+	
+</script>
