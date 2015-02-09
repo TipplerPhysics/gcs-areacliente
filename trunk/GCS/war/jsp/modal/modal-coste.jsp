@@ -103,7 +103,7 @@
 						<div class="form-field">
 							<span class="lbl">An&aacute;lisis:</span>
 							<div class="input">
-								<input id="analisis_horas_modal" name="analisis_horas" class="horas"/>
+								<input id="analisis_horas_modal" name="analisis_horas" class="horas calcHorasMod"/>
 								<input id="analisis_coste_modal" name="analisis_coste" class="coste"/>
 							</div>
 							<div class="input labels">
@@ -114,7 +114,7 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="disenio_horas_modal" name="diseño_horas" class="horas"/>
+								<input id="disenio_horas_modal" name="diseño_horas" class="horas calcHorasMod"/>
 								<input id="disenio_coste_modal" name="diseño_coste" class="coste"/>
 							</div>
 							<div class="input labels">
@@ -125,7 +125,7 @@
 						<div class="form-field">
 							<span class="lbl">Construcción:</span>
 							<div class="input">
-								<input id="construccion_horas_modal" name="construccion_horas" class="horas"/>
+								<input id="construccion_horas_modal" name="construccion_horas" class="horas calcHorasMod"/>
 								<input id="construccion_coste_modal" name="construccion_coste" class="coste"/>
 							</div>
 							<div class="input labels">
@@ -136,7 +136,7 @@
 						<div class="form-field">
 							<span class="lbl">Pruebas:</span>
 							<div class="input">
-								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas"/>
+								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas calcHorasMod"/>
 								<input id="pruebas_coste_modal" name="pruebas_coste" class="coste"/>
 							</div>
 							<div class="input labels">
@@ -147,7 +147,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestión:</span>
 							<div class="input">
-								<input id="gestion_horas_modal" name="gestion_horas" class="horas"/>
+								<input id="gestion_horas_modal" name="gestion_horas" class="horas calcHorasMod"/>
 								<input id="gestion_coste_modal" name="gestion_coste" class="coste"/>
 							</div>
 							<div class="input labels">
@@ -183,3 +183,21 @@
 <div class="ajax_loader" id="ajax_loader">
 	<img src="../../img/ajax-loader.gif" />
 </div>
+<script>
+
+	$('.calcHorasMod').on('change', function(e) {
+		var a =parseInt($('#analisis_horas_modal').val());
+		if (isNaN(a))a=0;
+		var b =parseInt($('#disenio_horas_modal').val());
+		if (isNaN(b))b=0;
+		var c = parseInt($('#construccion_horas_modal').val());
+		if (isNaN(c))c=0;
+		var d = parseInt($('#pruebas_horas_modal').val());
+		if (isNaN(d))d=0;
+		var e = parseInt($('#gestion_horas_modal').val());
+		if (isNaN(e))e=0;
+		var stringSuma = a+b+c+d+e;
+		$('#total_horas_modal').val(stringSuma.toString());
+	});
+	
+</script>

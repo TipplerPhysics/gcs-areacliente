@@ -237,7 +237,20 @@ $(function() {
 		$('#deleteCoste').attr('name',$(this).attr('name'));
 	});
 	
-	
+	$('.calcHoras').on('change', function(e) {
+		var a =parseInt($('#analisis_horas').val());
+		if (isNaN(a))a=0;
+		var b =parseInt($('#disenio_horas').val());
+		if (isNaN(b))b=0;
+		var c = parseInt($('#construccion_horas').val());
+		if (isNaN(c))c=0;
+		var d = parseInt($('#pruebas_horas').val());
+		if (isNaN(d))d=0;
+		var e = parseInt($('#gestion_horas').val());
+		if (isNaN(e))e=0;
+		var stringSuma = a+b+c+d+e;
+		$('#total_horas').val(stringSuma.toString());
+	});
 	
 	$('#deleteCoste').on('click', function(e) {
 		var id= $(this).attr('name');
