@@ -102,7 +102,7 @@ public class UserServlet extends HttpServlet {
 		
 		UserDao uDao = UserDao.getInstance();
 		User u = uDao.getUserbyId(Long.parseLong(id));
-		
+		//propiedades
 		u.setNombre(nombre);
 		u.setApellido1(ap1);
 		u.setApellido2(ap2);
@@ -176,7 +176,7 @@ public class UserServlet extends HttpServlet {
 			u.setAreas(areas);
 			u.setDepartamento(dto);
             u.setErased(false);
-            
+            u.setActivo(true);
 			uDao.createUser(u,usermail);
 			
 			json.append("success", "true");

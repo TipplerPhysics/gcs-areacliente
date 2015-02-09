@@ -49,8 +49,11 @@ public class User implements Serializable {
 	@Persistent
 	private Boolean erased;
 	
+	@Persistent
+	private Boolean activo;
+	
 	public User(String nombre, String apellido1, String apellido2,
-			String email, int permiso, String permisoStr, String areas,String dto) {
+			String email, int permiso, String permisoStr, String areas,String dto,boolean activo) {
 		super();
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -60,12 +63,20 @@ public class User implements Serializable {
 		this.permisoStr = permisoStr;
 		this.areas = areas;
 		this.departamento = dto;
+		this.activo = activo;
 	}
 		
 	public User() {
 		super();
 	};
 
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
 	public Boolean getErased() {
 		return erased;
 	}
@@ -185,6 +196,15 @@ public class User implements Serializable {
 		 // Custom equality check here.
 		    return this.email.equals(object_a.email);
 		     
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario:\r\nNombre= " + nombre + "\r\nApellido1= "
+				+ apellido1 + "\r\napellido2= " + apellido2 + "\r\nEmail=" + email
+				+ "\r\nAreas= " + areas + "\r\nDepartamento= " + departamento
+				+ "\r\nPermiso= " + permiso + "\r\nPermisoStr= " + permisoStr
+				+ "\r\nErased= " + erased + "\r\nActivo= " + activo;
 	}	
 	
 	

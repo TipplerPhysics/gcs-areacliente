@@ -585,6 +585,60 @@ public class Servicio {
 	
 	@Persistent
 	private String str_migracion_infra;
+
+	@Override
+	public String toString() {
+		return "Servicio [key=" + key + ", gestor_it_key=" + gestor_it_key
+				+ ", gestor_it_name=" + gestor_it_name
+				+ ", gestor_negocio_key=" + gestor_negocio_key
+				+ ", gestor_negocio_name=" + gestor_negocio_name
+				+ ", cliente_key=" + cliente_key + ", cliente_name="
+				+ cliente_name + ", pais=" + pais + ", cod_proyecto="
+				+ cod_proyecto + ", id_proyecto=" + id_proyecto + ", servicio="
+				+ servicio + ", estado=" + estado + ", cod_servicio="
+				+ cod_servicio + ", observaciones=" + observaciones
+				+ ", formato_intermedio=" + formato_intermedio
+				+ ", formato_local=" + formato_local + ", referencia_local1="
+				+ referencia_local1 + ", referencia_local2="
+				+ referencia_local2 + ", fecha_ini_integradas="
+				+ fecha_ini_integradas + ", str_fecha_ini_integradas="
+				+ str_fecha_ini_integradas + ", fecha_fin_integradas="
+				+ fecha_fin_integradas + ", str_fecha_fin_integradas="
+				+ str_fecha_fin_integradas + ", fecha_ini_aceptacion="
+				+ fecha_ini_aceptacion + ", str_fecha_ini_aceptacion="
+				+ str_fecha_ini_aceptacion + ", fecha_fin_aceptacion="
+				+ fecha_fin_aceptacion + ", str_fecha_fin_aceptacion="
+				+ str_fecha_fin_aceptacion + ", fecha_ini_validacion="
+				+ fecha_ini_validacion + ", str_fecha_ini_validacion="
+				+ str_fecha_ini_validacion + ", fecha_fin_validacion="
+				+ fecha_fin_validacion + ", str_fecha_fin_validacion="
+				+ str_fecha_fin_validacion + ", fecha_implantacion_produccion="
+				+ fecha_implantacion_produccion
+				+ ", str_fecha_implantacion_produccion="
+				+ str_fecha_implantacion_produccion
+				+ ", fecha_ini_primera_operacion="
+				+ fecha_ini_primera_operacion
+				+ ", str_fecha_ini_primera_operacion="
+				+ str_fecha_ini_primera_operacion
+				+ ", fecha_fin_primera_operacion="
+				+ fecha_fin_primera_operacion
+				+ ", str_fecha_fin_primera_operacion="
+				+ str_fecha_fin_primera_operacion + ", fecha_ini_op_cliente="
+				+ fecha_ini_op_cliente + ", str_fecha_ini_op_cliente="
+				+ str_fecha_ini_op_cliente + ", fecha_ANS=" + fecha_ANS
+				+ ", str_fecha_ANS=" + str_fecha_ANS + ", fecha_ini_pruebas="
+				+ fecha_ini_pruebas + ", str_fecha_ini_pruebas="
+				+ str_fecha_ini_pruebas + ", fecha_fin_pruebas="
+				+ fecha_fin_pruebas + ", str_fecha_fin_pruebas="
+				+ str_fecha_fin_pruebas + ", estadoImplantacion="
+				+ estadoImplantacion + ", estadoSubida=" + estadoSubida
+				+ ", detalleSubida=" + detalleSubida + ", subidaCalendada="
+				+ subidaCalendada + ", fecha_migracion_channeling="
+				+ fecha_migracion_channeling + ", str_migracion_channeling="
+				+ str_migracion_channeling + ", fecha_migracion_infra="
+				+ fecha_migracion_infra + ", str_migracion_infra="
+				+ str_migracion_infra + "]";
+	}
 	
 	
 }

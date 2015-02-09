@@ -201,5 +201,17 @@ public class Cliente {
 		 // Custom equality check here.
 		    return this.nombre.equals(object_a.nombre);
 		        //&& this.ref_global.equals(object_a.ref_global);
+	}
+
+	@Override
+	public String toString() {
+		return "\r\nNombre Cliente= " + nombre + "\r\nId="
+				+ clientId + "\r\nCriticidad= " + criticidad
+				+ "\r\nFecha alta Cliente= " + str_fecha_alta_cliente
+				+ "\r\nfecha_alta_cliente= " + fecha_alta_cliente + "\r\nLogo url= "
+				+ logo_url + "\r\nRef_global= " + ref_global + "\r\nTipo= " + tipo
+				+ "\r\nPaises=" + paises + "\r\nNumero de Proyecto= " + project_number
+				+ "\r\nErased= " + erased + "\r\nImageType= " + imageType
+				+ "\r\nImage= " + image;
 	}	
 }
