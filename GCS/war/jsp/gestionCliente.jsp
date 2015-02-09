@@ -28,7 +28,7 @@
 		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
 			Descargar Tabla<span class="excel_span"></span>
 		</button>
-
+f
 
 		<div class="new-user-form-holder">
 			<form id="new-client-form" name="new-client-form" action="/clienteServlet"
@@ -69,7 +69,7 @@
 						</div>
 						<div class="form-field">
 							<span class="lbl">Referencia Global B2B:</span>
-							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="11">
+							<input type="text" minlength="11" id="ref_global" name="ref_global" class="long" maxlength="30">
 						</div>
 						
 						
