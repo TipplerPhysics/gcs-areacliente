@@ -25,7 +25,9 @@ import com.gcs.beans.ContadorCliente;
 import com.gcs.beans.ContadorDemanda;
 import com.gcs.beans.Equipo;
 import com.gcs.beans.FechaCalendada;
+import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
+import com.gcs.beans.ServicioFile;
 import com.gcs.beans.User;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.Conectividad;
@@ -36,7 +38,9 @@ import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.EquipoDao;
 import com.gcs.dao.FechaCalendadaDao;
+import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
+import com.gcs.dao.ServicioFileDao;
 import com.gcs.dao.UserDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ConectividadDao;
@@ -115,6 +119,15 @@ public class DefaultConf extends HttpServlet {
 					json.append("result", result);
 				}else if ("demanda".equals(accion)){
 					result = loadDemanda(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("paises".equals(accion)){
+					result = loadPaises(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}
+				else if ("serviciosFile".equals(accion)){
+					result = loadServiciosFile(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
 				}/*else if ("borrarclientes".equals(accion)){
@@ -578,6 +591,73 @@ public class DefaultConf extends HttpServlet {
 					
 				
 				
+	}
+	private String loadServiciosFile(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/serviceFiles____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			PaisDao paisDao = PaisDao.getInstance();
+			String inputLine = new String();
+			ServicioFileDao servFileDao = ServicioFileDao.getInstance();
+			
+			while ((inputLine = in.readLine()) != null) {
+				ServicioFile servFile = new ServicioFile();
+				String line = inputLine;
+				String[] servicioSplit = line.split(";", -1);
+				String servName = servicioSplit[0];
+				String paisName = servicioSplit[1];
+				ArrayList <String> extensiones = new ArrayList<String>();
+				for (int i = 2 ; i<servicioSplit.length;i++){
+					extensiones.add(servicioSplit[i]);
+				}
+				
+				List<Pais> paisesList = paisDao.getPaisesByName(paisName);
+				Pais pais = paisesList.get(0);
+				
+				servFile.setPaisId(pais.getKey().getId());
+				servFile.setName(servName);
+				servFile.setExtensiones(extensiones);
+				servFileDao.createServicioFile(servFile);
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
+	private String loadPaises(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/pais____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			PaisDao paisDao = PaisDao.getInstance();
+			paisDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					Pais pais = new Pais();
+					pais.setNme(inputLine);
+					paisDao.createPais(pais);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
 	}
 	
 	private String loadServicios(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{

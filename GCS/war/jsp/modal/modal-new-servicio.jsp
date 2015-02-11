@@ -21,7 +21,7 @@
 								</select>
 							</div>
 						</div>
-						
+						<!--
 						<div class="form-field">
 							<span class="lbl">Pais<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -51,7 +51,41 @@
 								</select>
 							</div>
 						</div>
+						-->
 						
+												<div class="form-field">
+							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<c:forEach items="${paises}" var="t">							
+										<option value="${t.key.id}">${t.name}</option>
+									</c:forEach>
+									
+
+									
+																											
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true">
+									<option value="default">-</option>																	
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="extension" id="extension" required aria-required="true">
+									<option value="default">-</option>																	
+								</select>
+							</div>
+						</div>
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">

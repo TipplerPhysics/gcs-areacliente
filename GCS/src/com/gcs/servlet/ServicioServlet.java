@@ -22,12 +22,16 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
+import com.gcs.beans.ServicioFile;
 import com.gcs.config.Config;
 import com.gcs.config.StaticConfig;
+import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
+import com.gcs.dao.ServicioFileDao;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -58,6 +62,8 @@ public class ServicioServlet extends HttpServlet {
 				updateServicio(req,resp,usermail);
 			}else if ("xls".equals(accion)){
 				generateXLS(req,resp);
+			}else if ("getExtensionesByService".equals(accion)){
+				getExtensionesByService(req,resp);
 			}
 		
 		} catch (IOException | JSONException | ServletException e) {
@@ -251,7 +257,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
 			String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
-			
+			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
 
 			
@@ -291,6 +297,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			s.setStr_migracion_infra(str_fecha_mig_infraestructura);
+			s.setExtension(extension);
 			
 			
 			sDao.createServicio(s,usermail);
@@ -330,9 +337,15 @@ public class ServicioServlet extends HttpServlet {
 		}
 	}
 	
-	public static ArrayList<String> getServicesByCountryJSON(String pais) throws JSONException{
+	public static List<ServicioFile> getServicesByCountryJSON(Pais pais) throws JSONException{
 		JSONArray jarray = new JSONArray();
-		ArrayList<Config> servicios = new ArrayList<>();
+		
+		ServicioFileDao servicioFileDao = ServicioFileDao.getInstance();
+		List<ServicioFile> servicioFiles = servicioFileDao.getAllServiciosForPais(pais);
+		
+		return servicioFiles;
+		
+		/*ArrayList<Config> servicios = new ArrayList<>();
 		
 		ArrayList<String> result = new ArrayList<String>();
 		
@@ -408,24 +421,29 @@ public class ServicioServlet extends HttpServlet {
 					for (int a =0; a<=servicios.size()-1; a++){
 						result.add(servicios.get(a).getValue());
 					}				
-					break;
-			}
-		
-			return result;
+					break;		
+			}*/
+
 		
 	}
 	
 	private void getServicesByCountry(HttpServletRequest req, HttpServletResponse resp){
-		String pais = req.getParameter("pais");
-		
+		String pais_str = req.getParameter("pais");
+		long idPais = Long.parseLong(pais_str);
+		PaisDao paisDao = PaisDao.getInstance();
+		Pais pais = paisDao.getPaisById(idPais);
+				
 		try{
 		
-			ArrayList<String> list = getServicesByCountryJSON(pais);
+			List<ServicioFile> list = getServicesByCountryJSON(pais);
 			JSONObject json = new JSONObject();
 			JSONArray jarray = new JSONArray();
 			
-			for (String o:list){
-				jarray.put(o);
+			for (ServicioFile o:list){
+				jarray.put(o.getKey().getId());
+				jarray.put(o.getName());
+				jarray.put(o.getPaisId());
+				jarray.put(o.getExtensiones());
 			}
 			
 			json.append("success","true");
@@ -440,8 +458,39 @@ public class ServicioServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
+		
 	}
-	
+	private void getExtensionesByService(HttpServletRequest req, HttpServletResponse resp){
+		String service_str = req.getParameter("service");
+		long idService = Long.parseLong(service_str);
+		ServicioFileDao servDao = ServicioFileDao.getInstance();
+		ServicioFile servicio = servDao.getServicioFileById(idService);
+		ArrayList<String> extensiones = servicio.getExtensiones();  
+		try{
+		
+			JSONObject json = new JSONObject();
+			JSONArray jarray = new JSONArray();
+			
+			for (String o:extensiones){
+				jarray.put(o);
+			}
+			
+			json.append("success","true");
+			json.append("extensiones", jarray);
+			
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			resp.getWriter().println(json);
+		
+		} catch (IOException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 	private void createService(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
@@ -449,7 +498,7 @@ public class ServicioServlet extends HttpServlet {
 		try{
 			String project_id = req.getParameter("cod_proyecto");
 			
-			ProyectoDao pDao = ProyectoDao.getInstance();
+			ProyectoDao pDao = ProyectoDao.getInstance(); 
 			Proyecto p = pDao.getProjectbyId(Long.parseLong(project_id));
 			
 			String servicio = req.getParameter("servicio");
@@ -485,7 +534,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
 			String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
-			
+			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
 
 			Servicio s = new Servicio();
@@ -525,6 +574,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			s.setStr_migracion_infra(str_fecha_mig_infraestructura);
+			s.setExtension(extension);
 			
 			ServicioDao sDao = ServicioDao.getInstance();
 			sDao.createServicio(s,usermail);

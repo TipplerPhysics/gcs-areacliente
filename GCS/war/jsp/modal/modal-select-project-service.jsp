@@ -13,10 +13,16 @@
 			<span class="lbl">Servicio:</span>
 			<div class="input">
 				<select class="selectpicker selected" id="select_project_action" name="select_project_action">	
-					<option value="default">Seleccione</option>	
+					<c:choose>
+					<c:when test="${empty services}">
+					<option value="default">No hay servicios</option>
+					</c:when>
+					<c:otherwise>
 					<c:forEach items="${services}" var="s">	
 						<option value="${s.key.id}">${s.cod_servicio}</option>
-					</c:forEach>						
+					</c:forEach>
+					</c:otherwise>	
+					</c:choose>					
 				</select>
 			</div>
 		</div>
