@@ -25,18 +25,10 @@
 							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="pais" id="pais_servicio_modal" required aria-required="true">
-									<option value="Argentina"  ${servicio.pais == 'Argentina' ? 'selected' : ''}>Argentina</option>
-									<option value="Bélgica" ${servicio.pais == 'Bélgica' ? 'selected' : ''}>Bélgica</option>
-									<option value="Chile" ${servicio.pais == 'Chile' ? 'selected' : ''}>Chile</option>
-									<option value="Colombia" ${servicio.pais == 'Colombia' ? 'selected' : ''}>Colombia</option>
-									<option value="España" ${servicio.pais == 'España' ? 'selected' : ''}>España</option>									
-									<option value="EEUU" ${servicio.pais == 'EEUU' ? 'selected' : ''}>EEUU</option>
-									<option value="Francia" ${servicio.pais == 'Francia' ? 'selected' : ''}>Francia</option>
-									<option value="México" ${servicio.pais == 'México' ? 'selected' : ''}>México</option>
-									<option value="Perú" ${servicio.pais == 'Perú' ? 'selected' : ''}>Perú</option>
-									<option value="Portugal" ${servicio.pais == 'Portugal' ? 'selected' : ''}>Portugal</option>
-									<option value="UK" ${servicio.pais == 'UK' ? 'selected' : ''}>UK</option>
-									<option value="Venezuela" ${servicio.pais == 'Venezuela' ? 'selected' : ''}>Venezuela</option>																		
+									<option value="default">Seleccionar</option>
+									<c:forEach items="${paises}" var="t">							
+										<option value="${t.key.id}" ${servicio.pais == t.key.id ? 'selected' : ''}>${t.name}</option>
+									</c:forEach>																
 								</select>
 							</div>
 						</div>
@@ -47,9 +39,20 @@
 								<select class="selectpicker selected" name="servicio" id="servicio_modal" required aria-required="true">
 									
 									<c:forEach items="${servicios_pais}" var="s">	
-										<option value="${s}" ${servicio.servicio == s ? 'selected' : ''}>${s}</option>
+										<option value="${s.key.id}" ${servicio.servicio == s.key.id ? 'selected' : ''}>${s.name}</option>
 									</c:forEach>	
 																					
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="extension" id="extension_modal" required aria-required="true">
+									<c:forEach items="${extensiones}" var="ext">	
+										<option value="${ext}" ${servicio.extension == ext ? 'selected' : ''}>${ext}</option>
+									</c:forEach>																
 								</select>
 							</div>
 						</div>

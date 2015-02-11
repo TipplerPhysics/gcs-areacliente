@@ -2879,7 +2879,7 @@ function sendEditServicio(){
 	 }
 }
 
-function ajaxServicios(pais,target){
+function ajaxServicios(pais,target,targetExt){
 	if (pais!="default"){
 		 var formURL = "/serviceServlet?";
 		 var postData="accion=getServicesByCountry&pais="+pais;
@@ -2892,22 +2892,69 @@ function ajaxServicios(pais,target){
 				{
 					if (data.success=="true"){
 						var servicios = data.servicios[0];
+						targetExt.empty();
+						targetExt.selectpicker("render");
+						targetExt.empty();
+						targetExt.append($("<option></option>").attr("value","default").text("-"));
+						targetExt.selectpicker("refresh");
+						
 						target.empty();
 						target.selectpicker("render");
 						target.empty();
 						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
-						$.each(servicios, function (index, value) {
-							target.append($("<option></option>").attr("value",value).text(value));
-					    });	
+						
+						
+						var tamano = servicios.length;
+						for (var i = 0 ; i < tamano; i=i+4){
+							var id = servicios[i];
+							var name = servicios [i+1];
+							var paisId = servicios[i+2];
+							var extensionesarr = servicios[i+3];
+							var extensiones = "";
+							extensionesarr.forEach(function(entry){
+								extensiones = extensiones+" " + entry;
+							});
+							target.append($("<option></option>").attr("value",String(id)).text(name)).attr("data-pais",String(paisId)).attr("data-extensiones",extensiones);
+						}
 						target.selectpicker("refresh");
-						//target.$element.bind('DOMNodeInserted DOMNodeRemoved', $.proxy(target.reloadLi, target));
+						//
 
 					}					
 				}
 			});
 	}
 }
+function ajaxExtensiones(servicio,target){
+	if (servicio!="default"){
+		 var formURL = "/serviceServlet?";
+		 var postData="accion=getExtensionesByService&service="+servicio;
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success=="true"){
+						var extensiones = data.extensiones[0];
+						target.empty();
+						target.selectpicker("render");
+						target.empty();
+						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
+						$.each(extensiones,function(index,value){
+								target.append($("<option></option>").attr("value",value).text(value));	
+						});
+						
+						
+					}
+					target.selectpicker("refresh");
+						//
 
+				}					
+				
+			});
+	}
+}
 
 $(function(){
 	
@@ -2960,31 +3007,49 @@ $(function(){
 	$('#new-service-form').on('change', '#pais_servicio', function(e) {
 		var pais = $('#pais_servicio').val();
 		var target = $('#servicio');
-		
-		ajaxServicios(pais,target);		
+		var targetExt = $('#extension');
+		ajaxServicios(pais,target,targetExt);		
 	});
+	
+	
+	$('#new-service-form').on('change', '#servicio', function(e) {
+		var servicio = $('#servicio').val();
+		var target = $('#extension');
+		ajaxExtensiones(servicio,target);
+				
+	});
+	
+
 	
 	$('#new-servicio').on('change', '#pais_servicio', function(e) {
 		var pais = $('#pais_servicio').val();
-		var target = $('#servicio_modal');
-		
-		ajaxServicios(pais,target);
-		
+		var target = $('#servicio');
+		var targetExt = $('#extension');
+		ajaxServicios(pais,target,targetExt);		
 	});
 	
-	$('#new-servicio').on('change', '#pais_servicio_new', function(e) {
-		var pais = $('#pais_servicio_new').val();
-		var target = $('#servicio_modal_new');
-		
-		ajaxServicios(pais,target);
-		
+	$('#new-servicio').on('change', '#servicio', function(e) {
+		var servicio = $('#servicio').val();
+		var target = $('#extension');
+		ajaxExtensiones(servicio,target);
+				
 	});
 	
 	$('html').on('change', '#pais_servicio_modal', function(e) {
 		var pais = $('#pais_servicio_modal').val();
 		var target = $('#servicio_modal');
+		var targetExt = $('#extension_modal');
 		
-		ajaxServicios(pais,target);
+		ajaxServicios(pais,target,targetExt);
+		
+	});
+	
+	$('html').on('change', '#servicio_modal', function(e) {
+		var servicio = $('#servicio_modal').val();
+		var target = $('#extension_modal');
+		
+		
+		ajaxExtensiones(servicio,target);
 		
 	});
 	

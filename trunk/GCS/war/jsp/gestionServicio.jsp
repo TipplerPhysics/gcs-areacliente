@@ -46,18 +46,13 @@
 							<div class="input">
 								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true">
 									<option value="default">Seleccionar</option>
-									<option value="Argentina">Argentina</option>
-									<option value="Bélgica">Bélgica</option>
-									<option value="Chile">Chile</option>
-									<option value="Colombia">Colombia</option>
-									<option value="España">España</option>									
-									<option value="EEUU">EEUU</option>
-									<option value="Francia">Francia</option>
-									<option value="México">México</option>
-									<option value="Perú">Perú</option>
-									<option value="Portugal">Portugal</option>
-									<option value="UK">UK</option>
-									<option value="Venezuela">Venezuela</option>																		
+									<c:forEach items="${paises}" var="t">							
+										<option value="${t.key.id}">${t.name}</option>
+									</c:forEach>
+									
+
+									
+																											
 								</select>
 							</div>
 						</div>
@@ -66,6 +61,15 @@
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true">
+									<option value="default">-</option>																	
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="extension" id="extension" required aria-required="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>

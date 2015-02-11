@@ -155,6 +155,9 @@ public class Servicio {
 	private String detalleSubida;
 	
 	@Persistent
+	private String extension;
+	
+	@Persistent
 	private Boolean subidaCalendada;
 	
 	public Key getKey() {
@@ -273,6 +276,14 @@ public class Servicio {
 
 	public void setdetalleSubida(String detalleSubida) {
 		this.detalleSubida = detalleSubida;
+	}
+	
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
 	}
 	
 	public Boolean subidaCalendada() {
