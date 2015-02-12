@@ -107,25 +107,15 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia local:</span>
+							<span class="lbl">Referencia local integrado:</span>
 							<input type="text" id="ref_local1_modal" value="${servicio.referencia_local1}" maxlength="25" name="ref_local1" class="long">
-							<input type="text" id="ref_local2_modal" value="${servicio.referencia_local2}" maxlength="25" name="ref_local2" class="long">
-						</div>
-						<div class="form-field">
-							<span class="lbl">Fecha inicio integradas:</span>
-							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_integradas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas_modal' name="fecha_inicio_integradas" id="fecha_inicio_integradas_modal">
-							</div>
+							
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha fin integradas:</span>
-							<div class="input">
-								<input type="text" value="${servicio.str_fecha_fin_integradas}" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas_modal">
-							</div>
+							<span class="lbl">Referencia:</span>
+						<input type="text" id="ref_local2_modal" value="${servicio.referencia_local2}" maxlength="25" name="ref_local2" class="long">
 						</div>
-						
-
 					</div>
 					<div class="form-field-divider right">
 						
@@ -208,16 +198,16 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha migración Channeling:</span>
+							<span class="lbl">Fecha inicio integradas:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_migracion_channeling}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_mig_channeling_modal' name="fecha_mig_channeling" id="fecha_mig_channeling_modal">
+								<input type="text" value="${servicio.str_fecha_ini_integradas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas_modal' name="fecha_inicio_integradas" id="fecha_inicio_integradas_modal">
 							</div>
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha migración infraestructura:</span>
+							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
-								<input type="text" value="${servicio.str_migracion_infra}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_mig_infraestructura_modal' name="fecha_mig_infraestructura" id="fecha_mig_infraestructura_modal">
+								<input type="text" value="${servicio.str_fecha_fin_integradas}" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas_modal">
 							</div>
 						</div>
 						

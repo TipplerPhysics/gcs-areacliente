@@ -778,8 +778,8 @@ public class DefaultConf extends HttpServlet {
 						servicio.setStr_fecha_ANS(str_fecha_ans);
 						servicio.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
 						servicio.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
-						servicio.setStr_migracion_channeling(str_fecha_mig_channeling);
-						servicio.setStr_migracion_infra(str_fecha_mig_infraestructura);
+						//servicio.setStr_migracion_channeling(str_fecha_mig_channeling);
+						//servicio.setStr_migracion_infra(str_fecha_mig_infraestructura);
 						
 							
 					

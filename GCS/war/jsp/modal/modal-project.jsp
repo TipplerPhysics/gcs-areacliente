@@ -28,9 +28,16 @@
 					</div>
 					
 					<div class="form-field">
-							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Tipo implementaci&oacuten<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" id="tipo_modal" name="tipo" readonly="" class="readonly" maxlength="25">
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Subtipo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" id="subtipo_modal" name="subtipo" readonly="" class="readonly" maxlength="25">
 							</div>
 						</div>
 						
@@ -81,10 +88,7 @@
 						<input type="text" aria-required="true" readonly="" value="${coste}" id="coste_modal" name="coste" class="long euro readonly">
 					</div>
 					
-					<div class="form-field">
-						<span class="lbl">Url carpeta Google Drive:</span>
-						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
-					</div>
+
 				</div>
 				
 				<div class="form-field-divider right">
@@ -164,6 +168,11 @@
 						<div class="input">
 							<input type="text" value="${proyecto.str_OKNegocio}" size="16" maxlength="25" class="datepicker" name="ok_negocio" id="ok_negocio_modal">
 						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Url carpeta Google Drive:</span>
+						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
 					</div>
 				</div>
 				

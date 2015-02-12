@@ -553,7 +553,7 @@ public class Servicio {
 		this.str_fecha_fin_pruebas = str_fecha_fin_pruebas;
 	}
 
-	public Date getFecha_migracion_channeling() {
+/*	public Date getFecha_migracion_channeling() {
 		return fecha_migracion_channeling;
 	}
 
@@ -596,7 +596,7 @@ public class Servicio {
 	
 	@Persistent
 	private String str_migracion_infra;
-
+*/
 	@Override
 	public String toString() {
 		return "Servicio [key=" + key + ", gestor_it_key=" + gestor_it_key
@@ -644,11 +644,11 @@ public class Servicio {
 				+ str_fecha_fin_pruebas + ", estadoImplantacion="
 				+ estadoImplantacion + ", estadoSubida=" + estadoSubida
 				+ ", detalleSubida=" + detalleSubida + ", subidaCalendada="
-				+ subidaCalendada + ", fecha_migracion_channeling="
+				+ subidaCalendada   + "]";           /*+ ", fecha_migracion_channeling="
 				+ fecha_migracion_channeling + ", str_migracion_channeling="
 				+ str_migracion_channeling + ", fecha_migracion_infra="
 				+ fecha_migracion_infra + ", str_migracion_infra="
-				+ str_migracion_infra + "]";
+				+ str_migracion_infra + "]";*/
 	}
 	
 	

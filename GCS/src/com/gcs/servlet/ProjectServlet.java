@@ -300,6 +300,7 @@ public class ProjectServlet extends HttpServlet{
 			
 			String producto = req.getParameter("producto");
 			String conectividad = req.getParameter("conectividad");
+			String subtipo = req.getParameter("subtipo");
 			
 			
 			
@@ -325,6 +326,8 @@ public class ProjectServlet extends HttpServlet{
 				
 				p.setStr_envioC100(envioC100);
 				p.setStr_OKNegocio(ok_negocio);
+				
+				p.setSubtipo(subtipo);
 				
 				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
 				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);

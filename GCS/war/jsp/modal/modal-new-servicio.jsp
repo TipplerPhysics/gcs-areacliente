@@ -136,25 +136,15 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia local:</span>
+							<span class="lbl">Referencia local integrado:</span>
 							<input type="text" id="ref_local1" name="ref_local1" maxlength="25" class="long">
+							
+						</div>
+
+						<div class="form-field">
+							<span class="lbl">Referencia local:</span>
 							<input type="text" id="ref_local2" name="ref_local2" maxlength="25" class="long">
 						</div>
-						<div class="form-field">
-							<span class="lbl">Fecha inicio integradas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
-							</div>
-						</div>
-						
-						<div class="form-field">
-							<span class="lbl">Fecha fin integradas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
-							</div>
-						</div>
-						
-						
 						
 					</div>
 					<div class="form-field-divider right">
@@ -237,18 +227,19 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha migración Channeling:</span>
+							<span class="lbl">Fecha inicio integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_mig_channeling' name="fecha_mig_channeling" id="fecha_mig_channeling">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
 							</div>
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha migración infraestructura:</span>
+							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_mig_infraestructura' name="fecha_mig_infraestructura" id="fecha_mig_infraestructura">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
 							</div>
 						</div>
+
 					</div>	
 					
 				</div>

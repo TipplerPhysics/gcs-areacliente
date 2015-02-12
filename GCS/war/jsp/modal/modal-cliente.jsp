@@ -62,6 +62,8 @@
 						<div class="form-field">	
 							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
 							<div class="radio-div">
+							
+							
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Argentina"
 										id="argentina_check_modal" class="require-one"><label for="argentina_check_modal"><span></span>Argentina</label>
@@ -83,6 +85,11 @@
 									<input type="checkbox" name='paises' value="Colombia"
 										id="colombia_check_modal"><label for="colombia_check_modal"><span></span>Colombia</label>
 								</div>
+								<div class="radio-container">
+									<input type="checkbox" name='paises' value="Curasao"
+										id="curasao_check_modal"><label for="curasao_check_modal"><span></span>Curasao</label>
+								</div>	
+								
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Espa&ntilde;a"
 										id="esp_check_modal"><label for="esp_check_modal"><span></span>Espa&ntilde;a</label>
@@ -122,7 +129,9 @@
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Venezuela"
 										id="venezuela_check_modal"><label for="venezuela_check_modal"><span></span>Venezuela</label>
-								</div>							
+								</div>	
+								
+
 							</div>
 						</div>				
 					</div>					

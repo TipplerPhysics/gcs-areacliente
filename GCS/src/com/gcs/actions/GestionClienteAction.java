@@ -12,7 +12,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Pais;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.PaisDao;
 
 public class GestionClienteAction extends Action{
 	
@@ -22,6 +24,10 @@ public class GestionClienteAction extends Action{
 		
 		ClienteDao cDao = ClienteDao.getInstance();
 		List<Cliente> clientes = cDao.getAllNonDeletedClients();
+		
+		PaisDao paisDao = PaisDao.getInstance();
+		List<Pais> paises = paisDao.getAllPaises();
+		req.setAttribute("paises", paises);
 		
 		req.setAttribute("clientes", clientes);
 		req.setCharacterEncoding("UTF-8");

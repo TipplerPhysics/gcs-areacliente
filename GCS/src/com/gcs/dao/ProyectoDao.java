@@ -211,7 +211,7 @@ public Proyecto getProjectbyId(long l) {
 				
 		String cod_cliente = c.getClientId().split("IDGLOBAL")[1];
 		
-		project_name = p.getTipo()+cod_cliente+"_"+String.format("%02d", project_number);
+		project_name = "PROY_"+cod_cliente+"_"+String.format("%02d", project_number);
 		
 		return project_name;
 	}

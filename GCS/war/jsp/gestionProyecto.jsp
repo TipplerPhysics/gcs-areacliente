@@ -41,26 +41,25 @@
 					</div>
 					
 					<div class="form-field">
-							<span class="lbl">Tipo<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Tipo implementacion<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
+								<select class="selectpicker selected" name="tipo" id="tipo-imp-proj" required aria-required="true">
 									<option value="default">Seleccionar</option>
-									<option value="IMPL">IMPL</option>
-									<option value="SEPA">SEPA</option>
-									<option value="IMPL-OB-C">IMPL-OB-C</option>
-									<option value="IMPL-OB-S">IMPL-OB-S</option>
-									<option value="SEPA-OB-C">SEPA-OB-C</option>
-									<option value="SEPA-OB-S">SEPA-OB-S</option>
-									<option value="MIGR-IA">MIGR-IA</option>
-									<option value="MIGR-OB">MIGR-OB</option>
-									<option value="MIGR-CH">MIGR-CH</option>
-									<option value="MIGR-INF">MIGR-INF</option>
-									<option value="EVOL-C">EVOL-C</option>
-									<option value="EVOL-S">EVOL-S</option>
-									<option value="PRUC">PRUC</option>
-									<option value="CONS">CONS</option>
-									<option value="VIAB">VIAB</option>
-									
+									<option value="Implementación">Implementaci&oacuten</option>
+									<option value="Evolutivo">Evolutivo</option>
+									<option value="Prueba cliente">Prueba cliente</option>
+									<option value="Migración">Migraci&oacuten</option>
+									<option value="Consulta">Consulta</option>
+									<option value="Viabilidad">Viabilidad</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Subtipo:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="subtipo" id="subtipo_imp" required aria-required="true">
+									<option value=" ">-</option>
 								</select>
 							</div>
 						</div>
@@ -119,10 +118,7 @@
 							<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
 						</div>
 						
-						<div class="form-field">
-							<span class="lbl">Url carpeta Google Drive:</span>
-							<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
-						</div>
+
 					
 				</div>
 				
@@ -191,6 +187,11 @@
 						<div class="input">
 							<input type="text" value="" size="16" maxlength="25" class="datepicker" name="ok_negocio" id="ok_negocio">
 						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Url carpeta Google Drive:</span>
+						<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
 					</div>
 					
 					
@@ -273,7 +274,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${proyectos}" var="proyecto">
-									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-servicio="${proyecto.servicio}" data-conectividad="${proyecto.conectividad}" data-producto="${proyecto.producto}" data-fecha-ini-viabilidad="${proyecto.str_fecha_inicio_viabilidad}" data-fecha-fin-viabilidad="${proyecto.str_fecha_fin_viabilidad}" data-fecha-fin-valoracion="${proyecto.str_fecha_fin_valoracion}" data-fecha-ini-valoracion="${proyecto.str_fecha_inicio_valoracion}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-cliente-name="${proyecto.clienteName}" data-nombre="${proyecto.cod_proyecto}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}"  data-url-doc-google-drive="${proyecto.url_doc_google_drive}">
+									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-servicio="${proyecto.servicio}" data-conectividad="${proyecto.conectividad}" data-producto="${proyecto.producto}" data-fecha-ini-viabilidad="${proyecto.str_fecha_inicio_viabilidad}" data-subtipo="${proyecto.subtipo}" data-fecha-fin-viabilidad="${proyecto.str_fecha_fin_viabilidad}" data-fecha-fin-valoracion="${proyecto.str_fecha_fin_valoracion}" data-fecha-ini-valoracion="${proyecto.str_fecha_inicio_valoracion}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-cliente-name="${proyecto.clienteName}" data-nombre="${proyecto.cod_proyecto}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}"  data-url-doc-google-drive="${proyecto.url_doc_google_drive}">
 										<td><span>${proyecto.fecha_alta_str}</span></td>
 										<td><span>${proyecto.cod_proyecto}</span></td>
 										<td><span>${proyecto.clienteName}</span></td>

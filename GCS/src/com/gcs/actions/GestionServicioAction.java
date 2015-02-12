@@ -11,11 +11,12 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
-
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
@@ -38,6 +39,10 @@ public class GestionServicioAction extends Action {
 		
 		req.setAttribute("servicios", servicios);
 		req.setAttribute("proyectos", proyectos);
+		
+		ClienteDao cliDao = ClienteDao.getInstance();
+		List<Cliente> clientes = cliDao.getAllClientes();
+		req.setAttribute("clientes", clientes);
 	
 		ServicioFileDao servFileDao = ServicioFileDao.getInstance();
 		
