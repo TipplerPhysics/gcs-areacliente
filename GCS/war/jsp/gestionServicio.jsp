@@ -33,7 +33,7 @@
 						<div class="form-field">
 							<span class="lbl">Cód. de proyecto<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" data-live-search="true" required aria-required="true">
+								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" data-live-search="true" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>	
 									<c:forEach items="${proyectos}" var="p">	
 										<option value="${p.key.id}">${p.cod_proyecto}
@@ -51,7 +51,7 @@
 						<div class="form-field">
 							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true">
+								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
 										<option value="${t.key.id}">${t.name}</option>
@@ -63,7 +63,7 @@
 						<div class="form-field">
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true">
+								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true" data-live-search="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>
@@ -72,7 +72,7 @@
 						<div class="form-field">
 							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="extension" id="extension" required aria-required="true">
+								<select class="selectpicker selected" name="extension" id="extension" required aria-required="true" data-live-search="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>
@@ -81,7 +81,7 @@
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
+								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<option value="PDTE Doc Alcance en GCS">PDTE Doc Alcance en GCS</option>
 									<option value="C100 en confección">C100 en confección</option>

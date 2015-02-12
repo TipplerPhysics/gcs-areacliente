@@ -80,7 +80,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" id="gestor_it_modal" name="gestor_it">	
+								<select class="selectpicker selected" id="gestor_it_modal" name="gestor_it" data-live-search="true">	
 								
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}" <c:if test="${coste.gestor_it_key eq user.key.id}">selected</c:if>>${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>

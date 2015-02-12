@@ -24,7 +24,7 @@
 						<div class="form-field">
 							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="pais" id="pais_servicio_modal" required aria-required="true">
+								<select class="selectpicker selected" name="pais" id="pais_servicio_modal" required aria-required="true" data-live-search="true"> 
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
 										<option value="${t.key.id}" ${servicio.pais == t.key.id ? 'selected' : ''}>${t.name}</option>
@@ -36,7 +36,7 @@
 						<div class="form-field">
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="servicio" id="servicio_modal" required aria-required="true">
+								<select class="selectpicker selected" name="servicio" id="servicio_modal" required aria-required="true" data-live-search="true">
 									
 									<c:forEach items="${servicios_pais}" var="s">	
 										<option value="${s.key.id}" ${servicio.servicio == s.key.id ? 'selected' : ''}>${s.name}</option>
@@ -49,7 +49,7 @@
 						<div class="form-field">
 							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="extension" id="extension_modal" required aria-required="true">
+								<select class="selectpicker selected" name="extension" id="extension_modal" required aria-required="true" data-live-search="true">
 									<c:forEach items="${extensiones}" var="ext">	
 										<option value="${ext}" ${servicio.extension == ext ? 'selected' : ''}>${ext}</option>
 									</c:forEach>																
@@ -60,7 +60,7 @@
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true">
+								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true" data-live-search="true">
 									<option value="PDTE Doc Alcance en GCS" ${servicio.estado == 'PDTE Doc Alcance en GCS' ? 'selected' : ''}>PDTE Doc Alcance en GCS</option>
 									<option value="C100 en confección" ${servicio.estado == 'C100 en confección' ? 'selected' : ''}>C100 en confección</option>
 									<option value="PDTE Valoración IT" ${servicio.estado == 'PDTE Valoración IT' ? 'selected' : ''}>PDTE Valoración IT</option>	

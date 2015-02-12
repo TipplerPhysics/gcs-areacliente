@@ -64,7 +64,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_it_modal" name="gestor_it" required aria-required="true">	
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_it" required aria-required="true" data-live-search="true">	
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
 									</c:forEach>
@@ -75,7 +75,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor de negocio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_negocio_modal" name="gestor_negocio" required aria-required="true">
+								<select class="selectpicker" id="gestor_negocio_modal" name="gestor_negocio" required aria-required="true" data-live-search="true">
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
 									</c:forEach>					
@@ -112,7 +112,7 @@
 					<div class="form-field">
 						<span class="lbl">Conectividad:</span>
 						<div class="input">
-							<select class="selectpicker" id="conectividad_modal" name="conectividad">
+							<select class="selectpicker" id="conectividad_modal" name="conectividad" data-live-search="true">
 							    <option value="default">Seleccionar</option>
 							    <option value="AS2">AS2</option>
 							    <option value="Fileact">Fileact</option>

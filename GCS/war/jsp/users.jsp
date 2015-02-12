@@ -50,7 +50,7 @@
 					<div class="form-field">
 						<span>Departamento<span class="required-asterisk">*</span>:
 						</span><select id="dto_select" class="long selected selectpicker"
-							name="dto" required>
+							name="dto" required data-live-search="true">
 							<option selected value="default">Seleccionar</option>
 							<c:forEach items="${departamentos}" var="departamento">
 								<option value="${departamento.value}">${departamento.desc}</option>
@@ -60,7 +60,7 @@
 					<div class="form-field">
 						<span>Perfil<span class="required-asterisk">*</span>:
 						</span><select id="permiso_select" class="long selected selectpicker"
-							name="permiso" required>
+							name="permiso" required data-live-search="true">
 							<option selected value="default">Seleccionar</option>
 							<c:forEach items="${permisos}" var="permiso">
 								<option value="${permiso.value}">${permiso.desc}</option>

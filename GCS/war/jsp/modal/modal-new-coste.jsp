@@ -14,7 +14,7 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente_modal" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('modal');">
+								<select id="input_cliente_modal" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('modal');" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
@@ -60,7 +60,7 @@
 						<div class="form-field">
 							<span class="lbl">Nombre proyectos<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="project" name="project" required aria-required="true"  class="long selected selectpicker">
+								<select id="project" name="project" required aria-required="true"  class="long selected selectpicker" data-live-search="true">
 									<option value="default">-</option>
 								</select>						
 							</div>
@@ -86,7 +86,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" required aria-required="true"  id="gestor_it" name="gestor_it">	
+								<select class="selectpicker selected" required aria-required="true"  id="gestor_it" name="gestor_it" data-live-search="true">	
 								<option value="default" selected>Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>

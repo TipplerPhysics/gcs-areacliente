@@ -12,7 +12,7 @@
 		<div class="form-field">
 			<span class="lbl">Proyecto<span class="required-asterisk">*</span>:</span>
 			<div class="input">
-				<select class="selectpicker selected" id="select_project_action" name="select_project_action">	
+				<select class="selectpicker selected" id="select_project_action" name="select_project_action" data-live-search="true">	
 					<option value="default">Seleccione</option>	
 					<c:forEach items="${projects}" var="p">	
 						<option value="${p.key.id}">${p.cod_proyecto}</option>

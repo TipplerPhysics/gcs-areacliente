@@ -38,7 +38,7 @@
 						<div class="form-field hidden" id='field-container-fechaCalendada'>
 							<span class="lbl">Fecha<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="fecha_implantacion_calendada" name="fecha_implantacion_calendada"  class="long selectpicker">																	
+								<select id="fecha_implantacion_calendada" name="fecha_implantacion_calendada"  class="long selectpicker" data-live-search="true">																	
 									<c:forEach items='${fechasStr}' var="fecha">
 										<option value="${fecha}">${fecha}</option>
 									</c:forEach>								
