@@ -12,7 +12,7 @@
 		<div class="form-field">
 			<span class="lbl">Servicio:</span>
 			<div class="input">
-				<select class="selectpicker selected" id="select_project_action" name="select_project_action">	
+				<select class="selectpicker selected" id="select_project_action" name="select_project_action" data-live-search="true">	
 					<c:choose>
 					<c:when test="${empty services}">
 					<option value="default">No hay servicios</option>

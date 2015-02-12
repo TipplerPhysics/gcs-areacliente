@@ -40,13 +40,13 @@
 							<div class="input">
 							
 								
-								<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true">
+								<select class="selectpicker selected time" id="hora_peticion" name="hora_peticion" required aria-required="true" data-live-search="true">
 									<c:forEach items="${horasList}" var="hora">
 									<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
 								<span class="time-span">:</span>
-								<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true">
+								<select class="selectpicker selected time" id="min_peticion" name="min_peticion" required aria-required="true" data-live-search="true">
 									<c:forEach items="${minutosList}" var="min">
 									<option value="${min}">${min}</option>
 									</c:forEach>
@@ -57,7 +57,7 @@
 						<div class="form-field cliente">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
+								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
@@ -69,7 +69,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor de negocio:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_negocio" name="gestor_negocio">
+								<select class="selectpicker" id="gestor_negocio" name="gestor_negocio" data-live-search="true">
 								    <option value="default" selected>Seleccionar</option>
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -80,7 +80,7 @@
 						<div class="form-field">
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true">
+								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>								
 									<option value="PRUC">PRUC</option>
 									<option value="CONS">CONS</option>
@@ -108,7 +108,7 @@
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true">
+								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true" data-live-search="true">
 									<option value="Pendiente de asignaci&oacute;n">Pendiente de asignaci&oacute;n</option>
 									<option value="Asignada">Asignada</option>
 									<option value="Devuelta">Devuelta</option>
@@ -150,14 +150,14 @@
 						<div class="form-field">
 							<span class="lbl">Hora solicitud asignaci&oacute;n:</span>
 							<div class="input">
-								<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion">
+								<select class="selectpicker time" id="hora_solicitud_asignacion" name="hora_solicitud_asignacion" data-live-search="true">
 										<option value="default"> </option>
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
 								<span class="time-span">:</span>
-								<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion">
+								<select class="selectpicker time" id="min_solicitud_asignacion" name="min_solicitud_asignacion" data-live-search="true">
 								<option value="default"> </option>
 									
 									<c:forEach items="${minutosList}" var="min">
@@ -169,7 +169,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT pre-asignado:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_it" name="gestor_it">	
+								<select class="selectpicker" id="gestor_it" name="gestor_it" data-live-search="true">	
 								<option value="default" selected>Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
@@ -188,14 +188,14 @@
 						<div class="form-field">
 							<span class="lbl">Hora comunicaci&oacute;n asignaci&oacute;n:</span>
 							<div class="input">
-								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion">
+								<select class="selectpicker time" id="hora_comunicacion_asignacion" name="hora_comunicacion_asignacion" data-live-search="true">
 										
 									<c:forEach items="${horasList}" var="hora">
 										<option value="${hora}">${hora}</option>
 									</c:forEach>
 								</select>
 								<span class="time-span">:</span>
-								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion">
+								<select class="selectpicker time" id="min_comunicacion_asignacion" name="min_comunicacion_asignacion" data-live-search="true">
 								
 									
 									<c:forEach items="${minutosList}" var="min">

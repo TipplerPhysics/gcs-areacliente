@@ -55,7 +55,7 @@
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado">
+								<select class="selectpicker selected" name="estado" id="estado" data-live-search="true">
 									<option value="PDTE Doc Alcance en GCS" ${conectividad.estado == 'PDTE Doc Alcance en GCS' ? 'selected' : ''}>PDTE Doc Alcance en GCS</option>
 									<option value="C100 en confección" ${conectividad.estado == 'C100 en confección' ? 'selected' : ''}>C100 en confección</option>
 									<option value="PDTE Valoración IT" ${conectividad.estado == 'PDTE Valoración IT' ? 'selected' : ''}>PDTE Valoración IT</option>	

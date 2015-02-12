@@ -67,7 +67,7 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true">
+								<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
@@ -92,7 +92,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor IT<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true">	
+								<select class="selectpicker selected" id="gestor_it" name="gestor_it" required aria-required="true" data-live-search="true">	
 								<option value="default">Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
@@ -104,7 +104,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor de negocio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" id="gestor_negocio" name="gestor_negocio" required aria-required="true">
+								<select class="selectpicker selected" id="gestor_negocio" name="gestor_negocio" required aria-required="true" data-live-search="true">
 								    <option value="default">Seleccionar</option>
 									<c:forEach items="${gestores_negocio}" var="user">	
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1} ${user.apellido2}</option>
@@ -140,7 +140,7 @@
 					<div class="form-field">
 						<span class="lbl">Conectividad:</span>
 						<div class="input">
-							<select class="selectpicker" id="conectividad" name="conectividad">
+							<select class="selectpicker" id="conectividad" name="conectividad" data-live-search="true">
 							    <option value="default">-</option>
 							   												
 							</select>
