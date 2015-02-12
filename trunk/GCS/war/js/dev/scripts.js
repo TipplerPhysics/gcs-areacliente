@@ -97,6 +97,14 @@ $(function() {
 			$('#uruguay_check_modal').removeClass("checked");
 			$('#uruguay_check_modal').next().removeClass("checked");
 		}
+		
+		if (str.indexOf("curasao")!=-1){
+			$('#curasao_check_modal').attr("checked","checked");
+			$('#curasao_check_modal').next().addClass("checked");
+		}else{
+			$('#curasao_check_modal').removeClass("checked");
+			$('#curasao_check_modal').next().removeClass("checked");
+		}
 		if (str.indexOf("usa")!=-1){
 			$('#usa_check_modal').attr("checked","checked");
 			$('#usa_check_modal').next().addClass("checked");
@@ -2392,6 +2400,32 @@ $(function() {
 	
 }
 
+function autocompleteSubtipo(tipo,target){
+	target.empty();
+	target.selectpicker("render");
+	target.empty();
+	if (tipo!="default"){
+
+		target.empty();
+		target.selectpicker("render");
+		target.empty();
+		target.append($("<option></option>").attr("value"," ").text("Seleccionar"));
+		if(tipo=="Migraci\u00F3n"){
+			target.append($("<option></option>").attr("value","No aplica").text("No aplica"));
+			target.append($("<option></option>").attr("value","Integraci\u00F3n Am\u00E9rica").text("Integraci\u00F3n Am\u00E9rica"));
+			target.append($("<option></option>").attr("value","Perimetre Server").text("Perimetre Server"));
+			target.append($("<option></option>").attr("value","Channeling").text("Channeling"));
+			target.append($("<option></option>").attr("value","One Bank").text("One Bank"));
+		}else{
+			target.append($("<option></option>").attr("value","No aplica").text("No aplica"));
+		}		
+							
+
+
+	}
+	target.selectpicker("refresh");
+}
+
 function loadCosteModal(){
 	var radios = $('#costes-by-project-table').find(":radio");
 	var a =0;
@@ -2533,6 +2567,7 @@ function modalCliente(){
 		var gestor_it = $currentRow.attr('data-gestor-it');
 		var gestor_negocio = $currentRow.attr('data-gestor-negocio');
 		var coste = $currentRow.attr('data-coste');
+		var subtipo = $currentRow.attr('data-subtipo');
 		
 		var producto = $currentRow.attr('data-producto');
 		var conectividad = $currentRow.attr('data-conectividad');
@@ -2559,6 +2594,7 @@ function modalCliente(){
 		$('#fecha_alta_cliente_modal').val(fecha_alta);
 		$('#project_name_modal').val(nombre);
 		$('#tipo_modal').val(tipo);
+		$('#subtipo_modal').val(subtipo);
 		$('#input_cliente_id').val(cliente);
 		$('#input_cliente_modal').val(cliente_name);
 		$('#clasificacion_modal').val(clasificacion);
@@ -2576,6 +2612,13 @@ function modalCliente(){
 
 $(function() {
 	
+	
+	$('#new-project-form').on('change', '#tipo-imp-proj', function(e) {
+		var tipo = $('#tipo-imp-proj').val();
+		var target = $("#subtipo_imp");
+		autocompleteSubtipo(tipo,target);
+				
+	});
 	
 	$('#alta_proyecto').on('click', '#edit_service_modal_button', function(e) {		
 		id= $('#select_project_action').val();
@@ -2880,6 +2923,15 @@ function sendEditServicio(){
 }
 
 function ajaxServicios(pais,target,targetExt){
+	targetExt.empty();
+	targetExt.selectpicker("render");
+	targetExt.empty();
+	targetExt.append($("<option></option>").attr("value","default").text("-"));
+	targetExt.selectpicker("refresh");
+	
+	target.empty();
+	target.selectpicker("render");
+	target.empty();
 	if (pais!="default"){
 		 var formURL = "/serviceServlet?";
 		 var postData="accion=getServicesByCountry&pais="+pais;
@@ -2892,15 +2944,9 @@ function ajaxServicios(pais,target,targetExt){
 				{
 					if (data.success=="true"){
 						var servicios = data.servicios[0];
-						targetExt.empty();
-						targetExt.selectpicker("render");
-						targetExt.empty();
-						targetExt.append($("<option></option>").attr("value","default").text("-"));
-						targetExt.selectpicker("refresh");
+
 						
-						target.empty();
-						target.selectpicker("render");
-						target.empty();
+
 						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
 						
 						
@@ -2922,9 +2968,13 @@ function ajaxServicios(pais,target,targetExt){
 					}					
 				}
 			});
-	}
+	}else{target.append($("<option></option>").attr("value","default").text("-"));}
+	target.selectpicker("refresh");
 }
 function ajaxExtensiones(servicio,target){
+	target.empty();
+	target.selectpicker("render");
+	target.empty();
 	if (servicio!="default"){
 		 var formURL = "/serviceServlet?";
 		 var postData="accion=getExtensionesByService&service="+servicio;
@@ -2937,9 +2987,7 @@ function ajaxExtensiones(servicio,target){
 				{
 					if (data.success=="true"){
 						var extensiones = data.extensiones[0];
-						target.empty();
-						target.selectpicker("render");
-						target.empty();
+
 						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
 						$.each(extensiones,function(index,value){
 								target.append($("<option></option>").attr("value",value).text(value));	
@@ -2953,7 +3001,8 @@ function ajaxExtensiones(servicio,target){
 				}					
 				
 			});
-	}
+	}else{target.append($("<option></option>").attr("value","default").text("-"));}
+	target.selectpicker("refresh");
 }
 
 $(function(){
@@ -3016,6 +3065,13 @@ $(function(){
 		var servicio = $('#servicio').val();
 		var target = $('#extension');
 		ajaxExtensiones(servicio,target);
+				
+	});
+	
+	$('#new-service-form').on('change', '#cliente-filtro-servicio', function(e) {
+		var servicio = $('#cliente-filtro-servicio').val();
+		var target = $('#cod_proyecto');
+		ajaxExtensiones(cliente,target);
 				
 	});
 	

@@ -29,13 +29,20 @@
 				method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
+						
 						<div class="form-field">
 							<span class="lbl">Cód. de proyecto<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" required aria-required="true">
+								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" data-live-search="true" required aria-required="true">
 									<option value="default">Seleccionar</option>	
 									<c:forEach items="${proyectos}" var="p">	
-										<option value="${p.key.id}">${p.cod_proyecto}</option>
+										<option value="${p.key.id}">${p.cod_proyecto}
+											<c:forEach items="${clientes}" var="cliente">
+												<c:if test="${cliente.key.id==p.clienteKey}">
+													${cliente.nombre}
+												</c:if>
+											</c:forEach>	
+										</option>
 									</c:forEach>								
 								</select>
 							</div>
@@ -48,11 +55,7 @@
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
 										<option value="${t.key.id}">${t.name}</option>
-									</c:forEach>
-									
-
-									
-																											
+									</c:forEach>																	
 								</select>
 							</div>
 						</div>
@@ -125,23 +128,16 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia local:</span>
+							<span class="lbl">Referencia local integrado:</span>
 							<input type="text" id="ref_local1" name="ref_local1" class="long" maxlength="25">
-							<input type="text" id="ref_local2" name="ref_local2" class="long" maxlength="25">
+							
 						</div>
 						<div class="form-field">
-							<span class="lbl">Fecha inicio integradas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
-							</div>
+							<span class="lbl">Referencia:</span>
+							<input type="text"  name="ref_local2" class="long" maxlength="25">
 						</div>
 						
-						<div class="form-field">
-							<span class="lbl">Fecha fin integradas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
-							</div>
-						</div>
+
 						
 						
 						
@@ -226,16 +222,16 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha migración Channeling:</span>
+							<span class="lbl">Fecha inicio integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_mig_channeling' name="fecha_mig_channeling" id="fecha_mig_channeling">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
 							</div>
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Fecha migración infraestructura:</span>
+							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_mig_infraestructura' name="fecha_mig_infraestructura" id="fecha_mig_infraestructura">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
 							</div>
 						</div>
 					</div>					

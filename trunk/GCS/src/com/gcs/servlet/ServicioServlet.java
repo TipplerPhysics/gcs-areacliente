@@ -26,8 +26,6 @@ import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
-import com.gcs.config.Config;
-import com.gcs.config.StaticConfig;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
@@ -120,8 +118,8 @@ public class ServicioServlet extends HttpServlet {
 		    s.setColumnView(20, 30);
 		    s.setColumnView(21, 35);
 		    s.setColumnView(22, 35);
-		    s.setColumnView(23, 35);
-		    s.setColumnView(24, 35);
+		    //s.setColumnView(23, 35);
+		    //s.setColumnView(24, 35);
 		    
 		    s.setRowView(0, 900);
 						
@@ -150,8 +148,8 @@ public class ServicioServlet extends HttpServlet {
 			s.addCell(new Label(20, 0, "FECHA PASO ANS",cellFormat));
 			s.addCell(new Label(21, 0, "FECHA ESTIMADA PRUEBAS",cellFormat));
 			s.addCell(new Label(22, 0, "FECHA ESTIMADA FIN PRUEBAS",cellFormat));
-			s.addCell(new Label(23, 0, "FECHA MIGRACION CHANNELING",cellFormat));
-			s.addCell(new Label(24, 0, "FECHA MIGRACION INFRAESTRUCTURA",cellFormat));
+			//s.addCell(new Label(23, 0, "FECHA MIGRACION CHANNELING",cellFormat));
+			//s.addCell(new Label(24, 0, "FECHA MIGRACION INFRAESTRUCTURA",cellFormat));
 
 			
 						
@@ -188,8 +186,8 @@ public class ServicioServlet extends HttpServlet {
 				s.addCell(new Label(20, aux, serv.getStr_fecha_ANS() ));
 				s.addCell(new Label(21, aux, serv.getStr_fecha_ini_pruebas() ));
 				s.addCell(new Label(22, aux, serv.getStr_fecha_fin_pruebas() ));
-				s.addCell(new Label(23, aux, serv.getStr_migracion_channeling() ));
-				s.addCell(new Label(24, aux, serv.getStr_migracion_infra() ));
+				//s.addCell(new Label(23, aux, serv.getStr_migracion_channeling() ));
+				//s.addCell(new Label(24, aux, serv.getStr_migracion_infra() ));
 				
 				
 				aux++;
@@ -220,7 +218,7 @@ public class ServicioServlet extends HttpServlet {
 		try{
 			//String project_id = req.getParameter("cod_proyecto");
 			
-			ProyectoDao pDao = ProyectoDao.getInstance();
+
 			//Proyecto p = pDao.getProjectbyId(Long.parseLong(project_id));
 			
 			String estado = req.getParameter("estado");
@@ -255,8 +253,8 @@ public class ServicioServlet extends HttpServlet {
 			String str_fecha_inicio_pruebas = req.getParameter("fecha_inicio_pruebas");
 			String str_fecha_fin_pruebas = req.getParameter("fecha_fin_pruebas");
 			
-			String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
-			String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
+			//String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
+			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
 			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
 
@@ -295,8 +293,8 @@ public class ServicioServlet extends HttpServlet {
 			s.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
 			s.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
 			
-			s.setStr_migracion_channeling(str_fecha_mig_channeling);
-			s.setStr_migracion_infra(str_fecha_mig_infraestructura);
+			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
+			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			s.setExtension(extension);
 			
 			
@@ -338,7 +336,7 @@ public class ServicioServlet extends HttpServlet {
 	}
 	
 	public static List<ServicioFile> getServicesByCountryJSON(Pais pais) throws JSONException{
-		JSONArray jarray = new JSONArray();
+
 		
 		ServicioFileDao servicioFileDao = ServicioFileDao.getInstance();
 		List<ServicioFile> servicioFiles = servicioFileDao.getAllServiciosForPais(pais);
@@ -532,8 +530,8 @@ public class ServicioServlet extends HttpServlet {
 			String str_fecha_inicio_pruebas = req.getParameter("fecha_inicio_pruebas");
 			String str_fecha_fin_pruebas = req.getParameter("fecha_fin_pruebas");
 			
-			String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
-			String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
+			//String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
+			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
 			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
 
@@ -572,8 +570,8 @@ public class ServicioServlet extends HttpServlet {
 			s.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
 			s.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
 			
-			s.setStr_migracion_channeling(str_fecha_mig_channeling);
-			s.setStr_migracion_infra(str_fecha_mig_infraestructura);
+			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
+			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			s.setExtension(extension);
 			
 			ServicioDao sDao = ServicioDao.getInstance();

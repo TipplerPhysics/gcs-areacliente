@@ -38,6 +38,15 @@ function sendEditServicio(){
 }
 
 function ajaxServicios(pais,target,targetExt){
+	targetExt.empty();
+	targetExt.selectpicker("render");
+	targetExt.empty();
+	targetExt.append($("<option></option>").attr("value","default").text("-"));
+	targetExt.selectpicker("refresh");
+	
+	target.empty();
+	target.selectpicker("render");
+	target.empty();
 	if (pais!="default"){
 		 var formURL = "/serviceServlet?";
 		 var postData="accion=getServicesByCountry&pais="+pais;
@@ -50,15 +59,9 @@ function ajaxServicios(pais,target,targetExt){
 				{
 					if (data.success=="true"){
 						var servicios = data.servicios[0];
-						targetExt.empty();
-						targetExt.selectpicker("render");
-						targetExt.empty();
-						targetExt.append($("<option></option>").attr("value","default").text("-"));
-						targetExt.selectpicker("refresh");
+
 						
-						target.empty();
-						target.selectpicker("render");
-						target.empty();
+
 						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
 						
 						
@@ -80,9 +83,13 @@ function ajaxServicios(pais,target,targetExt){
 					}					
 				}
 			});
-	}
+	}else{target.append($("<option></option>").attr("value","default").text("-"));}
+	target.selectpicker("refresh");
 }
 function ajaxExtensiones(servicio,target){
+	target.empty();
+	target.selectpicker("render");
+	target.empty();
 	if (servicio!="default"){
 		 var formURL = "/serviceServlet?";
 		 var postData="accion=getExtensionesByService&service="+servicio;
@@ -95,9 +102,7 @@ function ajaxExtensiones(servicio,target){
 				{
 					if (data.success=="true"){
 						var extensiones = data.extensiones[0];
-						target.empty();
-						target.selectpicker("render");
-						target.empty();
+
 						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
 						$.each(extensiones,function(index,value){
 								target.append($("<option></option>").attr("value",value).text(value));	
@@ -111,7 +116,8 @@ function ajaxExtensiones(servicio,target){
 				}					
 				
 			});
-	}
+	}else{target.append($("<option></option>").attr("value","default").text("-"));}
+	target.selectpicker("refresh");
 }
 
 $(function(){
@@ -174,6 +180,13 @@ $(function(){
 		var servicio = $('#servicio').val();
 		var target = $('#extension');
 		ajaxExtensiones(servicio,target);
+				
+	});
+	
+	$('#new-service-form').on('change', '#cliente-filtro-servicio', function(e) {
+		var servicio = $('#cliente-filtro-servicio').val();
+		var target = $('#cod_proyecto');
+		ajaxExtensiones(cliente,target);
 				
 	});
 	

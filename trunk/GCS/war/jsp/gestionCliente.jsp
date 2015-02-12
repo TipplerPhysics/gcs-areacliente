@@ -84,7 +84,7 @@ f
 						<div class="form-field paises">	
 							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
 							<div class="radio-div">
-								<div class="radio-container">
+<!--								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Argentina"
 										id="argentina_check" class="require-one"><label for="argentina_check"><span></span>Argentina</label>
 								</div>
@@ -145,6 +145,14 @@ f
 									<input type="checkbox" name='paises' value="Venezuela"
 										id="venezuela_check"><label for="venezuela_check"><span></span>Venezuela</label>
 								</div>
+-->		
+								<c:forEach items="${paises}" var="pais">	
+									<div class="radio-container">
+										<input type="checkbox" name='paises' value="${pais.name}"
+										id="${pais.name}_check"><label for="${pais.name}_check"><span></span>${pais.name}</label>
+									</div>
+								</c:forEach>
+								
 							</div>
 						</div>
 						 

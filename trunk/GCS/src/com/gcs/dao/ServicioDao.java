@@ -120,12 +120,12 @@ public class ServicioDao {
 			if (s.getStr_fecha_fin_pruebas()!=null && !"".equals(s.getStr_fecha_fin_pruebas())){			
 				s.setFecha_fin_pruebas(Utils.dateConverter(s.getStr_fecha_fin_pruebas()));			
 			}
-			if (s.getStr_migracion_channeling()!=null && !"".equals(s.getStr_migracion_channeling())){			
+			/*if (s.getStr_migracion_channeling()!=null && !"".equals(s.getStr_migracion_channeling())){			
 				s.setFecha_migracion_channeling(Utils.dateConverter(s.getStr_migracion_channeling()));			
 			}
 			if (s.getStr_migracion_infra()!=null && !"".equals(s.getStr_migracion_infra())){			
 				s.setFecha_migracion_infra(Utils.dateConverter(s.getStr_migracion_infra()));			
-			}
+			}*/
 			
 			ProyectoDao pDao = ProyectoDao.getInstance();
 			Proyecto p = pDao.getProjectbyId(s.getId_proyecto());

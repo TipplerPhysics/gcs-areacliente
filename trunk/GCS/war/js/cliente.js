@@ -91,6 +91,14 @@ function drawChecks(str){
 			$('#uruguay_check_modal').removeClass("checked");
 			$('#uruguay_check_modal').next().removeClass("checked");
 		}
+		
+		if (str.indexOf("curasao")!=-1){
+			$('#curasao_check_modal').attr("checked","checked");
+			$('#curasao_check_modal').next().addClass("checked");
+		}else{
+			$('#curasao_check_modal').removeClass("checked");
+			$('#curasao_check_modal').next().removeClass("checked");
+		}
 		if (str.indexOf("usa")!=-1){
 			$('#usa_check_modal').attr("checked","checked");
 			$('#usa_check_modal').next().addClass("checked");

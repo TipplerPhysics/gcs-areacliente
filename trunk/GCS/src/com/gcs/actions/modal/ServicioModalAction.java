@@ -29,6 +29,7 @@ public class ServicioModalAction extends Action {
 			String id= req.getParameter("id");
 			
 			ServicioDao sDao = ServicioDao.getInstance();
+			
 			Servicio s = sDao.getServicioById(Long.parseLong(id));
 			ServicioFileDao serviciosFileDao = ServicioFileDao.getInstance();
 			PaisDao paisDao = PaisDao.getInstance();
@@ -45,8 +46,12 @@ public class ServicioModalAction extends Action {
 			ArrayList<String> extensiones = servicioFile.getExtensiones();
 			req.setAttribute("extensiones", extensiones);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			Servicio s =new Servicio();
+			req.setAttribute("servicio", s);
+			PaisDao paisDao = PaisDao.getInstance();
+			List<Pais> paises = paisDao.getAllPaises();
+			req.setAttribute("paises", paises);
 		}
 
 		return mapping.findForward("ok");

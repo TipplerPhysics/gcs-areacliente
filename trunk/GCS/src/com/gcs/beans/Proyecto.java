@@ -50,6 +50,9 @@ public class Proyecto {
 	private String tipo;
 	
 	@Persistent
+	private String subtipo;
+	
+	@Persistent
 	private String cod_proyecto;
 	
 	@Persistent
@@ -271,6 +274,14 @@ public class Proyecto {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	
+	public String getSubtipo() {
+		return subtipo;
+	}
+
+	public void setSubtipo(String subtipo) {
+		this.subtipo = subtipo;
 	}
 	
 	public Key getKey() {
