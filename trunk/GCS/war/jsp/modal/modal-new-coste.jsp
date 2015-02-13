@@ -14,7 +14,7 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select id="input_cliente_modal" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('modal');" data-live-search="true">
+								<select id="input_cliente_id" class="selectpicker selected" name="cliente" required aria-required="true" onchange="getProjectsByClient('modal');" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${clientes}" var="cliente">	
 										<option value="${cliente.key.id}">${cliente.nombre}</option>
@@ -37,6 +37,11 @@
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_alta_costes' name="fecha_alta_costes" id="fecha_alta_costes" required aria-required="true">
 							</div>
 						</div>
+						
+						
+
+						
+						
 						<div class="form-field">
 							<span class="lbl">Número valoración:</span>
 							<div class="input">
@@ -52,10 +57,18 @@
 						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_recepcion_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Fecha recepción valoración<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion" required aria-required="true">
 							</div>
 						</div>
 					</div>
+					
+
 					<div class="form-field-divider right">
 						<div class="form-field">
 							<span class="lbl">Nombre proyectos<span class="required-asterisk">*</span>:</span>

@@ -1,5 +1,6 @@
 package com.gcs.dao;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -41,13 +42,15 @@ public class CosteDao {
 
 	}
 	
-	public void createCoste(Coste c, String usermail) {
+	public void createCoste(Coste c, String usermail) throws ParseException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
 		
 		if (c.getKey()==null)
 			isNew=true;
-				
+		if(!c.getStr_fecha_recepcion_valoracion().equals("")&&!c.getStr_fecha_recepcion_valoracion().equals(null)){
+			c.setFecha_recepcion_valoracion(Utils.dateConverter(c.getStr_fecha_recepcion_valoracion()));
+		}
 		
 		if (c.getKey()==null){
 			

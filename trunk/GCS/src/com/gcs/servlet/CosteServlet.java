@@ -259,6 +259,8 @@ public class CosteServlet extends HttpServlet {
 			String fecha_alta_costes = req.getParameter("fecha_alta_costes");
 			String fecha_solicitud_valoracion = req
 					.getParameter("fecha_solicitud_valoracion");
+			String fecha_recepcion_valoracion = req
+					.getParameter("fecha_recepcion_valoracion");
 			String gestion_coste = req.getParameter("gestion_coste");
 			String gestion_horas = req.getParameter("gestion_horas");
 			String gestor_it = req.getParameter("gestor_it");
@@ -287,6 +289,7 @@ public class CosteServlet extends HttpServlet {
 			c.setStr_fecha_alta(fecha_alta_costes);
 			c.setFecha_alta(Utils.dateConverter(fecha_alta_costes));
 			c.setStr_fecha_solicitud_valoracion(fecha_solicitud_valoracion);
+			c.setStr_fecha_recepcion_valoracion(fecha_recepcion_valoracion);
 			c.setFecha_solicitud_valoracion(Utils
 					.dateConverter(fecha_solicitud_valoracion));
 			c.setHoras_gestion(gestion_horas);
@@ -342,6 +345,8 @@ public class CosteServlet extends HttpServlet {
 			String fecha_alta_costes = req.getParameter("fecha_alta_costes");
 			String fecha_solicitud_valoracion = req
 					.getParameter("fecha_solicitud_valoracion");
+			String fecha_recepcion_valoracion = req
+					.getParameter("fecha_recepcion_valoracion");
 			String gestion_coste = req.getParameter("gestion_coste");
 			String gestion_horas = req.getParameter("gestion_horas");
 			String gestor_it = req.getParameter("gestor_it");
@@ -376,6 +381,7 @@ public class CosteServlet extends HttpServlet {
 			c.setStr_fecha_alta(fecha_alta_costes);
 			c.setFecha_alta(Utils.dateConverter(fecha_alta_costes));
 			c.setStr_fecha_solicitud_valoracion(fecha_solicitud_valoracion);
+			c.setStr_fecha_recepcion_valoracion(fecha_recepcion_valoracion);
 			c.setFecha_solicitud_valoracion(Utils
 					.dateConverter(fecha_solicitud_valoracion));
 			c.setHoras_gestion(gestion_horas);

@@ -701,6 +701,8 @@ function sendNewCoste(){
 		  {
 				//data: return data from server
 			if (data.success==("true")){
+				$('#submit_cost_form').addClass('hidden');
+				$('.close-form').addClass('hidden');
 				
 				var coste_anal = (!isNaN(parseInt($('#analisis_coste').val())) ? parseInt($('#analisis_coste').val()) : 0);
 				var coste_disenio = (!isNaN(parseInt($('#disenio_coste').val())) ? parseInt($('#disenio_coste').val()) : 0);
@@ -797,18 +799,22 @@ function getProjectsByClient(pagina){
 			data : postData,
 			success:function(data, textStatus, jqXHR) {
 				
-				
-				var options = $("#project");
-				options.empty();
-				options.removeAttr("disabled");
-				 options.append($("<option />").val("default").text("Seleccionar..."));
-				$.each(data, function() {
-				    options.append($("<option />").val(this.id).text(this.name));
-				});			
-				
-				options.selectpicker('refresh');
-				//$("#project_name").selectpicker();
-				//initSelectpickers();
+				if (data[0]==null){
+					var options = $("#project");
+					options.empty();
+					options.removeAttr("disabled");
+					options.append($("<option />").val("default").text("No hay proyectos para el cliente"));
+					options.selectpicker('refresh');
+				}else{
+					var options = $("#project");
+					options.empty();
+					options.removeAttr("disabled");
+					 options.append($("<option />").val("default").text("Seleccionar..."));
+					$.each(data, function() {
+					    options.append($("<option />").val(this.id).text(this.name));
+					});			
+					options.selectpicker('refresh');	
+				}
 			}
 		});
 	}	
@@ -855,6 +861,7 @@ function editCoste(){
 	$('#num_valoracion_modal').val(num_valoracion);
 	
 	$('#fecha_solicitud_valoracion_modal').val(fecha_solicitud_val);
+	$('#fecha_recepcion_valoracion_modal').val(fecha_recepcion_val);
 	$('#analisis_horas_modal').val(analisis_horas);
 	$('#analisis_coste_modal').val(analisis_coste);
 	

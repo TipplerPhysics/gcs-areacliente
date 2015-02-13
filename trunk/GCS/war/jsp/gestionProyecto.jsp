@@ -118,7 +118,15 @@
 							<input type="text" readonly="" id="coste" name="coste" class="long euro money readonly">
 						</div>
 						
-
+						<div class="form-field">
+							<span class="lbl">OK negocio valoración:</span>
+							<input type="text" id="ok_negocio_check" name="ok_negocio_check" class="long" maxlength="500">
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Url carpeta Google Drive:</span>
+							<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
+						</div>
 					
 				</div>
 				
@@ -190,8 +198,17 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Url carpeta Google Drive:</span>
-						<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
+						<span class="lbl">Fecha envio plan trabajo y pruebas:</span>
+						<div class="input">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker "  name="fecha_plan_trabajo" id="fecha_plan_trabajo">
+						</div>
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha disponible conectividad:</span>
+						<div class="input">
+							<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_disponible_conectividad" id="fecha_disponible_conectividad">
+						</div>
 					</div>
 					
 					

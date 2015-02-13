@@ -88,6 +88,15 @@
 						<input type="text" aria-required="true" readonly="" value="${coste}" id="coste_modal" name="coste" class="long euro readonly">
 					</div>
 					
+					<div class="form-field">
+							<span class="lbl">OK negocio valoración:</span>
+							<input type="text" id="ok_negocio_check" value="${proyecto.str_OKNegocioCheck}" name="ok_negocio_check" class="long" maxlength="500">
+					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Url carpeta Google Drive:</span>
+						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
+					</div>
 
 				</div>
 				
@@ -170,10 +179,22 @@
 						</div>
 					</div>
 					
+
 					<div class="form-field">
-						<span class="lbl">Url carpeta Google Drive:</span>
-						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
+						<span class="lbl">Fecha envio plan trabajo:</span>
+						<div class="input">
+							<input type="text" value="${proyecto.str_fecha_plan_trabajo}" size="16" maxlength="25" class="datepicker "  name="fecha_plan_trabajo" id="fecha_plan_trabajo_modal">
+						</div>
 					</div>
+					
+					<div class="form-field">
+						<span class="lbl">Fecha disponible conectividad:</span>
+						<div class="input">
+							<input type="text" value="${proyecto.str_fecha_disponible_conectividad}" size="16" maxlength="25" class="datepicker" name="fecha_disponible_conectividad" id="fecha_disponible_conectividad_modal">
+						</div>
+					</div>
+					
+					
 				</div>
 				
 				<div id="message_div">

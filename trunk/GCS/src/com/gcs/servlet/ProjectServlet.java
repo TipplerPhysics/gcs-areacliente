@@ -233,8 +233,11 @@ public class ProjectServlet extends HttpServlet{
 				String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");	
 				String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
 				String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+				String fecha_plan_trabajo_str = req.getParameter("fecha_plan_trabajo");
+				String fecha_disponible_conectividad_str = req.getParameter("fecha_disponible_conectividad");
 				String envioC100 = req.getParameter("envio_c100");
 				String ok_negocio = req.getParameter("ok_negocio");
+				String ok_negocio_check = req.getParameter("ok_negocio_check");
 				
 				String cliente_nombre = req.getParameter("cliente_id");
 				
@@ -257,8 +260,11 @@ public class ProjectServlet extends HttpServlet{
 				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
 				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
 				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
+				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
 				p.setStr_envioC100(envioC100);
 				p.setStr_OKNegocio(ok_negocio);
+				p.setStr_OKNegocioCheck(ok_negocio_check);
 					
 				pDao.createProject(p,usermail);
 			
@@ -291,12 +297,16 @@ public class ProjectServlet extends HttpServlet{
 			
 			String envioC100 = req.getParameter("envio_c100");
 			String ok_negocio = req.getParameter("ok_negocio");
+			String ok_negocio_check = req.getParameter("ok_negocio_check");
 			
 			String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
 			String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
 			
 			String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
 			String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+			
+			String fecha_plan_trabajo_str = req.getParameter("fecha_plan_trabajo");
+			String fecha_disponible_conectividad_str = req.getParameter("fecha_disponible_conectividad");
 			
 			String producto = req.getParameter("producto");
 			String conectividad = req.getParameter("conectividad");
@@ -326,6 +336,7 @@ public class ProjectServlet extends HttpServlet{
 				
 				p.setStr_envioC100(envioC100);
 				p.setStr_OKNegocio(ok_negocio);
+				p.setStr_OKNegocioCheck(ok_negocio_check);
 				
 				p.setSubtipo(subtipo);
 				
@@ -334,6 +345,9 @@ public class ProjectServlet extends HttpServlet{
 				
 				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
 				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				
+				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
+				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
 				
 				p.setProducto(producto);
 				

@@ -90,6 +90,16 @@ public class ProyectoDao {
 			p.setFecha_fin_viabilidad(Utils.dateConverter(p.getStr_fecha_fin_viabilidad()));
 		}
 		
+		if (p.getStr_fecha_disponible_conectividad() != null && !"".equals(p.getStr_fecha_disponible_conectividad())){
+			p.setFecha_disponible_conectividad(Utils.dateConverter(p.getStr_fecha_disponible_conectividad()));
+		}
+		
+		if (p.getStr_fecha_plan_trabajo() != null && !"".equals(p.getStr_fecha_plan_trabajo())){
+			p.setFecha_plan_trabajo(Utils.dateConverter(p.getStr_fecha_plan_trabajo()));
+		}
+		
+		
+		
 		if (p.getKey()==null){
 			Integer project_number = c.getProject_number();
 			if (project_number==null)
