@@ -85,6 +85,17 @@ public class Proyecto {
 	@Persistent
 	private String str_fecha_fin_viabilidad;
 	
+	private Date fecha_disponible_conectividad;
+	
+	@Persistent
+	private String str_fecha_disponible_conectividad;
+	
+	@Persistent
+	private Date fecha_plan_trabajo;
+	
+	@Persistent
+	private String str_fecha_plan_trabajo;
+	
 	@Persistent
 	private String servicio;
 	
@@ -99,6 +110,9 @@ public class Proyecto {
 	
 	@Persistent
 	private String str_OKNegocio;
+	
+	@Persistent
+	private String str_OKNegocioCheck;
 	
 	@Persistent
 	private String url_doc_google_drive;
@@ -138,6 +152,14 @@ public class Proyecto {
 
 	public void setStr_OKNegocio(String str_OKNegocio) {
 		this.str_OKNegocio = str_OKNegocio;
+	}
+	
+	public String getStr_OKNegocioCheck() {
+		return str_OKNegocioCheck;
+	}
+
+	public void setStr_OKNegocioCheck(String str_OKNegocioCheck) {
+		this.str_OKNegocioCheck = str_OKNegocioCheck;
 	}
 
 	public String getProducto() {
@@ -203,6 +225,22 @@ public class Proyecto {
 	public void setStr_fecha_inicio_viabilidad(String str_fecha_inicio_viabilidad) {
 		this.str_fecha_inicio_viabilidad = str_fecha_inicio_viabilidad;
 	}
+	
+	public Date getFecha_disponible_conectividad() {
+		return fecha_disponible_conectividad;
+	}
+
+	public void setFecha_disponible_conectividad(Date fecha_disponible_conectividad) {
+		this.fecha_disponible_conectividad = fecha_disponible_conectividad;
+	}
+
+	public String getStr_fecha_disponible_conectividad() {
+		return str_fecha_disponible_conectividad;
+	}
+
+	public void setStr_fecha_disponible_conectividad(String str_fecha_disponible_conectividad) {
+		this.str_fecha_disponible_conectividad = str_fecha_disponible_conectividad;
+	}
 
 	public Date getFecha_fin_viabilidad() {
 		return fecha_fin_viabilidad;
@@ -218,6 +256,22 @@ public class Proyecto {
 
 	public void setStr_fecha_fin_viabilidad(String str_fecha_fin_viabilidad) {
 		this.str_fecha_fin_viabilidad = str_fecha_fin_viabilidad;
+	}
+	
+	public Date getFecha_plan_trabajo() {
+		return fecha_plan_trabajo;
+	}
+
+	public void setFecha_plan_trabajo(Date fecha_plan_trabajo) {
+		this.fecha_plan_trabajo = fecha_plan_trabajo;
+	}
+
+	public String getStr_fecha_plan_trabajo() {
+		return str_fecha_plan_trabajo;
+	}
+
+	public void setStr_fecha_plan_trabajo(String str_fecha_plan_trabajo) {
+		this.str_fecha_plan_trabajo = str_fecha_plan_trabajo;
 	}
 
 	public String getServicio() {
@@ -380,10 +434,16 @@ public class Proyecto {
 				+ fecha_inicio_viabilidad + "\r\n str_fecha_inicio_viabilidad: "
 				+ str_fecha_inicio_viabilidad + "\r\n fecha_fin_viabilidad: "
 				+ fecha_fin_viabilidad + "\r\n str_fecha_fin_viabilidad: "
-				+ str_fecha_fin_viabilidad + "\r\n servicio: " + servicio
+				+ str_fecha_fin_viabilidad +
+				 "\r\n fecha_disponible_conectividad: "
+				+ fecha_disponible_conectividad + "\r\n str_fecha_disponible_conectividad: "
+				+ str_fecha_disponible_conectividad + "\r\n fecha_plan_trabajo: "
+				+ fecha_plan_trabajo + "\r\n str_fecha_plan_trabajo: "
+				+ str_fecha_plan_trabajo +"\r\n servicio: " + servicio
 				+ "\r\n envioC100: " + envioC100 + "\r\n str_envioC100: "
 				+ str_envioC100 + "\r\n okNegocio: " + okNegocio
 				+ "\r\n str_OKNegocio: " + str_OKNegocio
+				+ "\r\n str_OKNegocioCheck: " + str_OKNegocioCheck
 				+ "\r\n url_doc_google_drive: " + url_doc_google_drive + "";
 	}
 	

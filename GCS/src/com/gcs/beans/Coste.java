@@ -56,7 +56,13 @@ public class Coste {
 	private Date fecha_solicitud_valoracion;
 	
 	@Persistent
+	private Date fecha_recepcion_valoracion;
+	
+	@Persistent
 	private String str_fecha_solicitud_valoracion;
+	
+	@Persistent
+	private String str_fecha_recepcion_valoracion;
 	
 	@Persistent
 	private String horas_analisis;
@@ -222,6 +228,23 @@ public class Coste {
 	public void setStr_fecha_solicitud_valoracion(
 			String str_fecha_solicitud_valoracion) {
 		this.str_fecha_solicitud_valoracion = str_fecha_solicitud_valoracion;
+	}
+	
+	public Date getFecha_recepcion_valoracion() {
+		return fecha_recepcion_valoracion;
+	}
+
+	public void setFecha_recepcion_valoracion(Date fecha_recepcion_valoracion) {
+		this.fecha_recepcion_valoracion = fecha_recepcion_valoracion;
+	}
+
+	public String getStr_fecha_recepcion_valoracion() {
+		return str_fecha_recepcion_valoracion;
+	}
+
+	public void setStr_fecha_recepcion_valoracion(
+			String str_fecha_recepcion_valoracion) {
+		this.str_fecha_recepcion_valoracion = str_fecha_recepcion_valoracion;
 	}
 
 	public String getHoras_analisis() {

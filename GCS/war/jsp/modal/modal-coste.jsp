@@ -52,7 +52,12 @@
 							</div>
 						</div>
 						
-
+						<div class="form-field">
+							<span class="lbl">Fecha recepción valoración<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_recepcion_valoracion_modal' name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion_modal" required aria-required="true">
+							</div>
+						</div>
 					</div>
 					<div class="form-field-divider right">
 						<div class="form-field">

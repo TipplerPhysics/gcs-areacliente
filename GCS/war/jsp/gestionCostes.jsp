@@ -66,10 +66,16 @@
 						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_recepcion_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
 							</div>
 						</div>
 						
+						<div class="form-field">
+							<span class="lbl">Fecha recepción valoración:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion">
+							</div>
+						</div>
 
 					</div>
 					<div class="form-field-divider right">
@@ -175,10 +181,10 @@
 						<div class="form-field total">
 						<span class="lbl"></span>
 							<div class="input total">
-								<input id="total_horas" name="total_horas" readonly class="horas number " read required aria-required="true"/><input id="total_coste" name="total_coste" class="coste number"/>
+								<input id="total_horas" name="total_horas" readonly class="horas number " read value="0"/><input id="total_coste" name="total_coste" class="coste number"/>
 							</div>
 							<div class="input">
-								<span class="lbl">Total Horas<span class="required-asterisk">*</span></span><span class="lbl">Total Coste</span>
+								<span class="lbl">Total Horas<span class="required-asterisk"> </span></span><span class="lbl">Total Coste</span>
 							</div>
 						</div>
 					</div>					 
@@ -232,7 +238,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${costes}" var="coste">
-									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}">
+									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}" data-fecha-recepcion-val="${coste.str_fecha_recepcion_valoracion}">
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
 										<td><span>${coste.project_name}</span></td>
