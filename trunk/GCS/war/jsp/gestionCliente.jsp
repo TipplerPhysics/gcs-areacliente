@@ -216,7 +216,7 @@ f
 										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${cliente.key.id}" href="../clienteModal.do"	id="lapiz${cliente.key.id}" data-toggle="modal" data-target="#edit-client"></a>
+											<a class="lapiz" name="${cliente.key.id}" href="../clienteModal.do?id=${cliente.key.id}"	id="lapiz${cliente.key.id}" data-toggle="modal" data-target="#edit-client"></a>
 									
 											<c:if test="${sessionScope.permiso != 3}">
 												<a class="papelera" name="${cliente.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${cliente.key.id}"></a>

@@ -22,6 +22,21 @@ public class ClienteDao {
 	public static ClienteDao getInstance() {
 		return new ClienteDao();
 	}
+	
+	public void createClienteRaw(Cliente c) {
+		String nombre = c.getNombre();
+		String letra = nombre.substring(0,1).toUpperCase();
+		String nombreMayus = letra + nombre.substring(1,nombre.length());
+		c.setErased(false);
+		c.setNombre(nombreMayus);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.makePersistent(c);
+		} finally {
+			pm.close();
+		}
+		
+	}
 
 	public void createCliente(Cliente c, String usermail) {
 		ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
@@ -35,6 +50,7 @@ public class ClienteDao {
 		
 		boolean isNewClient = false;
 		if (c.getKey()==null){
+			
 			c.setClientId("IDGLOBAL"+ String.format("%04d", cont));
 			isNewClient = true;
 			c.setErased(false);
