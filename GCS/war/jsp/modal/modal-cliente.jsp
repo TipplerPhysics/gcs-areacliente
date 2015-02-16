@@ -1,4 +1,6 @@
 	  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	  <%@ page import="java.util.ArrayList" %>
 	
 	<div class="modal_ajax">
 		<div class="">
@@ -63,7 +65,20 @@
 							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
 							<div class="radio-div">
 							
-							
+								<c:forEach items="${paisesModal}" var="pais">
+									<div class="radio-container">
+										<input type="checkbox" name='paises' value="${pais.name}"
+										<c:forEach items="${paisesCliente}" var="paisesCli">
+											<c:if test="${paisesCli==pais.name}">
+												checked="true" 
+											</c:if>
+										</c:forEach>
+										id="${pais.name}_check_modal"><label for="${pais.name}_check_modal"><span></span>${pais.name}</label>
+									</div>
+								</c:forEach>
+								
+								
+								<!--
 								<div class="radio-container">
 									<input type="checkbox" name='paises' value="Argentina"
 										id="argentina_check_modal" class="require-one"><label for="argentina_check_modal"><span></span>Argentina</label>
@@ -130,7 +145,7 @@
 									<input type="checkbox" name='paises' value="Venezuela"
 										id="venezuela_check_modal"><label for="venezuela_check_modal"><span></span>Venezuela</label>
 								</div>	
-								
+								-->
 
 							</div>
 						</div>				

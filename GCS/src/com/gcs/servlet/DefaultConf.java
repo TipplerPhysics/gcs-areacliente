@@ -183,6 +183,9 @@ public class DefaultConf extends HttpServlet {
 				e.printStackTrace();
 				result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
 		}
+		
+		
+		
 	}*/
 	
 	private String loadClientes(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
@@ -311,7 +314,7 @@ public class DefaultConf extends HttpServlet {
 					}
 					
 					if(save) {
-						clientesDao.createCliente(cliente, usermail);
+						clientesDao.createClienteRaw(cliente);
 					}
 				}
 				counter++;
@@ -522,8 +525,9 @@ public class DefaultConf extends HttpServlet {
 					String departamento = userSplit[5];
 					String email = userSplit[6];
 					Boolean activo = true;
-					String activo1 = Boolean.toString(activo);
-					activo1 = userSplit[7];	
+					
+					String activo1 = userSplit[7];
+					
 					
 					user = new User();		
 					 
@@ -565,10 +569,12 @@ public class DefaultConf extends HttpServlet {
 						else {
 							result += "Error Falta Permiso de Perfil \r\n";
 							error = true;
-						}	
+						}
+						if(activo1.equals("false")||activo1.equals("FALSE"))activo=false;
 						user.setPermiso(perm1);
 						user.setApellido2(apellido2);
 						user.setActivo(activo);
+						user.setErased(false);
 										
 					if(!error) {
 						result += user.toString() + "\r\n\r\n";

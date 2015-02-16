@@ -74,8 +74,9 @@ public class UserDao {
 		transaction.begin();
 
 		String queryStr = "select from " + User.class.getName()
-				+ " where erased  == false";
+				+ " where erased  == false && activo == true";
 
+		@SuppressWarnings("unchecked")
 		List<User> users = (List<User>) pManager.newQuery(queryStr).execute();		
 
 		transaction.commit();
@@ -95,6 +96,7 @@ public class UserDao {
 		String queryStr = "select from " + User.class.getName()
 				+ " where email  == :p1";
 
+		@SuppressWarnings("unchecked")
 		List<User> users = (List<User>) pManager.newQuery(queryStr).execute(email);
 
 		if (!users.isEmpty()) {
@@ -148,8 +150,8 @@ public class UserDao {
 		String queryStr = "select from " + User.class.getName()
 				+ " WHERE permiso == :permiso && erased == false";
 
-		List<User> agrupations = (List<User>) pManager.newQuery(queryStr)
-				.execute(permiso);
+		@SuppressWarnings("unchecked")
+		List<User> agrupations = (List<User>) pManager.newQuery(queryStr).execute(permiso);
 
 		transaction.commit();
 
