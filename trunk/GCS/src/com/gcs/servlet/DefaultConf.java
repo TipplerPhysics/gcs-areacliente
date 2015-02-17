@@ -429,8 +429,17 @@ public class DefaultConf extends HttpServlet {
 						proyecto.setClienteKey(Long.parseLong(clienteKey));
 					}
 					else {
-						result += "Error cliente \r\n";
-						error = true;
+						ClienteDao cliDao = ClienteDao.getInstance();
+
+						List<Cliente> clientesForId =cliDao.getClientesByNameLow(clienteName);
+						if(clientesForId.size()==1){
+							long clienteKeyLong = clientesForId.get(0).getKey().getId();
+							proyecto.setClienteKey(clienteKeyLong);
+							proyecto.setClienteName(clientesForId.get(0).getNombre());
+						}else{
+							result += "Error cliente \r\n";
+							error = true;	
+						}
 					}
 					if(!esNuloVacio(clasificacion)) {
 						proyecto.setClasificacion(Integer.parseInt(clasificacion));
@@ -443,15 +452,46 @@ public class DefaultConf extends HttpServlet {
 						proyecto.setGestor_it(Long.parseLong(gestorItKey));
 					}
 					else {
-						result += "Error gestor it \r\n";
-						error = true;
+						UserDao usrDao = UserDao.getInstance();
+
+						String []gestorItComplete = gestorItName.split(" ", -1);
+						for(int i=0;i<gestorItComplete.length;i++){
+							String aux = gestorItComplete[i];
+							gestorItComplete[i] = aux.replace("-", " ");
+						}
+ 
+						List<User> usuariosforid = usrDao.getUsersByCompleteName(gestorItComplete);
+						if(usuariosforid.size()==1){
+							long usuarioid = usuariosforid.get(0).getKey().getId();
+							proyecto.setGestor_it(usuarioid);
+							proyecto.setGestor_it_name(usuariosforid.get(0).getNombre()+" "+usuariosforid.get(0).getApellido1()+" "+usuariosforid.get(0).getApellido2());
+						}else{
+							result += "Error gestor it \r\n";
+							error = true;
+						}
 					}
 					if(!esNuloVacio(gestorNegocioKey)) {
 						proyecto.setGestor_negocio(Long.parseLong(gestorNegocioKey));
 					}
-					else {
-						result += "Error gestor negocio \r\n";
-						error = true;
+					else {	
+						UserDao usrDao = UserDao.getInstance();
+
+						String []gestorNegComplete = gestorNegocioName.split(" ", -1);
+						
+						for(int i=0;i<gestorNegComplete.length;i++){
+							String aux = gestorNegComplete[i];
+							gestorNegComplete[i] = aux.replace("-", " ");
+						}
+
+						List<User> usuariosforid = usrDao.getUsersByCompleteName(gestorNegComplete);
+						if(usuariosforid.size()==1){
+							long usuarioid = usuariosforid.get(0).getKey().getId();
+							proyecto.setGestor_negocio(usuarioid);
+							proyecto.setGestor_negocio_name(usuariosforid.get(0).getNombre()+" "+usuariosforid.get(0).getApellido1()+" "+usuariosforid.get(0).getApellido2());
+						}else{
+							result += "Error gestor negocio \r\n";
+							error = true;
+						}
 					}
 					proyecto.setCoste(coste);
 					//proyecto.setUrl_doc_google_drive(url_doc_google_drive);
@@ -478,7 +518,14 @@ public class DefaultConf extends HttpServlet {
 	
 	private String loadUsuarios(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		boolean save = false;
-		String saveParam = req.getParameter("save"); 
+		String saveParam = req.getParameter("save");
+		String deleteParam = req.getParameter("delete"); 
+		
+		boolean delete = false;
+		 
+		if(deleteParam != null && deleteParam.equals("true")) {
+			delete = true;
+		}
 		if(saveParam != null && saveParam.equals("true")) {
 			save = true;
 		}
@@ -493,6 +540,9 @@ public class DefaultConf extends HttpServlet {
 			String inputLine = new String();
 
 			UserDao userDao = UserDao.getInstance();
+			if(delete){
+				userDao.deleteAll();
+			}
 			User user = null;
 			
 			int counter = 0;
@@ -571,7 +621,7 @@ public class DefaultConf extends HttpServlet {
 							error = true;
 						}
 						if(activo1.equals("false")||activo1.equals("FALSE"))activo=false;
-						user.setPermiso(perm1);
+						user.setPermiso(Integer.parseInt(permiso));
 						user.setApellido2(apellido2);
 						user.setActivo(activo);
 						user.setErased(false);
@@ -593,6 +643,16 @@ public class DefaultConf extends HttpServlet {
 			e.printStackTrace();
 			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
 		}
+		User user = new User();
+		user.setActivo(true);
+		user.setErased(false);
+		user.setPermiso(1);
+		user.setPermisoStr("1");
+		user.setEmail("david.martin.beltran.contractor@bbva.com");
+		user.setNombre("david");
+		UserDao userDao = UserDao.getInstance();
+		userDao.createUser(user, usermail);
+		
 		return result;
 					
 				

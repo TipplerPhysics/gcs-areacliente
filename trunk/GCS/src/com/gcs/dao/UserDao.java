@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
@@ -141,6 +142,63 @@ public class UserDao {
 
 		return user;
 	}
+	
+	public List<User> getUsersByName(String name) {
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+
+		String queryStr = "select from " + User.class.getName()+ " WHERE name == "+name;
+
+		@SuppressWarnings("unchecked")
+		List<User> agrupations = (List<User>) pManager.newQuery(queryStr).execute();
+
+
+
+		pManager.close();
+
+		return agrupations;
+	}
+	
+	
+	public List<User> getUsersByCompleteName(String[] gestorItComplete) {
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		String name="";
+		String surname="";
+		String lastname=""; 
+		if (gestorItComplete.length==3){
+			name=gestorItComplete[0].replace("-", " ");
+			surname=gestorItComplete[1];
+			lastname=gestorItComplete[2]; 
+		}else{
+			if(gestorItComplete.length==2){
+				name=gestorItComplete[0];
+				surname=gestorItComplete[1];
+			}else{
+				name=gestorItComplete[0];
+				
+			}
+		}
+		String queryStr ="";
+		if(lastname.equals("")){
+			if(surname.equals("")){
+				queryStr = "select from " + User.class.getName()+ " where nombre  == '"+ name+"'";
+			}else{
+				queryStr = "select from " + User.class.getName()+ " where nombre  == '"+ name+"' && apellido1 =='"+surname+ "'";
+			}
+		}else{
+			queryStr = "select from " + User.class.getName()+ " where nombre  == '"+ name+"' && apellido1 =='"+surname+ "' && apellido2 =='"+lastname+"'" ;
+		}
+		
+
+		@SuppressWarnings("unchecked")
+		List<User> agrupations = (List<User>) pManager.newQuery(queryStr).execute();
+
+
+
+		pManager.close();
+
+		return agrupations;
+	}
+	
 
 	public List<User> getUsersByPermisoStr(int permiso) {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
@@ -159,5 +217,16 @@ public class UserDao {
 
 		return agrupations;
 	}
+	
+	public void deleteAll(){
+		UserDao usrDao = UserDao.getInstance();
+		List<User> usuarios = usrDao.getAllUsers();
+		for(User usr:usuarios){
+			usrDao.deleteUser(usr);
+		}
+	}
 
 }
+
+
+
