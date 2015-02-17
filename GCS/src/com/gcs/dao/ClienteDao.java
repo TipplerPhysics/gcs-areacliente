@@ -109,6 +109,41 @@ public class ClienteDao {
 
 		return c;
 	}
+	
+	
+	public List<Cliente> getClientesByName(String name) {
+
+		Cliente c = new Cliente();
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+
+		String queryStr = "select from " + Cliente.class.getName()+ " where nombre== :p1";
+
+		List<Cliente> clientes = (List<Cliente>) pManager.newQuery(queryStr).execute(name);
+
+		return clientes;
+	}
+	
+	
+	public List<Cliente> getClientesByNameLow(String name) {
+
+		Cliente c = new Cliente();
+
+		ClienteDao cliDao = ClienteDao.getInstance();
+		List<Cliente> clientes = cliDao.getAllClientes();
+		List<Cliente> clientesRev = new ArrayList<Cliente>();
+		
+		for (Cliente cl:clientes){
+			if (cl.getNombre().toLowerCase().equals(name.toLowerCase())){
+				clientesRev.add(cl);
+			}
+		}
+		
+
+		return clientesRev;
+	}
 
 	public Cliente getClienteByRefGlobal(String ref) {
 

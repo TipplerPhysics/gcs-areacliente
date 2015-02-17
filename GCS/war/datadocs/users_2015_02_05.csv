@@ -1,7 +1,7 @@
 Marco Antonio;Luna;Luna;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);marco.luna@bbva.com;TRUE
 Cristina;Tris;Jiménez;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);cristina.tris@bbva.com;TRUE
-Cristina;Blanco;Barrio;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);cristina.blanco@bbva.com ;FALSE
-Pedro Miguel;Diezhandino;Díaz de Isla;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;pedromiguel.diezhandino.contractor@bbva.com;FALSE
+Cristina;Blanco;Barrio;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);cristina.blanco@bbva.com ;TRUE
+Pedro Miguel;Diezhandino;Díaz de Isla;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;pedromiguel.diezhandino.contractor@bbva.com;TRUE
 Antonio Jesús;García;Delgado;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);aj.garcia.delgado@bbva.com ;TRUE
 Alba;Martín;Fernández;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);alba.martin.fernandez@bbva.com ;TRUE
 José Alberto;de la Fuente;Jiménez;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;alberto.fuente@bbva.com;TRUE
@@ -26,13 +26,15 @@ Natalia;Sánchez;Illán;4;Gestor Negocio;Negocio-Global Customer Service (Incluye 
 Omar Alejandro;García;Camarillo;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);omar.garcia@bbva.com;TRUE
 Salvador;Cruz;Medina;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);s.cruz@bbva.com ;TRUE
 Susana;González;Fernández;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;susana.gonzalez.fernandez.contractor@bbva.com ;TRUE
-Ángel;Díaz;Morales;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);angel.diaz.morales.contractor@bbva.com ;FALSE
-Carlos Enrique;Gargallo;Guil ;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;carlos.gargallo@bbva.com ;FALSE
-Carlos Miguel;Díaz;Bes;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;carlosmiguel.diaz.contractor@bbva.com;FALSE
-Daniela;Vilau;;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;daniela.vilau.contractor@bbva.com ;FALSE
-José Manuel;González;López;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);josemanuel.gonzalez.lopez.contractor@bbva.com ;FALSE
-Miguel Ángel;Fernández;Valderrama;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;ma.fernandez.valderrama@bbva.com;FALSE
-Noé;Sánchez;Lázaro;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;noe.sanchez.lazaro.contractor@bbva.com ;FALSE
-Paloma;García;Taberner;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;p.garcia.taberner@bbva.com ;FALSE
-Ricardo;García;Caravaca;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;ricardo.gcaravaca.contractor@bbva.com ;FALSE
-Carolina;Aparicio;Camacho;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);c.aparicio.camacho@bbva.com;FALSE
+Ángel;Díaz;Morales;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);angel.diaz.morales.contractor@bbva.com ;TRUE
+Carlos Enrique;Gargallo;Guil ;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;carlos.gargallo@bbva.com ;TRUE
+Carlos Miguel;Díaz;Bes;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;carlosmiguel.diaz.contractor@bbva.com;TRUE
+Daniela;Vilau;;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;daniela.vilau.contractor@bbva.com ;TRUE
+José Manuel;González;López;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);josemanuel.gonzalez.lopez.contractor@bbva.com ;TRUE
+Miguel Ángel;Fernández;Valderrama;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;ma.fernandez.valderrama@bbva.com;TRUE
+Noé;Sánchez;Lázaro;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;noe.sanchez.lazaro.contractor@bbva.com ;TRUE
+Paloma;García;Taberner;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;p.garcia.taberner@bbva.com ;TRUE
+Ricardo;García;Caravaca;3;Gestor IT;IT C&IB-GTB-Global Customer Solutions ;ricardo.gcaravaca.contractor@bbva.com ;TRUE
+Carolina;Aparicio;Camacho;4;Gestor Negocio;Negocio-Global Customer Service (Incluye HDR);c.aparicio.camacho@bbva.com;TRUE
+Roberto;González;Román;1;Admin;IT C&IB-GTB-Global Customer Solutions ;roberto.gonzalez.roman.contractor@bbva.com;TRUE
+Cristina ;Gallego ;Gómez;1;Admin;IT C&IB-GTB-Global Customer Solutions ;c.gallego.gomez.contractor@bbva.com;TRUE

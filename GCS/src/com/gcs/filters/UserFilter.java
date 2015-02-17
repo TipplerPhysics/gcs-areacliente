@@ -56,9 +56,15 @@ public class UserFilter implements Filter {
 						req.setAttribute("entorno",
 								"https://pre.gcs-areacliente.appspot.com");
 
-					} else {
-						req.setAttribute("entorno",
-								"https://gcs-areacliente.appspot.com");
+					}else{
+						if (url.contains("rob.")) {
+							req.setAttribute("entorno",
+									"https://rob.gcs-areacliente.appspot.com");
+	
+							}else {
+								req.setAttribute("entorno",
+									"https://pro.gcs-areacliente.appspot.com");
+						}
 					}
 				}
 
