@@ -155,6 +155,15 @@ public class ProyectoDao {
 		Utils.writeLog(usermail, "Eliminó", "Proyecto", p.getCod_proyecto());
 	}
 	
+	public void deleteAllProject(String usermail){
+		
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		List<Proyecto> proyectos = proyectoDao.getAllProjects();
+		for(Proyecto proy:proyectos){
+			proyectoDao.deleteProject(proy, usermail);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Proyecto> getAllProjects() {
 		
