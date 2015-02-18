@@ -200,12 +200,21 @@ public class DefaultConf extends HttpServlet {
 		String result = "";
 		try {
 			
+			
 			InputStream stream = this.getServletContext().getResourceAsStream(link);
 			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
 
 			String inputLine = new String();
 
 			ClienteDao clientesDao = ClienteDao.getInstance();
+			
+			String deleteParam = req.getParameter("delete"); 
+			
+			boolean delete = false;
+			 
+			if(deleteParam != null && deleteParam.equals("true")) {
+				clientesDao.deleteClientAll(usermail);
+			}
 			Cliente cliente = null;
 			int counter = 0;
 			boolean error = false;
@@ -344,6 +353,16 @@ public class DefaultConf extends HttpServlet {
 			String inputLine = new String();
 
 			ProyectoDao proyectoDao = ProyectoDao.getInstance();
+			
+			String deleteParam = req.getParameter("delete"); 
+			
+			boolean delete = false;
+			 
+			if(deleteParam != null && deleteParam.equals("true")) {
+				proyectoDao.deleteAllProject(usermail);
+			}
+			
+			
 			Proyecto proyecto = null;
 			
 			int counter = 0;
@@ -574,6 +593,7 @@ public class DefaultConf extends HttpServlet {
 					String permisoStr = userSplit[4];
 					String departamento = userSplit[5];
 					String email = userSplit[6];
+					email.replace(" ", "");
 					Boolean activo = true;
 					
 					String activo1 = userSplit[7];
