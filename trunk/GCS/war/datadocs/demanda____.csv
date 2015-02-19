@@ -1,0 +1,184 @@
+PET_0000001;;Cma Cgm;IMPL;Asignada;06/01/2014;19:44;;;;Marco-Antonio Luna Luna;07/01/2014;9:25;NO;;Israel Lora;Estándar;07/01/2014;12:03
+PET_0000002;;Total;PRUC;Asignada;08/01/2014;13:14;;;;Cristina Blanco Barrio;;;NO;;Carlos-Miguel Díaz Bes;;08/01/2014;18:09
+PET_0000003;;Telefónica;IMPL;Asignada;09/01/2014;10:09;;;;Jorge-Javier Arbona Mesa;09/01/2014;10:52;NO;;José-Alberto de la Fuente Jiménez;Compleja;09/01/2014;11:33
+PET_0000004;;Bacardi;IMPL;Asignada;09/01/2014;10:55;;;;José-Manuel González López;09/01/2014;11:52;NO;;Israel Lora;Estándar;10/01/2014;11:39
+PET_0000005;;Repsol;EVOL;Asignada;10/01/2014;14:56;;;;Andrés Luque;13/01/2014;9:16;NO;;Carlos-Miguel Díaz Bes;;13/01/2014;11:10
+PET_0000006;;Siemens;MIGR;Asignada;14/01/2014;13:59;;MIGRACIÓN IA Se ha enviado la solicitud con el formulario de evolutivo cuando realmente en el contenido se indica que es una migración. Se le ha enviado un mail al gestor de negocio para indicarle el formulario que deberia utilizar;;Andrés Luque;14/01/2014;15:30;NO;;José-Javier Díaz Sánchez;Compleja;14/01/2014;15:10
+PET_0000007;;Grifols;PRUC;Asignada;21/01/2014;14:00;;;;Andrés Luque;21/01/2014;15:26;NO;;Carlos-Miguel Díaz Bes;;21/01/2014;16:02
+PET_0000008;;Total;MIGR;Asignada;21/01/2014;19:00;;MIGRACIÓN IA;;Cristina Blanco Barrio;22/01/2014;12:06;NO;;José-Javier Díaz Sánchez;Compleja;22/01/2014;12:30
+PET_0000009;;Packaging Corp;IMPL;Asignada;28/01/2014;9:51;;Presasignada por informe de carga de Trabajo a Elena;;Ana Ruíz Alonso;28/01/2014;10:09;NO;;Elena López Werner;Compleja;28/01/2014;10:48
+PET_0000010;;Airbus;PRUC;Asignada;30/01/2014;11:35;;;;Cristina Blanco Barrio;30/01/2014;12:32;NO;;Jaime-Ramón Gómez-Cuétara Albo;;31/01/2014;13:51
+PET_0000011;;Earthport;EVOL;Asignada;30/01/2014;15:39;;Es una consulta sobre un servicio ya asignado a Elena , se ha enviado un correo a Fernando y Alberto con copia a Elena para que procedan a gestinar dicha consulta. Al final se cataloga como EVOL se envia a servicing para asignación de gestor;;Ana Ruíz Alonso;30/01/2014;10:02;NO;;Carlos-Enrique Gargallo Guil ;;31/01/2014;11:56
+PET_0000012;;Agco;IMPL;Asignada;31/01/2014;7:55;;MT940, conexión H2H: SFTP. En el documento de solicitud no se encuentra marcado Banco Relay, queda pendiente de confirmar este punto con el Gestor Negocio.;;Carlos Rocha Ruiz;31/01/2014;11:10;NO;;Pedro-Miguel;Compleja;31/01/2014;13:10
+PET_0000013;;Nh Hoteles;IMPL;Asignada;31/01/2014;14:09;IMPL – Adeudos + Transferencia IMPL países;;;Andrés Luque;31/01/2014;14:59;NO;;Daniela Vilau;Compleja;03/02/2014;9:56
+PET_0000014;;Ecopetrol;PRUC;Asignada;31/01/2014;23:44;;;;Marco-Antonio Luna Luna;03/02/2014;12:22;NO;;Carlos-Miguel Díaz Bes;;03/02/2014;12:27
+PET_0000015;;Telefónica;IMPL;Asignada;03/02/2014;15:58;;Se desconoce fechas reales de asignación y comunic. Ya que ha entrado por buzón de impl y ha sido asignada a través de éste.;;Jorge-Javier Arbona Mesa;;;NO;;Elena López Werner;Estándar;03/02/2014;18:58
+PET_0000016;;Aptar Group;IMPL;Asignada;04/02/2014;17:06;;;;Alba Martín Fernández;05/02/2014;8:45;NO;;Ana-Belén Díez Gutiérrez;Estándar;05/02/2014;13:17
+PET_0000017;;Bacardi;IMPL;Asignada;07/02/2014;14:34;;;;José-Manuel González López;07/02/2014;15:00;NO;;Israel Lora;Estándar;11/02/2014;17:18
+PET_0000018;;Ecopetrol;MIGR;Asignada;13/02/2014;1:03;;MIGRACIÓN IA;;Marco-Antonio Luna Luna;13/02/2014;10:08;NO;;José-Javier Díaz Sánchez;Compleja;13/02/2014;10:23
+PET_0000019;;Bat;IMPL;Asignada;14/02/2014;12:02;;El Gestor de Negocio envio la petición al buzón de implementaciones e dia 3/02/2014 y hasta el 14/02/2014 no se ha hecho llegar al buzón de peticiones para su adecuada gestión. Alberto indicó que contestásemos a gestor de negocio asignando directamente a Ana, para evitar más demoras.;;Jorge-Javier Arbona Mesa;14/02/2014;12:15;NO;;Ana-Belén Díez Gutiérrez;Estándar;14/02/2014;12:15
+PET_0000020;;Arkema;PRUC;Asignada;14/02/2014;14:59;;;;Cristina Blanco Barrio;14/02/2014;15:25;NO;;Carlos-Miguel Díaz Bes;;17/02/2014;10:15
+PET_0000021;;Volkswagen;IMPL;Asignada;17/02/2014;13:12;IMPL – Adeudos + Transferencia IMPL países;Fernando me ha indicado que a partir de ahora IMPL sea para él. Pendiente crear carpetas e informar a Cristina;;José-Manuel González López;17/02/2014;16:00;NO;;Cristina Jorge Conde;Compleja;17/02/2014;18:26
+PET_0000022;;Serunion;IMPL;Asignada;18/02/2014;16:20;IMPL – Adeudos + Transferencia IMPL países;El Gestor de Negocio olvidó cumplimentar el tipo de formato y se le ha pedido confirmación, aun así se está gestionando la asignación en paralelo.;;Ana Ruíz Alonso;19/02/2014;9:42;NO;;Cristina Jorge Conde;Compleja;19/02/2014;11:33
+PET_0000023;;Oberthur;PRUC;Desestimada;19/02/2014;10:42;-;El Gestor de Negocio ha solicitado un servicio de pruebas para un cliente que no está en producción y se ha deribado esta petición al gestor IT que está trabajando a día de hoy en la petición que es Cristina Jorge por lo que se desestima esta petición y se registra como devuelta, aunque realmente no se ha devuelto sino reconducido;;Ángel Díaz Morales;19/02/2014;12:54;SI;;Gema García;;19/02/2014;12:54
+PET_0000024;;Esteve;IMPL;Asignada;21/02/2014;10:06;IMPL – Adeudos + Transferencia IMPL países;El Gestor de Negocio olvidó cumplimentar el tipo de formato y se le ha pedido confirmación, aun así se está gestionando la asignación en paralelo.;;Ángel Díaz Morales;21/02/2014;11:00;NO;;Daniela Vilau;Compleja;24/02/2014;13:00
+PET_0000025;;Kuehne Nagel;IMPL;Asignada;24/02/2014;10:24;;Son 10 proyectos distintos servicio PaP (5 paises) y servicio Saldos y Movimientos (5 paises);;Ana Ruíz Alonso;24/02/2014;12:29;NO;;Pedro-Miguel;Compleja;24/02/2014;15:40
+PET_0000026;;General Electric;IMPL;Asignada;24/02/2014;16:24;;;;Alba Martín Fernández;24/02/2014;17:19;NO;;Benito Bellido Romero;Compleja;25/02/2014;15:34
+PET_0000027;;Ibm;IMPL;Asignada;25/02/2014;18:06;;;;Andrés Luque;26/02/2014;11:26;NO;;Pedro-Miguel;Compleja;26/02/2014;11:31
+PET_0000028;;Prosegur;IMPL;Asignada;26/02/2014;11:13;;Saldos y Movimientos (BR) 4 paises Latam;;Ángel Díaz Morales;26/02/2014;15:40;NO;;Ana-Belén Díez Gutiérrez;Estándar;26/02/2014;17:11
+PET_0000029;;Bacardi;IMPL;Asignada;27/02/2014;16:21;SCT;CNF y SCT: España y Portugal;;José-Manuel González López;27/02/2014;16:21;NO;;Elena López Werner;Estándar;27/02/2014;17:26
+PET_0000030;;Oberthur;IMPL;Asignada;28/02/2014;11:55;;MT942 España;;Ángel Díaz Morales;28/02/2014;12:55;SI;;Benito Bellido Romero;Estándar;28/02/2014;13:08
+PET_0000031;;Frit Ravich;IMPL;Asignada;05/03/2014;18:48;;AEB43;;Ángel Díaz Morales;06/03/2014;13:28;NO;;José-Javier Díaz Sánchez;Estándar;06/03/2014;14:55
+PET_0000032;;Huawei;CONS;Asignada;06/03/2014;16:40;;;;Ignacio Huertes Álvarez;06/03/2014;16:41;NO;;Benito Bellido Romero;;06/03/2014;16:41
+PET_0000033;;Embajada Paises Bajos;IMPL;Asignada;11/03/2014;10:51;;Transferencias Domesticas / Pago a proveedores / Nóminas (COL, ARG, VEN y PER);;Ana Ruíz Alonso;11/03/2014;10:51;NO;;José-Javier Díaz Sánchez;Compleja;12/03/2014;10:03
+PET_0000034;;Vodafone;IMPL;Asignada;11/03/2014;18:22;;Respuestas SCT XML / Respuestas SDD XML / Devoluciones CORE/B2B agrupación;;José-Manuel González López;12/03/2014;10:08;NO;;Elena López Werner;Compleja;12/03/2014;10:16
+PET_0000035;;Nestlé;EVOL;Asignada;13/03/2014;0:27;;Evolutivo, actualizar lista distribución.;;Marco-Antonio Luna Luna;13/03/2014;12:37;NO;;Israel Lora;;13/03/2014;12:37
+PET_0000036;;Europcar;IMPL;Asignada;14/03/2014;11:57;;MT101 Pagos Internacionales18/03/2014 (correo Benito Bellido en el buzón) Esta petición, al tratarse de un cliente aún en implementación y con largo recorrido pasado se va a gestionar como cambio de alcance del actual proyecto (2013_PROY0086_02_Europcar NO IMPL), se elimina el nuevo código de proyecto PROY0086_03;;Ángel Díaz Morales;14/03/2014;12:57;NO;;Benito Bellido Romero;Estándar;17/03/2014;9:35
+PET_0000037;;Occidental Petroleum;IMPL;Asignada;14/03/2014;20:37;;Nóminas Colombia y Respuestas;;Carlos Rocha Ruiz;17/03/2014;10:29;NO;;Israel Lora;Estándar;17/03/2014;10:41
+PET_0000038;;Municipio De Medellin;IMPL;Asignada;18/03/2014;17:33;;Fecha entrada: 14/03 18:40 , se devuelve;;Carlos Rocha Ruiz;18/03/2014;18:22;SI;;Israel Lora;Estándar;19/03/2014;10:48
+PET_0000039;;Esteve;IMPL;Asignada;20/03/2014;16:26;;;;Andrés Luque;20/03/2014;17:33;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;24/03/2014;10:11
+PET_0000040;;Renault;PRUC;Asignada;21/03/2014;12:08;;;;Ana Ruíz Alonso;20/03/2014;17:30;NO;;Cristina Jorge Conde;;23/03/2014;15:10
+PET_0000041;;Ecopetrol;CONS;Asignada;21/03/2014;18:57;;;;Marco-Antonio Luna Luna;24/03/2014;10:13;NO;;José-Javier Díaz Sánchez;;24/03/2014;17:30
+PET_0000042;;Huawei;IMPL;Asignada;24/03/2014;12:35;;;;Jorge-Javier Arbona Mesa;24/03/2014;16:09;NO;;Elena López Werner;Estándar;24/03/2014;18:46
+PET_0000043;;Inditex;IMPL;Asignada;24/03/2014;13:18;;;;Antonio-Jesús García Delgado;24/03/2014;16:11;NO;;Marta Serrano García;Compleja;24/03/2014;18:34
+PET_0000044;;Cat;IMPL;Asignada;26/03/2014;16:28;Se incluyen servicios no IMPL y servicios IMPL del tipo Adeudos + Transferencia IMPL países;;;Ana Ruíz Alonso;27/03/2014;11:37;NO;;Cristina Jorge Conde;Compleja;28/03/2014;12:09
+PET_0000045;;Occidental Petroleum;IMPL;Asignada;26/03/2014;17:30;;;;Carlos Rocha Ruiz;26/03/2014;18:15;SI;;Israel Lora;Compleja;26/03/2014;19:35
+PET_0000046;;Minersa;IMPL;Asignada;27/03/2014;13:27;Se incluyen servicios no IMPL y servicios IMPL del tipo Adeudos + Transferencia IMPL países;;;Cristina Blanco Barrio;27/03/2014;17:54;SI;;Jaime-Ramón Gómez-Cuétara Albo;Compleja;28/03/2014;12:05
+PET_0000047;;Puig;IMPL;Asignada;27/03/2014;16:35;;;;Cristina Blanco Barrio;27/03/2014;17:55;SI;;Pedro-Miguel;Estándar;28/03/2014;12:07
+PET_0000048;;Riusa II;IMPL;Asignada;31/03/2014;19:09;Se incluyen servicios no IMPL y servicios IMPL del tipo Nóminas + Transferencia;Multiples servicios para España y Portugal, se empieza la implementación por el AEB43;;Ángel Díaz Morales;01/04/2014;13:20;SI;;Pedro-Miguel;Estándar;02/04/2014;11:26
+PET_0000049;;Iberdrola;IMPL;Asignada;01/04/2014;16:16;Nóminas;;;Ignacio Huertes Álvarez;02/04/2014;10:03;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;02/04/2014;11:30
+PET_0000050;;Louis Vuitton;IMPL;Asignada;02/04/2014;17:45;SDD CORE PAIN.008 + PAIN.002 RECH/DEV;;;Cristina Blanco Barrio;02/04/2014;18:19;NO;;Jaime-Ramón Gómez-Cuétara Albo;Compleja;02/04/2014;18:40
+PET_0000051;;Volkswagen;EVOL;Asignada;03/04/2014;10:34;;;;José-Manuel González López;03/04/2014;10:34;NO;;Carlos-Miguel Díaz Bes;;03/04/2014;10:34
+PET_0000052;;Pontegadea;IMPL;Asignada;09/04/2014;13:10;Sólo servicios IMPL pero del tipo IMPL – Transferencias ESP;;;Ignacio Huertes Álvarez;09/04/2014;17:22;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;10/04/2014;22:13
+PET_0000053;;Huawei;CONS;Asignada;15/04/2014;18:07;;;;Ignacio Huertes Álvarez;16/04/2014;9:29;NO;;José-Alberto de la Fuente Jiménez;;16/04/2014;10:45
+PET_0000054;;Loreal;IMPL;Asignada;22/04/2014;15:54;H2H conectividad nueva en Peru;Nos llega a través de Alberto. Se desconoce fecha asignación.;;Marco-Antonio Luna Luna;;;NO;;Ricardo García Caravaca;Compleja;22/04/2014;18:54
+PET_0000055;;Sab Miller;IMPL;Asignada;23/04/2014;9:07;Cliente nuevo, no existe servicio implantado con el cliente para esta conectividad;Se ha devuelto el 23/04/2014 a las 10:08 por no marcar el protocolo en el producto H2H;;Alba Martín Fernández;23/04/2014;12:57;SI;;Benito Bellido Romero;Compleja;25/04/2014;12:56
+PET_0000056;;Sapa As;IMPL;Asignada;23/04/2014;9:51;Tiene servicios IMPL (tipo IMPL – Transferencias ESP) y no IMPL que están en catálogo;Se ha devuelto el 23/04/2014 a las 10:37 por no marcar si requiere o no respuestas. El 23/04/2014 a las 10:43 desde Negocio se nos informa que en principio no requiere respuestas;;Andrés Luque;23/04/2014;10:51;SI;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;23/04/2014;13:47
+PET_0000057;;Sealed Air;IMPL;Asignada;23/04/2014;13:17;Compleja porque se piden movimientos de cuentas para URUGUAY;;;Ignacio Huertes Álvarez;23/04/2014;17:43;NO;;Israel Lora;Compleja;25/04/2014;12:53
+PET_0000058;;Siemens;PRUC;Asignada;25/04/2014;13:33;;;;Andrés Luque;25/04/2014;14:02;NO;;Jaime-Ramón Gómez-Cuétara Albo;;28/04/2014;9:26
+PET_0000059;;Richemont;IMPL;Asignada;29/04/2014;18:01;;;;Ignacio Huertes Álvarez;30/04/2014;12:20;NO;;Cristina Jorge Conde;Compleja;30/04/2014;14:13
+PET_0000060;;Prosegur;IMPL;Asignada;30/04/2014;12:38;;;;Ángel Díaz Morales;30/04/2014;17:28;NO;;Javier Fernández Martín;Estándar;30/04/2014;19:47
+PET_0000061;;Occidental Petroleum;IMPL;Asignada;30/04/2014;18:18;;PROY0042_04 para chile PROY0042_05 para USA;;Carlos Rocha Ruiz;05/05/2014;10:13;NO;;Israel Lora;Compleja;05/05/2014;12:11
+PET_0000062;;Kimberly Clark;IMPL;Asignada;06/05/2014;16:48;;;;Carlos Rocha Ruiz;06/05/2014;17:46;NO;;Israel Lora;Compleja;07/05/2014;9:57
+PET_0000063;;Gam;IMPL;Asignada;07/05/2014;1:16;Se cataloga Compleja al ser Global Net Cash, por haberse realizado pocas implementaciones de este producto.;Petición incorrectamente enviada al buzón de implementaciones.;;Marco-Antonio Luna Luna;09/05/2014;13:47;SI;;Javier Fernández Martín;Compleja;09/05/2014;13:58
+PET_0000064;;Indura;IMPL;Asignada;07/05/2014;1:21;;Petición incorrectamente enviada al buzón de implementaciones.;;Marco-Antonio Luna Luna;09/05/2014;13:47;NO;;Javier Fernández Martín;Compleja;09/05/2014;14:37
+PET_0000065;;Nestlé;MIGR;Asignada;07/05/2014;11:45;;MIGRACIÓN IA;;Antonio-Jesús García Delgado;07/05/2014;13:49;NO;;José-Javier Díaz Sánchez;Compleja;09/05/2014;12:51
+PET_0000066;;Cortefiel;IMPL;Asignada;07/05/2014;19:01;;Dos servicios IMPL: Nóminas y Transferencias;;José-Manuel González López;08/05/2014;10:20;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;08/05/2014;16:00
+PET_0000067;;Volkswagen;EVOL;Asignada;08/05/2014;17:08;;Volkswagen desea eliminar la fecha que incluimos en el original message ID de devoluciones. Para esto es necesario un mapa.;;José-Manuel González López;08/05/2014;17:53;NO;;Cristina Jorge Conde;Compleja;10/05/2014;16:35
+PET_0000068;;Ibm;MIGR;Asignada;14/05/2014;10:55;;MIGRACIÓN OB;;Andrés Luque;14/05/2014;16:25;NO;;Marta Serrano García;Compleja;20/05/2014;12:36
+PET_0000069;;Luckia;IMPL;Asignada;14/05/2014;10:58;;;;Antonio-Jesús García Delgado;14/05/2014;16:26;NO;;Daniela Vilau;Compleja;16/05/2014;9:46
+PET_0000070;;Sab Miller;PRUC;Asignada;19/05/2014;18:53;;;;Alba Martín Fernández;20/05/2014;15:20;NO;;Benito Bellido Romero;Estándar;20/05/2014;16:10
+PET_0000071;;Louis Vuitton;IMPL;Asignada;28/05/2014;19:57;;;;Carlos Rocha Ruiz;29/05/2014;11:25;NO;;Antonio Coronil Martínez;Estándar;29/05/2014;16:37
+PET_0000072;;Sunglass;IMPL;Asignada;29/05/2014;12:51;;;;Ana Ruíz Alonso;29/05/2014;15:59;NO;;Javier Fernández Martín;Compleja;30/05/2014;12:31
+PET_0000073;;Interpublic;IMPL;Asignada;29/05/2014;18:34;;;;Ana Ruíz Alonso;30/05/2014;10:05;NO;;Javier Fernández Martín;Estándar;30/05/2014;10:41
+PET_0000074;;Telefónica;IMPL;Asignada;02/06/2014;10:54;;La petición entra por Alberto.;;Jorge-Javier Arbona Mesa;;;NO;;Marta Serrano García;Compleja;02/06/2014;11:59
+PET_0000075;;Colgate;IMPL;Asignada;03/06/2014;12:57;Nueva conectividad H2H formato própio;;;Jorge-Javier Arbona Mesa;;;NO;;Javier Fernández Martín;Compleja;03/06/2014;15:45
+PET_0000076;;Bacardi;EVOL;Asignada;03/06/2014;18:20;;;;José-Manuel González López;04/06/2014;9:41;NO;;Elena López Werner;;04/06/2014;10:00
+PET_0000077;;Cortefiel;IMPL;Asignada;03/06/2014;18:36;BR Estándar;;;José-Manuel González López;03/06/2014;9:44;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;04/06/2014;15:14
+PET_0000078;;Colgate;IMPL;Asignada;04/06/2014;16:11;Nueva conectividad H2H formato própio;No nos damos cuenta de que a Alberto se le olvida comunicar al gestor de negocio la asignación del gestor.;;Jorge-Javier Arbona Mesa;05/06/2014;10:57;NO;;Javier Fernández Martín;Compleja;20/06/2014;15:15
+PET_0000079;;Iberdrola;IMPL;Asignada;06/06/2014;14:32;;En la solicitud se incluyen identicos servicios en Formato MT101 FIN y FILEACT.09/06/2014: Se recibe la petición corregida;;Ignacio Huertes Álvarez;09/06/2014;16:48;SI;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;09/06/2014;18:17
+PET_0000080;;Petrex;IMPL;Asignada;12/06/2014;17:40;;;;Cristina Blanco Barrio;12/06/2014;18:01;NO;;Antonio Coronil Martínez;Estándar;15/06/2014;15:46
+PET_0000081;;Dhl;IMPL;Asignada;16/06/2014;19:25;;;;Alba Martín Fernández;17/06/2014;12:01;NO;;Antonio Coronil Martínez;Estándar;17/06/2014;13:31
+PET_0000082;;Ibm;PRUC;Asignada;18/06/2014;13:28;;;;Andrés Luque;18/06/2014;14:54;NO;;Marta Serrano García;;18/06/2014;18:20
+PET_0000083;;Iberdrola;PRUC;Asignada;18/06/2014;13:30;;;;Ignacio Huertes Álvarez;18/06/2014;15:01;NO;;Jaime-Ramón Gómez-Cuétara Albo;;18/06/2014;16:07
+PET_0000084;;Hasbro;IMPL;Asignada;20/06/2014;9:55;Respuestas Dedicadas H2H;;;Antonio-Jesús García Delgado;20/06/2014;13:11;NO;;Marta Serrano García;Compleja;23/06/2014;23:09
+PET_0000085;;Interpublic;IMPL;Asignada;20/06/2014;11:57;;;;Ana Ruíz Alonso;20/06/2014;13:38;NO;;Javier Fernández Martín;Estándar;24/06/2014;0:02
+PET_0000086;;Cencosud;IMPL;Asignada;20/06/2014;18:55;;Se devuelve petición por antigua (2012) y se sospecha que alcance de la petición irreal.;;Omar-Alejandro García Camarillo;24/06/2014;9:59;SI;;Israel Lora;Compleja;24/06/2014;18:47
+PET_0000087;;Alstom;IMPL;Asignada;23/06/2014;11:58;;Se devuelve petición por antigua (2012).;;Ana Ruíz Alonso;23/06/2014;15:39;SI;;Benito Bellido Romero;Estándar;25/06/2014;10:28
+PET_0000088;;Abertis;IMPL;Asignada;23/06/2014;19:14;;;;Ignacio Huertes Álvarez;24/06/2014;12:06;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;24/06/2014;17:27
+PET_0000089;;Interpublic;IMPL;Asignada;25/06/2014;18:06;;;;Ana Ruíz Alonso;25/06/2014;18:46;NO;;Javier Fernández Martín;Estándar;27/06/2014;14:51
+PET_0000090;;Vueling Airlines;IMPL;Asignada;02/07/2014;12:00;;;;Ángel Díaz Morales;02/07/2014;16:48;NO;;Ricardo García Caravaca;Estándar;07/07/2014;10:42
+PET_0000091;;Hasbro;MIGR;Asignada;04/07/2014;12:54;;MIGRACIÓN IA No tenemos constancia de asignación via mail de gestor, asignación en reunión de clientes críticos;;Jorge-Javier Arbona Mesa;04/07/2014;14:19;SI;;Marta Serrano García;Compleja;04/07/2014;14:19
+PET_0000092;;Hasbro;EVOL;Asignada;07/07/2014;0:00;;No tenemos constancia de la petición, nos lo comunica el gestor y se pide a resp.impl que reclamen petición para buzón de g.dem.;;Antonio-Jesús García Delgado;;;NO;;Marta Serrano García;;07/07/2014;0:00
+PET_0000093;;Une Epm Telecomunicaciones;IMPL;Asignada;07/07/2014;18:23;;;;José-Manuel González López;08/07/2014;10:07;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;09/07/2014;18:05
+PET_0000094;;Colpensiones;IMPL;Asignada;09/07/2014;0:50;Nueva conectividad H2H;;;Carlos Rocha Ruiz;09/07/2014;13:21;NO;;Antonio Coronil Martínez;Compleja;09/07/2014;18:00
+PET_0000095;;Técnicas Reunidas;IMPL;Asignada;10/07/2014;12:47;Servicios IMPL y no IMPL con Adeudos;;;Ana Ruíz Alonso;10/07/2014;13:10;NO;;Benito Bellido Romero;Compleja;10/07/2014;19:42
+PET_0000096;;Iberdrola;MIGR;Asignada;14/07/2014;18:48;;MIGRACIÓN OB;;Ignacio Huertes Álvarez;14/07/2014;18:48;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;15/07/2014;9:11
+PET_0000097;;Une Epm Telecomunicaciones;IMPL;Asignada;17/07/2014;10:25;;Se devuelve al tener un servicio incluido que no se encuentra liberado por Producto;;José-Manuel González López;17/07/2014;13:55;SI;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;21/07/2014;16:47
+PET_0000098;;Siemens;IMPL;Asignada;17/07/2014;10:33;;;;Andrés Luque;18/07/2014;9:52;NO;;Benito Bellido Romero;Estándar;21/07/2014;21:36
+PET_0000099;;General Electric;MIGR;Asignada;22/07/2014;12:54;;MIGRACIÓN OB No se incluye documento de solicitud;;Alba Martín Fernández;22/07/2014;13:44;SI;;Daniela Vilau;Estándar;24/07/2014;16:03
+PET_0000100;;Kuehne Nagel;IMPL;Asignada;22/07/2014;13:13;;Se incluye el documento de alcance original (con servicios ya productivos);;Ana Ruíz Alonso;22/07/2014;13:35;SI;;Daniela Vilau;Compleja;24/07/2014;15:49
+PET_0000101;;Interpublic;IMPL;Asignada;24/07/2014;9:14;;;;Ana Ruíz Alonso;24/07/2014;11:53;NO;;Javier Fernández Martín;Estándar;24/07/2014;15:52
+PET_0000102;;Bacardi;IMPL;Asignada;28/07/2014;18:02;;;;José-Manuel González López;29/07/2014;9:08;NO;;Cristina Jorge Conde;Estándar;30/07/2014;10:00
+PET_0000103;;Minersa;IMPL;Asignada;30/07/2014;10:54;Se reactiva el cliente, unicamente con el servicio Confirming;;;Cristina Blanco Barrio;31/07/2014;10:54;NO;;Daniela Vilau;Estándar;31/07/2014;12:04
+PET_0000104;;Chep;IMPL;Asignada;04/08/2014;12:01;Respuestas dedicadas;Pide 2 cosas una con solicitud y otra a través del mail;;Antonio-Jesús García Delgado;04/08/2014;12:10;NO;;Cristina Jorge Conde;Compleja;04/08/2014;12:10
+PET_0000105;;Samsung Electronics;IMPL;Asignada;12/08/2014;9:27;;;;José-Manuel González López;12/08/2014;9:53;NO;;Daniela Vilau;Estándar;12/08/2014;9:53
+PET_0000106;;Bacardi;IMPL;Asignada;22/08/2014;11:36;Respuestas dedicadas locales;;;José-Manuel González López;22/08/2014;12:14;NO;;Israel Lora;Compleja;22/08/2014;12:26
+PET_0000107;;Earthport;IMPL;Asignada;25/08/2014;11:14;;;;Ana Ruíz Alonso;25/08/2014;11:55;NO;;Elena López Werner;Estándar;25/08/2014;11:55
+PET_0000108;;Cemex;MIGR;Asignada;26/08/2014;10:56;;MIGRACIÓN IA;;Ana Ruíz Alonso;26/08/2014;11:46;NO;;José-Javier Díaz Sánchez;Estándar;27/08/2014;10:30
+PET_0000109;;Johnson&Johnson;IMPL;Asignada;28/08/2014;8:56;Primera implementacion OB en Venezuela y posible 1ª migración OB en México.;;;Antonio-Jesús García Delgado;28/08/2014;9:14;NO;;Israel Lora;Compleja;28/08/2014;11:43
+PET_0000110;;Almacenes Éxito;IMPL;Asignada;01/09/2014;19:54;;;;Marco-Antonio Luna Luna;02/09/2014;10:10;NO;;Marta Serrano García;Estándar;02/09/2014;14:25
+PET_0000111;;Total;VIAB;Asignada;04/09/2014;11:07;;;;Cristina Blanco Barrio;04/09/2014;11:16;NO;;Aranzazu;;04/09/2014;13:32
+PET_0000112;;Total;EVOL;Asignada;04/09/2014;11:07;;;;Cristina Blanco Barrio;04/09/2014;11:16;NO;;José-Javier Díaz Sánchez;;04/09/2014;13:40
+PET_0000113;;Carrefour;IMPL;Asignada;11/09/2014;1:30;1º Implementación OB del servicio pedido en Argentina;;;Marco-Antonio Luna Luna;11/09/2014;11:36;NO;;Israel Lora;Compleja;12/09/2014;17:18
+PET_0000114;;People Soft;IMPL;Asignada;11/09/2014;16:31;Nuevo cliente H2H SFTP;;;Ana Ruíz Alonso;12/09/2014;10:15;SI;;Cristina Jorge Conde;Compleja;14/09/2014;16:09
+PET_0000115;;General Electric;IMPL;Asignada;12/09/2014;14:34;;;;Alba Martín Fernández;12/09/2014;15:29;NO;;Javier Fernández Martín;Estándar;15/09/2014;12:21
+PET_0000116;;Riusa II;IMPL;Asignada;15/09/2014;19:09;;;;Ángel Díaz Morales;16/09/2014;16:54;NO;;Pedro-Miguel;Estándar;16/09/2014;18:31
+PET_0000117;;Riusa II;IMPL;Asignada;16/09/2014;16:29;;;;Ángel Díaz Morales;16/09/2014;17:11;NO;;Pedro-Miguel;Estándar;16/09/2014;18:34
+PET_0000118;;Iberdrola;IMPL;Asignada;16/09/2014;16:46;;;;Ignacio Huertes Álvarez;16/09/2014;17:20;NO;;Ricardo García Caravaca;Estándar;17/09/2014;9:53
+PET_0000119;;Ibm;PRUC;Asignada;16/09/2014;17:59;;;;Andrés Luque;17/09/2014;9:20;NO;;Cristina Jorge Conde;;18/09/2014;12:16
+PET_0000120;;Atos;IMPL;Asignada;18/09/2014;11:44;;;;José-Manuel González López;18/09/2014;16:01;NO;;Cristina Jorge Conde;Estándar;22/09/2014;9:29
+PET_0000121;;Huawei;EVOL;Asignada;18/09/2014;12:59;;;;Jorge-Javier Arbona Mesa;18/09/2014;13:17;NO;;Elena López Werner;;18/09/2014;13:49
+PET_0000122;;Reficar;IMPL;Asignada;19/09/2014;1:29;1as impl.OB en México;;;Marco-Antonio Luna Luna;19/09/2014;9:52;NO;;Marta Serrano García;Compleja;21/09/2014;22:27
+PET_0000123;;Nestlé;EVOL;Asignada;26/09/2014;23:13;;;;Marco-Antonio Luna Luna;29/09/2014;9:50;NO;;Marta Serrano García;;29/09/2014;9:50
+PET_0000124;;Bat;CONS;Asignada;30/09/2014;9:02;;Alberto pasa la pregunta a solutions;;Jorge-Javier Arbona Mesa;30/09/2014;11:44;NO;;José-Alberto de la Fuente Jiménez;;30/09/2014;11:44
+PET_0000125;;Unilabs;IMPL;Asignada;07/10/2014;10:55;;;;Andrés Luque;07/10/2014;13:59;NO;;Javier Fernández Martín;Estándar;08/10/2014;10:45
+PET_0000126;;Bat;IMPL;Asignada;08/10/2014;9:59;;;;Jorge-Javier Arbona Mesa;08/10/2014;12:15;NO;;Javier Fernández Martín;Compleja;08/10/2014;12:45
+PET_0000127;;Nissan;IMPL;Asignada;08/10/2014;19:42;Nueva conectividad H2H;;;Jorge-Javier Arbona Mesa;09/10/2014;16:10;NO;;Benito Bellido Romero;Compleja;10/10/2014;10:20
+PET_0000128;;Confianza;IMPL;Asignada;09/10/2014;0:30;;;;Marco-Antonio Luna Luna;09/10/2014;16:13;SI;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;09/10/2014;18:23
+PET_0000129;;Earthport;IMPL;Asignada;10/10/2014;10:41;Nueva conectividad H2H en ese país;;;Ana Ruíz Alonso;13/10/2014;16:26;NO;;Elena López Werner;Compleja;13/10/2014;16:35
+PET_0000130;;Vodafone;PRUC;Asignada;10/10/2014;13:53;;;;José-Manuel González López;13/10/2014;10:09;NO;;Elena López Werner;Estándar;13/10/2014;10:12
+PET_0000131;;Siemens;PRUC;Asignada;13/10/2014;10:30;;;;Andrés Luque;14/10/2014;10:07;NO;;Jaime-Ramón Gómez-Cuétara Albo;;15/10/2014;22:28
+PET_0000132;;Serunion;IMPL;Asignada;13/10/2014;11:37;Respuestas dedicadas;;;Ana Ruíz Alonso;14/10/2014;16:47;NO;;Cristina Jorge Conde;Compleja;14/10/2014;22:59
+PET_0000133;;Riusa II;IMPL;Asignada;14/10/2014;18:47;Primeras implementaciones OB;;;Natalia Sánchez Illán;15/10/2014;13:35;NO;;Pedro-Miguel;Compleja;15/10/2014;17:47
+PET_0000134;;Belcorp;IMPL;Asignada;15/10/2014;10:01;Respuestas dedicadas;;;Alba Martín Fernández;15/10/2014;12:33;NO;;Elena López Werner;Compleja;15/10/2014;18:06
+PET_0000135;;Aldesa;IMPL;Asignada;17/10/2014;10:48;;;;Natalia Sánchez Illán;17/10/2014;12:06;NO;;Elena López Werner;Estándar;20/10/2014;18:47
+PET_0000136;;Pontegadea;IMPL;Asignada;17/10/2014;13:08;;;;Ignacio Huertes Álvarez;17/10/2014;14:15;NO;;Javier Fernández Martín;Estándar;20/10/2014;18:49
+PET_0000137;;Bunge;IMPL;Asignada;21/10/2014;11:19;;;;Cristina Blanco Barrio;21/10/2014;11:54;NO;;Pedro-Miguel;Estándar;22/10/2014;14:54
+PET_0000138;;Lafarge;IMPL;Asignada;22/10/2014;12:44;;;;Natalia Sánchez Illán;22/10/2014;12:58;NO;;Benito Bellido Romero;Estándar;22/10/2014;18:10
+PET_0000139;;Fiesta Hotels & Resorts;IMPL;Asignada;22/10/2014;18:24;;;;Ignacio Huertes Álvarez;23/10/2014;9:05;NO;;Pedro-Miguel;Estándar;23/10/2014;23:23
+PET_0000140;;Siemens;IMPL;Asignada;27/10/2014;11:00;Nueva conectividad AS2;;;Andrés Luque;27/10/2014;12:11;NO;;Jaime-Ramón Gómez-Cuétara Albo;Compleja;28/10/2014;12:22
+PET_0000141;;Honeywell;IMPL;Asignada;27/10/2014;12:45;Nueva H2H;;;José-Manuel González López;27/10/2014;12:56;NO;;Marta Serrano García;Compleja;28/10/2014;13:24
+PET_0000142;;Iberostar;PRUC;Asignada;27/10/2014;13:12;;;;Andrés Luque;27/10/2014;13:24;NO;;Elena López Werner;;29/10/2014;16:56
+PET_0000143;;Johnson&Johnson;EVOL;Asignada;28/10/2014;15:59;;;;Antonio-Jesús García Delgado;28/10/2014;17:20;NO;;Israel Lora;;29/10/2014;17:36
+PET_0000144;;Arkema;PRUC;Asignada;30/10/2014;16:20;;;;Natalia Sánchez Illán;30/10/2014;16:39;NO;;Jaime-Ramón Gómez-Cuétara Albo;;31/10/2014;12:46
+PET_0000145;;Iberostar;IMPL;Asignada;04/11/2014;10:54;;;;Andrés Luque;;;NO;;Pedro-Miguel;Estándar;04/11/2014;12:10
+PET_0000146;;Iberdrola;IMPL;Asignada;05/11/2014;12:23;Nuevo tipo de respuestas;;;Ignacio Huertes Álvarez;;;NO;;Jaime-Ramón Gómez-Cuétara Albo;Compleja;05/11/2014;12:53
+PET_0000147;;Decathlon;CONS;Asignada;06/11/2014;10:10;;;;José-Manuel González López;;;NO;;Benito Bellido Romero;;06/11/2014;12:00
+PET_0000148;;Minsur;IMPL;Asignada;13/11/2014;0:55;Compleja. Motivo:Nuevo cliente BR-H2H SFTP + posible 1ª impl. Nóminas a través de OB en Perú;;;Omar-Alejandro García Camarillo;;;NO;;Jaime-Ramón Gómez-Cuétara Albo;Compleja;13/11/2014;10:40
+PET_0000149;;Repsol;IMPL;Asignada;17/11/2014;16:52;TIN no se ha implementado aún a través de OB en Portugal;;;Andrés Luque;;;NO;;Elena López Werner;Compleja;17/11/2014;17:52
+PET_0000150;;Petrex;IMPL;Asignada;17/11/2014;19:09;Nueva conectividad BR H2H;;;Cristina Blanco Barrio;;;NO;;Antonio Coronil Martínez;Compleja;18/11/2014;12:13
+PET_0000151;;Pontegadea;IMPL;Asignada;18/11/2014;17:53;;;;Ignacio Huertes Álvarez;;;NO;;Javier Fernández Martín;Estándar;19/11/2014;13:04
+PET_0000152;;Alcoa;IMPL;Asignada;18/11/2014;19:08;;;;Jorge-Javier Arbona Mesa;;;NO;;Benito Bellido Romero;Estándar;19/11/2014;15:53
+PET_0000153;;Iberostar;PRUC;Asignada;19/11/2014;13:01;;;;Andrés Luque;19/11/2014;17:18;NO;;Marta Serrano García;;20/11/2014;10:07
+PET_0000154;;Nh Hoteles;IMPL;Asignada;21/11/2014;11:28;1ªs implementaciones OB;Incumplimiento SLA: No se dispone de lista para asignar gestor hasta las 12am del 24/11;;Natalia Sánchez Illán;;;NO;;Javier Fernández Martín;Compleja;24/11/2014;13:42
+PET_0000155;;Solvay;EVOL;Asignada;21/11/2014;12:35;;;;Natalia Sánchez Illán;;;NO;;Elena López Werner;;24/11/2014;13:44
+PET_0000156;;Eads;PRUC;Asignada;26/11/2014;11:44;;;;Cristina Blanco Barrio;;;NO;;Jaime-Ramón Gómez-Cuétara Albo;;26/11/2014;12:27
+PET_0000157;;Vodafone;IMPL;Asignada;27/11/2014;12:29;;;;Natalia Sánchez Illán;;;NO;;Benito Bellido Romero;Estándar;27/11/2014;17:47
+PET_0000158;;Tompla;PRUC;Asignada;01/12/2014;16:13;;;;Ana Ruíz Alonso;;;NO;;Javier Fernández Martín;;02/12/2014;9:31
+PET_0000159;;Total;PRUC;Asignada;03/12/2014;18:42;;;;Cristina Blanco Barrio;;;NO;;Jaime-Ramón Gómez-Cuétara Albo;;04/12/2014;10:20
+PET_0000160;;Sab Miller;IMPL;Asignada;04/12/2014;10:38;H2H formato própio;;;Alba Martín Fernández;;;NO;;Marta Serrano García;Compleja;04/12/2014;11:27
+PET_0000161;;Volkswagen;CONS;Desestimada;04/12/2014;12:28;;Al ser una consulta sobre producción, se le remite al CAU;;Alba Martín Fernández;;;NO;;Gema García;;;
+PET_0000162;;Constellation Brands;IMPL;Asignada;04/12/2014;17:56;Nueva conectividad BR-H2H;Nueva conectividad H2H;;Ana Ruíz Alonso;;;NO;;Marta Serrano García;Compleja;05/12/2014;12:37
+PET_0000163;;Iberia Express;IMPL;Asignada;04/12/2014;18:58;;;;Cristina Blanco Barrio;;;NO;;Benito Bellido Romero;Estándar;05/12/2014;12:36
+PET_0000164;;Nestlé;EVOL;Asignada;05/12/2014;10:20;;;;Marco-Antonio Luna Luna;;;NO;;Javier Fernández Martín;;09/12/2014;10:20
+PET_0000165;;Bacardi;EVOL;Asignada;09/12/2014;12:07;;;;Ana Ruíz Alonso;;;NO;;Carlos-Enrique Gargallo Guil ;;09/12/2014;13:18
+PET_0000166;;Volkswagen;IMPL;Asignada;09/12/2014;19:00;;;;Alba Martín Fernández;;;NO;;Jaime-Ramón Gómez-Cuétara Albo;Estándar;09/12/2014;19:00
+PET_0000167;;Riusa II;IMPL;Asignada;16/12/2014;12:16;;;;Natalia Sánchez Illán;;;NO;;Pedro-Miguel;Estándar;16/12/2014;13:19
+PET_0000168;;Arkema;PRUC;Asignada;18/12/2015;18:49;;;;Natalia Sánchez Illán;19/12/2015;10:26;NO;;Jaime-Ramón Gómez-Cuétara Albo;;19/12/2015;12:50
+PET_0000169;;Volkswagen;IMPL;Asignada;09/12/2014;19:00;;;;Alba Martín Fernández;;;NO;;Jaime-Ramón;Estandar;09/12/2014;19:00
+PET_0000170;;Riusa II;IMPL;Asignada;16/12/2014;12:15;;;;Natalia Sánchez Illán;;;NO;;Pedro-Miguel;Estandar;;13:20
+PET_0000171;;Arkema;PRUC;Asignada;18/12/2014;18:50;;;;Natalia Sánchez Illán;19/12/2014;10:25;NO;;Jaime-Ramón;default;;12:50
+PET_0000172;;Louis Vuitton;IMPL-OB-C;Pendiente de asignación;22/12/2014;11:55;;;;Cristina Blanco Barrio;;;NO;;Gema García;default;;0:00
+PET_0000173;;Iberia;PRUC;Asignada;23/12/2014;17:55;;;;Cristina Blanco Barrio;24/12/2014;10:45;NO;;Benito Bellido  ;;26/12/2014;10:35
+PET_0000174;;Gamesa;IMPL;Asignada;08/01/2015;12:45;;;;Balbino Perelló Onieva;09/01/2015;10:00;NO;;Jaime-Ramón;;13/01/2015;10:00
+PET_0000175;;Johnson&Johnson;EVOL-C;Asignada;09/01/2015;12:20;;;;Antonio-Jesús García Delgado ;09/01/2015;15:00;NO;;Israel Lora;;09/01/2015;15:15
+PET_0000176;;Occidental Petroleum;EVOL-C;Asignada;09/01/2015;23:25;;;;Carlos Rocha;12/01/2015;15:10;NO;;Israel Lora;default;;15:10
+PET_0000177;;General Electric;IMPL-OB-C;Asignada;12/01/2015;16:55;;;;Alba Martín Fernández;;;NO;;Javier Fernández Martín;Estandar;;12:45
+PET_0000178;;General Motors;IMPL;Asignada;13/01/2015;16:50;;;;Ignacio  Huertes ;;;NO;;Jaime-Ramón;Estandar;;9:55
+PET_0000179;;Kuehne Nagel;IMPL-OB-C;Asignada;15/01/2015;10:40;1ªs implementaciones OB en ARG, PER;;;Ana Ruíz Alonso;;;NO;;Pedro-Miguel;Compleja;;14:30
+PET_0000180;;Saica;IMPL-OB-C;Asignada;21/01/2015;11:15;;;;Ana Ruíz Alonso;;;NO;;Jaime-Ramón;Estandar;;16:10
+PET_0000181;;EADS;MIGR-OB-C;Asignada;26/01/2015;11:00;;;;Natalia Sánchez Illán;;;NO;;Cristina Jorge Conde;default;;11:50
+PET_0000182;;Perfetti Van Melle;IMPL;Asignada;28/01/2015;10:15;;;;Alba Martín Fernández;;;SI;;Cristina Jorge Conde;Estandar;;14:55
+PET_0000183;;Teka BV;IMPL;Asignada;29/01/2015;15:10;;;;Cristina Blanco Barrio;;;NO;;Marta Serrano García;Estandar;;10:45
+PET_0000184;;Yara;IMPL;Asignada;04/02/2015;17:25;Formato própio cliente y 1ªs implementaciones OB de estos servicios en Colombia;;;Andrés Luque;;;NO;;Benito Bellido;Compleja;;11:40
