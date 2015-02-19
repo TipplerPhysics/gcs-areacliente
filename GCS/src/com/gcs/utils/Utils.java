@@ -77,9 +77,53 @@ public class Utils {
         return convertedDate;
 	}
 	
+	public static Date dateConverterComplete(String cadena) throws ParseException{
+		DateFormat formatter = null;
+		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date convertedDate = (Date) formatter.parse(cadena);
+        
+        return convertedDate;
+	}
+	
 	public static String dateConverterToStr(Date fecha){
+		int anio = (fecha.getYear() + 1900);
+		int mes = (fecha.getMonth()+1);
+		int dia = fecha.getDate();
 		
-		String convertedDate = fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + (fecha.getYear() + 1900);
+		String convertedDate = "";
+		if(dia<10){
+			convertedDate = "0"+dia + "/" + mes+"/" + anio;
+		}
+		if(mes<10){
+			convertedDate = dia + "/0" + mes+"/" + anio;
+		}
+		if(dia<10&&mes<10){
+			convertedDate = "0"+dia + "/0" + mes+"/" + anio;
+		}
+		if(dia>=10&&mes>=10){
+			convertedDate = dia + "/" + mes+"/" + anio;
+		}
+        return convertedDate;
+	}
+	
+	public static String dateConverterToStrHour(Date fecha){
+		
+		int horas = fecha.getHours();
+		int minutos = fecha.getMinutes();
+		String convertedDate = "";
+		if(horas<10){
+			convertedDate = "0"+horas + ":" + minutos;
+		}
+		if(minutos<10){
+			convertedDate = horas + ":0" + minutos;
+		}
+		if(horas<10&&minutos<10){
+			convertedDate = "0"+horas + ":0" + minutos;
+		}
+		if(horas>=10&&minutos>=10){
+			convertedDate = horas + ":" + minutos;
+		}
+		
 		
         return convertedDate;
 	}

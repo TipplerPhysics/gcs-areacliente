@@ -1129,6 +1129,11 @@ public class DefaultConf extends HttpServlet {
 		if(saveParam != null && saveParam.equals("true")) {
 			save = true;
 		}
+		boolean delete = false;
+		String deleteParam = req.getParameter("delete"); 
+		if(deleteParam != null && deleteParam.equals("true")) {
+			delete = true;
+		}
 		String link = "/datadocs/demanda____.csv";
 		
 		String result = "";
@@ -1141,6 +1146,8 @@ public class DefaultConf extends HttpServlet {
 
 			
 			DemandaDao demandaDao = DemandaDao.getInstance();
+			if (delete)demandaDao.deleteAllDemandas();
+			
 			Demanda demanda = null;
 			
 			int counter = 0;
@@ -1153,54 +1160,173 @@ public class DefaultConf extends HttpServlet {
 				String[] demandaSplit = line.split(";", -1);
 
 				boolean procesar = true;
-				if (demandaSplit.length < 18) {
-					procesar = false;
-				}
-				String cliente = demandaSplit[0];
-				if (esNuloVacio(cliente)) {
-					procesar = false;
-					break;
-				}
+
+
 
 				if (procesar) {
 					
-					String motivo_catalogacion = demandaSplit[1];
-					String comentarios = demandaSplit[2];
-					String fecha_entrada_peticion = demandaSplit[3];
-					String hora_peticion = demandaSplit[4];
-					String min_peticion = demandaSplit[5];
-					String tipo = demandaSplit[6];
-					String devuelta = demandaSplit[7];
-					Boolean devBool = false;
-					if (devuelta.equals("SI"))
-						devBool = true;
-					String fecha_solicitud_asignacion = demandaSplit[8];
-					String hora_solicitud_asignacion = demandaSplit[9];
-					String min_solicitud_asignacion = demandaSplit[10];
-					String estado = demandaSplit[11];
-					String catalogacion_peticion = demandaSplit[12];
-					String hora_comunicacion_asignacion = demandaSplit[13];
-					String min_comunicacion_asignacion = demandaSplit[14];
-					String fecha_comunicacion_asignacion = demandaSplit[15];
-					String gestor_it= demandaSplit[16];
-					String gestor_negocio = demandaSplit[17];
+					String demandaId = demandaSplit[0];
+					String clientKey = demandaSplit[1];
+					String clientName = demandaSplit[2];
+					String tipo = demandaSplit[3];
+					String estado = demandaSplit[4];
+					String fecha_entrada_str1 = demandaSplit[5];
+					String hora_entrada_str1 = demandaSplit[6];
+					String fecha_entrada_str = fecha_entrada_str1 +" "+ hora_entrada_str1;
+					String motivo_catalogacion = demandaSplit[7];
+					String comentarios = demandaSplit[8];
+					String gestor_negocio_key = demandaSplit[9];
+					String gestor_negocio_name = demandaSplit[10];
 					
+					String fecha_solicitud_str1 =  demandaSplit[11];
+					String hora_solicitud_str1 = demandaSplit[12];
+					String fecha_solicitud_str = fecha_solicitud_str1 +" "+ hora_solicitud_str1;
+					
+					boolean devuelta = false;
+					String devuelta_str = demandaSplit[13];
+					if(devuelta_str.equals("SI"))devuelta = true;
+					
+					String gestor_it_key = demandaSplit[14];
+					String gestor_it_name = demandaSplit[15];
+					String catalogacion_peticion = demandaSplit[16];
+					
+					String fecha_comunicacion_str1 =  demandaSplit[17];
+					String hora_comunicacion_str1 = demandaSplit[18];
+					String fecha_comunicacion_str = fecha_comunicacion_str1 +" "+ hora_comunicacion_str1;
 					
 					demanda = new Demanda();		
-					
+					result += counter + " :\r\n";
 									
-					//demanda.setGestor_it(gestor_it);
-					//demanda.setGestor_negocio(gestor_negocio);
 					
-					demanda.setHora_entrada_peticion(hora_peticion + ":" + min_peticion);
-					demanda.setHora_comunicacion_asignacion(hora_comunicacion_asignacion + ":" + min_comunicacion_asignacion);
-					demanda.setHora_solicitud_asignacion(hora_solicitud_asignacion + ":" + min_solicitud_asignacion);
 					demanda.setMotivo_catalogacion(motivo_catalogacion);
 					demanda.setComentarios(comentarios);
 					demanda.setCatalogacion(catalogacion_peticion);
 						
 					
-									
+					
+					
+					if(!esNuloVacio(clientKey)) {
+						demanda.setClientekey(Long.parseLong(clientKey));
+					}
+					else {
+						ClienteDao cliDao = ClienteDao.getInstance();
+
+						List<Cliente> clientesForId =cliDao.getClientesByNameLow(clientName);
+						if(clientesForId.size()==1){
+							long clienteKeyLong = clientesForId.get(0).getKey().getId();
+							demanda.setClientekey(clienteKeyLong);
+							demanda.setClienteName(clientesForId.get(0).getNombre());
+						}else{
+							result += "Error cliente \r\n";
+							error = true;	
+						}
+					}
+					
+					if(!esNuloVacio(gestor_it_key)&&!gestor_it_key.equals("SI")) {
+						demanda.setGestor_it(Long.parseLong(gestor_it_key));
+					}
+					else {
+						UserDao usrDao = UserDao.getInstance();
+
+						String []gestorItComplete = gestor_it_name.split(" ", -1);
+						for(int i=0;i<gestorItComplete.length;i++){
+							String aux = gestorItComplete[i];
+							gestorItComplete[i] = aux.replace("-", " ");
+						}
+ 
+						List<User> usuariosforid = usrDao.getUsersByCompleteName(gestorItComplete);
+						if(usuariosforid.size()==1){
+							long usuarioid = usuariosforid.get(0).getKey().getId();
+							demanda.setGestor_it(usuarioid);
+
+						}else{
+							result += "Error gestor it \r\n";
+							error = true;
+						}
+					}
+					
+					
+					if(!esNuloVacio(gestor_negocio_key)) {
+						demanda.setGestor_negocio(Long.parseLong(gestor_negocio_key));
+					}
+					else {	
+						UserDao usrDao = UserDao.getInstance();
+
+						String []gestorNegComplete = gestor_negocio_name.split(" ", -1);
+						
+						for(int i=0;i<gestorNegComplete.length;i++){
+							String aux = gestorNegComplete[i];
+							gestorNegComplete[i] = aux.replace("-", " ");
+						}
+
+						List<User> usuariosforid = usrDao.getUsersByCompleteName(gestorNegComplete);
+						if(usuariosforid.size()==1){
+							long usuarioid = usuariosforid.get(0).getKey().getId();
+							demanda.setGestor_negocio(usuarioid);
+						}else{
+							result += "Error gestor negocio \r\n";
+							error = true;
+						}
+					}
+					
+					
+					if(!esNuloVacio(fecha_entrada_str)) {
+						Date fecha_entrada = null;
+						try{
+						fecha_entrada = Utils.dateConverterComplete(fecha_entrada_str);
+						}catch(Exception e){
+							result += "Error al convertir la fecha \r\n";
+							error = true;
+						}
+						if(!error){
+							demanda.setFecha_entrada_peticion(fecha_entrada);
+							demanda.setHora_entrada_peticion(Utils.dateConverterToStrHour(fecha_entrada));
+							demanda.setStr_fecha_entrada_peticion(Utils.dateConverterToStr(fecha_entrada));
+						}
+					}else {
+						result += "Error Falta fecha \r\n";
+						error = true;
+					}
+					
+					if(!esNuloVacio(fecha_solicitud_str1)) {
+						Date fecha_solicitud = null;
+						try{
+						fecha_solicitud = Utils.dateConverterComplete(fecha_solicitud_str);
+						}catch(Exception e){
+							result += "Error al convertir la fecha \r\n";
+							error = true;
+						}
+						if(!error){
+							demanda.setFecha_solicitud_asignacion(fecha_solicitud);
+							demanda.setHora_solicitud_asignacion(Utils.dateConverterToStrHour(fecha_solicitud));
+							demanda.setStr_fecha_solicitud_asignacion(Utils.dateConverterToStr(fecha_solicitud));
+						}
+					}else {
+
+					}
+					
+					if(!esNuloVacio(fecha_comunicacion_str1)) {
+						Date fecha_comunicacion = null;
+						try{
+						fecha_comunicacion = Utils.dateConverterComplete(fecha_comunicacion_str);
+						}catch(Exception e){
+							result += "Error al convertir la fecha \r\n";
+							error = true;
+						}
+						if(!error){
+							demanda.setFecha_comunicacion(fecha_comunicacion);
+							demanda.setHora_comunicacion(Utils.dateConverterToStrHour(fecha_comunicacion));
+							demanda.setStr_fecha_comunicacion(Utils.dateConverterToStr(fecha_comunicacion));
+						}
+					}else {
+
+					}
+					
+
+					
+					
+					
+					/*
 					if (isThisDateValid(fecha_comunicacion_asignacion ,"dd/MM/yyyy")) {
 						demanda.setStr_fecha_comunicacion_asignacion(fecha_comunicacion_asignacion);
 						}
@@ -1223,13 +1349,8 @@ public class DefaultConf extends HttpServlet {
 						result += "Error fecha entrada peticion \r\n";
 						error = true;
 					}
-					
-					if(!esNuloVacio(cliente)) {
-						demanda.setClienteName(cliente);}
-					else {
-						result += "Error Falta Cliente \r\n";
-						error = true;
-						}		
+					*/
+	
 					if(!esNuloVacio(estado)) {
 						demanda.setEstado(estado);}
 					else {
@@ -1243,17 +1364,23 @@ public class DefaultConf extends HttpServlet {
 						result += "Error Falta Tipo Peticion \r\n";
 						error = true;
 						}		
-					if(!esNuloVacio(devuelta)) {
-						demanda.setDevuelta(devBool);}
+					if(!esNuloVacio(devuelta_str)) {
+						demanda.setDevuelta(devuelta);}
 					else {
 						result += "Error Falta si esta o no devuelta \r\n";
 						error = true;
 						}		
 					
+					if(!error) {
+						result += demanda.toString() + "\r\n\r\n";
+					}
+					else {
+						result += "\r\n";
+					}
 					
 					
 					
-					if(save) {
+					if(save&&!error) {
 						demandaDao.createDemanda(demanda, usermail);
 					}
 				}

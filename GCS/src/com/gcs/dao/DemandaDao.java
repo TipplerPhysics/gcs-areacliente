@@ -38,6 +38,18 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	       return demanda;
    }
 	   
+	public void createDemandaRaw(Demanda demanda){
+		PersistenceManager pm = PMF.get().getPersistenceManager();	
+	
+		
+		try{
+			pm.makePersistent(demanda);
+			
+		} finally{
+			pm.close();
+		}
+	}
+	   
 	public void createDemandaAndIncreaseCount(Demanda demanda, String usermail){
 		
 			createDemanda(demanda,usermail);
@@ -98,6 +110,18 @@ DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		demandas = (List<Demanda>) q.execute();
 		
 		return demandas;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public void deleteAllDemandas(){
+		
+		DemandaDao demDao = DemandaDao.getInstance();
+		List<Demanda> demandas = demDao.getAllDemandas();
+		for(Demanda dem : demandas){
+			demDao.deleteDemanda(dem, "");
+		}
+
 	}
 	
 	
