@@ -1201,7 +1201,7 @@ public class DefaultConf extends HttpServlet {
 					demanda.setMotivo_catalogacion(motivo_catalogacion);
 					demanda.setComentarios(comentarios);
 					demanda.setCatalogacion(catalogacion_peticion);
-						
+					demanda.setCod_peticion(demandaId);
 					
 					
 					
@@ -1381,7 +1381,7 @@ public class DefaultConf extends HttpServlet {
 					
 					
 					if(save&&!error) {
-						demandaDao.createDemanda(demanda, usermail);
+						demandaDao.createDemandaRaw(demanda);
 					}
 				}
 				counter++;
