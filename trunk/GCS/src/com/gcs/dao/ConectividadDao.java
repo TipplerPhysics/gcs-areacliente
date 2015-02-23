@@ -19,6 +19,49 @@ public class ConectividadDao {
 	}
 	
 	
+	public void createConectividadRaw(Conectividad c) throws ParseException {
+		if (c.getStr_reglas_firewall()!=null && !"".equals(c.getStr_reglas_firewall())){
+			c.setReglas_firewall(Utils.dateConverter(c.getStr_reglas_firewall()));
+		}
+		
+		if (c.getStr_fecha_fin_certificado()!=null && !"".equals(c.getStr_fecha_fin_certificado())){
+			c.setFecha_fin_certificado(Utils.dateConverter(c.getStr_fecha_fin_certificado()));
+		}
+		
+		if (c.getStr_fecha_fin_conectividad()!=null && !"".equals(c.getStr_fecha_fin_conectividad())){
+			c.setFecha_fin_conectividad(Utils.dateConverter(c.getStr_fecha_fin_conectividad()));
+		}
+		
+		
+		if (c.getStr_fecha_fin_infraestructura()!=null && !"".equals(c.getStr_fecha_fin_infraestructura())){
+			c.setFecha_fin_infraestructura(Utils.dateConverter(c.getStr_fecha_fin_infraestructura()));
+		}
+		
+		if (c.getStr_fecha_ini_infraestructura()!=null && !"".equals(c.getStr_fecha_ini_infraestructura())){
+			c.setFecha_ini_infraestructura(Utils.dateConverter(c.getStr_fecha_ini_infraestructura()));
+		}
+		
+		if (c.getStr_fecha_implantacion()!=null && !"".equals(c.getStr_fecha_implantacion())){
+			c.setFecha_implantacion(Utils.dateConverter(c.getStr_fecha_implantacion()));
+		}
+		
+		if (c.getStr_fecha_fin_seguridad()!=null && !"".equals(c.getStr_fecha_fin_seguridad())){
+			c.setFecha_fin_seguridad(Utils.dateConverter(c.getStr_fecha_fin_seguridad()));
+		}
+		
+		if (c.getStr_fecha_ini_seguridad()!=null && !"".equals(c.getStr_fecha_ini_seguridad())){
+			c.setFecha_ini_seguridad(Utils.dateConverter(c.getStr_fecha_ini_seguridad()));
+		}
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();	
+		
+		try {
+			pm.makePersistent(c);
+		} finally {
+			pm.close();
+		}
+	}
+	
 	public void createConectividad(Conectividad c, String usermail) throws ParseException {
 		
 		Boolean isNew = false;

@@ -766,7 +766,7 @@ public class DefaultConf extends HttpServlet {
 			ServicioDao servicioDao = ServicioDao.getInstance();
 			Servicio servicio = null;
 			
-			int counter = 0;
+			int counter = 1;
 			boolean error = false;
 
 			while ((inputLine = in.readLine()) != null) {
@@ -774,43 +774,40 @@ public class DefaultConf extends HttpServlet {
 				
 				String line = inputLine;
 				String[] servicioSplit = line.split(";", -1);
-
+				result += counter +":   \r\n";
+				
 				boolean procesar = true;
-				if (servicioSplit.length < 25) {
+				if (servicioSplit.length < 22) {
 					procesar = false;
 				}
-				String codigo = servicioSplit[0];
-				if (esNuloVacio(codigo)) {
-					procesar = false;
-					break;
-				}
+				
+				
 
 				if (procesar) {
 					
-					String estado = servicioSplit[1];
-					String servicio1 = servicioSplit[2];	
-					String cod_servicio = servicioSplit[3];
-					String observaciones = servicioSplit[4];
-					String formato_intermedio = servicioSplit[5];	
-					String formato_local = servicioSplit[6];
-					String referencia_local1 = servicioSplit[7];
-					String referencia_local2 = servicioSplit[8];
-					String str_fecha_ini_integradas = null;
-					String str_fecha_fin_integradas = null;
-					String str_fecha_ini_aceptacion = null;
-					String str_fecha_fin_aceptacion = null;
-					String str_fecha_ini_validacion = null;
-					String str_fecha_fin_validacion = null;
-					String str_fecha_implantacion_prod = null;
-					String str_fecha_ini_primera_op = null;
-					String str_fecha_fin_primera_op = null;
-					String str_fecha_inicio_op_cliente = null;
-					String str_fecha_ans = null;
-					String str_fecha_inicio_pruebas = null;
-					String str_fecha_fin_pruebas = null;
-					String str_fecha_mig_channeling = null;
-					String str_fecha_mig_infraestructura = null;
-					String pais = servicioSplit[24];
+					String cod_proyect = servicioSplit[0];
+					String pais = servicioSplit[1];
+					String servicio1 = servicioSplit[2];
+					String estado = servicioSplit[3];
+					String cod_servicio = servicioSplit[4];
+					String observaciones = servicioSplit[5];
+					String formato_intermedio = servicioSplit[6];	
+					String formato_local = servicioSplit[7];
+					String referencia_local1 = servicioSplit[8];
+					String referencia_local2 = servicioSplit[9];
+					String str_fecha_ini_integradas = servicioSplit[20];
+					String str_fecha_fin_integradas = servicioSplit[21];
+					String str_fecha_ini_aceptacion = servicioSplit[10];
+					String str_fecha_fin_aceptacion = servicioSplit[11];
+					String str_fecha_ini_validacion = servicioSplit[12];
+					String str_fecha_fin_validacion = servicioSplit[13];
+					String str_fecha_implantacion_prod = servicioSplit[14];
+					String str_fecha_ini_primera_op = servicioSplit[15];
+					String str_fecha_fin_primera_op = servicioSplit[16];
+					String str_fecha_ans = servicioSplit[17];
+					String str_fecha_inicio_pruebas = servicioSplit[18];
+					String str_fecha_fin_pruebas = servicioSplit[19];
+
 								
 						servicio = new Servicio();		
 						
@@ -846,6 +843,19 @@ public class DefaultConf extends HttpServlet {
 							error = true;
 						}
 						
+						if(!esNuloVacio(cod_proyect)) {
+							ProyectoDao proyDao = ProyectoDao.getInstance();
+
+							List<Proyecto> proyectosForId =proyDao.getProjectsByCode(cod_proyect);
+							if(proyectosForId.size()==1){
+								servicio.setId_proyecto(proyectosForId.get(0).getKey().getId());
+								servicio.setCod_proyecto(proyectosForId.get(0).getCod_proyecto());
+							}else {
+								result += "Error codigo proyecto \r\n";
+								error = true;	
+							}
+						}
+						
 						servicio.setObservaciones(observaciones);
 						servicio.setFormato_intermedio(formato_intermedio);
 						servicio.setFormato_local(formato_local);
@@ -860,7 +870,6 @@ public class DefaultConf extends HttpServlet {
 						servicio.setStr_fecha_implantacion_produccion(str_fecha_implantacion_prod);
 						servicio.setStr_fecha_ini_primera_operacion(str_fecha_ini_primera_op);
 						servicio.setStr_fecha_fin_primera_operacion(str_fecha_fin_primera_op);
-						servicio.setStr_fecha_ini_op_cliente(str_fecha_inicio_op_cliente);
 						servicio.setStr_fecha_ANS(str_fecha_ans);
 						servicio.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
 						servicio.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
@@ -905,12 +914,12 @@ public class DefaultConf extends HttpServlet {
 			ConectividadDao conectividadDao = ConectividadDao.getInstance();
 			Conectividad conectividad = null;
 			
-			int counter = 0;
+			int counter = 1;
 			boolean error = false;
 
 			while ((inputLine = in.readLine()) != null) {
 				error = false;
-				
+				result += counter +":   \r\n";
 				String line = inputLine;
 				String[] conectividadSplit = line.split(";", -1);
 
@@ -918,19 +927,15 @@ public class DefaultConf extends HttpServlet {
 				if (conectividadSplit.length < 11) {
 					procesar = false;
 				}
-				String proyecto = conectividadSplit[0];
-				if (esNuloVacio(proyecto)) {
-					procesar = false;
-					break;
-				}
+
 
 				if (procesar) {
-					
-					String fecha_fin_infra = conectividadSplit[1];
-					String fecha_implantacion = conectividadSplit[2];
-					String fecha_ini_infra =conectividadSplit[3];
-					String fin_seguridad = conectividadSplit[4];
-					String ini_seguridad = conectividadSplit[5];			
+					String cod_proyect = conectividadSplit[0];
+					String fecha_ini_infra = conectividadSplit[1];
+					String fecha_fin_infra = conectividadSplit[2];
+					String fecha_implantacion = conectividadSplit[3];
+					String ini_seguridad = conectividadSplit[4];
+					String fin_seguridad = conectividadSplit[5];
 					String seguridad = conectividadSplit[6];
 					String firewall = conectividadSplit[7];
 					String fin_certificado = conectividadSplit[8];
@@ -947,6 +952,23 @@ public class DefaultConf extends HttpServlet {
 							result += "Error Falta Estado \r\n";
 							error = true;
 						}	
+
+						if(!esNuloVacio(cod_proyect)) {
+							ProyectoDao proyDao = ProyectoDao.getInstance();
+
+							List<Proyecto> proyectosForId =proyDao.getProjectsByCode(cod_proyect);
+							if(proyectosForId.size()==1){
+								conectividad.setKey_proyecto(proyectosForId.get(0).getKey().getId());
+								conectividad.setNombre_proyecto(proyectosForId.get(0).getCod_proyecto());
+							}else {
+								result += "Error codigo proyecto \r\n";
+								error = true;	
+							}
+						}
+						else {
+								result += "Error codigo proyecto \r\n";
+								error = true;	
+						}
 						
 						conectividad.setStr_reglas_firewall(firewall);
 						conectividad.setStr_fecha_fin_certificado(fin_certificado);
@@ -956,14 +978,12 @@ public class DefaultConf extends HttpServlet {
 						conectividad.setStr_fecha_ini_infraestructura(fecha_ini_infra);
 						conectividad.setStr_fecha_fin_seguridad(fin_seguridad);
 						conectividad.setStr_fecha_ini_seguridad(ini_seguridad);
-						conectividad.setKey_proyecto(Long.parseLong(proyecto));
-						conectividad.setEstado(estado);
 						conectividad.setSeguridad(seguridad);
 						
 							
 					
 					if(save) {
-						conectividadDao.createConectividad(conectividad, usermail);
+						conectividadDao.createConectividadRaw(conectividad);
 					}
 				}
 				counter++;
@@ -984,6 +1004,13 @@ public class DefaultConf extends HttpServlet {
 		if(saveParam != null && saveParam.equals("true")) {
 			save = true;
 		}
+		
+		boolean delete = false;
+		String deleteParam = req.getParameter("save"); 
+		if(deleteParam != null && deleteParam.equals("true")) {
+			delete = true;
+		}
+		
 		String link = "/datadocs/coste____.csv";
 		
 		String result = "";
@@ -998,12 +1025,16 @@ public class DefaultConf extends HttpServlet {
 			CosteDao costeDao = CosteDao.getInstance();
 			Coste coste = null;
 			
-			int counter = 0;
+			if(delete==true){
+				costeDao.deleteAllCostes(usermail);
+			}
+			
+			int counter = 164;
 			boolean error = false;
 
 			while ((inputLine = in.readLine()) != null) {
 				error = false;
-				
+				result += counter +":   \r\n";
 				String line = inputLine;
 				String[] costeSplit = line.split(";", -1);
 
@@ -1011,104 +1042,143 @@ public class DefaultConf extends HttpServlet {
 				if (costeSplit.length < 21) {
 					procesar = false;
 				}
-				String nombre_proyecto = costeSplit[0];
-				if (esNuloVacio(nombre_proyecto)) {
-					procesar = false;
-					break;
-				}
+
 
 				if (procesar) {
-					String cliente =costeSplit[1];
-					String analisis_coste = costeSplit[2];
-					String analisis_horas = costeSplit[3];
-					String comentarios = costeSplit[4];
-					String construccion_coste = costeSplit[5];
-					String construccion_horas = costeSplit[6];
-					String diseño_coste = costeSplit[7];
-					String diseño_horas = costeSplit[8];
-					String equipo = costeSplit[9];
-					String fecha_alta_costes = costeSplit[10];
-					String fecha_solicitud_valoracion = costeSplit[11];
-					String gestion_coste = costeSplit[12];
-					String gestion_horas = costeSplit[13];
-					String gestor_it = costeSplit[14];
-					String pruebas_horas = costeSplit[15];
-					String pruebas_costes = costeSplit[16];
-					String total_coste = costeSplit[17];
-					String total_horas = costeSplit[18];
-					String num_valoracion = costeSplit[19];
-					String num_control = costeSplit[20];
+					String cliente =costeSplit[0];
+					String cod_proyecto = costeSplit[1];
+					String num_control = costeSplit[2];
+					String equipo = costeSplit[3];
+					String fecha_alta_costes = costeSplit[4];
+					String gestor_it_name = costeSplit[5];
+					String num_valoracion = costeSplit[6];
+					String comentarios = costeSplit[7];
+					String fecha_solicitud_valoracion = costeSplit[8];
+					String fecha_recepcion_valoracion = costeSplit[9];
 					
-												
-						coste = new Coste();	
+					String analisis_horas = costeSplit[10];	
+					String analisis_coste = costeSplit[11];
+					String diseño_horas = costeSplit[12];	
+					String diseño_coste = costeSplit[13];
+					String construccion_horas = costeSplit[14];
+					String construccion_coste = costeSplit[15];
+					String pruebas_horas = costeSplit[16];
+					String pruebas_costes = costeSplit[17];					
+					String gestion_horas = costeSplit[18];
+					String gestion_coste = costeSplit[19];
+					String total_horas = costeSplit[20];
+					String total_coste = costeSplit[21];
 						
-						coste.setGestor_it_key(Long.parseLong(gestor_it));
-						coste.setHoras_pruebas(pruebas_horas);
-						coste.setCoste_pruebas(pruebas_costes);
-						coste.setCoste_total(total_coste);
-						coste.setCoste_analisis(analisis_coste);
-						coste.setHoras_analisis(analisis_horas);
-						coste.setComentarios(comentarios);
-						coste.setCoste_construccion(construccion_coste);
-						coste.setHoras_construccion(construccion_horas);
-						coste.setHoras_diseño(diseño_horas);
-						coste.setCoste_diseño(diseño_coste);
-						coste.setHoras_gestion(gestion_horas);
-						coste.setCoste_gestion(gestion_coste);
-						coste.setNum_control(num_control);
-						
-						
-						if(!esNuloVacio(cliente)) {
-							coste.setCliente_name(cliente);}
-						else {
-							result += "Error falta nombre del cliente \r\n";
-							error = true;
-							}	
-						if (isThisDateValid(fecha_alta_costes, "dd/MM/yyyy")) {
-							coste.setStr_fecha_alta(fecha_alta_costes);
-							coste.setFecha_alta(Utils.dateConverter(fecha_alta_costes));
-						}
-						else {
-							result += "Error fecha alta  costes \r\n";
-							error = true;
-						}
-						
-						if (isThisDateValid(fecha_solicitud_valoracion, "dd/MM/yyyy")) {
-							coste.setStr_fecha_solicitud_valoracion(fecha_solicitud_valoracion);
-							coste.setFecha_solicitud_valoracion(Utils.dateConverter(fecha_solicitud_valoracion));
-						}
-						else {
-							result += "Error fecha de solicitud de valoración \r\n";
-							error = true;
-						}
-						
-						if(!esNuloVacio(gestor_it)) {
-							coste.setGestor_it_name(gestor_it);}
-						else {
-							result += "Error falta nombre del gestor \r\n";
-							error = true;
-							}	
-						if(!esNuloVacio(equipo)) {
-							coste.setEquipos(equipo);}
-						else {
-							result += "Error falta el equipo \r\n";
-							error = true;
-							}	
-						if(!esNuloVacio(total_horas)) {
-							coste.setHoras_total(total_horas);}
-							else {
-							result += "Error falta el total de horas \r\n";
-							error = true;
-							}	
-						if(!esNuloVacio(num_valoracion)) {
-							coste.setNum_valoracion(num_valoracion);}
-							else {
-							result += "Error falta el número de valoración \r\n";
-							error = true;
-							}
-												
+					coste = new Coste();	
 					
-					if(save) {
+					
+					coste.setHoras_pruebas(pruebas_horas);
+					coste.setCoste_pruebas(pruebas_costes);
+					coste.setCoste_total(total_coste);
+					coste.setCoste_analisis(analisis_coste);
+					coste.setHoras_analisis(analisis_horas);
+					coste.setComentarios(comentarios);
+					coste.setCoste_construccion(construccion_coste);
+					coste.setHoras_construccion(construccion_horas);
+					coste.setHoras_diseño(diseño_horas);
+					coste.setCoste_diseño(diseño_coste);
+					coste.setHoras_gestion(gestion_horas);
+					coste.setCoste_gestion(gestion_coste);
+					coste.setNum_control(num_control);
+					coste.setStr_fecha_recepcion_valoracion("");
+
+					ClienteDao cliDao = ClienteDao.getInstance();
+					List<Cliente> clientesForId =cliDao.getClientesByNameLow(cliente);
+					if(clientesForId.size()==1){
+						long clienteKeyLong = clientesForId.get(0).getKey().getId();
+						coste.setClienteKey(clienteKeyLong);
+						coste.setCliente_name(clientesForId.get(0).getNombre());
+					}else{
+						result += "Error cliente \r\n";
+						error = true;	
+					}
+
+					
+					if (isThisDateValid(fecha_alta_costes, "dd/MM/yyyy")) {
+						coste.setStr_fecha_alta(fecha_alta_costes);
+						coste.setFecha_alta(Utils.dateConverter(fecha_alta_costes));
+					}
+					else {
+						result += "Error fecha alta  costes \r\n";
+						error = true;
+					}
+					
+					if (isThisDateValid(fecha_solicitud_valoracion, "dd/MM/yyyy")) {
+						coste.setStr_fecha_solicitud_valoracion(fecha_solicitud_valoracion);
+						coste.setFecha_solicitud_valoracion(Utils.dateConverter(fecha_solicitud_valoracion));
+					}
+					else {
+						result += "Error fecha de solicitud de valoración \r\n";
+						error = true;
+					}
+					
+					if (isThisDateValid(fecha_recepcion_valoracion, "dd/MM/yyyy")) {
+						coste.setStr_fecha_solicitud_valoracion(fecha_solicitud_valoracion);
+						coste.setFecha_solicitud_valoracion(Utils.dateConverter(fecha_solicitud_valoracion));
+					}
+					else {
+						result += "Fecha recepcion invalida"
+								+ " \r\n";
+						
+					}
+						
+					
+					UserDao usrDao = UserDao.getInstance();
+						String []gestorItComplete = gestor_it_name.split(" ", -1);
+					for(int i=0;i<gestorItComplete.length;i++){
+						String aux = gestorItComplete[i];
+					gestorItComplete[i] = aux.replace("-", " ");
+					}
+
+					List<User> usuariosforid = usrDao.getUsersByCompleteName(gestorItComplete);
+					if(usuariosforid.size()==1){
+						long usuarioid = usuariosforid.get(0).getKey().getId();
+						coste.setGestor_it_key(usuarioid);
+						coste.setGestor_it_name(usuariosforid.get(0).getNombre()+" "+usuariosforid.get(0).getApellido1()+" "+usuariosforid.get(0).getApellido2());
+					}else{
+						result += "Error gestor it \r\n";
+						error = true;
+					}
+					
+					if(!esNuloVacio(cod_proyecto)) {
+						ProyectoDao proyDao = ProyectoDao.getInstance();
+
+						List<Proyecto> proyectosForId =proyDao.getProjectsByCode(cod_proyecto);
+						if(proyectosForId.size()==1){
+							coste.setProjectKey(proyectosForId.get(0).getKey().getId());
+							coste.setProject_name(proyectosForId.get(0).getCod_proyecto());
+						}else {
+							result += "Error codigo proyecto \r\n";
+							error = true;	
+						}
+					}
+					
+					if(!esNuloVacio(equipo)) {
+						coste.setEquipos(equipo);}
+					else {
+						result += "Error falta el equipo \r\n";
+						error = true;
+						}	
+					if(!esNuloVacio(total_horas)) {
+						coste.setHoras_total(total_horas);}
+						else {
+						result += "Error falta el total de horas \r\n";
+						error = true;
+						}	
+					if(!esNuloVacio(num_valoracion)) {
+						coste.setNum_valoracion(num_valoracion);}
+						else {
+						result += "Error falta el número de valoración \r\n";
+						error = true;
+						}
+											
+				
+					if(save&&!error) {
 						costeDao.createCoste(coste, usermail);
 					}
 				}
