@@ -48,7 +48,7 @@ public class CosteDao {
 		
 		if (c.getKey()==null)
 			isNew=true;
-		if(!c.getStr_fecha_recepcion_valoracion().equals("")&&!c.getStr_fecha_recepcion_valoracion().equals(null)){
+		if(!c.getStr_fecha_recepcion_valoracion().equals("")&&c.getStr_fecha_recepcion_valoracion()!=null){
 			c.setFecha_recepcion_valoracion(Utils.dateConverter(c.getStr_fecha_recepcion_valoracion()));
 		}
 		
@@ -95,7 +95,13 @@ public class CosteDao {
 		
 	}
 	
-	
+	public void deleteAllCostes(String usermail){
+		CosteDao costDao = CosteDao.getInstance();
+		List<Coste> costes = costDao.getAllCostes();
+		for(Coste cost : costes){
+			costDao.deleteCoste(cost, usermail);
+		}
+	}
 
 	public void deleteCoste(Coste c, String usermail) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();

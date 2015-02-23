@@ -206,6 +206,26 @@ public List<Proyecto> getProjectsByClient(Long id){
 
 	return projects;
 }
+
+public List<Proyecto> getProjectsByCode(String id){
+	
+	
+	PersistenceManager pManager = PMF.get().getPersistenceManager();
+	Transaction transaction = pManager.currentTransaction();
+	transaction.begin();
+
+	String queryStr = "select from " + Proyecto.class.getName()
+			+ " WHERE cod_proyecto == :id";
+
+	List<Proyecto> projects = (List<Proyecto>) pManager.newQuery(queryStr)
+			.execute(id);
+
+	transaction.commit();
+
+	pManager.close();
+
+	return projects;
+}
 	
 public Proyecto getProjectbyId(long l) {
 		
