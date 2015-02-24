@@ -2659,7 +2659,7 @@ $(function() {
 			//case H2H / H2H-bancoRelay		
 			$("#conectividad").append($("<option></option>").attr("value","default").text("Seleccionar"));
 			$("#conectividad").append($("<option></option>").attr("value","AS2").text("AS2"));
-			$("#conectividad").append($("<option></option>").attr("value","FTP").text("FTP"));
+			$("#conectividad").append($("<option></option>").attr("value","AS2").text("FTP"));
 			$("#conectividad").append($("<option></option>").attr("value","FTPS").text("FTPS"));
 			$("#conectividad").append($("<option></option>").attr("value","SFTP").text("SFTP"));
 			$("#conectividad").append($("<option></option>").attr("value","Webservices").text("Webservices"));

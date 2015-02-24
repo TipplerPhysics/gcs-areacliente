@@ -21,11 +21,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.ArrayUtils;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.ConectividadProyecto;
 import com.gcs.beans.ContadorCliente;
 import com.gcs.beans.ContadorDemanda;
 import com.gcs.beans.Equipo;
 import com.gcs.beans.FechaCalendada;
 import com.gcs.beans.Pais;
+import com.gcs.beans.ProductoProyecto;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.ServicioFile;
 import com.gcs.beans.User;
@@ -34,11 +36,13 @@ import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ConectividadProyectoDao;
 import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.EquipoDao;
 import com.gcs.dao.FechaCalendadaDao;
 import com.gcs.dao.PaisDao;
+import com.gcs.dao.ProductoProyectoDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioFileDao;
 import com.gcs.dao.UserDao;
@@ -123,6 +127,14 @@ public class DefaultConf extends HttpServlet {
 					json.append("result", result);
 				}else if ("paises".equals(accion)){
 					result = loadPaises(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("producto".equals(accion)){
+					result = loadProductoProyecto(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("conectividadProyecto".equals(accion)){
+					result = loadConectividadProyecto(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
 				}
@@ -746,6 +758,74 @@ public class DefaultConf extends HttpServlet {
 		return result;
 	}
 	
+	private String loadProductoProyecto(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/producto.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			ProductoProyectoDao ProductoProyectoDao = com.gcs.dao.ProductoProyectoDao.getInstance();
+			ProductoProyectoDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					ProductoProyecto productoProyecto = new ProductoProyecto();
+					productoProyecto.setNme(inputLine);
+					ProductoProyectoDao.createProductoProyecto(productoProyecto);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
+	private String loadConectividadProyecto(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/conectividad_proyecto.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			ConectividadProyectoDao ConectividadProyectoDao = com.gcs.dao.ConectividadProyectoDao.getInstance();
+			ConectividadProyectoDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					String[] split = line.split(";", -1);
+					ConectividadProyecto conectividadProyecto = new ConectividadProyecto();
+					conectividadProyecto.setName(split[0]);
+					ProductoProyectoDao produDao = ProductoProyectoDao.getInstance();
+					List<ProductoProyecto> productos = produDao.getProductoProyectoesByName(split[1]);
+					if(productos.size()==1){
+						conectividadProyecto.setProductoId(productos.get(0).getKey().getId());
+						ConectividadProyectoDao.createConectividadProyecto(conectividadProyecto);
+					}
+					
+					
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
 	private String loadServicios(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		boolean save = false;
 		String saveParam = req.getParameter("save"); 
@@ -774,7 +854,7 @@ public class DefaultConf extends HttpServlet {
 				
 				String line = inputLine;
 				String[] servicioSplit = line.split(";", -1);
-				result += counter +":   \r\n";
+				
 				
 				boolean procesar = true;
 				if (servicioSplit.length < 22) {
@@ -848,10 +928,17 @@ public class DefaultConf extends HttpServlet {
 
 							List<Proyecto> proyectosForId =proyDao.getProjectsByCode(cod_proyect);
 							if(proyectosForId.size()==1){
+								ClienteDao clientDao = ClienteDao.getInstance();
+								try{
+									Cliente c = clientDao.getClienteById(proyectosForId.get(0).getClienteKey());
+								}catch(Exception e){
+									result += "Error codigo proyecto no exist cliente\r\n";
+								}
+			
 								servicio.setId_proyecto(proyectosForId.get(0).getKey().getId());
 								servicio.setCod_proyecto(proyectosForId.get(0).getCod_proyecto());
 							}else {
-								result += "Error codigo proyecto \r\n";
+								result += "Error codigo proyecto:"+counter+" \r\n";
 								error = true;	
 							}
 						}
@@ -958,6 +1045,13 @@ public class DefaultConf extends HttpServlet {
 
 							List<Proyecto> proyectosForId =proyDao.getProjectsByCode(cod_proyect);
 							if(proyectosForId.size()==1){
+								ClienteDao clientDao = ClienteDao.getInstance();
+								try{
+									Cliente c = clientDao.getClienteById(proyectosForId.get(0).getClienteKey());
+								}catch(Exception e){
+									result += "Error codigo proyecto no exist cliente\r\n";
+								}
+								
 								conectividad.setKey_proyecto(proyectosForId.get(0).getKey().getId());
 								conectividad.setNombre_proyecto(proyectosForId.get(0).getCod_proyecto());
 							}else {
@@ -1029,12 +1123,12 @@ public class DefaultConf extends HttpServlet {
 				costeDao.deleteAllCostes(usermail);
 			}
 			
-			int counter = 164;
+			int counter = 1;
 			boolean error = false;
 
 			while ((inputLine = in.readLine()) != null) {
 				error = false;
-				result += counter +":   \r\n";
+				
 				String line = inputLine;
 				String[] costeSplit = line.split(";", -1);
 
@@ -1122,8 +1216,8 @@ public class DefaultConf extends HttpServlet {
 						coste.setFecha_solicitud_valoracion(Utils.dateConverter(fecha_solicitud_valoracion));
 					}
 					else {
-						result += "Fecha recepcion invalida"
-								+ " \r\n";
+//						result += "Fecha recepcion invalida"
+//								+ " \r\n";
 						
 					}
 						
@@ -1150,10 +1244,20 @@ public class DefaultConf extends HttpServlet {
 
 						List<Proyecto> proyectosForId =proyDao.getProjectsByCode(cod_proyecto);
 						if(proyectosForId.size()==1){
+							ClienteDao clientDao = ClienteDao.getInstance();
+							Cliente c = null; 
+							try{
+								c = clientDao.getClienteById(proyectosForId.get(0).getClienteKey());
+							}catch(Exception e){
+								result += "Error codigo proyecto no exist cliente\r\n";
+							}
+							if(c.getKey().getId()!=coste.getClienteKey()){
+								result += "Error codigo proyecto no corresponde al cliente especificado\r\n";
+							}
 							coste.setProjectKey(proyectosForId.get(0).getKey().getId());
 							coste.setProject_name(proyectosForId.get(0).getCod_proyecto());
 						}else {
-							result += "Error codigo proyecto \r\n";
+							result += "Error codigo proyecto:"+ counter +" \r\n";
 							error = true;	
 						}
 					}

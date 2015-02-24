@@ -51,6 +51,9 @@
 									<option value="Migración">Migraci&oacuten</option>
 									<option value="Consulta">Consulta</option>
 									<option value="Viabilidad">Viabilidad</option>
+									
+									
+									
 								</select>
 							</div>
 						</div>
@@ -136,11 +139,10 @@
 						<div class="input">
 							<select class="selectpicker selected" id="producto" name="producto" required aria-required="true">
 							    <option value="default">Seleccionar</option>
-							    <option value="Global Netcash">Global Netcash</option>
-							    <option value="H2H">H2H</option>
-							    <option value="H2H-BancoRelay">H2H-BancoRelay</option>
-							    <option value="Swift-BancoRelay">Swift-BancoRelay</option>
-							    <option value="Swift-Fileact">Swift-Fileact</option>												
+							    
+							    <c:forEach items="${productos}" var="producto">
+							    <option value="${producto.name}">${producto.name}</option>
+								</c:forEach>				
 							</select>
 						</div>
 					</div>
