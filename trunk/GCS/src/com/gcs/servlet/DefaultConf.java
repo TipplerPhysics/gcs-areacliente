@@ -354,7 +354,8 @@ public class DefaultConf extends HttpServlet {
 		if(saveParam != null && saveParam.equals("true")) {
 			save = true;
 		}
-		String link = "/datadocs/proyectos_2014_11_13.csv";
+		//"/datadocs/proyectos_2014_11_13.csv"
+		String link = req.getParameter("link");
 		
 		String result = "";
 		try {
@@ -390,31 +391,34 @@ public class DefaultConf extends HttpServlet {
 				if (proyectoSplit.length < 19) {
 					procesar = false;
 				}
-				String codigo = proyectoSplit[0];
+				String codigo = proyectoSplit[1];
 				if (esNuloVacio(codigo)) {
 					procesar = false;
 					break;
 				}
 
 				if (procesar) {
-					String fechaAlta = proyectoSplit[1];
-					String clienteKey = proyectoSplit[2];
-					String clienteName = proyectoSplit[3];
-					String tipo = proyectoSplit[4];
-					String producto = proyectoSplit[5];
-					String conectividad = proyectoSplit[6];
+					String fechaAlta = proyectoSplit[0];
+					String clienteKey = proyectoSplit[4];
+					String clienteName = proyectoSplit[5];
+					String tipo = proyectoSplit[2];
+					String subtipo = proyectoSplit[3];
+					String producto = proyectoSplit[13];
+					String conectividad = proyectoSplit[14];
 					String gestorItKey = proyectoSplit[7];
 					String gestorItName = proyectoSplit[8];
 					String gestorNegocioKey = proyectoSplit[9];
 					String gestorNegocioName = proyectoSplit[10];
-					String clasificacion = proyectoSplit[11];
-					String coste = proyectoSplit[12];
-					String inicioEspecificaciones = proyectoSplit[13];
-					String finEspecificaciones = proyectoSplit[14];
-					String c100 = proyectoSplit[15];
-					String okNegocio = proyectoSplit[16];
+					String clasificacion = proyectoSplit[6];
+					String coste = proyectoSplit[11];
+					String inicioEspecificaciones = proyectoSplit[15];
+					String finEspecificaciones = proyectoSplit[16];
+					String c100 = proyectoSplit[19];
+					String okNegocio = proyectoSplit[20];
 					String solicitudViabilidad = proyectoSplit[17];
 					String finViabilidad = proyectoSplit[18];
+					String fechaPlanTrabajo = proyectoSplit[21];
+					String fechaDisponibleConect = proyectoSplit[22];
 
 					proyecto = new Proyecto();
 					
@@ -429,6 +433,9 @@ public class DefaultConf extends HttpServlet {
 					proyecto.setGestor_it_name(gestorItName);
 					proyecto.setStr_fecha_fin_viabilidad(finViabilidad);
 					proyecto.setStr_fecha_inicio_viabilidad(solicitudViabilidad);
+					proyecto.setStr_fecha_disponible_conectividad(fechaDisponibleConect);
+					proyecto.setStr_fecha_plan_trabajo(fechaPlanTrabajo);
+					
 					
 					if(!esNuloVacio(producto)) {
 						proyecto.setProducto(producto);
@@ -535,7 +542,7 @@ public class DefaultConf extends HttpServlet {
 					}
 					
 					if(save) {
-						proyectoDao.createProject(proyecto, usermail);
+						proyectoDao.createProjectImport(proyecto, usermail);
 					}
 				}
 				counter++;
