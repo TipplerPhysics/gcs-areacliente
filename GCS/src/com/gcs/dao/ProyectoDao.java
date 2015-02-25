@@ -139,6 +139,90 @@ public class ProyectoDao {
 		}		
 	}
 	
+	public void createProjectImport(Proyecto p,String usermail) throws ParseException{
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		Boolean isNew = false;
+		
+		if (p.getKey() == null)
+			isNew = true;
+		
+		ClienteDao cDao = ClienteDao.getInstance();
+		Cliente c = cDao.getClienteById(p.getClienteKey());
+		UserDao uDao = UserDao.getInstance();
+		User gestor_it = uDao.getUserbyId(p.getGestor_it());
+		User gestor_negocio = uDao.getUserbyId(p.getGestor_negocio());
+		
+		p.setClienteName(c.getNombre());
+		p.setGestor_it_name(gestor_it.getFullName());
+		p.setGestor_negocio_name(gestor_negocio.getFullName());
+		
+		if (p.getStr_envioC100() != null && !"".equals(p.getStr_envioC100()))
+			p.setEnvioC100(Utils.dateConverter(p.getStr_envioC100()));
+		
+		if (p.getStr_OKNegocio() != null && !"".equals(p.getStr_OKNegocio()))
+			p.setOkNegocio(Utils.dateConverter(p.getStr_OKNegocio()));
+		
+		if (p.getStr_fecha_inicio_valoracion() != null && !"".equals(p.getStr_fecha_inicio_valoracion())){
+			p.setFecha_inicio_valoracion(Utils.dateConverter(p.getStr_fecha_inicio_valoracion()));
+		}
+		
+		if (p.getStr_fecha_fin_valoracion() != null && !"".equals(p.getStr_fecha_fin_valoracion())){
+			p.setFecha_fin_valoracion(Utils.dateConverter(p.getStr_fecha_fin_valoracion()));
+		}
+		
+		if (p.getStr_fecha_inicio_viabilidad() != null && !"".equals(p.getStr_fecha_inicio_viabilidad())){
+			p.setFecha_inicio_viabilidad(Utils.dateConverter(p.getStr_fecha_inicio_viabilidad()));
+		}
+		
+		if (p.getStr_fecha_fin_viabilidad() != null && !"".equals(p.getStr_fecha_fin_viabilidad())){
+			p.setFecha_fin_viabilidad(Utils.dateConverter(p.getStr_fecha_fin_viabilidad()));
+		}
+		
+		if (p.getStr_fecha_disponible_conectividad() != null && !"".equals(p.getStr_fecha_disponible_conectividad())){
+			p.setFecha_disponible_conectividad(Utils.dateConverter(p.getStr_fecha_disponible_conectividad()));
+		}
+		
+		if (p.getStr_fecha_plan_trabajo() != null && !"".equals(p.getStr_fecha_plan_trabajo())){
+			p.setFecha_plan_trabajo(Utils.dateConverter(p.getStr_fecha_plan_trabajo()));
+		}
+		
+		
+		
+		if (p.getKey()==null){
+			Integer project_number = c.getProject_number();
+			if (project_number==null)
+				project_number=1;			
+			else
+				project_number++;
+			
+			String cod_proyecto = createProjectName(c,p,project_number);			
+			//p.setCod_proyecto(cod_proyecto);
+			
+			c.setProject_number(project_number);
+			cDao.createCliente(c,"");		
+		}
+		
+		try{
+			pm.makePersistent(p);
+		}
+		finally{
+			ServicioDao sDao = ServicioDao.getInstance();
+			List<Servicio> servicios = sDao.getServiciosByProject(p.getKey().getId());
+			
+			for (Servicio s:servicios){
+				s.setGestor_it_key(p.getGestor_it());
+				s.setGestor_it_name(p.getGestor_it_name());
+				s.setGestor_negocio_key(p.getGestor_negocio());
+				s.setGestor_negocio_name(p.getGestor_negocio_name());
+				
+				sDao.createServicio(s, "");
+			}
+			
+			pm.close();
+		}		
+	}
+	
 	public void deleteProject(Proyecto p, String usermail){
 		
 		ServicioDao sDao = ServicioDao.getInstance();
@@ -250,7 +334,7 @@ public Proyecto getProjectbyId(long l) {
 				
 		String cod_cliente = c.getClientId().split("IDGLOBAL")[1];
 		
-		project_name = "PROY_"+cod_cliente+"_"+String.format("%02d", project_number);
+		project_name = "PROY"+cod_cliente+"_"+String.format("%02d", project_number);
 		
 		return project_name;
 	}

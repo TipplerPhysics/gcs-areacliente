@@ -1,2 +1,84 @@
-hola soy ;Argentina;rs;asdf
-roberto;Argentina;extension
+Pago a proveedores;Argentina;MT101;
+Transferencias;Argentina;MT101;
+Nóminas;Argentina;MT101;
+Pago a proveedores;Chile;MT101;
+Transferencias domésticas;Chile;MT101;
+Nóminas;Chile ;MT101;
+Pago a proveedores;Colombia;MT101;
+Transferencias;Colombia;MT101;
+Nóminas;Colombia;MT101;
+Nóminas;España;MT101;
+Transferencias domésticas;España;MT101;
+Transfererencias urgentes OMF;España;MT101;
+Transferencias EUR (FIT);España;MT101;
+Nóminas (FIM);España;MT101;
+SEPA París;Francia;MT101;
+Nóminas SEPA París;Francia;MT101;
+Pagos internacionales - Paris;Francia;MT101;
+Pago a proveedores;Perú;MT101;
+Transferencias domésticas;Perú;MT101;
+Nóminas;Perú;MT101;
+Transferencias SEPA;Portugal;MT101;
+Nóminas SEPA;Portugal;MT101;
+Transferencias internacionales;Portugal;MT101;
+Pagos chaps-tesorería mismo día londres;Reino Unido;MT101;
+Pagos nacionales Londres;Reino Unido;MT101;
+Pagos nóminas bacs Londres;Reino Unido;MT101;
+Pagos internacionales Londres;Reino Unido;MT101;
+Transferencias SEPA Londres;Reino Unido;MT101;
+Pagos (payment) - n.y.;USA;MT101;
+Pagos Domésticos ACH NY;USA;MT101;
+Pago a Proveedores;Venezuela;MT101;
+Transferencias;Venezuela;MT101;
+Nóminas;Venezuela;MT101;
+Saldos y movimientos;Argentina;MT940;
+Movimientos del día en fichero (MT942);Argentina;MT942;
+Saldos y movimientos;Chile;MT940;
+Saldos y movimientos;Colombia;MT940;
+Movimientos cuentas personales en fichero;Curaçao;MT940;
+Saldos y movimientos;España;MT940;
+Movimientos cuentas personales en fichero;Francia;MT940;
+Movimientos cuentas personales en fichero;Hong Kong;MT940;
+Movimientos cuentas personales en fichero;Italia;MT940;
+Saldos y movimientos;México;MT940;
+Saldos y movimientos;Otros países;MT940;
+Saldos y movimientos;Perú;MT940;
+Saldos y movimientos;Portugal;MT940;
+Mvtos. Ctas. Pers. en Fichero;Reino Unido;MT940;
+Saldos y movimientos;Uruguay;MT940;
+Saldos y movimientos;USA;MT940;
+Saldos y movimientos;Venezuela;MT940;
+Respuestas;Argentina;MT199; MT195
+Saldos y movimientos;Bélgica;MT940;
+Movimientos del día en fichero (MT942);Chile;MT942;
+Movimientos del día en fichero (MT942);Colombia;MT942;
+Movimientos del día en fichero (MT942);Curaçao;MT942;
+Movimientos del día en fichero (MT942);España;MT942;
+Movimientos del día en fichero (MT942);Francia;MT942;
+Movimientos del día en fichero (MT942);Hong Kong;MT942;
+Movimientos del día en fichero (MT942);Italia;MT942;
+Movimientos del día en fichero (MT942);México;MT942;
+Movimientos del día en fichero (MT942);Otros países;MT942;
+Movimientos del día en fichero (MT942);Perú;MT942;
+Movimientos del día en fichero (MT942);Portugal;MT942;
+Movimientos del día en fichero (MT942);Reino Unido;MT942;
+Movimientos del día en fichero (MT942);Uruguay;MT942;
+Movimientos del día en fichero (MT942);USA;MT942;
+Movimientos del día en fichero (MT942);Venezuela;MT942;
+Movimientos del día en fichero (MT942);Bélgica;MT942;
+Respuestas;Bélgica;MT199; MT195
+Respuestas;Chile;MT199; MT195
+Respuestas;Colombia;MT199; MT195
+Respuestas;Curaçao;MT199; MT195
+Respuestas;España;MT199; MT195
+Respuestas;Francia;MT199; MT195
+Respuestas;Hong Kong;MT199; MT195
+Respuestas;Italia;MT199; MT195
+Respuestas;México;MT199; MT195
+Respuestas;Otros países;MT199; MT195
+Respuestas;Perú;MT199; MT195
+Respuestas;Portugal;MT199; MT195
+Respuestas;Reino Unido;MT199; MT195
+Respuestas;Uruguay;MT199; MT195
+Respuestas;USA;MT199; MT195
+Respuestas;Venezuela;MT199; MT195
