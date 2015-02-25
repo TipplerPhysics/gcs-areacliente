@@ -260,6 +260,9 @@ $(function() {
 	$('#producto').change(function(e){
 		//vaciamos el select
 		$("#conectividad").empty();
+		
+		/*target.append($("<option></option>").attr("value","default").text("-"));}
+		target.selectpicker("refresh");
 		if ($('#producto').val().indexOf("H2H") >= 0) {
 			//case H2H / H2H-bancoRelay		
 			$("#conectividad").append($("<option></option>").attr("value","default").text("Seleccionar"));
@@ -281,11 +284,43 @@ $(function() {
 			//case nada seleccionado
 			$("#conectividad").empty();
 			$("#conectividad").append($("<option></option>").attr("value","Seleccionar").text("default"));
-
 		}
-		//repintamos el combo
-		$("#conectividad").selectpicker("refresh");
+		*/
 		
+		//repintamos el combo
+		$("#conectividad").selectpicker("refresh");	
+			 var formURL = "/projectServlet?";
+			 var postData="accion=getConectividades&producto="+$('#producto').val();
+			 $.ajax(			
+				{
+					url : formURL,
+					type: "POST",
+					data : postData,
+					success:function(data, textStatus, jqXHR) 
+					{
+						if (data.success=="true"){
+							var conectividades = data.jarray[0];
+
+							
+
+							$("#conectividad").append($("<option></option>").attr("value","default").text("Seleccionar"));
+							
+							
+							var tamano = conectividades.length;
+							for (var i = 0 ; i < tamano; i++){
+								$("#conectividad").append($("<option></option>").attr("value",conectividades[i]).text(conectividades[i]));
+								
+								
+							}
+							$("#conectividad").selectpicker("refresh");
+							//
+
+						}					
+					}
+				});
+		
+		
+		target.selectpicker("refresh");
 	});
 	
 

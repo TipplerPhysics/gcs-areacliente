@@ -31,7 +31,7 @@
 02/07/2014;PROY0011_06;Implementación;No aplica;;Colgate;4;;Ana-Belén Díez Gutiérrez;;Jorge-Javier Arbona Mesa;;;H2H;AS2;02/07/2014;02/07/2014;08/07/2014;11/07/2014;08/07/2014;08/07/2014;14/07/2014;
 02/07/2014;PROY0011_07;Implementación;No aplica;;Colgate;4;;Ana-Belén Díez Gutiérrez;;Jorge-Javier Arbona Mesa;;;H2H;AS2;02/07/2014;02/07/2014;08/07/2014;11/07/2014;08/07/2014;08/07/2014;14/07/2014;
 15/12/2014;PROY0011_08;Implementación;No aplica;;Colgate;1;;Ana-Belén Díez Gutiérrez;;Jorge-Javier Arbona Mesa;;;H2H-BancoRelay;;15/12/2014;15/12/2014;16/12/2014;18/12/2014;15/12/2014;15/12/2014;02/02/2014;
-31/12/2013;PROY0013_01;Implementación;No aplica;;Coviden;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-Fileact;Score;;;;;;;;
+31/12/2013;PROY0013_01;Implementación;No aplica;;Covidien;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-Fileact;Score;;;;;;;;
 15/07/2011;PROY0015_01;Implementación;No aplica;;DHL;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H-BancoRelay;FTP;;;;;19/01/2011;19/01/2011;;
 15/07/2011;PROY0015_02;Implementación;No aplica;;DHL;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H-BancoRelay;FTP;;;20/07/2012;;20/07/2012;20/07/2012;;
 15/07/2011;PROY0015_03;Implementación;No aplica;;DHL;1;;Antonio Coronil Martínez;;Alba Martín Fernández;;;Swift-Fileact;;;;10/07/2014;16/07/2014;10/07/2014;10/07/2014;;
@@ -98,103 +98,3 @@
 10/03/2014;PROY0031_01;Implementación;No aplica;;ISA;4;;Antonio Coronil Martínez;;Omar-Alejandro García Camarillo;;;H2H;FTPS;10/03/2014;23/04/2014;24/04/2014;24/04/2014;23/04/2014;24/04/2014;30/04/2014;
 05/09/2013;PROY0031_02;Implementación;No aplica;;ISA;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H;FTPS;;;;;;;;
 14/09/2012;PROY0032_00;Implementación;No aplica;;Johnson Controls;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-BancoRelay;Score;;;;;;;;
-14/09/2012;PROY0032_01;Implementación;No aplica;;Johnson Controls;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-BancoRelay;Score;;;;;;;;
-07/11/2012;PROY0032_02;Implementación;No aplica;;Johnson Controls;4;;Marta Serrano García;;Andrés Luque Teruel;;;Swift-Fileact;Score;07/11/2012;;;;13/11/2012;21/11/2012;;
-24/02/2014;PROY0033_01;Implementación;No aplica;;Kuehne Nagel;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-BancoRelay;Score;24/02/2014;06/03/2014;06/03/2014;07/03/2014;06/03/2014;06/03/2014;10/03/2014;
-24/02/2014;PROY0033_02;Implementación;No aplica;;Kuehne Nagel;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-24/02/2014;PROY0033_03;Implementación;No aplica;;Kuehne Nagel;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-24/02/2014;PROY0033_04;Implementación;No aplica;;Kuehne Nagel;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-24/02/2014;PROY0033_05;Implementación;No aplica;;Kuehne Nagel;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-24/02/2014;PROY0033_06;Implementación;No aplica;;Kuehne Nagel;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-24/02/2014;PROY0033_07;Implementación;No aplica;;Kuehne Nagel;2;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-19/04/2012;PROY0034_01;Implementación;One Bank;;Laboratorios Almirall;4;;Benito Bellido Romero;;Ana Ruíz Alonso;;;Swift-Fileact;Score;19/04/2012;28/06/2012;;;28/06/2012;28/06/2012;;
-17/04/2012;PROY0035_01;Implementación;No aplica;;L'Occitane;4;;Ricardo García Caravaca;;Ángel Díaz Morales;;;Swift-BancoRelay;Score;17/04/2012;25/04/2012;;;25/04/2012;25/04/2012;;14/06/2012
-17/04/2012;PROY0035_02;Implementación;No aplica;;L'Occitane;4;;Ricardo García Caravaca;;Ángel Díaz Morales;;;Swift-Fileact;Score;17/04/2012;21/05/2012;;;21/05/2012;21/05/2012;;14/06/2012
-16/07/2012;PROY0035_03;Implementación;No aplica;;L'Occitane;4;;Ricardo García Caravaca;;Ángel Díaz Morales;;;Swift-Fileact;Score;16/07/2012;24/07/2012;;;26/07/2012;26/07/2012;;14/06/2012
-21/03/2012;PROY0036_01;Implementación;No aplica;;Louis Vuitton;4;;Cristina Jorge Conde;;Ángel Díaz Morales;;;Swift-Fileact;Score;;;;;28/03/2012;;;14/06/2012
-21/03/2012;PROY0036_02;Implementación;One Bank ;;Louis Vuitton;4;;Cristina Jorge Conde;;Andrés Luque Teruel;;;Swift-Fileact;Score;;;;;26/04/2012;;;
-17/06/2013;PROY0036_03;Implementación;No aplica;;Louis Vuitton;1;;Susana González Fernández;;Cristina Blanco Barrio;;;Swift-Fileact;Score;17/06/2013;17/06/2013;;;19/06/2013;24/06/2013;;
-11/11/2013;PROY0036_04;Implementación;No aplica;;Louis Vuitton;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Cristina Blanco Barrio;;;Swift-Fileact;Score;11/11/2013;11/11/2013;;;11/11/2013;11/11/2013;;
-24/04/2014;PROY0036_05;Implementación;No aplica;;Louis Vuitton;1;;Jaime-Ramón Gómez-Cuétara Albo;;Cristina Blanco Barrio;;;Swift-Fileact;Score;24/04/2014;05/05/2014;05/05/2014;06/05/2014;05/05/2014;05/05/2014;07/05/2014;
-06/08/2014;PROY0036_06;Implementación;No aplica;;Louis Vuitton;1;;Antonio Coronil Martínez;;Carlos Rocha Ruiz;;;Swift-BancoRelay;Score;06/08/2014;11/08/2014;18/08/2014;25/08/2014;14/08/2014;15/08/2014;26/08/2014;
-06/08/2014;PROY0036_07;Implementación;One Bank;;Louis Vuitton;1;;Antonio Coronil Martínez;;Carlos Rocha Ruiz;;;Swift-Fileact;Score;06/08/2014;19/09/2014;03/12/2014;11/12/2014;03/12/2014;03/12/2014;16/12/2014;
-21/03/2012;PROY0036_08;Implementación;No aplica;;Louis Vuitton;1;;Antonio Coronil Martínez;;Carlos Rocha Ruiz;;;Swift-Fileact;Score;;;;;;;;
-10/02/2012;PROY0037_03;Implementación;No aplica;;Lowe´s;4;;Elena López Werner;;Omar-Alejandro García Camarillo;;;H2H;SFTP;;;;;05/10/2012;05/10/2012;;
-10/02/2012;PROY0037_04;Implementación;No aplica;;Lowe´s;4;;Elena López Werner;;Omar-Alejandro García Camarillo;;;H2H-BancoRelay;SFTP;;;;;24/07/2012;24/07/2012;;
-07/05/2014;PROY0039_01;Implementación;No aplica;;Nestle;4;;;;Antonio-Jesús García Delgado;;;Swift-Fileact;Score;;;;;;;;
-07/05/2014;PROY0039_02;Migración;Integración América;;Nestle;4;;Marta Serrano García;;Antonio-Jesús García Delgado;;;Swift-Fileact;Score;07/05/2014;30/05/2014;12/06/2014;13/06/2014;02/06/2014;11/06/2014;;31/07/2012
-07/05/2014;PROY0039_03;Implementación;No aplica;;Nestle;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-Fileact;Score;;;;;;;;31/07/2012
-07/05/2014;PROY0039_04;Implementación;No aplica;;Nestle;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-Fileact;Score;;;;;;;;
-22/11/2012;PROY0040_01;Implementación;No aplica;;NextEra;4;;Ana-Belén Díez Gutiérrez;;Ana Ruíz Alonso;;;H2H;SFTP;22/11/2012;21/02/2013;;;30/01/2013;25/02/2013;;
-22/11/2012;PROY0040_01;Implementación;No aplica;;NextEra;4;;Ana-Belén Díez Gutiérrez;;Ana Ruíz Alonso;;;H2H-BancoRelay;SFTP;22/11/2012;21/02/2013;;;30/01/2013;25/02/2013;;
-21/08/2012;PROY0041_01;Implementación;No aplica;;NH;4;;Marta Serrano García;;Ángel Díaz Morales;;;Swift-Fileact;Score;21/08/2012;12/02/2013;;;13/02/2013;13/02/2013;;
-21/08/2012;PROY0041_02;Implementación;No aplica;;NH;4;;Marta Serrano García;;Ángel Díaz Morales;;;Swift-Fileact;Score;21/08/2012;12/02/2013;;;13/02/2013;13/02/2013;;
-15/10/2013;PROY0041_03;Implementación;No aplica;;NH;4;;Ana-Belén Díez Gutiérrez;;Ángel Díaz Morales;;;Swift-Fileact;Score;15/10/2013;;;;;;;
-03/02/2014;PROY0041_04;Implementación;No aplica;;NH;4;;Daniela Vilau;;Ángel Díaz Morales;;;Swift-Fileact;Score;03/02/2014;03/02/2014;06/02/2014;10/02/2014;03/02/2014;03/02/2014;10/02/2014;
-03/08/2012;PROY0041_05;Implementación;One Bank ;;NH;4;;Javier Fernández Martín;;Natalia Sánchez Illán;;;Swift-Fileact;Score;;;;;;;;
-03/08/2012;PROY0041_06;Implementación;One Bank ;;NH;4;;Javier Fernández Martín;;Natalia Sánchez Illán;;;Swift-Fileact;Score;;;;;;;;
-03/08/2012;PROY0041_07;Implementación;One Bank ;;NH;4;;Javier Fernández Martín;;Natalia Sánchez Illán;;;Swift-Fileact;Score;;;;;;;;
-13/09/2013;PROY0042_01;Implementación;No aplica;;Occidental Petroleum;4;;Miguel-Ángel Fernández Valderrama;;Salvador Cruz Medina;;;H2H-BancoRelay;FTP;;;;;27/07/2011;29/07/2011;;
-23/09/2013;PROY0042_02;Implementación;No aplica;;Occidental Petroleum;4;;Ana-Belén Díez Gutiérrez;;Carlos Rocha Ruiz;;;H2H;SFTP;23/09/2013;09/10/2013;;;09/10/2013;09/10/2013;29/10/2013;
-23/09/2013;PROY0042_02;Implementación;No aplica;;Occidental Petroleum;4;;Israel Lora;;Carlos Rocha Ruiz;;;H2H;SFTP;23/09/2013;09/10/2013;;;09/10/2013;09/10/2013;29/10/2013;
-26/03/2014;PROY0042_03;Implementación;No aplica;;Occidental Petroleum;3;;Israel Lora;;Carlos Rocha Ruiz;;;H2H;SFTP;26/03/2014;08/04/2014;09/04/2014;10/04/2014;08/04/2014;08/04/2014;21/04/2014;
-27/08/2014;PROY0042_04;Implementación;No aplica;;Occidental Petroleum;4;;Israel Lora;;Carlos Rocha Ruiz;;;H2H;SFTP;27/08/2014;03/09/2014;22/09/2014;23/09/2014;03/09/2014;08/09/2014;08/10/2014;14/10/2013
-06/06/2014;PROY0042_05;Implementación;No aplica;;Occidental Petroleum;4;;Israel Lora;;Carlos Rocha Ruiz;;;H2H;SFTP;06/06/2014;02/07/2014;02/07/2014;03/07/2014;02/07/2014;02/07/2014;14/07/2014;14/10/2013
-31/12/2013;PROY0043_01;Implementación;No aplica;;Omnicom;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H-BancoRelay;SFTP;;;;;13/02/2012;;;
-28/10/2013;PROY0044_01;Implementación;No aplica;;Perfetti Van Melle;4;;Ricardo García Caravaca;;Ana Ruíz Alonso;;;Swift-BancoRelay;Score;;;;;;;;
-28/10/2013;PROY0044_02;Implementación;No aplica;;Perfetti Van Melle;4;;Ricardo García Caravaca;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-28/10/2013;PROY0044_03;Implementación;No aplica;;Perfetti Van Melle;4;;Daniela Vilau;;Alba Martín Fernández;;;Swift-Fileact;Score;28/10/2013;28/10/2013;;;29/10/2013;31/10/2013;;
-28/10/2013;PROY0044_04;Implementación;No aplica;;Perfetti Van Melle;4;;Daniela Vilau;;Alba Martín Fernández;;;Swift-Fileact;Score;28/10/2013;28/10/2013;;;29/10/2013;31/10/2013;;
-31/12/2013;PROY0045_01;Implementación;No aplica;;Philip Morris;4;;Ricardo García Caravaca;;Cristina Tris Jiménez;;;Swift-BancoRelay;Score;;;;;03/10/2011;03/10/2011;;
-19/03/2014;PROY0046_01;Implementación;No aplica;;Municipio de Medellin;1;;Israel Lora;;Carlos Rocha Ruiz;;;Swift-BancoRelay;Macug;19/03/2014;01/04/2014;01/04/2014;02/04/2014;01/04/2014;01/04/2014;03/04/2014;
-19/03/2014;PROY0046_01;Implementación;No aplica;;Municipio de Medellin;1;;Israel Lora;;Carlos Rocha Ruiz;;;Swift-BancoRelay;Macug;19/03/2014;01/04/2014;01/04/2014;02/04/2014;01/04/2014;01/04/2014;03/04/2014;
-19/03/2014;PROY0046_02;Implementación;No aplica;;Municipio de Medellin;1;;Israel Lora;;Carlos Rocha Ruiz;;;Swift-Fileact;Macug;19/03/2014;22/04/2014;23/04/2014;23/04/2014;22/04/2014;22/04/2014;23/07/2014;
-16/09/2013;PROY0047_01;Implementación;One Bank;;Pontegadea;4;;Cristina Jorge Conde;;Andrés Luque Teruel;;;Swift-Fileact;Macug;;;;;;;;
-17/09/2013;PROY0047_02;Implementación;No aplica;;Pontegadea;4;;Daniela Vilau;;Ignacio Huertes Álvarez;;;Swift-Fileact;Macug;17/09/2013;26/09/2013;13/02/2014;17/02/2014;26/09/2013;26/09/2013;03/10/2013;
-29/04/2014;PROY0047_03;Implementación;One Bank;;Pontegadea;1;;Jaime-Ramón Gómez-Cuétara Albo;;Ignacio Huertes Álvarez;;;Swift-Fileact;Macug;29/04/2014;29/04/2014;29/04/2014;30/04/2014;29/04/2014;29/04/2014;05/05/2014;
-20/10/2014;PROY0047_04;Implementación;One Bank ;;Pontegadea;1;;Javier Fernández Martín;;Ignacio Huertes Álvarez;;;Swift-Fileact;;20/10/2014;21/10/2014;22/10/2014;22/10/2014;21/10/2014;21/10/2014;;
-16/09/2013;PROY0047_05;Implementación;One Bank ;;Pontegadea;1;;Javier Fernández Martín;;Ignacio Huertes Álvarez;;;Swift-Fileact;;;;;;;;;
-07/11/2012;PROY0048_01;Implementación;No aplica;;Porcelanosa;4;;Carlos-Enrique Gargallo Guil;;Silvia Yanci García-de-la-Vega;;;Swift-Fileact;Score;;;;;;;;
-29/11/2012;PROY0048_02;Implementación;No aplica;;Porcelanosa;4;;Elena López Werner;;José-Manuel González López;;;Swift-Fileact;Score;29/11/2012;29/11/2012;;;10/12/2012;10/12/2012;;
-07/10/2013;PROY0048_03;Implementación;One Bank;;Porcelanosa;4;;Daniela Vilau;;Alba Martín Fernández;;;Swift-Fileact;Score;07/10/2013;10/10/2013;;;08/10/2013;08/10/2013;;
-07/11/2012;PROY0048_04;Implementación;No aplica;;Porcelanosa;1;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-BancoRelay;Score;;;;;;;;
-26/02/2014;PROY0049_01;Implementación;No aplica;;Prosegur;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-Fileact;Score;;;;;;;;
-26/02/2014;PROY0049_02;Implementación;No aplica;;Prosegur;1;;Ana-Belén Díez Gutiérrez;;Ángel Díaz Morales;;;Swift-BancoRelay;Score;26/02/2014;;;;;;;
-06/05/2014;PROY0049_03;Implementación;One Bank;;Prosegur;1;;Javier Fernández Martín;;Ángel Díaz Morales;;;Swift-Fileact;Score;06/05/2014;30/05/2014;27/05/2014;28/05/2014;30/05/2014;30/05/2014;05/06/2014;
-31/12/2013;PROY0050_01;Implementación;No aplica;;Publicis;4;;Cristina Jorge Conde;;Ángel Díaz Morales;;;Swift-Fileact;Score;;;;;;;;
-27/04/2012;PROY0051_01;Implementación;No aplica;;RCI;4;;Carlos-Enrique Gargallo Guil;;Salvador Cruz Medina;;;H2H;SFTP;;;;;;;;
-27/04/2012;PROY0051_02;Implementación;No aplica;;RCI;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H;SFTP;;;;;12/06/2012;;;19/06/2012
-27/04/2012;PROY0051_03;Implementación;No aplica;;RCI;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H;SFTP;;;;;20/12/2012;20/12/2012;;
-26/12/2013;PROY0051_04;Implementación;No aplica;;RCI;4;;Antonio Coronil Martínez;;Omar-Alejandro García Camarillo;;;H2H;SFTP;26/12/2013;30/12/2013;;;30/12/2013;31/12/2013;15/01/2014;19/06/2012
-27/04/2012;PROY0051_05;Implementación;No aplica;;RCI;4;;Ricardo García Caravaca;;Omar-Alejandro García Camarillo;;;H2H;SFTP;;;;;;;;19/06/2012
-30/03/2012;PROY0052_01;Implementación;No aplica;;Renault;4;;Cristina Jorge Conde;;Ana Ruíz Alonso;;;Swift-Fileact;Score;30/03/2012;;;;30/03/2012;;;
-30/03/2012;PROY0052_02;Implementación;No aplica;;Renault;4;;Cristina Jorge Conde;;Ana Ruíz Alonso;;;Swift-Fileact;Score;30/03/2012;;;;30/03/2012;;;
-30/03/2012;PROY0052_03;Implementación;No aplica;;Renault;4;;Cristina Jorge Conde;;Ana Ruíz Alonso;;;Swift-Fileact;Score;30/03/2012;;;;30/03/2012;;;
-27/09/2013;PROY0053_01;Implementación;No aplica;;Repsol;4;;Gema García Pedrosa;;Silvia Yanci García-de-la-Vega;;;Swift-BancoRelay;Score;;;;;;;;
-04/09/2012;PROY0053_02;Implementación;No aplica;;Repsol;4;;Marta Serrano García;;Andrés Luque Teruel;;;Swift-Fileact;Score;04/09/2012;23/10/2012;;;23/10/2013;24/10/2012;;
-01/10/2013;PROY0053_03;Implementación;No aplica;;Repsol;4;;Daniela Vilau;;Andrés Luque Teruel;;;Swift-Fileact;Score;01/10/2013;09/10/2013;;;07/10/2013;09/10/2013;;25/10/2012
-21/11/2013;PROY0053_04;Implementación;No aplica;;Repsol;4;;Jaime-Ramón Gómez-Cuétara Albo;;Andrés Luque Teruel;;;Swift-Fileact;Score;21/11/2013;21/11/2013;;;26/11/2013;26/11/2013;28/11/2013;
-27/09/2013;PROY0053_05;Implementación;No aplica;;Repsol;4;;Gema García Pedrosa;;Andrés Luque Teruel;;;Swift-Fileact;Score;;;;;07/10/2013;09/10/2014;;
-17/11/2014;PROY0053_06;Implementación;One Bank ;;Repsol;1;;Elena López Werner;;Andrés Luque Teruel;;;Swift-Fileact;Score;17/11/2014;25/11/2014;25/11/2014;26/11/2014;25/11/2014;25/11/2014;27/11/2014;
-17/11/2014;PROY0053_07;Implementación;No aplica;;Repsol;1;;Elena López Werner;;Andrés Luque Teruel;;;Swift-Fileact;Score;17/11/2014;04/12/2014;09/12/2014;10/12/2014;05/12/2014;05/12/2014;09/12/2014;
-15/01/2013;PROY0054_01;Implementación;No aplica;;Saica;4;;Carlos-Enrique Gargallo Guil;;Ana Ruíz Alonso;;;Swift-Fileact;Macug;;;;;;;;
-15/01/2013;PROY0054_02;Implementación;No aplica;;Saica;4;;Cristina Jorge Conde;;Ana Ruíz Alonso;;;Swift-Fileact;Macug;15/01/2013;07/02/2013;;;07/02/2013;08/02/2013;;
-21/11/2013;PROY0054_03;Implementación;No aplica;;Saica;4;;Jaime-Ramón Gómez-Cuétara Albo;;Ana Ruíz Alonso;;;Swift-Fileact;Macug;21/11/2013;22/11/2013;;;26/11/2013;26/11/2013;28/11/2013;
-05/04/2013;PROY0055_01;Implementación;No aplica;;Schneider;4;;Gema García Pedrosa;;Cristina Blanco Barrio;;;Swift-Fileact;Score;;;;;;;;
-16/07/2013;PROY0055_02;Implementación;No aplica;;Schneider;4;;Marta Serrano García;;Cristina Blanco Barrio;;;Swift-Fileact;Score;16/07/2013;22/07/2013;;;22/07/2013;22/07/2013;;
-04/10/2013;PROY0055_03;Implementación;No aplica;;Schneider;4;;Marta Serrano García;;Cristina Blanco Barrio;;;Swift-Fileact;Score;04/10/2013;04/10/2013;;;04/10/2013;04/10/2013;;
-31/12/2013;PROY0056_01;Implementación;No aplica;;Senoble;4;;Carlos-Enrique Gargallo Guil;;Ángel Díaz Morales;;;Swift-Fileact;Score;;;;;;;;
-20/05/2013;PROY0057_01;Implementación;No aplica;;Serunion;4;;Ricardo García Caravaca;;Ana Ruíz Alonso;;;Swift-Fileact;Score;;;;;;;;
-05/07/2013;PROY0057_02;Implementación;No aplica;;Serunion;4;;Marta Serrano García;;Ana Ruíz Alonso;;;Swift-Fileact;Score;05/07/2013;05/07/2013;;;05/07/2013;05/07/2013;12/07/2013;
-19/02/2014;PROY0057_03;Implementación;No aplica;;Serunion;4;;Cristina Jorge Conde;;Ana Ruíz Alonso;;;Swift-Fileact;Score;19/02/2014;03/03/2014;05/03/2014;10/03/2014;04/03/2014;04/03/2014;17/03/2014;
-27/11/2014;PROY0057_04;Implementación;No aplica;;Serunion;4;;Cristina Jorge Conde;;Ana Ruíz Alonso;;;Swift-Fileact;Score;27/11/2014;10/12/2014;10/12/2014;10/12/2014;10/12/2014;10/12/2014;16/12/2014;
-11/05/2012;PROY0058_01;Implementación;No aplica;;Siemens;4;;Gema García Pedrosa;;Andrés Luque Teruel;;;H2H;HTTPS;;;;;;;;
-25/06/2012;PROY0058_02;Implementación;No aplica;;Siemens;4;;Ricardo García Caravaca;;Andrés Luque Teruel;;;H2H;HTTPS;;;;;25/06/2012;10/08/2012;;
-18/02/2013;PROY0058_03;Implementación;No aplica;;Siemens;4;;Benito Bellido Romero;;Andrés Luque Teruel;;;H2H;HTTPS;18/02/2013;27/02/2013;;;04/03/2013;21/03/2013;;
-03/04/2013;PROY0058_04;Implementación;No aplica;;Siemens;4;;Benito Bellido Romero;;Andrés Luque Teruel;;;H2H;HTTPS;03/04/2013;09/05/2013;;;23/05/2013;27/05/2013;;
-18/02/2013;PROY0058_05;Migración;Integración América;;Siemens;4;;Javier Fernández Martín;;Andrés Luque Teruel;;;H2H;HTTPS;18/02/2013;27/02/2013;;;04/04/2013;08/04/2013;;
-27/02/2013;PROY0058_06;Implementación;No aplica;;Siemens;4;;Benito Bellido Romero;;Andrés Luque Teruel;;;H2H;HTTPS;27/02/2013;27/02/2013;;;04/03/2013;27/03/2013;;
-29/05/2013;PROY0058_07;Implementación;No aplica;;Siemens;4;;Benito Bellido Romero;;Andrés Luque Teruel;;;H2H;HTTPS;29/05/2013;29/05/2013;;;17/06/2013;18/06/2013;;
-14/01/2014;PROY0058_08;Migración;Integración América;;Siemens;4;;Javier Fernández Martín;;Andrés Luque Teruel;;;H2H;HTTPS;14/01/2014;14/01/2014;;;16/01/2014;16/01/2014;28/01/2014;
-21/07/2014;PROY0058_09;Implementación;No aplica;;Siemens;3;;Benito Bellido Romero;;Andrés Luque Teruel;;;H2H;HTTPS;21/07/2014;28/07/2014;29/07/2014;31/07/2014;28/07/2014;28/07/2014;26/08/2014;
-04/08/2014;PROY0058_10;Implementación;No aplica;;Siemens;3;;Benito Bellido Romero;;Andrés Luque Teruel;;;H2H;HTTPS;04/08/2014;07/08/2014;07/08/2014;12/08/2014;07/08/2014;07/08/2014;26/08/2014;
