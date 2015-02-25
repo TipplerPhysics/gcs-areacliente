@@ -6,6 +6,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import com.gcs.beans.ConectividadProyecto;
+import com.gcs.beans.ProductoProyecto;
 import com.gcs.persistence.PMF;
 
 public class ConectividadProyectoDao {
@@ -39,6 +40,26 @@ public class ConectividadProyectoDao {
 		
 		
 		Query q = pm.newQuery("select from " + ConectividadProyecto.class.getName());	
+		q.setOrdering("name asc");
+		ConectividadProyectoes = (List<ConectividadProyecto>) q.execute();
+		
+		
+		pm.close();
+
+		return ConectividadProyectoes;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ConectividadProyecto> getConectividadesByProducto(String producto) {
+		
+		ProductoProyectoDao proyectoDao = ProductoProyectoDao.getInstance();
+		List<ProductoProyecto> productos =proyectoDao.getProductoProyectoesByName(producto);
+		ProductoProyecto productoEnty = productos.get(0);
+		List<ConectividadProyecto> ConectividadProyectoes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		Query q = pm.newQuery("select from " + ConectividadProyecto.class.getName()+" where productoId=="+productoEnty.getKey().getId());	
 		q.setOrdering("name asc");
 		ConectividadProyectoes = (List<ConectividadProyecto>) q.execute();
 		

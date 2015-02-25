@@ -354,6 +354,14 @@ public class DefaultConf extends HttpServlet {
 		if(saveParam != null && saveParam.equals("true")) {
 			save = true;
 		}
+		
+		String contParam = req.getParameter("counter"); 
+		if(contParam != null && contParam.equals("true")) {
+			ClienteDao clienteDao = ClienteDao.getInstance();
+			clienteDao.initCounters();
+		}
+		
+
 		//"/datadocs/proyectos_2014_11_13.csv"
 		String link = req.getParameter("link");
 		
@@ -374,7 +382,7 @@ public class DefaultConf extends HttpServlet {
 			if(deleteParam != null && deleteParam.equals("true")) {
 				proyectoDao.deleteAllProject(usermail);
 			}
-			
+
 			
 			Proyecto proyecto = null;
 			
@@ -435,7 +443,7 @@ public class DefaultConf extends HttpServlet {
 					proyecto.setStr_fecha_inicio_viabilidad(solicitudViabilidad);
 					proyecto.setStr_fecha_disponible_conectividad(fechaDisponibleConect);
 					proyecto.setStr_fecha_plan_trabajo(fechaPlanTrabajo);
-					
+					proyecto.setCod_proyecto(codigo);
 					
 					if(!esNuloVacio(producto)) {
 						proyecto.setProducto(producto);
@@ -541,7 +549,7 @@ public class DefaultConf extends HttpServlet {
 						result += "\r\n";
 					}
 					
-					if(save) {
+					if(save&&!error) {
 						proyectoDao.createProjectImport(proyecto, usermail);
 					}
 				}
@@ -1107,12 +1115,19 @@ public class DefaultConf extends HttpServlet {
 		}
 		
 		boolean delete = false;
-		String deleteParam = req.getParameter("save"); 
+		String deleteParam = req.getParameter("delete"); 
 		if(deleteParam != null && deleteParam.equals("true")) {
 			delete = true;
 		}
 		
 		String link = "/datadocs/coste____.csv";
+		
+		String linkParam = req.getParameter("link"); 
+		if(linkParam != null && linkParam.equals("true")) {
+			link = linkParam;
+		}
+		
+		
 		
 		String result = "";
 		try {

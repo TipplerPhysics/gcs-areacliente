@@ -3,6 +3,7 @@ package com.gcs.servlet;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,14 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+import com.gcs.beans.ConectividadProyecto;
+import com.gcs.beans.Pais;
+import com.gcs.beans.ProductoProyecto;
 import com.gcs.beans.Proyecto;
+import com.gcs.beans.ServicioFile;
+import com.gcs.dao.ConectividadProyectoDao;
+import com.gcs.dao.PaisDao;
+import com.gcs.dao.ProductoProyectoDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
@@ -53,6 +61,8 @@ public class ProjectServlet extends HttpServlet{
 				generateXLS(req,resp,usermail);
 			}else if ("getProjectsByClient".equals(accion)){
 				getProjectsByClient(req,resp);
+			}else if ("getConectividades".equals(accion)){
+				getConectividades(req,resp);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -190,6 +200,42 @@ public class ProjectServlet extends HttpServlet{
 
 	}
 	
+	
+	private void getConectividades(HttpServletRequest req, HttpServletResponse resp){
+		String producto = req.getParameter("producto");
+		
+		
+		
+				
+		try{
+			
+			
+			ConectividadProyectoDao conectividadDao = ConectividadProyectoDao.getInstance();
+			List<ConectividadProyecto> conectividades = conectividadDao.getConectividadesByProducto(producto);
+			JSONObject json = new JSONObject();
+			List<String> jarray = new ArrayList<String>();
+			
+			for(ConectividadProyecto conect : conectividades){
+				jarray.add(conect.getName());
+			}
+			
+
+			
+			json.append("success","true");
+			json.append("jarray", jarray);
+			
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			resp.getWriter().println(json);
+		
+		} catch (IOException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 	private void deleteProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws JSONException, IOException{
 		
 		JSONObject json = new JSONObject();

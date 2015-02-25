@@ -37,6 +37,14 @@ public class ClienteDao {
 		}
 		
 	}
+	public void initCounters() {
+		ClienteDao clienteDao = ClienteDao.getInstance();
+		List<Cliente> clientes = clienteDao.getAllClientes();
+		for(Cliente cliente : clientes){
+			cliente.setProject_number(1);
+			clienteDao.createClienteRaw(cliente);
+		}
+	}
 
 	public void createCliente(Cliente c, String usermail) {
 		ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
