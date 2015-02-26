@@ -35,7 +35,7 @@ public class ProyectoDao {
 		
 		for (Coste c:costes){
 			if (!"".equals(c.getCoste_total()))
-			d += Double.parseDouble(c.getCoste_total());
+			d += Double.parseDouble(c.getCoste_total().replace(",","."));
 		}
 		
 		p.setCoste(d.toString());

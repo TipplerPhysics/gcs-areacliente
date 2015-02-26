@@ -848,7 +848,10 @@ public class DefaultConf extends HttpServlet {
 			save = true;
 		}
 		String link = "/datadocs/servicio____.csv";
-		
+		String linkParam = req.getParameter("link"); 
+		if(linkParam != null ) {
+			link = linkParam;
+		}
 		String result = "";
 		try {
 			
@@ -980,7 +983,7 @@ public class DefaultConf extends HttpServlet {
 						
 							
 					
-					if(save) {
+					if(save&&!error) {
 						servicioDao.createServicio(servicio, usermail);
 					}
 				}
@@ -1004,6 +1007,10 @@ public class DefaultConf extends HttpServlet {
 		}
 		String link = "/datadocs/conectividad____.csv";
 		
+		String linkParam = req.getParameter("link");
+		if(linkParam != null) {
+			link = linkParam;
+		}
 		String result = "";
 		try {
 			
@@ -1036,13 +1043,13 @@ public class DefaultConf extends HttpServlet {
 					String fecha_ini_infra = conectividadSplit[1];
 					String fecha_fin_infra = conectividadSplit[2];
 					String fecha_implantacion = conectividadSplit[3];
-					String ini_seguridad = conectividadSplit[4];
-					String fin_seguridad = conectividadSplit[5];
-					String seguridad = conectividadSplit[6];
-					String firewall = conectividadSplit[7];
-					String fin_certificado = conectividadSplit[8];
-					String fin_conectividad = conectividadSplit[9];;
-					String estado = conectividadSplit[10];
+					String ini_seguridad = conectividadSplit[5];
+					String fin_seguridad = conectividadSplit[6];
+					String seguridad = conectividadSplit[4];
+					String firewall = null;
+					String fin_certificado = null;
+					String fin_conectividad = null;
+					String estado = conectividadSplit[7];
 					
 												
 						conectividad = new Conectividad();		
@@ -1091,7 +1098,7 @@ public class DefaultConf extends HttpServlet {
 						
 							
 					
-					if(save) {
+					if(save&&!error) {
 						conectividadDao.createConectividadRaw(conectividad);
 					}
 				}
@@ -1108,6 +1115,7 @@ public class DefaultConf extends HttpServlet {
 	}
 	
 	private String loadCoste(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		
 		boolean save = false;
 		String saveParam = req.getParameter("save"); 
 		if(saveParam != null && saveParam.equals("true")) {
@@ -1123,7 +1131,7 @@ public class DefaultConf extends HttpServlet {
 		String link = "/datadocs/coste____.csv";
 		
 		String linkParam = req.getParameter("link"); 
-		if(linkParam != null && linkParam.equals("true")) {
+		if(linkParam != null) {
 			link = linkParam;
 		}
 		
@@ -1331,7 +1339,10 @@ public class DefaultConf extends HttpServlet {
 			delete = true;
 		}
 		String link = "/datadocs/demanda____.csv";
-		
+		String linkParam = req.getParameter("link"); 
+		if(linkParam != null ) {
+			link = linkParam;
+		}
 		String result = "";
 		try {
 			
