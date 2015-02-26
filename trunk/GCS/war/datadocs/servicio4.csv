@@ -1,0 +1,200 @@
+PROY0047_01	Portugal	Transferencias SEPA	Implementado con OK	SCT		XML v.3	TEIS		41009001					41692							
+PROY0047_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000020												
+PROY0047_01	Reino Unido	Movimientos cuentas personales en fichero	Implementado con OK	REX					10000000020												
+PROY0047_02	España	C19.14 Cancelaciones/Retrocesiones SEPA - CORE	Implementado con OK	SCA					10000000020	41561	41684			41692	41694	41726		41563	41587	41561	41568
+PROY0047_02	España	C19.14 Cancelaciones/Retrocesiones SEPA - CORE	Excluido por Timeout	SCA					10000000020	41561								41563	41587	41561	41568
+PROY0047_02	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Excluido por Timeout	X9D					10000000020	41561	41684							41554	14/012/213	41561	41568
+PROY0047_02	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Excluido por Timeout	X9R					10000000020	41561	41684							41554	14/012/213	41561	41568
+PROY0047_02	España	C19.44 Cancelaciones/Retrocesiones Sepa	Implementado con OK	SCX	COR1				10000000020	41561	41684			41692	41694	41726		41554	14/012/213	41561	41568
+PROY0047_02	España	C19.14 Cancelaciones/Retrocesiones SEPA - COR1	Excluido por Timeout	SCA	COR1				10000000020	41561								41554	14/012/213	41561	41568
+PROY0047_02	España	Impagados Cuaderno 19.14 (SEPA) - COR1	Excluido por Timeout	X9D	COR1				10000000020	41561	41684							41554	14/012/213	41561	41568
+PROY0047_02	España	Impagados Cuaderno 19.14 (SEPA) - COR1	Excluido por Timeout	X9R	COR1				10000000020	41561	41684							41554	14/012/213	41561	41568
+PROY0047_02	Francia	Adeudos Core (SEPA) París	Excluido por Timeout	ADP	Presentaciones SDD SEPA CORE				10000000020											41589	
+PROY0047_02	Francia	C19.14 Cancelaciones/Retrocesiones SEPA - CORE	Excluido por Timeout	SCA	Cancelaciones/retrocesiones SDD SEPA CORE				10000000020											41589	
+PROY0047_02	Francia	Impagados Core(SEPA) París	Excluido por Timeout	PIM	Rechazos/Devoluciones SDD SEPA CORE				10000000020											41589	
+PROY0047_03	España	Transferencias EUR (FIT)	Implementado con OK	FIT				10000000093	10000000020	41765	41767	41778	41779	41776	41778	41778	41837	41765	41775		
+PROY0047_04	Portugal	Transferencias SEPA	Implementado con OK	SCT						41946	41946	41946	41946	41959	41961	41961					
+PROY0047_05	Francia	SEPA París	PDTE Doc Alcance en GCS	SPF																	
+PROY0048_01	España	Saldos y movimientos	Implementado con OK	ISM	Se subirá el 16/2/2012				10000000043												
+PROY0048_01	España	Saldos y movimientos	Implementado con OK	MVD	Se subirá el 16/2/2012				10000000043												
+PROY0048_01	España	Cheques en fichero 34.1	Excluido por Timeout	CH1	Pendiente de que el cliente envíe ficheros (22/01/13) Gestor IT sin constancia de este servicio		AEB 34.1		10000000043												
+PROY0048_01	España	Recibos domiciliados	Excluido por Timeout	REC			AEB 19		10000000043												
+PROY0048_02	España	Transferencias urgentes (OMF)	Implementado con OK	OMF	MUL. Comienzo penny test previsto para semana del 15/7/13				10000000043	41436	41453			41461	41472	41472	41472				
+PROY0048_02	España	Transferencias internacionales	Implementado con OK	TIN	MUL. Primer envío en penny test el 16/7/13				10000000043	41436	41453			41461	41471	41471	41471				
+PROY0048_02	España	Transferencias domésticas	Implementado con OK	TRA	MUL. Primer envío en penny test el 16/7/13				10000000043	41436	41453			41461	41471	41471	41471				
+PROY0048_02	España	Anticipos de crédito	Implementado con OK	CRE	OK de Negocio el 16/07/13		AEB 58		10000000043	41400	41402			41447	41466	41467	41471				
+PROY0048_02	España	Pagos domiciliados	Implementado con OK	CPN	OK de Negocio el 28/06/13		AEB 68		10000000043	41430	41431			41447	41452	41453	41453				
+PROY0048_02	España	Transferencias en fichero 34.1	Implementado con OK	TR1	OK de Negocio el 26/06/13		AEB 34.1		10000000043	41400	41431			41447	41450	41451	41451				
+PROY0048_02	Francia	Saldos y movimientos- ETEBAC	Implementado con OK	ETE	Recibiendo normalmente el fichero diario de mov.		ETEBAC		10000000043	41295	41295			41405	41409	41409	41409				
+PROY0048_03	España	Transferencias internacionales	Implementado con OK	TIN					10000000043	41563	41578	41589	41596	41587	41624			41554	41587	41563	41578
+PROY0048_03	España	Transferencias EUR (FIT)	Implementado con OK	FIT					10000000043	41563	41578	41589	41596	41587	41624			41554	41587	41563	41578
+PROY0048_03	España	Adeudos directos C19.14 SEPA - CORE	Excluido por Timeout	CSP	Presentaciones SDD SEPA CORE				10000000043									41554	41587		
+PROY0048_03	España	Adeudos directos C19.44 Sepa	Implementado con OK	CSX	Presentaciones SDD SEPA B2B				10000000043	41563	41578	41589	41596	41587	41624			41554	41587	41563	41578
+PROY0048_03	España	Respuestas GMM	Implementado con OK	XXX	RESPUESTAS CANAL / GMM. R_XML_V3				10000000043	41563	41578	41589	41596	41587	41624			41554	41587	41563	41578
+PROY0048_03	España	Saldos y movimientos	Excluido por Timeout	MT940					10000000043									41554	41587		
+PROY0048_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Excluido por Timeout	X9R	Devoluciones y Rechazos - fichero XML (AEB19.14) CORE				10000000043									41554	41587		
+PROY0048_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Excluido por Timeout	X9D	Devoluciones y Rechazos - fichero XML (AEB19.14) CORE				10000000043									41554	41587		
+PROY0048_03	España	Impagado cuaderno 19.44 (SEPA B2B)	Implementado con OK	X4D	Devoluciones y Rechazos - fichero XML (AEB19.44) B2B				10000000043	41563	41578	41638	41649	41650	41652			41554	41587	41563	41578
+PROY0048_03	España	Impagado cuaderno 19.44 (SEPA B2B)	Implementado con OK	X4D	Devoluciones y Rechazos - fichero XML (AEB19.44) B2B				10000000043	41563	41578	41638	41649	41650	41652			41554	41587	41563	41578
+PROY0048_04	Chile	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0048_04	Portugal	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0049_01	España	Saldos y movimientos	Implementado con OK	ISM					10000000005												
+PROY0049_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000005												
+PROY0049_01	España	Nóminas	Implementado con OK	NOM			AEB 34		10000000005												
+PROY0049_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		10000000005												
+PROY0049_01	España	Saldos y movimientos	Implementado con OK	ISM					10000000005												
+PROY0049_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000005												
+PROY0049_01	España	Nóminas	Implementado con OK	NOM			AEB 34		10000000005												
+PROY0049_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		10000000005												
+PROY0049_02	Argentina	Saldos y movimientos	Excluido por Timeout	MT940					10000000005												
+PROY0049_02	México	Saldos y movimientos	Excluido por Timeout	MT940					10000000005												
+PROY0049_02	Perú	Saldos y movimientos	Excluido por Timeout	MT940					10000000005												
+PROY0049_03	España	Transferencias EUR (FIT)	En Penny Test	FIT						41837	41842			41846	41848	41848				41836	41836
+PROY0049_03	España	Nóminas (FIM)	En Penny Test	FIM						41837	41842			41846	41848	41848				41836	41836
+PROY0049_03	España	Transferencias internacionales	En Desarrollo	TIN																	
+PROY0049_03	España	Transferencias urgentes (OMF)	En Desarrollo	OMF																	
+PROY0049_03	España	C19.14 Cancelaciones/Retrocesiones SEPA - CORE	En Desarrollo	SCA														41852	41912		
+PROY0049_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	En Desarrollo	X9D														41852	41912		
+PROY0049_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	En Desarrollo	X9R														41852	41912		
+PROY0050_01	España	Saldos y movimientos	Implementado con OK	ISM					10000000004												
+PROY0050_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000004												
+PROY0050_01	España	Nóminas en fichero 34.1	Implementado con OK	NO1			AEB 34.1		10000000004												
+PROY0050_01	España	Nóminas	Implementado con OK	NOM			AEB 34		10000000004												
+PROY0050_01	España	Transferencias urgentes (OMF)	Implementado con OK	OMF					10000000004												
+PROY0050_01	España	Transferencias internacionales	Implementado con OK	TIN					10000000004												
+PROY0050_01	España	Transferencias en fichero 34.1	Implementado con OK	TR1			AEB 34.1		10000000004												
+PROY0050_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		10000000004												
+PROY0051_01	Argentina	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0051_01	Colombia	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0051_01	México	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0051_01	Uruguay	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0051_01	USA	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0051_01	Venezuela	Saldos y movimientos	Implementado con OK	MT940																	
+PROY0051_02	México	Pago a proveedores (SIT)	Excluido por negocio	HST	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	México	Respuestas	Excluido por negocio	XXX	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Argentina	Pago a proveedores	Excluido por negocio	PAP	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Argentina	Respuestas	Excluido por negocio	XXX	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Colombia	Pago a proveedores	Excluido por negocio	PRO	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Colombia	Respuestas	Excluido por negocio	XXX	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Uruguay	Nóminas	Excluido por negocio	NOM	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Uruguay	Pago a proveedores	Excluido por negocio	PAP	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_02	Uruguay	Respuestas	Excluido por negocio	XXX	Se comienza con Mexico, pero mas tarde se echan para atrás todos, menos NY.																
+PROY0051_03	USA	Respuestas	Implementado con OK	XXX	18/10/2013 Nos piden reanudar pruebas, estaba parado desde el 10/4/2013					41339	41591			41601	41607	41610	41610				
+PROY0051_03	USA	Pagos (payment) - n.y.	Implementado con OK	TTN	18/10/2013 Nos piden reanudar pruebas, estaba parado desde el 10/4/2013					41339	41591			41601	41607	41610	41610				
+PROY0051_04	Argentina	Pago a proveedores	En Test - Aceptación	PAP						41668	41964							41659	41644		
+PROY0051_04	Argentina	Transferencias	En Test - Aceptación	TRA						41668								41659	41644		
+PROY0051_04	Colombia	Pago a proveedores	En Penny Test	PRO						41668	41851			41923				41659	41644		
+PROY0051_04	Colombia	Transferencias	En Test - Aceptación	TRN						41668								41659	41644		
+PROY0051_04	Venezuela	Pago a Proveedores	En Penny Test	PRO						41668	41870			41923				41659	41644		
+PROY0051_04	Venezuela	Transferencias	En Test - Aceptación	TRN						41668								41659	41644		
+PROY0051_05	USA	Pagos (payment) - n.y.	Excluido por negocio	TTN																	
+PROY0052_01	España	Saldos y movimientos	Implementado con OK	ISM					10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_01	España	Nóminas	Implementado con OK	NOM			AEB 34		10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_01	España	Nóminas (FIM)	Implementado con OK	FIM		XML V3			10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_02	España	Transferencias urgentes (OMF)	Implementado sin OK	OMF	tras realizrse desarrollos por producto está parado		AEB 34		10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_02	España	Transferencias EUR (FIT)	Implementado con OK	FIT		XML V3			10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0052_03	España	Respuestas	Implementado con OK	XXX					10000000047	41085				41223	41234	41234	41234			41001	41022
+PROY0053_01	USA	Saldos y movimientos	Implementado con OK	MT940		3			10000000054												
+PROY0053_02	España	Transferencias EUR (FIT)	Implementado con OK	FIT					10000000054					41258							41594
+PROY0053_02	España	Transferencias internacionales	Implementado con OK	TIN					10000000054					41685							41594
+PROY0053_02	España	Nóminas (FIM)	Excluido por Timeout	FIM					10000000054									41583	41613		41594
+PROY0053_02	España	Transferencias urgentes (OMF)	Implementado con OK	OMF					10000000054					41685							41594
+PROY0053_02	España	Respuestas	Implementado con OK	XXX	Respuestas XML v.3				10000000054					41258							41594
+PROY0053_03	España	Adeudos directos C19.14 SEPA - CORE	Implementado con OK	CSP	Presentaciones SDD SEPA CORE				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Adeudos directos C19.14 SEPA - COR1	Implementado con OK	CSP	Presentaciones SDD SEPA COR1				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Adeudos directos C19.44 Sepa	Implementado con OK	CSX	Presentaciones SDD SEPA B2B				10000000054	41562	41624	41622	41631	41622	41734	41748		41603	41620	41562	41624
+PROY0053_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Implementado con OK	X9R	Rechazos SDD SEPA CORE				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Implementado con OK	X9D	Devoluciones SDD SEPA CORE				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Respuestas GMM	Excluido por Timeout	XXX	RESPUESTAS CANAL / GMM. R_XML_V3				10000000054									41603	41620		
+PROY0053_03	España	Impagados Cuaderno 19.14 (SEPA) - CORE	Implementado con OK	X9R	Rechazos SDD SEPA COR1				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Impagados Cuaderno 19.14 (SEPA) - COR1	Implementado con OK	X9D	Devoluciones SDD SEPA COR1				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Impagado cuaderno 19.44 (SEPA B2B)	Implementado con OK	X4D	Rechazos SDD SEPA B2B				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_03	España	Impagado cuaderno 19.44 (SEPA B2B)	Implementado con OK	X4D	Devoluciones SDD SEPA B2B				10000000054	41562	41624	41622	41631	41622	41624	41631		41603	41620	41562	41624
+PROY0053_04	Portugal	Transferencias SEPA	Excluido por Timeout	SCT	XML V.3 y CAN.R_XML_V3				41311001	41620											
+PROY0053_05	Portugal	SEPA DD-Instrucoes	Excluido por Timeout	IDD	Presentaciones SDD SEPA CORE				10000000054												
+PROY0053_05	Portugal	SEPA DD - Rejeiçoes	Excluido por Timeout	REJ	Rechazos/Devoluciones SDD SEPA CORE				10000000054												
+PROY0053_05	Portugal	SEPA DD - Devoluçoes	Excluido por Timeout	RDD	Devoluciones SDD SEPA CORE				10000000054												
+PROY0053_05	Portugal	SEPA DD - Reembolsos	Excluido por Timeout	REE	Reembolsos SDD SEPA CORE				10000000054												
+PROY0053_05	Portugal	SEPA DD-Instrucoes	Excluido por Timeout	IDD	Presentaciones SDD SEPA B2B				10000000054												
+PROY0053_05	Portugal	SEPA DD - Rejeiçoes	Excluido por Timeout	REJ	Rechazos SDD SEPA B2B				10000000054												
+PROY0053_05	Portugal	SEPA DD - Devoluçoes	Excluido por Timeout	RDD	Devoluciones SDD SEPA B2B				10000000054												
+PROY0053_05	Portugal	SEPA DD - Reembolsos	Excluido por Timeout	REE	Reembolsos SDD SEPA B2B				10000000054												
+PROY0053_06	Portugal	Transferencias SEPA	Implementado con OK	SCT						41970	41978			41986	41667	41668	42038				
+PROY0053_06	Portugal	Transferencias domésticas urgentes	En Penny Test	TUG						41970	41978			41986							
+PROY0053_06	Portugal	Transferencias internacionales	Implementado con OK	TIN						41970	41978			41986	41667	41668	42038				
+PROY0053_06	Portugal	Nóminas SEPA	En Penny Test	SCN						41970	41978			41986							
+PROY0053_07	Portugal	SEPA DD-Instrucoes	En Test - Aceptación	IDD						41996								41996	42044		
+PROY0053_07	Portugal	SEPA DD - Rejeiçoes	En Test - Aceptación	REJ						41996								41996	42044		
+PROY0053_07	Portugal	SEPA DD - Devoluçoes	En Test - Aceptación	RDD						41996								41996	42044		
+PROY0053_07	Portugal	SEPA DD - Reembolsos	En Test - Aceptación	REE						41996								41996	42044		
+PROY0054_01	España	Confirming	Implementado con OK	CNF					SAICES2ZXXX												
+PROY0054_01	España	Anticipos de crédito	Implementado con OK	CRE			AEB 58		SAICES2ZXXX												
+PROY0054_01	España	Devoluciones de anticipo crédito vía fichero	Implementado con OK	DVA					SAICES2ZXXX												
+PROY0054_01	España	Saldos y movimientos	Implementado con OK	ISM					SAICES2ZXXX												
+PROY0054_01	España	Saldos y movimientos	Implementado con OK	MVD					SAICES2ZXXX												
+PROY0054_01	España	Nóminas en fichero 34.1	Implementado con OK	NO1			AEB 34.1		SAICES2ZXXX												
+PROY0054_01	España	Nóminas	Implementado con OK	NOM			AEB 34		SAICES2ZXXX												
+PROY0054_01	España	Transferencias en fichero 34.1	Implementado con OK	TR1			AEB 34.1		SAICES2ZXXX												
+PROY0054_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		SAICES2ZXXX												
+PROY0054_01	Portugal	Nóminas (ordenados)	Implementado con OK	NOM		XML v.3	TEIS		41112001												
+PROY0054_01	Portugal	Retorno TRF Intern	Implementado con OK	RTI					41112001												
+PROY0054_01	Portugal	Ret. Ordenados	Implementado con OK	RTO					41112001												
+PROY0054_01	Portugal	Retrocesiones transferencias domésticas	Implementado con OK	RTR					41112001												
+PROY0054_01	Portugal	TRF Urgentes (retorno)	Implementado con OK	RUG					41112001												
+PROY0054_01	Portugal	Transferencias internacionales	Implementado con OK	TIN					41112001												
+PROY0054_01	Portugal	Transferencias Domésticas	Implementado con OK	TRA		XML v.3	TEIS		41112001												
+PROY0054_01	Portugal	Transferencias domésticas urgentes	Implementado con OK	TUG			TUG		41112001												
+PROY0054_01	España	Confirming	Implementado con OK	CNF					SAICES2ZXXX												
+PROY0054_01	España	Anticipos de crédito	Implementado con OK	CRE			AEB 58		SAICES2ZXXX												
+PROY0054_01	España	Devoluciones de anticipo crédito vía fichero	Implementado con OK	DVA					SAICES2ZXXX												
+PROY0054_01	España	Saldos y movimientos	Implementado con OK	ISM					SAICES2ZXXX												
+PROY0054_01	España	Saldos y movimientos	Implementado con OK	MVD					SAICES2ZXXX												
+PROY0054_01	España	Nóminas en fichero 34.1	Implementado con OK	NO1			AEB 34.1		SAICES2ZXXX												
+PROY0054_01	España	Nóminas	Implementado con OK	NOM			AEB 34		SAICES2ZXXX												
+PROY0054_01	España	Transferencias en fichero 34.1	Implementado con OK	TR1			AEB 34.1		SAICES2ZXXX												
+PROY0054_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		SAICES2ZXXX												
+PROY0054_01	Portugal	Nóminas (ordenados)	Implementado con OK	NOM		XML v.3	TEIS		41112001												
+PROY0054_01	Portugal	Retorno TRF Intern	Implementado con OK	RTI					41112001												
+PROY0054_01	Portugal	Ret. Ordenados	Implementado con OK	RTO					41112001												
+PROY0054_01	Portugal	Retrocesiones transferencias domésticas	Implementado con OK	RTR					41112001												
+PROY0054_01	Portugal	TRF Urgentes (retorno)	Implementado con OK	RUG					41112001												
+PROY0054_01	Portugal	Transferencias Domésticas	Implementado con OK	TRA	Envía PS2	XML v.3	TEIS		41112001												
+PROY0054_01	Portugal	Transferencias domésticas urgentes	Implementado con OK	TUG	z		TUG		41112001												
+PROY0054_02	España	Transferencias EUR (FIT)	Implementado con OK	FIT	Desarrollos subidos el 11/02/2013.				SAICES2ZXXX	41319	41331			41342						41317	41317
+PROY0054_02	España	Transferencias internacionales	Implementado con OK	TIN	Desarrollos subidos el 11/02/2013. Ptes cerrar plan de pruebas				SAICES2ZXXX	41436	41438			41447	41447					41317	41317
+PROY0054_02	España	Respuestas	Implementado con OK	XXX	Respuestas GMM XMLV3. Sube este sábado				SAICES2ZXXX	41352	41355			41370	41388	41388				41352	41352
+PROY0054_03	Portugal	Transferencias SEPA	Implementado con OK	SCT					41112001	41611	41617	41625	41626	41622	41625	41625	41319			41610	41610
+PROY0055_01	España	Cheques	Implementado con OK	CHE			AEB 34		10000000014												
+PROY0055_01	España	Confirming	Implementado con OK	CNF			CNF Propietario		10000000014												
+PROY0055_01	España	Euroconfirming	Implementado con OK	CNR			CNR Propietario		10000000014												
+PROY0055_01	España	Anticipos de crédito	Implementado con OK	CRE			AEB 58		10000000014												
+PROY0055_01	España	Saldos y movimientos	Implementado con OK	ISM					10000000014												
+PROY0055_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000014												
+PROY0055_01	España	Cheques	Implementado con OK	CHE			AEB 34		10000000014												
+PROY0055_01	España	Confirming	Implementado con OK	CNF			CNF Propietario		10000000014												
+PROY0055_01	España	Euroconfirming	Implementado con OK	CNR			CNR Propietario		10000000014												
+PROY0055_01	España	Anticipos de crédito	Implementado con OK	CRE			AEB 58		10000000014												
+PROY0055_01	España	Saldos y movimientos	Implementado con OK	ISM					10000000014												
+PROY0055_01	España	Saldos y movimientos	Implementado con OK	MVD					10000000014												
+PROY0055_01	España	Transferencias domésticas	Implementado con OK	TRA			AEB 34		10000000014												
+PROY0055_01	España	Transferencia sepa 34.12	Implementado con OK	TRS			AEB 34.12		10000000014					41552							
+PROY0055_02	España	Transferencias EUR (FIT)	Implementado con OK	FIT		pain.001.001.03	FIT		10000000010					41552				41485	41510		
+PROY0055_02	España	Respuestas	Implementado con OK	XXX	Respuestas XML V2				10000000010					41552				41485	41510		
+PROY0055_02	España	Nóminas (FIM)	Implementado con OK	FIM		pain.001.001.03	FIM		10000000010					41552				41485	41510		
+PROY0055_03	España	Transferencias urgentes (OMF)	Excluido por negocio	OMF		pain.001.001.03	OMF		10000000010												
+PROY0055_03	España	Transferencias internacionales	Implementado con OK	TIN		pain.001.001.03	TIN		10000000010					41587							
+PROY0056_01	España	Saldos y movimientos	Excluido por Timeout	ISM																	
+PROY0056_01	España	Saldos y movimientos	Excluido por Timeout	MVD																	
+PROY0056_01	España	Transferencias domésticas	Excluido por Timeout	TRA																	
+PROY0056_01	España	Transferencias en fichero 34.1	Excluido por Timeout	TR1																	
+PROY0056_01	España	Transferencias urgentes (OMF)	Excluido por Timeout	OMF																	
+PROY0056_01	España	Euroconfirming	Excluido por Timeout	CNR																	
+PROY0057_01	España	Devoluciones recibos en fichero	Implementado con OK	DVR																	
+PROY0057_01	España	Recibos domiciliados	Implementado con OK	REC			AEB 19														
+PROY0057_01	España	Anticipos de crédito	Implementado con OK	CRE			AEB 58		10000000018												
+PROY0057_01	España	Devoluciones de anticipo crédito vía fichero	Implementado con OK	DVA																	
+PROY0057_01	España	Devoluciones recibos en fichero	Implementado con OK	DVR																	
+PROY0057_01	España	Nóminas (FIM)	Implementado con OK	FIM	Fecha aproximada de implantación. 6/10/2014: Se realizan pruebas para migración OB y están OK pero en el momento de migrar el cliente ha entrado una petición de confirming para y no está el producto disponible para OB	XML v.3	AEB 34.14							40909							
+PROY0057_01	España	Transferencias EUR (FIT)	Implementado con OK	FIT	Fecha aproximada de implantación. 6/10/2014: Se realizan pruebas para migración OB y están OK pero en el momento de migrar el cliente ha entrado una petición de confirming para y no está el producto disponible para OB	XML v.3	AEB 34.14							40909							

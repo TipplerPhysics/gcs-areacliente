@@ -1,5 +1,3 @@
-19/04/2012;PROY0059_01;Implementación ;No aplica;;Solvay;4;;Gema García Pedrosa;;Cristina Blanco Barrio;;;Swift-Fileact;Score;;;;;;;;
-23/04/2012;PROY0059_02;Implementación;No aplica;;Solvay;4;;Elena López Werner;;Ángel Díaz Morales;;;Swift-Fileact;Score;23/04/2012;24/04/2012;;;07/05/2012;07/05/2012;;
 23/04/2012;PROY0059_03;Implementación;No aplica;;Solvay;4;;Elena López Werner;;Ángel Díaz Morales;;;Swift-Fileact;Score;23/04/2012;09/05/2012;;;16/05/2012;23/05/2012;;
 08/04/2013;PROY0059_04;Implementación;No aplica;;Solvay;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ángel Díaz Morales;;;Swift-Fileact;Score;08/04/2013;16/04/2013;;;22/05/2013;07/06/2013;;
 08/11/2013;PROY0059_05;Implementación;No aplica;;Solvay;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Cristina Blanco Barrio;;;Swift-Fileact;Score;08/11/2013;08/11/2013;;;08/11/2013;08/11/2013;;
@@ -84,7 +82,7 @@
 06/05/2013;PROY0091_02;Implementación;No aplica;;Vodafone;4;;Elena López Werner;;José-Manuel González López;;;H2H;SFTP;06/05/2013;11/07/2013;;;12/07/2013;12/07/2013;;
 30/09/2013;PROY0091_03;Implementación;No aplica;;Vodafone;4;;Elena López Werner;;José-Manuel González López;;;H2H;SFTP;30/09/2013;04/10/2013;;;04/10/2013;04/10/2013;;
 17/03/2014;PROY0091_04;Implementación;No aplica;;Vodafone;4;;Elena López Werner;;José-Manuel González López;;;H2H;SFTP;17/03/2014;05/05/2014;08/05/2014;20/05/2014;08/05/2014;08/05/2014;;
-03/12/2014;PROY0091_06;Implementación;No aplica;;Vodafone;1;;Benito Bellido Romero;;Natalia Sánchez Illán;;;H2H;SFTP;03/12/2014;;;;;;;
+03/12/2014;PROY0091_05;Implementación;No aplica;;Vodafone;1;;Benito Bellido Romero;;Natalia Sánchez Illán;;;H2H;SFTP;03/12/2014;;;;;;;
 12/03/2013;PROY0092_01;Implementación;No aplica;;Talleres Fabio Murga;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Cristina Blanco Barrio;;;Swift-Fileact;Score;12/03/2013;11/06/2013;;;13/06/2013;;;
 25/06/2013;PROY0093_02;Implementación;No aplica;;Lafarge;4;;Benito Bellido Romero;;Ángel Díaz Morales;;;Swift-Fileact;Score;25/06/2013;30/07/2013;;;30/07/2013;30/07/2013;;12/07/2013
 30/10/2014;PROY0093_03;Implementación;No aplica;;Lafarge;1;;Benito Bellido Romero;;Natalia Sánchez Illán;;;Swift-Fileact;Score;30/10/2014;30/10/2014;05/11/2014;07/11/2014;04/11/2014;05/11/2014;14/11/2014;
@@ -98,3 +96,5 @@
 10/07/2014;PROY0096_02;Implementación;One Bank ;;Colpensiones;4;;Antonio Coronil Martínez;;Carlos Rocha Ruiz;;;H2H;FTPS;10/07/2014;10/07/2014;22/07/2014;25/07/2014;11/07/2014;22/07/2014;05/08/2014;15/01/2014
 21/05/2013;PROY0097_01;Implementación;No aplica;;Cenit;4;;Elena López Werner;;Jorge-Javier Arbona Mesa;;;Swift-Fileact;;;;;;;;;15/01/2014
 02/10/2013;PROY0098_01;Implementación;No aplica;;Emgesa;4;;Marta Serrano García;;Carlos Rocha Ruiz;;;Swift-Fileact;;02/10/2013;02/10/2013;;;02/10/2013;17/10/2013;07/11/2013;
+03/06/2013;PROY0099_01;Implementación;No aplica;;Thenaisie Provote;4;;Elena López Werner;;Ana Ruíz Alonso;;;H2H;AS2;03/06/2013;04/06/2013;;;04/06/2013;04/06/2013;;
+24/06/2013;PROY0100_01;Implementación;No aplica;;Oriflame;1;;Pedro-Miguel Diezhandino Díaz de Isla;;Ana Ruíz Alonso;;;Swift-BancoRelay;Score;24/06/2013;11/07/2013;;;12/07/2013;12/07/2013;;
