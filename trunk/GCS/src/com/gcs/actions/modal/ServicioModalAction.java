@@ -37,7 +37,7 @@ public class ServicioModalAction extends Action {
 			List<ServicioFile> servicios_pais = serviciosFileDao.getAllServiciosForPais(pais);
 			
 			req.setAttribute("servicios_pais", servicios_pais);
-			req.setAttribute("servicio", s);			
+			req.setAttribute("servicio", s);		
 			
 			List<Pais> paises = paisDao.getAllPaises();
 			req.setAttribute("paises", paises);
@@ -47,11 +47,7 @@ public class ServicioModalAction extends Action {
 			req.setAttribute("extensiones", extensiones);
 
 		} catch (NumberFormatException e) {
-			Servicio s =new Servicio();
-			req.setAttribute("servicio", s);
-			PaisDao paisDao = PaisDao.getInstance();
-			List<Pais> paises = paisDao.getAllPaises();
-			req.setAttribute("paises", paises);
+e.printStackTrace();
 		}
 
 		return mapping.findForward("ok");

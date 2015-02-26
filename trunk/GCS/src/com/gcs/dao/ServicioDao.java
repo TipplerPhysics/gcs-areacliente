@@ -44,6 +44,15 @@ public class ServicioDao {
 		Utils.writeLog(usermail, "Eliminó", "Servicio", s.getCod_servicio());
 		
 	}
+	public void deleteAllServicios(){
+		ServicioDao servDao = ServicioDao.getInstance();
+		List<Servicio> servicios = servDao.getAllServicios();
+		for (Servicio s: servicios){
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			pm.deletePersistent( pm.getObjectById( s.getClass(), s.getKey().getId())); 
+			pm.close();
+		}
+	}
 	
 	public List<Servicio> getAllServicios() {
 
