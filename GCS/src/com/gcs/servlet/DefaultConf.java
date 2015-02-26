@@ -803,6 +803,7 @@ public class DefaultConf extends HttpServlet {
 		return result;
 	}
 	
+	
 	private String loadConectividadProyecto(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		String result = "";
 		String link = "/datadocs/conectividad_proyecto.csv";
@@ -847,6 +848,12 @@ public class DefaultConf extends HttpServlet {
 		if(saveParam != null && saveParam.equals("true")) {
 			save = true;
 		}
+		boolean delete = false;
+		String deleteParam = req.getParameter("delete"); 
+		if(deleteParam != null && deleteParam.equals("true")) {
+			delete = true;
+		}
+		
 		String link = "/datadocs/servicio____.csv";
 		String linkParam = req.getParameter("link"); 
 		if(linkParam != null ) {
@@ -863,6 +870,10 @@ public class DefaultConf extends HttpServlet {
 			
 			ServicioDao servicioDao = ServicioDao.getInstance();
 			Servicio servicio = null;
+			
+			if(delete){
+				servicioDao.deleteAllServicios();
+			}
 			
 			int counter = 1;
 			boolean error = false;
