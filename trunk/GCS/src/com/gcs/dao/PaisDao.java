@@ -68,7 +68,25 @@ public class PaisDao {
 
 		return Servicios;
 	}
-	
+	@SuppressWarnings("unchecked")
+	public Pais getPaisByName(String name) {
+
+		PaisDao paisDao = PaisDao.getInstance();
+		
+		List<Pais> Servicios;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		Query q = pm.newQuery("select from " + Pais.class.getName()+" where name=='"+name+"'");
+		q.setOrdering("name asc");
+		Servicios = (List<Pais>) q.execute();
+		
+		
+		
+		pm.close();
+
+		return Servicios.get(0);
+	}
 	public Pais getPaisById(long l) {
 		
 		Pais s;

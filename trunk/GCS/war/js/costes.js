@@ -164,10 +164,11 @@ function getProjectsByClient(pagina){
 	}	
 }
 
-function editCoste(){
+function editCoste(id){
 	var $currentRow = $('#row'+id);
 
 	var fecha_solicitud_val = $currentRow.data('fecha-solicitud-val');
+	var fecha_recepcion_val = $currentRow.data('fecha-recepcion-val');
 	var comentarios = $currentRow.data('comentarios');
 	var num_valoracion = $currentRow.data('num-valoracion');
 	var gestor_it = $currentRow.data('gestor-it');

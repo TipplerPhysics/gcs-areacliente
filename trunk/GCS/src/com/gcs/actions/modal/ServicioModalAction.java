@@ -33,7 +33,7 @@ public class ServicioModalAction extends Action {
 			Servicio s = sDao.getServicioById(Long.parseLong(id));
 			ServicioFileDao serviciosFileDao = ServicioFileDao.getInstance();
 			PaisDao paisDao = PaisDao.getInstance();
-			Pais pais = paisDao.getPaisById(Long.parseLong(s.getPais()));
+			Pais pais = paisDao.getPaisByName(s.getPais());
 			List<ServicioFile> servicios_pais = serviciosFileDao.getAllServiciosForPais(pais);
 			
 			req.setAttribute("servicios_pais", servicios_pais);
@@ -42,12 +42,12 @@ public class ServicioModalAction extends Action {
 			List<Pais> paises = paisDao.getAllPaises();
 			req.setAttribute("paises", paises);
 			
-			ServicioFile servicioFile = serviciosFileDao.getServicioFileById(Long.parseLong(s.getServicio()));
+			ServicioFile servicioFile = serviciosFileDao.getServicioFileByNamePais(s.getServicio(),s.getPais());
 			ArrayList<String> extensiones = servicioFile.getExtensiones();
 			req.setAttribute("extensiones", extensiones);
 
-		} catch (NumberFormatException e) {
-e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return mapping.findForward("ok");

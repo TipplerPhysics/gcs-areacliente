@@ -29,16 +29,13 @@ public class GestionServicioAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
-		ProyectoDao pDao = ProyectoDao.getInstance();
-		List<Proyecto> proyectos = pDao.getAllProjects();
+
 		
 		ServicioDao sDao = ServicioDao.getInstance();
 		
 		List<Servicio> servicios = sDao.getAllServicios();
 		
 		req.setAttribute("servicios", servicios);
-		req.setAttribute("proyectos", proyectos);
 		
 		ClienteDao cliDao = ClienteDao.getInstance();
 		List<Cliente> clientes = cliDao.getAllClientes();

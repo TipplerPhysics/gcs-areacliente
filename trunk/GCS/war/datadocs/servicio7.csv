@@ -1,0 +1,200 @@
+PROY0102_01;España;Transferencias en fichero 34.1;Excluido por Timeout;TR1;;;;;;;;;;;;;;;;;
+PROY0102_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;;05/08/2013;06/08/2013;;;21/09/2013;27/09/2013;27/09/2013;;;;05/08/2013;05/08/2013
+PROY0102_02;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;;;;;;;;;;;;;;;;;
+PROY0102_02;España;Respuestas;Excluido por Timeout;XXX;Respuestas OMF;;;;;;;;;;;;;;;;
+PROY0102_02;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;;;;;;;;;;;;
+PROY0102_02;España;Respuestas;Excluido por Timeout;XXX;Respuestas TIN;;;;;;;;;;;;;;;;
+PROY0103_01;Venezuela;Pago a Proveedores;Implementado sin OK;PRO;Implementación IA Se pasa a Producttivo tras 2 meses sin envío en penny test. Negocio Cliente no validó y rechazó el plan de trabajo. Valoraciones: **(19/08/2013)Clte.Sw. 40 horas (PaP y Trfs). **(10/07/13)Solution- 70 horas (VE PaP-Trf) de PROYecto y 50 ;;;;;11/09/2013;20/09/2013;;;05/10/2013;;;;11/10/2013;11/10/2013;02/09/2013;20/09/2013
+PROY0103_01;Venezuela;Transferencias;Excluido por negocio;TRN;Implementación IA A petición de negocio se excluye. Pendiente de actualizar documentación y procesos Valoraciones: **(19/08/2013)Clte.Sw. 40 horas (PaP y Trfs). **(10/07/13)Solution- 70 horas (VE PaP-Trf) de PROYecto y 50 horas (VE) de mantenimiento.;;;;;;;;;;;;;;;;
+PROY0103_01;Venezuela;Respuestas GMM;Implementado sin OK;XXX;Respuestas GMM en XML V3. Implementación IA Se pasa a Producttivo tras 2 meses sin envío en penny test. Cambio de Alcance. Negocio solicita respuestas estándares GMM en XML V3 mientras definen dedicadas. Se suben de urgencia por exigencias de Negocio para;;;;;21/10/2013;24/10/2013;;;25/10/2013;;;;;;21/10/2013;24/10/2013
+PROY0103_02;Perú;Pago a Proveedores;Implementado con OK;M03;Implementación IA Se pasa a Producttivo tras 2 meses con 1 envío OK en penny test. Negocio Cliente no validó y rechazó el plan de trabajo.;;;;;10/09/2013;20/09/2013;;;05/10/2013;20/11/2013;20/11/2013;;29/08/2013;;10/09/2013;20/09/2013
+PROY0103_02;Perú;Transferencias Domésticas;Excluido por negocio;M01;Implementación IA A petición de negocio se excluye. Pendiente de actualizar documentación y procesos;;;;;;;;;;;;;;;;
+PROY0103_02;Perú;Respuestas GMM;Implementado con OK;XXX;Respuestas GMM v3. Implementación IA Se pasa a Producttivo tras 2 meses con 1 envío OK en penny test. Cambio de Alcance. Negocio solicita respuestas estándares GMM en XML V3 mientras definen dedicadas. Se suben de urgencia por exigencias de Negocio para p;;;;;21/10/2013;24/10/2013;;;25/10/2013;20/11/2013;20/11/2013;;;;21/10/2013;24/10/2013
+PROY0103_03;Venezuela;Respuestas dedicadas;Excluido por Timeout;XXX;Implementación IA El 27-01-2014 Negocio confirma que deben definir mapa para todos los países y que debemos esperar. El 10-12-2013 he pasado a Neg. comentarios y correcciones sobre el mapa. No está correcto. PDTE Doc Alcance en GCS;;;;;;;;;;;;;;;;
+PROY0103_05;Chile;Pago a proveedores;Excluido por negocio;PRO;Implementación IA;;;;;;;;;;;;;;;;
+PROY0103_05;Chile;Transferencias domésticas;Excluido por negocio;TRN;Implementación IA;;;;;;;;;;;;;;;;
+PROY0103_06;Chile;Saldos y movimientos;Excluido por negocio;MT940;Implementación IA;;;;;;;;;;;;;;;;
+PROY0103_07;Venezuela;Pago a Proveedores;En Test - Aceptación;PRO;Se implanta por primera vez en producción el 11/11/2014;;;;;24/09/2014;05/11/2014;;;;13/11/2014;13/11/2014;;13/08/2014;19/09/2014;13/08/2014;13/08/2014
+PROY0103_07;Perú;Pago a Proveedores;En Test - Aceptación;M03;Se implanta por primera vez en producción el 11/11/2014;;;;;24/09/2014;05/11/2014;;;;13/11/2014;13/11/2014;;13/08/2014;19/09/2014;13/08/2014;13/08/2014
+PROY0103_08;Venezuela;Respuestas local aplicativo;Implementado con OK;XXX;;;;;;24/09/2014;11/11/2014;;;11/11/2014;13/11/2014;13/11/2014;;;;13/08/2014;13/08/2014
+PROY0103_08;Perú;Respuestas local aplicativo;Implementado con OK;XXX;;;;;;24/09/2014;11/11/2014;;;11/11/2014;13/11/2014;13/11/2014;;;;13/08/2014;13/08/2014
+PROY0104_01;Colombia;Saldos y movimientos;Implementado con OK;MT940;;;;;;31/07/2013;12/08/2013;;;24/08/2013;27/08/2013;27/08/2013;27/08/2013;31/07/2013;05/08/2013;31/07/2013;12/08/2013
+PROY0105_01;México;Saldos y movimientos;Implementado con OK;MT940;;;;;;04/12/2013;15/01/2014;;15/01/2014;11/01/2014;03/03/2014;03/03/2014;;25/01/2014;25/02/2014;05/12/2013;05/12/2013
+PROY0105_01;Argentina;Saldos y movimientos;Implementado con OK;MT940;;;;;;04/12/2013;15/01/2014;;15/01/2014;11/01/2014;03/03/2014;03/03/2014;;25/01/2014;25/02/2014;05/12/2013;05/12/2013
+PROY0105_01;Chile;Saldos y movimientos;Implementado con OK;MT940;;;;;;04/12/2013;15/01/2014;;15/01/2014;11/01/2014;03/03/2014;03/03/2014;;25/01/2014;25/02/2014;05/12/2013;05/12/2013
+PROY0105_01;Perú;Saldos y movimientos;Implementado con OK;MT940;;;;;;04/12/2013;15/01/2014;;15/01/2014;11/01/2014;03/03/2014;03/03/2014;;25/01/2014;25/02/2014;05/12/2013;05/12/2013
+PROY0105_01;Colombia;Saldos y movimientos;Implementado con OK;MT940;;;;;;04/12/2013;15/01/2014;;15/01/2014;11/01/2014;03/03/2014;03/03/2014;;25/01/2014;25/02/2014;05/12/2013;05/12/2013
+PROY0106_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;;09/08/2013;27/09/2013;;;05/10/2013;11/11/2013;11/11/2013;11/11/2013;01/05/2013;01/10/2013;07/08/2013;08/08/2013
+PROY0106_01;España;Transferencias domésticas;Implementado sin OK;TRA;;;;;;09/08/2013;27/09/2013;;;05/10/2013;;;05/12/2013;;;07/08/2013;08/08/2013
+PROY0106_01;España;Transferencias internacionales;Implementado con OK;TIN;;;;;;09/08/2013;27/09/2013;;;05/10/2013;11/11/2013;11/11/2013;11/11/2013;;;07/08/2013;08/08/2013
+PROY0106_01;España;Transferencias urgentes (OMF);Implementado sin OK;OMF;;;;;;09/08/2013;15/11/2013;;;23/11/2013;;;23/01/2014;;;07/08/2013;08/08/2013
+PROY0106_01;España;Respuestas;Implementado con OK;XXX;;;;;;14/10/2013;14/11/2013;;;23/11/2013;29/11/2013;29/11/2013;29/11/2013;;;05/08/2013;05/08/2013
+PROY0106_02;España;Saldos y movimientos;Implementado con OK;ISM;;;;;;26/08/2014;07/10/2014;;;18/10/2014;18/10/2014;18/10/2014;;;;;
+PROY0107_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;;25/07/2013;29/07/2013;25/07/2013;01/08/2013;10/08/2013;12/08/2013;12/08/2013;12/08/2013;;;25/07/2013;29/07/2013
+PROY0108_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;10000000101;26/08/2013;28/08/2013;;;07/09/2013;10/09/2013;10/09/2013;10/09/2013;19/08/2013;30/08/2013;26/08/2013;28/08/2013
+PROY0108_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;Nacio como SEPA-OB-C pero por error no se contemplo en las pruebas integradas.;;;;10000000101;22/07/2014;22/08/2014;18/11/2014;19/11/2014;20/09/2014;18/11/2014;19/11/2014;19/11/2014;22/07/2014;15/09/2014;;
+PROY0108_02;España;Adeudos directos C19.14 SEPA - CORE;En Test - Aceptación;CSP;;;;;10000000101;22/07/2014;;;;;;;;22/07/2014;22/08/2014;;
+PROY0108_02;España;Confirming;Implementado con OK;CNF;;;;;10000000101;22/07/2014;22/08/2014;18/11/2014;20/11/2014;20/09/2014;18/11/2014;20/11/2014;20/11/2014;22/07/2014;22/08/2014;;
+PROY0108_02;España;Transferencias internacionales;Implementado con OK;TIN;;;;;10000000101;22/07/2014;15/08/2014;18/11/2014;20/11/2014;23/08/2014;18/11/2014;20/11/2014;20/11/2014;22/07/2014;22/08/2014;;
+PROY0108_02;España;Transferencias urgentes (OMF);Implementado con OK;OMF;;;;;10000000101;22/07/2014;15/08/2014;18/11/2014;20/11/2014;09/08/2014;18/11/2014;20/11/2014;20/11/2014;22/07/2014;22/08/2014;;
+PROY0108_02;España;Impagados Cuaderno 19.14 (SEPA) - CORE;En Test - Aceptación;X9R;;;;;10000000101;22/07/2014;;;;;;;;22/07/2014;15/09/2014;;
+PROY0108_02;España;Impagados Cuaderno 19.14 (SEPA) - CORE;En Test - Aceptación;X9D;;;;;10000000101;22/07/2014;;;;;;;;22/07/2014;15/09/2014;;
+PROY0108_02;España;Transferencias internacionales;En Test - Aceptación;TIN;Ampliación del alcance inicial;;;;10000000101;;;;;;;;;;;;
+PROY0108_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;Ampliación del alcance inicial;;;;10000000101;22/07/2014;15/08/2014;18/11/2014;20/11/2014;23/08/2014;18/11/2014;20/11/2014;20/11/2014;22/07/2014;22/08/2014;;
+PROY0109_01;España;Saldos y movimientos;Excluido por Timeout;MT940;;;;;;;;;;;;;;;;;
+PROY0109_01;España;Saldos y movimientos;Excluido por Timeout;MT940;;;;;;;;;;;;;;;;;
+PROY0109_01;España;Nóminas;Excluido por Timeout;NOM;;;;;;;;;;;;;;;;;
+PROY0109_01;España;Nóminas;Excluido por Timeout;NOM;;;;;;;;;;;;;;;;;
+PROY0109_01;España;Anticipos de crédito;Excluido por Timeout;CRE;;;;;;;;;;;;;;;;;
+PROY0109_01;España;Transferencias domésticas;Excluido por Timeout;MT101;;;;;;;;;;;;;;;;;
+PROY0110_01;España;Saldos y movimientos;Excluido por Timeout;ISM;;;;;;;;;;;;;;;;;
+PROY0110_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;;;;;;;;;;;;
+PROY0111_01;España;Adeudos directos C19.14 SEPA - CORE;Implementado con OK;CSP;CORE;;;;10000000095;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9R;CORE;;;;10000000095;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9D;CORE;;;;;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Adeudos directos C19.14 SEPA - COR1;Implementado con OK;CSP;COR1;;;;10000000095;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Impagados Cuaderno 19.14 (SEPA) - COR1;Implementado con OK;X9R;COR1;;;;10000000095;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Respuestas dedicadas;Implementado con OK;XXX;Dedicado. R_XML_V3;;;;10000000020;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Impagados Cuaderno 19.14 (SEPA) - COR1;Implementado con OK;X9D;COR1;;;;10000000095;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Respuestas dedicadas;Implementado con OK;XXX;Dedicado. R_XML_V3;;;;10000000020;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;10000000020;14/10/2013;09/12/2013;09/12/2013;16/12/2013;14/12/2013;16/12/2013;07/02/2014;;01/10/2013;02/12/2013;14/10/2013;21/10/2013
+PROY0111_02;España;Nóminas (FIM);Implementado con OK;FIM;;;;10000000095;10000000113;26/05/2014;28/05/2014;29/07/2014;29/07/2014;07/06/2014;29/07/2014;29/07/2014;07/08/2014;;;23/05/2014;26/05/2014
+PROY0111_03;España;Transferencias EUR (FIT);En Penny Test;FIT;;;;10000000095;IBDLES2BXXX;06/08/2014;20/08/2014;16/09/2014;22/09/2014;06/09/2014;16/09/2014;16/09/2014;22/09/2014;;;;
+PROY0111_03;España;Nóminas (FIM);Excluido por negocio;FIM;;;;10000000095;IBDLES2BXXX;;;;;;;;;;;;
+PROY0111_03;España;Transferencias internacionales;En Penny Test;TIN;;;;10000000095;IBDLES2BXXX;06/08/2014;20/08/2014;16/09/2014;;06/09/2014;13/10/2014;13/10/2014;;;;;
+PROY0111_03;España;Transferencias urgentes (OMF);En Penny Test;OMF;Se incluye este servicio a posteriori una vez ya valorados los otros 3 pero sin estar configurados en EI;;;10000000095;IBDLES2BXXX;06/08/2014;20/08/2014;16/09/2014;22/09/2014;06/09/2014;16/09/2014;16/09/2014;22/09/2014;;;;
+PROY0111_04;España;Transferencias EUR (FIT);Implementado con OK;FIT;Pendiente de producto: correcciones en las respuestas de OB;;;10000000095;10000000113;29/07/2014;09/09/2014;10/09/2014;10/09/2014;10/09/2014;10/09/2014;10/09/2014;18/09/2014;30/07/2014;15/08/2014;;
+PROY0111_04;España;Nóminas (FIM);Implementado con OK;FIM;Pendiente de producto: correcciones en las respuestas de OB;;;10000000095;10000000113;29/07/2014;09/09/2014;10/09/2014;10/09/2014;10/09/2014;10/09/2014;10/09/2014;18/09/2014;30/07/2014;15/08/2014;;
+PROY0111_05;España;Transferencias internacionales;Implementado con OK;TIN;;;;10000000095;10000000113;02/10/2014;09/10/2014;;;18/10/2014;29/10/2014;31/10/2014;03/11/2014;20/10/2014;31/10/2014;;
+PROY0111_06;España;Envío respuesta de pagos XML PAIN.002;Parado por producto;XTZ;;;;;;;;;;;;;;;;;
+PROY0112_01;Perú;Pago a Proveedores;Excluido por Timeout;M03;;;;;;;;;;;;;;;;;
+PROY0112_01;Perú;Nóminas;Excluido por Timeout;M02;;;;;;;;;;;;;;;;;
+PROY0112_01;Perú;Respuestas;Excluido por Timeout;XXX;;;;;;;;;;;;;;;;;
+PROY0113_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;;21/11/2013;23/12/2013;;;11/01/2014;04/02/2014;04/02/2014;;18/11/2014;;18/11/2013;19/11/2013
+PROY0113_01;España;Nóminas (FIM);Excluido por Timeout;FIM;;;;;;21/11/2013;;;;;;;;18/11/2014;;18/11/2013;19/11/2013
+PROY0113_01;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;;;;;;21/11/2013;;;;;;;;;;18/11/2013;19/11/2013
+PROY0113_01;España;Saldos y movimientos;Implementado con OK;MVD;;;;;;21/11/2013;20/12/2013;;;11/01/2014;13/01/2014;13/01/2014;;;;18/11/2013;19/11/2013
+PROY0113_01;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;21/11/2013;;;;;;;;;;18/11/2013;19/11/2013
+PROY0113_02;España;Movimientos del día en fichero (MT942);Excluido por Timeout;MT942;;;;;;;;;;;;;;;;;
+PROY0114_01;México;Pago a proveedores (SIT);Implementado con OK;HST;FASE I;;HST;;;01/11/2013;31/01/2014;17/02/2014;17/02/2014;15/02/2014;10/03/2014;10/03/2014;;03/02/2014;21/02/2014;17/11/2013;31/01/2014
+PROY0114_01;México;Respuestas GMM;Implementado con OK;XXX;FASE I: Se dejan las respuestas AST para una fase posterior. En PROYecto PROY0114_01 iran respuestas GMM;;;;;01/11/2013;31/01/2014;17/02/2014;17/02/2014;15/02/2014;10/03/2014;10/03/2014;;03/02/2014;21/02/2014;17/11/2013;31/01/2014
+PROY0114_02;México;Respuestas local capa gestora;Implementado sin OK;XXX;FASE II: Mapa respuestas AST recibido el 19/12/2013;;;;;24/02/2014;24/02/2014;10/03/2014;10/03/2014;08/03/2014;10/03/2014;;;31/03/2014;04/04/2014;17/02/2014;21/02/2014
+PROY0114_03;México;Saldos y Movimientos;Excluido por timeout;MT940;;;;;;;;;;;;;;;;;
+PROY0114_04;Venezuela;Pago a Proveedores;Parado por negocio;PRO;;;;;;;;;;;;;;;;;
+PROY0115_01;Perú;Pago a Proveedores;Implementado con OK;M03;Desde el 11-11-2013 MAF dudaba de si lo haría yo o Israel. Queda definido el 26-11-2013 PDTE Visto Bueno del CL del plan de trabajo. Parado por Negocio. Sin Noticias del cliente desde 16-01-2014;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;Desde el 11-11-2013 MAF dudaba de si lo haría yo o Israel. Queda definido el 26-11-2013 PDTE Visto Bueno del CL del plan de trabajo. Parado por Negocio. Sin Noticias del cliente desde 16-01-2014;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Transferencias Domésticas;Implementado con OK;M01;Desde el 11-11-2013 MAF dudaba de si lo haría yo o Israel. Queda definido el 26-11-2013 PDTE Visto Bueno del CL del plan de trabajo. Parado por Negocio. Sin Noticias del cliente desde 16-01-2014;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;Desde el 11-11-2013 MAF dudaba de si lo haría yo o Israel. Queda definido el 26-11-2013 PDTE Visto Bueno del CL del plan de trabajo. Parado por Negocio. Sin Noticias del cliente desde 16-01-2014;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Pago a Proveedores;Implementado con OK;M03;20-02-2014. Marco me comunica que Trafigura quiere firma pgp.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;20-02-2014. Marco me comunica que Trafigura quiere firma pgp.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Transferencias Domésticas;Implementado con OK;M01;20-02-2014. Marco me comunica que Trafigura quiere firma pgp.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;20-02-2014. Marco me comunica que Trafigura quiere firma pgp.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Pago a Proveedores;Implementado con OK;M03;25-02-2014. Trafigura cambia el rango de IP´s.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;25-02-2014. Trafigura cambia el rango de IP´s.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Transferencias Domésticas;Implementado con OK;M01;25-02-2014. Trafigura cambia el rango de IP´s.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;25-02-2014. Trafigura cambia el rango de IP´s.;;;;675;;;;;26/07/2014;;;;;;;
+PROY0115_01;Perú;Pago a Proveedores;Implementado con OK;M03;4-03-2014. Trafigura elimina dos de las IP´s. Aprovechamos para meter al cliente por la nueva infraestructura Balanceo.;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;4-03-2014. Trafigura elimina dos de las IP´s. Aprovechamos para meter al cliente por la nueva infraestructura Balanceo.;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Transferencias Domésticas;Implementado con OK;M01;4-03-2014. Trafigura elimina dos de las IP´s. Aprovechamos para meter al cliente por la nueva infraestructura Balanceo.;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0115_01;Perú;Respuestas local capa gestora;Implementado con OK;XXX;4-03-2014. Trafigura elimina dos de las IP´s. Aprovechamos para meter al cliente por la nueva infraestructura Balanceo.;;;;675;09/04/2014;21/07/2014;;;26/07/2014;;;;09/04/2014;30/09/2014;09/04/2014;21/07/2014
+PROY0116_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;;17/02/2014;18/03/2014;;;22/03/2014;25/03/2014;;;17/02/2014;;17/01/2014;20/01/2014
+PROY0116_01;España;Respuestas;Implementado con OK;XXX;Respuestas XML;;;;;17/02/2014;18/03/2014;;;22/03/2014;25/03/2014;;;17/02/2014;;17/01/2014;20/01/2014
+PROY0117_01;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;;;;;;;;;;;;;;05/03/2014;13/04/2014;;
+PROY0117_01;España;Adeudos directos C19.14 SEPA - CORE;Excluido por Timeout;CSP;;;;;;;;;;;;;;05/03/2014;13/04/2014;;
+PROY0117_01;España;Adeudos directos C19.44 Sepa;Excluido por Timeout;CSX;;;;;;;;;;;;;;05/03/2014;13/04/2014;;
+PROY0117_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Excluido por Timeout;X9D;;;;;;;;;;;;;;05/03/2014;13/04/2014;;
+PROY0117_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Excluido por Timeout;X9R;;;;;;;;;;;;;;05/03/2014;13/04/2014;;
+PROY0117_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;;;;;;;;;05/03/2014;13/04/2014;;
+PROY0117_02;España;Saldos y movimientos;Implementado sin OK;MVD;;;;;;05/03/2014;02/04/2014;;;14/04/2014;;;;;;;
+PROY0117_02;España;Movimientos del día en fichero (MT942);Implementado sin OK;MVD;;;;;;05/03/2014;02/04/2014;;;14/04/2014;;;;;;;
+PROY0118_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;20/12/2013;;;;;;;;;;;
+PROY0118_01;España;Confirming;Excluido por Timeout;CNF;;;;;;20/12/2013;;;;;;;;;;;
+PROY0118_02;España;Transferencias EUR (FIT);Excluido por negocio;FIT;;;;;;;;;;;;;;;;;
+PROY0118_02;España;Confirming;Excluido por negocio;CNF;;;;;;;;;;;;;;;;;
+PROY0119_01;Portugal;SEPA DD-Instrucoes;Excluido por Timeout;IDD;;;;;;;;;;;;;;20/12/2013;14/02/2013;;
+PROY0119_01;Portugal;SEPA DD - Rejeiçoes;Excluido por Timeout;REJ;;;;;;;;;;;;;;06/01/2013;14/02/2013;;
+PROY0119_01;Portugal;SEPA DD - Devoluçoes;Excluido por Timeout;RDD;;;;;;;;;;;;;;06/01/2013;14/02/2013;;
+PROY0119_01;Portugal;SEPA DD-REVERSOES;Excluido por Timeout;RVS;;;;;;;;;;;;;;06/01/2013;14/02/2013;;
+PROY0119_01;Portugal;SEPA DD-Instrucoes;Implementado con OK;IDD;CORE;;;;;19/05/2014;04/07/2014;;;26/07/2014;18/08/2014;29/08/2014;;19/05/2014;27/06/2014;19/05/2014;29/07/2014
+PROY0119_01;Portugal;SEPA DD-Instrucoes;Implementado sin OK;IDD;B2B;;;;;16/06/2014;04/07/2014;;;26/07/2014;11/08/2014;;;16/06/2014;27/06/2014;16/06/2014;04/07/2014
+PROY0119_02;Portugal;SEPA DD - Rejeiçoes;Implementado sin OK;REJ;CORE;;;;;19/05/2014;04/07/2014;;;26/07/2014;;;;19/05/2014;27/06/2014;19/05/2014;04/07/2014
+PROY0119_02;Portugal;SEPA DD - Devoluçoes;Implementado sin OK;RDD;;;;;;19/05/2014;29/07/2014;;;09/08/2014;;;;19/05/2014;27/06/2014;19/05/2014;
+PROY0119_02;Portugal;SEPA DD-REVERSOES;Excluido por negocio;RVS;;;;;;19/05/2014;;;;;;;;19/05/2014;27/06/2014;19/05/2014;
+PROY0119_02;Portugal;SEPA DD - Rejeiçoes;Implementado sin OK;REJ;B2B;;;;;16/06/2014;04/07/2014;;;26/07/2014;;;;16/06/2014;27/06/2014;16/06/2014;04/07/2014
+PROY0119_02;Portugal;SEPA DD - Devoluçoes;Implementado sin OK;RDD;;;;;;16/06/2014;29/07/2014;;;09/08/2014;;;;16/06/2014;27/06/2014;16/06/2014;29/07/2014
+PROY0119_02;Portugal;SEPA DD-REVERSOES;Excluido por negocio;RVS;;;;;;16/06/2014;;;;;;;;16/06/2014;27/06/2014;16/06/2014;29/07/2014
+PROY0120_01;Colombia;Nóminas;En Test - Aceptación;NMA;Sin respuesta del cliente Se reactiva 9/10/2014;;;;;09/06/2014;;;;;;;;09/06/2014;20/06/2014;;
+PROY0120_01;Colombia;Respuestas MT195;En Test - Aceptación;MT195;Sin respuesta del cliente Se reactiva 9/10/2014;;;;;09/06/2014;;;;;;;;09/06/2014;20/06/2014;;
+PROY0120_01;Colombia;Pago a proveedores;En Test - Aceptación;PRO;Sin respuesta del cliente Se reactiva 9/10/2014;;;;;09/06/2014;;;;;;;;09/06/2014;20/06/2014;;
+PROY0120_01;Colombia;Respuestas MT195;En Test - Aceptación;MT195;Sin respuesta del cliente Se reactiva 9/10/2014;;;;;09/06/2014;;;;;;;;09/06/2014;20/06/2014;;
+PROY0120_01;Colombia;Transferencias;En Test - Aceptación;TRN;Sin respuesta del cliente Se reactiva 9/10/2014;;;;;09/06/2014;;;;;;;;09/06/2014;20/06/2014;;
+PROY0120_01;Colombia;Respuestas MT195;En Test - Aceptación;MT195;Sin respuesta del cliente Se reactiva 9/10/2014;;;;;09/06/2014;;;;;;;;09/06/2014;20/06/2014;;
+PROY0120_02;Colombia;Saldos y movimientos;Implementado con OK;MT940;;;;;;17/03/2014;19/03/2014;;;05/04/2014;05/04/2014;07/04/2014;;17/03/2014;21/03/2014;;
+PROY0120_02;Colombia;Movimientos del día en fichero (MT942);Parado por negocio;MT942;;;;;;;;;;;;;;;;;
+PROY0121_01;Colombia;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0121_01;Francia;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0122_01;Venezuela;Transferencias;Excluido por negocio;TRN;;;;;;;;;;;;;;;;;
+PROY0122_01;Venezuela;Pago a Proveedores;Implementado con OK;PRO;;;;;;06/03/2014;04/04/2014;;;12/04/2014;05/05/2014;05/05/2014;;03/03/2014;14/03/2014;;
+PROY0122_01;Venezuela;Respuestas GMM;Implementado con OK;XXX;Respuestas GMM XML V3;;;;;06/03/2014;30/03/2014;;;10/05/2014;15/05/2014;15/05/2014;;21/04/2014;02/05/2014;;
+PROY0122_02;Venezuela;Saldos y movimientos;Implementado con OK;MT940;;;;;;11/03/2014;11/03/2014;;;12/04/2014;06/05/2014;06/05/2014;;03/03/2014;14/03/2014;;
+PROY0122_02;España;Saldos y movimientos;Implementado con OK;MT940;;;;;;11/03/2014;11/03/2014;;;12/04/2014;06/05/2014;06/05/2014;;03/03/2014;14/03/2014;;
+PROY0122_02;Portugal;Saldos y movimientos;Implementado con OK;MT940;;;;;;11/03/2014;11/03/2014;;;12/04/2014;06/05/2014;06/05/2014;;03/03/2014;14/03/2014;;
+PROY0122_03;España;Euroconfirming;En Penny Test;CNR;;;;;;13/05/2014;28/05/2014;;;07/06/2014;20/06/2014;;;28/04/2014;30/05/2014;;
+PROY0122_03;Portugal;Confirming;En Penny Test;CNF;Pendiente de la liberación del servicio por Producto. Fecha prevista a mediados de junio. Se ha liberado el Producto y subido a Produccion el dia 22/08;;;;;13/05/2014;27/11/2014;;;06/12/2014;;;;15/06/2014;30/06/2014;;
+PROY0122_03;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;;13/05/2014;28/05/2014;;;07/06/2014;20/06/2014;20/06/2014;;28/04/2014;30/05/2014;;
+PROY0122_03;Portugal;Transferencias SEPA;Implementado con OK;SCT;;;;;;13/05/2014;28/05/2014;;;07/06/2014;15/07/2014;15/07/2014;;28/04/2014;30/05/2014;;
+PROY0122_04;España;Transferencias internacionales;Implementado sin OK;TIN;;;;;;08/08/2014;14/08/2014;;;23/08/2014;;;;06/08/2014;14/08/2014;08/08/2014;
+PROY0122_04;Portugal;Transferencias internacionales;Implementado sin OK;TIN;;;;;;08/08/2014;14/08/2014;;;28/08/2014;;;;06/08/2014;14/08/2014;08/08/2014;
+PROY0122_04;España;Respuestas;Implementado sin OK;XXX;Respuestas GMM XMLV3;;;;;08/08/2014;14/08/2014;;;23/08/2014;;;;14/08/2014;14/08/2014;08/08/2014;
+PROY0122_04;Portugal;Respuestas;Implementado sin OK;XXX;Respuestas GMM XMLV3;;;;;08/08/2014;14/08/2014;;;23/08/2014;;;;14/08/2014;14/08/2014;08/08/2014;
+PROY0122_05;Venezuela;Respuestas dedicadas;En Test - Aceptación;XXX;Respuestas Dedicadas PAP;;;;;27/10/2014;;;;;;;;;;;
+PROY0123_01;México;Saldos y movimientos;Implementado con OK;MT940;;;;;;06/03/2014;06/03/2014;06/03/2014;06/03/2014;08/03/2014;18/03/2014;19/03/2014;20/03/2014;;;;
+PROY0124_01;México;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0125_01;Colombia;Otros servicios no disponibles;Parado por negocio;XXX;Pagos internacionales;;;;;;;;;;;;;;;24/06/2014;
+PROY0125_01;Colombia;Transferencias;Parado por negocio;TRN;;;;;;;;;;;;;;;;24/06/2014;
+PROY0125_01;Colombia;Nóminas;Parado por negocio;NMA;;;;;;;;;;;;;;;;;
+PROY0125_01;Colombia;Respuestas;Parado por negocio;XXX;;;;;;;;;;;;;;;;24/06/2014;
+PROY0126_01;España;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0126_01;Venezuela;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0126_01;México;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0126_01;USA;Saldos y movimientos;Excluido por negocio;RXM;;;;;;;;;;;;;;;;;
+PROY0126_01;Hong Kong;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0126_02;México;Pago a proveedores (SIT);En Penny Test;HST;Transferencias Internacionales;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;México;Pago a proveedores (SIT);En Penny Test;HST;Transferencias;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;USA;Pagos domésticos ACH NY;En Penny Test;ACN;;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;México;Respuestas OB;En Penny Test;XXX;;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;Venezuela;Respuestas OB;En Penny Test;XXX;;;;;;26/06/2014;29/08/2014;;;06/09/2014;16/09/2014;;;14/07/2014;22/08/2014;;
+PROY0126_02;USA;Respuestas OB;En Penny Test;XXX;;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;México;Respuestas local aplicativo;En Penny Test;XXX;Respuestas Aplicativo Local en pdf;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;Venezuela;Respuestas local aplicativo;En Penny Test;XXX;Respuestas Aplicativo Local en pdf;;;;;26/06/2014;29/08/2014;;;06/09/2014;16/09/2014;;;14/07/2014;22/08/2014;;
+PROY0126_02;México;Pago a proveedores (SIT);En Penny Test;HST;;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0126_02;Venezuela;Pago a Proveedores;En Penny Test;PRO;;;;;;26/06/2014;29/08/2014;;;06/09/2014;16/09/2014;;;14/07/2014;22/08/2014;;
+PROY0126_02;USA;Pagos (payment) - n.y.;En Penny Test;TTN;;;;;;26/06/2014;29/08/2014;;;06/09/2014;;;;14/07/2014;22/08/2014;;
+PROY0127_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;10000000127;10000000131;16/07/2014;29/07/2014;08/09/2014;09/09/2014;09/08/2014;08/09/2014;08/09/2014;09/09/2014;16/07/2014;08/08/2014;;
+PROY0127_01;España;Adeudos directos C19.14 SEPA - CORE;Implementado con OK;CSP;COR;;;10000000127;10000000131;16/07/2014;29/07/2014;07/11/2014;15/11/2014;09/08/2014;07/11/2014;15/11/2014;17/10/2014;16/07/2014;08/08/2014;;
+PROY0127_01;España;Adeudos directos C19.14 SEPA - COR1;Excluido por Timeout;CSP;COR1;;;;;;;;;;;;;;;;
+PROY0127_01;España;Adeudos directos C19.44 Sepa;Implementado con OK;CSX;;;;10000000127;10000000131;16/07/2014;29/07/2014;07/11/2014;15/11/2014;09/08/2014;07/11/2014;15/11/2014;17/10/2014;16/07/2014;08/08/2014;;
+PROY0127_01;España;Confirming;Excluido por Timeout;CNF;;;;;;;;;;;;;;;;;
+PROY0127_01;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;;;;;;;;;;;;;;;;;
+PROY0127_01;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;;;;;;;;;;;;
+PROY0127_01;España;Saldos y movimientos;Implementado con OK;MVD;;;;10000000127;10000000131;;;;;10/05/2014;12/05/2014;12/05/2014;10/07/2014;25/04/2014;28/04/2014;;
+PROY0127_02;España;Confirming;Implementado con OK;CNF;;;;;;08/08/2014;19/09/2014;;;20/09/2014;15/10/2014;15/10/2014;17/10/2014;08/08/2014;19/09/2014;;
+PROY0128_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;;10/04/2014;14/05/2014;;;17/05/2014;26/05/2014;27/05/2014;27/05/2014;07/04/2014;21/04/2014;;
+PROY0128_01;Portugal;Saldos y Movimientos;Implementado con OK;ISM;;;;;;10/04/2014;14/05/2014;;;17/05/2014;26/05/2014;27/05/2014;27/05/2014;07/04/2014;21/04/2014;;
+PROY0128_01;Reino Unido;Movimientos cuentas personales en fichero;Implementado con OK;REX;;;;;;10/07/2014;10/07/2014;;;26/07/2014;29/07/2014;29/07/2014;29/07/2014;07/04/2014;21/04/2014;;
+PROY0128_01;USA;Saldos y movimientos;Implementado con OK;REX;;;;;;17/07/2014;17/07/2014;;;26/07/2014;29/07/2014;29/07/2014;29/07/2014;07/04/2014;21/04/2014;;
+PROY0128_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;;30/05/2014;22/07/2014;;;21/06/2014;22/07/2014;24/07/2014;24/07/2014;02/06/2014;27/06/2014;;
+PROY0128_02;España;Transferencias internacionales;Implementado con OK;TIN;;;;;;30/05/2014;22/07/2014;;;21/06/2014;22/07/2014;24/07/2014;24/07/2014;02/06/2014;27/06/2014;;
+PROY0128_02;España;Nóminas (FIM);Excluido por negocio;FIM;;;;;;30/05/2014;22/07/2014;;;;;;;02/06/2014;15/09/2014;;
+PROY0128_02;España;Transferencias urgentes (OMF);Implementado con OK;OMF;;;;;;21/08/2014;12/09/2014;;;20/09/2014;06/10/2014;06/10/2014;20/10/2014;02/06/2014;27/06/2014;;
+PROY0128_02;Portugal;Transferencias SEPA;Implementado con OK;SCT;;;;;;30/05/2014;22/09/2014;;;11/10/2014;14/10/2014;14/10/2014;20/10/2014;02/06/2014;31/08/2014;30/05/2014;22/09/2014
+PROY0128_02;Portugal;Nóminas SEPA;Excluido por negocio;SCN;;;;;;;;;;;;;;02/06/2014;31/08/2014;;
+PROY0128_02;Portugal;Transferencias internacionales;Implementado con OK;TIN;;;;;;09/07/2014;01/11/2014;;;08/11/2014;11/11/2014;11/11/2014;11/12/2014;02/06/2014;27/06/2014;;
+PROY0128_02;Portugal;Transferencias SEPA;Excluido por negocio;SCT;Con pagos urgentes;;;;;30/05/2014;22/09/2014;;;11/10/2014;14/10/2014;14/10/2014;20/10/2014;02/06/2014;27/06/2014;30/05/2014;22/09/2014
+PROY0128_03;México;Pago a proveedores (SIT);En Test - Integración;HST;Estaban registrados los siguientes servicios: Transferencias Domésticas Interbancarias (SIT),Transferencias Domésticas Intrabancarias (SIT),Transferencias Domésticas Urgentes (SIT),Transferencias Domésticas Convenio CIE (SIT),Operaciones Cheques (SIT),Tra;;;;;;;;;;;;;;;;
+PROY0128_04;USA;Saldos y movimientos;Implementado con OK;MT940;;;;;;29/09/2014;29/09/2014;;;11/10/2014;14/10/2014;14/10/2014;14/10/2014;;;29/09/2014;29/09/2014
+PROY0128_04;México;Saldos y movimientos;Implementado con OK;MT940;;;;;;29/09/2014;29/09/2014;;;11/10/2014;15/10/2014;15/10/2014;15/10/2014;;;29/09/2014;29/09/2014
+PROY0128_05;Reino Unido;Pagos nóminas bacs londres;En Test - Integración;NOG;;;;;;;;;;;;;;;;;
+PROY0128_05;Reino Unido;Pagos nacionales londres;En Penny Test;PPG;;;;;;;;02/12/2014;19/12/2014;10/01/2015;;;;;;02/12/2014;19/12/2014
+PROY0128_05;Reino Unido;Pagos internacionales londres;Implementado con OK;TIG;;;;;;;;02/12/2014;19/12/2014;10/01/2015;22/01/2015;22/01/2015;23/01/2015;;;02/12/2014;19/12/2014
+PROY0128_05;Reino Unido;Pagos chaps-tesoreria mismo día londres;En Test - Integración;TTG;;;;;;;;;;;;;;;;;

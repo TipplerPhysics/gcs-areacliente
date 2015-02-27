@@ -91,6 +91,44 @@ public class ServicioFileDao {
 		
 		
 	}
+	public ServicioFile getServicioFileByNamePais(String name,String pais) {
+		
+		List<ServicioFile> Servicios;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PaisDao paisDao = PaisDao.getInstance();
+		Pais paisenty = paisDao.getPaisByName(pais);
+		
+		Query q = pm.newQuery("select from " + ServicioFile.class.getName()+" where name=='"+name+"'&&  paisId=="+paisenty.getKey().getId()+"");
+		q.setOrdering("name asc");
+		Servicios = (List<ServicioFile>) q.execute();
+		
+		ServicioFile servicio = Servicios.get(0);
+		
+		pm.close();
+
+		return servicio;
+		
+		
+	}
+	
+	public ServicioFile getServicioFileByNamePais(String name,long pais) {
+		
+		List<ServicioFile> Servicios;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+
+		
+		Query q = pm.newQuery("select from " + ServicioFile.class.getName()+" where name=='"+name+"'&&  paisId=="+pais+"");
+		q.setOrdering("name asc");
+		Servicios = (List<ServicioFile>) q.execute();
+		
+		ServicioFile servicio = Servicios.get(0);
+		
+		pm.close();
+
+		return servicio;
+		
+		
+	}
 	
 	
 	public void deleteAll(){

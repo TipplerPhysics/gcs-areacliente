@@ -27,7 +27,7 @@
 								<select class="selectpicker selected" name="pais" id="pais_servicio_modal" required aria-required="true" data-live-search="true"> 
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
-										<option value="${t.key.id}" ${servicio.pais == t.key.id ? 'selected' : ''}>${t.name}</option>
+										<option value="${t.name}" ${servicio.pais == t.name ? 'selected' : ''}>${t.name}</option>
 									</c:forEach>																
 								</select>
 							</div>
@@ -39,7 +39,7 @@
 								<select class="selectpicker selected" name="servicio" id="servicio_modal" required aria-required="true" data-live-search="true">
 									
 									<c:forEach items="${servicios_pais}" var="s">	
-										<option value="${s.key.id}" ${servicio.servicio == s.key.id ? 'selected' : ''}>${s.name}</option>
+										<option value="${s.name}" ${servicio.servicio == s.name ? 'selected' : ''}>${s.name}</option>
 									</c:forEach>	
 																					
 								</select>

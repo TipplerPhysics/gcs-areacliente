@@ -247,7 +247,7 @@
 										
 										<td>										
 											<img class="vs" src="../img/vs.png">								
-											<a class="lapiz" name="${coste.key.id}" href="../costeModal.do?git=${coste.gestor_it_key}"	id="lapiz${coste.key.id}" data-toggle="modal" data-target="#edit-coste"></a>
+											<a class="lapiz" name="${coste.key.id}" href="../costeModal.do?git=${coste.gestor_it_key}&id=${coste.key.id}"	id="lapiz${coste.key.id}" data-toggle="modal" data-target="#edit-coste"></a>
 									
 											<a class="papelera" name="${coste.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${coste.key.id}"></a>
 										</td>

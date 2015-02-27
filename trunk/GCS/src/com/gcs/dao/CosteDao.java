@@ -12,6 +12,7 @@ import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
 import com.gcs.beans.Equipo;
+import com.gcs.beans.Proyecto;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
 
@@ -66,11 +67,12 @@ public class CosteDao {
 				e.setContador(0);
 			}
 			
-			
 			e.setUltima_escritura(new Date());
 			eDao.createEquipo(e);
 		}
+		
 
+		
 		try {
 			pm.makePersistent(c);
 		} finally {
@@ -78,6 +80,25 @@ public class CosteDao {
 				Utils.writeLog(usermail, "Creó", "Coste", c.getProject_name());
 			else
 				Utils.writeLog(usermail, "Editó", "Coste", c.getProject_name());
+			
+			CosteDao costDao = CosteDao.getInstance();
+			List<Coste> costes= costDao.getCostesByProject(c.getProjectKey());
+			
+			Double d = new Double(0);
+			
+			ProyectoDao proyectDao = ProyectoDao.getInstance();
+			Proyecto proyecto = proyectDao.getProjectbyId(c.getProjectKey());
+			
+			for (Coste cost:costes){
+				if (!"".equals(cost.getCoste_total()))
+				d += Double.parseDouble(cost.getCoste_total().replace(",","."));
+			}
+
+			proyecto.setCoste(d.toString());
+			
+			proyectDao.createProjectRaw(proyecto);
+			
+			
 			
 			pm.close();
 		}

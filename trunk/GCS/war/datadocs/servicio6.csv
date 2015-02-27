@@ -1,0 +1,200 @@
+PROY0072_03;España;Transferencias internacionales;Excluido por Timeout;TIN;FASE II:Se analizará el documento de alcance al finalizar la Fase I.  Se reactiva por el negocio 7-nov-2013;;;;;;;;;;;;;;;;
+PROY0072_04;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;(Doc de alcance 21-1-2013, se retoma como fase III, adelantando a la fase II, el 12-7-2013). Pendiente de dAtos de cliente para Plan de Trabajo;;;;;;;;;;;;;;;;
+PROY0072_04;España;Transferencias internacionales;Excluido por Timeout;TIN;(Doc de alcance 21-1-2013, se retoma como fase III, adelantando a la fase II, el 12-7-2013). Pendiente de dAtos de cliente para Plan de Trabajo;;;;;;;;;;;;;;;;
+PROY0072_04;España;Euroconfirming;Excluido por Timeout;CNR;(Doc de alcance 21-1-2013, se retoma como fase III, adelantando a la fase II, el 12-7-2013). Pendiente de dAtos de cliente para Plan de Trabajo;;;;;;;;;;;;;;;;
+PROY0072_04;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;(Doc de alcance 21-1-2013, se retoma como fase III, adelantando a la fase II, el 12-7-2013). Pendiente de dAtos de cliente para Plan de Trabajo. Se reactiva y se inician pruebas de aceptación (11 al 22 de noviembre 2013);;;;;;;;;;;;;;;;
+PROY0072_04;España;Nóminas (FIM);Excluido por Timeout;FIM;(Doc de alcance 21-1-2013, se retoma como fase III, adelantando a la fase II, el 12-7-2013). Pendiente de dAtos de cliente para Plan de Trabajo. Se reactiva y se inician pruebas de aceptación (11 al 22 de noviembre 2013);;;;;;;;;;;;;;;;
+PROY0073_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;;11/01/2013;15/01/2013;;;26/01/2013;28/01/2013;30/01/2013;04/02/2013;;;;
+PROY0073_01;España;Movimientos del día en fichero (MT942);Implementado con OK;MT942;;;;;;11/01/2013;15/01/2013;;;26/01/2013;28/01/2013;30/01/2013;04/02/2013;;;;
+PROY0073_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;OK de Negocio a la implantación, pero no hay transacciones desde que se hizo el penny test el 12/04/13;;;;;14/02/2013;21/02/2013;;;09/03/2013;12/04/2013;12/04/2013;22/05/2013;14/02/2013;21/02/2013;;
+PROY0073_02;España;Transferencias internacionales;Implementado con OK;TIN;"No suelen enviar pagos internac. No harán penny test por ahora. Negocio indica que lo deja en situación de ""no pendiente"" por nuestra parte (22/05/13)";;;;;19/02/2013;21/02/2013;;;09/03/2013;;;22/05/2013;;;;
+PROY0073_02;España;Nóminas (FIM);Excluido por negocio;FIM;;;;;;;;;;;;;;;;;
+PROY0073_02;España;Transferencias urgentes (OMF);Excluido por negocio;OMF;MUL;;;;;;;;;;;;;;;;
+PROY0073_02;España;Transferencias internacionales;Excluido por negocio;TIN;MUL;;;;;;;;;;;;;;;;
+PROY0073_02;España;Transferencias domésticas;Excluido por negocio;TRA;MUL;;;;;;;;;;;;;;;;
+PROY0074_01;España;Saldos y movimientos;Implementado con OK;MT940;MUL;;;;;11/02/2013;14/02/2013;;;23/02/2013;25/02/2013;01/03/2013;;;;;
+PROY0075_01;Portugal;SEPA DD - Devoluçoes;Excluido por Timeout;RDD;MUL;;;;;;;;;;;;;;;;
+PROY0075_02;Portugal;Saldos y movimientos;Excluido por Timeout;MT940;MUL;;;;;;;;;;;;;;;;
+PROY0075_01;Portugal;Confirming;Excluido por Timeout;CNF;MUL;;;;;;;;;;;;;;;;
+PROY0075_01;Portugal;Transferencias SEPA;Excluido por Timeout;SCT;;;;;;;;;;;;;;;;;
+PROY0076_01;España;Transferencias en fichero 34.1;Implementado con OK;TR1;Negocio ha modificado la configuración actual, contratando respuesta con encriptación PGP, a espera de aclara cambio de alcance y envio de ficheros por el cliente. El cliente decide aplazar la migración a OB hasta enero de 2015.;;;;;12/04/2013;12/04/2013;;;20/04/2013;;;20/04/2013;;;09/04/2013;12/04/2013
+PROY0076_02;España;Transferencias EUR (FIT);En Test - Conectividad;FIT;;;;;;;;;;;;;;;;;
+PROY0076_02;España;Respuestas GMM;En Test - Conectividad;XXX;;;;;;;;;;;;;;;;;
+PROY0076_02;España;Adeudos directos C19.14 SEPA - COR1;En Test - Conectividad;CSP;;;;;;;;;;;;;;;;;
+PROY0076_02;España;Impagados Cuaderno 19.14 (SEPA) - COR1;En Test - Conectividad;X9D;Rechazos y Devoluciones;;;;;;;;;;;;;;;;
+PROY0076_02;España;Adeudos directos C19.44 Sepa;En Test - Conectividad;CSX;;;;;;;;;;;;;;;;;
+PROY0076_02;España;Impagado cuaderno 19.44 (SEPA B2B);En Test - Conectividad;X4D;X4R y X4D;;;;;;;;;;;;;;;;
+PROY0078_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;BBVAESMMREL;14/01/2013;14/01/2013;;;26/01/2013;28/01/2013;30/01/2013;31/01/2013;;;;
+PROY0078_01;Francia;Movimientos cuentas personales en fichero;Implementado con OK;MT940;;;;;BBVAESMMREL;14/01/2013;14/01/2013;;;26/01/2013;28/01/2013;30/01/2013;31/01/2013;;;;
+PROY0079_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;;09/01/2013;09/01/2013;28/01/2013;28/01/2013;26/01/2013;28/01/2013;28/01/2013;;;;09/01/2013;09/01/2013
+PROY0079_01;Francia;Movimientos cuentas personales en fichero;Implementado con OK;MT940;;;;;;09/01/2013;09/01/2013;28/01/2013;28/01/2013;26/01/2013;28/01/2013;28/01/2013;;;;09/01/2013;09/01/2013
+PROY0080_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;;02/04/2013;02/04/2013;22/04/2013;22/04/2013;20/04/2013;24/04/2013;;;;;02/04/2013;02/04/2013
+PROY0080_02;España;Nóminas (FIM);Implementado con OK;FIM;Primera nómina en PROD enviada en Sept'13, la nómina de Oct'13 es la primera operación correcta de este servicio.;;;;;01/07/2012;04/09/2013;01/07/2012;04/09/2013;21/09/2013;24/10/2013;28/10/2013;28/10/2013;18/04/2013;01/07/2013;18/04/2013;04/09/2013
+PROY0080_02;España;Anticipos de crédito;Implementado con OK;CRE;No puede subir hasta el 22/06/2013 por necesitar desarrollos de producto;;;;;04/06/2013;14/06/2013;04/06/2013;14/06/2013;24/06/2013;27/08/2013;27/08/2013;27/08/2013;18/04/2013;01/07/2013;18/04/2013;03/06/2013
+PROY0080_02;España;Pagos domiciliados;Implementado con OK;CPN;No puede subir hasta el 22/06/2013 por necesitar desarrollos de producto;;;;;01/07/2013;18/07/2013;01/07/2013;18/07/2013;10/08/2013;18/09/2013;19/09/2013;25/09/2013;18/04/2013;01/07/2013;18/04/2013;30/06/2013
+PROY0080_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;Petición de subida de los servicios FIT y TIN (ambos XMLV3) incluidos en el P950 Alder Fase II;;;;;30/05/2013;03/06/2013;30/05/2013;03/06/2013;08/06/2013;27/08/2013;27/08/2013;27/08/2013;18/04/2013;03/06/2013;18/04/2013;29/05/2013
+PROY0080_02;España;Transferencias internacionales;Implementado sin OK;TIN;El cliente no va a usar este servicio, al menos por el momento, ya que no envía pagos internacionales;;;;;30/05/2013;03/06/2013;30/05/2013;03/06/2013;08/06/2013;;;08/08/2013;18/04/2013;01/07/2013;18/04/2013;29/05/2013
+PROY0081_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;10000000079;06/03/2013;23/03/2013;25/03/2013;25/03/2013;23/03/2013;18/07/2013;18/07/2013;;;;05/03/2013;05/03/2013
+PROY0081_01;España;Transferencias domésticas;Excluido por negocio;TRA;Cliente no disponibla.Parado desde 4 de Febrero 2013 21-05-2013. Excl.Timeout. 29-11-2013. Negocio comunica exclusión.;;;;10000000079;;;;;;;;;;;;
+PROY0081_01;España;Nóminas;Excluido por negocio;NOM;Cliente no disponibla.Parado desde 4 de Febrero 2013 21-05-2013. Excl.Timeout. 29-11-2013. Negocio comunica exclusión.;;;;10000000079;;;;;;;;;;;;
+PROY0081_01;España;Transferencias internacionales;Excluido por negocio;TIN;Cliente no disponibla.Parado desde 4 de Febrero 2013 21-05-2013. Excl.Timeout. 29-11-2013. Negocio comunica exclusión.;;;;10000000079;;;;;;;;;;;;
+PROY0081_01;España;Transferencias en fichero 34.1;Excluido por negocio;TR1;Cliente no disponibla.Parado desde 4 de Febrero 2013 21-05-2013. Excl.Timeout. 29-11-2013. Negocio comunica exclusión.;;;;10000000079;;;;;;;;;;;;
+PROY0081_01;España;Nóminas en fichero 34.1;Excluido por negocio;NO1;Cliente no disponibla.Parado desde 4 de Febrero 2013 21-05-2013. Excl.Timeout. 29-11-2013. Negocio comunica exclusión.;;;;10000000079;;;;;;;;;;;;
+PROY0081_02;España;Pagos domiciliados;Excluido por negocio;CPN;11/11/2013: Cliente retoma pruebas. 11/01/2014: Este servicio se encuentra en PROD aunque el cliente sigue realizando pruebas en INTEGRADO;;;;10000000079;11/11/2013;07/01/2014;;;11/01/2014;;;;01/07/2013;;;
+PROY0081_03;España;Transferencias EUR (FIT);Excluido por negocio;FIT;11/11/2013: Cliente retoma pruebas. 11/01/2014: Este servicio se encuentra en PROD aunque el cliente sigue realizando pruebas en INTEGRADO;;;;;18/09/2013;31/12/2013;;;11/01/2014;;;;19/08/2013;06/09/2013;;
+PROY0081_03;España;Transferencias internacionales;Excluido por Timeout;TIN;Cliente retoma pruebas 11/11. Pero este servicio no lo prueba (nota del 25/11);;;;;11/11/2013;;;;;;;;;;;
+PROY0081_03;España;Transferencias domésticas;Excluido por Timeout;TRA;MUL;;;;;;;;;;;;;;;;
+PROY0081_03;España;Transferencias internacionales;Excluido por Timeout;TIN;MUL;;;;;;;;;;;;;;;;
+PROY0081_04;España;Saldos y movimientos;Excluido por Timeout;MT940;MUL;;;;;;;;;;;;;;;;
+PROY0081_04;Portugal;Saldos y movimientos;PDTE Valoración IT;MT940;MUL;;;;;;;;;;;;;;;;
+PROY0081_04;Reino Unido;Movimientos cuentas personales en fichero;PDTE Valoración IT;MT940;MUL;;;;;;;;;;;;;;;;
+PROY0082_01;España;Saldos y movimientos;Implementado con OK;ISM;MUL;;;;;;;;;06/04/2013;09/04/2013;09/04/2013;09/04/2013;;;25/03/2013;26/03/2013
+PROY0083_01;España;Saldos y movimientos;Implementado con OK;ISM;MUL;;;;;21/02/2014;21/02/2014;;;10/05/2014;12/05/2014;;;21/02/2014;30/04/2014;;
+PROY0083_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;11/02/2013: asignado IT. Pte.Alcance hasta 7-1-14. 10-02-2014. En Espera hasta que cliente contrata MACUG BBVA.;;;;;26/02/2014;26/02/2014;;;10/05/2014;12/05/2014;;;21/02/2014;30/04/2014;;
+PROY0083_01;España;EuroConfirming;Implementado con OK;CNR;11/02/2013: asignado IT. Pte.Alcance hasta 7-1-14. 10-02-2014. En Espera hasta que cliente contrata MACUG BBVA.;;;;;05/03/2014;24/04/2014;;;10/05/2014;12/05/2014;;;21/02/2014;30/04/2014;;
+PROY0083_01;España;Respuestas GMM;Implementado con OK;XXX;28/05/2014: Negocio pide cambio de alcance: El cliente quiere respuestas GMM por email.;;;;;15/07/2014;12/08/2014;;;23/08/2014;25/08/2014;;;14/07/2014;15/08/2014;;
+PROY0083_01;España;Respuestas OB;Implementado con OK;XXX;3/10/2014: Negocio pide Migración a OB. Respuestas OB por e-mail;;;;;03/10/2014;06/10/2014;;;03/10/2014;06/10/2014;;;03/10/2014;03/10/2014;;
+PROY0083_01;España;Respuestas OB;Implementado con OK;XXX;6/11/2014: Negocio pide Rechazos Totales por fichero OB;;;;;;;;;07/11/2014;07/11/2014;;;07/11/2014;07/11/2014;;
+PROY0084_01;España;Saldos y movimientos;Implementado con OK;ISM;;;Propietario;;;;;;;05/04/2014;05/04/2014;05/04/2014;;31/03/2014;11/04/2014;;
+PROY0085_01;España;Saldos y movimientos;Implementado con OK;ISM;;No aplica;AEB 43 (ISM);;10000000092;30/04/2013;23/05/2013;25/06/2013;25/06/2013;22/06/2013;25/06/2013;25/06/2013;25/08/2013;22/04/2013;10/05/2013;;
+PROY0085_02;España;Confirming;Implementado con OK;CNF;;Propietario (CNF);Propietario (CNF);;10000000092;11/06/2013;14/06/2013;18/07/2013;18/07/2013;22/06/2013;18/07/2013;18/07/2013;18/09/2013;22/04/2013;14/06/2013;30/05/2013;03/06/2013
+PROY0085_03;España;Transferencias EUR (FIT);Implementado con OK;FIT;Se realizaron pruebas en integrado para casuística +50000 euros el 23/08/2013;XML v.3;AEB 34.14;;10000000092;04/06/2013;14/06/2013;18/07/2013;18/07/2013;22/06/2013;18/07/2013;18/07/2013;26/10/2013;22/04/2013;14/06/2013;30/05/2013;04/06/2013
+PROY0085_03;España;Nóminas (FIM);Implementado con OK;FIM;;XML v.3;AEB 34.14;;10000000092;10/07/2013;19/07/2013;15/10/2013;15/10/2013;20/07/2013;15/10/2013;15/10/2013;20/09/2013;22/04/2013;14/06/2013;30/05/2013;04/06/2013
+PROY0085_03;España;Transferencias internacionales;Implementado con OK;TIN;;XML v.3;TIN;;10000000092;16/09/2013;27/09/2013;08/10/2013;11/10/2013;05/10/2013;11/10/2013;11/10/2013;11/12/2013;22/04/2013;14/06/2013;30/05/2013;04/06/2013
+PROY0086_01;España;Saldos y movimientos;Excluido por Timeout;ISM;Pendte.confirmación Cliente-Negocio del P950. Alcance por cerrar., sin cuentas.;;;;;;;;;;;;;10/03/2014;10/06/2014;;
+PROY0086_01;España;Euroconfirming;Excluido por Timeout;CNR;Pendte.confirmación Cliente-Negocio del P950.;;;;;;;;;;;;;10/03/2014;10/06/2014;;
+PROY0086_01;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;Pendte.confirmación Cliente-Negocio del P950.;;;;;;;;;;;;;10/03/2014;10/06/2014;;
+PROY0086_01;España;Transferencias internacionales;Excluido por Timeout;TIN;Pendte.confirmación Cliente-Negocio del P950.;;;;;;;;;;;;;10/03/2014;10/06/2014;;
+PROY0086_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;Pendte.confirmación Cliente-Negocio del P950.;;;;;;;;;;;;;10/03/2014;10/06/2014;;
+PROY0086_01;España;Nóminas (FIM);Excluido por Timeout;FIM;Pendte.confirmación Cliente-Negocio del P950.;;;;;;;;;;;;;10/03/2014;10/06/2014;;
+PROY0086_02;España;Saldos y movimientos;En Penny Test;ISM;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;24/03/2014;13/06/2014;;;21/06/2014;23/06/2014;23/06/2014;;;;24/03/2014;
+PROY0086_02;España;Euroconfirming;Excluido por Timeout;CNR;(CAN) Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alca;;;;;24/03/2014;;;;;;;;;;24/03/2014;
+PROY0086_02;España;Transferencias urgentes (OMF);En Penny Test;OMF;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;24/03/2014;04/04/2014;;;12/04/2014;29/04/2014;;;;;24/03/2014;
+PROY0086_02;España;Transferencias internacionales;Excluido por negocio;TIN;(CAN) 1º-Inicio 13-6-2012. Negocio parado 8-8-2012. 2º-Rearranca 13-02-2013. Negocio Parado 13-03-2013. 3º-Rearranca 27-06-2013. Negocio Parado 12-09-2013. 4º-Rearranca 23-10-2013. 5º-Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio se;;;;;;;;;;;;;;;;
+PROY0086_02;España;Saldos y movimientos;En Penny Test;ISM;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;24/03/2014;13/06/2014;;;21/06/2014;23/06/2014;23/06/2014;;;;24/03/2014;
+PROY0086_02;España;Euroconfirming;Excluido por Timeout;CNR;(CAN) Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alca;;;;;24/03/2014;;;;;;;;;;24/03/2014;
+PROY0086_02;España;Transferencias urgentes (OMF);En Penny Test;OMF;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;24/03/2014;04/04/2014;;;12/04/2014;29/04/2014;;;;;24/03/2014;09/04/2014
+PROY0086_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;10/03/2014;28/03/2014;;;05/04/2014;;;;12/02/2014;12/04/2014;25/02/2014;26/02/2014
+PROY0086_02;España;Nóminas (FIM);Excluido por Timeout;FIM;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;10/03/2014;;;;;;;;12/02/2014;12/04/2014;25/02/2014;26/02/2014
+PROY0086_02;España;Adeudos directos C19.44 Sepa;Implementado con OK;CSX;CORE Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcan;;;;;10/03/2014;04/04/2014;;;12/04/2014;;;;12/02/2014;12/04/2014;25/02/2014;26/02/2014
+PROY0086_02;España;Adeudos directos C19.44 Sepa;Excluido por Timeout;CSX;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;10/03/2014;;;;;;;;12/02/2014;12/04/2014;25/02/2014;26/02/2014
+PROY0086_02;España;Transferencias internacionales;En Penny Test;TIN;Inicio 13-6-2012. Negocio parado 8-8-2012. Rearranca 13-02-2013. Negocio Parado 13-03-2013. Rearranca 27-06-2013. Negocio Parado 12-09-2013. Rearranca 23-10-2013. Cambio Alcance 27-11-2013. Se cierra Alcance y decidimos con Negocio separar en 2 Alcances (;;;;;24/03/2014;04/04/2014;;;12/04/2014;29/04/2014;;;;;24/03/2014;09/04/2014
+PROY0087_01;Colombia;Pago a proveedores;Implementado con OK;PRO;;;;;;03/07/2013;19/09/2013;13/06/2013;17/06/2013;20/07/2013;01/08/2013;15/10/2013;18/10/2013;;;06/05/2013;01/07/2013
+PROY0087_01;Colombia;Pago a proveedores;Excluido por negocio;PRO;mapa v3' a v3;;;;;;;13/06/2013;17/06/2013;;;;;;;17/06/2013;21/06/2013
+PROY0087_01;Colombia;Pago a proveedores;Excluido por negocio;PRO;Cambio de alcance en mapa;;;;;03/07/2013;15/07/2013;13/06/2013;17/06/2013;20/07/2013;01/08/2013;;;;;24/06/2013;01/07/2013
+PROY0087_01;Colombia;Pago a proveedores;Implementado con OK;PRO;Cambio de alcance (cuentas beneficiario);;;;;04/09/2013;19/09/2013;13/06/2013;17/06/2013;07/09/2013;25/09/2013;15/10/2013;18/10/2013;;;03/09/2013;03/09/2013
+PROY0087_02;Perú;Pago a Proveedores;Implementado con OK;M03;Falta referencia local que no se envia correctamente por el pais.;;;;;13/06/2014;;;;22/07/2014;23/07/2014;25/08/2014;04/09/2014;22/05/2014;;20/05/2014;13/06/2014
+PROY0087_03;Chile;Pago a proveedores;Excluido por Timeout;PRO;Faseado;;;;;;;;;;;;;;;;
+PROY0087_04;Venezuela;Pago a Proveedores;Implementado con OK;PRO;;;;;;03/12/2013;10/12/2013;;;14/12/2013;23/04/2014;07/05/2014;07/05/2014;;;;
+PROY0087_05;Argentina;Pago a proveedores;Excluido por Timeout;PAP;Faseado;;;;;;;;;;;;;;;;
+PROY0088_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;10000000070;15/04/2013;18/04/2013;;;20/04/2013;23/04/2013;23/04/2013;;;;;
+PROY0088_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;10000000070;25/06/2013;20/07/2013;;;10/08/2013;17/10/2013;17/10/2013;;13/06/2013;20/07/2013;13/06/2013;20/06/2013
+PROY0088_02;España;Nóminas (FIM);Implementado con OK;FIM;;;;;10000000070;01/07/2013;20/07/2013;;;10/08/2013;23/10/2013;23/10/2013;;13/06/2013;20/07/2013;13/06/2013;20/06/2013
+PROY0088_02;España;Euroconfirming;Excluido por Timeout;CNR;;;;;10000000070;;;;;;;;;;;;
+PROY0088_02;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;;;;;10000000070;;;;;;;;;;;;
+PROY0088_02;España;Transferencias internacionales;Implementado con OK;TIN;;;;;10000000070;25/06/2013;03/10/2013;;;05/10/2013;17/10/2013;21/10/2013;;13/06/2013;03/10/2013;13/06/2013;20/06/2013
+PROY0088_03;España;Anticipos de crédito;Implementado con OK;CRE;;;;;10000000070;25/06/2013;20/07/2013;;;10/08/2013;17/10/2013;17/10/2013;;13/06/2013;20/07/2013;13/06/2013;20/06/2013
+PROY0088_04;España;Saldos y movimientos;Implementado con OK;ISM;;;;;10000000070;09/07/2013;09/07/2013;;;13/07/2013;16/07/2013;;;;;09/07/2013;09/07/2013
+PROY0089_01;Colombia;Pago a proveedores;Implementado con OK;PRO;;;;;;24/09/2013;27/09/2013;;;05/10/2013;14/10/2013;31/10/2013;04/01/2014;;;08/07/2013;20/09/2013
+PROY0089_01;Colombia;Respuestas RECG;Excluido por negocio;XXX;Respuestas RECG. El cliente confirma recibir la respuesta de recepción en Capa Gestora Multicanal en lugar de Recepción en GMM;;;;;;;;;;;;;;;;
+PROY0089_01;Colombia;Respuestas dedicadas;Implementado con OK;XXX;PDF y Control y Bansta;;;;;24/09/2013;27/09/2013;;;05/10/2013;14/10/2013;31/10/2013;04/01/2014;;;02/09/2013;20/09/2013
+PROY0089_01;Colombia;Saldos y movimientos;Implementado con OK;MT940;;;;;;24/09/2013;27/09/2013;;;05/10/2013;14/10/2013;31/10/2013;04/01/2014;;;02/09/2013;20/09/2013
+PROY0089_01;Colombia;Otros servicios no disponibles;Implementado con OK;XXX;Conectividad;;;;;24/09/2013;27/09/2013;14/10/2013;28/10/2013;;;;04/01/2014;;;23/09/2013;23/09/2013
+PROY0089_02;Portugal;Saldos y movimientos;Parado por negocio;MT940;;;;;;;;;;;;;;;;24/02/2014;
+PROY0089_02;España;Saldos y movimientos;Parado por negocio;MT940;;;;;;;;;;;;;;;;24/02/2014;
+PROY0089_03;Perú;Pago a Proveedores;PDTE Doc Alcance en GCS;M03;;;;;;;;;;;;;;;;;
+PROY0089_03;Perú;Saldos y Movimientos;PDTE Doc Alcance en GCS;ISM;;;;;;;;;;;;;;;;;
+PROY0089_01;Colombia;Nóminas;Excluido por negocio;NMA;;;;;;;;;;;;;;;;;
+PROY0090_01;Colombia;Transferencias;Excluido por Timeout;TRN;;;TRN Propietario;;;;;;;;;;;;;;
+PROY0090_01;Colombia;Pago a proveedores;Excluido por Timeout;PRO;;;PRO Propietario;;;;;;;;;;;;;;
+PROY0090_01;Colombia;Nóminas;Excluido por Timeout;NMA;;;NMA Propietario;;;;;;;;;;;;;;
+PROY0090_01;Argentina;Transferencias;Excluido por Timeout;TRA;;;TRA Propietario;;;;;;;;;;;;;;
+PROY0090_01;Argentina;Pago a proveedores;Excluido por Timeout;PAP;;;PAP Propietario;;;;;;;;;;;;;;
+PROY0090_01;Argentina;Nóminas;Excluido por Timeout;NOM;;;NOM Propietario;;;;;;;;;;;;;;
+PROY0090_01;Venezuela;Transferencias;Excluido por Timeout;TRN;;;TRN Propietario;;;;;;;;;;;;;;
+PROY0090_01;Venezuela;Pago a Proveedores;Excluido por Timeout;PRO;;;PRO Propietario;;;;;;;;;;;;;;
+PROY0090_01;Venezuela;Nóminas;Excluido por Timeout;NMA;;;NMA Propietario;;;;;;;;;;;;;;
+PROY0090_01;Perú;Transferencias Domésticas;Excluido por Timeout;M01;;;M01 Propietario;;;;;;;;;;;;;;
+PROY0090_01;Perú;Pago a Proveedores;Excluido por Timeout;M03;;;M03 Propietario;;;;;;;;;;;;;;
+PROY0090_01;Perú;Nóminas;Excluido por Timeout;M02;;;M02 Propietario;;;;;;;;;;;;;;
+PROY0091_01;España;Saldos y movimientos;Excluido por negocio;MT940;11/07/13: Negocio informa que se desestima la petición;;;;;;;;;;;;;;;;
+PROY0091_01;España;Saldos y movimientos;Excluido por negocio;MT940;11/07/13: Negocio informa que se desestima la petición;;;;;;;;;;;;;;;;
+PROY0091_02;España;Adeudos directos C19.14 SEPA - CORE;Implementado con OK;CSP;CORE+COR1;;;;;29/08/2013;15/11/2013;08/11/2013;08/11/2013;23/11/2013;12/12/2013;07/04/2014;07/04/2014;19/08/2013;15/11/2013;;
+PROY0091_02;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9D;CORE+COR1;;;;;29/08/2013;15/11/2013;08/11/2013;15/11/2013;23/11/2013;12/12/2013;07/04/2014;07/04/2014;19/08/2013;15/11/2013;;
+PROY0091_02;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9R;CORE+COR1;;;;;29/08/2013;15/11/2013;08/11/2013;15/11/2013;23/11/2013;12/12/2013;07/04/2014;07/04/2014;19/08/2013;15/11/2013;;
+PROY0091_02;España;Adeudos directos C19.44 Sepa;Implementado con OK;CSX;Aunque el cliente no ha enviado B2B, Negocio indica que se dé como implementado OK;;;;;29/08/2013;15/11/2013;08/11/2013;08/11/2013;23/11/2013;12/12/2013;07/04/2014;07/04/2014;19/08/2013;15/11/2013;;
+PROY0091_02;España;Impagado cuaderno 19.44 (SEPA B2B);Implementado con OK;X4D;Aunque el cliente no ha enviado B2B, Negocio indica que se dé como implementado OK;;;;;29/08/2013;15/11/2013;08/11/2013;15/11/2013;23/11/2013;12/12/2013;07/04/2014;07/04/2014;19/08/2013;15/11/2013;;
+PROY0091_02;España;Impagado cuaderno 19.44 (SEPA B2B);Implementado con OK;X4D;Aunque el cliente no ha enviado B2B, Negocio indica que se dé como implementado OK;;;;;29/08/2013;15/11/2013;08/11/2013;15/11/2013;23/11/2013;12/12/2013;07/04/2014;07/04/2014;19/08/2013;15/11/2013;;
+PROY0091_03;España;Transferencias EUR (FIT);Implementado con OK;FIT;;;;;;23/10/2013;15/11/2013;;;23/11/2013;10/12/2013;10/10/2013;;16/10/2013;15/11/2013;;
+PROY0091_04;España;Respuestas;Excluido por negocio;XXX;Respuestas Transferencias SEPA. IT ha dado alternativas que se van a estudiar, así que se descarta el requidsito de la petición inicial (4/6/14);;;;;;;;;;;;;;;;
+PROY0091_04;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9D;Agrupación impagados CORE/B2B. Se reactiva el 5/05/14;;;;;14/07/2014;24/09/2014;;;11/10/2014;15/10/2014;15/10/2014;21/10/2014;14/07/2014;30/09/2014;;
+PROY0091_05;España;Respuestas;Excluido por negocio;XXX;Respuestas SDD. IT ha dado alternativas que se van a estudiar, así que se descarta el requidsito de la petición inicial (4/6/14);;;;;;;;;;;;;;;;
+PROY0091_06;España;Respuestas OB;Excluido por negocio;XXX;;;;;;;;;;;;;;;;;
+PROY0091_06;España;Respuestas OB;PDTE Valoración IT;XXX;Respuestas transferencias SEPA. Se inicia el estudio con respuestas SDD y Respuestas SEPA y se cambia a sólo Respuestas SEPA con dedicado en el nombre. El 18-12-2014 se cierran las primeras especificaciones y el 19 envío el primer C100. Regreso de vacacio;;;;;;;;;;;;;;;;
+PROY0092_01;España;Transferencias domésticas;Excluido por Timeout;TRA;;;;;;;;;;;;;;;;;
+PROY0092_01;España;Nóminas;Excluido por Timeout;NOM;;;;;;;;;;;;;;;;;
+PROY0092_01;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;;;;;;;;;;;;
+PROY0092_01;España;Pagos domiciliados;Excluido por Timeout;CPN;;;;;;;;;;;;;;;;;
+PROY0092_01;España;Anticipos de crédito;Excluido por Timeout;CRE;;;;;;;;;;;;;;;;;
+PROY0092_01;España;Devoluciones de anticipo crédito vía fichero;Excluido por Timeout;DVA;;;;;;;;;;;;;;;;;
+PROY0092_01;España;Saldos y movimientos;Excluido por Timeout;ISM;;;;;;;;;;;;;;;;;
+PROY0093_02;España;Transferencias EUR (FIT);Implementado con OK;FIT;** PRIMER P950 CERRADO 2-7-2013, ÚLTIMO 30-07-2013. Casi parado en las pruebas desde esta fecha. 7 ficheros en 3 meses. 07-10-2013. Envía tres ficheros. 24-10-2013. Negocio inicia otra batería de pruebas en test.;;;;;29/08/2013;18/10/2013;;;19/10/2013;21/11/2013;21/11/2013;;07/08/2013;10/09/2013;29/08/2013;18/10/2013
+PROY0093_02;España;Nóminas (FIM);Implementado con OK;FIM;** PRIMER P950 CERRADO 2-7-2013, ÚLTIMO 30-07-2013. 09-10-2013. El cliente no ha enviado ningún fichero de este tipo desde el principio. Según Negocio quiere ir cerrando servicio a servicio. Parado en pruebas desde 29-08-13 hasta dic2013.;;;;;29/08/2013;16/12/2013;;;11/01/2014;14/01/2014;14/01/2014;;07/08/2013;10/09/2013;29/08/2013;16/12/2013
+PROY0093_02;España;Euroconfirming;Excluido por Timeout;CNR;** PRIMER P950 CERRADO 2-7-2013. 09-10-2013, ÚLTIMO 30-07-2013. El cliente no ha enviado ningún fichero de este tipo desde el principio. Según Negocio quiere ir cerrando servicio a servicio.;;;;;;;;;;;;;07/08/2013;10/09/2013;29/08/2013;
+PROY0093_02;España;Respuestas;Implementado con OK;XXX;** PRIMER P950 CERRADO 2-7-2013, ÚLTIMO 30-07-2013. Casi parado en las pruebas desde esta fecha. 7 ficheros en 3 meses. 07-10-2013. Envía tres ficheros. Respuestas KO por no contratadas en ARM.;;;;;29/08/2013;22/10/2013;;;09/11/2013;21/11/2013;21/11/2013;;07/08/2013;10/09/2013;29/08/2013;22/10/2013
+PROY0093_03;España;Adeudos directos C19.14 SEPA - COR1;En Test - Aceptación;CSP;COR1;;;;;;;;;;;;;17/11/2014;19/01/2015;17/11/2014;
+PROY0093_03;España;Impagados Cuaderno 19.14 (SEPA) - COR1;En Test - Aceptación;X9D;COR1;;;;;;;;;;;;;17/11/2014;19/01/2015;17/11/2014;
+PROY0093_03;España;Adeudos directos C19.44 Sepa;En Test - Aceptación;CSX;B2B;;;;;;;;;;;;;17/11/2014;19/01/2015;17/11/2014;
+PROY0093_03;España;Impagado cuaderno 19.44 (SEPA B2B);En Test - Aceptación;X4D;B2B. X4R X4D;;;;;;;;;;;;;17/11/2014;19/01/2015;17/11/2014;
+PROY0094_01;España;Transferencias EUR (FIT);En Penny Test;FIT;El cliente ha realizado 2 ciclos de penny test, pero falta la parte de H2W para cerrar el PROYecto;;;;;;;;;07/06/2014;10/06/2014;;;28/04/2014;30/05/2014;23/04/2014;30/05/2014
+PROY0094_01;España;Transferencias internacionales;En Penny Test;TIN;El cliente ha realizado 2 ciclos de penny test, pero falta la parte de H2W para cerrar el PROYecto;;;;;;;;;07/06/2014;10/06/2014;;;28/04/2014;30/05/2014;23/04/2014;30/05/2014
+PROY0094_01;España;Respuestas dedicadas;En Penny Test;XXX;Respuestas dedicadas pain 002.001.03. El cliente ha realizado 2 ciclos de penny test, pero falta la parte de H2W para cerrar el PROYecto;;;;;;;;;07/06/2014;10/06/2014;;;28/04/2014;30/05/2014;23/04/2014;30/05/2014
+PROY0094_02;Perú;Respuestas dedicadas;En Penny Test;XXX;Respuesta dedicada procesamiento país;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;19/11/2014;;;;;25/03/2014;15/08/2014
+PROY0094_02;Perú;Pago a Proveedores;En Penny Test;M03;;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;19/11/2014;;;;;25/03/2014;15/08/2014
+PROY0094_02;Perú;Nóminas;En Penny Test;M02;;;;;;25/04/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;19/11/2014;;;;;25/04/2014;15/08/2014
+PROY0094_02;Perú;Respuestas GMM;En Penny Test;XXX;Respuesta rechazo Total GMM;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;19/11/2014;;;;;25/03/2014;15/08/2014
+PROY0094_02;Perú;Respuestas dedicadas;En Penny Test;XXX;Respuesta dedicada ACK GMM;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;19/11/2014;;;;;25/03/2014;15/08/2014
+PROY0094_02;Perú;Transferencias Internacionales (TEX Macug);En Penny Test;TEX;;;;;;25/04/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;19/11/2014;;;;;25/04/2014;15/08/2014
+PROY0094_02;México;Nóminas;Excluido por negocio;HNO;;;;;;;;;;;;;;;;;
+PROY0094_02;México;Pago a proveedores (SIT);En Penny Test;HST;;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;;;;;;25/03/2014;15/08/2014
+PROY0094_02;México;Respuestas GMM;En Penny Test;XXX;Respuesta rechazo Total en GMM;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;;;;;;25/03/2014;15/08/2014
+PROY0094_02;México;Pago a proveedores (SIT);En Penny Test;HST;Transferencias Internacionales;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;;;;;;25/03/2014;15/08/2014
+PROY0094_02;México;Respuestas dedicadas;En Penny Test;XXX;Respuesta dedicada procesamiento pais;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;;;;;;25/03/2014;15/08/2014
+PROY0094_02;México;Respuestas dedicadas;En Penny Test;XXX;Respuesta dedicada ACK GMM;;;;;25/03/2014;15/08/2014;15/08/2014;15/08/2014;23/08/2014;;;;;;25/03/2014;15/08/2014
+PROY0094_03;España;Saldos y movimientos;En Penny Test;MT940;;;;;;;;;;07/06/2014;10/06/2014;;;;;;
+PROY0094_04;México;Pago a proveedores (SIT);Excluido por Timeout;HST;;;;;;;;;;;;;;;;;
+PROY0094_04;México;Pago a proveedores (SIT);Excluido por Timeout;HST;;;;;;;;;;;;;;;;;
+PROY0094_04;México;Pago a proveedores (SIT);Excluido por Timeout;HST;El servicio estaba como Transferencias Internacionales (HST);;;;;;;;;;;;;;;;
+PROY0094_04;México;Respuestas Dedicadas;Excluido por Timeout;XXX;;;;;;;;;;;;;;;;;
+PROY0094_05;Colombia;Pago a proveedores;Excluido por Timeout;PRO;;;;;;;;;;;;;;;;;
+PROY0094_05;Colombia;Respuestas dedicadas;Excluido por Timeout;XXX;;;;;;;;;;;;;;;;;
+PROY0095_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;;;;;;;;;;;;
+PROY0095_01;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;;;;;;;;;;;;
+PROY0095_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;;18/07/2013;22/07/2013;;;10/08/2013;12/08/2013;12/08/2013;12/08/2013;18/07/2013;25/07/2013;18/07/2013;19/07/2013
+PROY0096_01;Colombia;Pago a proveedores;Excluido por Timeout;MT101;;;;;;;;;;;;;;;;;
+PROY0096_01;Colombia;Nóminas;Excluido por Timeout;MT101;;;;;;;;;;;;;;;;;
+PROY0096_01;Colombia;Transferencias;Excluido por Timeout;MT101;;;;;;;;;;;;;;;;;
+PROY0096_02;Colombia;Pago a proveedores;En Test - Aceptación;PRO;;;;;;04/11/2014;;;;;;;;;;04/11/2014;
+PROY0096_02;Colombia;Nóminas;En Test - Aceptación;NMA;;;;;;04/11/2014;;;;;;;;;;04/11/2014;
+PROY0097_01;Colombia;Transferencias;Excluido por Timeout;MT101;Relacionado con los PROYectos de Colpensiones y Emgesa. Mapa MT101 a One Format;;;;;;;;;;;;;;;;
+PROY0097_01;Colombia;Pago a proveedores;Excluido por Timeout;MT101;Relacionado con los PROYectos de Colpensiones y Emgesa. Mapa MT101 a One Format;;;;;;;;;;;;;;;;
+PROY0097_01;Colombia;Nóminas;Excluido por Timeout;MT101;Relacionado con los PROYectos de Colpensiones y Emgesa. Mapa MT101 a One Format;;;;;;;;;;;;;;;;
+PROY0098_01;Colombia;Nóminas;Excluido por Timeout;NMA;;XML_V3;.NMA;;4073;15/11/2013;;;;;;;;;;11/11/2013;14/11/2013
+PROY0098_01;Colombia;Pago a proveedores;Implementado sin OK;PRO;;XML_V3;.PRO;;4073;15/11/2013;;;;08/02/2014;;;;;;11/11/2013;14/11/2013
+PROY0098_01;Colombia;Transferencias;Excluido por Timeout;TRN;;XML_V3;.TRN;;4073;15/11/2013;;;;;;;;;;11/11/2013;14/11/2013
+PROY0098_01;Colombia;Respuestas;Implementado sin OK;XXX;Respuestas I.A. R_RECI_XXX;;;;;15/11/2013;;;;08/02/2014;;;;;;11/11/2013;14/11/2013
+PROY0099_01;España;Saldos y movimientos;Implementado con OK;ISM;OK a subida a producción el 11/07/13;;;;;19/06/2013;19/06/2013;09/07/2013;10/07/2013;06/07/2013;09/07/2013;10/09/2013;11/09/2013;;;;
+PROY0100_01;España;Saldos y movimientos;Implementado con OK;MT940;;;;;;17/07/2013;08/08/2013;;;24/08/2013;28/08/2013;28/08/2013;28/08/2013;17/07/2013;30/07/2013;17/07/2013;08/08/2013
+PROY0101_01;España;Saldos y movimientos;Implementado con OK;MVD;Fase-II;;MT940;;10000000098;15/08/2013;24/08/2013;01/08/2013;01/08/2013;24/08/2013;25/08/2013;25/08/2013;;15/08/2013;24/08/2013;01/08/2013;15/08/2013
+PROY0101_01;España;Anticipos de crédito;Excluido por negocio;CRE;Fase-II;;AEB58;;10000000098;17/09/2013;;;;;;;;17/09/2013;04/10/2013;17/09/2013;
+PROY0101_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;Fase-II;;;;10000000098;17/09/2013;15/10/2013;12/11/2013;12/11/2013;12/11/2013;;;;17/09/2013;04/10/2013;17/09/2013;15/10/2013
+PROY0101_01;España;Nóminas (FIM);Implementado con OK;FIM;Fase-II;;;;10000000098;17/09/2013;15/10/2013;12/11/2013;12/11/2013;12/11/2013;;;;17/09/2013;04/10/2013;17/09/2013;15/10/2013
+PROY0101_01;España;Transferencias urgentes (OMF);Implementado con OK;OMF;Fase-II;;;;10000000098;17/09/2013;15/10/2013;12/11/2013;12/11/2013;12/11/2013;;;;17/09/2013;04/10/2013;17/09/2013;15/10/2013
+PROY0101_01;España;Devoluciones de anticipo crédito vía fichero;Excluido por negocio;DVA;Fase-II;;AEB58;;10000000098;17/09/2013;;;;;;;;17/09/2013;04/10/2013;17/09/2013;
+PROY0101_01;España;Pagos domiciliados;Implementado con OK;CPN;Fase-II;;AEB68;;10000000098;07/10/2013;15/10/2013;12/11/2013;12/11/2013;12/11/2013;19/11/2013;19/11/2013;;07/10/2013;07/10/2013;07/10/2013;15/10/2013
+PROY0101_01;España;C19.14 Cancelaciones/Retrocesiones SEPA - CORE;Excluido por negocio;SCA;Fase-III;;AEB19.34;;10000000098;15/01/2014;;;;;;;;;;15/01/2014;
+PROY0101_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9R;Fase-III;;XMLV3;;10000000098;15/01/2014;10/02/2014;;;15/02/2014;28/02/2014;05/02/2014;;15/01/2014;10/02/2014;15/01/2014;10/02/2014
+PROY0101_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;Implementado con OK;X9D;Fase-III;;XMLV3;;10000000098;15/01/2014;10/02/2014;;;15/02/2014;28/02/2014;05/02/2014;;15/01/2014;10/02/2014;15/01/2014;10/02/2014
+PROY0101_01;España;Adeudos directos C19.14 SEPA - CORE;Implementado con OK;CSP;Fase-III;;AEB19.34;;10000000098;15/01/2014;10/02/2014;;;15/02/2014;28/02/2014;03/02/2014;;15/01/2014;10/02/2014;15/01/2014;10/02/2014
+PROY0102_01;España;Transferencias internacionales;Excluido por Timeout;MT101;;;;;;;;;;;;;;;;;
+PROY0102_01;España;Nóminas en fichero 34.1;Excluido por Timeout;NO1;;;;;;;;;;;;;;;;;
