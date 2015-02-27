@@ -56,10 +56,10 @@
 												<div class="form-field">
 							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true" data-live-search="true">
+								<select class="selectpicker selected" name="pais" id="pais_servicio_new_inform" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
-										<option value="${t.key.id}">${t.name}</option>
+										<option value="${t.name}">${t.name}</option>
 									</c:forEach>
 									
 
@@ -72,7 +72,7 @@
 						<div class="form-field">
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true" data-live-search="true">
+								<select class="selectpicker selected" name="servicio" id="servicio_new_inform" required aria-required="true" data-live-search="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>
@@ -81,7 +81,7 @@
 						<div class="form-field">
 							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="extension" id="extension" required aria-required="true" data-live-search="true">
+								<select class="selectpicker selected" name="extension" id="extension_new_inform" required aria-required="true" data-live-search="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>

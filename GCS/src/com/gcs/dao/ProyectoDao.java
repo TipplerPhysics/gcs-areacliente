@@ -139,6 +139,16 @@ public class ProyectoDao {
 		}		
 	}
 	
+	public void createProjectRaw(Proyecto p) throws ParseException{
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		try{
+			pm.makePersistent(p);
+		}finally{
+			pm.close();
+		}	
+	}
+	
 	public void createProjectImport(Proyecto p,String usermail) throws ParseException{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
@@ -259,7 +269,7 @@ public class ProyectoDao {
 		projects = (List<Proyecto>) q.execute();
 		
 		pm.close();
-		
+		/*
 		ProyectoDao pDao = ProyectoDao.getInstance();
 		Proyecto proyecto = null;
 		for(int i = 0; i < projects.size(); i++) {
@@ -267,7 +277,7 @@ public class ProyectoDao {
 			String coste = pDao.getCoste(proyecto);
 			proyecto.setCoste(coste);
 		}
-
+*/
 		return projects;	
 	}
 	

@@ -1,0 +1,137 @@
+PROY0128_05;USA;Pagos domésticos ACH NY;Excluido por negocio;ACN;;;;;;;;;;;;;;;;;
+PROY0128_05;USA;Otros servicios no disponibles;Excluido por negocio;XXX;Se había solicitado nóminas;;;;;;;;;;;;;;;;
+PROY0128_05;USA;Pagos (payment) - n.y.;Excluido por negocio;TTN;Formato TTN tambien aplica para las Transferencias Urgentes;;;;;;;;;;;;;;;;
+PROY0128_06;Portugal;Transferencias domésticas urgentes;En Penny Test;TUG;;;;;;18/12/2014;20/12/2014;;;10/01/2015;;;;;;18/12/2014;20/12/2014
+PROY0129_01;España;Saldos y movimientos;Implementado con OK;MT940;;;MT940;;;06/05/2014;07/05/2014;21/05/2014;21/05/2014;17/05/2014;21/05/2014;21/05/2014;28/05/2014;07/05/2014;09/05/2014;;
+PROY0129_02;España;Movimientos del día en fichero (MT942);Excluido por Timeout;MT942;;;;;;;;;;;;;;;;;
+PROY0129_02;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;;;;;;;;;;;;
+PROY0129_02;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;;;;;;;;;;;;
+PROY0129_02;España;Nóminas (FIM);Excluido por Timeout;FIM;;;;;;;;;;;;;;;;;
+PROY0130_01;Colombia;Pago a proveedores;Implementado con OK;PRO;25-04-2014.- Iniciamos el PROYecto con petición de pruebas y fuimos definiendo desde el 28-04-2014 hasta el 26-05-2014, donde Neg. cierra primer Alcance. Iniciamos el PROYecto con petición de pruebas y el 7-05-2014, Neg. cierra las pruebas sin comenzarlas;XMLV3;;4121;9172;06/08/2014;;;;11/10/2014;27/10/2014;;;06/08/2014;30/09/2014;06/08/2014;
+PROY0130_01;Colombia;Nóminas;Excluido por negocio;NMA;25-04-2014.- Iniciamos el PROYecto con petición de pruebas y fuimos definiendo desde el 28-04-2014 hasta el 26-05-2014, donde Neg. cierra primer Alcance. Iniciamos el PROYecto con petición de pruebas y el 7-05-2014, Neg. cierra las pruebas sin comenzarlas;XMLV3;;4121;9172;06/08/2014;;;;;;;;06/08/2014;30/09/2014;06/08/2014;
+PROY0130_01;Perú;Transferencias Internacionales (TEX Macug);Excluido por negocio;TEX;25-04-2014.- Iniciamos el PROYecto con petición de pruebas y fuimos definiendo desde el 28-04-2014 hasta el 26-05-2014, donde Neg. cierra primer Alcance. Iniciamos el PROYecto con petición de pruebas y el 7-05-2014, Neg. cierra las pruebas sin comenzarlas;XMLV3;;697;;06/08/2014;;;;;;;;06/08/2014;30/09/2014;06/08/2014;
+PROY0130_01;Colombia;Pago a proveedores;Implementado con OK;PRO;Varios Cambios de Alcance: -27-05-2014. -28-05-2014. -20-06-2014.-23-06-2014. -04-07-2014. -29-07-2014. -18-08-2014.;XMLV3;;4121;9172;06/08/2014;;;;11/10/2014;27/10/2014;;;06/08/2014;30/09/2014;06/08/2014;
+PROY0130_01;Colombia;Nóminas;Excluido por negocio;NMA;Varios Cambios de Alcance: -27-05-2014. -28-05-2014. -20-06-2014.-23-06-2014. -04-07-2014. -29-07-2014. -18-08-2014.;XMLV3;;4121;9172;06/08/2014;;;;;;;;06/08/2014;30/09/2014;06/08/2014;
+PROY0130_01;Perú;Transferencias Internacionales (TEX Macug);Excluido por negocio;TEX;Varios Cambios de Alcance: -27-05-2014. -28-05-2014. -20-06-2014.-23-06-2014. -04-07-2014. -29-07-2014. -18-08-2014.;XMLV3;;697;;06/08/2014;;;;;;;;06/08/2014;30/09/2014;06/08/2014;
+PROY0130_01;Colombia;Pago a proveedores;Implementado con OK;PRO;El día 30/10 Negocio envia petición de cambio de mapa;XMLV3;;4121;9172;;;;;27/11/2014;;;;13/11/2014;28/11/2014;17/11/2014;26/11/2014
+PROY0130_02;Colombia;Saldos y movimientos;Implementado con OK;MT940;El día 05/09 se envia un documento para la creación de un dedicado en BR, ese mismo día se envia el C100 para su VºB. La validación funcional se obtiene el 08/09/2014 y la valoración del desarrollador el 09/09;;;4121;9172;;;;;11/10/2014;;;;18/08/2014;30/09/2014;;
+PROY0130_02;Perú;Saldos y movimientos;Excluido por negocio;MT940;El día 05/09 se envia un documento para la creación de un dedicado en BR, ese mismo día se envia el C100 para su VºB. La validación funcional se obtiene el 08/09/2014 y la valoración del desarrollador el 09/09;;;697;;;;;;;;;;18/08/2014;30/09/2014;;
+PROY0130_02;Colombia;Saldos y movimientos;Implementado con OK;MT940;El día 05/09 se envia un documento para la creación de un dedicado en BR, ese mismo día se envia el C100 para su VºB. La validación funcional se obtiene el 08/09/2014 y la valoración del desarrollador el 09/09;;;4121;9172;05/09/2014;;;;11/10/2014;;;;18/08/2014;30/09/2014;;
+PROY0130_02;Perú;Saldos y movimientos;Excluido por negocio;MT940;El día 05/09 se envia un documento para la creación de un dedicado en BR, ese mismo día se envia el C100 para su VºB. La validación funcional se obtiene el 08/09/2014 y la valoración del desarrollador el 09/09;;;697;;05/09/2014;;;;;;;;18/08/2014;30/09/2014;;
+PROY0130_02;Colombia;Saldos y movimientos;Implementado con OK;MT940;El día 25/09 Negocio envia petición de Eliminar saldos intermedios con mapa BR;;;4121;9172;29/09/2014;;;;08/11/2014;;;;18/08/2014;10/11/2014;29/09/2014;
+PROY0130_03;Colombia;Respuestas local aplicativo;Implementado con OK;XXX;OB;;;4121;9172;;;;;11/10/2014;;;;10/09/2014;31/10/2014;;
+PROY0130_03;Colombia;Respuestas;Implementado con OK;XXX;OB 26/08/2014. Utilizaremos las respuestas globales OB de Producto;;;4121;9172;;;;;11/10/2014;;;;06/08/2014;30/09/2014;;
+PROY0130_03;Perú;Respuestas;Excluido por negocio;XXX;Utilizaremos las respuestas globales OB de Producto;;;697;;;;;;;;;;;;;
+PROY0130_03;Colombia;Respuestas local aplicativo;Implementado con OK;XXX;OB El día 23/10 Negocio envia petición de tratar respuestas R23;;;4121;9172;28/10/2014;;;;08/11/2014;;;;10/09/2014;10/11/2014;28/10/2014;
+PROY0130_03;Colombia;Respuestas local aplicativo;Implementado con OK;XXX;OB El día 30/10 Negocio envia petición de cambiar el tratamiento del Motivo de las respuestas;;;4121;9172;;;;;27/11/2014;;;;13/11/2014;28/11/2014;17/11/2014;26/11/2014
+PROY0130_04;Colombia;Pago a proveedores;En Test - Aceptación;PRO;Cheques;XMLV3;;4121;9172;;;;;;;;;;;;
+PROY0130_04;Colombia;Respuestas local aplicativo;En Test - Aceptación;XXX;OB;;;4121;9172;;;;;;;;;;;;
+PROY0130_05;Perú;Transferencias Internacionales (TEX Macug);En Test - Aceptación;TEX;;XMLV3;;697;;;;;;;;;;;;;
+PROY0130_05;Perú;Respuestas local aplicativo;En Test - Aceptación;XXX;OB;;;697;;;;;;;;;;;;;
+PROY0130_06;Perú;Saldos y movimientos;En Test - Conectividad;MT940;;;;697;;;;;;;;;;;;;
+PROY0131_01;Argentina;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;Chile;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;Colombia;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;México;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;Perú;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;Venezuela;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;USA;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_01;Uruguay;Saldos y movimientos;Implementado con OK;MT940;;;;;;27/05/2014;30/05/2014;;;07/06/2014;10/06/2014;;;20/05/2014;30/05/2014;19/05/2014;07/06/2014
+PROY0131_02;Argentina;Pago a proveedores;Parado por negocio;PAP;;;;;;;;;;;;;;;;;
+PROY0131_02;Chile;Pago a proveedores;Parado por negocio;PRO;;;;;;;;;;;;;;;;;
+PROY0131_02;Colombia;Pago a proveedores;Parado por negocio;PRO;;;;;;;;;;;;;;;;;
+PROY0131_02;México;Pago a proveedores (SIT);Parado por negocio;HST;;;;;;;;;;;;;;;;;
+PROY0131_02;Perú;Pago a Proveedores;Parado por negocio;M03;;;;;;;;;;;;;;;;;
+PROY0131_02;Venezuela;Pago a Proveedores;Parado por negocio;PRO;;;;;;;;;;;;;;;;;
+PROY0131_02;USA;Pagos (payment) - n.y.;Parado por negocio;TTN;;;;;;;;;;;;;;;;;
+PROY0132_01;Perú;Saldos y movimientos;Parado por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0132_01;México;Saldos y movimientos;Implementado sin OK;MT940;;;;;;22/10/2014;30/10/2014;08/11/2014;08/11/2014;08/11/2014;11/11/2014;11/11/2014;;;;;
+PROY0132_02;Venezuela;Pago a Proveedores;Parado por negocio;PRO;;;;;;;;;;;;;;;;;
+PROY0132_02;Perú;Pago a Proveedores;Parado por negocio;PAP;;;;;;;;;;;;;;;;;
+PROY0133_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;10000000133;13/05/2014;14/05/2014;21/05/2014;21/05/2014;20/05/2014;21/05/2014;21/05/2014;20/07/2014;12/05/2014;16/05/2014;;
+PROY0133_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;;;;;;;;;;;;
+PROY0133_01;España;Nóminas (FIM);Excluido por Timeout;FIM;;;;;;;;;;;;;;;;;
+PROY0133_01;España;Transferencias internacionales;Excluido por Timeout;TIN;;;;;;;;;;;;;;;;;
+PROY0133_01;España;Transferencias urgentes (OMF);Excluido por Timeout;OMF;;;;;;;;;;;;;;;;;
+PROY0133_02;Portugal;Saldos y movimientos;Implementado con OK;ISM;;;;;;20/06/2014;23/06/2014;07/07/2014;10/07/2014;05/07/2014;10/07/2014;10/07/2014;15/07/2014;23/06/2014;27/06/2014;;
+PROY0134_01;México;Pago a proveedores (SIT);Excluido por Timeout;HST;;;;;;;;;;;;;;;;;
+PROY0135_01;Chile;Saldos y movimientos;PDTE Doc Alcance en GCS;MT940;;;;;;;;;;;;;;;;;
+PROY0136_01;España;Transferencias EUR (FIT);Excluido por Timeout;FIT;;;;;;;;;;;;;;;;;
+PROY0136_01;España;Respuestas GMM;Excluido por Timeout;XXX;;;;;;;;;;;;;;;;;
+PROY0137_01;España;Saldos y movimientos;Implementado con OK;ISM;;;;;;26/08/2014;26/08/2014;08/09/2014;08/09/2014;06/09/2014;08/09/2014;08/09/2014;;;;;
+PROY0138_01;España;Saldos y movimientos;En Penny Test;MT940;;;;;;;;;;26/07/2014;;;;;;25/06/2014;25/06/2014
+PROY0138_02;Colombia;Saldos y movimientos;En Penny Test;MT940;;;;;;;;;;26/07/2014;;;;;;09/07/2014;10/07/2014
+PROY0138_03;México;Saldos y movimientos;En Penny Test;MT940;;;;;;;;;;09/08/2014;;;;;;09/07/2014;10/07/2014
+PROY0138_03;Perú;Saldos y movimientos;En Penny Test;MT940;;;;;;;;;;09/08/2014;;;;;;09/07/2014;10/07/2014
+PROY0138_04;Argentina;Saldos y movimientos;PDTE Valoración IT;MT940;;;;;;;;;;;;;;;;;
+PROY0140_01;Perú;Pago a Proveedores;Excluido por Timeout;M03;;;;;;;;;;;;;;;;;
+PROY0140_01;Perú;Nóminas;Excluido por Timeout;M02;;;;;;;;;;;;;;;;;
+PROY0140_01;Perú;Transferencias Domésticas;Excluido por Timeout;M01;;;;;;;;;;;;;;;;;
+PROY0140_02;Perú;Pago a Proveedores;PDTE Doc Alcance en GCS;M03;;;;;;;;;;;;;;;;;
+PROY0140_03;Perú;Saldos y movimientos;PDTE Doc Alcance en GCS;MT940;;;;;;;;;;;;;;;;;
+PROY0141_01;Colombia;Saldos y movimientos;Implementado con OK;MT940;;;;;;17/07/2014;18/07/2014;29/07/2014;29/07/2014;26/07/2014;29/07/2014;29/07/2014;30/07/2014;18/07/2014;25/07/2014;;
+PROY0141_02;Colombia;Pago a proveedores;En Test - Aceptación;MT101;;;;4090;;21/08/2014;;;;;;;;04/08/2014;30/08/2014;;
+PROY0141_02;Colombia;Respuestas MT195;En Test - Aceptación;MT195;;;;;;;;;;;;;;;;;
+PROY0142_01;España;Saldos y movimientos;Implementado con OK;ISM;17/10/14: se cambia el Gestor de Negocio;;;;;04/08/2014;04/08/2014;;;23/08/2014;28/08/2014;28/08/2014;30/10/2014;;;;
+PROY0142_01;España;Transferencias EUR (FIT);Implementado con OK;FIT;17/10/14: se cambia el Gestor de Negocio (anterior Ricardo García);;;;;05/08/2014;13/08/2014;;;23/08/2014;15/01/2015;15/01/2015;19/01/2015;30/07/2014;29/08/2014;;
+PROY0142_01;España;Transferencias urgentes (OMF);En Test - Aceptación;OMF;17/10/14: se cambia el Gestor de Negocio (anterior Ricardo García);;;;;;;;;;;;;;;;
+PROY0142_01;España;Transferencias internacionales;Implementado con OK;TIN;17/10/14: se cambia el Gestor de Negocio (anterior Ricardo García);;;;;05/08/2014;13/08/2014;;;23/08/2014;15/01/2015;15/01/2015;19/01/2015;;;;
+PROY0142_01;España;Nóminas (FIM);En Penny Test;FIM;17/10/14: se cambia el Gestor de Negocio. El cliente indica que hasta marzo-2015 no va apoder hacer el penny test de nóminas SEPA (19/01/1015);;;;;05/08/2014;25/09/2014;;;20/09/2014;;;;30/07/2014;29/08/2014;;
+PROY0142_01;España;Adeudos directos C19.14 SEPA - CORE;En Test - Aceptación;CSP;CORE;;;;;;;;;;;;;30/07/2014;30/09/2014;;
+PROY0142_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;En Test - Aceptación;X9D;17/10/14: se cambia el Gestor de Negocio (anterior Ricardo García);;;;;;;;;;;;;30/07/2014;30/09/2014;;
+PROY0142_01;España;Impagados Cuaderno 19.14 (SEPA) - CORE;En Test - Aceptación;X9R;17/10/14: se cambia el Gestor de Negocio (anterior Ricardo García);;;;;;;;;;;;;30/07/2014;30/09/2014;;
+PROY0142_01;España;Respuestas OB;Implementado con OK;XXX;Las respuestas aplicaran para todos los servicios enviados en xml V3: FIT TIN FIM OMF;;;;;05/08/2014;16/12/2014;;;16/12/2014;15/01/2015;15/01/2015;19/01/2015;;;;
+PROY0143_01;Perú;Saldos y movimientos;En Test - Conectividad;MVD;;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Transferencias Domésticas;En Penny Test;M01;;;;;;14/11/2014;05/12/2014;;;13/12/2014;;;;;;14/11/2014;05/12/2014
+PROY0143_02;Perú;Transferencias Internacionales (TEX Macug);En Penny Test;TEX;;;;;;14/11/2014;05/12/2014;;;13/12/2014;;;;;;14/11/2014;05/12/2014
+PROY0143_02;Perú;Respuestas local aplicativo;En Desarrollo;XXX;R21;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Respuestas local aplicativo;En Desarrollo;XXX;R22;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Respuestas local aplicativo;En Desarrollo;XXX;R23;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Respuestas local aplicativo;En Desarrollo;XXX;R24;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Respuestas local aplicativo;En Desarrollo;XXX;R4X;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Respuestas;En Desarrollo;XXX;Respuestas globales. R_XML_V3;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Otros servicios no disponibles;PDTE Doc Alcance en GCS;XXX;;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Pago a Proveedores;Excluido por negocio;M03;;;;;;;;;;;;;;;;;
+PROY0143_02;Perú;Nóminas;Excluido por negocio;M02;;;;;;;;;;;;;;;;;
+PROY0144_01;Colombia;Transferencias;Parado por negocio;TRN;;XML_V3;TRN;;;;;;;;;;;;;;
+PROY0144_01;Colombia;Respuestas MT195;Parado por negocio;MT195;;;;;;;;;;;;;;;;;
+PROY0144_01;Colombia;Saldos y Movimientos;En Penny Test;MT940;;;;;;;;;;18/11/2014;;;;;;;
+PROY0144_01;Colombia;Pago a proveedores;Parado por negocio;PRO;;XML_V3;PRO;;;;;;;;;;;;;;
+PROY0144_01;Colombia;Nóminas;Parado por negocio;NMA;;XML_V3;NMA;;;;;;;;;;;;;;
+PROY0145_01;Argentina;Nóminas;PDTE Valoración IT;NOM;;;;;;;;;;;;;;;;;
+PROY0146_01;España;Saldos y movimientos;PDTE Doc Alcance en GCS;ISM;;;;;;;;;;;;;;;;;
+PROY0146_01;España;Saldos y movimientos;PDTE Doc Alcance en GCS;MVD;;;;;;;;;;;;;;;;;
+PROY0147_01;España;Transferencias EUR (FIT);En Penny Test;FIT;;;;;;16/12/2014;20/12/2014;;;24/01/2015;;;;;;16/12/2014;20/12/2014
+PROY0147_01;España;Transferencias internacionales;Parado por negocio;TIN;;;;;;;;;;;;;;;;;
+PROY0147_01;España;Transferencias urgentes (OMF);Parado por negocio;OMF;;;;;;;;;;;;;;;;;
+PROY0147_01;España;Respuestas;Parado por negocio;XXX;Respuestas XML;;;;;;;;;;;;;;;;
+PROY0147_01;España;Adeudos directos C19.14 SEPA - CORE;Parado por negocio;CSP;CORE;;;;;;;;;;;;;;;;
+PROY0147_01;España;C19.14 Cancelaciones/Retrocesiones SEPA - COR1;Parado por negocio;SCA;COR1;;;;;;;;;;;;;;;;
+PROY0147_01;España;Impagados Cuaderno 19.14 (SEPA) - COR1;Parado por negocio;X9D;COR1;;;;;;;;;;;;;;;;
+PROY0147_01;España;Transferencias internacionales;Parado por negocio;TIN;;;;;;;;;;;;;;;;;
+PROY0147_01;España;Saldos y movimientos;En Penny Test;MVD;;;;;;24/11/2014;24/11/2014;;;13/12/2014;;;;;;24/11/2014;24/11/2014
+PROY0148_01;Colombia;Pago a proveedores;Parado por negocio;MT101;;;;;;;;;;;;;;;;;
+PROY0148_01;Colombia;Nóminas;Parado por negocio;NMA;;;;;;;;;;;;;;;;;
+PROY0148_01;Colombia;Pago a proveedores;Parado por negocio;PRO;;;;;;;;;;;;;;;;;
+PROY0148_01;Colombia;Transferencias;Parado por negocio;TRN;;;;;;;;;;;;;;;;;
+PROY0148_01;Colombia;Respuestas;Parado por negocio;MT199;;;;;;;;;;;;;;;;;
+PROY0148_01;Colombia;Saldos y movimientos;Parado por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0149_01;Colombia;Saldos y movimientos;Excluido por negocio;MT940;;;;;;;;;;;;;;27/10/2014;31/10/2014;;
+PROY0150_01;México;Saldos y movimientos;En Penny Test;MT940;16-10-2014. Nuevo C100 por ajuste del puerto propuesto por Solutions. 30-10-2014. Nuevo C100 por ajuste en el nombre del fichero en un apartado. No supone Cambio de alcance.;;;;;29/10/2014;14/11/2014;;;08/11/2014;;;;29/10/2014;14/11/2014;29/10/2014;14/11/2014
+PROY0150_01;México;Movimientos del día en fichero (MT942);En Penny Test;MT942;16-10-2014. Nuevo C100 por ajuste del puerto propuesto por Solutions. 30-10-2014. Nuevo C100 por ajuste en el nombre del fichero en un apartado. No supone Cambio de alcance.;;;;;29/10/2014;14/11/2014;;;08/11/2014;;;;29/10/2014;14/11/2014;29/10/2014;14/11/2014
+PROY0151_01;España;Saldos y movimientos;Implementado con OK;ISM;Aunque se ha subido a producción el 15/11/14 el cliente ha pedido que se le deshabilite la recepción del AEB43 hasta el 2/12/14;;;;;05/11/2014;05/11/2014;;;15/11/2014;02/12/2014;02/12/2014;02/12/2014;;;;
+PROY0152_01;España;Saldos y movimientos;En Penny Test;MVD;;;;;;15/12/2014;18/12/2014;;;24/01/2015;;;;;;;
+PROY0152_01;España;Transferencia sepa 34.12;PDTE Valoración IT;TRS;;;;;;;;;;;;;;;;;
+PROY0152_01;España;Transferencias internacionales;PDTE Valoración IT;TIN;;;;;;;;;;;;;;;;;
+PROY0152_01;España;Transferencias internacionales;PDTE Valoración IT;TIN;MUL;;;;;;;;;;;;;;;;
+PROY0152_01;España;Transferencias urgentes (OMF);PDTE Valoración IT;OMF;MUL;;;;;;;;;;;;;;;;
+PROY0153_01;México;Pago a proveedores (SIT);Parado por negocio;HST;MUL;;;;;;;;;;;;;;;;
+PROY0154_01;Perú;Saldos y movimientos;En Test - Aceptación;MT940;MUL;;;;;27/02/2015;;;;;;;;;;;
+PROY0154_02;Perú;Nóminas;En Test - Aceptación;M02;MUL;;;;;21/01/2015;;;;;;;;;;;
+PROY0154_02;Perú;Pago a Proveedores;En Test - Aceptación;M03;MUL;;;;;21/01/2015;;;;;;;;;;;
+PROY0154_02;Perú;Transferencias Domésticas;En Test - Aceptación;M01;MUL;;;;;21/01/2015;;;;;;;;;;;
+PROY0154_02;Perú;Transferencias Internacionales (TEX Macug);En Test - Aceptación;TEX;BBVA actúa como cliente en la comunicación FTPS;;;;;21/01/2015;;;;;;;;;;;
+PROY0154_02;Perú;Respuestas local aplicativo;En Test - Aceptación;XXX;RECI VALI PROC. BBVA actúa como cliente en la comunicación FTPS;;;;;21/01/2015;;;;;;;;;;;
+PROY0155_01;México;Saldos y movimientos;Parado por negocio;MT940;;;;;;;;;;;;;;;;;
+PROY0156_01;España;Transferencias internacionales;En Test - Conectividad;TIN;Me voy de vacaciones del 22-12-2014 hasta 8-01-2015. Durante mis vacaciones, mi backup, no mueve las valoraciones ni pide OK a Negocio, ni pas plan de trabajo. Lo hago yo a mi regreso.;;;;;;;;;;;;;19/01/2015;27/02/2015;;
+PROY0156_01;España;Transferencias EUR (FIT);En Test - Conectividad;FIT;Me voy de vacaciones del 22-12-2014 hasta 8-01-2015. Durante mis vacaciones, mi backup, no mueve las valoraciones ni pide OK a Negocio, ni pas plan de trabajo. Lo hago yo a mi regreso.;;;;;;;;;;;;;19/01/2015;27/02/2015;;

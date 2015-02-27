@@ -75,7 +75,7 @@ function ajaxServicios(pais,target,targetExt){
 							extensionesarr.forEach(function(entry){
 								extensiones = extensiones+" " + entry;
 							});
-							target.append($("<option></option>").attr("value",String(id)).text(name)).attr("data-pais",String(paisId)).attr("data-extensiones",extensiones);
+							target.append($("<option></option>").attr("value",name).text(name)).attr("data-pais",String(paisId)).attr("data-extensiones",extensiones);
 						}
 						target.selectpicker("refresh");
 						//
@@ -86,13 +86,13 @@ function ajaxServicios(pais,target,targetExt){
 	}else{target.append($("<option></option>").attr("value","default").text("-"));}
 	target.selectpicker("refresh");
 }
-function ajaxExtensiones(servicio,target){
+function ajaxExtensiones(servicio,pais,target){
 	target.empty();
 	target.selectpicker("render");
 	target.empty();
 	if (servicio!="default"){
 		 var formURL = "/serviceServlet?";
-		 var postData="accion=getExtensionesByService&service="+servicio;
+		 var postData="accion=getExtensionesByService&service="+servicio+"&pais="+pais;
 		 $.ajax(			
 			{
 				url : formURL,
@@ -113,6 +113,41 @@ function ajaxExtensiones(servicio,target){
 					target.selectpicker("refresh");
 						//
 
+				}					
+				
+			});
+	}else{target.append($("<option></option>").attr("value","default").text("-"));}
+	target.selectpicker("refresh");
+}
+
+function ajaxProyectos(cliente,target){
+	target.empty();
+	target.selectpicker("render");
+	target.empty();
+	if (cliente!="default"){
+		 var formURL = "/serviceServlet?";
+		 var postData="accion=getProjectsByClient&client="+cliente;
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success=="true"){
+						
+						var projects = data.proyectos[0];
+						
+						var tamano = projects.length;
+						for (var i = 0 ; i < tamano; i=i+2){
+							var id = projects[i];
+							var name = projects[i+1];
+							target.append($("<option></option>").attr("value",id).text(name));
+						}
+
+						
+					}
+					target.selectpicker("refresh");
 				}					
 				
 			});
@@ -177,16 +212,19 @@ $(function(){
 	
 	
 	$('#new-service-form').on('change', '#servicio', function(e) {
+		var pais = $('#pais_servicio').val();
 		var servicio = $('#servicio').val();
 		var target = $('#extension');
-		ajaxExtensiones(servicio,target);
+		ajaxExtensiones(servicio,pais,target);
 				
 	});
 	
-	$('#new-service-form').on('change', '#cliente-filtro-servicio', function(e) {
-		var servicio = $('#cliente-filtro-servicio').val();
+
+	
+	$('#new-service-form').on('change', '#id_cliente', function(e) {
+		var cliente = $('#id_cliente').val();
 		var target = $('#cod_proyecto');
-		ajaxExtensiones(cliente,target);
+		ajaxProyectos(cliente,target);
 				
 	});
 	
@@ -200,9 +238,10 @@ $(function(){
 	});
 	
 	$('#new-servicio').on('change', '#servicio', function(e) {
+		var pais = $('#pais_servicio').val();
 		var servicio = $('#servicio').val();
 		var target = $('#extension');
-		ajaxExtensiones(servicio,target);
+		ajaxExtensiones(servicio,pais,target);
 				
 	});
 	
@@ -210,20 +249,30 @@ $(function(){
 		var pais = $('#pais_servicio_modal').val();
 		var target = $('#servicio_modal');
 		var targetExt = $('#extension_modal');
-		
 		ajaxServicios(pais,target,targetExt);
-		
 	});
 	
 	$('html').on('change', '#servicio_modal', function(e) {
 		var servicio = $('#servicio_modal').val();
 		var target = $('#extension_modal');
-		
-		
-		ajaxExtensiones(servicio,target);
-		
+		var pais = $('#pais_servicio_modal').val();
+		ajaxExtensiones(servicio,pais,target);
 	});
 	
+	
+	$('html').on('change', '#pais_servicio_new_inform', function(e) {
+		var pais = $('#pais_servicio_new_inform').val();
+		var target = $('#servicio_new_inform');
+		var targetExt = $('#extension_new_inform');
+		ajaxServicios(pais,target,targetExt);
+	});
+	
+	$('html').on('change', '#servicio_new_inform', function(e) {
+		var servicio = $('#servicio_new_inform').val();
+		var target = $('#extension_new_inform');
+		var pais = $('#pais_servicio_new_inform').val();
+		ajaxExtensiones(servicio,pais,target);
+	});
 	
 	
 	

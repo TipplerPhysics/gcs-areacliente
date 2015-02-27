@@ -29,21 +29,25 @@
 				method="POST" novalidate="novalidate">
 				<div class="form-container">
 					<div class="form-field-divider left">
+					
+					
+						<div class="form-field">
+							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" id="id_cliente" data-live-search="true" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<c:forEach items="${clientes}" var="cliente">
+										<option value="${cliente.key.id}">${cliente.nombre}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Cód. de proyecto<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" data-live-search="true" required aria-required="true" data-live-search="true">
-									<option value="default">Seleccionar</option>	
-									<c:forEach items="${proyectos}" var="p">	
-										<option value="${p.key.id}">${p.cod_proyecto}
-											<c:forEach items="${clientes}" var="cliente">
-												<c:if test="${cliente.key.id==p.clienteKey}">
-													${cliente.nombre}
-												</c:if>
-											</c:forEach>	
-										</option>
-									</c:forEach>								
+								<select class="selectpicker selected" name="cod_proyecto" id="cod_proyecto" data-live-search="true" required aria-required="true">
+									<option value="default">-</option>							
 								</select>
 							</div>
 						</div>
@@ -54,7 +58,7 @@
 								<select class="selectpicker selected" name="pais" id="pais_servicio" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
-										<option value="${t.key.id}">${t.name}</option>
+										<option value="${t.name}">${t.name}</option>
 									</c:forEach>																	
 								</select>
 							</div>

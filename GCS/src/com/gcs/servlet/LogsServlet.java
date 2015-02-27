@@ -65,7 +65,7 @@ public class LogsServlet extends HttpServlet {
 			LogsDao lDao = LogsDao.getInstance();
 			List<Log> logs = lDao.getAllLogs();
 			
-			WritableSheet s = w.createSheet("Gestion de costes", 0);
+			WritableSheet s = w.createSheet("Auditoría", 0);
 
 			WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12);
 			cellFont.setColour(Colour.WHITE);

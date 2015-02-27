@@ -26,6 +26,7 @@ import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
@@ -62,6 +63,8 @@ public class ServicioServlet extends HttpServlet {
 				generateXLS(req,resp);
 			}else if ("getExtensionesByService".equals(accion)){
 				getExtensionesByService(req,resp);
+			}else if ("getProjectsByClient".equals(accion)){
+				getProjectsByClient(req,resp);
 			}
 		
 		} catch (IOException | JSONException | ServletException e) {
@@ -424,12 +427,40 @@ public class ServicioServlet extends HttpServlet {
 
 		
 	}
-	
+	private void getProjectsByClient(HttpServletRequest req, HttpServletResponse resp){
+		String client_str = req.getParameter("client");
+		long idClient = Long.parseLong(client_str);
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		List<Proyecto> proyectos = proyectoDao.getProjectsByClient(idClient);
+		
+				
+		try{
+		
+			
+			JSONObject json = new JSONObject();
+			JSONArray jarray = new JSONArray();
+			
+			for (Proyecto o:proyectos){
+				jarray.put(o.getKey().getId());
+				jarray.put(o.getCod_proyecto());
+			}
+			
+			json.append("success","true");
+			json.append("proyectos", jarray);
+			
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			resp.getWriter().println(json);
+		
+		} catch (IOException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private void getServicesByCountry(HttpServletRequest req, HttpServletResponse resp){
 		String pais_str = req.getParameter("pais");
-		long idPais = Long.parseLong(pais_str);
 		PaisDao paisDao = PaisDao.getInstance();
-		Pais pais = paisDao.getPaisById(idPais);
+		Pais pais = paisDao.getPaisByName(pais_str);
 				
 		try{
 		
@@ -461,9 +492,13 @@ public class ServicioServlet extends HttpServlet {
 	}
 	private void getExtensionesByService(HttpServletRequest req, HttpServletResponse resp){
 		String service_str = req.getParameter("service");
-		long idService = Long.parseLong(service_str);
+		String pais_str = req.getParameter("pais");
+		
+		//long idService = Long.parseLong(service_str);
+		PaisDao paisDao = PaisDao.getInstance();
+		Pais paisenty = paisDao.getPaisByName(pais_str);
 		ServicioFileDao servDao = ServicioFileDao.getInstance();
-		ServicioFile servicio = servDao.getServicioFileById(idService);
+		ServicioFile servicio = servDao.getServicioFileByNamePais(service_str,paisenty.getKey().getId());
 		ArrayList<String> extensiones = servicio.getExtensiones();  
 		try{
 		
