@@ -63,7 +63,7 @@ public class UserFilter implements Filter {
 	
 							}else {
 								req.setAttribute("entorno",
-									"https://pro.gcs-areacliente.appspot.com");
+									"https://gcs-areacliente.appspot.com");
 						}
 					}
 				}
