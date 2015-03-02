@@ -5,7 +5,7 @@
 <div class="gestion_servicio">
 
 	<h1>Gesti&oacute;n servicio</h1>
-	<span class="btn-atras" onclick="window.location.href='${entorno}/dashboard/gestionProyecto.do'"></span>
+	<span class="btn-atras" onclick="window.location.href='/dashboard/gestionProyecto.do'"></span>
 	
 	
 	<hr/>

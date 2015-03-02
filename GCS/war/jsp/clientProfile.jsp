@@ -101,7 +101,7 @@
 								</c:forEach>
 							 </td>
 					 		 <td>${servicio.cod_servicio}</td>
-					 		 <td></td>
+					 		 <td>${servicio.servicio}</td>
 					 		 <td>${servicio.estado} con ${servicio.estadoSubida}</td>
 					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
 					 		</tr>
