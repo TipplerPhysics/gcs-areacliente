@@ -3,7 +3,15 @@ FTP;H2H
 FTPS;H2H
 SFTP;H2H
 Webservices;H2H
-No aplica;Global Netcash
-No aplica;H2H-BancoRelay
-No aplica;Swift-BancoRelay
-No aplica;Swift-Fileact
+Score;Global Netcash
+Macug;Global Netcash
+Score;Swift-Fileact
+Macug;Swift-Fileact
+AS2;H2H-BancoRelay
+FTP;H2H-BancoRelay
+FTPS;H2H-BancoRelay
+SFTP;H2H-BancoRelay
+Webservices;H2H-BancoRelay
+Score;Swift-BancoRelay
+Macug;Swift-BancoRelay
+HTTPS;H2H

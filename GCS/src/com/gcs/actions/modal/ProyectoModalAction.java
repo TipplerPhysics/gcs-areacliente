@@ -13,9 +13,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.ConectividadProyecto;
+import com.gcs.beans.ProductoProyecto;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ConectividadProyectoDao;
+import com.gcs.dao.ProductoProyectoDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
 
@@ -79,7 +83,11 @@ public class ProyectoModalAction extends Action {
 			
 			
 		}
+		List<ProductoProyecto> productoProyecto = ProductoProyectoDao.getInstance().getAllProductoProyectoes();
 		
+		List<ConectividadProyecto> conectividadProyecto = ConectividadProyectoDao.getInstance().getConectividadesByProducto(p.getProducto());
+		req.setAttribute("conectividades", conectividadProyecto);
+		req.setAttribute("productos", productoProyecto);
 		req.setAttribute("clientes", clientes);
 		req.setAttribute("gestores_it", gestores_it);
 		req.setAttribute("gestores_negocio", gestores_negocio);

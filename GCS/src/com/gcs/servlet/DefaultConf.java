@@ -690,15 +690,7 @@ public class DefaultConf extends HttpServlet {
 			e.printStackTrace();
 			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
 		}
-		User user = new User();
-		user.setActivo(true);
-		user.setErased(false);
-		user.setPermiso(1);
-		user.setPermisoStr("1");
-		user.setEmail("david.martin.beltran.contractor@bbva.com");
-		user.setNombre("david");
-		UserDao userDao = UserDao.getInstance();
-		userDao.createUser(user, usermail);
+
 		
 		return result;
 					

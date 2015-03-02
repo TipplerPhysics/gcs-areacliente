@@ -108,12 +108,10 @@
 						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
 						<div class="input">
 							<select class="selectpicker selected" id="producto_modal" name="producto" required aria-required="true">
-							   
-							    <option value="Global Netcash">Global Netcash</option>
-							    <option value="H2H">H2H</option>
-							    <option value="H2H-BancoRelay">H2H-BancoRelay</option>
-							    <option value="Swift-BancoRelay">Swift-BancoRelay</option>
-							    <option value="Swift-Fileact">Swift-Fileact</option>												
+							    <option value="default">Seleccionar</option>
+							    <c:forEach items="${productos}" var="producto">
+							    	<option value="${producto.name}">${producto.name}</option>
+								</c:forEach>											
 							</select>
 						</div>
 					</div>
@@ -122,17 +120,9 @@
 						<span class="lbl">Conectividad:</span>
 						<div class="input">
 							<select class="selectpicker" id="conectividad_modal" name="conectividad" data-live-search="true">
-							    <option value="default">Seleccionar</option>
-							    <option value="AS2">AS2</option>
-							    <option value="Fileact">Fileact</option>
-							    <option value="FTP">FTP</option>
-							    <option value="FTPS">FTPS</option>
-							    <option value="Host to Web">Host to Web</option>								    
-							    <option value="HTTPS">HTTPS</option>
-							    <option value="Macug">Macug</option>
-							    <option value="Score">Score</option>
-							    <option value="SFTP">SFTP</option>
-							    <option value="Webservices">Webservices</option>												
+							    <c:forEach items="${conectividades}" var="conectividad">
+							    <option value="${conectividad.name}">${conectividad.name}</option>
+								</c:forEach>												
 							</select>
 						</div>
 					</div>

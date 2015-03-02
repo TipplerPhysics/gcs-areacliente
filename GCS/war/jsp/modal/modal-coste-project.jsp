@@ -42,6 +42,9 @@
 									<option value="2" <c:if test="${coste.num_valoracion eq '2'}">selected</c:if>>2</option>
 									<option value="3" <c:if test="${coste.num_valoracion eq '3'}">selected</c:if>>3</option>
 									<option value="4" <c:if test="${coste.num_valoracion eq '4'}">selected</c:if>>4</option>
+									<option value="5" <c:if test="${coste.num_valoracion eq '5'}">selected</c:if>>5</option>
+									<option value="6" <c:if test="${coste.num_valoracion eq '6'}">selected</c:if>>6</option>
+									<option value="7" <c:if test="${coste.num_valoracion eq '7'}">selected</c:if>>7</option>
 								</select>
 							</div>
 						</div>
