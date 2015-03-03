@@ -213,6 +213,7 @@ public class ClienteServlet extends HttpServlet {
 			
 			
 			String ref_global = req.getParameter("ref_global");
+			if(ref_global.equals("")||ref_global.equals(" "))ref_global=null;
 
 			String id = req.getParameter("id");
 			String logo_url = req.getParameter("logo_url");
@@ -231,10 +232,11 @@ public class ClienteServlet extends HttpServlet {
 			c = cDao.getClienteById(Long.parseLong(id));
 			
 			String errorMsg = "";
-			
-			if (cDao.getClienteByRefGlobal(ref_global)!=null) {
-				if (!cDao.getClienteByRefGlobal(ref_global).equals(c)){
-					errorMsg = "Ya existe un usuario con esta referencia global";
+			if(ref_global!=null){
+				if (cDao.getClienteByRefGlobal(ref_global)!=null) {
+					if (!cDao.getClienteByRefGlobal(ref_global).equals(c)){
+						errorMsg = "Ya existe un usuario con esta referencia global";
+					}
 				}
 			}
 			
