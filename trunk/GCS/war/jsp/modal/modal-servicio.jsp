@@ -56,7 +56,20 @@
 								</select>
 							</div>
 						</div>
+												
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true" data-live-search="true"> 
+									<option value="default">Seleccionar</option>
+										<c:forEach items="${estados}" var="e">							
+											<option value="${e.name}" ${servicio.estado == e.name ? 'selected' : ''}>${e.name}</option>
+										</c:forEach>																
+								</select>
+							</div>
+						</div>
 						
+					<!--
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -82,7 +95,7 @@
 								</select>
 							</div>
 						</div>
-						
+					-->
 						<div class="form-field">
 							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long" required aria-required="true">

@@ -35,7 +35,7 @@
 								<select id="dto_select_modal"
 									class="long selectpicker selected" name="dto" data-live-search="true"> 
 									<c:forEach items="${departamentos}" var="departamento">		         	
-										<option value="${departamento.value}">${departamento.desc}</option>
+										<option value="${departamento.name}">${departamento.name}</option>
 									</c:forEach>
 								</select>
 							</div>

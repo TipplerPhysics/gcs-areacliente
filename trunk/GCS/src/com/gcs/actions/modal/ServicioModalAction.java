@@ -12,9 +12,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.gcs.beans.Estados;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
+import com.gcs.dao.EstadosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ServicioFileDao;
@@ -27,6 +29,11 @@ public class ServicioModalAction extends Action {
 		try {
 			
 			String id= req.getParameter("id");
+			
+			EstadosDao estDao = EstadosDao.getInstance();
+			List<Estados> estados = estDao.getAllEstados();
+			
+			req.setAttribute("estados", estados);
 			
 			ServicioDao sDao = ServicioDao.getInstance();
 			

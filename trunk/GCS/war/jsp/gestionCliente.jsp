@@ -28,7 +28,7 @@
 		<button id="excel_btn" onclick="window.location.href='../../clienteServlet?accion=xls'">
 			Descargar Tabla<span class="excel_span"></span>
 		</button>
-
+		
 
 		<div class="new-user-form-holder">
 			<form id="new-client-form" name="new-client-form" action="/clienteServlet"

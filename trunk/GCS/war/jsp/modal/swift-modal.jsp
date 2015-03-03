@@ -42,7 +42,19 @@
 					</div>
 					<div class="form-field-divider right">
 						
+						<div class="form-field">
+							<span class="lbl">Seguridad:</span>
+							<div class="input">
+								<select name="seguridad" id="seguridad" class="long selectpicker">
+									<option selected value="default">Seleccionar</option>
+									<c:forEach items="${seguridad}" var="segur">							
+										<option value="${segur.name}" ${conectividad.seguridad == segur.name ? 'selected' : ''}>${segur.name}</option>
+									</c:forEach>																
+								</select>
+							</div>
+						</div>
 						
+					<!--
 						<div class="form-field">
 							<span class="lbl">Seguridad:</span>
 							<div class="input">
@@ -56,7 +68,7 @@
 								</select>
 							</div>
 						</div>
-						
+					-->	
 						<div class="form-field">
 							<span class="lbl">Fecha inicio seguridad:</span>
 							<div class="input">
@@ -71,6 +83,19 @@
 							</div>
 						</div>	
 						
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado" data-live-search="true">
+									<option selected value="default">Seleccionar</option>
+										<c:forEach items="${estados}" var="est">							
+											<option value="${est.name}" ${conectividad.estado == est.name ? 'selected' : ''}>${est.name}</option>
+										</c:forEach>																
+								</select>
+							</div>
+						</div>
+							
+					<!--
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -96,11 +121,10 @@
 								</select>							
 								</select>
 							</div>
-						</div>					
-							
+						</div>
+					-->
+											
 					</div>	
-							 
-					
 				</div>
 				
 			</form>

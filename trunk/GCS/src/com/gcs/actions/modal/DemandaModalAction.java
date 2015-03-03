@@ -13,9 +13,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.EstadoPeticion;
+import com.gcs.beans.TipoPeticion;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.DemandaDao;
+import com.gcs.dao.EstadoPeticionDao;
+import com.gcs.dao.TipoPeticionDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 
@@ -33,9 +37,11 @@ public class DemandaModalAction extends Action{
 		DemandaDao dDao = DemandaDao.getInstance();
 		ClienteDao cDao = ClienteDao.getInstance();
 		
+		EstadoPeticionDao estPeticionDao = EstadoPeticionDao.getInstance();
+		List<EstadoPeticion> estadoPeticion = estPeticionDao.getAllEstadoPeticion();
 		
-		
-		
+		TipoPeticionDao tpPeticionDao = TipoPeticionDao.getInstance();
+		List<TipoPeticion> tipoPeticion = tpPeticionDao.getAllTipoPeticion();
 		
 		Cliente cliente = cDao.getClienteById(Long.parseLong(cliente_str));
 		
@@ -96,6 +102,9 @@ public class DemandaModalAction extends Action{
 		req.setAttribute("minutosList", Utils.getMinutosList());
 
 		req.setAttribute("demandaList", dDao.getAllDemandas());
+		
+		req.setAttribute("estadoPeticion", estadoPeticion);
+		req.setAttribute("tipoPeticion", tipoPeticion);
 
 		return mapping.findForward("ok");
 	}
