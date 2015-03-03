@@ -81,6 +81,19 @@
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true" data-live-search="true">
+									<option selected value="default">Seleccionar</option>
+										<c:forEach items="${tipoPeticion}" var="tipoPeticion">
+											<option value="${tipoPeticion.name}">${tipoPeticion.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						
+					<!--
+						<div class="form-field">
+							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="tipo" id="tipo" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>								
 									<option value="PRUC">PRUC</option>
 									<option value="CONS">CONS</option>
@@ -95,6 +108,7 @@
 								</select>
 							</div>
 						</div>
+					-->
 						<div class="form-field">
 							<span class="lbl">Devuelta<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -109,6 +123,18 @@
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true" data-live-search="true">
+									<option selected value="default">Seleccionar</option>
+										<c:forEach items="${estadoPeticion}" var="estadoPeticion">
+											<option value="${estadoPeticion.name}">${estadoPeticion.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+					<!--
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true" data-live-search="true">
 									<option value="Pendiente de asignaci&oacute;n">Pendiente de asignaci&oacute;n</option>
 									<option value="Asignada">Asignada</option>
 									<option value="Devuelta">Devuelta</option>
@@ -117,6 +143,7 @@
 								</select>
 							</div>
 						</div>
+					-->
 						<div class="form-field">
 							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">

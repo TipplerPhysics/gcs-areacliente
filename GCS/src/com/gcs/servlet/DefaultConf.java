@@ -35,6 +35,11 @@ import com.gcs.beans.Servicio;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
+import com.gcs.beans.Departamentos;
+import com.gcs.beans.Estados;
+import com.gcs.beans.Seguridad;
+import com.gcs.beans.EstadoPeticion;
+import com.gcs.beans.TipoPeticion;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadProyectoDao;
 import com.gcs.dao.ContadorClienteDao;
@@ -50,6 +55,11 @@ import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.CosteDao;
 import com.gcs.dao.DemandaDao;
+import com.gcs.dao.DepartamentosDao;
+import com.gcs.dao.EstadosDao;
+import com.gcs.dao.SeguridadDao;
+import com.gcs.dao.EstadoPeticionDao;
+import com.gcs.dao.TipoPeticionDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -123,12 +133,33 @@ public class DefaultConf extends HttpServlet {
 					json.append("result", result);
 				}else if ("demanda".equals(accion)){
 					result = loadDemanda(req,resp, usermail);
-					json.append("success", "true");
+				json.append("success", "true");
 					json.append("result", result);
 				}else if ("paises".equals(accion)){
 					result = loadPaises(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
+				}else if ("departamentos".equals(accion)){
+					result = loadDepartamentos(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("estados".equals(accion)){
+					result = loadEstados(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("seguridad".equals(accion)){
+					result = loadSeguridad(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("estadoPeticion".equals(accion)){
+					result = loadEstadoPeticion(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("tipoPeticion".equals(accion)){
+					result = loadTipoPeticion(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+
 				}else if ("producto".equals(accion)){
 					result = loadProductoProyecto(req,resp, usermail);
 					json.append("success", "true");
@@ -765,6 +796,156 @@ public class DefaultConf extends HttpServlet {
 		return result;
 	}
 	
+	private String loadDepartamentos(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/departamentos____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			DepartamentosDao departamentosDao = DepartamentosDao.getInstance();
+			departamentosDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					Departamentos departamento = new Departamentos();
+					departamento.setNme(inputLine);
+					departamentosDao.createDepartamentos(departamento);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
+	private String loadEstados(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/estados____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			EstadosDao estadosDao = EstadosDao.getInstance();
+			estadosDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					Estados estado = new Estados();
+					estado.setNme(inputLine);
+					estadosDao.createEstados(estado);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
+	private String loadSeguridad(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/seguridad____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			SeguridadDao seguridadDao = SeguridadDao.getInstance();
+			seguridadDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					Seguridad seguridad = new Seguridad();
+					seguridad.setNme(inputLine);
+					seguridadDao.createSeguridad(seguridad);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
+	private String loadEstadoPeticion(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/estadoPeticion____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			EstadoPeticionDao estadoPeticionDao = EstadoPeticionDao.getInstance();
+			estadoPeticionDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					EstadoPeticion estPeticion = new EstadoPeticion();
+					estPeticion.setNme(inputLine);
+					estadoPeticionDao.createEstadoPeticion(estPeticion);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+
+	private String loadTipoPeticion(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String link = "/datadocs/tipoPeticion____.csv";
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			TipoPeticionDao tipoPeticionDao = TipoPeticionDao.getInstance();
+			tipoPeticionDao.deleteAll();
+			String inputLine = new String();
+			
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+
+				if (!line.equals("")&&!line.equals(null)){
+					TipoPeticion tpPeticion = new TipoPeticion();
+					tpPeticion.setNme(inputLine);
+					tipoPeticionDao.createTipoPeticion(tpPeticion);
+				}
+				
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		return result;
+	}
+	
 	private String loadProductoProyecto(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		String result = "";
 		String link = "/datadocs/producto.csv";
@@ -834,6 +1015,7 @@ public class DefaultConf extends HttpServlet {
 		return result;
 	}
 	
+
 	private String loadServicios(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		boolean save = false;
 		String saveParam = req.getParameter("save"); 

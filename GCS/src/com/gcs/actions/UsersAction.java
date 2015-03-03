@@ -12,8 +12,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.User;
+import com.gcs.beans.Departamentos;
 import com.gcs.config.StaticConfig;
 import com.gcs.dao.UserDao;
+import com.gcs.dao.DepartamentosDao;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -26,7 +28,9 @@ public class UsersAction extends Action {
 		try {
 			UserDao uDao = UserDao.getInstance();
 			List<User> usuarios = uDao.getAllNonDeletedUsers();
-
+			
+			DepartamentosDao dptDao = DepartamentosDao.getInstance();
+			List<Departamentos> departamentos = dptDao.getAllDepartamentos();
 			// req.getSession().setAttribute("userList", usuarios);
 
 			/*
@@ -42,7 +46,8 @@ public class UsersAction extends Action {
 			 */
 			req.setAttribute("userList", usuarios);
 			req.setAttribute("permisos", StaticConfig.permisos);
-			req.setAttribute("departamentos", StaticConfig.departamentos);			
+			// req.setAttribute("departamentos", StaticConfig.departamentos);
+			req.setAttribute("departamentos", departamentos);
 
 		} catch (Exception e) {
 			e.printStackTrace();

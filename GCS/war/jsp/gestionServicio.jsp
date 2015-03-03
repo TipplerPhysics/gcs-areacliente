@@ -66,7 +66,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Servicio<span class="required-asterisk">*</span>:</span>
-							<div class="input">
+							<div class="input">					
 								<select class="selectpicker selected" name="servicio" id="servicio" required aria-required="true" data-live-search="true">
 									<option value="default">-</option>																	
 								</select>
@@ -82,6 +82,18 @@
 							</div>
 						</div>
 						
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado" data-live-search="true">
+									<option selected value="default">Seleccionar</option>
+										<c:forEach items="${estados}" var="estado">
+											<option value="${estado.name}">${estado.name}</option>
+										</c:forEach>
+								</select>
+							</div>
+						</div>
+					<!--
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -108,7 +120,7 @@
 								</select>
 							</div>
 						</div>
-						
+					-->
 						<div class="form-field">
 							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio" name="cod_servicio" class="long" required aria-required="true" maxlength="25">
@@ -140,10 +152,6 @@
 							<span class="lbl">Referencia:</span>
 							<input type="text"  name="ref_local2" class="long" maxlength="25">
 						</div>
-						
-
-						
-						
 						
 					</div>
 					<div class="form-field-divider right">

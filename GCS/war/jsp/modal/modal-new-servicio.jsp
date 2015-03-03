@@ -53,18 +53,14 @@
 						</div>
 						-->
 						
-												<div class="form-field">
+						<div class="form-field">
 							<span class="lbl">País<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="pais" id="pais_servicio_new_inform" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<c:forEach items="${paises}" var="t">							
 										<option value="${t.name}">${t.name}</option>
-									</c:forEach>
-									
-
-									
-																											
+									</c:forEach>																											
 								</select>
 							</div>
 						</div>
@@ -86,6 +82,20 @@
 								</select>
 							</div>
 						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado" data-live-search="true">
+									<option selected value="default">Seleccionar</option>
+										<c:forEach items="${estados}" var="estado">
+											<option value="${estado.name}">${estado.name}</option>
+										</c:forEach>
+								</select>
+							</div>
+						</div>
+						
+			<!--		
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -112,7 +122,7 @@
 								</select>
 							</div>
 						</div>
-						
+				-->
 						<div class="form-field">
 							<span class="lbl">Cod. servicio<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio" name="cod_servicio" maxlength="25" class="long" required aria-required="true">

@@ -25,6 +25,7 @@ public class ProjectProfileAction extends Action{
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		
+		
 		ClienteDao cDao = ClienteDao.getInstance();
 		
 

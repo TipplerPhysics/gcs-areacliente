@@ -1,5 +1,6 @@
-﻿  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="modal_ajax">	
 	<div>
 		<h2>Editar Conectividad</h2>
@@ -37,12 +38,36 @@
 								<input type="text" id="fecha_implantacion_modal" name="fecha_implantacion" data-target-id="fecha_implantacion_modal" class="datepicker" size="16" maxlength="25" value="${conectividad.str_fecha_implantacion}" readonly="">
 							</div>
 						</div>
-						
+									
 						<div class="form-field">
 							<span class="lbl">Seguridad:</span>
 							<div class="input">
 								<select name="seguridad" id="seguridad" class="long selectpicker">
-																	
+									<option selected value="default">Seleccionar</option>
+									<c:forEach items="${seguridad}" var="segur">							
+										<option value="${segur.name}" ${conectividad.seguridad == segur.name ? 'selected' : ''}>${segur.name}</option>
+									</c:forEach>																
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="estado" id="estado" data-live-search="true">
+									<option selected value="default">Seleccionar</option>
+										<c:forEach items="${estados}" var="est">							
+											<option value="${est.name}" ${conectividad.estado == est.name ? 'selected' : ''}>${est.name}</option>
+										</c:forEach>																
+								</select>
+							</div>
+						</div>
+						
+				<!--
+						<div class="form-field">
+							<span class="lbl">Seguridad:</span>
+							<div class="input">
+								<select name="seguridad" id="seguridad" class="long selectpicker">						
 									<option value="default">Seleccionar</option>
 									<option value="PGP" <c:if test="${conectividad.seguridad eq 'PGP'}">selected</c:if>>PGP</option>
 									<option value="3KEY" <c:if test="${conectividad.seguridad eq '3KEY'}">selected</c:if> >3KEY</option>
@@ -51,7 +76,8 @@
 								</select>
 							</div>
 						</div>
-
+											
+					
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -78,7 +104,7 @@
 								</select>
 							</div>
 						</div>
-					
+				-->				
 					
 				</div>
 				<div class="form-field-divider right">

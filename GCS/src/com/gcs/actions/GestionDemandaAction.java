@@ -12,17 +12,27 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.EstadoPeticion;
 import com.gcs.beans.User;
+import com.gcs.beans.TipoPeticion;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.DemandaDao;
+import com.gcs.dao.EstadoPeticionDao;
 import com.gcs.dao.UserDao;
+import com.gcs.dao.TipoPeticionDao;
 import com.gcs.utils.Utils;
 
 public class GestionDemandaAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-
+		
+		EstadoPeticionDao estPeticionDao = EstadoPeticionDao.getInstance();
+		List<EstadoPeticion> estadoPeticion = estPeticionDao.getAllEstadoPeticion();
+		
+		TipoPeticionDao tpPeticionDao = TipoPeticionDao.getInstance();
+		List<TipoPeticion> tipoPeticion = tpPeticionDao.getAllTipoPeticion();
+		
 		UserDao uDao = UserDao.getInstance();
 		DemandaDao dDao = DemandaDao.getInstance();
 		ClienteDao cDao = ClienteDao.getInstance();
@@ -53,6 +63,9 @@ public class GestionDemandaAction extends Action {
 		req.setAttribute("minutosList", Utils.getMinutosList());
 
 		req.setAttribute("demandaList", dDao.getAllDemandas());
+		
+		req.setAttribute("estadoPeticion", estadoPeticion);
+		req.setAttribute("tipoPeticion", tipoPeticion);
 
 		return mapping.findForward("ok");
 	}

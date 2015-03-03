@@ -17,13 +17,7 @@
 	</global-forwards>	
 
 	<action-mappings>	
-	
-	<action path="/clients2" type="com.gcs.actions.ClientsAction2"
-			name="clientsForm2">
-			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
-			<forward name="ko" path="/jsp/skeletons/clients-skeleton2.jsp" />
-		</action>
-		
+			
 		<action path="/clients" type="com.gcs.actions.ClientsAction"
 			name="clientsForm">
 			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />

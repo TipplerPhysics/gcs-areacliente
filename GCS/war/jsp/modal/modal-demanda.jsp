@@ -62,7 +62,18 @@
 						<div class="form-field">
 							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-																<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true" >							
+								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true" >
+									<c:forEach items="${tipoPeticion}" var="tipoPeticion">
+										<option value="${tipoPeticion.name}">${tipoPeticion.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+					<!--
+						<div class="form-field">
+							<span class="lbl">Tipo petici&oacute;n<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="tipo" id="tipo_modal" required aria-required="true" >							
 									<option value="PRUC">PRUC</option>
 									<option value="CONS">CONS</option>
 									<option value="VIAB">VIAB</option>
@@ -76,6 +87,7 @@
 								</select>
 							</div>
 						</div>
+					-->
 						<div class="form-field">
 							<span class="lbl">Devuelta<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -86,6 +98,20 @@
 								</select>
 							</div>
 						</div>
+						
+						
+						<div class="form-field">
+							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
+								<div class="input">
+									<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true">
+										<c:forEach items="${estadoPeticion}" var="estadoPeticion">
+											<option value="${estadoPeticion.name}">${estadoPeticion.name}</option>
+										</c:forEach>
+									</select>
+								</div>
+						</div>
+					
+					<!--
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
@@ -98,6 +124,7 @@
 								</select>
 							</div>
 						</div>
+					-->
 						<div class="form-field">
 							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">
