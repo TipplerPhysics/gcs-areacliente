@@ -93,7 +93,7 @@ public class UserServlet extends HttpServlet {
 			areas = areas.substring(0, areas.length()-1);
 		}
 		String dto = req.getParameter("dto");
-		dto = dto.replace('#', '&');
+
 		
 		String id = req.getParameter("id");
 		

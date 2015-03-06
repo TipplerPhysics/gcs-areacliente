@@ -76,7 +76,7 @@
 						<div class="form-field">
 							<span class="lbl">Extensi&oacuten<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" name="extension" id="extension" required aria-required="true" data-live-search="true">
+								<select class="selectpicker selected" name="extension" id="extension" data-live-search="true">
 									<option value="default">-</option>																	
 								</select>
 							</div>

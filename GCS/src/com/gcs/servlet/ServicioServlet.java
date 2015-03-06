@@ -298,6 +298,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
+			if(extension == null ){extension = "";}
 			s.setExtension(extension);
 			
 			

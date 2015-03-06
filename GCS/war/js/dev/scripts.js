@@ -3032,6 +3032,7 @@ function ajaxExtensiones(servicio,pais,target){
 						var extensiones = data.extensiones[0];
 
 						target.append($("<option></option>").attr("value","default").text("Seleccionar"));
+						target.append($("<option></option>").attr("value","").text(""));
 						$.each(extensiones,function(index,value){
 								target.append($("<option></option>").attr("value",value).text(value));	
 						});
