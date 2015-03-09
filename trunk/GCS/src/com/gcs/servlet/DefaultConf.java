@@ -731,6 +731,16 @@ public class DefaultConf extends HttpServlet {
 	private String loadServiciosFile(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		String result = "";
 		String link = "/datadocs/serviceFiles____.csv";
+		String linkParam = req.getParameter("link"); 
+		if(linkParam != null ) {
+			link = linkParam;
+		}
+		boolean save = false;
+		String saveParam = req.getParameter("save"); 
+		if(saveParam != null && saveParam.equals("true")) {
+			save = true;
+		}
+		
 		
 		try{
 			InputStream stream = this.getServletContext().getResourceAsStream(link);
@@ -747,7 +757,10 @@ public class DefaultConf extends HttpServlet {
 				String paisName = servicioSplit[1];
 				ArrayList <String> extensiones = new ArrayList<String>();
 				for (int i = 2 ; i<servicioSplit.length;i++){
-					extensiones.add(servicioSplit[i]);
+					servicioSplit[i].replace(" ", "");
+					if(!servicioSplit[i].equals("")){
+						extensiones.add(servicioSplit[i]);
+					}
 				}
 				
 				List<Pais> paisesList = paisDao.getPaisesByName(paisName);
@@ -756,13 +769,72 @@ public class DefaultConf extends HttpServlet {
 				servFile.setPaisId(pais.getKey().getId());
 				servFile.setName(servName);
 				servFile.setExtensiones(extensiones);
-				servFileDao.createServicioFile(servFile);
+				if(save){
+					servFileDao.createServicioFile(servFile);
+				}
 			}
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
 		}
+		return result;
+	}
+	
+	
+	private String upsertServiciosFile(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		
+		String result = "";
+		
+		String link = "/datadocs/serviceFiles____.csv";
+		String linkParam = req.getParameter("link"); 
+		if(linkParam != null ) {
+			link = linkParam;
+		}
+		boolean save = false;
+		String saveParam = req.getParameter("save"); 
+		if(saveParam != null && saveParam.equals("true")) {
+			save = true;
+		}
+		
+		try{
+			InputStream stream = this.getServletContext().getResourceAsStream(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(stream, "Cp1252"));
+			PaisDao paisDao = PaisDao.getInstance();
+			String inputLine = new String();
+			ServicioFileDao servFileDao = ServicioFileDao.getInstance();
+			ServicioFile servFile = null;
+			while ((inputLine = in.readLine()) != null) {
+				String line = inputLine;
+				String[] servicioSplit = line.split(";", -1);
+				String servName = servicioSplit[0];
+				String paisName = servicioSplit[1];
+				ArrayList <String> extensiones = new ArrayList<String>();
+				for (int i = 2 ; i<servicioSplit.length;i++){
+					servicioSplit[i].replace(" ", "");
+					if(!servicioSplit[i].equals("")){
+						extensiones.add(servicioSplit[i]);
+					}
+				}
+				
+				List<Pais> paisesList = paisDao.getPaisesByName(paisName);
+				Pais pais = paisesList.get(0);
+				
+				servFile = servFileDao.getServicioFileByNamePais(servName, paisName);
+				
+				servFile.setPaisId(pais.getKey().getId());
+				servFile.setName(servName);
+				servFile.setExtensiones(extensiones);
+				if(save){
+					servFileDao.createServicioFile(servFile);
+				}
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			result = org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e);
+		}
+		
 		return result;
 	}
 	

@@ -93,8 +93,8 @@ public class CosteDao {
 				if (!"".equals(cost.getCoste_total()))
 				d += Double.parseDouble(cost.getCoste_total().replace(",","."));
 			}
-
-			proyecto.setCoste(d.toString());
+String aux = d.toString();
+			proyecto.setCoste(aux);
 			
 			proyectDao.createProjectRaw(proyecto);
 			
