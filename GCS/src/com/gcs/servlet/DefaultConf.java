@@ -173,7 +173,19 @@ public class DefaultConf extends HttpServlet {
 					result = loadServiciosFile(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
-				}/*else if ("borrarclientes".equals(accion)){
+				}else if ("serviciosFileExtensiones".equals(accion)){
+					result = uploadExtServiciosFile(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("consistenciservices".equals(accion)){
+					result = ImplementacionesAndServiciosConsistency(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}
+				
+				
+				
+				/*else if ("borrarclientes".equals(accion)){
 					json.append("success", "true");
 					json.append("result", result);
 				}*/
@@ -190,7 +202,7 @@ public class DefaultConf extends HttpServlet {
 		} catch (Exception e) {
 			try {
 				json.append("failure", "true");
-				json.append("error", "Error inesperado");
+				json.append("error", org.apache.commons.lang.exception.ExceptionUtils.getStackTrace(e));
 
 				resp.setCharacterEncoding("UTF-8");
 				resp.setContentType("text/plain");
@@ -782,11 +794,11 @@ public class DefaultConf extends HttpServlet {
 	}
 	
 	
-	private String upsertServiciosFile(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+	private String uploadExtServiciosFile(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		
 		String result = "";
 		
-		String link = "/datadocs/serviceFiles____.csv";
+		String link = "/datadocs/servicesUpdate.csv";
 		String linkParam = req.getParameter("link"); 
 		if(linkParam != null ) {
 			link = linkParam;
@@ -804,11 +816,14 @@ public class DefaultConf extends HttpServlet {
 			String inputLine = new String();
 			ServicioFileDao servFileDao = ServicioFileDao.getInstance();
 			ServicioFile servFile = null;
+			int counter = 1;
 			while ((inputLine = in.readLine()) != null) {
+				result += counter +":   \r\n";
 				String line = inputLine;
 				String[] servicioSplit = line.split(";", -1);
 				String servName = servicioSplit[0];
 				String paisName = servicioSplit[1];
+				boolean error = false;
 				ArrayList <String> extensiones = new ArrayList<String>();
 				for (int i = 2 ; i<servicioSplit.length;i++){
 					servicioSplit[i].replace(" ", "");
@@ -818,14 +833,24 @@ public class DefaultConf extends HttpServlet {
 				}
 				
 				List<Pais> paisesList = paisDao.getPaisesByName(paisName);
-				Pais pais = paisesList.get(0);
-				
-				servFile = servFileDao.getServicioFileByNamePais(servName, paisName);
-				
-				servFile.setPaisId(pais.getKey().getId());
-				servFile.setName(servName);
-				servFile.setExtensiones(extensiones);
-				if(save){
+				if (paisesList.size()==1){
+					Pais pais = paisesList.get(0);
+				}else{
+					error = true;
+					result+= "error no encuentra pais\r\n";
+				}
+				if(!error){
+					List<ServicioFile> servcs = servFileDao.getServiciosFileByNamePais(servName, paisName);
+					if(servcs.size()==1){
+						servFile = servcs.get(0);
+						servFile.setExtensiones(extensiones);
+					}else{
+						result+= "error no encuentra serv\r\n";
+						error = true;
+					}
+				}
+				counter++;
+				if(save&&!error){
 					servFileDao.createServicioFile(servFile);
 				}
 			}
@@ -838,6 +863,57 @@ public class DefaultConf extends HttpServlet {
 		return result;
 	}
 	
+	
+	private String ImplementacionesAndServiciosConsistency(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		
+		String result = "";
+		ServicioDao servDao = ServicioDao.getInstance();
+		List<Servicio> servicios = servDao.getAllServicios();
+		ServicioFileDao serFilDao = ServicioFileDao.getInstance();
+		int counter = 1;
+		for(Servicio serv:servicios){
+			
+			
+			List<ServicioFile> servPais = serFilDao.getServiciosFileByNamePais(serv.getServicio(), serv.getPais());
+			ServicioFile fileAux = null;
+			if(servPais == null){
+				result += serv.getCod_proyecto()+"  "+serv.getServicio() +":   \r\n";
+				result += "Error No existen servicios con ese nombre \r\n\r\n";
+			}else{
+				if(servPais.size() == 1){
+					fileAux = servPais.get(0);
+				}else{
+					if(servPais.size()==2){
+						result += serv.getCod_proyecto()+"  "+serv.getServicio() +":   \r\n";
+						result += "Error Hay dos servicios con ese nombre \r\n\r\n";
+					}else{
+						if (servPais.size()==0){
+							result += serv.getCod_proyecto()+"  "+serv.getServicio() +":   \r\n";
+							result += "Error No existen servicios con ese nombre \r\n\r\n";
+						}
+					}
+				}
+			}
+			
+			if(fileAux!=null){
+				if(fileAux.getExtensiones().size()>1 ){
+					if (fileAux.getExtensiones().contains(serv.getExtension())){
+						
+					}else{
+						result += serv.getCod_proyecto()+"  "+serv.getServicio() +":   \r\n";
+						result += "Error el servicioFile tiene mas de una extension y no esta especificada \r\n\r\n";
+					}
+				}else{
+					
+				}
+			}
+			
+		}
+		
+		
+		
+		return result;
+	}
 	private String loadPaises(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 		String result = "";
 		String link = "/datadocs/pais____.csv";
