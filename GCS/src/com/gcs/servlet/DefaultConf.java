@@ -843,7 +843,23 @@ public class DefaultConf extends HttpServlet {
 					List<ServicioFile> servcs = servFileDao.getServiciosFileByNamePais(servName, paisName);
 					if(servcs.size()==1){
 						servFile = servcs.get(0);
-						servFile.setExtensiones(extensiones);
+						List<String> extensionesGuardadas = servFile.getExtensiones();
+						List<String> extensionesBorrar = new ArrayList<String>();
+						for(String extension: extensiones){
+							if(extensionesGuardadas.contains(extension))extensionesBorrar.add(extension);
+						}
+						
+						for(String extension :extensionesBorrar){
+							extensiones.remove(extension);
+						}
+						List<String> extensionesAniadir = new ArrayList<String>();
+						for(String extension: extensionesGuardadas){
+							if(!extensiones.contains(extension))extensionesAniadir.add(extension);
+						}
+						
+						extensiones.addAll(extensionesAniadir);
+						
+						servFile.setExtensiones(extensiones);						
 					}else{
 						result+= "error no encuentra serv\r\n";
 						error = true;
