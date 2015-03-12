@@ -181,6 +181,14 @@ public class DefaultConf extends HttpServlet {
 					result = ImplementacionesAndServiciosConsistency(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
+				}else if ("codservtoext".equals(accion)){
+					result = codservtoext(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
+				}else if ("replaceserv".equals(accion)){
+					result = replaceServ(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
 				}
 				
 				
@@ -242,7 +250,32 @@ public class DefaultConf extends HttpServlet {
 		
 		
 	}*/
+	private String codservtoext(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		
+		ServicioDao servDao = ServicioDao.getInstance();
+		List<Servicio> servicios = servDao.getAllServicios();
+		for(Servicio serv:servicios){
+			serv.setExtension(serv.getCod_servicio());
+			servDao.createServicioRaw(serv);
+		}
+		
+		return result;
+	}
 	
+	private String replaceServ(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String result = "";
+		String rep1 = req.getParameter("rep1");
+		String rep2 = req.getParameter("rep2");
+		ServicioDao servDao = ServicioDao.getInstance();
+		List<Servicio> servicios = servDao.getServiciosByService(rep1);
+		for(Servicio serv:servicios){
+			serv.setServicio(rep2);
+			servDao.createServicioRaw(serv);
+		}
+		
+		return result;
+	}
 	private String loadClientes(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
 
 		boolean save = false;
