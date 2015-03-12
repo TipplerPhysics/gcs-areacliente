@@ -82,6 +82,15 @@ public class ServicioDao {
 		return servicios;
 	}
 	
+	public void createServicioRaw(Servicio s){
+
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.makePersistent(s);
+		} finally {
+			pm.close();
+		}
+	}
 	public void createServicio(Servicio s, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
 		Boolean isNew = false;
@@ -173,7 +182,7 @@ public class ServicioDao {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		
 		String queryStr = "select from " + Servicio.class.getName()
-				+ " where estado == '" + estado +  "'";
+				+ " where servicio == '" + estado +  "'";
 		
 		@SuppressWarnings({ "unchecked", "unused" })
 		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
@@ -181,6 +190,20 @@ public class ServicioDao {
 		if (servicios.isEmpty()) {
 			servicios = null;
 		}
+		
+		pManager.close();
+		
+		return servicios;
+	}
+	
+	
+	public List<Servicio> getServiciosByService(String servicio){
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		String queryStr = "select from " + Servicio.class.getName()+ " where  servicio== '" + servicio +  "'";
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
 		
 		pManager.close();
 		
