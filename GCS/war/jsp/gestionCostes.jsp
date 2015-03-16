@@ -184,7 +184,7 @@
 						<div class="form-field total">
 						<span class="lbl"></span>
 							<div class="input total">
-								<input id="total_horas" name="total_horas" readonly class="horas number " read value="0"/><input id="total_coste" name="total_coste" class="coste number"/>
+								<input id="total_horas" required name="total_horas" class="horas number " value="0"/><input id="total_coste" name="total_coste" class="coste number"/>
 							</div>
 							<div class="input">
 								<span class="lbl">Total Horas<span class="required-asterisk"> </span></span><span class="lbl">Total Coste</span>
