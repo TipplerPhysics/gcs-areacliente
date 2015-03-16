@@ -166,7 +166,7 @@
 						<div class="form-field total">
 						<span class="lbl">Total:</span>
 							<div class="input">
-								<input id="total_horas_modal" name="total_horas" class="horas" required readonly aria-required="true"/>
+								<input id="total_horas_modal" name="total_horas" class="horas" required aria-required="true"/>
 								<input id="total_coste_modal" name="total_coste" class="coste"/>
 							</div>
 							<div class="input labels">
