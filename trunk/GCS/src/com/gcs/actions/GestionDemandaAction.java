@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -26,47 +27,54 @@ public class GestionDemandaAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
+		HttpSession sesion = req.getSession();
+		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
-		EstadoPeticionDao estPeticionDao = EstadoPeticionDao.getInstance();
-		List<EstadoPeticion> estadoPeticion = estPeticionDao.getAllEstadoPeticion();
-		
-		TipoPeticionDao tpPeticionDao = TipoPeticionDao.getInstance();
-		List<TipoPeticion> tipoPeticion = tpPeticionDao.getAllTipoPeticion();
-		
-		UserDao uDao = UserDao.getInstance();
-		DemandaDao dDao = DemandaDao.getInstance();
-		ClienteDao cDao = ClienteDao.getInstance();
-		List<User> gestores_demanda = uDao.getUsersByPermisoStr(2);
-		List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-		List<User> gestores_negocio = uDao.getUsersByPermisoStr(4);
-		List<Cliente> clientes = cDao.getAllClientes();
-
-		String gestoresStr = "";
-
-		if (!gestores_it.isEmpty()) {
-			for (User g : gestores_it) {
-				gestoresStr += g.getNombre() + " " + g.getApellido1() + " "
-						+ g.getApellido2() + "(" + g.getKey().getId() + ")"
-						+ "-";
+		if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
+			EstadoPeticionDao estPeticionDao = EstadoPeticionDao.getInstance();
+			List<EstadoPeticion> estadoPeticion = estPeticionDao.getAllEstadoPeticion();
+			
+			TipoPeticionDao tpPeticionDao = TipoPeticionDao.getInstance();
+			List<TipoPeticion> tipoPeticion = tpPeticionDao.getAllTipoPeticion();
+			
+			UserDao uDao = UserDao.getInstance();
+			DemandaDao dDao = DemandaDao.getInstance();
+			ClienteDao cDao = ClienteDao.getInstance();
+			List<User> gestores_demanda = uDao.getUsersByPermisoStr(2);
+			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
+			List<User> gestores_negocio = uDao.getUsersByPermisoStr(4);
+			List<Cliente> clientes = cDao.getAllClientes();
+	
+			String gestoresStr = "";
+	
+			if (!gestores_it.isEmpty()) {
+				for (User g : gestores_it) {
+					gestoresStr += g.getNombre() + " " + g.getApellido1() + " "
+							+ g.getApellido2() + "(" + g.getKey().getId() + ")"
+							+ "-";
+				}
+	
 			}
-
+	
+			req.setAttribute("clientes", clientes);
+			req.setAttribute("gestores_demanda", gestores_demanda);
+			req.setAttribute("gestores_it", gestores_it);
+			req.setAttribute("gestoresStr", gestoresStr);
+			
+			req.setAttribute("gestores_negocio", gestores_negocio);
+	
+			req.setAttribute("horasList", Utils.getHorasList());
+			req.setAttribute("minutosList", Utils.getMinutosList());
+	
+			req.setAttribute("demandaList", dDao.getAllDemandas());
+			
+			req.setAttribute("estadoPeticion", estadoPeticion);
+			req.setAttribute("tipoPeticion", tipoPeticion);
+	
+			return mapping.findForward("ok");
+		}else{
+			return mapping.findForward("notAllowed");
 		}
-
-		req.setAttribute("clientes", clientes);
-		req.setAttribute("gestores_demanda", gestores_demanda);
-		req.setAttribute("gestores_it", gestores_it);
-		req.setAttribute("gestoresStr", gestoresStr);
 		
-		req.setAttribute("gestores_negocio", gestores_negocio);
-
-		req.setAttribute("horasList", Utils.getHorasList());
-		req.setAttribute("minutosList", Utils.getMinutosList());
-
-		req.setAttribute("demandaList", dDao.getAllDemandas());
-		
-		req.setAttribute("estadoPeticion", estadoPeticion);
-		req.setAttribute("tipoPeticion", tipoPeticion);
-
-		return mapping.findForward("ok");
 	}
 }
