@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -27,48 +28,54 @@ public class InformeImplantacionesAction extends Action {
 			throws IOException {
 
 		// TODO: obtener valores del select de años. Obtener todos los años para los que hay informes.
+		HttpSession sesion = req.getSession();
+		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
-		InformeDao iDao = InformeDao.getInstance();
-		List<Informe> informes = iDao.getAllInformes();
-		List<String> anyos= new ArrayList<String>();
-		
-		if(informes.isEmpty()){
+		if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
+			InformeDao iDao = InformeDao.getInstance();
+			List<Informe> informes = iDao.getAllInformes();
+			List<String> anyos= new ArrayList<String>();
 			
-			return mapping.findForward("ko");
+			if(informes.isEmpty()){
+				
+				return mapping.findForward("ko");
+				
+			}else{
 			
-		}else{
-		
-			for (Informe i : informes) {
-			
-				boolean existe = false;
-				for (String anio:anyos){
-					if(anio.equals(i.getAnyoImplantacion()))existe=true;
+				for (Informe i : informes) {
+				
+					boolean existe = false;
+					for (String anio:anyos){
+						if(anio.equals(i.getAnyoImplantacion()))existe=true;
+					}
+					if (!existe)anyos.add(i.getAnyoImplantacion());
+				
 				}
-				if (!existe)anyos.add(i.getAnyoImplantacion());
+				
+				//Bloque para ordenar sino viniera ordenado desde el Dao
 			
+				/*Collections.sort(anyos);
+				Comparator<String> comparador = Collections.reverseOrder();
+				Collections.sort(anyos, comparador);*/
+				
+				req.setAttribute("anyos", anyos);
+			
+				// TODO: obtener el ultimo informe generado
+				Informe ultimo = informes.get(informes.size()-1);
+				
+				req.setAttribute("ultimo_informe", ultimo);
+				
+				
+			
+				
+				
+				// El resto de combos se cargan via AJAX a través de un servlet
+			
+			
+				return mapping.findForward("ok");
 			}
-			
-			//Bloque para ordenar sino viniera ordenado desde el Dao
-		
-			/*Collections.sort(anyos);
-			Comparator<String> comparador = Collections.reverseOrder();
-			Collections.sort(anyos, comparador);*/
-			
-			req.setAttribute("anyos", anyos);
-		
-			// TODO: obtener el ultimo informe generado
-			Informe ultimo = informes.get(informes.size()-1);
-			
-			req.setAttribute("ultimo_informe", ultimo);
-			
-			
-		
-			
-			
-			// El resto de combos se cargan via AJAX a través de un servlet
-		
-		
-			return mapping.findForward("ok");
+		}else{
+			return mapping.findForward("notAllowed");
 		}
 	}
 }

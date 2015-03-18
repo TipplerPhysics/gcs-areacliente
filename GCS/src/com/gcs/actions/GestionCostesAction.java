@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -25,20 +26,27 @@ public class GestionCostesAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-
-	ClienteDao cDao = ClienteDao.getInstance();
-	UserDao uDao = UserDao.getInstance();
-	CosteDao coDao = CosteDao.getInstance();
+	HttpSession sesion = req.getSession();
+	int sesionpermiso = (int) sesion.getAttribute("permiso");
+		
+	if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
+		ClienteDao cDao = ClienteDao.getInstance();
+		UserDao uDao = UserDao.getInstance();
+		CosteDao coDao = CosteDao.getInstance();
+		
+		List<Cliente> clientes = cDao.getAllNonDeletedClients();
+		List<User> gestores_it = uDao.getUsersByPermisoStr(3);
+		List<Coste> costes = coDao.getAllCostes();
+		
+		req.setAttribute("costes", costes);
+		req.setAttribute("clientes", clientes);
+		req.setAttribute("gestores_it", gestores_it);
 	
-	List<Cliente> clientes = cDao.getAllNonDeletedClients();
-	List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-	List<Coste> costes = coDao.getAllCostes();
-	
-	req.setAttribute("costes", costes);
-	req.setAttribute("clientes", clientes);
-	req.setAttribute("gestores_it", gestores_it);
-
-	return mapping.findForward("ok");
+		return mapping.findForward("ok");
+		
+	}else{
+		return mapping.findForward("notAllowed");
+	}
 	}
 
 }

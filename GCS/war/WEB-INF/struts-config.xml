@@ -21,30 +21,37 @@
 		<action path="/clients" type="com.gcs.actions.ClientsAction"
 			name="clientsForm">
 			<forward name="ok" path="/jsp/skeletons/clients-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/newCosteModal" type="com.gcs.actions.modal.NewCosteModalAction">
-			<forward name="ok" path="/jsp/modal/modal-new-coste.jsp" />			
+			<forward name="ok" path="/jsp/modal/modal-new-coste.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
 		
 		<action path="/Prueba" type="com.gcs.actions.prueba">
-			<forward name="ok" path="/jsp/Prueba.jsp" />			
+			<forward name="ok" path="/jsp/Prueba.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
 		
 		<action path="/costesByModal" type="com.gcs.actions.modal.CostesByProjectModalAction">
-			<forward name="ok" path="/jsp/modal/modal-costes-by-project.jsp" />			
+			<forward name="ok" path="/jsp/modal/modal-costes-by-project.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
 		
 		<action path="/projectConectivity" type="com.gcs.actions.modal.SelectProjectModalAction">
-			<forward name="ok" path="/jsp/modal/modal-select-project.jsp" />			
+			<forward name="ok" path="/jsp/modal/modal-select-project.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
 		
 		<action path="/projectService" type="com.gcs.actions.modal.SelectServiceModalAction">
-			<forward name="ok" path="/jsp/modal/modal-select-project-service.jsp" />			
+			<forward name="ok" path="/jsp/modal/modal-select-project-service.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
 		
 		<action path="/newService" type="com.gcs.actions.modal.NewServiceModalAction">
-			<forward name="ok" path="/jsp/modal/modal-new-servicio.jsp" />			
+			<forward name="ok" path="/jsp/modal/modal-new-servicio.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />		
 		</action>
 		
 		
@@ -52,7 +59,8 @@
 		
 		<action path="/loadConectivity" type="com.gcs.actions.modal.LoadConectividadAction">
 			<forward name="h2h" path="/jsp/modal/h2h-modal.jsp" />
-			<forward name="swift" path="/jsp/modal/swift-modal.jsp" />			
+			<forward name="swift" path="/jsp/modal/swift-modal.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
 		
 	
@@ -61,42 +69,44 @@
 		
 		<action path="/demandaModal" type="com.gcs.actions.modal.DemandaModalAction">
 			<forward name="ok" path="/jsp/modal/modal-demanda.jsp" />
-			
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/servicioModal" type="com.gcs.actions.modal.ServicioModalAction">
 			<forward name="ok" path="/jsp/modal/modal-servicio.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 			
 		</action>
 		
 		<action path="/costeModal" type="com.gcs.actions.modal.CosteModalAction">
 			<forward name="ok" path="/jsp/modal/modal-coste.jsp" />
-			
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/costeProjectModal" type="com.gcs.actions.modal.CosteProjectModalAction">
 			<forward name="ok" path="/jsp/modal/modal-coste-project.jsp" />
-			
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/userModal" type="com.gcs.actions.modal.UserModalAction">
 			<forward name="ok" path="/jsp/modal/modal-user.jsp" />
-			
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/projectModal" type="com.gcs.actions.modal.ProyectoModalAction">
 			<forward name="ok" path="/jsp/modal/modal-project.jsp" />
-			
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/clienteModal" type="com.gcs.actions.modal.ClienteModalAction">
 			<forward name="ok" path="/jsp/modal/modal-cliente.jsp" />
-			
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/clientProfile" type="com.gcs.actions.ClientProfileAction">
 			<forward name="ok" path="/jsp/skeletons/clientProfile-skeleton.jsp" />
 			<forward name="ko" path="/clients.do" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/projectProfile" type="com.gcs.actions.ProjectProfileAction">
@@ -106,34 +116,42 @@
 		<action path="/admin/users" type="com.gcs.actions.UsersAction"
 			name="usersForm">
 			<forward name="ok" path="/jsp/skeletons/users-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/admin/auditoria" type="com.gcs.actions.AuditoriaAction">
 			<forward name="ok" path="/jsp/skeletons/auditoria-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/gestionDemanda" type="com.gcs.actions.GestionDemandaAction">
 			<forward name="ok" path="/jsp/skeletons/gestionDemanda-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/gestionCostes" type="com.gcs.actions.GestionCostesAction">
 			<forward name="ok" path="/jsp/skeletons/gestionCostes-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/gestionProyecto" type="com.gcs.actions.GestionProyectoAction">
 			<forward name="ok" path="/jsp/skeletons/gestionProyecto-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/gestionCliente" type="com.gcs.actions.GestionClienteAction">
 			<forward name="ok" path="/jsp/skeletons/newClient-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/gestionServicio" type="com.gcs.actions.GestionServicioAction">
 			<forward name="ok" path="/jsp/skeletons/gestionServicio-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 
 		<action path="/dashboard/gestionImplantaciones" type="com.gcs.actions.RegistroImplantacionesAction">
 			<forward name="ok" path="/jsp/skeletons/gestionImplantaciones-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/sendMailImplantacion" type="com.gcs.actions.modal.ImplantacionModalAction">
@@ -142,14 +160,17 @@
 			<forward name="email3" path="/jsp/modal/modal-implantacion-email3.jsp" />
 			<forward name="error" path="/jsp/modal/modal-implantacion-error.jsp" />
 			<forward name="informe" path="/jsp/modal/modal-implantacion-informe.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/informeImplantacion" type="com.gcs.actions.InformeImplantacionesAction">
 			<forward name="ok" path="/jsp/skeletons/informeImplantaciones-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 		<action path="/dashboard/informeImplantacion2" type="com.gcs.actions.InformeImplantacionesAction2">
 			<forward name="ok" path="/jsp/skeletons/informeImplantaciones-skeleton2.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
 	</action-mappings>	

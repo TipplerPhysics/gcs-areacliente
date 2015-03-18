@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -21,7 +22,10 @@ public class GestionClienteAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
+		HttpSession sesion = req.getSession();
+		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
+		if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
 		ClienteDao cDao = ClienteDao.getInstance();
 		List<Cliente> clientes = cDao.getAllNonDeletedClients();
 		
@@ -34,6 +38,10 @@ public class GestionClienteAction extends Action{
 				
 
 		return mapping.findForward("ok");
+		
+		}else{
+			return mapping.findForward("notAllowed");	
+		}
 	}
 
 }

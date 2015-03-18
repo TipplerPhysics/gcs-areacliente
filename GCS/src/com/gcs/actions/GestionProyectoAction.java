@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -24,29 +25,36 @@ public class GestionProyectoAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-
-		ClienteDao cDao = ClienteDao.getInstance();
-		UserDao uDao = UserDao.getInstance();
+		HttpSession sesion = req.getSession();
+		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
-		ProyectoDao pDao = ProyectoDao.getInstance();
-		List<Proyecto> projects = pDao.getAllProjects();
+		if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
+			ClienteDao cDao = ClienteDao.getInstance();
+			UserDao uDao = UserDao.getInstance();
+			
+			ProyectoDao pDao = ProyectoDao.getInstance();
+			List<Proyecto> projects = pDao.getAllProjects();
+			
+			List<Cliente> clientes = cDao.getAllNonDeletedClients();
+			
+			req.setAttribute("clientes", clientes);
+			
+			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
+			List<User> gestores_negocio = uDao.getUsersByPermisoStr(4);
+			
+			List<ProductoProyecto> productoProyecto = ProductoProyectoDao.getInstance().getAllProductoProyectoes();
+			
+			req.setAttribute("productos", productoProyecto);
+			req.setAttribute("clientes", clientes);
+			req.setAttribute("proyectos", projects);
+			req.setAttribute("gestores_it", gestores_it);
+			req.setAttribute("gestores_negocio", gestores_negocio);
+			
+	
+			return mapping.findForward("ok");
 		
-		List<Cliente> clientes = cDao.getAllNonDeletedClients();
-		
-		req.setAttribute("clientes", clientes);
-		
-		List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-		List<User> gestores_negocio = uDao.getUsersByPermisoStr(4);
-		
-		List<ProductoProyecto> productoProyecto = ProductoProyectoDao.getInstance().getAllProductoProyectoes();
-		
-		req.setAttribute("productos", productoProyecto);
-		req.setAttribute("clientes", clientes);
-		req.setAttribute("proyectos", projects);
-		req.setAttribute("gestores_it", gestores_it);
-		req.setAttribute("gestores_negocio", gestores_negocio);
-		
-
-		return mapping.findForward("ok");
+		}else{
+			return mapping.findForward("notAllowed");
+		}
 	}
 }
