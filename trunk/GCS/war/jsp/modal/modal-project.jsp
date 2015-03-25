@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="modal_ajax" id="project_modal">
 
+	
+<button onclick="sendCloneProject();" id="new_project_form_modal" class="" type="button" style="float:right">Crear un nuevo proyecto con estos datos</button>
 	<div>
 		<h2>Editar Proyecto</h2>
 		<hr>

@@ -1,4 +1,11 @@
-<!-- Indices written at Wed, 18 Mar 2015 17:22:48 GMT+01:00 -->
+<!-- Indices written at Wed, 25 Mar 2015 13:03:23 GMT+01:00 -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 3 times in query history -->
+    <datastore-index kind="ConectividadProyecto" ancestor="false" source="auto">
+        <property name="productoId" direction="asc"/>
+        <property name="name" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

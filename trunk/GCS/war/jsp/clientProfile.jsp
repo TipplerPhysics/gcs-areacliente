@@ -64,7 +64,7 @@
 		</div>
 	</div>
 <h2> Conectividades y servicios asociados</h2>
-	<button id="newProjectButton" onclick="location.href = './dashboard/gestionProyecto.do';">
+	<button id="newProjectButton" onclick="location.href = './dashboard/gestionProyecto.do?id=${cliente.key.id}';">
 				Gesti&oacute;n Proyecto<a class="proyecto_span_fixed"></a>
 			</button>	
 	<hr/>
@@ -88,11 +88,20 @@
 				</tr>
 			</c:when>
 			<c:otherwise>	
+			<c:set var="counter" value="${0}" scope="page" />
 			<c:forEach items="${servicios}" var="servicio">
 				<c:forEach items="${projects}" var="pro">
 					<c:choose>
 						<c:when test="${pro.key.id==servicio.id_proyecto}">
+							<c:choose>
+							<c:when test="${counter%2==1}">
+							<tr class="valid-result" id="row${servicio.key.id}"  style="background-color: #D6D5FF">
+							</c:when>
+							<c:otherwise>
 							<tr class="valid-result" id="row${servicio.key.id}">
+							</c:otherwise>
+							</c:choose>	
+							
 					 		 <td>${pro.producto}</td>
 							 <td></td>
 					 		 <td>
@@ -105,6 +114,7 @@
 					 		 <td>${servicio.estado} con ${servicio.estadoSubida}</td>
 					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
 					 		</tr>
+					 		<c:set var="counter" value="${counter+1}" scope="page" />
 						</c:when>
 					</c:choose>	
 				</c:forEach>
@@ -113,7 +123,14 @@
 				<c:forEach items="${projects}" var="pro">
 					<c:choose>
 						<c:when test="${pro.key.id==conectividad.key_proyecto}">
+							<c:choose>
+							<c:when test="${counter%2==1}">
+							<tr class="valid-result" id="row${conectividad.key.id}" style="background-color: #D6D5FF">
+							</c:when>
+							<c:otherwise>
 							<tr class="valid-result" id="row${conectividad.key.id}">
+							</c:otherwise>
+							</c:choose>	
 					 		 <td>${pro.producto}</td>
 							 <td>${pro.conectividad}</td>
 					 		 <td>
@@ -126,6 +143,7 @@
 					 		 <td>${conectividad.estado} </td>
 					 		 <td><a href='../projectProfile.do?id=${pro.key.id}&idCli=${cliente.key.id}'>${pro.cod_proyecto}</a></td>
 					 		</tr>
+					 		<c:set var="counter" value="${counter+1}" scope="page" />
 						</c:when>
 					</c:choose>	
 				</c:forEach>
