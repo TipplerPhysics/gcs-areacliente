@@ -19,7 +19,7 @@
 					</c:when>
 					<c:otherwise>
 					<c:forEach items="${services}" var="s">	
-						<option value="${s.key.id}">${s.cod_servicio}</option>
+						<option value="${s.key.id}">${s.pais}&nbsp-&nbsp${s.servicio}&nbsp-&nbsp${s.extension}</option>
 					</c:forEach>
 					</c:otherwise>	
 					</c:choose>					

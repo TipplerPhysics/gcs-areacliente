@@ -23,11 +23,13 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.ConectividadProyecto;
 import com.gcs.beans.Pais;
 import com.gcs.beans.ProductoProyecto;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.ServicioFile;
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadProyectoDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProductoProyectoDao;
@@ -63,6 +65,8 @@ public class ProjectServlet extends HttpServlet{
 				getProjectsByClient(req,resp);
 			}else if ("getConectividades".equals(accion)){
 				getConectividades(req,resp);
+			}else if ("clone".equals(accion)){
+				cloneProject(req,resp,usermail);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -423,14 +427,109 @@ public class ProjectServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		
-		
-		
-		
-		
+
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 	}
 
+	
+	private void cloneProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
+		
+		JSONObject json = new JSONObject();
+		Proyecto p = new Proyecto();
+	
+		try {
+			
+			String fecha_alta_str = req.getParameter("fecha_alta_cliente");
+			
+			String envioC100 = req.getParameter("envio_c100");
+			String ok_negocio = req.getParameter("ok_negocio");
+			String ok_negocio_check = req.getParameter("ok_negocio_check");
+			
+			String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
+			String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
+			
+			String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
+			String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+			
+			String fecha_plan_trabajo_str = req.getParameter("fecha_plan_trabajo");
+			String fecha_disponible_conectividad_str = req.getParameter("fecha_disponible_conectividad");
+			
+			String producto = req.getParameter("producto");
+			String conectividad = req.getParameter("conectividad");
+			String subtipo = req.getParameter("subtipo");
+			
+			
+			
+			
+			String tipo = req.getParameter("tipo");
+			String cliente = req.getParameter("cliente");
+
+			
+			String clasificacion = req.getParameter("clasificacion");
+			String gestor_it_str = req.getParameter("gestor_it");
+			String gestor_negocio_str = req.getParameter("gestor_negocio");
+			String coste = req.getParameter("coste");
+			String url_doc_google_drive = req.getParameter("url_doc_google_drive");
+			
+			if (fecha_alta_str.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
+					||gestor_it_str.equals("")||gestor_negocio_str.equals("")){
+				json.append("failure", "true");
+				json.append("error","Faltan campos obligatorios.");
+				
+			}else{
+				
+				ProyectoDao pDao = ProyectoDao.getInstance();		
+				
+				p.setStr_envioC100(envioC100);
+				p.setStr_OKNegocio(ok_negocio);
+				p.setStr_OKNegocioCheck(ok_negocio_check);
+				
+				p.setSubtipo(subtipo);
+				
+				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
+				
+				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				
+				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
+				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
+				
+				p.setProducto(producto);
+				
+				if (!"default".equals(conectividad))
+					p.setConectividad(conectividad);
+				
+				
+				p.setFecha_alta_str(fecha_alta_str);					
+				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					
+				
+				p.setTipo(tipo);
+				ClienteDao clienteDao = ClienteDao.getInstance();
+				Cliente clienteEnty = clienteDao.getClienteByName(cliente);
+				p.setClienteKey(clienteEnty.getKey().getId());
+				p.setClasificacion(Integer.parseInt(clasificacion));
+				p.setGestor_it(Long.parseLong(gestor_it_str));
+				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
+				p.setCoste(coste);
+				p.setUrl_doc_google_drive(url_doc_google_drive);
+				
+				
+				pDao.createProject(p,usermail);
+				
+				json.append("success", "true");
+				json.append("id", p.getKey().getId());
+							
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
 }

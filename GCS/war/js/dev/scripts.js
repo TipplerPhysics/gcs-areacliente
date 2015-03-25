@@ -2559,7 +2559,48 @@ function  sendEditProject(){
 			}
 		});
 }
+function sendCloneProject() {
 
+	var $form = $('#edit-project-form');
+	
+
+	if($form.valid()){		
+
+		var postData = $form.serialize() + "&accion=clone";
+		var formURL = $form.attr("action");
+		$.ajax(
+		{
+			 url : formURL,
+			  type: "GET",
+			  data : postData,
+			  success:function(data, textStatus, jqXHR) 
+			  {
+					//data: return data from server
+					if (data.success=="true"){
+						$form.hide();
+						$('#span_message_demanda_modal').html('Se ha creado un proyecto con los datos contenidos en el formulario anterior correctamente.');
+						$('.modal-footer').hide();
+						$('#message_div_demanda_modal').css('display','block').removeClass("error").addClass("success");
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#span_message_demanda_modal').html(data.error);
+						$('#message_div_demanda_modal').css('display','block').removeClass("success").addClass("error");
+					}
+			  },
+		  error: function(jqXHR, textStatus, errorThrown) 
+		  {
+			if (errorThrown.length > 0){
+				$('#span_message').html(errorThrown);
+				$('#message_div').addClass('error').removeClass('success');
+			}
+		  }
+		});
+	}			
+}
 function modalCliente(){
 	
 	if($('#edit-project-form').length > 0) {
@@ -2854,6 +2895,8 @@ $(function() {
 			});
 		}			
 	});
+	
+
 });;var normalize = (function() {
 	var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
 	  to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",

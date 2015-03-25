@@ -29,11 +29,19 @@ public class GestionProyectoAction extends Action{
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
 		if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
+			
+			String clienteid = req.getParameter("id");
 			ClienteDao cDao = ClienteDao.getInstance();
 			UserDao uDao = UserDao.getInstance();
 			
 			ProyectoDao pDao = ProyectoDao.getInstance();
-			List<Proyecto> projects = pDao.getAllProjects();
+			
+			List<Proyecto> projects;
+			if(clienteid==null||clienteid.equals("")){
+				projects = pDao.getAllProjects();
+			}else{
+				projects = pDao.getProjectsByClient(Long.parseLong(clienteid));
+			}
 			
 			List<Cliente> clientes = cDao.getAllNonDeletedClients();
 			
