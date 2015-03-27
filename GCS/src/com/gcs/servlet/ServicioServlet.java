@@ -65,6 +65,8 @@ public class ServicioServlet extends HttpServlet {
 				getExtensionesByService(req,resp);
 			}else if ("getProjectsByClient".equals(accion)){
 				getProjectsByClient(req,resp);
+			}else if ("clone".equals(accion)){
+				cloneService(req,resp,usermail);
 			}
 		
 		} catch (IOException | JSONException | ServletException e) {
@@ -534,6 +536,110 @@ public class ServicioServlet extends HttpServlet {
 			
 			ProyectoDao pDao = ProyectoDao.getInstance(); 
 			Proyecto p = pDao.getProjectbyId(Long.parseLong(project_id));
+			
+			String servicio = req.getParameter("servicio");
+			String estado = req.getParameter("estado");
+			String cod_servicio = req.getParameter("cod_servicio");
+			
+			String observaciones = req.getParameter("observaciones");
+			String formato_intermedio = req.getParameter("formato_intermedio");		
+			String formato_local = req.getParameter("formato_local");
+			
+			String referencia_local1 = req.getParameter("ref_local1");
+			String referencia_local2 = req.getParameter("ref_local2");
+			
+			String str_fecha_ini_integradas = req.getParameter("fecha_inicio_integradas");
+			String str_fecha_fin_integradas = req.getParameter("fecha_fin_integradas");
+			
+			String str_fecha_ini_aceptacion = req.getParameter("fecha_inicio_aceptacion");
+			String str_fecha_fin_aceptacion = req.getParameter("fecha_fin_aceptacion");
+
+			String str_fecha_ini_validacion = req.getParameter("fecha_inicio_validacion");
+			String str_fecha_fin_validacion = req.getParameter("fecha_fin_validacion");
+			
+			String str_fecha_implantacion_prod = req.getParameter("fecha_implantacion_produccion");
+			
+			String str_fecha_ini_primera_op = req.getParameter("fecha_inicio_primera_op");
+			String str_fecha_fin_primera_op = req.getParameter("fecha_fin_primera_op");
+
+			String str_fecha_inicio_op_cliente = req.getParameter("fecha_inicio_op_cliente");
+			String str_fecha_ans = req.getParameter("ans");
+			
+			String str_fecha_inicio_pruebas = req.getParameter("fecha_inicio_pruebas");
+			String str_fecha_fin_pruebas = req.getParameter("fecha_fin_pruebas");
+			
+			//String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
+			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
+			String extension = req.getParameter("extension");
+			String pais = req.getParameter("pais");
+
+			Servicio s = new Servicio();
+			s.setId_proyecto(p.getKey().getId());
+			s.setCod_proyecto(p.getCod_proyecto());
+			s.setPais(pais);
+			
+			s.setServicio(servicio);
+			s.setEstado(estado);
+			s.setCod_servicio(cod_servicio);
+			
+			s.setObservaciones(observaciones);
+			s.setFormato_intermedio(formato_intermedio);
+			s.setFormato_local(formato_local);
+			s.setReferencia_local1(referencia_local1);
+			s.setReferencia_local2(referencia_local2);
+			
+			s.setStr_fecha_ini_integradas(str_fecha_ini_integradas);
+			s.setStr_fecha_fin_integradas(str_fecha_fin_integradas);
+			
+			s.setStr_fecha_ini_aceptacion(str_fecha_ini_aceptacion);
+			s.setStr_fecha_fin_aceptacion(str_fecha_fin_aceptacion);
+			
+			s.setStr_fecha_ini_validacion(str_fecha_ini_validacion);
+			s.setStr_fecha_fin_validacion(str_fecha_fin_validacion);
+			
+			s.setStr_fecha_implantacion_produccion(str_fecha_implantacion_prod);
+			
+			s.setStr_fecha_ini_primera_operacion(str_fecha_ini_primera_op);
+			s.setStr_fecha_fin_primera_operacion(str_fecha_fin_primera_op);
+			
+			s.setStr_fecha_ini_op_cliente(str_fecha_inicio_op_cliente);
+			s.setStr_fecha_ANS(str_fecha_ans);
+			
+			s.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
+			s.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
+			
+			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
+			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
+			s.setExtension(extension);
+			
+			ServicioDao sDao = ServicioDao.getInstance();
+			sDao.createServicio(s,usermail);
+			json.append("success", "true");
+			
+		}catch (Exception e){
+			e.printStackTrace();
+			json.append("failure", "true");
+			json.append("error", "Se ha producido un error inesperado");
+		}
+		
+		
+		
+		
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
+private void cloneService(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
+		
+		JSONObject json = new JSONObject();
+		
+		try{
+			String project_id = req.getParameter("cod_proyecto");
+			
+			ProyectoDao pDao = ProyectoDao.getInstance(); 
+			Proyecto p = pDao.getProjectsByCode(project_id).get(0);
 			
 			String servicio = req.getParameter("servicio");
 			String estado = req.getParameter("estado");

@@ -71,6 +71,8 @@ public class CosteServlet extends HttpServlet {
 					updateCoste(req, resp,usermail);
 				}else if (accion.equals("xls")) {
 					generateXLS(req, resp);
+				}else if (accion.equals("clone")) {
+					cloneCoste(req, resp,usermail);
 				}
 			}
 		} catch (Exception e) {
@@ -397,6 +399,104 @@ public class CosteServlet extends HttpServlet {
 			}
 
 			c.setProjectKey(Long.parseLong(project));
+			c.setProject_name(p.getCod_proyecto());
+
+			c.setHoras_pruebas(pruebas_horas);
+			c.setCoste_pruebas(pruebas_costes);
+
+			c.setCoste_total(total_coste);
+			c.setHoras_total(total_horas);
+
+			if (!"default".equals(num_valoracion))
+				c.setNum_valoracion(num_valoracion);
+
+			cDao.createCoste(c,usermail);
+			json.append("success", "true");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			json.append("success", "false");
+			json.append("error", "Ha ocurrido un error.");
+			json.append("errorDetail", e.getStackTrace());
+		}
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	
+	private void cloneCoste(HttpServletRequest req, HttpServletResponse resp, String usermail)
+			throws JSONException, IOException {
+
+		JSONObject json = new JSONObject();
+
+		try {
+			String cliente = req.getParameter("cliente");
+			String analisis_coste = req.getParameter("analisis_coste");
+			String analisis_horas = req.getParameter("analisis_horas");
+			String comentarios = req.getParameter("comentarios");
+			String construccion_coste = req.getParameter("construccion_coste");
+			String construccion_horas = req.getParameter("construccion_horas");
+			String diseño_coste = req.getParameter("diseño_coste");
+			String diseño_horas = req.getParameter("diseño_horas");
+			String equipo = req.getParameter("equipo");
+			String fecha_alta_costes = req.getParameter("fecha_alta_costes");
+			String fecha_solicitud_valoracion = req
+					.getParameter("fecha_solicitud_valoracion");
+			String fecha_recepcion_valoracion = req
+					.getParameter("fecha_recepcion_valoracion");
+			String gestion_coste = req.getParameter("gestion_coste");
+			String gestion_horas = req.getParameter("gestion_horas");
+			String gestor_it = req.getParameter("gestor_it");
+			String project = req.getParameter("project");
+			String pruebas_horas = req.getParameter("pruebas_horas");
+			String pruebas_costes = req.getParameter("pruebas_coste");
+			String total_coste = req.getParameter("total_coste");
+			String total_horas = req.getParameter("total_horas");
+			String num_valoracion = req.getParameter("num_valoracion");
+			String num_control = req.getParameter("numero_control");
+
+			CosteDao cDao = CosteDao.getInstance();
+			ClienteDao clDao = ClienteDao.getInstance();
+			ProyectoDao pDao = ProyectoDao.getInstance();
+			Coste c = new Coste();
+			
+			Proyecto p = pDao.getProjectsByCode(project).get(0);
+
+			
+			Cliente cliente_obj = clDao.getClienteByName(cliente);
+			
+			c.setNum_control(num_control);
+			c.setCliente_name(cliente_obj.getNombre());
+			c.setClienteKey(cliente_obj.getKey().getId());
+			c.setCoste_analisis(analisis_coste);
+			c.setHoras_analisis(analisis_horas);
+			c.setComentarios(comentarios);
+			c.setCoste_construccion(construccion_coste);
+			c.setHoras_construccion(construccion_horas);
+			c.setHoras_diseño(diseño_horas);
+			c.setCoste_diseño(diseño_coste);
+			if (!"default".equals(equipo))
+				c.setEquipos(equipo);
+			c.setStr_fecha_alta(fecha_alta_costes);
+			c.setFecha_alta(Utils.dateConverter(fecha_alta_costes));
+			c.setStr_fecha_solicitud_valoracion(fecha_solicitud_valoracion);
+			c.setStr_fecha_recepcion_valoracion(fecha_recepcion_valoracion);
+			c.setFecha_solicitud_valoracion(Utils
+					.dateConverter(fecha_solicitud_valoracion));
+			c.setHoras_gestion(gestion_horas);
+			c.setCoste_gestion(gestion_coste);
+			if (!"default".equals(gestor_it)) {
+				c.setGestor_it_key(Long.parseLong(gestor_it));
+				UserDao uDao = UserDao.getInstance();
+				User gestor_it_obj = uDao
+						.getUserbyId(Long.parseLong(gestor_it));
+				c.setGestor_it_name(gestor_it_obj.getNombre() + " "
+						+ gestor_it_obj.getApellido1() + " "
+						+ gestor_it_obj.getApellido2());
+			}
+
+			c.setProjectKey(p.getKey().getId());
 			c.setProject_name(p.getCod_proyecto());
 
 			c.setHoras_pruebas(pruebas_horas);

@@ -154,6 +154,11 @@
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
+		<action path="/admin/informes" type="com.gcs.actions.InformesAction">
+			<forward name="ok" path="/jsp/skeletons/informes-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
+		</action>
+		
 		<action path="/sendMailImplantacion" type="com.gcs.actions.modal.ImplantacionModalAction">
 			<forward name="email1" path="/jsp/modal/modal-implantacion-email1.jsp" />
 			<forward name="email2" path="/jsp/modal/modal-implantacion-email2.jsp" />

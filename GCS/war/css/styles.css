@@ -2704,3 +2704,8 @@ label.ui-marmots-label-radio {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+#informes #filtro-informe-variable {
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 20px;
+}

@@ -134,6 +134,7 @@ function loadEditModal(){
 }
 
 function  sendEditProject(){
+	$('#new_project_form_modal').addClass('hidden');
 	var $form = $('#edit-project-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -164,7 +165,7 @@ function  sendEditProject(){
 		});
 }
 function sendCloneProject() {
-
+	$('#new_project_form_modal').addClass('hidden');
 	var $form = $('#edit-project-form');
 	
 

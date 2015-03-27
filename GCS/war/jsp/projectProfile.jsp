@@ -33,7 +33,7 @@
 				
 				${fn:substring(string, 8, 11)}
 				${fn:substring(string, 4, 8)}
-				${fn:substring(string, 30, 34)}
+				${fn:substring(string, 24,29)}
 				</span></li>
 			</ul>
 			<c:if test="${proyecto.url_doc_google_drive != null}">
