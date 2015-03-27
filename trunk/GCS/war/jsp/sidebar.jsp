@@ -14,6 +14,7 @@
 			<c:if test="${sessionScope.permiso == 1}">
 				<li><a href="/dashboard/gestionImplantaciones.do"><span class="informes">Registro</span></a></li>
 				<li><a href="/admin/auditoria.do"><span class="logs">Auditoría</span></a></li>	
+				<li><a href="/admin/informes.do"><span class="demanda">Informes</span></a></li>
 			</c:if>		
 		</ul>
 	</div>

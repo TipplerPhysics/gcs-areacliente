@@ -138,6 +138,15 @@
 	    <url-pattern>/informeServlet</url-pattern>
 	  </servlet-mapping>
 	  
+	  	  	  <servlet>
+	    <servlet-name>InformeExcelServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.InformeExcelServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>InformeExcelServlet</servlet-name>
+	    <url-pattern>/informeExcelServlet</url-pattern>
+	  </servlet-mapping>
 
 	  
     <security-constraint>

@@ -743,6 +743,7 @@ function sendNewCoste(){
 }
 
 function sendEditCoste(){
+	$('#new_coste_form_modal').addClass('hidden');
 	var $form = $('#edit-coste-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -759,6 +760,45 @@ function sendEditCoste(){
 					if (data.success="true"){
 						$form.hide();
 						$('#span_message_modal').html('El coste ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#span_message_modal').html(data.error);
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').addClass("error");
+					}
+					
+				}
+			});
+	 }
+	 
+	 
+}
+
+
+function sendCloneCoste(){
+	$('#new_coste_form_modal').addClass('hidden');
+	var $form = $('#edit-coste-form');
+	var formURL = $form.attr("action");
+	 var $formData = $form.serialize();
+	 var postData= $formData+"&accion=clone";
+	 
+	 if($form.valid()){
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success="true"){
+						$form.hide();
+						$('#span_message_modal').html('Se ha replicado el coste de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
 						$('.modal-footer').hide();
 						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
 
@@ -2242,7 +2282,16 @@ $(function() {
 	    	z.add(option3);
 		}
 	});
-});;$.fn.paginateMe = function(opts) {
+});;$(function(){	
+	
+	
+})
+
+
+function verinforme(){
+	var variable =$('#variableInf').find(":selected").val();
+	$('#iframexls').attr('src',"/informeServlet?accion="+variable);
+};$.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
 		perPage : 10,
 		showPrevNext : false,
@@ -2530,6 +2579,7 @@ function loadEditModal(){
 }
 
 function  sendEditProject(){
+	$('#new_project_form_modal').addClass('hidden');
 	var $form = $('#edit-project-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -2560,7 +2610,7 @@ function  sendEditProject(){
 		});
 }
 function sendCloneProject() {
-
+	$('#new_project_form_modal').addClass('hidden');
 	var $form = $('#edit-project-form');
 	
 
@@ -2974,6 +3024,7 @@ $(function() {
 }
 
 function sendEditServicio(){
+	$('#new_service_form_modal').addClass('hidden');
 	var $form = $('#edit-servicio-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -2990,6 +3041,42 @@ function sendEditServicio(){
 					if (data.success="true"){
 						$form.hide();
 						$('#span_message_modal').html('El servicio ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#span_message_modal').html(data.error);
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').addClass("error");
+					}
+					
+				}
+			});
+	 }
+}
+
+function sendCloneService(){
+	$('#new_service_form_modal').addClass('hidden');
+	var $form = $('#edit-servicio-form');
+	var formURL = $form.attr("action");
+	 var $formData = $form.serialize();
+	 var postData= $formData+"&accion=clone";
+	 
+	 if($form.valid()){
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success="true"){
+						$form.hide();
+						$('#span_message_modal').html('Se ha creado de forma satisfactoria un servicio con los mismos datos.');
 						$('.modal-footer').hide();
 						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
 

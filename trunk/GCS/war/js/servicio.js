@@ -3,6 +3,7 @@ function editServicio(id){
 }
 
 function sendEditServicio(){
+	$('#new_service_form_modal').addClass('hidden');
 	var $form = $('#edit-servicio-form');
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
@@ -19,6 +20,42 @@ function sendEditServicio(){
 					if (data.success="true"){
 						$form.hide();
 						$('#span_message_modal').html('El servicio ha sido registrado de forma correcta.<br/>En breve volvemos a la p&aacute;gina.');
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
+
+						setTimeout(function() { 
+							resetForm($form);
+							location.reload();
+						}, 1500);
+					}else{
+						$('#span_message_modal').html(data.error);
+						$('.modal-footer').hide();
+						$('#message_div_modal').css('display','block').addClass("error");
+					}
+					
+				}
+			});
+	 }
+}
+
+function sendCloneService(){
+	$('#new_service_form_modal').addClass('hidden');
+	var $form = $('#edit-servicio-form');
+	var formURL = $form.attr("action");
+	 var $formData = $form.serialize();
+	 var postData= $formData+"&accion=clone";
+	 
+	 if($form.valid()){
+		 $.ajax(			
+			{
+				url : formURL,
+				type: "GET",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					if (data.success="true"){
+						$form.hide();
+						$('#span_message_modal').html('Se ha creado de forma satisfactoria un servicio con los mismos datos.');
 						$('.modal-footer').hide();
 						$('#message_div_modal').css('display','block').removeClass("error").addClass("success");
 
