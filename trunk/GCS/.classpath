@@ -9,10 +9,9 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/itextg-5.5.3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/poi-3.8-20120326.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/poi-examples-3.8-20120326.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/poi-excelant-3.8-20120326.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/poi-ooxml-3.8-20120326.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/poi-ooxml-schemas-3.8-20120326.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/poi-scratchpad-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
