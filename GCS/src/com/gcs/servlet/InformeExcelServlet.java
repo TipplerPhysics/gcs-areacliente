@@ -1,9 +1,15 @@
 package com.gcs.servlet;
 
+import java.io.InputStream;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class InformeExcelServlet extends HttpServlet  {
 
@@ -38,6 +44,12 @@ public class InformeExcelServlet extends HttpServlet  {
 	
 	private void informeCartera(HttpServletRequest req, HttpServletResponse resp)throws Exception {
 		
+		
+		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+		resp.setHeader("Content-Disposition","attachment; filename=InformePruebasSTE.xlsx");
+		String link= "/datadocs/templatePruebas.xlsx";
+		InputStream inp = this.getServletContext().getResourceAsStream(link);
+		Workbook workbook = new XSSFWorkbook(OPCPackage.open(inp));
 	}
 	
 	
