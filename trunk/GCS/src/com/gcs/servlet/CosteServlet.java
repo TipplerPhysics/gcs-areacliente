@@ -85,7 +85,6 @@ public class CosteServlet extends HttpServlet {
 	}
 	
 	private void generateXLS(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		OutputStream out = null;
 		try {
 			resp.setContentType("application/vnd.ms-excel");
 			resp.setHeader("Content-Disposition",
@@ -195,37 +194,55 @@ public class CosteServlet extends HttpServlet {
 				
 				s.addCell(new Label(0, aux, c.getCliente_name()));
 				s.addCell(new Label(1, aux, c.getProject_name()));
+				if(!c.getNum_control().equals("")&&c.getNum_control()!=null)
 				s.addCell(new Label(2, aux, c.getNum_control()));
 				s.addCell(new Label(3, aux, c.getEquipos()));
 				s.addCell(new Label(4, aux, c.getStr_fecha_alta()));
 				s.addCell(new Label(5, aux, c.getGestor_it_name()));
 				s.addCell(new Label(6, aux, c.getNum_valoracion()));
+				
+				if(!c.getComentarios().equals("")&&c.getComentarios()!=null)
 				s.addCell(new Label(7, aux, c.getComentarios()));
-				s.addCell(new Label(8, aux, c.getStr_fecha_solicitud_valoracion()));
-				if (!"".equals(c.getHoras_analisis()))
-					s.addCell(new Number(9, aux, Double.parseDouble(c.getHoras_analisis()),cellFormatRight));
-				if (!"".equals(c.getCoste_analisis()))
-					s.addCell(new Number(10, aux, Double.parseDouble(c.getCoste_analisis()),cellFormatRight));
-				if (!"".equals(c.getHoras_diseño()))
-					s.addCell(new Number(11, aux, Double.parseDouble(c.getHoras_diseño()),cellFormatRight));
-				if (!"".equals(c.getCoste_diseño()))
-					s.addCell(new Number(12, aux, Double.parseDouble(c.getCoste_diseño()),cellFormatRight));
-				if (!"".equals(c.getHoras_construccion()))
-					s.addCell(new Number(13, aux, Double.parseDouble(c.getHoras_construccion()),cellFormatRight));
-				if (!"".equals(c.getCoste_construccion()))
-					s.addCell(new Number(14, aux, Double.parseDouble(c.getCoste_construccion()),cellFormatRight));
-				if (!"".equals(c.getHoras_pruebas()))
-					s.addCell(new Number(15, aux, Double.parseDouble(c.getHoras_pruebas()),cellFormatRight));
-				if (!"".equals(c.getCoste_pruebas()))
-					s.addCell(new Number(16, aux, Double.parseDouble(c.getCoste_pruebas()),cellFormatRight));
-				if (!"".equals(c.getHoras_gestion()))
-					s.addCell(new Number(17, aux, Double.parseDouble(c.getHoras_gestion()),cellFormatRight));
-				if (!"".equals(c.getCoste_gestion()))
-					s.addCell(new Number(18, aux, Double.parseDouble(c.getCoste_gestion()),cellFormatRight));
-				if (!"".equals(c.getHoras_total()))
-					s.addCell(new Number(19, aux, Double.parseDouble(c.getHoras_total()),cellFormatRight));
-				if (!"".equals(c.getCoste_total()))
-					s.addCell(new Number(20, aux, Double.parseDouble(c.getCoste_total()),cellFormatRight));
+				
+				if(!c.getStr_fecha_solicitud_valoracion().equals("")&&c.getStr_fecha_solicitud_valoracion()!=null)
+					s.addCell(new Label(8, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
+				
+				if (!"".equals(c.getHoras_analisis())&&c.getHoras_analisis()!=null)
+					s.addCell(new Number(9, aux, Double.parseDouble(c.getHoras_analisis().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getCoste_analisis())&&c.getCoste_analisis()!=null)
+					s.addCell(new Number(10, aux, Double.parseDouble(c.getCoste_analisis().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getHoras_diseño())&&c.getHoras_diseño()!=null)
+					s.addCell(new Number(11, aux, Double.parseDouble(c.getHoras_diseño().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getCoste_diseño())&&c.getCoste_diseño()!=null)
+					s.addCell(new Number(12, aux, Double.parseDouble(c.getCoste_diseño().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getHoras_construccion())&&c.getHoras_construccion()!=null)
+					s.addCell(new Number(13, aux, Double.parseDouble(c.getHoras_construccion().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getCoste_construccion())&&c.getCoste_construccion()!=null)
+					s.addCell(new Number(14, aux, Double.parseDouble(c.getCoste_construccion().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getHoras_pruebas())&&c.getHoras_pruebas()!=null)
+					s.addCell(new Number(15, aux, Double.parseDouble(c.getHoras_pruebas().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getCoste_pruebas())&&c.getCoste_pruebas()!=null)
+					s.addCell(new Number(16, aux, Double.parseDouble(c.getCoste_pruebas().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getHoras_gestion())&&c.getHoras_gestion()!=null)
+					s.addCell(new Number(17, aux, Double.parseDouble(c.getHoras_gestion().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getCoste_gestion())&&c.getCoste_gestion()!=null)
+					s.addCell(new Number(18, aux, Double.parseDouble(c.getCoste_gestion().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getHoras_total())&&c.getHoras_total()!=null)
+					s.addCell(new Number(19, aux, Double.parseDouble(c.getHoras_total().replace(",", ".")),cellFormatRight));
+				
+				if (!"".equals(c.getCoste_total())&&c.getCoste_total()!=null)
+					s.addCell(new Number(20, aux, Double.parseDouble(c.getCoste_total().replace(",", ".")),cellFormatRight));
+				
 				
 				aux++;
 			}
@@ -236,8 +253,6 @@ public class CosteServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException("Exception in Excel", e);
 		} finally {
-			if (out != null)
-				out.close();
 		}
 
 	}
