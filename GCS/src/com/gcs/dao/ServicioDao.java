@@ -182,7 +182,7 @@ public class ServicioDao {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		
 		String queryStr = "select from " + Servicio.class.getName()
-				+ " where servicio == '" + estado +  "'";
+				+ " where estado == '" + estado +  "'";
 		
 		@SuppressWarnings({ "unchecked", "unused" })
 		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
