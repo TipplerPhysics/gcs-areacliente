@@ -4,7 +4,7 @@
 	<div class="modal_ajax">
 		<div class="">
 		
-		<button onclick="sendCloneService();" id="new_service_form_modal" class="" type="button" style="float:right">Crear un nuevo servico con estos datos</button>
+		<button onclick="sendCloneService();" id="new_service_form_modal" class="" type="button" style="float:right">Crear un nuevo servicio con estos datos</button>
 					<h2>Editar Servicio</h2>
 					<hr />
 				</div>

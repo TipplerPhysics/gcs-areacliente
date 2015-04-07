@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div id="alta_proyecto">
 
@@ -299,7 +300,15 @@
 										<td><span>${proyecto.clienteName}</span></td>
 										<td><span>${proyecto.clasificacion}</span></td>
 										<td><span>${proyecto.tipo}</span></td>
-										<td><span>${proyecto.coste}<c:if test="${proyecto.coste eq ''}">0</c:if> &#8364;</span></td>
+										<c:choose>
+											<c:when test="${proyecto.coste eq ''}">
+												<td><span>0.00&#8364;</span></td>
+											</c:when>
+											<c:otherwise>
+												<td><span><fmt:formatNumber value="${proyecto.coste}" groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" />&#8364;</span></td>
+											</c:otherwise>
+										</c:choose>
+										<!--<td><span>${proyecto.coste}<c:if test="${proyecto.coste eq ''}">0.0</c:if> &#8364;</span></td>-->
 										<c:if test="${sessionScope.permiso != 5}">
 										<td>										
 											<img class="vs" src="../img/vs.png">								
