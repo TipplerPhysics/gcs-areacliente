@@ -137,8 +137,8 @@ public class ServicioServlet extends HttpServlet {
 			s.addCell(new Label(6, 0, "FORMATO INTERMEDIO",cellFormat));
 			s.addCell(new Label(7, 0, "FORMATO LOCAL",cellFormat));
 			
-			s.addCell(new Label(8, 0, "REF. LOCAL 1",cellFormat));
-			s.addCell(new Label(9, 0, "REF. LOCAL 2",cellFormat));
+			s.addCell(new Label(8, 0, "REF. LOCAL",cellFormat));
+			s.addCell(new Label(9, 0, "REF. LOCAL INTEGRADO",cellFormat));
 			s.addCell(new Label(10, 0, "FECHA INICIO INTEGRADAS",cellFormat));
 			s.addCell(new Label(11, 0, "FECHA FIN INTEGRADAS",cellFormat));
 			s.addCell(new Label(12, 0, "FECHA INICIO ACEPTACIÓN",cellFormat));

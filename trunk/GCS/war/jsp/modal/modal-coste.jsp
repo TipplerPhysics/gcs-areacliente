@@ -5,7 +5,7 @@
 	<div class="modal_ajax">
 		<div class="">
 		
-		<button onclick="sendCloneCoste();" id="new_coste_form_modal" class="" type="button" style="float:right">Crear un nuevo coste con estos datos</button>
+		<!--<button onclick="sendCloneCoste();" id="new_coste_form_modal" class="" type="button" style="float:right">Crear un nuevo coste con estos datos</button>-->
 					<h2>Editar Coste</h2>
 					<hr />
 				</div>
