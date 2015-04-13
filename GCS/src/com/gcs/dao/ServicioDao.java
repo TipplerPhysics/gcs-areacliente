@@ -68,6 +68,23 @@ public class ServicioDao {
 		return servicios;
 	}
 	
+	public List<Servicio> getAllServiciosByEstadoPais(String pais, String estado) {
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		String queryStr = "select from " + Servicio.class.getName()
+				+ " where estado == '" + estado +  "' && pais=='"+pais+"'";
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
+		
+
+		
+		pManager.close();
+		
+
+		return servicios;
+	}
 	
 	public List<Servicio> getServiciosByProject(Long id) {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();

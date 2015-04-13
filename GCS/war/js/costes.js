@@ -89,11 +89,10 @@ function sendNewCoste(){
 function sendEditCoste(){
 	$('#new_coste_form_modal').addClass('hidden');
 	var $form = $('#edit-coste-form');
+	if($form.valid()){
 	var formURL = $form.attr("action");
 	 var $formData = $form.serialize();
 	 var postData= $formData+"&accion=update&id="+ id;
-	 
-	 if($form.valid()){
 		 $.ajax(			
 			{
 				url : formURL,
