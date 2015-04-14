@@ -73,7 +73,7 @@ public class InformeExcelServlet extends HttpServlet  {
 		
 		
 		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-		resp.setHeader("Content-Disposition","attachment; filename=InformePaisesSTE.xlsx");
+		resp.setHeader("Content-Disposition","attachment; filename=InformePaisesGCS.xlsx");
 		String link= "/datadocs/templatePaises.xlsx";
 		InputStream inp = this.getServletContext().getResourceAsStream(link);
 		Workbook workbook = new XSSFWorkbook();
@@ -146,7 +146,7 @@ public class InformeExcelServlet extends HttpServlet  {
 			head++;
 			
 			hoja.setColumnWidth(1, 3000);
-			hoja.setColumnWidth(2, 3000);
+			hoja.setColumnWidth(2, 7000);
 			hoja.setColumnWidth(3, 7000);
 			hoja.setColumnWidth(4, 3000);
 			hoja.setColumnWidth(5, 5000);
@@ -248,8 +248,10 @@ public class InformeExcelServlet extends HttpServlet  {
 			
 			
 			head++;
-			hoja.createRow(head).createCell(1).setCellStyle(cellStyle);
+			
+			hoja.createRow(head);
 			hoja.getRow(head).setHeightInPoints(20);
+			hoja.getRow(head).createCell(1).setCellStyle(cellStyle);
 			hoja.getRow(head).createCell(2).setCellStyle(cellStyle);
 			hoja.getRow(head).createCell(3).setCellStyle(cellStyle);
 			hoja.getRow(head).createCell(4).setCellStyle(cellStyle);
@@ -259,7 +261,7 @@ public class InformeExcelServlet extends HttpServlet  {
 			
 			
 			hoja.getRow(head).getCell(1).setCellValue("AÑO");
-			hoja.getRow(head).getCell(2).setCellValue("TRIMESTRE");
+			hoja.getRow(head).getCell(2).setCellValue("FECHA\n IMPLANTACIÓN");
 			hoja.getRow(head).getCell(3).setCellValue("CLIENTE");
 			hoja.getRow(head).getCell(4).setCellValue("BANCA");
 			hoja.getRow(head).getCell(5).setCellValue("PRODUCTO");
@@ -276,10 +278,10 @@ public class InformeExcelServlet extends HttpServlet  {
 					hoja.getRow(head).createCell(1).setCellStyle(bodyStyle);
 					hoja.getRow(head).getCell(1).setCellValue(proyecto.getFecha_alta_str().substring(6, 10));
 					
-					int mes = Integer.parseInt(proyecto.getFecha_alta_str().substring(3,5));
+					
 					
 					hoja.getRow(head).createCell(2).setCellStyle(bodyStyle);
-					hoja.getRow(head).getCell(2).setCellValue((mes/3+1)+"º");
+					hoja.getRow(head).getCell(2).setCellValue(servicio.getStr_fecha_implantacion_produccion());
 					
 					hoja.getRow(head).createCell(3).setCellStyle(bodyStyle);
 					hoja.getRow(head).getCell(3).setCellValue(servicio.getCliente_name());
