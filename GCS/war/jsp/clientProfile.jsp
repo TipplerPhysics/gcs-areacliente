@@ -104,11 +104,7 @@
 							
 					 		 <td>${pro.producto}</td>
 							 <td></td>
-					 		 <td>
-					 		 	<c:forEach items="${cliente.paises}" var="pais">
-									${pais}&nbsp
-								</c:forEach>
-							 </td>
+					 		 <td>${servicio.pais}</td>
 					 		 <td>${servicio.cod_servicio}</td>
 					 		 <td>${servicio.servicio}</td>
 					 		 <td>${servicio.estado} con ${servicio.estadoSubida}</td>
