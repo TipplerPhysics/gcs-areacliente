@@ -17,16 +17,20 @@
 	 <button id="newUserButton">
 		Nuevo Proyecto<span class="proyecto_span"></span>
 	</button>  
+
 	
 	<button id="excel_btn" onclick="window.location.href='../../projectServlet?accion=xls'">
-		Descargar Tabla<span class="excel_span"></span>
+		Descargar Proyectos<span class="excel_span"></span>
 	</button>
-
+	
+	<button id="excel_btn" onclick="window.location.href='../../conectividadExcelServlet'">
+		Descargar Conectividades<span class="excel_span"></span>
+	</button>
 
 	<div class="new-user-form-holder">
 		<form id="new-project-form" name="new-project-form" action="/projectServlet"
 			method="POST" novalidate="novalidate">
-			<div class="form-container">
+			<div class="form-container" style="padding-bottom: 0px;">
 				
 				<div class="form-field-divider left">
 					<div class="form-field">
@@ -231,8 +235,8 @@
 		</div>
 		
 		<div class="form-container relatedOptions">
-			<h3>Otras acciones relacionadas:</h3>
-			<div id="buttons_holder">
+			<h3 id='buttons_title'>Otras acciones relacionadas:</h3>
+			<div class="buttons_holder_serv">
 			
 				<fieldset>
 					<span class="lbl">Coste</span>

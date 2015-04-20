@@ -2069,13 +2069,13 @@ form textarea.error {
   position: relative;
   vertical-align: top;
   padding-top: 0px;
+  width: 59%;
 }
 .profile_cont .summary > div .drive-link {
   font-weight: bold;
   margin-left: 25px;
 }
 .profile_cont .summary > div > ul:first-child > li {
-  height: 25px;
   color: #0b5394;
 }
 .profile_cont .summary > div > ul:first-child > li > span.title {
@@ -2085,9 +2085,6 @@ form textarea.error {
 .profile_cont .summary > div > ul:first-child > li > span.info {
   color: #434a58;
   font-weight: 700;
-}
-.profile_cont .summary > div > ul:first-child > li > span.proyectos {
-  margin-left: 25px;
 }
 #alta_proyecto #edit_user_dialog .form-field .bootstrap-select {
   width: 220px;
@@ -2145,7 +2142,6 @@ form textarea.error {
   margin-top: 20px;
 }
 #alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions {
-  padding: 0 20px !important;
   text-align: left;
 }
 #alta_proyecto .newUserbox .new-user-form-holder .form-container.relatedOptions fieldset {
@@ -2259,6 +2255,18 @@ form textarea.error {
 }
 #buttons_holder {
   text-align: right;
+}
+.buttons_holder_serv {
+  width: 60%;
+  float: right;
+}
+.relatedOptions {
+  height: 90px;
+  padding: 18px !important;
+}
+#buttons_title {
+  width: 30%;
+  float: left;
 }
 .relatedOptions > #buttons_holder {
   text-align: left;

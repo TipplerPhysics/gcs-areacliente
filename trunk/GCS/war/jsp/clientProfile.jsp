@@ -53,7 +53,7 @@
 					<c:forEach items="${productos}" var="producto">
 						<li>${producto}</li>
 					</c:forEach>
-				</ul></span></li><c:forEach items="${productos}"><br /></c:forEach>
+				</ul></span></li><c:forEach items="${productos}"></c:forEach>
 				<li>Proyecto:<br /><span class="info proyectos">
 					<c:forEach items="${projects}" var="proyecto">
 						<a href='../projectProfile.do?id=${proyecto.key.id}&idCli=${cliente.key.id}'>${proyecto.cod_proyecto}</a>&nbsp

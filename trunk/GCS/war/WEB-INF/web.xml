@@ -49,6 +49,16 @@
 	  </servlet-mapping>
 	
 	  <servlet>
+	    <servlet-name>ConectividadExcelServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.ConectividadExcelServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>ConectividadExcelServlet</servlet-name>
+	    <url-pattern>/conectividadExcelServlet</url-pattern>
+	  </servlet-mapping>
+	  
+	  <servlet>
 	    <servlet-name>DemandaServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.DemandaServlet</servlet-class>
 	  </servlet>

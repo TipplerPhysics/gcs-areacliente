@@ -288,11 +288,13 @@ public List<Proyecto> getProjectsByClient(Long id){
 	Transaction transaction = pManager.currentTransaction();
 	transaction.begin();
 
-	String queryStr = "select from " + Proyecto.class.getName()
-			+ " WHERE clienteKey == :id";
 
-	List<Proyecto> projects = (List<Proyecto>) pManager.newQuery(queryStr)
-			.execute(id);
+	Query q = pManager.newQuery("select from " + Proyecto.class.getName()
+			+ " WHERE clienteKey == :id");
+
+	q.setOrdering("cod_proyecto");
+	
+	List<Proyecto> projects = (List<Proyecto>) q.execute(id);
 
 	transaction.commit();
 

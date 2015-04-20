@@ -188,6 +188,24 @@ public class ConectividadDao {
 		return conectividades;
 	}
 	
+	public List<Conectividad> getAllConectividades(){
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		String queryStr = "select from " + Conectividad.class.getName();
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Conectividad> conectividades = (List<Conectividad>) pManager.newQuery(queryStr).execute();
+		
+		if (conectividades.isEmpty()) {
+			conectividades = null;
+		}
+		
+		pManager.close();
+		
+		return conectividades;
+	}
+	
 	public List<Conectividad> getConectividadesEnCurso(){
 		
 		List<Conectividad> conectividadSolicitado = getConectividadesByEstadoImplantacion(SOLICITADO);
