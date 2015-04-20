@@ -17,7 +17,7 @@
 
 	<span class="title"> Consulta informes del &aacuterea</span>	
 	<hr class="titleBorder"/>
-	<span>Aqu&iacute puedes ejecutar los informes predefinidos del &aacuterea.</span>
+	<span>Aqu&iacute puedes generar los informes predefinidos del &aacuterea.</span>
 		<div id='filtro-informe-variable' >
 			<span class="lbl">Informe a generar<span class="required-asterisk">*</span>:</span>
 			<select id='variableInf' class="selectpicker selected" name='variableInf'>
