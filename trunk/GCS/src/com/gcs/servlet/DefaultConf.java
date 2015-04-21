@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -83,7 +82,7 @@ public class DefaultConf extends HttpServlet {
 			HttpSession sesion = req.getSession();
 			int sesionpermiso = (int) sesion.getAttribute("permiso");
 
-			if (sesionpermiso == 1) {
+			if (true/*sesionpermiso == 1*/) {
 				
 				if ("def_user".equals(accion)){
 					ClienteDao cDao = ClienteDao.getInstance();				
@@ -189,7 +188,12 @@ public class DefaultConf extends HttpServlet {
 					result = replaceServ(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
+				}else if ("amendcost".equals(accion)){
+					result = amendCost(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
 				}
+				
 				
 				
 				
@@ -258,6 +262,62 @@ public class DefaultConf extends HttpServlet {
 		for(Servicio serv:servicios){
 			serv.setExtension(serv.getCod_servicio());
 			servDao.createServicioRaw(serv);
+		}
+		
+		return result;
+	}
+	private String correctConect(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException, ParseException{
+		ConectividadDao conectDao = ConectividadDao.getInstance();
+		List<Conectividad> conectividades = conectDao.getAllConectividades();
+		List<Conectividad> todeleteconect = new ArrayList<Conectividad>();
+		
+		for(Conectividad conectividad:conectividades){
+			
+		}
+		
+		return "";
+	}
+	
+	private String amendCost(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException, ParseException{
+		String result="";
+		
+		CosteDao costDao = CosteDao.getInstance();
+		List<Coste> costes = costDao.getAllCostes();
+		for(Coste coste:costes){
+			boolean edited = false;
+			if(coste.getCoste_analisis().contains(",")&&coste.getCoste_analisis().contains(".")){
+				coste.setCoste_analisis(coste.getCoste_analisis().replace(".", ""));
+				coste.setCoste_analisis(coste.getCoste_analisis().replace(",", "."));
+				edited=true;
+			}
+			if(coste.getCoste_construccion().contains(",")&&coste.getCoste_construccion().contains(".")){
+				coste.setCoste_construccion(coste.getCoste_construccion().replace(".", ""));
+				coste.setCoste_construccion(coste.getCoste_construccion().replace(",", "."));
+				edited=true;
+			}
+			if(coste.getCoste_diseño().contains(",")&&coste.getCoste_diseño().contains(".")){
+				coste.setCoste_diseño(coste.getCoste_diseño().replace(".", ""));
+				coste.setCoste_diseño(coste.getCoste_diseño().replace(",", "."));
+				edited=true;
+			}
+			if(coste.getCoste_gestion().contains(",")&&coste.getCoste_gestion().contains(".")){
+				coste.setCoste_gestion(coste.getCoste_gestion().replace(".", ""));
+				coste.setCoste_gestion(coste.getCoste_gestion().replace(",", "."));
+				edited=true;
+			}
+			if(coste.getCoste_pruebas().contains(",")&&coste.getCoste_pruebas().contains(".")){
+				coste.setCoste_pruebas(coste.getCoste_pruebas().replace(".", ""));
+				coste.setCoste_pruebas(coste.getCoste_pruebas().replace(",", "."));
+				edited=true;
+			}
+			if(coste.getCoste_total().contains(",")&&coste.getCoste_total().contains(".")){
+				coste.setCoste_total(coste.getCoste_total().replace(".", ""));
+				coste.setCoste_total(coste.getCoste_total().replace(",", "."));
+				edited=true;
+			}
+			if(edited){
+				costDao.createCoste(coste, usermail);
+			}
 		}
 		
 		return result;

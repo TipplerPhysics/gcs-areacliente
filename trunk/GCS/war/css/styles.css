@@ -2263,6 +2263,8 @@ form textarea.error {
 .relatedOptions {
   height: 90px;
   padding: 18px !important;
+  margin-top: 10px !important;
+  margin-bottom: 0px !important;
 }
 #buttons_title {
   width: 30%;

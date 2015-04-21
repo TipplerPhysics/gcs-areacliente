@@ -104,12 +104,12 @@ public class ProyectoDao {
 			Integer project_number = c.getProject_number();
 			if (project_number==null)
 				project_number=1;			
-			else
-				project_number++;
 			
+				
+		
 			String cod_proyecto = createProjectName(c,p,project_number);			
 			p.setCod_proyecto(cod_proyecto);
-			
+			project_number++;
 			c.setProject_number(project_number);
 			cDao.createCliente(c,"");		
 		}
@@ -203,10 +203,13 @@ public class ProyectoDao {
 			Integer project_number = c.getProject_number();
 			if (project_number==null)
 				project_number=1;			
-			else
-				project_number++;
 			
-			String cod_proyecto = createProjectName(c,p,project_number);			
+			
+			
+			project_number = 3;
+			String cod_proyecto = createProjectName(c,p,project_number);
+			p.setCod_proyecto(cod_proyecto);
+			project_number++;
 			//p.setCod_proyecto(cod_proyecto);
 			
 			c.setProject_number(project_number);

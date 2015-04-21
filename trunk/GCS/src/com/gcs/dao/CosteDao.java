@@ -75,7 +75,9 @@ public class CosteDao {
 		
 		try {
 			pm.makePersistent(c);
+			
 		} finally {
+			pm.close();
 			if (isNew)
 				Utils.writeLog(usermail, "Creó", "Coste", c.getProject_name());
 			else
@@ -93,14 +95,12 @@ public class CosteDao {
 				if (!"".equals(cost.getCoste_total()))
 				d += Double.parseDouble(cost.getCoste_total().replace(",","."));
 			}
-String aux = d.toString();
+			String aux = d.toString();
 			proyecto.setCoste(aux);
 			
 			proyectDao.createProjectRaw(proyecto);
 			
 			
-			
-			pm.close();
 		}
 	}
 	

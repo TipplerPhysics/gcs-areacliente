@@ -89,8 +89,10 @@ public class UserServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		
 		String areas = req.getParameter("areasStr");
-		if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
-			areas = areas.substring(0, areas.length()-1);
+		if(areas!=null){
+			if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
+				areas = areas.substring(0, areas.length()-1);
+			}
 		}
 		String dto = req.getParameter("dto");
 
@@ -140,9 +142,10 @@ public class UserServlet extends HttpServlet {
 		String areas = req.getParameter("areasStr");
 		String dto = req.getParameter("dto");
 		
-
-		if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
-			areas = areas.substring(0, areas.length()-1);
+		if(areas!=null){
+			if (areas.length()!=0 && areas.substring(areas.length() - 1) == "_") {
+				areas = areas.substring(0, areas.length()-1);
+			}
 		}
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
@@ -277,9 +280,10 @@ public class UserServlet extends HttpServlet {
 			for (User u:usuarios){
 				
 				String areas = u.getAreas();
+				if(areas!=null){
 				areas = areas.replace("-", " - ");
 				areas = areas.replace("_", " - ");
-				
+				}
 				s.addCell(new Label(0, aux, u.getNombre()));
 				s.addCell(new Label(1, aux, u.getApellido1()));
 				s.addCell(new Label(2, aux, u.getApellido2()));
