@@ -113,8 +113,8 @@
 						<div class="form-field">
 							<span class="lbl">An&aacute;lisis:</span>
 							<div class="input">
-								<input id="analisis_horas_modal" name="analisis_horas" class="horas calcHorasMod"/>
-								<input id="analisis_coste_modal" name="analisis_coste" class="coste"/>
+								<input id="analisis_horas_modal" name="analisis_horas" class="horas number calcHorasMod"/>
+								<input id="analisis_coste_modal" name="analisis_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -124,8 +124,8 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="disenio_horas_modal" name="diseño_horas" class="horas calcHorasMod"/>
-								<input id="disenio_coste_modal" name="diseño_coste" class="coste"/>
+								<input id="disenio_horas_modal" name="diseño_horas" class="horas number calcHorasMod"/>
+								<input id="disenio_coste_modal" name="diseño_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -135,8 +135,8 @@
 						<div class="form-field">
 							<span class="lbl">Construcción:</span>
 							<div class="input">
-								<input id="construccion_horas_modal" name="construccion_horas" class="horas calcHorasMod"/>
-								<input id="construccion_coste_modal" name="construccion_coste" class="coste"/>
+								<input id="construccion_horas_modal" name="construccion_horas" class="horas number calcHorasMod"/>
+								<input id="construccion_coste_modal" name="construccion_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -146,8 +146,8 @@
 						<div class="form-field">
 							<span class="lbl">Pruebas:</span>
 							<div class="input">
-								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas calcHorasMod"/>
-								<input id="pruebas_coste_modal" name="pruebas_coste" class="coste"/>
+								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas number calcHorasMod"/>
+								<input id="pruebas_coste_modal" name="pruebas_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -157,8 +157,8 @@
 						<div class="form-field">
 							<span class="lbl">Gestión:</span>
 							<div class="input">
-								<input id="gestion_horas_modal" name="gestion_horas" class="horas calcHorasMod"/>
-								<input id="gestion_coste_modal" name="gestion_coste" class="coste"/>
+								<input id="gestion_horas_modal" name="gestion_horas" class="horas number calcHorasMod"/>
+								<input id="gestion_coste_modal" name="gestion_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -168,8 +168,8 @@
 						<div class="form-field total">
 						<span class="lbl">Total:</span>
 							<div class="input">
-								<input id="total_horas_modal" name="total_horas" class="horas" required aria-required="true"/>
-								<input id="total_coste_modal" name="total_coste" class="coste"/>
+								<input id="total_horas_modal" name="total_horas" class="horas number" required aria-required="true"/>
+								<input id="total_coste_modal" name="total_coste" class="coste number"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl req">Horas<span class="required-asterisk">*</span></span><span class="lbl">Coste</span>

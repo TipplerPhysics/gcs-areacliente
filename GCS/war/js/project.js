@@ -467,13 +467,14 @@ $(function() {
 						}
 						
 						$form.find('.form-container').find('div:not(#message_div)').hide(0);
+						$('.relatedOptions').hide(0);
 						$('#span_message').html("El proyecto se ha creado de forma correcta.");
 						$('#message_div').css('display','block');
 						$('#buttons_holder').css('display','none');
 						
 						resetForm($form);
 						setTimeout(function() { 
-							$( "#message_div" ).fadeOut( "slow", function() {
+							$( "#message_div" ).fadeOut( "fast", function() {
 								$('#span_message').html("");
 						  }); 
 						//$('#newUserButton').click();	

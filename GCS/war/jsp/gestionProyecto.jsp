@@ -30,7 +30,7 @@
 	<div class="new-user-form-holder">
 		<form id="new-project-form" name="new-project-form" action="/projectServlet"
 			method="POST" novalidate="novalidate">
-			<div class="form-container" style="padding-bottom: 0px;">
+			<div class="form-container" style="padding-bottom: 0px; margin-bottom: 10px;padding-top: 15px; ">
 				
 				<div class="form-field-divider left">
 					<div class="form-field">
@@ -131,7 +131,7 @@
 							<input type="text" id="ok_negocio_check" name="ok_negocio_check" class="long" maxlength="500">
 						</div>
 						
-						<div class="form-field">
+						<div class="form-field" style="margin-bottom: 0px;">
 							<span class="lbl">Url carpeta Google Drive:</span>
 							<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
 						</div>
