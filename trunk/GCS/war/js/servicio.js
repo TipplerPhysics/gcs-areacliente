@@ -320,7 +320,7 @@ $(function(){
 		var $form = $("#new-service-form");
 		
 		if($form.valid()){		
-
+			$('#submit_service_form').addClass('hidden');
 			var postData = $form.serialize() + "&accion=new";
 			var formURL = $form.attr("action");
 			$.ajax(
