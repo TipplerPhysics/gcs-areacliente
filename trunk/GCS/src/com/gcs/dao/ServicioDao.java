@@ -227,6 +227,19 @@ public class ServicioDao {
 		return servicios;
 	}
 	
+	public List<Servicio> getServiciosByGestorIT(String gestor){
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		String queryStr = "select from " + Servicio.class.getName()+ " where  gestor_it_key== '" + gestor +  "'";
+		
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Servicio> servicios = (List<Servicio>) pManager.newQuery(queryStr).execute();
+		
+		pManager.close();
+		
+		return servicios;
+	}
+	
 	public List<Servicio> getServiciosByEstadoImplantacion(String estado){
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		
