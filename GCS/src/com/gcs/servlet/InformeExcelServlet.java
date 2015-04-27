@@ -34,6 +34,7 @@ import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.EstadosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
@@ -455,6 +456,11 @@ public class InformeExcelServlet extends HttpServlet  {
 		
 		ProyectoDao proyectoDao = ProyectoDao.getInstance();
 		
+		ServicioDao servicioDao = ServicioDao.getInstance();
+		
+		ConectividadDao conectividadDao = ConectividadDao.getInstance();
+		
+		
 		//Estilo de celda del encabezado
 		byte[] rgb = new byte[]{(byte)0x006699};
 		org.apache.poi.xssf.usermodel.XSSFColor azul = new XSSFColor(rgb); 
@@ -579,9 +585,9 @@ public class InformeExcelServlet extends HttpServlet  {
 		hoja.getRow(head).getCell(1).setCellValue("Etiquetas de fila");
 		hoja.getRow(head).getCell(2).setCellValue("PDTE Doc Alcance en GCS");
 		hoja.getRow(head).getCell(3).setCellValue("PDTE Valoración IT");
-		hoja.getRow(head).getCell(4).setCellValue("Cuenta de ESTADO");
-		hoja.getRow(head).getCell(5).setCellValue("En Desarrollo");
-		hoja.getRow(head).getCell(6).setCellValue("En Test");
+		hoja.getRow(head).getCell(4).setCellValue("En Desarrollo");
+		hoja.getRow(head).getCell(5).setCellValue("En Test");
+		hoja.getRow(head).getCell(6).setCellValue("En Penny Test");
 		hoja.getRow(head).getCell(7).setCellValue("Total general");
 		
 		hoja.getRow(head).createCell(10).setCellStyle(headerBlue);
@@ -595,7 +601,6 @@ public class InformeExcelServlet extends HttpServlet  {
 		UserDao userDao = UserDao.getInstance();
 		List<User> gestores = userDao.getUsersByPermisoStr(3);
 		
-		ServicioDao servicioDao = ServicioDao.getInstance();
 		
 		for(User gestor:gestores){
 			hoja.createRow(head);
@@ -611,15 +616,17 @@ public class InformeExcelServlet extends HttpServlet  {
 			hoja.getRow(head).createCell(12).setCellStyle(bodyStyle);
 			
 			hoja.getRow(head).getCell(1).setCellValue(gestor.getNombre()+" " +gestor.getApellido1()+" "+gestor.getApellido2());
-			/*hoja.getRow(head).getCell(2).setCellValue();
-			hoja.getRow(head).getCell(3).setCellValue();
-			hoja.getRow(head).getCell(4).setCellValue();
-			hoja.getRow(head).getCell(5).setCellValue();
-			hoja.getRow(head).getCell(6).setCellValue();
-			hoja.getRow(head).getCell(7).setCellValue();*/
+			//hoja.getRow(head).getCell(2).setCellValue(servicioDao.getServiciosByGestorIT(gestor));
+			hoja.getRow(head).getCell(3).setCellValue(0);
+			hoja.getRow(head).getCell(4).setCellValue(0);
+			hoja.getRow(head).getCell(5).setCellValue(0);
+			hoja.getRow(head).getCell(6).setCellValue(0);
+			hoja.getRow(head).getCell(7).setCellFormula("SUM(B"+head+":G"+head+")");
+			
+			
 			
 			hoja.getRow(head).getCell(12).setCellValue(gestor.getNombre()+" " +gestor.getApellido1()+" "+gestor.getApellido2());
-			
+			head++;
 		}
 		
 		
