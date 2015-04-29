@@ -21,7 +21,8 @@
 		<div id='filtro-informe-variable' >
 			<span class="lbl">Informe a generar<span class="required-asterisk">*</span>:</span>
 			<select id='variableInf' class="selectpicker selected" name='variableInf'>
-				<option value='Cartera'>Cartera/Paises </option>
+				<option value='Paises'>Paises </option>
+				<option value='Cartera'>Cartera </option>
 				<option value='trabajo'>Carga de trabajo </option>
 				<option value='implementaciones'> Estado de implementaciones </option>
 				<option value=''> Consulta avanzada </option>
