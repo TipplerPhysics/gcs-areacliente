@@ -16,7 +16,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
 public class LogsDao {
 
-
+	public static final int DATA_SIZE = 10;
+	
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
 	public static LogsDao getInstance() {
