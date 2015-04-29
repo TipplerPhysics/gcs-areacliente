@@ -116,6 +116,9 @@ public class Proyecto {
 	
 	@Persistent
 	private String url_doc_google_drive;
+	
+	@Persistent
+	private String detalle;
 
 	public Proyecto() {
 		super();
@@ -413,6 +416,14 @@ public class Proyecto {
 		 // Custom equality check here.
 		    return this.key.equals(object_a.key);
 		      
+	}
+	
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
 	}
 
 	@Override

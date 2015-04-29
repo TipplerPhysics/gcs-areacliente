@@ -160,6 +160,9 @@ public class Servicio {
 	@Persistent
 	private Boolean subidaCalendada;
 	
+	@Persistent
+	private String detalle;
+	
 	public Key getKey() {
 		return key;
 	}
@@ -552,6 +555,14 @@ public class Servicio {
 	public void setStr_fecha_fin_pruebas(String str_fecha_fin_pruebas) {
 		this.str_fecha_fin_pruebas = str_fecha_fin_pruebas;
 	}
+	
+	 public String getDetalle() {
+			return detalle;
+		}
+
+		public void setDetalle(String det) {
+			this.detalle = det;
+		}
 
 /*	public Date getFecha_migracion_channeling() {
 		return fecha_migracion_channeling;
