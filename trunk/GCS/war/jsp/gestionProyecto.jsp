@@ -279,6 +279,7 @@
 						<th><span class="table-title">Coste</span></th>
 						<th style="width: 110px;">&nbsp;</th>
 					</tr>
+					<!--
 					<tr>
 						<th class="search-th"><input class="search col0"></th>
 						<th class="search-th"><input class="search col1"></th>
@@ -288,8 +289,21 @@
 						<th class="search-th"><input class="search col5"></th>
 						<th style="width: 110px;">&nbsp;</th>
 					</tr>
+					-->
+					<tr>
+						<form if='test-header-filter' action="">
+						
+							<th class="search-th"><input name='fecha' value='${fecha}'></th>
+							<th class="search-th"><input name='codigo' value='${codigo}'></th>
+							<th class="search-th"><input name='cliente' value='${cliente}'></th>
+							<th class="search-th"><input name='clasificacion' value='${clasificacion}'></th>
+							<th class="search-th"><input name='tipo' value='${tipo}'></th>
+							<th class="search-th"><input name='coste' value='${coste}'></th>
+							<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+						</form>
+					</tr>
 				</thead>
-				<tbody id="myTable" cellspacing="0">
+				<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 					<c:choose>
 							<c:when test="${empty clientes}">
 								<tr>

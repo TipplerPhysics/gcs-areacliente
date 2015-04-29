@@ -220,6 +220,7 @@
 							<th><span class="table-title">Gestor IT-Registro</span></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
+						<!--
 						<tr>
 							<th class="search-th"><input class="search col0"></th>
 							<th class="search-th"><input class="search col1"></th>
@@ -228,9 +229,23 @@
 							<th class="search-th"><input class="search col4"></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
+						-->
+						
+						<tr>
+							<form if='test-header-filter' action="">
+							
+								<th class="search-th"><input name='fecha' value='${fecha}'></th>
+								<th class="search-th"><input name='cliente' value='${cliente}'></th>
+								<th class="search-th"><input name='codigoPro' value='${codigoPro}'></th>
+								<th class="search-th"><input name='equipo' value='${equipo}'></th>
+								<th class="search-th"><input name='gestorIt' value='${gestorIt}'></th>
+								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+							</form>
+						</tr>
+						
 					</thead>
-					<tbody id="myTable" cellspacing="0">
 					
+					<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 					
 						<c:choose>
 							<c:when test="${empty costes}">

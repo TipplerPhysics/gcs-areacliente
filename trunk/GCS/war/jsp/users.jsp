@@ -122,6 +122,7 @@
 							<th><span class="table-title">Perfil</span></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
+					<!--
 						<tr>
 							<th class="search-th"><input class="search col0"></th>
 							<th class="search-th"><input class="search col1"></th>
@@ -130,8 +131,20 @@
 							<th class="search-th"><input class="search col4"></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
+					-->
+						<tr>
+							<form if='test-header-filter' action="">
+							
+								<th class="search-th"><input name='nombre' value='${nombre}'></th>
+								<th class="search-th"><input name='apellido1' value='${apellido1}'></th>
+								<th class="search-th"><input name='apellido2' value='${apellido2}'></th>
+								<th class="search-th"><input name='departamento' value='${departamento}'></th>
+								<th class="search-th"><input name='permisoStr' value='${permisoStr}'></th>
+								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+							</form>
+						</tr>
 					</thead>
-					<tbody id="myTable" cellspacing="0">
+					<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 						<c:choose>
 							<c:when test="${empty userList}">
 								<tr>

@@ -180,23 +180,34 @@
 							<th><span class="table-title">Referencia Global B2B</span></th>
 							<th><span class="table-title">Tipo</span></th>
 							<th><span class="table-title">Criticidad</span></th>
+							<th style="width: 110px;">&nbsp;</th>
+						<!--	
 							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 								<th style="width: 110px;">&nbsp;</th>
 							</c:if>
+						-->
 						</tr>
 						<tr>
-							<th class="search-th"><input class="search col0"></th>
-							<th class="search-th"><input class="search col1"></th>
-							<th class="search-th"><input class="search col2"></th>
-							<th class="search-th"><input class="search col3"></th>
-							<th class="search-th"><input class="search col4"></th>
-							<th class="search-th"><input class="search col5"></th>
-							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-								<th style="width: 110px;">&nbsp;</th>
-							</c:if>
+							<form if='test-header-filter' action="">
+							
+								<th class="search-th"><input name='fecha' value='${fecha}'></th>
+								<th class="search-th"><input name='idCliente' value='${idCliente}'></th>
+								<th class="search-th"><input name='cliente' value='${cliente}'></th>
+								<th class="search-th"><input name='referencia' value='${referencia}'></th>
+								<th class="search-th"><input name='tipo' value='${tipo}'></th>
+								<th class="search-th"><input name='criticidad' value='${criticidad}'></th>
+								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+							
+							<!--
+								<th class="search-th"><input class="search col5"></th>
+								<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+									<th style="width: 110px;">&nbsp;</th>
+								</c:if>
+							-->
+							</form>
 						</tr>
 					</thead>
-					<tbody id="myTable" cellspacing="0">
+					<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 						<c:choose>
 							<c:when test="${empty clientes}">
 								<tr>
