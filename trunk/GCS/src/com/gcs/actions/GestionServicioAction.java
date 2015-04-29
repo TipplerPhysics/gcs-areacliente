@@ -74,6 +74,7 @@ public class GestionServicioAction extends Action {
 				req.setAttribute("cliente", clienteNameFilter);
 			}else{
 				servicios = sDao.getAllServicioPagin(pageint);
+				req.setAttribute("numpages", 140);
 				//ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 				//Integer cont = ccDao.getContadorValue();
 				//int numpages = (cont/ClienteDao.DATA_SIZE) + 1;			
