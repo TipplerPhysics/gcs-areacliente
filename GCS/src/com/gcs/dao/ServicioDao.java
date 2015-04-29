@@ -774,6 +774,63 @@ public class ServicioDao {
 			return null;
 		}
 	}
+	
+public int[] getServiciosForExcelGestor(String gestor){
+		
+		int[] resultados = new int[7];
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		long a = Long.parseLong(gestor);
+		Filter filtro = new FilterPredicate("gestor_it_key", FilterOperator.EQUAL, a);
+		q.setFilter(filtro);
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+		List<Entity> servicios = datastore.prepare(q).asList(fetchOptions);
+		
+		
+		for(int i=0;i<resultados.length;i++){
+			resultados[i]=0;
+		}
+		
+		for(Entity servicio:servicios){
+			String estado = (String) servicio.getProperty("estado");
+			if(estado.equals("PDTE Doc Alcance en GCS")){
+				resultados[0]++;
+				
+			}else{
+				if(estado.equals("PDTE Valoración IT")){
+					resultados[1]++;
+					
+				}else{
+					if(estado.equals("En Desarrollo")){
+						resultados[2]++;
+						
+					}else{
+						if(estado.equals("En Test - Integraci?n")){
+							resultados[3]++;
+							
+						}else{
+							if(estado.equals("En Penny Test")||estado.equals("En Test - Aceptación")||estado.equals("En Test - Conectividad")){
+								resultados[4]++;
+								
+							}
+						}
+					}
+				}
+			}
+			
+			
+			String estadoImp = (String) servicio.getProperty("estadoImplantacion");
+			
+			if(estadoImp!=null&&(estadoImp.equals("Solicitado")||estadoImp.equals("Confirmado"))){
+				resultados[5]++;
+			}
+		}
+		
+		
+		
+		
+		return resultados;
+	}
 
 	
 }
