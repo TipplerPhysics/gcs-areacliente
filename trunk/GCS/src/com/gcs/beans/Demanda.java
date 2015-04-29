@@ -138,6 +138,17 @@ public class Demanda {
 	
 	@Persistent
 	private String clienteName;
+	
+	@Persistent
+	private String detalle;
+	
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
 
 	public String getClienteName() {
 		return clienteName;

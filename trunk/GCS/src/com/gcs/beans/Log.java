@@ -40,6 +40,17 @@ public class Log {
 	public String getFecha_str() {
 		return fecha_str;
 	}
+	
+	@Persistent
+	private String detalle;
+	
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
 
 	public void setFecha_str(String fecha_str) {
 		this.fecha_str = fecha_str;

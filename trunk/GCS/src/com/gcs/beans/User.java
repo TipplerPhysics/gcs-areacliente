@@ -52,6 +52,17 @@ public class User implements Serializable {
 	@Persistent
 	private Boolean activo;
 	
+	@Persistent
+	private String detalle;
+	
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
+	
 	public User(String nombre, String apellido1, String apellido2,
 			String email, int permiso, String permisoStr, String areas,String dto,boolean activo) {
 		super();

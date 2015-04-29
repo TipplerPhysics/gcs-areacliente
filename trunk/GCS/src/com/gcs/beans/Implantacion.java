@@ -53,6 +53,17 @@ public class Implantacion {
 	@Persistent
 	private String conectividad;
 	
+	@Persistent
+	private String detalle;
+	
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
+	
 	/*@Persistent
 	private Long gestor_negocio;*/
 	

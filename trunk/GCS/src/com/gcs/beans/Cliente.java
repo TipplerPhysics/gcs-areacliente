@@ -53,8 +53,9 @@ public class Cliente {
 	@Persistent
 	private Boolean erased;
 	
+	@Persistent
+	private String detalle;
 	
-
     @Persistent
     @Extension
     (vendorName="datanucleus", key="gae.unindexed", value="true")
@@ -186,6 +187,14 @@ public class Cliente {
     public void setImage(byte[] bytes) {
         this.image = new Blob(bytes);
     }
+    
+    public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
 
 
     

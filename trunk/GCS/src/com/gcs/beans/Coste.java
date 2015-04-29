@@ -97,6 +97,17 @@ public class Coste {
 	@Persistent
 	private String horas_total;
 	
+	@Persistent
+	private String detalle;
+	
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
+	
 	public String getCoste_total() {
 		return coste_total;
 	}
