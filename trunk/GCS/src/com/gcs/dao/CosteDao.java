@@ -1,13 +1,17 @@
 package com.gcs.dao;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
 import com.gcs.beans.Coste;
 import com.gcs.beans.Demanda;
@@ -15,8 +19,18 @@ import com.gcs.beans.Equipo;
 import com.gcs.beans.Proyecto;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 public class CosteDao {
+	
+	public static final int DATA_SIZE = 10;
 	
 	public static CosteDao getInstance(){
 		return new CosteDao();
@@ -133,7 +147,7 @@ public class CosteDao {
 
 	}
 	
-public Coste getCostebyId(long l) {
+	public Coste getCostebyId(long l) {
 		
 		Coste coste;
 		try{			
@@ -152,4 +166,372 @@ public Coste getCostebyId(long l) {
 		
 		
 	}
+	
+	public List<Coste> getCosteByAllParam(String fechaEntrada, String nCliente, String nProject, String equipos, String nGestorIt,  Integer page){
+		List<Coste> costes= null;
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Coste");
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		int filters =0;
+		if(!fechaEntrada.equals("")){
+			filters++;
+		}
+		if(!nCliente.equals("")){
+			filters++;
+		}
+		if(!nProject.equals("")){
+			filters++;
+		}
+		if(!equipos.equals("")){
+			filters++;
+		}
+		if(!nGestorIt.equals("")){
+			filters++;
+		}
+		
+		if(filters<=1){
+			if(!fechaEntrada.equals("")){
+				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, fechaEntrada));
+				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.LESS_THAN, fechaEntrada+"\ufffd"));
+			}
+			if(!nCliente.equals("")){
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
+			}
+			if(!nProject.equals("")){
+				finalFilters.add(new FilterPredicate("project_name",FilterOperator.GREATER_THAN_OR_EQUAL, nProject));
+				finalFilters.add(new FilterPredicate("project_name",FilterOperator.LESS_THAN, nProject+"\ufffd"));
+			}
+			if(!equipos.equals("")){
+				finalFilters.add(new FilterPredicate("equipos",FilterOperator.GREATER_THAN_OR_EQUAL, equipos));
+				finalFilters.add(new FilterPredicate("equipos",FilterOperator.LESS_THAN, equipos+"\ufffd"));
+			}
+			if(!nGestorIt.equals("")){
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
+			}
+			
+			Filter finalFilter = null;
+			if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+			if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+			if(finalFilters.size()!=0)q.setFilter(finalFilter);
+			
+			List<Entity> entities = null;
+			FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+			if(page != null) {
+				Integer offset = page * DATA_SIZE;
+				fetchOptions.limit(DATA_SIZE);	
+				fetchOptions.offset(offset);
+			}
+			
+			entities = datastore.prepare(q).asList(fetchOptions);
+			costes = new ArrayList<>();
+			for(Entity result:entities){
+				costes.add(buildCoste(result));
+			}
+			Coste impPage = new Coste();
+			impPage.setDetalle("0");
+			costes.add(impPage);
+		
+		}else{
+			
+			List<List<Entity>> Entities = new ArrayList<List<Entity>>();
+			
+			if(!fechaEntrada.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Costes");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, fechaEntrada));
+				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.LESS_THAN, fechaEntrada+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!nCliente.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Costes");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!nProject.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Costes");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("project_name",FilterOperator.GREATER_THAN_OR_EQUAL, nProject));
+				finalFilters.add(new FilterPredicate("project_name",FilterOperator.LESS_THAN, nProject+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!equipos.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Costes");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("equipos",FilterOperator.GREATER_THAN_OR_EQUAL, equipos));
+				finalFilters.add(new FilterPredicate("equipos",FilterOperator.LESS_THAN, equipos+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!nGestorIt.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Costes");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			
+			List<Entity> costesFinal = new ArrayList<>();
+			int lowRowsIndex = 0;
+			int lowRowsNumber = Entities.get(0).size();
+			
+			for(int i=1;i<Entities.size();i++){
+				if(lowRowsNumber>Entities.get(i).size()){
+					lowRowsIndex=i;
+					lowRowsNumber=Entities.get(i).size();
+				}
+			}
+			
+			costesFinal = Entities.get(lowRowsIndex);
+			for(int i=0;i<Entities.size();i++){
+				if(i!=lowRowsIndex){
+					int j = 0;
+					for (Entity result : costesFinal) {
+						if(!Entities.get(i).contains(result)){
+							costesFinal.remove(j);
+						}
+						j++;
+					}
+				}
+			}
+			
+			costes = new ArrayList<Coste>();
+			int costesPages  = costesFinal.size();
+			for(int i = page*10; i< (page*10)+10&&i<costesFinal.size();i++){
+				costes.add(buildCoste(costesFinal.get(i)));
+			}
+			Coste pages = new Coste();
+			pages.setDetalle(Integer.toString(costesPages));
+			costes.add(pages);
+		}
+		return costes;
+	}
+
+	public List<Coste> getAllCostePagin(Integer page) {
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Coste");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+		if(page != null) {
+			Integer offset = page * DATA_SIZE;
+			fetchOptions.limit(DATA_SIZE);	
+			fetchOptions.offset(offset);
+		}
+		entities = datastore.prepare(q).asList(fetchOptions);
+		
+		List<Coste> costes = new ArrayList<Coste>();	;
+		
+		for (Entity result : entities){
+			costes.add(buildCoste(result));
+		}
+	
+		return costes;
+	}
+	
+	private Coste buildCoste(Entity entity) {
+		Coste coste = new Coste();
+		
+		coste.setKey(entity.getKey());
+		
+		String clienteName =  getString(entity, "cliente_name");
+		if(clienteName != null) {
+			coste.setCliente_name(clienteName);
+		}
+		
+		Long clienteKey =  getLong(entity, "clienteKey");
+		if(clienteKey != null) {
+			coste.setClienteKey(clienteKey);
+		}
+		
+		String comentarios =  getString(entity, "comentarios");
+		if(comentarios != null) {
+			coste.setComentarios(comentarios);
+		}
+		
+		String costeAnalisis =  getString(entity, "coste_analisis");
+		if(costeAnalisis != null) {
+			coste.setCoste_analisis(costeAnalisis);
+		}
+		
+		String costeConstruccion =  getString(entity, "coste_construccion");
+		if(costeConstruccion != null) {
+			coste.setCoste_construccion(costeConstruccion);
+		}
+		
+		String costeDiseño =  getString(entity, "coste_diseño");
+		if(costeDiseño != null) {
+			coste.setCoste_diseño(costeDiseño);
+		}
+		
+		String costeGestion =  getString(entity, "coste_gestion");
+		if(costeGestion != null) {
+			coste.setCoste_gestion(costeGestion);
+		}
+		
+		String costePruebas =  getString(entity, "coste_pruebas");
+		if(costePruebas != null) {
+			coste.setCoste_pruebas(costePruebas);
+		}
+		
+		String costeTotal =  getString(entity, "coste_total");
+		if(costeTotal != null) {
+			coste.setCoste_total(costeTotal);
+		}
+		
+		String detalle =  getString(entity, "detalle");
+		if(detalle != null) {
+			coste.setDetalle(detalle);
+		}
+		
+		String equipos =  getString(entity, "equipos");
+		if(equipos != null) {
+			coste.setEquipos(equipos);
+		}
+		
+		Date fechaAlta = getDate(entity, "fecha_alta");
+		if(fechaAlta != null) {
+			coste.setFecha_alta(fechaAlta);
+		}
+		
+		Date fechaRecepcionValoracion = getDate(entity, "fecha_recepcion_valoracion");
+		if(fechaRecepcionValoracion != null) {
+			coste.setFecha_recepcion_valoracion(fechaRecepcionValoracion);
+		}
+		
+		Date fechaSolicitudValoracion = getDate(entity, "fecha_solicitud_valoracion");
+		if(fechaSolicitudValoracion != null) {
+			coste.setFecha_solicitud_valoracion(fechaSolicitudValoracion);
+		}
+		
+		Long gestorItKey =  getLong(entity, "gestor_it_key");
+		if(gestorItKey != null) {
+			coste.setGestor_it_key(gestorItKey);
+		}
+		
+		String horasAnalisis =  getString(entity, "horas_analisis");
+		if(horasAnalisis != null) {
+			coste.setHoras_analisis(horasAnalisis);
+		}
+		
+		String horasConstruccion =  getString(entity, "horas_construccion");
+		if(horasConstruccion != null) {
+			coste.setHoras_construccion(horasConstruccion);
+		}
+		
+		String horasDiseño =  getString(entity, "horas_diseño");
+		if(horasDiseño != null) {
+			coste.setHoras_diseño(horasDiseño);
+		}
+		
+		String horasGestion =  getString(entity, "horas_gestion");
+		if(horasGestion != null) {
+			coste.setHoras_gestion(horasGestion);
+		}
+		
+		String horasPruebas =  getString(entity, "horas_pruebas");
+		if(horasPruebas != null) {
+			coste.setHoras_pruebas(horasPruebas);
+		}
+		
+		String horasTotal =  getString(entity, "horas_total");
+		if(horasTotal != null) {
+			coste.setHoras_total(horasTotal);
+		}
+		
+		String numControl =  getString(entity, "num_control");
+		if(numControl != null) {
+			coste.setNum_control(numControl);
+		}
+		
+		String numValoracion =  getString(entity, "num_valoracion");
+		if(numValoracion != null) {
+			coste.setNum_valoracion(numValoracion);
+		}
+		
+		String projectName =  getString(entity, "project_name");
+		if(projectName != null) {
+			coste.setProject_name(projectName);
+		}
+		
+		Long projectKey =  getLong(entity, "projectKey");
+		if(projectKey != null) {
+			coste.setProjectKey(projectKey);
+		}
+		
+		String 	strFechaAlta =  getString(entity, "str_fecha_alta");
+		if(strFechaAlta != null) {
+			coste.setStr_fecha_alta(strFechaAlta);
+		}
+		
+		String strFechaRecepcionValoracion =  getString(entity, "str_fecha_recepcion_valoracion");
+		if(strFechaRecepcionValoracion != null) {
+			coste.setStr_fecha_alta(strFechaRecepcionValoracion);
+		}
+		
+		String strFechaSolicitudValoracion =  getString(entity, "str_fecha_solicitud_valoracion");
+		if(strFechaSolicitudValoracion != null) {
+			coste.setStr_fecha_solicitud_valoracion(strFechaSolicitudValoracion);
+		}
+		
+		return coste;
+		
+	}
+	
+	private String getString(Entity e, String field) {
+		try {
+			return (String) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	private Long getLong(Entity e, String field) {
+		try {
+			return (Long) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	
+	private Integer getInteger(Entity e, String field) {
+		try {
+			return (Integer) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	private Date getDate(Entity e, String field) {
+		try {
+			return (Date) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+
 }

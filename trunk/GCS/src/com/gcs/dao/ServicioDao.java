@@ -1,27 +1,34 @@
 package com.gcs.dao;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
-import javax.jdo.Transaction;
 
-import com.gcs.beans.Cliente;
-import com.gcs.beans.Conectividad;
-import com.gcs.beans.Coste;
-import com.gcs.beans.Demanda;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 public class ServicioDao {
 	
 	private static final String SOLICITADO = "Solicitado";
 	private static final String CONFIRMADO = "Confirmado";
+	
+	public static final int DATA_SIZE = 10;
 
 	public static ServicioDao getInstance() {
 		return new ServicioDao();
@@ -286,4 +293,487 @@ public class ServicioDao {
 
 		return servicio;		
 	}
+	
+	public List<Servicio> getServicioByAllParam(String codProyeto, String codServicio, String estado, String nGestorIt, String nGestorNegocio, String nCliente,  Integer page){
+		List<Servicio> servicios= null;
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		int filters =0;
+		if(!codProyeto.equals("")){
+			filters++;
+		}
+		if(!codServicio.equals("")){
+			filters++;
+		}
+		if(!estado.equals("")){
+			filters++;
+		}
+		if(!nGestorIt.equals("")){
+			filters++;
+		}
+		if(!nGestorNegocio.equals("")){
+			filters++;
+		}
+		if(!nCliente.equals("")){
+			filters++;
+		}
+		
+		if(filters<=1){
+			if(!codProyeto.equals("")){
+				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.GREATER_THAN_OR_EQUAL, codProyeto));
+				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.LESS_THAN, codProyeto+"\ufffd"));
+			}
+			if(!codServicio.equals("")){
+				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.GREATER_THAN_OR_EQUAL, codServicio));
+				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.LESS_THAN, codServicio+"\ufffd"));
+			}
+			if(!estado.equals("")){
+				finalFilters.add(new FilterPredicate("estado",FilterOperator.GREATER_THAN_OR_EQUAL, estado));
+				finalFilters.add(new FilterPredicate("estado",FilterOperator.LESS_THAN, estado+"\ufffd"));
+			}
+			if(!nGestorIt.equals("")){
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
+			}
+			if(!nGestorNegocio.equals("")){
+				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorNegocio));
+				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.LESS_THAN, nGestorNegocio+"\ufffd"));
+			}
+			if(!nCliente.equals("")){
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
+			}
+			
+			Filter finalFilter = null;
+			if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+			if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+			if(finalFilters.size()!=0)q.setFilter(finalFilter);
+			
+			List<Entity> entities = null;
+			FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+			if(page != null) {
+				Integer offset = page * DATA_SIZE;
+				fetchOptions.limit(DATA_SIZE);	
+				fetchOptions.offset(offset);
+			}
+			
+			entities = datastore.prepare(q).asList(fetchOptions);
+			servicios = new ArrayList<>();
+			for(Entity result:entities){
+				servicios.add(buildServicio(result));
+			}
+			Servicio impPage = new Servicio();
+			impPage.setDetalle("0");
+			servicios.add(impPage);
+		
+		}else{
+			
+			List<List<Entity>> Entities = new ArrayList<List<Entity>>();
+			
+			if(!codProyeto.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Servicio");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.GREATER_THAN_OR_EQUAL, codProyeto));
+				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.LESS_THAN, codProyeto+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!codServicio.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Servicio");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.GREATER_THAN_OR_EQUAL, codServicio));
+				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.LESS_THAN, codServicio+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!estado.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Servicio");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("estado",FilterOperator.GREATER_THAN_OR_EQUAL, estado));
+				finalFilters.add(new FilterPredicate("estado",FilterOperator.LESS_THAN, estado+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!nGestorIt.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Servicio");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!nGestorNegocio.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Servicio");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorNegocio));
+				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.LESS_THAN, nGestorNegocio+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			if(!nCliente.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Servicio");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
+				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			
+			List<Entity> serviciosFinal = new ArrayList<>();
+			int lowRowsIndex = 0;
+			int lowRowsNumber = Entities.get(0).size();
+			
+			for(int i=1;i<Entities.size();i++){
+				if(lowRowsNumber>Entities.get(i).size()){
+					lowRowsIndex=i;
+					lowRowsNumber=Entities.get(i).size();
+				}
+			}
+			
+			serviciosFinal = Entities.get(lowRowsIndex);
+			for(int i=0;i<Entities.size();i++){
+				if(i!=lowRowsIndex){
+					int j = 0;
+					for (Entity result : serviciosFinal) {
+						if(!Entities.get(i).contains(result)){
+							serviciosFinal.remove(j);
+						}
+						j++;
+					}
+				}
+			}
+			
+			servicios = new ArrayList<Servicio>();
+			int serviciosPages  = serviciosFinal.size();
+			for(int i = page*10; i< (page*10)+10&&i<serviciosFinal.size();i++){
+				servicios.add(buildServicio(serviciosFinal.get(i)));
+			}
+			Servicio pages = new Servicio();
+			pages.setDetalle(Integer.toString(serviciosPages));
+			servicios.add(pages);
+		}
+		return servicios;
+	}
+	
+	public List<Servicio> getAllServicioPagin(Integer page) {
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+		if(page != null) {
+			Integer offset = page * DATA_SIZE;
+			fetchOptions.limit(DATA_SIZE);	
+			fetchOptions.offset(offset);
+		}
+		entities = datastore.prepare(q).asList(fetchOptions);
+		
+		List<Servicio> servicios = new ArrayList<Servicio>();	;
+		
+		for (Entity result : entities){
+			servicios.add(buildServicio(result));
+		}
+
+		return servicios;
+	}
+	
+	private Servicio buildServicio(Entity entity) {
+		Servicio servicio = new Servicio();
+		
+		servicio.setKey(entity.getKey());
+		
+		Long clienteKey =  getLong(entity, "cliente_key");
+		if(clienteKey != null) {
+			servicio.setCliente_key(clienteKey);
+		}
+		
+		String clienteName =  getString(entity, "cliente_name");
+		if(clienteName != null) {
+			servicio.setCliente_name(clienteName);
+		}
+		
+		String codProyecto =  getString(entity, "cod_proyecto");
+		if(codProyecto != null) {
+			servicio.setCod_proyecto(codProyecto);
+		}
+		
+		String codServicio =  getString(entity, "cod_servicio");
+		if(codServicio != null) {
+			servicio.setCod_servicio(codServicio);
+		}
+	
+		String detalle =  getString(entity, "detalle");
+		if(detalle != null) {
+			servicio.setDetalle(detalle);
+		}
+		
+		String detalleSubida =  getString(entity, "detalleSubida");
+		if(detalleSubida != null) {
+			servicio.setdetalleSubida(detalleSubida);
+		}
+		
+		String estado =  getString(entity, "estado");
+		if(estado != null) {
+			servicio.setEstado(estado);
+		}
+		
+		String estadoImplantacion =  getString(entity, "estadoImplantacion");
+		if(estadoImplantacion != null) {
+			servicio.setEstadoImplantacion(estadoImplantacion);
+		}
+		
+		String estadoSubida =  getString(entity, "estadoSubida");
+		if(estadoSubida != null) {
+			servicio.setEstadoSubida(estadoSubida);
+		}
+		
+		String extension =  getString(entity, "extension");
+		if(extension != null) {
+			servicio.setExtension(extension);
+		}
+		
+		Date fechaANS = getDate(entity, "fecha_ANS");
+		if(fechaANS != null) {
+			servicio.setFecha_ANS(fechaANS);
+		}
+		
+		Date fechaFinAceptacion = getDate(entity, "fecha_fin_aceptacion");
+		if(fechaFinAceptacion != null) {
+			servicio.setFecha_fin_aceptacion(fechaFinAceptacion);
+		}
+		
+		Date fechaFinIntegradas = getDate(entity, "fecha_fin_integradas");
+		if(fechaFinIntegradas != null) {
+			servicio.setFecha_fin_integradas(fechaFinIntegradas);
+		}
+		
+		Date fechaFinPrimeraOperacion = getDate(entity, "fecha_fin_primera_operacion");
+		if(fechaFinPrimeraOperacion != null) {
+			servicio.setFecha_fin_primera_operacion(fechaFinPrimeraOperacion);
+		}
+		
+		Date fechaFinPruebas = getDate(entity, "fecha_fin_pruebas");
+		if(fechaFinPruebas != null) {
+			servicio.setFecha_fin_pruebas(fechaFinPruebas);
+		}
+		
+		Date fechaFinValidacion = getDate(entity, "fecha_fin_validacion");
+		if(fechaFinValidacion != null) {
+			servicio.setFecha_fin_validacion(fechaFinValidacion);
+		}
+		
+		Date fechaImplantacionProduccion = getDate(entity, "fecha_implantacion_produccion");
+		if(fechaImplantacionProduccion != null) {
+			servicio.setFecha_implantacion_produccion(fechaImplantacionProduccion);
+		}
+		
+		Date fechaIniAceptacion = getDate(entity, "fecha_ini_aceptacion");
+		if(fechaIniAceptacion != null) {
+			servicio.setFecha_ini_aceptacion(fechaIniAceptacion);
+		}
+		
+		Date fechaIniIntegradas = getDate(entity, "fecha_ini_integradas");
+		if(fechaIniIntegradas != null) {
+			servicio.setFecha_ini_integradas(fechaIniIntegradas);
+		}
+		
+		Date fechaIniOpCliente = getDate(entity, "fecha_ini_op_cliente");
+		if(fechaIniOpCliente != null) {
+			servicio.setFecha_ini_op_cliente(fechaIniOpCliente);
+		}
+		
+		Date fechaIniPrimeraOperacion = getDate(entity, "fecha_ini_primera_operacion");
+		if(fechaIniPrimeraOperacion != null) {
+			servicio.setFecha_ini_primera_operacion(fechaIniPrimeraOperacion);
+		}
+		
+		Date fechaIniPruebas = getDate(entity, "fecha_ini_pruebas");
+		if(fechaIniPruebas != null) {
+			servicio.setFecha_ini_pruebas(fechaIniPruebas);
+		}
+		
+		Date fechaIniValidacion = getDate(entity, "fecha_ini_validacion");
+		if(fechaIniValidacion != null) {
+			servicio.setFecha_ini_validacion(fechaIniValidacion);
+		}
+		
+		String formatoIntermedio =  getString(entity, "formato_intermedio");
+		if(formatoIntermedio != null) {
+			servicio.setFormato_intermedio(formatoIntermedio);
+		}
+		
+		String formatoLocal =  getString(entity, "formato_local");
+		if(formatoLocal != null) {
+			servicio.setFormato_local(formatoLocal);
+		}
+		
+		Long gestorItKey =  getLong(entity, "gestor_it_key");
+		if(gestorItKey != null) {
+			servicio.setGestor_it_key(gestorItKey);
+		}
+		
+		String gestorItName =  getString(entity, "gestor_it_name");
+		if(gestorItName != null) {
+			servicio.setGestor_it_name(gestorItName);
+		}
+		
+		Long gestorNegocioKey =  getLong(entity, "gestor_negocio_key");
+		if(gestorNegocioKey != null) {
+			servicio.setGestor_negocio_key(gestorNegocioKey);
+		}
+		
+		String gestorNegocioName =  getString(entity, "gestor_negocio_name");
+		if(gestorNegocioName != null) {
+			servicio.setGestor_negocio_name(gestorNegocioName);
+		}
+		
+		Long idProyecto =  getLong(entity, "id_proyecto");
+		if(idProyecto != null) {
+			servicio.setId_proyecto(idProyecto);
+		}
+		
+		String observaciones =  getString(entity, "observaciones");
+		if(observaciones != null) {
+			servicio.setObservaciones(observaciones);
+		}
+		
+		String pais =  getString(entity, "pais");
+		if(pais != null) {
+			servicio.setPais(pais);
+		}
+		
+		String referenciaLocal1 =  getString(entity, "referencia_local1");
+		if(referenciaLocal1 != null) {
+			servicio.setReferencia_local1(referenciaLocal1);
+		}
+		
+		String referenciaLocal2 =  getString(entity, "referencia_local2");
+		if(referenciaLocal2 != null) {
+			servicio.setReferencia_local2(referenciaLocal2);
+		}
+		
+		String servicioStr =  getString(entity, "servicio");
+		if(servicioStr != null) {
+			servicio.setServicio(servicioStr);
+		}
+		
+		String strFechaANS =  getString(entity, "str_fecha_ANS");
+		if(strFechaANS != null) {
+			servicio.setStr_fecha_ANS(strFechaANS);
+		}
+		
+		String strFechaFinAceptacion =  getString(entity, "str_fecha_fin_aceptacion");
+		if(strFechaFinAceptacion != null) {
+			servicio.setStr_fecha_fin_aceptacion(strFechaFinAceptacion);
+		}
+		
+		String strFechaFinIntegradas =  getString(entity, "str_fecha_fin_integradas");
+		if(strFechaFinIntegradas != null) {
+			servicio.setStr_fecha_fin_integradas(strFechaFinIntegradas);
+		}
+		
+		String strFechaFinPrimeraOperacion =  getString(entity, "str_fecha_fin_primera_operacion");
+		if(strFechaFinPrimeraOperacion != null) {
+			servicio.setStr_fecha_fin_primera_operacion(strFechaFinPrimeraOperacion);
+		}
+		
+		String strFechaFinPruebas =  getString(entity, "str_fecha_fin_pruebas");
+		if(strFechaFinPruebas != null) {
+			servicio.setStr_fecha_fin_pruebas(strFechaFinPruebas);
+		}
+		
+		String strFechaFinValidacion =  getString(entity, "str_fecha_fin_validacion");
+		if(strFechaFinValidacion != null) {
+			servicio.setStr_fecha_fin_validacion(strFechaFinValidacion);
+		}
+		
+
+		String strFechaImplantacionProduccion =  getString(entity, "str_fecha_implantacion_produccion");
+		if(strFechaImplantacionProduccion != null) {
+			servicio.setStr_fecha_implantacion_produccion(strFechaImplantacionProduccion);
+		}
+		
+
+		String strFechaIniAceptacion =  getString(entity, "str_fecha_ini_aceptacion");
+		if(strFechaIniAceptacion != null) {
+			servicio.setStr_fecha_ini_aceptacion(strFechaIniAceptacion);
+		}
+		
+		String strFechaIniIntegradas =  getString(entity, "str_fecha_ini_integradas");
+		if(strFechaIniIntegradas != null) {
+			servicio.setStr_fecha_ini_integradas(strFechaIniIntegradas);
+		}
+		
+		String strFechaIniOpCliente =  getString(entity, "str_fecha_ini_op_cliente");
+		if(strFechaIniOpCliente != null) {
+			servicio.setStr_fecha_ini_op_cliente(strFechaIniOpCliente);
+		}
+		
+		String strFechaIniPrimeraOperacion =  getString(entity, "str_fecha_ini_primera_operacion");
+		if(strFechaIniPrimeraOperacion != null) {
+			servicio.setStr_fecha_ini_primera_operacion(strFechaIniPrimeraOperacion);
+		}
+		
+		String strFechaIniPruebas =  getString(entity, "str_fecha_ini_pruebas");
+		if(strFechaIniPruebas != null) {
+			servicio.setStr_fecha_ini_pruebas(strFechaIniPruebas);
+		}
+		
+		String strFechaIniValidacion =  getString(entity, "str_fecha_ini_validacion");
+		if(strFechaIniValidacion != null) {
+			servicio.setStr_fecha_ini_validacion(strFechaIniValidacion);
+		}
+		
+		//servicio.setsubidaCalendada((boolean) entity.getProperty("subidaCalendada"));
+		
+		return servicio;
+		
+	}
+	
+	private String getString(Entity e, String field) {
+		try {
+			return (String) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	private Long getLong(Entity e, String field) {
+		try {
+			return (Long) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	
+	
+	private Date getDate(Entity e, String field) {
+		try {
+			return (Date) e.getProperty(field);
+		}
+		catch(Exception exp) {
+			return null;
+		}
+	}
+
+	
 }
