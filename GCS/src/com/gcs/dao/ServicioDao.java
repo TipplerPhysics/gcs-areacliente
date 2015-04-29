@@ -326,8 +326,8 @@ public class ServicioDao {
 				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.LESS_THAN, codProyeto+"\ufffd"));
 			}
 			if(!codServicio.equals("")){
-				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.GREATER_THAN_OR_EQUAL, codServicio));
-				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.LESS_THAN, codServicio+"\ufffd"));
+				finalFilters.add(new FilterPredicate("servicio",FilterOperator.GREATER_THAN_OR_EQUAL, codServicio));
+				finalFilters.add(new FilterPredicate("servicio",FilterOperator.LESS_THAN, codServicio+"\ufffd"));
 			}
 			if(!estado.equals("")){
 				finalFilters.add(new FilterPredicate("estado",FilterOperator.GREATER_THAN_OR_EQUAL, estado));
@@ -385,8 +385,8 @@ public class ServicioDao {
 			if(!codServicio.equals("")){
 				q = new com.google.appengine.api.datastore.Query("Servicio");
 				finalFilters = new ArrayList<>();
-				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.GREATER_THAN_OR_EQUAL, codServicio));
-				finalFilters.add(new FilterPredicate("cod_servicio",FilterOperator.LESS_THAN, codServicio+"\ufffd"));
+				finalFilters.add(new FilterPredicate("servicio",FilterOperator.GREATER_THAN_OR_EQUAL, codServicio));
+				finalFilters.add(new FilterPredicate("servicio",FilterOperator.LESS_THAN, codServicio+"\ufffd"));
 				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
 				q.setFilter(finalFilter);
 				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
