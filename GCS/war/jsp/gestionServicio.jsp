@@ -273,9 +273,9 @@
 							<th><span class="table-title">Gestor IT</span></th>
 							<th><span class="table-title">Gestor Negocio</span></th>
 							<th><span class="table-title">Cliente</span></th>
-							
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
+						<!--
 						<tr>
 							<th class="search-th"><input class="search col0"></th>
 							<th class="search-th"><input class="search col1"></th>
@@ -285,8 +285,20 @@
 							<th class="search-th"><input class="search col5"></th>						
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
+						-->
+						<tr>
+							<form if='test-header-filter' action="">
+								<th class="search-th"><input name='codigo' value='${codigo}'></th>
+								<th class="search-th"><input name='servicio' value='${servicio}'></th>
+								<th class="search-th"><input name='estado' value='${estado}'></th>
+								<th class="search-th"><input name='gestorIt' value='${gestorIt}'></th>
+								<th class="search-th"><input name='gestorNeg' value='${gestorNeg}'></th>
+								<th class="search-th"><input name='cliente' value='${cliente}'></th>
+								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+							</form>
+						</tr>
 					</thead>
-					<tbody id="myTable" cellspacing="0">
+					<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 					
 						<c:forEach items="${servicios}" var="servicio">
 							<tr class="valid-result" id="row${servicio.key.id}" name="${servicio.key.id}">
