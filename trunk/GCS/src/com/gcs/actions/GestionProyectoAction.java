@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ProductoProyectoDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
+import com.gcs.utils.Utils;
 
 public class GestionProyectoAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -29,19 +31,52 @@ public class GestionProyectoAction extends Action{
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
 		if(sesionpermiso==1||sesionpermiso==2||sesionpermiso==3){
-			
-			String clienteid = req.getParameter("id");
 			ClienteDao cDao = ClienteDao.getInstance();
 			UserDao uDao = UserDao.getInstance();
 			
 			ProyectoDao pDao = ProyectoDao.getInstance();
+			//List<Proyecto> projects = pDao.getAllProjects();
 			
-			List<Proyecto> projects;
-			if(clienteid==null||clienteid.equals("")){
-				projects = pDao.getAllProjects();
+			////////////////////////////////////////////////////////////
+			List<Proyecto> projects = new ArrayList <Proyecto>();
+			
+			String fechaAltaFilter = req.getParameter("fecha");
+			
+			String page = req.getParameter("page");
+			int pageint = Utils.stringToInt(page);	
+			
+			if(fechaAltaFilter!=null){
+				String codproyectoFilter = req.getParameter("codigo");
+				String clienteNameFilter = req.getParameter("cliente");
+				String clasificacionFilter = req.getParameter("clasificacion");
+				String tipoFilter = req.getParameter("tipo");
+				String costeFilter = req.getParameter("coste");
+				
+				projects = pDao.getProyectoByAllParam(fechaAltaFilter, codproyectoFilter, clienteNameFilter, clasificacionFilter, tipoFilter, costeFilter,  pageint);
+				int numpages = (Integer.parseInt(projects.get(projects.size()-1).getDetalle())/ProyectoDao.DATA_SIZE)+1;
+				projects.remove(projects.size()-1);
+				req.setAttribute("numpages", numpages);
+				req.setAttribute("fecha", fechaAltaFilter);
+				req.setAttribute("codigo", codproyectoFilter);
+				req.setAttribute("cliente", clienteNameFilter);
+				req.setAttribute("clasificacion", clasificacionFilter);
+				req.setAttribute("tipo", tipoFilter);
+				req.setAttribute("coste", costeFilter);
+				
 			}else{
-				projects = pDao.getProjectsByClient(Long.parseLong(clienteid));
+				projects = pDao.getAllProyectoPagin(pageint);
+				//ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
+				//Integer cont = ccDao.getContadorValue();
+				//int numpages = (cont/ProyectoDao.DATA_SIZE) + 1;			
+				//req.setAttribute("numpages", numpages);
 			}
+			
+			boolean lastpage = (projects.size() < ProyectoDao.DATA_SIZE) ? true : false;
+			req.setAttribute("lastpage", lastpage);
+			req.setAttribute("page", pageint);		
+			////////////////////////////////////////////////////////////
+			
+			
 			
 			List<Cliente> clientes = cDao.getAllNonDeletedClients();
 			
@@ -60,7 +95,6 @@ public class GestionProyectoAction extends Action{
 			
 	
 			return mapping.findForward("ok");
-		
 		}else{
 			return mapping.findForward("notAllowed");
 		}

@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +13,14 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.gcs.beans.Demanda;
 import com.gcs.beans.User;
 import com.gcs.beans.Departamentos;
 import com.gcs.config.StaticConfig;
+import com.gcs.dao.DemandaDao;
 import com.gcs.dao.UserDao;
 import com.gcs.dao.DepartamentosDao;
+import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -32,8 +36,8 @@ public class UsersAction extends Action {
 		
 		if(sesionpermiso==1){
 			try {
-				UserDao uDao = UserDao.getInstance();
-				List<User> usuarios = uDao.getAllNonDeletedUsers();
+				//UserDao uDao = UserDao.getInstance();
+				//List<User> usuarios = uDao.getAllNonDeletedUsers();
 				
 				DepartamentosDao dptDao = DepartamentosDao.getInstance();
 				List<Departamentos> departamentos = dptDao.getAllDepartamentos();
@@ -50,6 +54,47 @@ public class UsersAction extends Action {
 				 * jsonArray.put(jsonUser); } req.setAttribute("userJson",
 				 * jsonArray);
 				 */
+				
+				////////////////////////////////////////////////////////////
+				UserDao uDao = UserDao.getInstance();
+				List<User> usuarios = new ArrayList <User>();
+				
+				String nombreFilter = req.getParameter("nombre");
+				
+				
+				String page = req.getParameter("page");
+				int pageint = Utils.stringToInt(page);	
+				
+				if(nombreFilter!=null){
+					String apellido1Filter = req.getParameter("apellido1");
+					String apellido2Filter = req.getParameter("apellido2");
+					String departamentoFilter = req.getParameter("departamento");
+					String permisoStrFilter = req.getParameter("permisoStr");
+					
+					usuarios = uDao.getUserByAllParam(nombreFilter, apellido1Filter, apellido2Filter, departamentoFilter, permisoStrFilter, pageint);
+					int numpages = (Integer.parseInt(usuarios.get(usuarios.size()-1).getDetalle())/UserDao.DATA_SIZE)+1;
+					usuarios.remove(usuarios.size()-1);
+					req.setAttribute("numpages", numpages);
+					req.setAttribute("nombre", nombreFilter);
+					req.setAttribute("apellido1", apellido1Filter);
+					req.setAttribute("apellido2", apellido2Filter);
+					req.setAttribute("departamento", departamentoFilter);
+					req.setAttribute("permisoStr", permisoStrFilter);
+				}else{
+					usuarios = uDao.getAllUserPagin(pageint);
+					//ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
+					//Integer cont = cdDao.getContadorValue();
+					//int numpages = (cont/DemandaDao.DATA_SIZE) + 1;			
+					//req.setAttribute("numpages", numpages);
+				}
+				
+				boolean lastpage = (usuarios.size() < UserDao.DATA_SIZE) ? true : false;
+				req.setAttribute("lastpage", lastpage);
+				req.setAttribute("page", pageint);
+				
+				////////////////////////////////////////////////////////////
+	
+				
 				req.setAttribute("userList", usuarios);
 				req.setAttribute("permisos", StaticConfig.permisos);
 				// req.setAttribute("departamentos", StaticConfig.departamentos);
@@ -58,10 +103,10 @@ public class UsersAction extends Action {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+	
 			return mapping.findForward("ok");
 		}else{
 			return mapping.findForward("notAllowed");
 		}
-		
 	}
 }

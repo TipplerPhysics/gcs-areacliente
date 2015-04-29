@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +14,12 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Demanda;
 import com.gcs.beans.EstadoPeticion;
 import com.gcs.beans.User;
 import com.gcs.beans.TipoPeticion;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorDemandaDao;
 import com.gcs.dao.DemandaDao;
 import com.gcs.dao.EstadoPeticionDao;
 import com.gcs.dao.UserDao;
@@ -38,7 +41,7 @@ public class GestionDemandaAction extends Action {
 			List<TipoPeticion> tipoPeticion = tpPeticionDao.getAllTipoPeticion();
 			
 			UserDao uDao = UserDao.getInstance();
-			DemandaDao dDao = DemandaDao.getInstance();
+			//DemandaDao dDao = DemandaDao.getInstance();
 			ClienteDao cDao = ClienteDao.getInstance();
 			List<User> gestores_demanda = uDao.getUsersByPermisoStr(2);
 			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
@@ -55,6 +58,45 @@ public class GestionDemandaAction extends Action {
 				}
 	
 			}
+			
+			////////////////////////////////////////////////////////////
+			DemandaDao dDao = DemandaDao.getInstance();
+			List<Demanda> demandas = new ArrayList <Demanda>();
+			
+			String fechaEntradaFilter = req.getParameter("fecha");
+			
+			
+			String page = req.getParameter("page");
+			int pageint = Utils.stringToInt(page);	
+			
+			if(fechaEntradaFilter!=null){
+				String nclienteFilter = req.getParameter("cliente");
+				String tipoFilter = req.getParameter("tipo");
+				String estadoFilter = req.getParameter("estado");
+				String codPeticionFilter = req.getParameter("cPeticion");
+				
+				demandas = dDao.getDemandaByAllParam(fechaEntradaFilter, nclienteFilter, tipoFilter, estadoFilter, codPeticionFilter, pageint);
+				int numpages = (Integer.parseInt(demandas.get(demandas.size()-1).getDetalle())/DemandaDao.DATA_SIZE)+1;
+				demandas.remove(demandas.size()-1);
+				req.setAttribute("numpages", numpages);
+				req.setAttribute("fecha", fechaEntradaFilter);
+				req.setAttribute("cliente", nclienteFilter);
+				req.setAttribute("tipo", tipoFilter);
+				req.setAttribute("estado", estadoFilter);
+				req.setAttribute("cPeticion", codPeticionFilter);
+			}else{
+				demandas = dDao.getAllDemandaPagin(pageint);
+				//ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
+				//Integer cont = cdDao.getContadorValue();
+				//int numpages = (cont/DemandaDao.DATA_SIZE) + 1;			
+				//req.setAttribute("numpages", numpages);
+			}
+			
+			boolean lastpage = (demandas.size() < DemandaDao.DATA_SIZE) ? true : false;
+			req.setAttribute("lastpage", lastpage);
+			req.setAttribute("page", pageint);
+			
+			////////////////////////////////////////////////////////////
 	
 			req.setAttribute("clientes", clientes);
 			req.setAttribute("gestores_demanda", gestores_demanda);
@@ -66,15 +108,15 @@ public class GestionDemandaAction extends Action {
 			req.setAttribute("horasList", Utils.getHorasList());
 			req.setAttribute("minutosList", Utils.getMinutosList());
 	
-			req.setAttribute("demandaList", dDao.getAllDemandas());
-			
+			//req.setAttribute("demandaList", dDao.getAllDemandas());
+			req.setAttribute("demandaList", demandas);
 			req.setAttribute("estadoPeticion", estadoPeticion);
 			req.setAttribute("tipoPeticion", tipoPeticion);
 	
 			return mapping.findForward("ok");
+			
 		}else{
 			return mapping.findForward("notAllowed");
 		}
-		
 	}
 }
