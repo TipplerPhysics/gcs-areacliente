@@ -26,36 +26,51 @@ public class AuditoriaAction extends Action{
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
 		if(sesionpermiso==1){
-		String accion = req.getParameter("p");
-		
-		LogsDao lDao = LogsDao.getInstance();		
-		List<Log> logs = new ArrayList<Log>();
-		
-		Calendar fecha = Calendar.getInstance();
-		fecha.add(Calendar.DATE, 0);
-		String hoy = Utils.CalendarConverterToStr(fecha);
-		fecha.add(Calendar.DATE, -1);
-		String ayer = Utils.CalendarConverterToStr(fecha);
-		
-		
-		
-		if("lastweek".equals(accion)){
-			logs = lDao.getLogsByLastWeek();
-		}else if("lastmonth".equals(accion)){
-			logs = lDao.getLogsByLastMonth();
-		}else if("lastthreemonths".equals(accion)){
-			logs = lDao.getLogsByLast3Months();
-		}else{
-			logs = lDao.getLogsByLastWeek();
-
-		}
-		
-		req.setAttribute("accion", accion);
-		req.setAttribute("logs", logs);
-		req.setAttribute("hoy", hoy);
-		req.setAttribute("ayer", ayer);
-		
-		return  mapping.findForward("ok");
+			String accion = req.getParameter("p");
+			
+			LogsDao lDao = LogsDao.getInstance();		
+			List<Log> logs = new ArrayList<Log>();
+			
+			Calendar fecha = Calendar.getInstance();
+			fecha.add(Calendar.DATE, 0);
+			String hoy = Utils.CalendarConverterToStr(fecha);
+			fecha.add(Calendar.DATE, -1);
+			String ayer = Utils.CalendarConverterToStr(fecha);
+			
+			/*
+			if("lastweek".equals(accion)){
+				logs = lDao.getLogsByLastWeek();
+			}else if("lastmonth".equals(accion)){
+				logs = lDao.getLogsByLastMonth();
+			}else if("lastthreemonths".equals(accion)){
+				logs = lDao.getLogsByLast3Months();
+			}else{
+				logs = lDao.getLogsByLastWeek();
+	
+			}
+			*/
+			
+			////////////////////////////////////////////////////////////
+			String page = req.getParameter("page");
+			int pageint = Utils.stringToInt(page);	
+			
+			logs = lDao.getAllLogPagin(pageint);
+			//ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
+			//Integer cont = ccDao.getContadorValue();
+			//int numpages = (cont/ClienteDao.DATA_SIZE) + 1;			
+			//req.setAttribute("numpages", numpages);
+			
+			boolean lastpage = (logs.size() < LogsDao.DATA_SIZE) ? true : false;
+			req.setAttribute("lastpage", lastpage);
+			req.setAttribute("page", pageint);		
+			////////////////////////////////////////////////////////////
+			
+			req.setAttribute("accion", accion);
+			req.setAttribute("logs", logs);
+			req.setAttribute("hoy", hoy);
+			req.setAttribute("ayer", ayer);
+			
+			return  mapping.findForward("ok");
 		
 		}else{
 			return  mapping.findForward("notAllowed");
