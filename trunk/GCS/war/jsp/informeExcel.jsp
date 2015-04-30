@@ -19,17 +19,41 @@
 	<hr class="titleBorder"/>
 	<span>Aqu&iacute puedes generar los informes predefinidos del &aacuterea.</span>
 		<div id='filtro-informe-variable' >
-			<span class="lbl">Informe a generar<span class="required-asterisk">*</span>:</span>
-			<select id='variableInf' class="selectpicker selected" name='variableInf'>
-				<option value='Paises'>Paises </option>
-				<option value='Cartera'>Cartera </option>
-				<option value='trabajo'>Carga de trabajo </option>
-				<option value='implementaciones'> Estado de implementaciones </option>
-				<option value=''> Consulta avanzada </option>
-			</select>
+			<div id='informesfilt'>
+				<span class="lbl">Informe a generar<span class="required-asterisk">*</span>:</span>
+				<select id='variableInf' class="selectpicker selected" name='variableInf'>
+					<option value='Paises'>Paises </option>
+					<option value='Cartera'>Cartera </option>
+					<option value='trabajo'>Carga de trabajo </option>
+					<option value='implementaciones'> Estado de implementaciones </option>
+					<option value=''> Consulta avanzada </option>
+				</select>
+				
+				<button style="margin-bottom:1%;" onclick="verinforme();">  Ver  </button>
+			</div>
+			<div id="fechas-cartera-filter" class='hidden'>
+				<span class="lbl">Seleccione rango de fechas para procesar el informe:</span> 
+				<input readonly class="selectpicker datepicker fromTo" data-target-id='hastaFilterInf' id='desdeFilterInf' name="fecha-desde" />
+				<input readonly class="selectpicker datepicker" name="fecha-hasta" id='hastaFilterInf'/>	
+			</div> 
 			
-			<button style="margin-bottom:1%;" onclick="verinforme();">  Ver  </button>
+			<div id='errorTime' class='hidden' style='
+			
+					display: block;
+					padding: 5px 10px;
+					margin: 0 0 10px;
+					border-radius: 4px;
+					border: 1px solid #ca0161;
+					background-color: #f7e9e9;
+					color: #c4136c;
+					font-size: 1em;
+					font-weight: normal;
+			
+			'>
+			<span class='lbl'>Has seleccionado un periodo con demasiados valores</span>
+			</div>
 		</div>
+		
 		
 	<span class="title">Consulta din&aacutemica de datos </span>	
 	<hr class="titleBorder"/>
