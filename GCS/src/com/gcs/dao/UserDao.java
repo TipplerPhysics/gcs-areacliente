@@ -370,16 +370,22 @@ public class UserDao {
 			}
 			
 			usersFinal = Entities.get(lowRowsIndex);
+			List<Entity> indexDel = new ArrayList<Entity>();
 			for(int i=0;i<Entities.size();i++){
 				if(i!=lowRowsIndex){
 					int j = 0;
 					for (Entity result : usersFinal) {
 						if(!Entities.get(i).contains(result)){
-							usersFinal.remove(j);
+							Entity auxEnty = usersFinal.get(j);
+							if(!indexDel.contains(auxEnty))indexDel.add(auxEnty);
 						}
 						j++;
 					}
 				}
+			}
+			
+			for (Entity impborr : indexDel){
+				usersFinal.remove(impborr);
 			}
 			
 			users = new ArrayList<User>();

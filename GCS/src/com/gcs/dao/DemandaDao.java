@@ -271,16 +271,22 @@ public class DemandaDao {
 			}
 			
 			demandasFinal = Entities.get(lowRowsIndex);
+			List<Entity> indexDel = new ArrayList<Entity>();
 			for(int i=0;i<Entities.size();i++){
 				if(i!=lowRowsIndex){
 					int j = 0;
 					for (Entity result : demandasFinal) {
 						if(!Entities.get(i).contains(result)){
-							demandasFinal.remove(j);
+							Entity auxEnty = demandasFinal.get(j);
+							if(!indexDel.contains(auxEnty))indexDel.add(auxEnty);
 						}
 						j++;
 					}
 				}
+			}
+			
+			for (Entity impborr : indexDel){
+				demandasFinal.remove(impborr);
 			}
 			
 			demandas = new ArrayList<Demanda>();

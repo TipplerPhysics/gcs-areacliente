@@ -517,16 +517,22 @@ public Proyecto getProjectbyId(long l) {
 			}
 			
 			proyectosFinal = Entities.get(lowRowsIndex);
+			List<Entity> indexDel = new ArrayList<Entity>();
 			for(int i=0;i<Entities.size();i++){
 				if(i!=lowRowsIndex){
 					int j = 0;
 					for (Entity result : proyectosFinal) {
 						if(!Entities.get(i).contains(result)){
-							proyectosFinal.remove(j);
+							Entity auxEnty = proyectosFinal.get(j);
+							if(!indexDel.contains(auxEnty))indexDel.add(auxEnty);
 						}
 						j++;
 					}
 				}
+			}
+			
+			for (Entity impborr : indexDel){
+				proyectosFinal.remove(impborr);
 			}
 			
 			proyectos = new ArrayList<Proyecto>();
