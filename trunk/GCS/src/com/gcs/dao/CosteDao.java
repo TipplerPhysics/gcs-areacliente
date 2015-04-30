@@ -299,18 +299,24 @@ public class CosteDao {
 					lowRowsNumber=Entities.get(i).size();
 				}
 			}
-			
+		
 			costesFinal = Entities.get(lowRowsIndex);
+			List<Entity> indexDel = new ArrayList<Entity>();
 			for(int i=0;i<Entities.size();i++){
 				if(i!=lowRowsIndex){
 					int j = 0;
 					for (Entity result : costesFinal) {
 						if(!Entities.get(i).contains(result)){
-							costesFinal.remove(j);
+							Entity auxEnty = costesFinal.get(j);
+							if(!indexDel.contains(auxEnty))indexDel.add(auxEnty);
 						}
 						j++;
 					}
 				}
+			}
+			
+			for (Entity impborr : indexDel){
+				costesFinal.remove(impborr);
 			}
 			
 			costes = new ArrayList<Coste>();

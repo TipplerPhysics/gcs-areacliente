@@ -443,18 +443,24 @@ public class ServicioDao {
 					lowRowsNumber=Entities.get(i).size();
 				}
 			}
-			
+		
 			serviciosFinal = Entities.get(lowRowsIndex);
+			List<Entity> indexDel = new ArrayList<Entity>();
 			for(int i=0;i<Entities.size();i++){
 				if(i!=lowRowsIndex){
 					int j = 0;
 					for (Entity result : serviciosFinal) {
 						if(!Entities.get(i).contains(result)){
-							serviciosFinal.remove(j);
+							Entity auxEnty = serviciosFinal.get(j);
+							if(!indexDel.contains(auxEnty))indexDel.add(auxEnty);
 						}
 						j++;
 					}
 				}
+			}
+			
+			for (Entity impborr : indexDel){
+				serviciosFinal.remove(impborr);
 			}
 			
 			servicios = new ArrayList<Servicio>();
