@@ -23,6 +23,7 @@ import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 
+
 public class ServicioDao {
 	
 	private static final String SOLICITADO = "Solicitado";
@@ -265,7 +266,9 @@ public class ServicioDao {
 		return servicios;
 	}
 	
+
 	
+		
 	public List<Servicio> getServiciosEnCurso(){
 		
 		List<Servicio> servicioSolicitado = getServiciosByEstadoImplantacion(SOLICITADO);
