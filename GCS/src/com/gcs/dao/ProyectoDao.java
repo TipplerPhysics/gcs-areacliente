@@ -317,7 +317,27 @@ public List<Proyecto> getProjectsByClient(Long id){
 
 	return projects;
 }
+public List<Proyecto> getProjectsByClientByDates(Long id,Date desde, Date hasta){
+	
+	
+	PersistenceManager pManager = PMF.get().getPersistenceManager();
+	Transaction transaction = pManager.currentTransaction();
+	transaction.begin();
 
+
+	Query q = pManager.newQuery("select from " + Proyecto.class.getName());
+
+	q.setFilter("fecha_alta >= fechaDesde && fecha_alta <= fechaHasta && clienteKey == id");
+	q.declareParameters("java.util.Date fechaDesde , java.util.Date fechaHasta, Long id");
+	
+	List<Proyecto> projects = (List<Proyecto>) q.execute(desde, hasta, id);
+
+	transaction.commit();
+
+	pManager.close();
+
+	return projects;
+}
 public List<Proyecto> getProjectsByCode(String id){
 	
 	
