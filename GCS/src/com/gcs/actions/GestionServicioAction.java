@@ -20,6 +20,7 @@ import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorServicioDao;
 import com.gcs.dao.EstadosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
@@ -74,11 +75,11 @@ public class GestionServicioAction extends Action {
 				req.setAttribute("cliente", clienteNameFilter);
 			}else{
 				servicios = sDao.getAllServicioPagin(pageint);
-				req.setAttribute("numpages", 140);
-				//ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
-				//Integer cont = ccDao.getContadorValue();
-				//int numpages = (cont/ClienteDao.DATA_SIZE) + 1;			
-				//req.setAttribute("numpages", numpages);
+				//req.setAttribute("numpages", 140);
+				ContadorServicioDao csDao = ContadorServicioDao.getInstance();
+				Integer cont = csDao.getContadorValue();
+				int numpages = (cont/ServicioDao.DATA_SIZE) + 1;			
+				req.setAttribute("numpages", numpages);
 			}
 			
 			boolean lastpage = (servicios.size() < ServicioDao.DATA_SIZE) ? true : false;
