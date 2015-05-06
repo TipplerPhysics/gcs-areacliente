@@ -16,16 +16,12 @@ public class ContadorUserDao {
 	
 	public void increaseCont (){
 		ContadorUser cu = getContador();
-		
-		
 		cu.setNum(cu.getNum()+1);
 		createContador(cu); 
 	}
 	
 	public void decrementCont (){
 		ContadorUser cu = getContador();
-		
-		
 		cu.setNum(cu.getNum()-1);
 		createContador(cu); 
 	}
