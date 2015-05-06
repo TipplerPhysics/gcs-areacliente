@@ -17,16 +17,12 @@ public class ContadorAuditoriaDao {
 	
 	public void increaseCont (){
 		ContadorAuditoria ca = getContador();
-		
-		
 		ca.setNum(ca.getNum()+1);
 		createContador(ca); 
 	}
 	
 	public void decrementCont (){
 		ContadorAuditoria ca = getContador();
-		
-		
 		ca.setNum(ca.getNum()-1);
 		createContador(ca); 
 	}
