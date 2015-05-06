@@ -31,6 +31,8 @@ public class LogsDao {
 	public void createLog(Log log){
 		Date fecha = new Date();
 		String fecha_str = Utils.dateConverterToStr(fecha);
+		ContadorAuditoriaDao caDao = ContadorAuditoriaDao.getInstance();
+		caDao.increaseCont();
 		
 		log.setFecha_str(fecha_str);
 		log.setFecha(fecha);
