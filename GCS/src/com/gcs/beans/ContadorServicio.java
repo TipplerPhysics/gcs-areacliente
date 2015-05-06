@@ -8,8 +8,8 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-public class ContadorDemanda {
-	
+public class ContadorServicio {
+
 	@PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
@@ -21,7 +21,7 @@ public class ContadorDemanda {
 		return num;
 	}
 
-	public ContadorDemanda(Integer num) {
+	public ContadorServicio(Integer num) {
 		super();
 		this.num = num;
 	}
@@ -37,5 +37,5 @@ public class ContadorDemanda {
 	public void setKey(Key key) {
 		this.key = key;
 	}
-
+	
 }

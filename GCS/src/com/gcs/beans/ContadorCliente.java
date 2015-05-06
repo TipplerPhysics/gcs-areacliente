@@ -30,4 +30,12 @@ public class ContadorCliente {
 		this.num = num;
 	}
 	
+	public Key getKey() {
+		return key;
+	}
+
+	public void setKey(Key key) {
+		this.key = key;
+	}
+	
 }
