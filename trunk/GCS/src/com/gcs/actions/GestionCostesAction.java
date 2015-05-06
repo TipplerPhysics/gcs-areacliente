@@ -18,6 +18,7 @@ import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorCosteDao;
 import com.gcs.dao.CosteDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
@@ -69,10 +70,10 @@ public class GestionCostesAction extends Action{
 			
 		}else{
 			costes = coDao.getAllCostePagin(pageint);
-			//ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
-			//Integer cont = ccDao.getContadorValue();
-			//int numpages = (cont/ProyectoDao.DATA_SIZE) + 1;			
-			//req.setAttribute("numpages", numpages);
+			ContadorCosteDao ccDao = ContadorCosteDao.getInstance();
+			Integer cont = ccDao.getContadorValue();
+			int numpages = (cont/CosteDao.DATA_SIZE) + 1;			
+			req.setAttribute("numpages", numpages);
 		}
 		
 		boolean lastpage = (costes.size() < CosteDao.DATA_SIZE) ? true : false;

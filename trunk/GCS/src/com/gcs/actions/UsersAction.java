@@ -17,6 +17,7 @@ import com.gcs.beans.Demanda;
 import com.gcs.beans.User;
 import com.gcs.beans.Departamentos;
 import com.gcs.config.StaticConfig;
+import com.gcs.dao.ContadorUserDao;
 import com.gcs.dao.DemandaDao;
 import com.gcs.dao.UserDao;
 import com.gcs.dao.DepartamentosDao;
@@ -82,10 +83,10 @@ public class UsersAction extends Action {
 					req.setAttribute("permisoStr", permisoStrFilter);
 				}else{
 					usuarios = uDao.getAllUserPagin(pageint);
-					//ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
-					//Integer cont = cdDao.getContadorValue();
-					//int numpages = (cont/DemandaDao.DATA_SIZE) + 1;			
-					//req.setAttribute("numpages", numpages);
+					ContadorUserDao cuDao = ContadorUserDao.getInstance();
+					Integer cont = cuDao.getContadorValue();
+					int numpages = (cont/UserDao.DATA_SIZE) + 1;			
+					req.setAttribute("numpages", numpages);
 				}
 				
 				boolean lastpage = (usuarios.size() < UserDao.DATA_SIZE) ? true : false;

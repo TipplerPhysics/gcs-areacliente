@@ -18,6 +18,7 @@ import com.gcs.beans.ProductoProyecto;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorProyectoDao;
 import com.gcs.dao.ProductoProyectoDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
@@ -65,10 +66,10 @@ public class GestionProyectoAction extends Action{
 				
 			}else{
 				projects = pDao.getAllProyectoPagin(pageint);
-				//ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
-				//Integer cont = ccDao.getContadorValue();
-				//int numpages = (cont/ProyectoDao.DATA_SIZE) + 1;			
-				//req.setAttribute("numpages", numpages);
+				ContadorProyectoDao cpDao = ContadorProyectoDao.getInstance();
+				Integer cont = cpDao.getContadorValue();
+				int numpages = (cont/ProyectoDao.DATA_SIZE) + 1;			
+				req.setAttribute("numpages", numpages);
 			}
 			
 			boolean lastpage = (projects.size() < ProyectoDao.DATA_SIZE) ? true : false;

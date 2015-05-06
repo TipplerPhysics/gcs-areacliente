@@ -86,10 +86,10 @@ public class GestionDemandaAction extends Action {
 				req.setAttribute("cPeticion", codPeticionFilter);
 			}else{
 				demandas = dDao.getAllDemandaPagin(pageint);
-				//ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
-				//Integer cont = cdDao.getContadorValue();
-				//int numpages = (cont/DemandaDao.DATA_SIZE) + 1;			
-				//req.setAttribute("numpages", numpages);
+				ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
+				Integer cont = cdDao.getContadorValue();
+				int numpages = (cont/DemandaDao.DATA_SIZE) + 1;			
+				req.setAttribute("numpages", numpages);
 			}
 			
 			boolean lastpage = (demandas.size() < DemandaDao.DATA_SIZE) ? true : false;
