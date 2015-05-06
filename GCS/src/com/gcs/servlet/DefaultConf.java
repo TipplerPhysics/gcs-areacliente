@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +22,13 @@ import org.apache.commons.lang.ArrayUtils;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.ConectividadProyecto;
+import com.gcs.beans.ContadorAuditoria;
 import com.gcs.beans.ContadorCliente;
+import com.gcs.beans.ContadorCoste;
 import com.gcs.beans.ContadorDemanda;
+import com.gcs.beans.ContadorProyecto;
+import com.gcs.beans.ContadorServicio;
+import com.gcs.beans.ContadorUser;
 import com.gcs.beans.Equipo;
 import com.gcs.beans.FechaCalendada;
 import com.gcs.beans.Pais;
@@ -41,8 +47,13 @@ import com.gcs.beans.EstadoPeticion;
 import com.gcs.beans.TipoPeticion;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadProyectoDao;
+import com.gcs.dao.ContadorAuditoriaDao;
 import com.gcs.dao.ContadorClienteDao;
+import com.gcs.dao.ContadorCosteDao;
 import com.gcs.dao.ContadorDemandaDao;
+import com.gcs.dao.ContadorProyectoDao;
+import com.gcs.dao.ContadorServicioDao;
+import com.gcs.dao.ContadorUserDao;
 import com.gcs.dao.EquipoDao;
 import com.gcs.dao.FechaCalendadaDao;
 import com.gcs.dao.PaisDao;
@@ -99,6 +110,31 @@ public class DefaultConf extends HttpServlet {
 					ContadorCliente cc = new ContadorCliente(1);
 					ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 					ccDao.createContador(cc);	
+					json.append("success", "true");
+				}else if ("def_counter_proyecto".equals(accion)){
+					ContadorProyecto cp = new ContadorProyecto(1);
+					ContadorProyectoDao cpDao = ContadorProyectoDao.getInstance();
+					cpDao.createContador(cp);	
+					json.append("success", "true");
+				}else if ("def_counter_servicio".equals(accion)){
+					ContadorServicio cs = new ContadorServicio(1);
+					ContadorServicioDao csDao = ContadorServicioDao.getInstance();
+					csDao.createContador(cs);	
+					json.append("success", "true");
+				}else if ("def_counter_coste".equals(accion)){
+					ContadorCoste ccts = new ContadorCoste(1);
+					ContadorCosteDao cctsDao = ContadorCosteDao.getInstance();
+					cctsDao.createContador(ccts);	
+					json.append("success", "true");
+				}else if ("def_counter_usert".equals(accion)){
+					ContadorUser cu = new ContadorUser(1);
+					ContadorUserDao cuDao = ContadorUserDao.getInstance();
+					cuDao.createContador(cu);	
+					json.append("success", "true");
+				}else if ("def_counter_audit".equals(accion)){
+					ContadorAuditoria ca = new ContadorAuditoria(1);
+					ContadorAuditoriaDao caDao = ContadorAuditoriaDao.getInstance();
+					caDao.createContador(ca);	
 					json.append("success", "true");
 				}else if ("def_teams".equals(accion)){
 					createDefTeams();
