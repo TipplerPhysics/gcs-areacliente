@@ -37,6 +37,9 @@ public class DemandaDao {
 		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId())); 
 		pm.close();
 		
+		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();			
+		cdDao.decrementCont();
+		
 		Utils.writeLog(usermail, "Eliminó", "Demanda", d.getCod_peticion());
 	}
 	
@@ -94,11 +97,7 @@ public class DemandaDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		try {
 			
-			
-			
 			pm.makePersistent(demanda);
-			
-		
 			
 		} finally{
 			pm.close();

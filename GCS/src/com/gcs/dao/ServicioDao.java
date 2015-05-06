@@ -48,7 +48,8 @@ public class ServicioDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent( pm.getObjectById( s.getClass(), s.getKey().getId())); 
 		pm.close();
-		
+		ContadorServicioDao csDao = ContadorServicioDao.getInstance();
+		csDao.decrementCont();
 		Utils.writeLog(usermail, "Eliminó", "Servicio", s.getCod_servicio());
 		
 	}
@@ -119,6 +120,7 @@ public class ServicioDao {
 	public void createServicio(Servicio s, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
 		Boolean isNew = false;
+		ContadorServicioDao csDao = ContadorServicioDao.getInstance();
 		
 		if (s.getKey()==null)
 			isNew = true;
@@ -193,10 +195,12 @@ public class ServicioDao {
 			} finally{
 				pm.close();
 				
-				if (isNew)
+				if (isNew){
 					Utils.writeLog(usermail, "Creó", "Servicio", s.getCod_servicio());
-				else
+					csDao.increaseCont();
+				}else{
 					Utils.writeLog(usermail, "Editó", "Servicio", s.getCod_servicio());
+				}
 			}
 		}
 		

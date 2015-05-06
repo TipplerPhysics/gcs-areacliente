@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
+import com.gcs.beans.ContadorCoste;
 import com.gcs.beans.ContadorDemanda;
 import com.gcs.persistence.PMF;
 
@@ -18,6 +19,13 @@ public class ContadorDemandaDao {
 		
 		
 		cd.setNum(cd.getNum()+1);
+		createContador(cd); 
+	}
+	
+	public void decrementCont (){
+		ContadorDemanda cd = getContador();
+		
+		cd.setNum(cd.getNum()-1);
 		createContador(cd); 
 	}
 
@@ -39,7 +47,7 @@ public class ContadorDemandaDao {
 	}
 	
 	public ContadorDemanda getContador(){
-		
+				
 		List <ContadorDemanda> cd;	
 		PersistenceManager pm = PMF.get().getPersistenceManager();		
 		String queryStr = "select from " + ContadorDemanda.class.getName();		
@@ -51,6 +59,7 @@ public class ContadorDemandaDao {
 	}
 	
 	public void  createContador(ContadorDemanda cd){
+	
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 		try{
@@ -58,6 +67,13 @@ public class ContadorDemandaDao {
 		}finally{
 			pm.close();
 		}
+	}
+	
+	public void deleteContador(ContadorDemanda cd) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		pm.deletePersistent(pm.getObjectById(cd.getClass(), cd.getKey().getId()));
+		pm.close();
+
 	}
 	
 }
