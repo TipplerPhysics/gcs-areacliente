@@ -65,6 +65,8 @@ public class ProyectoDao {
 	public void createProject(Proyecto p,String usermail) throws ParseException{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
+		ContadorProyectoDao cpDao = ContadorProyectoDao.getInstance();
+		
 		Boolean isNew = false;
 		
 		if (p.getKey() == null)
@@ -144,10 +146,12 @@ public class ProyectoDao {
 			
 			pm.close();
 			
-			if (isNew)
+			if (isNew){
 				Utils.writeLog(usermail, "Creó", "Proyecto", p.getCod_proyecto());
-			else
+				cpDao.increaseCont();
+			}else{
 				Utils.writeLog(usermail, "Editó", "Proyecto", p.getCod_proyecto());
+			}
 		}		
 	}
 	
@@ -249,7 +253,7 @@ public class ProyectoDao {
 	}
 	
 	public void deleteProject(Proyecto p, String usermail){
-		
+		ContadorProyectoDao cpDao = ContadorProyectoDao.getInstance();
 		ServicioDao sDao = ServicioDao.getInstance();
 		List<Servicio> servicios = sDao.getServiciosByProject(p.getKey().getId());	
 		
@@ -260,6 +264,8 @@ public class ProyectoDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent(pm.getObjectById(p.getClass(), p.getKey().getId()));
 		pm.close();
+		
+		cpDao.decrementCont();
 		
 		Utils.writeLog(usermail, "Eliminó", "Proyecto", p.getCod_proyecto());
 	}

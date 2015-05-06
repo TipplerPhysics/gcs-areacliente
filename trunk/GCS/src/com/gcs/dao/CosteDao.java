@@ -60,7 +60,7 @@ public class CosteDao {
 	public void createCoste(Coste c, String usermail) throws ParseException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
-		
+		ContadorCosteDao cstDao = ContadorCosteDao.getInstance();
 		if (c.getKey()==null)
 			isNew=true;
 		if(!c.getStr_fecha_recepcion_valoracion().equals("")&&c.getStr_fecha_recepcion_valoracion()!=null){
@@ -92,10 +92,12 @@ public class CosteDao {
 			
 		} finally {
 			pm.close();
-			if (isNew)
+			if (isNew){
 				Utils.writeLog(usermail, "Creó", "Coste", c.getProject_name());
-			else
+				cstDao.increaseCont();
+			}else{
 				Utils.writeLog(usermail, "Editó", "Coste", c.getProject_name());
+			}
 			
 			CosteDao costDao = CosteDao.getInstance();
 			List<Coste> costes= costDao.getCostesByProject(c.getProjectKey());
@@ -142,7 +144,8 @@ public class CosteDao {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent(pm.getObjectById(c.getClass(), c.getKey().getId()));
 		pm.close();
-
+		ContadorCosteDao cstDao = ContadorCosteDao.getInstance();
+		cstDao.decrementCont();
 		Utils.writeLog(usermail, "Eliminó", "Coste", c.getProject_name());
 
 	}

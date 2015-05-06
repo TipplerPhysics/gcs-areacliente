@@ -87,11 +87,12 @@ public class ClienteDao {
 		} finally {
 			pm.close();
 			if (isNewClient)
-			ccDao.increaseCont();
+				ccDao.increaseCont();
 			
 			if (!usermail.equals("")){
 				if (c.isErased()){
 					Utils.writeLog(usermail, "Eliminó", "Cliente", c.getNombre());
+					ccDao.decrementCont();
 				}else{
 					if (isNewClient)
 						Utils.writeLog(usermail, "Creó", "Cliente", c.getNombre());

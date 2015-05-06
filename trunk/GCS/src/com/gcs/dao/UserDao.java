@@ -33,7 +33,7 @@ public class UserDao {
 	public void createUser(User u, String usermail) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
-		
+		ContadorUserDao cuDao = ContadorUserDao.getInstance();
 		if (u.getKey()==null)
 			isNew = true;
 
@@ -42,12 +42,15 @@ public class UserDao {
 		} finally {
 			pm.close();
 			
-			if(u.getErased()==true)
+			if(u.getErased()==true){
 				Utils.writeLog(usermail, "Eliminó", "Usuario", u.getEmail());
-			else if (isNew)
-					Utils.writeLog(usermail, "Creó", "Usuario", u.getEmail());
-				else
-					Utils.writeLog(usermail, "Editó", "Usuario", u.getEmail());
+				cuDao.decrementCont();
+			}else if (isNew){
+				Utils.writeLog(usermail, "Creó", "Usuario", u.getEmail());
+				cuDao.increaseCont();
+			}else{
+				Utils.writeLog(usermail, "Editó", "Usuario", u.getEmail());
+			}
 		}
 	}
 
