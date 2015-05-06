@@ -41,8 +41,8 @@ public class CosteDao {
 		
 
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Transaction transaction = pManager.currentTransaction();
-		transaction.begin();
+//		Transaction transaction = pManager.currentTransaction();
+//		transaction.begin();
 
 		String queryStr = "select from " + Coste.class.getName()
 				+ " where projectKey  == :p1";
@@ -50,7 +50,7 @@ public class CosteDao {
 		List<Coste> costes = (List<Coste>) pManager.newQuery(queryStr).execute(id);
 
 		
-		transaction.commit();
+//		transaction.commit();
 		pManager.close();
 
 		return costes;

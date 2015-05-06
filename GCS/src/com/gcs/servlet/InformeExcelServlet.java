@@ -2,6 +2,7 @@ package com.gcs.servlet;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Conectividad;
+import com.gcs.beans.Coste;
 import com.gcs.beans.Estados;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
@@ -36,6 +38,7 @@ import com.gcs.beans.Servicio;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
+import com.gcs.dao.CosteDao;
 import com.gcs.dao.EstadosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
@@ -66,6 +69,8 @@ public class InformeExcelServlet extends HttpServlet  {
 			if(accion.equals("trabajo"))informeCarga(req,resp);
 			
 			if(accion.equals("implementaciones"))informeImplementaciones(req,resp);
+			
+			if(accion.equals("coste"))informeCoste(req,resp);
 
 			
 			
@@ -917,6 +922,214 @@ public class InformeExcelServlet extends HttpServlet  {
 		
 		EstadosDao estadosDao =  EstadosDao.getInstance();
 		List<Estados> estados = estadosDao.getAllEstados();
+		
+		workbook.write(resp.getOutputStream());
+	}
+	
+	
+	@SuppressWarnings("deprecation")
+	private void informeCoste(HttpServletRequest req, HttpServletResponse resp)throws Exception {
+		
+		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+		resp.setHeader("Content-Disposition","attachment; filename=InformeCostesGCS.xlsx");
+		String link= "/datadocs/templateCoste.xlsx";
+		InputStream inp = this.getServletContext().getResourceAsStream(link);
+		Workbook workbook = new XSSFWorkbook(OPCPackage.open(inp));
+		
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		CosteDao costeDao = CosteDao.getInstance();
+		
+		
+		List<Proyecto> proyectos = proyectoDao.getAllProjects();
+		List<Coste> costes = null; 
+		
+		Date dateNow = new Date();
+		
+//		List<int[][]> totales = new ArrayList<int[][]>();
+//		int[][] totaltotal = new int [6][2];
+//		int[][] totalCap = new int [6][2];
+//		int[][] totalInovery = new int [6][2];
+//		
+//		totales.add(totaltotal);
+//		totales.add(totalCap);
+//		totales.add(totalInovery);
+		
+		double[][][] resultados = new double [3][6][2];
+		for(int i = 0; i< 3;i++){
+			for(int j = 0; i< 6;i++){
+				for(int k = 0; i< 2;i++){
+					resultados[i][j][k]= 0;
+				}
+			}
+		}
+		
+
+		
+		org.apache.poi.ss.usermodel.Sheet hojaProy = workbook.getSheetAt(3);	
+		
+		org.apache.poi.ss.usermodel.Sheet hojaProv = workbook.getSheetAt(1);
+		
+		org.apache.poi.ss.usermodel.Sheet hojaTotal = workbook.getSheetAt(0);
+		
+		org.apache.poi.ss.usermodel.Sheet hojaCost = workbook.getSheetAt(2);
+		
+		int headProy = 1;
+		int headCoste = 1;
+		
+		for(Proyecto proyecto: proyectos){
+			hojaProy.createRow(headProy).createCell(0).setCellValue(proyecto.getFecha_alta_str());
+			hojaProy.getRow(headProy).createCell(1).setCellValue(proyecto.getCod_proyecto());
+			hojaProy.getRow(headProy).createCell(2).setCellValue(proyecto.getTipo());
+			hojaProy.getRow(headProy).createCell(3).setCellValue(proyecto.getClienteName());
+			hojaProy.getRow(headProy).createCell(4).setCellValue(Integer.toString(proyecto.getClasificacion()));
+			hojaProy.getRow(headProy).createCell(5).setCellValue(proyecto.getGestor_it_name());
+			hojaProy.getRow(headProy).createCell(6).setCellValue(proyecto.getGestor_negocio_name());
+			hojaProy.getRow(headProy).createCell(7).setCellValue(proyecto.getCoste()+" €");
+			hojaProy.getRow(headProy).createCell(8).setCellValue(proyecto.getProducto());
+			hojaProy.getRow(headProy).createCell(9).setCellValue(proyecto.getConectividad());
+			hojaProy.getRow(headProy).createCell(10).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+			hojaProy.getRow(headProy).createCell(11).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+			hojaProy.getRow(headProy).createCell(12).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+			hojaProy.getRow(headProy).createCell(13).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+			hojaProy.getRow(headProy).createCell(14).setCellValue(proyecto.getStr_envioC100());
+			hojaProy.getRow(headProy).createCell(15).setCellValue(proyecto.getStr_OKNegocio());			
+			headProy++;
+			Long proyec = proyecto.getKey().getId();
+			costes = costeDao.getCostesByProject(proyecto.getKey().getId());
+			
+			
+			
+			for(Coste coste : costes){
+				hojaCost.createRow(headCoste).createCell(0).setCellValue(proyecto.getTipo());
+				hojaCost.getRow(headCoste).createCell(1).setCellValue(coste.getCliente_name());
+				hojaCost.getRow(headCoste).createCell(2).setCellValue(coste.getProject_name());
+				if(!coste.getNum_control().equals("")&&coste.getNum_control()!=null)
+				hojaCost.getRow(headCoste).createCell(3).setCellValue(coste.getNum_control());
+				hojaCost.getRow(headCoste).createCell(4).setCellValue(coste.getEquipos());
+				hojaCost.getRow(headCoste).createCell(5).setCellValue(coste.getStr_fecha_alta());
+				hojaCost.getRow(headCoste).createCell(6).setCellValue(coste.getGestor_it_name());
+				hojaCost.getRow(headCoste).createCell(7).setCellValue(coste.getNum_valoracion());
+				if(!coste.getComentarios().equals("")&&coste.getComentarios()!=null)
+				hojaCost.getRow(headCoste).createCell(8).setCellValue(coste.getComentarios());
+				if(!coste.getStr_fecha_solicitud_valoracion().equals("")&&coste.getStr_fecha_solicitud_valoracion()!=null)
+				hojaCost.getRow(headCoste).createCell(9).setCellValue(coste.getStr_fecha_solicitud_valoracion());
+				if (!"".equals(coste.getHoras_analisis())&&coste.getHoras_analisis()!=null)
+				hojaCost.getRow(headCoste).createCell(10).setCellValue(coste.getHoras_analisis());
+				if (!"".equals(coste.getCoste_analisis())&&coste.getCoste_analisis()!=null)
+				hojaCost.getRow(headCoste).createCell(11).setCellValue(coste.getCoste_analisis());
+				hojaCost.getRow(headCoste).createCell(12).setCellValue(coste.getHoras_diseño());
+				hojaCost.getRow(headCoste).createCell(13).setCellValue(coste.getCoste_diseño());
+				hojaCost.getRow(headCoste).createCell(14).setCellValue(coste.getHoras_construccion());
+				hojaCost.getRow(headCoste).createCell(15).setCellValue(coste.getCoste_construccion());
+				hojaCost.getRow(headCoste).createCell(16).setCellValue(coste.getHoras_pruebas());
+				hojaCost.getRow(headCoste).createCell(17).setCellValue(coste.getCoste_pruebas());
+				hojaCost.getRow(headCoste).createCell(18).setCellValue(coste.getHoras_gestion());
+				hojaCost.getRow(headCoste).createCell(19).setCellValue(coste.getCoste_gestion());
+				hojaCost.getRow(headCoste).createCell(20).setCellValue(coste.getHoras_total());
+				hojaCost.getRow(headCoste).createCell(21).setCellValue(coste.getCoste_total());
+				headCoste++;
+				Double costeTotal= null;
+				Double horasTotales= null;
+				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))horasTotales = Double.parseDouble(coste.getHoras_total().replace(",", ".").replace(" ", "").trim());
+				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))costeTotal = Double.parseDouble(coste.getCoste_total().replace(",", ".").replace(" ", "").trim());
+				
+				
+				if(coste.getFecha_alta().getYear()==dateNow.getYear()){
+					if(costeTotal!=null){
+						if(proyecto.getTipo().equals("Implementación")){
+							resultados[0][0][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][0][0] +=  costeTotal;								
+							if(coste.getEquipos().equals("Innovery"))resultados[2][0][0] +=  costeTotal;
+						}
+						if(proyecto.getTipo().equals("Evolutivo")){
+							resultados[0][1][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][1][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Innovery"))resultados[2][1][0] +=  costeTotal;
+						}
+						if(proyecto.getTipo().equals("Prueba cliente")){
+							resultados[0][2][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][2][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Innovery"))resultados[2][3][0] +=  costeTotal;
+						}
+						if(proyecto.getTipo().equals("Migración")){
+							resultados[0][3][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][3][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Innovery"))resultados[2][3][0] +=  costeTotal;
+						}
+						if(proyecto.getTipo().equals("Consulta")){
+							resultados[0][4][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][4][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Innovery"))resultados[2][4][0] +=  costeTotal;							
+						}
+						if(proyecto.getTipo().equals("Viabilidad")){
+							resultados[0][5][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][5][0] +=  costeTotal;
+							if(coste.getEquipos().equals("Innovery"))resultados[2][5][0] +=  costeTotal;
+						}
+						
+					}
+					
+					if(horasTotales!=null){
+						
+						
+						if(proyecto.getTipo().equals("Implementación")){
+							resultados[0][0][1] +=  horasTotales;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][0][1] +=  horasTotales;							
+							if(coste.getEquipos().equals("Innovery"))resultados[2][0][1] +=  horasTotales;
+						}
+						if(proyecto.getTipo().equals("Evolutivo")){
+							resultados[0][1][1] +=  horasTotales;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][1][1] +=  horasTotales;							
+							if(coste.getEquipos().equals("Innovery"))resultados[2][1][1] +=  horasTotales;
+						}
+						if(proyecto.getTipo().equals("Prueba cliente")){
+							resultados[0][2][1] +=  horasTotales;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][2][1] +=  horasTotales;							
+							if(coste.getEquipos().equals("Innovery"))resultados[2][3][1] +=  horasTotales;
+						}
+						if(proyecto.getTipo().equals("Migración")){
+							resultados[0][3][1] +=  horasTotales;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][3][1] +=  horasTotales;							
+							if(coste.getEquipos().equals("Innovery"))resultados[2][3][1] +=  horasTotales;
+						}
+						if(proyecto.getTipo().equals("Consulta")){
+							resultados[0][4][1] +=  horasTotales;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][4][1] +=  horasTotales;							
+							if(coste.getEquipos().equals("Innovery"))resultados[2][4][1] +=  horasTotales;
+						}
+						if(proyecto.getTipo().equals("Viabilidad")){
+							resultados[0][5][1] +=  horasTotales;
+							if(coste.getEquipos().equals("Capgemini"))resultados[1][5][1] +=  horasTotales;							
+							if(coste.getEquipos().equals("Innovery"))resultados[2][5][1] +=  horasTotales;
+						}
+					}
+				}
+			}
+		}
+		
+		
+		
+		for(int headtotal = 11; headtotal<17;headtotal++){
+			hojaTotal.getRow(headtotal).getCell(2).setCellValue(resultados[0][headtotal-11][0]);
+		}
+		
+		for(int headtotal = 12; headtotal<18;headtotal++){
+			hojaProv.getRow(headtotal).getCell(2).setCellValue(resultados[0][headtotal-12][0]);
+			hojaProv.getRow(headtotal).getCell(4).setCellValue(resultados[0][headtotal-12][1]);
+		}
+		
+		
+		for(int headtotal = 25; headtotal<31;headtotal++){
+			hojaProv.getRow(headtotal).getCell(2).setCellValue(resultados[1][headtotal-25][0]);
+			hojaProv.getRow(headtotal).getCell(4).setCellValue(resultados[1][headtotal-25][1]);
+		}
+		
+		for(int headtotal = 39; headtotal<45;headtotal++){
+			hojaProv.getRow(headtotal).getCell(2).setCellValue(resultados[2][headtotal-39][0]);
+			hojaProv.getRow(headtotal).getCell(4).setCellValue(resultados[2][headtotal-39][1]);
+		}
+		
+		
 		
 		workbook.write(resp.getOutputStream());
 	}

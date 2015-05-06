@@ -26,6 +26,7 @@
 					<option value='Cartera'>Cartera </option>
 					<option value='trabajo'>Carga de trabajo </option>
 					<option value='implementaciones'> Estado de implementaciones </option>
+					<option value='coste'> Costes </option>
 					<option value=''> Consulta avanzada </option>
 				</select>
 				
