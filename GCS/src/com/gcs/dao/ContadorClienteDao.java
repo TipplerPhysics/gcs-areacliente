@@ -15,17 +15,13 @@ public class ContadorClienteDao {
     }
 	
 	public void increaseCont (){
-		ContadorCliente cc = getContador();
-		
-		
+		ContadorCliente cc = getContador();		
 		cc.setNum(cc.getNum()+1);
 		createContador(cc); 
 	}
 	
 	public void decrementCont (){
 		ContadorCliente cc = getContador();
-		
-		
 		cc.setNum(cc.getNum()-1);
 		createContador(cc); 
 	}
