@@ -232,14 +232,14 @@
 						-->
 						
 						<tr>
-							<form if='test-header-filter' action="">
+							<form id='test-header-filter' action="">
 							
 								<th class="search-th"><input name='fecha' value='${fecha}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
 								<th class="search-th"><input name='codigoPro' value='${codigoPro}'></th>
 								<th class="search-th"><input name='equipo' value='${equipo}'></th>
 								<th class="search-th"><input name='gestorIt' value='${gestorIt}'></th>
-								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+								<th><button type='button' onclick='filteringCostes();'>  FILTRAR  </button></th>
 							</form>
 						</tr>
 						

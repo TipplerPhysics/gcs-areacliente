@@ -133,14 +133,14 @@
 						</tr>
 					-->
 						<tr>
-							<form if='test-header-filter' action="">
+							<form id='test-header-filter' action="">
 							
 								<th class="search-th"><input name='nombre' value='${nombre}'></th>
 								<th class="search-th"><input name='apellido1' value='${apellido1}'></th>
 								<th class="search-th"><input name='apellido2' value='${apellido2}'></th>
 								<th class="search-th"><input name='departamento' value='${departamento}'></th>
 								<th class="search-th"><input name='permisoStr' value='${permisoStr}'></th>
-								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+								<th><button type='button' onclick='filteringUsers();'>  FILTRAR  </button></th>
 							</form>
 						</tr>
 					</thead>
