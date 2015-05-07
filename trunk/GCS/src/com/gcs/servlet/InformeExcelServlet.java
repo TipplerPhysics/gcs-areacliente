@@ -677,10 +677,14 @@ public class InformeExcelServlet extends HttpServlet  {
 					hoja.getRow(head).createCell(1).setCellStyle(bodyStyle);
 					hoja.getRow(head).getCell(1).setCellValue(proyecto.getFecha_alta_str().substring(6, 10));
 					
-					int mes = Integer.parseInt(proyecto.getFecha_alta_str().substring(3,5));
-					
 					hoja.getRow(head).createCell(2).setCellStyle(bodyStyle);
-					hoja.getRow(head).getCell(2).setCellValue((mes/3+1)+"º");
+					
+					if(servicio.getStr_fecha_implantacion_produccion()!=null&&!servicio.getStr_fecha_implantacion_produccion().equals("")){
+						int mes= Integer.parseInt(servicio.getStr_fecha_implantacion_produccion().substring(3,5));
+						int trimestre = (int)((mes-1)/3)+1;
+						hoja.getRow(head).getCell(2).setCellValue(trimestre+"º");
+					}					
+					
 					
 					hoja.getRow(head).createCell(3).setCellStyle(bodyStyle);
 					hoja.getRow(head).getCell(3).setCellValue(servicio.getCliente_name());
@@ -917,11 +921,18 @@ public class InformeExcelServlet extends HttpServlet  {
 		Workbook workbook = new XSSFWorkbook(OPCPackage.open(inp));
 		
 		
-		PaisDao paisDao =  PaisDao.getInstance();
-		List<Pais> paises = paisDao.getAllPaises();
+		Date now = new Date();
+		int year = now.getYear()+1900;
+		int month = now.getMonth()+1;
 		
-		EstadosDao estadosDao =  EstadosDao.getInstance();
-		List<Estados> estados = estadosDao.getAllEstados();
+		String[] anios = new String[]{"ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"};
+		
+		
+		
+		
+		ServicioDao servicioDao = ServicioDao.getInstance();
+		List<Servicio> servicios = servicioDao.getServiciosEnCurso();
+		
 		
 		workbook.write(resp.getOutputStream());
 	}
