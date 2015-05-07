@@ -251,49 +251,34 @@
 			<div class="table-responsive usersTable">
 				<table class="table">
 					<thead>
-					<!--
 						<tr>
 							<th><span class="table-title">Fecha Entrada</span></th>
 							<th><span class="table-title">Cliente</span></th>
 							<th><span class="table-title">Tipo Petici&oacute;n</span></th>
 							<th><span class="table-title">Estado</span></th>
 							<th><span class="table-title">Cod. Petici&oacute;n</span></th>
-							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-								<th style="width: 110px;">&nbsp;</th>
-							</c:if>
+							<th>&nbsp;</th>
+							<!--
+								<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+									<th style="width: 110px;">&nbsp;</th>
+								</c:if>
+							-->
 						</tr>
 						<tr>
-							<th class="search-th"><input class="search col0 search_anywhere"></th>
-							<th class="search-th"><input class="search col1"></th>
-							<th class="search-th"><input class="search col2"></th>
-							<th class="search-th"><input class="search col3"></th>
-							<th class="search-th"><input class="search col4"></th>
-							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-								<th style="width: 110px;">&nbsp;</th>
-							</c:if>
-						</tr>
-					-->
-					
-						<tr>
-							<th><span class="table-title">Fecha Entrada</span></th>
-							<th><span class="table-title">Cliente</span></th>
-							<th><span class="table-title">Tipo Petici&oacute;n</span></th>
-							<th><span class="table-title">Estado</span></th>
-							<th><span class="table-title">Cod. Petici&oacute;n</span></th>
-							<th style="width: 110px;">&nbsp;</th>
-						</tr>
-						<tr>
-							<form if='test-header-filter' action="">
-							
+							<form id='test-header-filter' action="">
 								<th class="search-th"><input name='fecha' value='${fecha}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
 								<th class="search-th"><input name='tipo' value='${tipo}'></th>
-								<th class="search-th"><input name='estado' value='${estado}'></th>
+								<th class="search-th"><input name='estado' value='${estado}'></th> 
 								<th class="search-th"><input name='cPeticion' value='${cPeticion}'></th>
-								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+								<th><button type='button' onclick='filteringDemanda();'>FILTRAR</button></th>
+								<!--
+									<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
+										<th style="width: 110px;">&nbsp;</th>
+									</c:if>
+								-->
 							</form>
 						</tr>
-					
 					</thead>
 					<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 						<c:choose>
@@ -311,9 +296,11 @@
 										<td><span>${demanda.tipo}</span></td>
 										<td><span>${demanda.estado}</span></td>
 										<td><span>${demanda.cod_peticion}</span></td>
+									
 										<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
 											<td><img class="vs" src="../img/vs.png"><a class="lapiz" data-target="#edit-demanda" href="../../demandaModal.do?git=${demanda.gestor_it}&gn=${demanda.gestor_negocio}&client=${demanda.clientekey}" data-toggle="modal" name="${demanda.key.id}"	id="lapiz${demanda.key.id}"></a><a class="papelera" name="${demanda.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${demanda.key.id}"></a></td>
 										</c:if>
+										
 									</tr>
 								</c:forEach>
 							</c:otherwise>

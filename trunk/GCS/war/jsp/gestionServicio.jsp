@@ -287,14 +287,14 @@
 						</tr>
 						-->
 						<tr>
-							<form if='test-header-filter' action="">
+							<form id='test-header-filter' action="">
 								<th class="search-th"><input name='codigo' value='${codigo}'></th>
 								<th class="search-th"><input name='servicio' value='${servicio}'></th>
 								<th class="search-th"><input name='estado' value='${estado}'></th>
 								<th class="search-th"><input name='gestorIt' value='${gestorIt}'></th>
 								<th class="search-th"><input name='gestorNeg' value='${gestorNeg}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
-								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+								<th><button type='button' onclick='filteringServicio();'>  FILTRAR  </button></th>
 							</form>
 						</tr>
 					</thead>

@@ -188,15 +188,14 @@
 						-->
 						</tr>
 						<tr>
-							<form if='test-header-filter' action="">
-							
+							<form id='test-header-filter' action="">
 								<th class="search-th"><input name='fecha' value='${fecha}'></th>
 								<th class="search-th"><input name='idCliente' value='${idCliente}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
 								<th class="search-th"><input name='referencia' value='${referencia}'></th>
 								<th class="search-th"><input name='tipo' value='${tipo}'></th>
 								<th class="search-th"><input name='criticidad' value='${criticidad}'></th>
-								<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+								<th><button type='button' onclick='filteringCliente();'>  FILTRAR  </button></th>
 							
 							<!--
 								<th class="search-th"><input class="search col5"></th>

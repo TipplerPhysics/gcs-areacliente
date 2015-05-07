@@ -279,19 +279,8 @@
 						<th><span class="table-title">Coste</span></th>
 						<th style="width: 110px;">&nbsp;</th>
 					</tr>
-					<!--
 					<tr>
-						<th class="search-th"><input class="search col0"></th>
-						<th class="search-th"><input class="search col1"></th>
-						<th class="search-th"><input class="search col2"></th>
-						<th class="search-th"><input class="search col3"></th>
-						<th class="search-th"><input class="search col4"></th>
-						<th class="search-th"><input class="search col5"></th>
-						<th style="width: 110px;">&nbsp;</th>
-					</tr>
-					-->
-					<tr>
-						<form if='test-header-filter' action="">
+						<form id='test-header-filter' action="">
 						
 							<th class="search-th"><input name='fecha' value='${fecha}'></th>
 							<th class="search-th"><input name='codigo' value='${codigo}'></th>
@@ -299,7 +288,7 @@
 							<th class="search-th"><input name='clasificacion' value='${clasificacion}'></th>
 							<th class="search-th"><input name='tipo' value='${tipo}'></th>
 							<th class="search-th"><input name='coste' value='${coste}'></th>
-							<th style="width: 110px;"><button type='submit'>  FILTRAR  </button></th>
+							<th><button type='button' onclick='filteringProject();'>  FILTRAR  </button></th>
 						</form>
 					</tr>
 				</thead>
@@ -331,8 +320,10 @@
 										<td>										
 											<img class="vs" src="../img/vs.png">								
 										<!-- 	<a class="lapiz" name="${proyecto.key.id}" href="../projectModal.do?git=${proyecto.gestor_it}&gn=${proyecto.gestor_negocio}&client=${proyecto.clienteKey}"	id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-project"></a>  -->
+										
 											<a class="lapiz" name="${proyecto.key.id}" href="../jsp/modal/edit-action.jsp" id="lapiz${proyecto.key.id}" data-toggle="modal" data-target="#edit-action"></a>				
 											<a class="papelera" name="${proyecto.key.id}" data-toggle="modal" data-target="#confirm-delete" id="papelera${proyecto.key.id}"></a>
+										
 											
 										</td>
 										</c:if>
