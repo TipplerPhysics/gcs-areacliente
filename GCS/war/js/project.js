@@ -12,6 +12,13 @@ function LoadModalService(){
 	
 }
 
+
+function filteringProject(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionProyecto.do?"+postData;
+}
+
 function autocompleteSubtipo(tipo,target){
 	target.empty();
 	target.selectpicker("render");

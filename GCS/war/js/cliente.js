@@ -122,6 +122,12 @@ function drawChecks(str){
 		}		
 	}
 
+function filteringCliente(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionCliente.do?"+postData;
+}
+
 function editRowCliente(id){
 		
 		var line = $('#row'+id);

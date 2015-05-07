@@ -28,6 +28,12 @@ function showModal(){
 	
 }
 
+function filteringDemanda(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionDemanda.do?"+postData;
+}
+
 function sendEditDemanda(){
 	
 	var $form = $('#edit-demanda-form');
@@ -57,7 +63,6 @@ function sendEditDemanda(){
 	 }
 
 }
-
 
 $(function() {
 	
@@ -278,10 +283,6 @@ $(function() {
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
 		showModal();
-		
-		
-		
-		
 	}
 	
 	

@@ -58,6 +58,12 @@ function sendEditUser(){
 	}
 }
 
+function filteringUsers(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./users.do?"+postData;
+}
+
 $(function() {
 	$('#myTable').paginateMe({
 		pagerSelector : '#myPager',
