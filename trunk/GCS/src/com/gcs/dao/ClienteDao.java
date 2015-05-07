@@ -386,8 +386,8 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 				if(!nCliente.equals("")){
 					q = new com.google.appengine.api.datastore.Query("Cliente");
 					finalFilters = new ArrayList<>();
-					finalFilters.add(new FilterPredicate("client_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
-					finalFilters.add(new FilterPredicate("client_name",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
+					finalFilters.add(new FilterPredicate("nombre",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
+					finalFilters.add(new FilterPredicate("nombre",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
 					Filter finalFilter = CompositeFilterOperator.and(finalFilters);
 					q.setFilter(finalFilter);
 					FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
