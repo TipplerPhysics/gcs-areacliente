@@ -26,6 +26,12 @@ var name = $("#equipo").val();
 	}	
 }
 
+function filteringCostes(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionCostes.do?"+postData;
+}
+
 function sendNewCoste(){
 	
 	var $form = $("#new-coste-form");		

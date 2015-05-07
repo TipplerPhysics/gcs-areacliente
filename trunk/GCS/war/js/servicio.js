@@ -2,6 +2,12 @@ function editServicio(id){
 	showModal();
 }
 
+function filteringServicio(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionServicio.do?"+postData;
+}
+
 function sendEditServicio(){
 	$('#new_service_form_modal').addClass('hidden');
 	var $form = $('#edit-servicio-form');
