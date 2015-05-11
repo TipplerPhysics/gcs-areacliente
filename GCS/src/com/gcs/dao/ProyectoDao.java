@@ -382,6 +382,8 @@ public Proyecto getProjectbyId(long l) {
 		return p;		
 	}
 
+
+
 	private String createProjectName (Cliente c, Proyecto p, Integer project_number){
 		String project_name = "";
 				
@@ -390,6 +392,74 @@ public Proyecto getProjectbyId(long l) {
 		project_name = "PROY"+cod_cliente+"_"+String.format("%02d", project_number);
 		
 		return project_name;
+	}
+	
+	
+	public List<Proyecto> getProyectKeyBetweenDatesAndState(String desde, String hasta, String producto) throws ParseException {
+		
+		Date desdeDate = Utils.dateConverter(desde);
+		Date hastaDate = Utils.dateConverter(hasta);
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		if(!desde.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_alta", FilterOperator.GREATER_THAN_OR_EQUAL, desdeDate));
+		}
+		if(!hasta.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_alta", FilterOperator.LESS_THAN_OR_EQUAL, hastaDate));
+		}
+		if(!producto.equals("")){
+			finalFilters.add(new FilterPredicate("producto", FilterOperator.EQUAL, producto));
+		}
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+		List<Proyecto> proyectoskey = new ArrayList<Proyecto>();
+		for(Entity entity : entities){
+			proyectoskey.add(buildProyectokey(entity));
+		}
+		return proyectoskey;
+	}
+	
+	public List<Proyecto> getProyectKeyForState(String producto) throws ParseException {
+		
+
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+
+		if(!producto.equals("")){
+			finalFilters.add(new FilterPredicate("producto", FilterOperator.EQUAL, producto));
+		}
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+		List<Proyecto> proyectoskey = new ArrayList<Proyecto>();
+		for(Entity entity : entities){
+			proyectoskey.add(buildProyectokey(entity));
+		}
+		return proyectoskey;
 	}
 	
 	public List<Proyecto> getProyectoByAllParam(String fechaEntrada, String codProyecto, String nCliente, String clasificacion, String tipo, String coste,  Integer page){
@@ -596,7 +666,13 @@ public Proyecto getProjectbyId(long l) {
 
 		return proyectos;
 	}
-	
+
+	private Proyecto buildProyectokey(Entity entity) {
+		Proyecto proyecto = new Proyecto();
+		
+		proyecto.setKey(entity.getKey());
+		return proyecto;
+	}
 	private Proyecto buildProyecto(Entity entity) {
 		Proyecto proyecto = new Proyecto();
 		

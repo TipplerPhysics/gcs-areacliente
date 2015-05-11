@@ -26,6 +26,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.WorkbookUtil;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.gcs.beans.Cliente;
@@ -39,6 +40,7 @@ import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
 import com.gcs.dao.CosteDao;
+import com.gcs.dao.DemandaDao;
 import com.gcs.dao.EstadosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
@@ -48,7 +50,8 @@ import com.gcs.utils.Utils;
 
 public class InformeExcelServlet extends HttpServlet  {
 
-	
+	public static final int[] diasMes = new int[]{31,28,31,30,31,30,31,31,30,31,30,31};
+	public static final String[] months = new String[]{"ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"};
 	public void doGet(HttpServletRequest req, HttpServletResponse resp){
 
 
@@ -915,7 +918,7 @@ public class InformeExcelServlet extends HttpServlet  {
 	private void informeImplementaciones(HttpServletRequest req, HttpServletResponse resp)throws Exception {
 		
 		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-		resp.setHeader("Content-Disposition","attachment; filename=InformePaisesGCS.xlsx");
+		resp.setHeader("Content-Disposition","attachment; filename=InformeImplementacionesGCS.xlsx");
 		String link= "/datadocs/templateImplementacion.xlsx";
 		InputStream inp = this.getServletContext().getResourceAsStream(link);
 		Workbook workbook = new XSSFWorkbook(OPCPackage.open(inp));
@@ -925,15 +928,176 @@ public class InformeExcelServlet extends HttpServlet  {
 		int year = now.getYear()+1900;
 		int month = now.getMonth()+1;
 		
-		String[] anios = new String[]{"ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"};
 		
 		
+		Integer[][] dates = new Integer[4][2];
 		
+		if(month==1){
+			dates[0][0]=11;
+			dates[1][0]=12;
+			dates[2][0]=1;
+			dates[3][0]=10;
+			dates[0][1]=year-1;
+			dates[1][1]=year-1;
+			dates[2][1]=year;
+			dates[3][1]=year-1;
+		}else{
+			if(month==2){
+				dates[0][0]=12;
+				dates[1][0]=1;
+				dates[2][0]=2;
+				dates[3][0]=11;
+				dates[0][1]=year-1;
+				dates[1][1]=year;
+				dates[2][1]=year;
+				dates[3][1]=year-1;
+			}else{
+				if(month==3){
+					dates[0][0]=month-2;
+					dates[1][0]=month-1;
+					dates[2][0]=month;
+					dates[3][0]=12;
+					dates[0][1]=year;
+					dates[1][1]=year;
+					dates[2][1]=year;
+					dates[3][1]=year-1;
+					
+				}else{
+					dates[3][0]=month-3;
+					dates[0][0]=month-2;
+					dates[1][0]=month-1;
+					dates[2][0]=month;
+					dates[3][1]=year;
+					dates[0][1]=year;
+					dates[1][1]=year;
+					dates[2][1]=year;
+				}
+			}
+		}
 		
+		org.apache.poi.ss.usermodel.Sheet hoja = workbook.getSheetAt(0);
+		org.apache.poi.ss.usermodel.Sheet hoja3 = workbook.getSheetAt(2);
+		org.apache.poi.ss.usermodel.Sheet hoja4 = workbook.getSheetAt(3);
+		
+		for(int j=0;j<3;j++){
+			int i =dates[j][0]-1;
+			hoja.getRow(2).getCell(j+2).setCellValue(months[dates[j][0]-1]);
+			hoja.getRow(14).getCell(j+2).setCellValue(months[dates[j][0]-1]);
+			hoja.getRow(14).getCell(j+10).setCellValue(months[dates[j][0]-1]);
+
+			hoja4.getRow(2).getCell(j+2).setCellValue(months[dates[j][0]-1]);
+		}
+		
+		hoja3.getRow(3).getCell(14).setCellValue(months[dates[0][0]-1]+" - "+dates[0][1]);
+		hoja3.getRow(3).getCell(20).setCellValue(months[dates[1][0]-1]+" - "+dates[1][1]);
+		hoja3.getRow(3).getCell(26).setCellValue(months[dates[2][0]-1]+" - "+dates[2][1]);
+		
+
+		DemandaDao demandaDao = DemandaDao.getInstance();
 		ServicioDao servicioDao = ServicioDao.getInstance();
-		List<Servicio> servicios = servicioDao.getServiciosEnCurso();
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		
+		hoja.getRow(3).getCell(2).setCellValue(demandaDao.countSolicBetweenDates("01/"+dates[0][0]+"/"+dates[0][1], diasMes[dates[0][0]-1]+"/"+dates[0][0]+"/"+dates[0][1]));
+		hoja.getRow(3).getCell(3).setCellValue(demandaDao.countSolicBetweenDates("01/"+dates[1][0]+"/"+dates[1][1], diasMes[dates[1][0]-1]+"/"+dates[1][0]+"/"+dates[1][1]));
+		hoja.getRow(3).getCell(4).setCellValue(demandaDao.countSolicBetweenDates("01/"+dates[2][0]+"/"+dates[2][1], diasMes[dates[2][0]-1]+"/"+dates[2][0]+"/"+dates[2][1]));
+		hoja.getRow(3).getCell(5).setCellValue(demandaDao.countSolicBetweenDates("01/01/"+dates[1][1], "31/12/"+dates[1][1]));
 		
 		
+		hoja.getRow(4).getCell(2).setCellValue(servicioDao.countSolicBetweenDates("01/"+dates[0][0]+"/"+dates[0][1], diasMes[dates[0][0]-1]+"/"+dates[0][0]+"/"+dates[0][1]));
+		hoja.getRow(4).getCell(3).setCellValue(servicioDao.countSolicBetweenDates("01/"+dates[1][0]+"/"+dates[1][1], diasMes[dates[1][0]-1]+"/"+dates[1][0]+"/"+dates[1][1]));
+		hoja.getRow(4).getCell(4).setCellValue(servicioDao.countSolicBetweenDates("01/"+dates[2][0]+"/"+dates[2][1], diasMes[dates[2][0]-1]+"/"+dates[2][0]+"/"+dates[2][1]));
+		hoja.getRow(4).getCell(5).setCellValue(servicioDao.countSolicBetweenDates("01/01/"+dates[1][1], "31/12/"+dates[1][1]));
+		
+		
+		String[] estados = new String[]{
+				"PDTE Doc Alcance en GCS",
+				"Análisis",
+				"PDTE Visto Bueno del CL del plan de trabajo",
+				"En Desarrollo",
+				"En Test - Conectividad",
+				"En Test - Integración",
+				"En Test - Aceptación",
+				"PDTE Implantar",
+				"En Penny Test",
+				"Parado por negocio",
+				"Parado por producto"};
+		int i = 0 ;
+		for(String estado:estados){
+			hoja.getRow(i+15).getCell(2).setCellValue(servicioDao.countSolicBetweenDatesAndState("01/"+dates[0][0]+"/"+dates[0][1], diasMes[dates[0][0]-1]+"/"+dates[0][0]+"/"+dates[0][1],estado));
+			hoja.getRow(i+15).getCell(3).setCellValue(servicioDao.countSolicBetweenDatesAndState("01/"+dates[1][0]+"/"+dates[1][1], diasMes[dates[1][0]-1]+"/"+dates[1][0]+"/"+dates[1][1],estado));
+			hoja.getRow(i+15).getCell(4).setCellValue(servicioDao.countSolicBetweenDatesAndState("01/"+dates[2][0]+"/"+dates[2][1], diasMes[dates[2][0]-1]+"/"+dates[2][0]+"/"+dates[2][1],estado));
+			hoja.getRow(i+15).getCell(5).setCellValue(servicioDao.countSolicBetweenDatesAndState("01/01/"+dates[1][1], "31/12/"+dates[1][1],estado));
+			i++;
+		}
+		
+		
+		int []totalesProducto = new int[]{0,0,0,0};
+		String [] productos = new String[]{"Swift-Fileact","H2H","","Global Netcash"};
+		
+		List<Proyecto> proyectos = null;
+		i = 0;
+		for(String producto: productos){
+			proyectos = proyectoDao.getProyectKeyForState(producto);
+			for(Proyecto proyecto:proyectos){
+				totalesProducto[i] += servicioDao.getServiciosByProject(proyecto.getKey().getId()).size();
+			}
+			i++;
+		}
+		
+		hoja3.getRow(9).getCell(4).setCellValue(totalesProducto[0]);
+		hoja3.getRow(9).getCell(5).setCellValue(totalesProducto[1]);
+		hoja3.getRow(9).getCell(6).setCellValue(totalesProducto[2]);
+		hoja3.getRow(9).getCell(7).setCellValue(totalesProducto[3]);
+		
+		String [] paises = new String[]{"Argentina","Colombia","Perú","Venezuela","Chile","México","España","Francia","Reino Unido","USA","Italia"};
+		i=0;
+		for(String pais: paises){
+			hoja3.getRow(i+19).getCell(4).setCellValue(servicioDao.countByPais(pais));
+			i++;
+		}
+		
+		
+		totalesProducto = new int[]{0,0,0,0};
+		
+		
+		proyectos = null;
+		
+		for(int j=0;j<3;j++){
+			int k =  0;
+			for(String pais: paises){
+				totalesProducto = new int[]{0,0,0,0};
+				i = 0;
+				for(String producto: productos){
+					proyectos = proyectoDao.getProyectKeyBetweenDatesAndState("01/"+dates[j][0]+"/"+dates[j][1], diasMes[dates[j][0]-1]+"/"+dates[j][0]+"/"+dates[j][1], producto);
+					for(Proyecto proyecto:proyectos){
+						totalesProducto[i] += servicioDao.countByProjectAndPais(proyecto.getKey().getId(),pais);
+					}
+					i++;
+				}
+				for(int w=0;w<4;w++){
+					hoja3.getRow(k+5).getCell(w+14+j*6).setCellValue(totalesProducto[w]);
+				}
+				k++;
+			}
+			
+		
+			
+		}	
+		
+		
+		
+		
+		String [] tipos = new String[]{"EVOL-C","IMPL","MIGR-OB-C","PRUC"};
+		i=0;
+		for(String tipo:tipos){
+			for(int j=0;j<3;j++){
+				hoja4.getRow(3+i).getCell(j+2).setCellValue(demandaDao.countSolicBetweenDatesEstado("01/"+dates[j][0]+"/"+dates[j][1], diasMes[dates[j][0]-1]+"/"+dates[j][0]+"/"+dates[j][1], tipo));
+			}
+			i++;
+		}
+		
+		
+		XSSFFormulaEvaluator.evaluateAllFormulaCells((XSSFWorkbook) workbook);
 		workbook.write(resp.getOutputStream());
 	}
 	

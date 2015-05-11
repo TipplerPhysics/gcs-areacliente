@@ -24,8 +24,11 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 
+
 public class ServicioDao {
 	
+			
+			
 	private static final String SOLICITADO = "Solicitado";
 	private static final String CONFIRMADO = "Confirmado";
 	
@@ -268,6 +271,148 @@ public class ServicioDao {
 		pManager.close();
 		
 		return servicios;
+	}
+	
+	public Integer countSolicBetweenDates(String desde, String hasta) throws ParseException {
+		
+		Date desdeDate = Utils.dateConverter(desde);
+		Date hastaDate = Utils.dateConverter(hasta);
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		if(!desde.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_implantacion_produccion", FilterOperator.GREATER_THAN_OR_EQUAL, desdeDate));
+		}
+		if(!hasta.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_implantacion_produccion", FilterOperator.LESS_THAN_OR_EQUAL, hastaDate));
+		}
+		
+		
+		List<String> estados = new ArrayList<String>();
+		
+		estados.add("En Penny Test");
+		estados.add("Implementado con OK");
+		estados.add("Implementado sin OK");
+		
+		
+		finalFilters.add(new FilterPredicate("estado", FilterOperator.IN, estados));
+		
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+
+		return entities.size();
+	}
+	
+	public Integer countSolicBetweenDatesAndState(String desde, String hasta, String estado) throws ParseException {
+		
+		Date desdeDate = Utils.dateConverter(desde);
+		Date hastaDate = Utils.dateConverter(hasta);
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		if(!desde.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_fin_aceptacion", FilterOperator.GREATER_THAN_OR_EQUAL, desdeDate));
+		}
+		if(!hasta.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_fin_aceptacion", FilterOperator.LESS_THAN_OR_EQUAL, hastaDate));
+		}
+		if(!estado.equals("")){
+			if(!estado.equals("Análisis")){
+			finalFilters.add(new FilterPredicate("estado", FilterOperator.EQUAL, estado));
+			}else{
+				ArrayList<String> estados = new ArrayList<String>();
+				estados.add("C100 en confección");
+				estados.add("PDTE Valoración IT");
+				estados.add("PDTE Plan de Trabajo IT");
+				finalFilters.add(new FilterPredicate("estado", FilterOperator.IN, estados));			
+			}
+		}
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+
+		return entities.size();
+	}
+	
+	public Integer countByPais(String pais) throws ParseException {
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		if(!pais.equals("")){
+
+			finalFilters.add(new FilterPredicate("pais", FilterOperator.EQUAL, pais));
+
+		}
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+
+		return entities.size();
+	}
+	
+	public Integer countByProjectAndPais(Long project, String pais) throws ParseException {
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		if(!pais.equals("")){
+
+			finalFilters.add(new FilterPredicate("pais", FilterOperator.EQUAL, pais));
+
+		}
+		
+		if(!project.equals("")){
+
+			finalFilters.add(new FilterPredicate("id_proyecto", FilterOperator.EQUAL, project));
+
+		}
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+
+		return entities.size();
 	}
 	
 
@@ -846,4 +991,31 @@ public int[] getServiciosForExcelGestor(String gestor){
 	}
 
 	
+
+
+	public int[][] getTableImpPorEstad(Integer[][] dates){
+		
+		int[][] resultados = new int[3][4];
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		
+		
+		///Filter filtro = new FilterPredicate("gestor_it_key", FilterOperator.EQUAL, a);
+		
+		//q.setFilter(filtro);
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+		List<Entity> servicios = datastore.prepare(q).asList(fetchOptions);
+		q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		servicios = datastore.prepare(q).asList(fetchOptions);
+		q = new com.google.appengine.api.datastore.Query("Servicio");
+		
+		servicios = datastore.prepare(q).asList(fetchOptions);
+
+		return resultados;
+	}
+
+
 }
+

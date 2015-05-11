@@ -1,5 +1,6 @@
 package com.gcs.dao;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -323,6 +324,83 @@ public class DemandaDao {
 
 		return demandas;
 	}
+	
+	public Integer countSolicBetweenDates(String desde, String hasta) throws ParseException {
+		
+		Date desdeDate = Utils.dateConverter(desde);
+		Date hastaDate = Utils.dateConverter(hasta);
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		if(!desde.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_entrada_peticion", FilterOperator.GREATER_THAN_OR_EQUAL, desdeDate));
+		}
+		if(!hasta.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_entrada_peticion", FilterOperator.LESS_THAN_OR_EQUAL, hastaDate));
+		}
+		
+		
+		
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+		
+
+		
+		
+
+		return entities.size();
+	}
+	
+public Integer countSolicBetweenDatesEstado(String desde, String hasta,String tipo) throws ParseException {
+		
+		Date desdeDate = Utils.dateConverter(desde);
+		Date hastaDate = Utils.dateConverter(hasta);
+
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda");
+		
+		List<Entity> entities = null;
+		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+
+		List<Filter> finalFilters = new ArrayList<>();
+		
+		if(!desde.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_entrada_peticion", FilterOperator.GREATER_THAN_OR_EQUAL, desdeDate));
+		}
+		if(!hasta.equals("")){
+			finalFilters.add(new FilterPredicate("fecha_entrada_peticion", FilterOperator.LESS_THAN_OR_EQUAL, hastaDate));
+		}
+		
+		if(!tipo.equals("")){
+			finalFilters.add(new FilterPredicate("tipo", FilterOperator.EQUAL, tipo));
+		}
+		
+		
+		
+		
+		Filter finalFilter = null;
+		if(finalFilters.size()>1) finalFilter = CompositeFilterOperator.and(finalFilters);
+		if(finalFilters.size()==1) finalFilter = finalFilters.get(0);
+		if(finalFilters.size()!=0)q.setFilter(finalFilter);
+		
+		entities = datastore.prepare(q).asList(fetchOptions);
+
+		return entities.size();
+	}
+	
 	
 	private Demanda buildDemanda(Entity entity) {
 		Demanda demanda = new Demanda();
