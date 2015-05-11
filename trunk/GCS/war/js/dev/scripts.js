@@ -128,6 +128,12 @@ $(function() {
 		}		
 	}
 
+function filteringCliente(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionCliente.do?"+postData;
+}
+
 function editRowCliente(id){
 		
 		var line = $('#row'+id);
@@ -682,6 +688,12 @@ var name = $("#equipo").val();
 	}	
 }
 
+function filteringCostes(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionCostes.do?"+postData;
+}
+
 function sendNewCoste(){
 	
 	var $form = $("#new-coste-form");		
@@ -1069,6 +1081,12 @@ function showModal(){
 	
 }
 
+function filteringDemanda(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionDemanda.do?"+postData;
+}
+
 function sendEditDemanda(){
 	
 	var $form = $('#edit-demanda-form');
@@ -1098,7 +1116,6 @@ function sendEditDemanda(){
 	 }
 
 }
-
 
 $(function() {
 	
@@ -1319,10 +1336,6 @@ $(function() {
 		$('#catalogacion_peticion_modal').val(catalogacion);
 		
 		showModal();
-		
-		
-		
-		
 	}
 	
 	
@@ -2588,7 +2601,34 @@ function verinforme(){
 	}
 };
 
+$('.pagerselect').click(function(e){
+	
+	var page = $(this).val();
+	page--;
+	if(page > 0) {
+	
+		var sPath=window.location.pathname;
+		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+		var location = './' + sPage + '?page=' + page;
+		var oldparams = getParameters();
+		if(oldparams != "") {
+			location = location + "&" + oldparams;
+		}
+		window.location = location;		
+	}
+});
 
+function getParameters(){
+	var sPath=window.location.search;
+	var queryString = sPath.substring(sPath.lastIndexOf("?") + 1);
+	var newQueryString = $.map(queryString.split("&"), function(pair) { 
+		  var p = pair.split("="); 
+		  if(p[0] != "page") {
+			  return p.join("=");
+		  }			  
+	}).join("&");
+	return newQueryString;
+}
 
 $(function(){
 	$('.pagerselect').click(function(e){
@@ -2644,6 +2684,13 @@ function getParameters(){
 
 
 	
+}
+
+
+function filteringProject(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionProyecto.do?"+postData;
 }
 
 function autocompleteSubtipo(tipo,target){
@@ -3213,6 +3260,12 @@ $(function() {
 	showModal();
 }
 
+function filteringServicio(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./gestionServicio.do?"+postData;
+}
+
 function sendEditServicio(){
 	$('#new_service_form_modal').addClass('hidden');
 	var $form = $('#edit-servicio-form');
@@ -3650,6 +3703,12 @@ function sendEditUser(){
 		  }
 		},'html');
 	}
+}
+
+function filteringUsers(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./users.do?"+postData;
 }
 
 $(function() {
