@@ -63,7 +63,7 @@ $.fn.paginateMe = function(opts) {
 			
 			}
 			
-			opcionespage = opcionespage+"<select>";
+			opcionespage = opcionespage+"</select>";
 			$(opcionespage).appendTo(pagerGoto);
 			
 			/*
@@ -286,35 +286,6 @@ $.fn.paginateMe = function(opts) {
 		}
 	}
 };
-
-$('.pagerselect').click(function(e){
-	
-	var page = $(this).val();
-	page--;
-	if(page > 0) {
-	
-		var sPath=window.location.pathname;
-		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
-		var location = './' + sPage + '?page=' + page;
-		var oldparams = getParameters();
-		if(oldparams != "") {
-			location = location + "&" + oldparams;
-		}
-		window.location = location;		
-	}
-});
-
-function getParameters(){
-	var sPath=window.location.search;
-	var queryString = sPath.substring(sPath.lastIndexOf("?") + 1);
-	var newQueryString = $.map(queryString.split("&"), function(pair) { 
-		  var p = pair.split("="); 
-		  if(p[0] != "page") {
-			  return p.join("=");
-		  }			  
-	}).join("&");
-	return newQueryString;
-}
 
 $(function(){
 	$('.pagerselect').click(function(e){
