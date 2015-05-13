@@ -1,6 +1,7 @@
 package com.gcs.dao;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -480,7 +481,28 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			}
 			return clientes;
 		}
-		
+		public List<Cliente> getClienteByIdIn(String[] ids) {
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente");
+			List<Cliente> clientes = null;
+			List<Entity> entities = null;
+			FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+			
+			Collection<String> idCollection= new ArrayList<String>();
+			for(String identificador : ids){
+				idCollection.add(identificador);
+			}
+			
+			Filter filtro = new FilterPredicate("clientId",FilterOperator.IN, idCollection);
+			q.setFilter(filtro);
+			entities = datastore.prepare(q).asList(fetchOptions);
+			
+			for (Entity result : entities){
+				clientes.add(buildCliente(result));
+			}
+			return clientes;
+			
+		}
 		public List<Cliente> getAllClientePagin(Integer page) {
 
 			

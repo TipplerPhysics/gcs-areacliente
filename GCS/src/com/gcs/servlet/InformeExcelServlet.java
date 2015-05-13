@@ -74,6 +74,8 @@ public class InformeExcelServlet extends HttpServlet  {
 			if(accion.equals("implementaciones"))informeImplementaciones(req,resp);
 			
 			if(accion.equals("coste"))informeCoste(req,resp);
+			
+			if(accion.equals("complejo"))informeComplejo(req,resp);
 
 			
 			
@@ -85,6 +87,27 @@ public class InformeExcelServlet extends HttpServlet  {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
+	}
+	
+	private void informeComplejo(HttpServletRequest req, HttpServletResponse resp)throws Exception {
+		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+		resp.setHeader("Content-Disposition","attachment; filename=InformeDinamicoGCS.xlsx");
+
+		String[] clientes = req.getParameterValues("cliente");
+		String[] entidades =req.getParameterValues("entidades");
+		String[] variables =req.getParameterValues("variables");
+		
+		Workbook workbook = new XSSFWorkbook();
+		
+		org.apache.poi.ss.usermodel.Sheet hoja = workbook.createSheet("Consulta");
+		
+		ClienteDao clienteDao  = ClienteDao.getInstance();
+		
+		List<Cliente> clientesList = clienteDao.getClienteByIdIn(clientes);		
+		
+		
+		
+		
 	}
 	
 	private void informeCartera(HttpServletRequest req, HttpServletResponse resp)throws Exception {

@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+
 <div id="informes">
 
 
@@ -54,33 +59,49 @@
 			<span class='lbl'>Has seleccionado un periodo con demasiados valores</span>
 			</div>
 		</div>
-		
+
+				
 		
 	<span class="title">Consulta din&aacutemica de datos </span>	
 	<hr class="titleBorder"/>
 	<span> Mediante los siguientes filtros, puedes combinarlos para hacer una consulta online de los datos de clientes.</span>
 	<div id="chart_div" style="width:400; height:300">
+	<form id='formulariocomple'>
 			<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
-			<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" data-live-search="true">
+			<select id="input_firstcase" class="selectpicker selected" name="cliente" multiple required aria-required="true" data-live-search="true">
 				<option value="default">Todos los clientes</option>
-				<c:forEach items="${clientes}" var="cliente">	
-					<option value="${cliente.key.id}">${cliente.nombre}</option>
+				<c:forEach items="${clients}" var="cliente">
+					<option value="${cliente.clientId}">${cliente.nombre}</option>
 				</c:forEach>
 			</select>
 			
-			<select id="input_secase" class="selectpicker selected" name="secase" required aria-required="true" data-live-search="true">
+			<select id="input_secase" class="selectpicker selected" multiple name="entidades" required aria-required="true">
+				<option value="default">Seleccione</option>
 				<option value="proyectos">Proyectos</option>
 				<option value="servicio">Servicios</option>
+				<option value="conectividad">Conectividad</option>
 				<option value="tipoCliente">Tipo de Cliente</option>
 			</select>
 			
-			<select id="input_tricase" class="selectpicker selected" name="tricase" required aria-required="true" data-live-search="true">
-				<option value="-">-</option>
+			<select id="input_tricase" class="selectpicker selected" name="variables" multiple required aria-required="true">
+				<optgroup label="Proyecto">
+				<option value="fechInic">Fecha inicio</option>
+				<option value="implementac">Tipo implementaci&oacuten</option>
+				<option value="producto">Producto</option>
+				<optgroup label="Servicio">
+				<option value="fechImp">Fecha implantaci&oacuten</option>
+				<option value="paises">Pa&iacutes</option>
+				<option value="estadosServ">Estados</option>
+				<optgroup label="Conectividad">
+				<option value="estadosConect">Estados</option>
+				
 			</select>
+			
+	</form>
 	</div>		
 	
 	
-	<button style="margin-bottom:1%;" onclick="verinforme();">  Ver  </button>
+	<button style="margin-bottom:1%;" onclick="verinforme2();">  Ver  </button>
    
 
 	<iframe id="iframexls" class="hidden"  width="100%" height="1600px"></iframe>
