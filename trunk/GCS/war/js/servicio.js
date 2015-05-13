@@ -5,7 +5,8 @@ function editServicio(id){
 function filteringServicio(){
 	var $form = $("#test-header-filter");
 	var postData =  $form.serialize();
-	window.location = "./gestionServicio.do?"+postData;
+	var clienteTEst = $("#clienteTest").val();
+	window.location = "./gestionServicio.do?"+postData+'&clienteTest='+clienteTEst;
 }
 
 function sendEditServicio(){
