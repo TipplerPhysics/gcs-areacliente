@@ -2303,7 +2303,7 @@ $(function() {
 		}
 		
 	});
-	
+
 })
 
 
@@ -2312,6 +2312,12 @@ function verinforme(){
 	var desde =$('#desdeFilterInf').val();
 	var hasta =$('#hastaFilterInf').val();
 	$('#iframexls').attr('src',"/informeExcelServlet?accion="+variable+"&desde="+desde+"&hasta="+hasta);
+}
+
+function verinforme2(){
+	var $form = $("#formulariocomple");
+	var postData =  $form.serialize();
+	$('#iframexls').attr('src',"/informeExcelServlet?accion=complejo&"+postData);
 };$.fn.paginateMe = function(opts) {
 	var $this = this, defaults = {
 		perPage : 10,
