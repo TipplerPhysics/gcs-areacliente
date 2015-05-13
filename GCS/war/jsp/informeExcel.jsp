@@ -59,11 +59,28 @@
 	<span class="title">Consulta din&aacutemica de datos </span>	
 	<hr class="titleBorder"/>
 	<span> Mediante los siguientes filtros, puedes combinarlos para hacer una consulta online de los datos de clientes.</span>
-	<div id="chart_div" style="width:400; height:300"></div>			
-		
-	</div>
+	<div id="chart_div" style="width:400; height:300">
+			<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
+			<select id="input_cliente" class="selectpicker selected" name="cliente" required aria-required="true" data-live-search="true">
+				<option value="default">Todos los clientes</option>
+				<c:forEach items="${clientes}" var="cliente">	
+					<option value="${cliente.key.id}">${cliente.nombre}</option>
+				</c:forEach>
+			</select>
+			
+			<select id="input_secase" class="selectpicker selected" name="secase" required aria-required="true" data-live-search="true">
+				<option value="proyectos">Proyectos</option>
+				<option value="servicio">Servicios</option>
+				<option value="tipoCliente">Tipo de Cliente</option>
+			</select>
+			
+			<select id="input_tricase" class="selectpicker selected" name="tricase" required aria-required="true" data-live-search="true">
+				<option value="-">-</option>
+			</select>
+	</div>		
 	
-
+	
+	<button style="margin-bottom:1%;" onclick="verinforme();">  Ver  </button>
    
 
 	<iframe id="iframexls" class="hidden"  width="100%" height="1600px"></iframe>
