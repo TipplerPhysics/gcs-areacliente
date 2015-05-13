@@ -263,14 +263,6 @@
 	</div>
 	<div>	
 		<div>
-			<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
-			<select class="selectpicker selected" id='clienteTest' name='clienteTest' multiple data-live-search="true" required aria-required="true">
-				<option value="default">Seleccionar</option>
-				<c:forEach items="${clientes}" var="cliente">
-					<option value="${cliente.key.id}">${cliente.nombre}</option>
-				</c:forEach>
-			</select>
-				</div>
 			<div class="table-responsive usersTable">
 				<table class="table">
 					<thead>
@@ -285,7 +277,6 @@
 						</tr>
 						<!--
 						<tr>
-
 							<th class="search-th"><input class="search col0"></th>
 							<th class="search-th"><input class="search col1"></th>
 							<th class="search-th"><input class="search col2"></th>
@@ -333,7 +324,9 @@
 			<div class="col-md-12 text-center">
 				<ul class="pagination" id="myPager"></ul>
 				<span class="pagesummary"></span>
+				
 				<div class="paginationGoto" />
+				
 			</div>
 		</div>
 	</div>
