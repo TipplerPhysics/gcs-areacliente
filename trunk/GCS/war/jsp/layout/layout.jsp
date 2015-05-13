@@ -50,6 +50,7 @@
 			<div class="body-container"> 
 				<tiles:insert attribute="body"/> 
 			</div>
+			
 		</div>	
 		 
 	 	<c:if test="${sessionScope.permiso == 1 or sessionScope.permiso == 2}">

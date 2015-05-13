@@ -51,6 +51,7 @@ public class GestionServicioAction extends Action {
 			List<Servicio> servicios = new ArrayList <Servicio>();
 			
 			String codProyectoFilter = req.getParameter("codigo");
+			String prueba = req.getParameter("clienteTest");
 			
 			
 			String page = req.getParameter("page");

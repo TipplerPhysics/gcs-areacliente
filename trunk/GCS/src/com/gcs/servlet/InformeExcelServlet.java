@@ -1744,6 +1744,8 @@ public class InformeExcelServlet extends HttpServlet  {
 		Name rangeTable = workbook.getName("Entradas");
 		rangeTable.setRefersToFormula(sheetName+"!$A$"+2+":$AL$"+head);
 		*/
+		
+		
 		workbook.write(resp.getOutputStream());		
 	}
 }
