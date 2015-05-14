@@ -19,6 +19,7 @@ import com.gcs.beans.Departamentos;
 import com.gcs.config.StaticConfig;
 import com.gcs.dao.ContadorUserDao;
 import com.gcs.dao.DemandaDao;
+import com.gcs.dao.ServicioDao;
 import com.gcs.dao.UserDao;
 import com.gcs.dao.DepartamentosDao;
 import com.gcs.utils.Utils;
@@ -85,7 +86,10 @@ public class UsersAction extends Action {
 					usuarios = uDao.getAllUserPagin(pageint);
 					ContadorUserDao cuDao = ContadorUserDao.getInstance();
 					Integer cont = cuDao.getContadorValue();
-					int numpages = (cont/UserDao.DATA_SIZE) + 1;			
+					int numpages = (cont/UserDao.DATA_SIZE);
+					if((cont % UserDao.DATA_SIZE)>0){
+						numpages ++;
+					}
 					req.setAttribute("numpages", numpages);
 				}
 				
