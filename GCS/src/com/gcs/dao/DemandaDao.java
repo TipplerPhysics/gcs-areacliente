@@ -38,8 +38,11 @@ public class DemandaDao {
 		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId())); 
 		pm.close();
 		
-		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();			
-		cdDao.decrementCont();
+		//ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();			
+		//cdDao.decrementCont();
+		
+		ContadorPagDemandaDao cpdDao = ContadorPagDemandaDao.getInstance();			
+		cpdDao.decrementCont();
 		
 		Utils.writeLog(usermail, "Eliminó", "Demanda", d.getCod_peticion());
 	}
@@ -81,6 +84,8 @@ public class DemandaDao {
 		ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 		Integer count = cdDao.getContadorValue();
 		
+		ContadorPagDemandaDao cpdDao = ContadorPagDemandaDao.getInstance();
+		
 		// guarda id de peticion si no existe
 		if (demanda.getKey()==null){
 			String codPeticion = "PET_" + String.format("%07d", count);
@@ -103,9 +108,10 @@ public class DemandaDao {
 		} finally{
 			pm.close();
 			
-			if (isNew)
+			if (isNew){
 				Utils.writeLog(usermail, "Creó", "Demanda", demanda.getCod_peticion());
-			else
+				cpdDao.increaseCont();
+			}else
 				Utils.writeLog(usermail, "Editó", "Demanda", demanda.getCod_peticion());
 
 		}

@@ -64,6 +64,8 @@ public class ClienteDao {
 		ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 		Integer cont = ccDao.getContadorValue();
 		
+		ContadorPagClienteDao cpcDao = ContadorPagClienteDao.getInstance();
+		
 		String nombre = c.getNombre();
 		String letra = nombre.substring(0,1).toUpperCase();
 		String nombreMayus = letra + nombre.substring(1,nombre.length());
@@ -87,13 +89,15 @@ public class ClienteDao {
 			pm.makePersistent(c);
 		} finally {
 			pm.close();
-			if (isNewClient)
-				ccDao.increaseCont();
+			if (isNewClient){
+					ccDao.increaseCont();
+					cpcDao.increaseCont();
+			}
 			
 			if (!usermail.equals("")){
 				if (c.isErased()){
 					Utils.writeLog(usermail, "Eliminó", "Cliente", c.getNombre());
-					ccDao.decrementCont();
+					cpcDao.decrementCont();
 				}else{
 					if (isNewClient)
 						Utils.writeLog(usermail, "Creó", "Cliente", c.getNombre());
@@ -274,6 +278,9 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			pm.deletePersistent( pm.getObjectById( c.getClass(), c.getKey().getId())); 
 			pm.close();
+			
+			ContadorPagClienteDao cpcDao = ContadorPagClienteDao.getInstance();
+			cpcDao.decrementCont();
 			
 		}
 		
