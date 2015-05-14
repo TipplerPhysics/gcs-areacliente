@@ -88,7 +88,10 @@ public class GestionDemandaAction extends Action {
 				demandas = dDao.getAllDemandaPagin(pageint);
 				ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 				Integer cont = cdDao.getContadorValue();
-				int numpages = (cont/DemandaDao.DATA_SIZE) + 1;			
+				int numpages = (cont/DemandaDao.DATA_SIZE);
+				if((cont % DemandaDao.DATA_SIZE)>0){
+					numpages ++;
+				}
 				req.setAttribute("numpages", numpages);
 			}
 			

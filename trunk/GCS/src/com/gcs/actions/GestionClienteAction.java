@@ -17,6 +17,7 @@ import com.gcs.beans.Cliente;
 import com.gcs.beans.Pais;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorClienteDao;
+import com.gcs.dao.LogsDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.utils.Utils;
 
@@ -52,7 +53,6 @@ public class GestionClienteAction extends Action{
 				String refGlobalFilter = req.getParameter("referencia");
 				String tipoFilter = req.getParameter("tipo");
 				String criticidadFilter = req.getParameter("criticidad");
-				
 				clientes = cDao.getClienteByAllParam(fechaEntradaFilter, idClienteFilter, nClienteFilter, refGlobalFilter, tipoFilter, criticidadFilter,  pageint);
 				int numpages = (Integer.parseInt(clientes.get(clientes.size()-1).getDetalle())/ClienteDao.DATA_SIZE)+1;
 				clientes.remove(clientes.size()-1);
@@ -67,7 +67,10 @@ public class GestionClienteAction extends Action{
 				clientes = cDao.getAllClientePagin(pageint);
 				ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 				Integer cont = ccDao.getContadorValue();
-				int numpages = (cont/ClienteDao.DATA_SIZE) + 1;			
+				int numpages = (cont/ClienteDao.DATA_SIZE);
+				if((cont % ClienteDao.DATA_SIZE)>0){
+					numpages ++;
+				}
 				req.setAttribute("numpages", numpages);
 			}
 			

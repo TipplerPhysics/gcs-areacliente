@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Log;
+import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorAuditoriaDao;
 import com.gcs.dao.LogsDao;
 import com.gcs.utils.Utils;
@@ -58,7 +59,10 @@ public class AuditoriaAction extends Action{
 			logs = lDao.getAllLogPagin(pageint);
 			ContadorAuditoriaDao caDao = ContadorAuditoriaDao.getInstance();
 			Integer cont = caDao.getContadorValue();
-			int numpages = (cont/LogsDao.DATA_SIZE) + 1;			
+			int numpages = (cont/LogsDao.DATA_SIZE);
+			if((cont % LogsDao.DATA_SIZE)>0){
+				numpages ++;
+			}
 			req.setAttribute("numpages", numpages);
 			
 			boolean lastpage = (logs.size() < LogsDao.DATA_SIZE) ? true : false;
