@@ -26,6 +26,8 @@ import com.gcs.beans.ContadorAuditoria;
 import com.gcs.beans.ContadorCliente;
 import com.gcs.beans.ContadorCoste;
 import com.gcs.beans.ContadorDemanda;
+import com.gcs.beans.ContadorPagCliente;
+import com.gcs.beans.ContadorPagDemanda;
 import com.gcs.beans.ContadorProyecto;
 import com.gcs.beans.ContadorServicio;
 import com.gcs.beans.ContadorUser;
@@ -51,6 +53,8 @@ import com.gcs.dao.ContadorAuditoriaDao;
 import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.ContadorCosteDao;
 import com.gcs.dao.ContadorDemandaDao;
+import com.gcs.dao.ContadorPagClienteDao;
+import com.gcs.dao.ContadorPagDemandaDao;
 import com.gcs.dao.ContadorProyectoDao;
 import com.gcs.dao.ContadorServicioDao;
 import com.gcs.dao.ContadorUserDao;
@@ -106,10 +110,20 @@ public class DefaultConf extends HttpServlet {
 					ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
 					cdDao.createContador(cd);	
 					json.append("success", "true");
+				}else if ("def_counterpag_demand".equals(accion)){
+					ContadorPagDemanda cpd = new ContadorPagDemanda(1);
+					ContadorPagDemandaDao cpdDao = ContadorPagDemandaDao.getInstance();
+					cpdDao.createContador(cpd);	
+					json.append("success", "true");
 				}else if ("def_counter_services".equals(accion)){
 					ContadorCliente cc = new ContadorCliente(1);
 					ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 					ccDao.createContador(cc);	
+					json.append("success", "true");
+				}else if ("def_counterpag_client".equals(accion)){
+					ContadorPagCliente cpc = new ContadorPagCliente(1);
+					ContadorPagClienteDao cpcDao = ContadorPagClienteDao.getInstance();
+					cpcDao.createContador(cpc);	
 					json.append("success", "true");
 				}else if ("def_counter_proyecto".equals(accion)){
 					ContadorProyecto cp = new ContadorProyecto(1);
