@@ -16,7 +16,7 @@ import org.apache.struts.action.ActionMapping;
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Pais;
 import com.gcs.dao.ClienteDao;
-import com.gcs.dao.ContadorClienteDao;
+import com.gcs.dao.ContadorPagClienteDao;
 import com.gcs.dao.LogsDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ServicioDao;
@@ -69,7 +69,7 @@ public class GestionClienteAction extends Action{
 				req.setAttribute("criticidad", criticidadFilter);
 			}else{
 				clientes = cDao.getAllClientePagin(pageint);
-				ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
+				ContadorPagClienteDao ccDao = ContadorPagClienteDao.getInstance();
 				Integer cont = ccDao.getContadorValue();
 				int numpages = (cont/ClienteDao.DATA_SIZE);
 				if((cont % ClienteDao.DATA_SIZE)>0){
