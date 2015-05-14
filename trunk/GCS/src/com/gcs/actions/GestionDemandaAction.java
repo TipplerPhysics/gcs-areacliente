@@ -78,6 +78,9 @@ public class GestionDemandaAction extends Action {
 				demandas = dDao.getDemandaByAllParam(fechaEntradaFilter, nclienteFilter, tipoFilter, estadoFilter, codPeticionFilter, pageint);
 				int numpages = (Integer.parseInt(demandas.get(demandas.size()-1).getDetalle())/DemandaDao.DATA_SIZE)+1;
 				demandas.remove(demandas.size()-1);
+				boolean lastpage = (demandas.size() < DemandaDao.DATA_SIZE) ? true : false;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 				req.setAttribute("fecha", fechaEntradaFilter);
 				req.setAttribute("cliente", nclienteFilter);
@@ -92,11 +95,13 @@ public class GestionDemandaAction extends Action {
 				if((cont % DemandaDao.DATA_SIZE)>0){
 					numpages ++;
 				}
+				int np = pageint + 1;
+				boolean lastpage = (np < numpages) ? false : true;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 			}
 			
-			boolean lastpage = (demandas.size() < DemandaDao.DATA_SIZE) ? true : false;
-			req.setAttribute("lastpage", lastpage);
 			req.setAttribute("page", pageint);
 			
 			////////////////////////////////////////////////////////////

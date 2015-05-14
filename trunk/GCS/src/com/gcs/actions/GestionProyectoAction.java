@@ -57,6 +57,9 @@ public class GestionProyectoAction extends Action{
 				projects = pDao.getProyectoByAllParam(fechaAltaFilter, codproyectoFilter, clienteNameFilter, clasificacionFilter, tipoFilter, costeFilter,  pageint);
 				int numpages = (Integer.parseInt(projects.get(projects.size()-1).getDetalle())/ProyectoDao.DATA_SIZE)+1;
 				projects.remove(projects.size()-1);
+				boolean lastpage = (projects.size() < ProyectoDao.DATA_SIZE) ? true : false;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 				req.setAttribute("fecha", fechaAltaFilter);
 				req.setAttribute("codigo", codproyectoFilter);
@@ -73,11 +76,15 @@ public class GestionProyectoAction extends Action{
 				if((cont % ProyectoDao.DATA_SIZE)>0){
 					numpages ++;
 				}
+				
+				int np = pageint + 1;
+				boolean lastpage = (np < numpages) ? false : true;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 			}
 			
-			boolean lastpage = (projects.size() < ProyectoDao.DATA_SIZE) ? true : false;
-			req.setAttribute("lastpage", lastpage);
+			
 			req.setAttribute("page", pageint);		
 			////////////////////////////////////////////////////////////
 			

@@ -76,6 +76,9 @@ public class UsersAction extends Action {
 					usuarios = uDao.getUserByAllParam(nombreFilter, apellido1Filter, apellido2Filter, departamentoFilter, permisoStrFilter, pageint);
 					int numpages = (Integer.parseInt(usuarios.get(usuarios.size()-1).getDetalle())/UserDao.DATA_SIZE)+1;
 					usuarios.remove(usuarios.size()-1);
+					boolean lastpage = (usuarios.size() < UserDao.DATA_SIZE) ? true : false;
+					
+					req.setAttribute("lastpage", lastpage);
 					req.setAttribute("numpages", numpages);
 					req.setAttribute("nombre", nombreFilter);
 					req.setAttribute("apellido1", apellido1Filter);
@@ -90,11 +93,14 @@ public class UsersAction extends Action {
 					if((cont % UserDao.DATA_SIZE)>0){
 						numpages ++;
 					}
+					int np = pageint + 1;
+					boolean lastpage = (np < numpages) ? false : true;
+					
+					req.setAttribute("lastpage", lastpage);
 					req.setAttribute("numpages", numpages);
 				}
 				
-				boolean lastpage = (usuarios.size() < UserDao.DATA_SIZE) ? true : false;
-				req.setAttribute("lastpage", lastpage);
+				
 				req.setAttribute("page", pageint);
 				
 				////////////////////////////////////////////////////////////

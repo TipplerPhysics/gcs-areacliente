@@ -19,6 +19,7 @@ import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorClienteDao;
 import com.gcs.dao.LogsDao;
 import com.gcs.dao.PaisDao;
+import com.gcs.dao.ServicioDao;
 import com.gcs.utils.Utils;
 
 public class GestionClienteAction extends Action{
@@ -56,6 +57,9 @@ public class GestionClienteAction extends Action{
 				clientes = cDao.getClienteByAllParam(fechaEntradaFilter, idClienteFilter, nClienteFilter, refGlobalFilter, tipoFilter, criticidadFilter,  pageint);
 				int numpages = (Integer.parseInt(clientes.get(clientes.size()-1).getDetalle())/ClienteDao.DATA_SIZE)+1;
 				clientes.remove(clientes.size()-1);
+				boolean lastpage = (clientes.size() < ServicioDao.DATA_SIZE) ? true : false;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 				req.setAttribute("fecha", fechaEntradaFilter);
 				req.setAttribute("idCliente", idClienteFilter);
@@ -71,11 +75,13 @@ public class GestionClienteAction extends Action{
 				if((cont % ClienteDao.DATA_SIZE)>0){
 					numpages ++;
 				}
+				int np = pageint + 1;
+				boolean lastpage = (np < numpages) ? false : true;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 			}
 			
-			boolean lastpage = (clientes.size() < ClienteDao.DATA_SIZE) ? true : false;
-			req.setAttribute("lastpage", lastpage);
 			req.setAttribute("page", pageint);		
 		////////////////////////////////////////////////////////////
 		
