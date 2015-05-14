@@ -19,7 +19,7 @@ import com.gcs.beans.EstadoPeticion;
 import com.gcs.beans.User;
 import com.gcs.beans.TipoPeticion;
 import com.gcs.dao.ClienteDao;
-import com.gcs.dao.ContadorDemandaDao;
+import com.gcs.dao.ContadorPagDemandaDao;
 import com.gcs.dao.DemandaDao;
 import com.gcs.dao.EstadoPeticionDao;
 import com.gcs.dao.UserDao;
@@ -89,7 +89,7 @@ public class GestionDemandaAction extends Action {
 				req.setAttribute("cPeticion", codPeticionFilter);
 			}else{
 				demandas = dDao.getAllDemandaPagin(pageint);
-				ContadorDemandaDao cdDao = ContadorDemandaDao.getInstance();
+				ContadorPagDemandaDao cdDao = ContadorPagDemandaDao.getInstance();
 				Integer cont = cdDao.getContadorValue();
 				int numpages = (cont/DemandaDao.DATA_SIZE);
 				if((cont % DemandaDao.DATA_SIZE)>0){
