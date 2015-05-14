@@ -65,7 +65,10 @@ public class AuditoriaAction extends Action{
 			}
 			req.setAttribute("numpages", numpages);
 			
-			boolean lastpage = (logs.size() < LogsDao.DATA_SIZE) ? true : false;
+			int np = pageint + 1;
+			boolean lastpage = (np < numpages) ? false : true;
+			
+			//boolean lastpage = (logs.size() < LogsDao.DATA_SIZE) ? true : false;
 			req.setAttribute("lastpage", lastpage);
 			req.setAttribute("page", pageint);		
 			////////////////////////////////////////////////////////////

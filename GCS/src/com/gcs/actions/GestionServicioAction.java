@@ -66,6 +66,9 @@ public class GestionServicioAction extends Action {
 				servicios = sDao.getServicioByAllParam(codProyectoFilter, codServicioFilter, estadoFilter, gestorItNameFilter, gestorNegocioNameFilter, clienteNameFilter,  pageint);
 				int numpages = (Integer.parseInt(servicios.get(servicios.size()-1).getDetalle())/ServicioDao.DATA_SIZE)+1;
 				servicios.remove(servicios.size()-1);
+				boolean lastpage = (servicios.size() < ServicioDao.DATA_SIZE) ? true : false;
+				
+				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
 				req.setAttribute("codigo", codProyectoFilter);
 				req.setAttribute("servicio", codServicioFilter);
@@ -75,18 +78,22 @@ public class GestionServicioAction extends Action {
 				req.setAttribute("cliente", clienteNameFilter);
 			}else{
 				servicios = sDao.getAllServicioPagin(pageint);
-				//req.setAttribute("numpages", 140);
 				ContadorServicioDao csDao = ContadorServicioDao.getInstance();
 				Integer cont = csDao.getContadorValue();
 				int numpages = (cont/ServicioDao.DATA_SIZE);
 				if((cont % ServicioDao.DATA_SIZE)>0){
 					numpages ++;
 				}
+				
+				int np = pageint + 1;
+				boolean lastpage = (np < numpages) ? false : true;
+				
 				req.setAttribute("numpages", numpages);
+				req.setAttribute("lastpage", lastpage);
+				
 			}
 			
-			boolean lastpage = (servicios.size() < ServicioDao.DATA_SIZE) ? true : false;
-			req.setAttribute("lastpage", lastpage);
+			
 			req.setAttribute("page", pageint);		
 			////////////////////////////////////////////////////////////
 			

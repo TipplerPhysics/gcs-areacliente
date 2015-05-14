@@ -62,6 +62,9 @@ public class GestionCostesAction extends Action{
 			costes = coDao.getCosteByAllParam(fechaAltaFilter, clienteNameFilter, projectNameFilter, equiposFilter, gestorItNameFilter, pageint);
 			int numpages = (Integer.parseInt(costes.get(costes.size()-1).getDetalle())/CosteDao.DATA_SIZE)+1;
 			costes.remove(costes.size()-1);
+			boolean lastpage = (costes.size() < CosteDao.DATA_SIZE) ? true : false;
+			
+			req.setAttribute("lastpage", lastpage);
 			req.setAttribute("numpages", numpages);
 			req.setAttribute("fecha", fechaAltaFilter);
 			req.setAttribute("cliente", clienteNameFilter);
@@ -77,11 +80,13 @@ public class GestionCostesAction extends Action{
 			if((cont % CosteDao.DATA_SIZE)>0){
 				numpages ++;
 			}
+			int np = pageint + 1;
+			boolean lastpage = (np < numpages) ? false : true;
+			
+			req.setAttribute("lastpage", lastpage);
 			req.setAttribute("numpages", numpages);
 		}
 		
-		boolean lastpage = (costes.size() < CosteDao.DATA_SIZE) ? true : false;
-		req.setAttribute("lastpage", lastpage);
 		req.setAttribute("page", pageint);		
 		////////////////////////////////////////////////////////////
 			
