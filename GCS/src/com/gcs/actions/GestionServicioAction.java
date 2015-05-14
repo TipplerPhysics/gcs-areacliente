@@ -78,7 +78,10 @@ public class GestionServicioAction extends Action {
 				//req.setAttribute("numpages", 140);
 				ContadorServicioDao csDao = ContadorServicioDao.getInstance();
 				Integer cont = csDao.getContadorValue();
-				int numpages = (cont/ServicioDao.DATA_SIZE) + 1;			
+				int numpages = (cont/ServicioDao.DATA_SIZE);
+				if((cont % ServicioDao.DATA_SIZE)>0){
+					numpages ++;
+				}
 				req.setAttribute("numpages", numpages);
 			}
 			

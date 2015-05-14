@@ -20,6 +20,7 @@ import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorCosteDao;
 import com.gcs.dao.CosteDao;
+import com.gcs.dao.LogsDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
@@ -72,7 +73,10 @@ public class GestionCostesAction extends Action{
 			costes = coDao.getAllCostePagin(pageint);
 			ContadorCosteDao ccDao = ContadorCosteDao.getInstance();
 			Integer cont = ccDao.getContadorValue();
-			int numpages = (cont/CosteDao.DATA_SIZE) + 1;			
+			int numpages = (cont/CosteDao.DATA_SIZE);
+			if((cont % CosteDao.DATA_SIZE)>0){
+				numpages ++;
+			}
 			req.setAttribute("numpages", numpages);
 		}
 		
