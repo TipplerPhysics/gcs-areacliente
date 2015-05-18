@@ -504,6 +504,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			q.setFilter(filtro);
 			entities = datastore.prepare(q).asList(fetchOptions);
 			
+			clientes = new ArrayList<Cliente>();
 			for (Entity result : entities){
 				clientes.add(buildCliente(result));
 			}

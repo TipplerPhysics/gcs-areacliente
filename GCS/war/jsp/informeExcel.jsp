@@ -32,7 +32,6 @@
 					<option value='trabajo'>Carga de trabajo </option>
 					<option value='implementaciones'> Estado de implementaciones </option>
 					<option value='coste'> Costes </option>
-					<option value=''> Consulta avanzada </option>
 				</select>
 				
 				<button style="margin-bottom:1%;" onclick="verinforme();">  Ver  </button>
@@ -68,29 +67,29 @@
 	<div id="chart_div" style="width:400; height:300">
 	<form id='formulariocomple'>
 			<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
-			<select id="input_firstcase" class="selectpicker selected" name="cliente" multiple required aria-required="true" data-live-search="true">
+			<select id="input_firstcase" class="selectpicker selected" name="cliente" multiple required aria-required="true" data-live-search="true" title='Seleccione'>
 				<option value="default">Todos los clientes</option>
 				<c:forEach items="${clients}" var="cliente">
 					<option value="${cliente.clientId}">${cliente.nombre}</option>
 				</c:forEach>
 			</select>
 			
-			<select id="input_secase" class="selectpicker selected" multiple name="entidades" required aria-required="true">
-				<option value="default">Seleccione</option>
+			<select id="input_secase" class="selectpicker selected" multiple name="entidades" required aria-required="true" title='Seleccione'>
 				<option value="proyectos">Proyectos</option>
 				<option value="servicio">Servicios</option>
 				<option value="conectividad">Conectividad</option>
 				<option value="tipoCliente">Tipo de Cliente</option>
 			</select>
 			
-			<select id="input_tricase" class="selectpicker selected" name="variables" multiple required aria-required="true">
+			<select id="input_tricase" class="selectpicker selected" name="variables" multiple required aria-required="true" title='Seleccione'>
 				<optgroup label="Proyecto">
-				<option value="fechInic">Fecha inicio</option>
-				<option value="implementac">Tipo implementaci&oacuten</option>
+				<option value="fechaInicio">Fecha inicio</option>
+				<option value="implementacion">Tipo implementaci&oacuten</option>
 				<option value="producto">Producto</option>
 				<optgroup label="Servicio">
-				<option value="fechImp">Fecha implantaci&oacuten</option>
+				<option value="fechaImplementacion">Fecha implantaci&oacuten</option>
 				<option value="paises">Pa&iacutes</option>
+				
 				<option value="estadosServ">Estados</option>
 				<optgroup label="Conectividad">
 				<option value="estadosConect">Estados</option>
