@@ -92,23 +92,371 @@ public class InformeExcelServlet extends HttpServlet  {
 	private void informeComplejo(HttpServletRequest req, HttpServletResponse resp)throws Exception {
 		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 		resp.setHeader("Content-Disposition","attachment; filename=InformeDinamicoGCS.xlsx");
+		String link= "/datadocs/templateComplejo.xlsx";
+		InputStream inp = this.getServletContext().getResourceAsStream(link);
+		Workbook workbook = new XSSFWorkbook(OPCPackage.open(inp));
 
+		
+		
 		String[] clientes = req.getParameterValues("cliente");
 		String[] entidades =req.getParameterValues("entidades");
 		String[] variables =req.getParameterValues("variables");
 		
-		Workbook workbook = new XSSFWorkbook();
+
 		
-		org.apache.poi.ss.usermodel.Sheet hoja = workbook.createSheet("Consulta");
+		org.apache.poi.ss.usermodel.Sheet hoja = workbook.getSheet("Consulta");
+		
+	    Font fontBlue = workbook.createFont();
+	    fontBlue.setFontName(XSSFFont.DEFAULT_FONT_NAME);
+	    fontBlue.setFontHeightInPoints((short)12);
+	    fontBlue.setColor(IndexedColors.WHITE.getIndex());
+		CellStyle headerBlue = workbook.createCellStyle();
+	    headerBlue.setFont(fontBlue);
+		headerBlue.setFillForegroundColor(IndexedColors.BLUE.getIndex());
+		headerBlue.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		headerBlue.setAlignment(CellStyle.ALIGN_CENTER);
+		
+		
 		
 		ClienteDao clienteDao  = ClienteDao.getInstance();
 		
-		List<Cliente> clientesList = clienteDao.getClienteByIdIn(clientes);		
 		
 		
 		
+		List<Cliente> clientesList =null;
+		List<Conectividad> conectividades = null;
+		List<Proyecto> proyectos = null;
+		List<Servicio> servicios = null;
 		
+		if(clientes!=null){
+			boolean todos = false;
+			for(String cliente : clientes){
+				if(cliente.equals("default"))todos=true;
+			}
+			
+			if(todos){
+				clientesList = clienteDao.getAllClientes();
+			}else{
+				clientesList = clienteDao.getClienteByIdIn(clientes);
+			}
+		}
+		
+		boolean containProyect = false;
+		boolean containServicio = false;
+		boolean containConect = false;
+		boolean containTipoCliente = false;
+		boolean containFechaInicio = false;
+		boolean containImplementacion = false;
+		boolean containProducto = false;
+		boolean containFechaImplementacion = false;
+		boolean containPaises = false;
+		boolean containEstadosServicio = false;
+		boolean containEstadosConectividad = false;
+		
+		//MAS RAPIDO QUE PASAR A UN ARRAYLIST PARA COMPROBAR	
+		if(entidades!=null){
+			for(String entidad:entidades){
+				if(entidad.contains("proyectos"))containProyect=true;
+				if(entidad.contains("conectividad"))containConect=true;
+				if(entidad.contains("servicio"))containServicio=true;
+				if(entidad.contains("tipoCliente"))containTipoCliente=true;
+			}
+		}
+		if(variables!=null){
+			for(String entidad:variables){
+				if(entidad.contains("fechaInicio"))containFechaInicio=true;
+				if(entidad.contains("implementacion"))containImplementacion=true;
+				if(entidad.contains("producto"))containProducto=true;
+				if(entidad.contains("fechaImplementacion"))containFechaImplementacion =true;
+				if(entidad.contains("paises"))containPaises=true;
+				if(entidad.contains("estadosServ"))containEstadosServicio=true;
+				if(entidad.contains("estadosConect"))containEstadosConectividad=true;
+			}
+		}
+		/*
+		List<String> variablesList = new ArrayList<String>();
+		for(String variable: variables){
+			variablesList.add(variable);
+		}*/
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		proyectos = new ArrayList<Proyecto>();
+		List<Proyecto> proyectosAux = new ArrayList<Proyecto>();
+		/*
+		if(containProyect||containConect||containServicio){
+
+			
+			for(Cliente cliente : clientesList){
+				proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto: proyectosAux){
+					proyectos.add(proyecto);
+				}
+			}
+		}
+		
+		if(containServicio){
+			ServicioDao servicioDao = ServicioDao.getInstance();
+			servicios= new ArrayList<Servicio>();
+			List<Servicio> serviciosAux = new ArrayList<Servicio>();
+			for(Proyecto proyecto:proyectos){
+				serviciosAux = servicioDao.getServiciosByProject(proyecto.getKey().getId());
+				for(Servicio servicio:serviciosAux){
+					servicios.add(servicio);
+				}
+			}
+		}
+		
+		if(containConect){
+			ConectividadDao conectividadDao = ConectividadDao.getInstance();
+			conectividades= new ArrayList<Conectividad>();
+			List<Conectividad> conectividadesAux = new ArrayList<Conectividad>();
+			for(Proyecto proyecto:proyectos){
+				conectividadesAux = conectividadDao.getConectividadesByProject(proyecto.getKey().getId());
+				for(Conectividad conectividad:conectividadesAux){
+					conectividades.add(conectividad);
+				}
+			}
+		}		
+		
+		*/
+		int head = 1 ;
+		int column = 1;
+		int totalColumn = 0;
+		
+		if(containProyect){
+			
+			hoja.createRow(head).createCell(column).setCellStyle(headerBlue);
+			hoja.getRow(head).getCell(column).setCellValue("Cliente");
+			column++;
+			totalColumn++;
+			
+			hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+			hoja.getRow(head).getCell(column).setCellValue("ID proyecto");			
+			column++;
+			totalColumn++;
+			
+			if(containTipoCliente){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Tipo cliente");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containFechaInicio){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Fecha inicio");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containImplementacion){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Tipo implementacion");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containProducto){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Producto");
+				column++;
+				totalColumn++;
+			}
+			
+			head++;
+			
+			for(Cliente cliente : clientesList){
+				proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto: proyectosAux){
+					column = 1;
+					hoja.createRow(head).createCell(column).setCellValue(cliente.getNombre());
+					column++;
+					hoja.getRow(head).createCell(column).setCellValue(proyecto.getCod_proyecto());
+					column++;
+					if(containTipoCliente){
+						hoja.getRow(head).createCell(column).setCellValue(cliente.getTipo());
+						column++;
+					}
+					
+					if(containFechaInicio){
+						hoja.getRow(head).createCell(column).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+						column++;
+					}
+					
+					if(containImplementacion){
+						hoja.getRow(head).createCell(column).setCellValue(proyecto.getTipo());
+						column++;
+					}
+					
+					if(containProducto){
+						hoja.getRow(head).createCell(column).setCellValue(proyecto.getProducto());
+						
+					}
+					head++;
+				}
+			}	
+		}
+		
+		head+=4;
+		column=1;
+		if(containServicio){
+			hoja.createRow(head).createCell(column).setCellStyle(headerBlue);
+			hoja.getRow(head).getCell(column).setCellValue("Cliente");
+			column++;
+			totalColumn++;
+			
+			if(containTipoCliente){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Tipo cliente");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containFechaImplementacion){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Fecha implantacion");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containPaises){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("País");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containEstadosServicio){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Estados");
+				column++;
+				totalColumn++;
+			}
+			
+			head++;
+			
+			for(Cliente cliente : clientesList){
+				proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto: proyectosAux){
+					ServicioDao servicioDao = ServicioDao.getInstance();
+					List<Servicio> serviciosAux = servicioDao.getServiciosByProject(proyecto.getKey().getId());
+					for(Servicio servicio:serviciosAux){
+						column = 1;
+						hoja.createRow(head).createCell(column).setCellValue(cliente.getNombre());
+						column++;
+						if(containTipoCliente){
+							hoja.getRow(head).createCell(column).setCellValue(cliente.getTipo());
+							column++;
+						}
+						
+						if(containFechaImplementacion){
+							hoja.getRow(head).createCell(column).setCellValue(servicio.getStr_fecha_implantacion_produccion());
+							column++;
+						}
+						
+						if(containPaises){
+							hoja.getRow(head).createCell(column).setCellValue(servicio.getPais());
+							column++;
+						}
+						
+						if(containEstadosServicio){
+							hoja.getRow(head).createCell(column).setCellValue(servicio.getEstado());
+							
+						}
+						head++;
+					}
+				}
+			}
+			
+			head+=4;
+			column=1;
+		}
+		
+		if(containConect){
+			hoja.createRow(head).createCell(column).setCellStyle(headerBlue);
+			hoja.getRow(head).getCell(column).setCellValue("Cliente");
+			column++;
+			totalColumn++;
+			
+			if(containTipoCliente){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Tipo cliente");
+				column++;
+				totalColumn++;
+			}
+			
+			if(containEstadosConectividad){
+				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
+				hoja.getRow(head).getCell(column).setCellValue("Estado");
+				column++;
+				totalColumn++;
+			}
+			
+			head++;
+			
+			for(Cliente cliente : clientesList){
+				proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto: proyectosAux){
+					ConectividadDao conectividadDao = ConectividadDao.getInstance();
+					conectividades= new ArrayList<Conectividad>();
+					List<Conectividad> conectividadesAux = new ArrayList<Conectividad>();
+					conectividadesAux = conectividadDao.getConectividadesByProject(proyecto.getKey().getId());
+					for(Conectividad conectividad:conectividadesAux){
+						column = 1;
+						hoja.createRow(head).createCell(column).setCellValue(cliente.getNombre());
+						column++;
+						if(containTipoCliente){
+							hoja.getRow(head).createCell(column).setCellValue(cliente.getTipo());
+							column++;
+						}
+						
+						if(containEstadosConectividad){
+							hoja.getRow(head).createCell(column).setCellValue(conectividad.getEstado());
+							column++;
+						}
+					
+						head++;
+					}
+				}
+			}
+		}
+		
+		workbook.write(resp.getOutputStream());
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private void informeCartera(HttpServletRequest req, HttpServletResponse resp)throws Exception {
 		
@@ -1603,9 +1951,6 @@ public class InformeExcelServlet extends HttpServlet  {
 		
 		
 		//Estilo de celda del encabezado
-		byte[] rgb = new byte[]{(byte)0x006699};
-		org.apache.poi.xssf.usermodel.XSSFColor azul = new XSSFColor(rgb); 
-		short width = 3;
 		CellStyle cellStyle = workbook.createCellStyle();
 	    Font font = workbook.createFont();
 	    font.setFontName(XSSFFont.DEFAULT_FONT_NAME);

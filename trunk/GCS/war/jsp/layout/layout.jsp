@@ -54,7 +54,7 @@
 		</div>	
 		 
 	 	<c:if test="${sessionScope.permiso == 1 or sessionScope.permiso == 2}">
-				<tiles:insert attribute="side-bar"/> 
+				<tiles:insert attribute="side-bar" /> 
 		</c:if>
 		
 		<!--   <tiles:insert attribute="footer"/>  -->
