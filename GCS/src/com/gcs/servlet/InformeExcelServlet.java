@@ -36,6 +36,7 @@ import com.gcs.beans.Estados;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
+import com.gcs.beans.ServicioFile;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ConectividadDao;
@@ -47,6 +48,8 @@ import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class InformeExcelServlet extends HttpServlet  {
 
@@ -76,6 +79,8 @@ public class InformeExcelServlet extends HttpServlet  {
 			if(accion.equals("coste"))informeCoste(req,resp);
 			
 			if(accion.equals("complejo"))informeComplejo(req,resp);
+			
+			if(accion.equals("consult"))consulta(req,resp);
 
 			
 			
@@ -87,6 +92,167 @@ public class InformeExcelServlet extends HttpServlet  {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		doGet(req,resp);
+	}
+	
+	private void consulta(HttpServletRequest req, HttpServletResponse resp)throws Exception {
+		
+		JSONObject json = new JSONObject();
+		JSONArray jarray = new JSONArray();
+		
+		String[] clientes = req.getParameterValues("cliente");
+		String[] entidades =req.getParameterValues("entidades");
+		String[] variables =req.getParameterValues("variables");
+
+		List<Cliente> clientesList =null;
+		List<Conectividad> conectividades = null;
+		List<Proyecto> proyectos = null;
+		List<Servicio> servicios = null;
+		
+		ClienteDao clienteDao = ClienteDao.getInstance();
+		
+		if(clientes!=null){
+			boolean todos = false;
+			for(String cliente : clientes){
+				if(cliente.equals("default"))todos=true;
+			}
+			
+			if(todos){
+				clientesList = clienteDao.getAllClientes();
+			}else{
+				clientesList = clienteDao.getClienteByIdIn(clientes);
+			}
+		}
+		
+		boolean containProyect = false;
+		boolean containServicio = false;
+		boolean containConect = false;
+		boolean containTipoCliente = false;
+		boolean containFechaInicio = false;
+		boolean containImplementacion = false;
+		boolean containProducto = false;
+		boolean containFechaImplementacion = false;
+		boolean containPaises = false;
+		boolean containEstadosServicio = false;
+		boolean containEstadosConectividad = false;
+		
+		//MAS RAPIDO QUE PASAR A UN ARRAYLIST PARA COMPROBAR	
+		if(entidades!=null&&clientes!=null){
+			for(String entidad:entidades){
+				if(entidad.contains("proyectos"))containProyect=true;
+				if(entidad.contains("conectividad"))containConect=true;
+				if(entidad.contains("servicio"))containServicio=true;
+				if(entidad.contains("tipoCliente"))containTipoCliente=true;
+			}
+		}
+		if(variables!=null&&entidades!=null&&clientes!=null){
+			for(String entidad:variables){
+				
+				if(entidad.contains("fechaInicio"))containFechaInicio=true;
+				if(entidad.contains("implementacion"))containImplementacion=true;
+				if(entidad.contains("producto"))containProducto=true;
+				if(entidad.contains("fechaImplementacion"))containFechaImplementacion =true;
+				if(entidad.contains("paises"))containPaises=true;
+				if(entidad.contains("estadosServ"))containEstadosServicio=true;
+				if(entidad.contains("estadosConect"))containEstadosConectividad=true;
+			}
+		}
+		
+		
+		if(containProyect){
+			jarray.put("<(*)head(*)>");
+			jarray.put("Cliente");
+			jarray.put("Código proyecto");
+			if(containTipoCliente)jarray.put("Tipo cliente");
+			if(containFechaInicio)jarray.put("Fecha inicio");
+			if(containImplementacion)jarray.put("Tipo implementación");
+			if(containProducto)jarray.put("Producto");
+			jarray.put("<(*)finHead(*)>");
+		}
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		if(containProyect){
+			List<Proyecto> proyectosAux = new ArrayList<Proyecto>();
+			for(Cliente cliente : clientesList){
+				proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto: proyectosAux){
+					jarray.put(cliente.getNombre());
+					jarray.put(proyecto.getCod_proyecto());
+					if(containTipoCliente)jarray.put(cliente.getTipo());
+					if(containFechaInicio)jarray.put(proyecto.getStr_fecha_inicio_valoracion());
+					if(containImplementacion)jarray.put(proyecto.getTipo());
+					if(containProducto)jarray.put(proyecto.getProducto());
+					jarray.put("<(*)finLine(*)>");
+				}
+			}
+		}
+		
+		if(containProyect)jarray.put("<(*)finTable(*)>");
+		
+		
+		
+		if(containServicio){
+			jarray.put("<(*)head(*)>");
+			jarray.put("Cliente");
+			if(containTipoCliente)jarray.put("Tipo cliente");
+			if(containFechaImplementacion)jarray.put("Fecha implementacion");
+			if(containPaises)jarray.put("País");
+			if(containEstadosServicio)jarray.put("Estado");
+			jarray.put("<(*)finHead(*)>");
+			ServicioDao servicioDao = ServicioDao.getInstance();
+			servicios= new ArrayList<Servicio>();
+			List<Servicio> serviciosAux = new ArrayList<Servicio>();
+			for(Cliente cliente:clientesList){
+				List<Proyecto> proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto:proyectosAux){
+					serviciosAux = servicioDao.getServiciosByProject(proyecto.getKey().getId());
+					for(Servicio servicio:serviciosAux){
+						jarray.put(cliente.getNombre());
+						if(containTipoCliente)jarray.put(cliente.getTipo());					
+						if(containFechaImplementacion)jarray.put(servicio.getStr_fecha_implantacion_produccion());
+						if(containPaises)jarray.put(servicio.getPais());
+						if(containEstadosServicio)jarray.put(servicio.getEstado());
+						jarray.put("<(*)finLine(*)>");
+					}
+				}
+			}
+			jarray.put("<(*)finTable(*)>");
+		}
+		
+		if(containConect){
+			
+			jarray.put("<(*)head(*)>");
+			jarray.put("Cliente");
+			if(containTipoCliente)jarray.put("Tipo cliente");
+			if(containEstadosConectividad)jarray.put("Estados");
+			jarray.put("<(*)finHead(*)>");
+			ConectividadDao conectividadDao = ConectividadDao.getInstance();
+			conectividades= new ArrayList<Conectividad>();
+			List<Conectividad> conectividadesAux = new ArrayList<Conectividad>();
+			for(Cliente cliente:clientesList){
+				List<Proyecto> proyectosAux = proyectoDao.getProjectsByClient(cliente.getKey().getId());
+				for(Proyecto proyecto:proyectosAux){
+					conectividadesAux = conectividadDao.getConectividadesByProject(proyecto.getKey().getId());
+					for(Conectividad conectividad:conectividadesAux){
+						jarray.put(cliente.getNombre());
+						if(containTipoCliente)jarray.put(cliente.getTipo());	
+						if(containEstadosConectividad)jarray.put(conectividad.getEstado());
+						
+					}
+				}
+			}
+			jarray.put("<(*)finTable(*)>");
+		}
+		
+
+		
+		
+		
+		json.append("success","true");
+		json.append("tableArray", jarray);
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+		
 	}
 	
 	private void informeComplejo(HttpServletRequest req, HttpServletResponse resp)throws Exception {
