@@ -65,7 +65,7 @@
 	<hr class="titleBorder"/>
 	<span> Mediante los siguientes filtros, puedes combinarlos para hacer una consulta online de los datos de clientes.</span>
 	<div id="chart_div" style="width:400; height:300">
-	<form id='formulariocomple'>
+	<form id='formulariocomple' style='margin-top:1%;margin-bottom:3%;' action='/informeExcelServlet'>
 			<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 			<select id="input_firstcase" class="selectpicker selected" name="cliente" multiple required aria-required="true" data-live-search="true" title='Seleccione'>
 				<option value="default">Todos los clientes</option>
@@ -95,12 +95,15 @@
 				<option value="estadosConect">Estados</option>
 				
 			</select>
-			
+			<button type='button' onclick="verinforme2();">  Descargar Excel </button>
 	</form>
-	</div>		
+		
+	</div>	
 	
 	
-	<button style="margin-bottom:1%;" onclick="verinforme2();">  Ver  </button>
+	
+	<div id='tablacompleja'></div>
+
    
 
 	<iframe id="iframexls" class="hidden"  width="100%" height="1600px"></iframe>

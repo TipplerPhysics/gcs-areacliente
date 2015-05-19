@@ -14,6 +14,7 @@
 	<global-forwards>
 		<forward name="clients" path="/clients.do" />
 		<forward name="users" path="/admin/users.do" />
+		<forward name="informes" path="/admin/informes.do" />
 	</global-forwards>	
 
 	<action-mappings>	
