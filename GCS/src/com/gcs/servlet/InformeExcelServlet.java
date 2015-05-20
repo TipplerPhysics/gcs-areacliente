@@ -235,7 +235,7 @@ public class InformeExcelServlet extends HttpServlet  {
 						jarray.put(cliente.getNombre());
 						if(containTipoCliente)jarray.put(cliente.getTipo());	
 						if(containEstadosConectividad)jarray.put(conectividad.getEstado());
-						
+						jarray.put("<(*)finLine(*)>");
 					}
 				}
 			}
@@ -694,7 +694,7 @@ public class InformeExcelServlet extends HttpServlet  {
 					hoja.getRow(head).createCell(20).setCellValue(servicio.getObservaciones());//observaciones
 					hoja.getRow(head).createCell(21).setCellValue(servicio.getFormato_intermedio());//formato intermedio
 					hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_local());//formato local
-					hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//TODO CHECK referencia local integ
+					hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//
 					hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local2());//referencia local
 					hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
 					hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
@@ -903,7 +903,7 @@ public class InformeExcelServlet extends HttpServlet  {
 				hoja.getRow(head).createCell(20).setCellValue(servicio.getObservaciones());//observaciones
 				hoja.getRow(head).createCell(21).setCellValue(servicio.getFormato_intermedio());//formato intermedio
 				hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_local());//formato local
-				hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//TODO CHECK referencia local integ
+				hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//
 				hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local2());//referencia local
 				hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
 				hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
@@ -1513,6 +1513,7 @@ public class InformeExcelServlet extends HttpServlet  {
 		}
 		
 		org.apache.poi.ss.usermodel.Sheet hoja = workbook.getSheetAt(0);
+		org.apache.poi.ss.usermodel.Sheet hoja2 = workbook.getSheetAt(1);
 		org.apache.poi.ss.usermodel.Sheet hoja3 = workbook.getSheetAt(2);
 		org.apache.poi.ss.usermodel.Sheet hoja4 = workbook.getSheetAt(3);
 		
@@ -1632,7 +1633,8 @@ public class InformeExcelServlet extends HttpServlet  {
 			}
 			i++;
 		}
-		
+		//TODO  tabla de servicios por anio
+		//hoja2.getRow(7).getCell(19).setCellValue(servicioDao.get);
 		
 		XSSFFormulaEvaluator.evaluateAllFormulaCells((XSSFWorkbook) workbook);
 		workbook.write(resp.getOutputStream());
@@ -1840,6 +1842,9 @@ public class InformeExcelServlet extends HttpServlet  {
 			hojaProv.getRow(headtotal).getCell(2).setCellValue(resultados[2][headtotal-39][0]);
 			hojaProv.getRow(headtotal).getCell(4).setCellValue(resultados[2][headtotal-39][1]);
 		}
+		
+		
+		
 		
 		
 		
