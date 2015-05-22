@@ -38,11 +38,10 @@ public class ClienteDao {
 	}
 	
 	public void createClienteRaw(Cliente c) {
-		String nombre = c.getNombre();
-		String letra = nombre.substring(0,1).toUpperCase();
-		String nombreMayus = letra + nombre.substring(1,nombre.length());
+		c.setCriticidad(c.getCriticidad().toUpperCase());
+		c.setNombre(c.getNombre().toUpperCase());
+		c.setPaises(setToUppercase(c.getPaises()));
 		c.setErased(false);
-		c.setNombre(nombreMayus);
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(c);
@@ -59,12 +58,21 @@ public class ClienteDao {
 			clienteDao.createClienteRaw(cliente);
 		}
 	}
+	
+	public Set<String> setToUppercase(Set<String> variables){
+		Set<String> nuevaVariables = new HashSet<String>();
+		for(String variable:variables){nuevaVariables.add(variable.toUpperCase());}
+		return nuevaVariables;
+	}
 
 	public void createCliente(Cliente c, String usermail) {
 		ContadorClienteDao ccDao = ContadorClienteDao.getInstance();
 		Integer cont = ccDao.getContadorValue();
 		
 		ContadorPagClienteDao cpcDao = ContadorPagClienteDao.getInstance();
+		c.setCriticidad(c.getCriticidad().toUpperCase());
+		c.setNombre(c.getNombre().toUpperCase());
+		c.setPaises(setToUppercase(c.getPaises()));
 		
 		String nombre = c.getNombre();
 		String letra = nombre.substring(0,1).toUpperCase();
@@ -361,7 +369,9 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 				entities = datastore.prepare(q).asList(fetchOptions);
 				clientes = new ArrayList<>();
 				for(Entity result:entities){
-					clientes.add(buildCliente(result));
+					try{
+						clientes.add(buildCliente(result));
+					}catch(Exception exp) {}
 				}
 				Cliente impPage = new Cliente();
 				impPage.setDetalle("0");
@@ -479,7 +489,9 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 				clientes = new ArrayList<Cliente>();
 				int clientesPages  = clientesFinal.size();
 				for(int i = page*10; i< (page*10)+10&&i<clientesFinal.size();i++){
-					clientes.add(buildCliente(clientesFinal.get(i)));
+					try{
+						clientes.add(buildCliente(clientesFinal.get(i)));
+					}catch(Exception exp) {}
 				}
 				Cliente pages = new Cliente();
 				pages.setDetalle(Integer.toString(clientesPages));
@@ -506,7 +518,9 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			
 			clientes = new ArrayList<Cliente>();
 			for (Entity result : entities){
-				clientes.add(buildCliente(result));
+				try{
+					clientes.add(buildCliente(result));
+				}catch(Exception exp) {}
 			}
 			return clientes;
 			
@@ -529,7 +543,9 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			List<Cliente> Clientes = new ArrayList<Cliente>();	;
 			
 			for (Entity result : entities){
-				Clientes.add(buildCliente(result));
+				try{
+					Clientes.add(buildCliente(result));
+				}catch(Exception exp) {}
 			}
 
 			return Clientes;

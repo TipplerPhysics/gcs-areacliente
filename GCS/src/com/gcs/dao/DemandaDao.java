@@ -58,7 +58,11 @@ public class DemandaDao {
 	   
 	public void createDemandaRaw(Demanda demanda){
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
-	
+		demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
+		demanda.setComentarios(demanda.getComentarios().toUpperCase());
+		demanda.setDetalle(demanda.getDetalle().toUpperCase());
+		demanda.setEstado(demanda.getDetalle().toUpperCase());
+		demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
 		
 		try{
 			pm.makePersistent(demanda);
@@ -78,6 +82,12 @@ public class DemandaDao {
 	}
 	
 	public void  createDemanda(Demanda demanda, String usermail){
+		
+		demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
+		demanda.setComentarios(demanda.getComentarios().toUpperCase());
+		demanda.setDetalle(demanda.getDetalle().toUpperCase());
+		demanda.setEstado(demanda.getDetalle().toUpperCase());
+		demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
 		
 		Boolean isNew = false;
 		
@@ -203,7 +213,9 @@ public class DemandaDao {
 			entities = datastore.prepare(q).asList(fetchOptions);
 			demandas = new ArrayList<>();
 			for(Entity result:entities){
-				demandas.add(buildDemanda(result));
+				try{
+					demandas.add(buildDemanda(result));
+				}catch(Exception exp) {}
 			}
 			Demanda impPage = new Demanda();
 			impPage.setDetalle("0");
@@ -298,7 +310,9 @@ public class DemandaDao {
 			demandas = new ArrayList<Demanda>();
 			int demandasPages  = demandasFinal.size();
 			for(int i = page*10; i< (page*10)+10&&i<demandasFinal.size();i++){
-				demandas.add(buildDemanda(demandasFinal.get(i)));
+				try{
+					demandas.add(buildDemanda(demandasFinal.get(i)));
+				}catch(Exception exp) {}
 			}
 			Demanda pages = new Demanda();
 			pages.setDetalle(Integer.toString(demandasPages));
@@ -325,7 +339,9 @@ public class DemandaDao {
 		List<Demanda> demandas = new ArrayList<Demanda>();	;
 		
 		for (Entity result : entities){
-			demandas.add(buildDemanda(result));
+			try{
+				demandas.add(buildDemanda(result));
+			}catch(Exception exp) {}
 		}
 
 		return demandas;

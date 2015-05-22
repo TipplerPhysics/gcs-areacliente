@@ -58,6 +58,12 @@ public class CosteDao {
 	}
 	
 	public void createCoste(Coste c, String usermail) throws ParseException {
+		
+		c.setCliente_name(c.getCliente_name().toUpperCase());
+		c.setComentarios(c.getComentarios().toUpperCase());
+		c.setEquipos(c.getEquipos().toUpperCase());
+		c.setGestor_it_name(c.getGestor_it_name().toUpperCase());
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
 		ContadorCosteDao cstDao = ContadorCosteDao.getInstance();
@@ -231,7 +237,9 @@ public class CosteDao {
 			entities = datastore.prepare(q).asList(fetchOptions);
 			costes = new ArrayList<>();
 			for(Entity result:entities){
-				costes.add(buildCoste(result));
+				try{
+					costes.add(buildCoste(result));
+				}catch(Exception exp) {}
 			}
 			Coste impPage = new Coste();
 			impPage.setDetalle("0");
@@ -325,7 +333,9 @@ public class CosteDao {
 			costes = new ArrayList<Coste>();
 			int costesPages  = costesFinal.size();
 			for(int i = page*10; i< (page*10)+10&&i<costesFinal.size();i++){
-				costes.add(buildCoste(costesFinal.get(i)));
+				try{
+					costes.add(buildCoste(costesFinal.get(i)));
+				}catch(Exception exp) {}	
 			}
 			Coste pages = new Coste();
 			pages.setDetalle(Integer.toString(costesPages));
@@ -351,7 +361,9 @@ public class CosteDao {
 		List<Coste> costes = new ArrayList<Coste>();	;
 		
 		for (Entity result : entities){
-			costes.add(buildCoste(result));
+			try{
+				costes.add(buildCoste(result));
+			}catch(Exception exp) {}
 		}
 	
 		return costes;

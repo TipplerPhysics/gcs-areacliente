@@ -1,35 +1,4 @@
-<!-- Indices written at Wed, 20 May 2015 09:32:34 GMT+01:00 -->
+<!-- Indices written at Fri, 22 May 2015 13:40:12 GMT+01:00 -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 2247 times in query history -->
-    <datastore-index kind="Proyecto" ancestor="false" source="auto">
-        <property name="clienteKey" direction="asc"/>
-        <property name="cod_proyecto" direction="asc"/>
-    </datastore-index>
-
-    <!-- Used 12 times in query history -->
-    <datastore-index kind="Servicio" ancestor="false" source="auto">
-        <property name="estado" direction="asc"/>
-        <property name="fecha_implantacion_produccion" direction="asc"/>
-    </datastore-index>
-
-    <!-- Used 52 times in query history -->
-    <datastore-index kind="Servicio" ancestor="false" source="auto">
-        <property name="estado" direction="asc"/>
-        <property name="fecha_fin_aceptacion" direction="asc"/>
-    </datastore-index>
-
-    <!-- Used 99 times in query history -->
-    <datastore-index kind="Proyecto" ancestor="false" source="auto">
-        <property name="producto" direction="asc"/>
-        <property name="fecha_alta" direction="asc"/>
-    </datastore-index>
-
-    <!-- Used 12 times in query history -->
-    <datastore-index kind="Demanda" ancestor="false" source="auto">
-        <property name="tipo" direction="asc"/>
-        <property name="fecha_entrada_peticion" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>

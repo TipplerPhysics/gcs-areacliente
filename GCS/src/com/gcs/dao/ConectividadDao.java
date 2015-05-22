@@ -102,6 +102,10 @@ public class ConectividadDao {
 			c.setFecha_ini_seguridad(Utils.dateConverter(c.getStr_fecha_ini_seguridad()));
 		}
 		
+		c.setdetalleSubida(c.getdetalleSubida().toUpperCase());
+		c.setEstado(c.getEstado().toUpperCase());
+		c.setSeguridad(c.getSeguridad().toUpperCase());
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
 
 		try {

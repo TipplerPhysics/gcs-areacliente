@@ -63,6 +63,15 @@ public class ProyectoDao {
 	}
 	
 	public void createProject(Proyecto p,String usermail) throws ParseException{
+		
+		p.setClienteName(p.getClienteName().toUpperCase());
+		p.setConectividad(p.getConectividad().toUpperCase());
+		p.setGestor_it_name(p.getGestor_it_name().toUpperCase());
+		p.setProducto(p.getProducto().toUpperCase());
+		p.setServicio(p.getServicio().toUpperCase());
+		p.setSubtipo(p.getSubtipo().toUpperCase());
+		p.setTipo(p.getTipo().toUpperCase());
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 		ContadorProyectoDao cpDao = ContadorProyectoDao.getInstance();
@@ -220,9 +229,6 @@ public class ProyectoDao {
 			if (project_number==null)
 				project_number=1;			
 			
-			
-			
-			project_number = 3;
 			String cod_proyecto = createProjectName(c,p,project_number);
 			p.setCod_proyecto(cod_proyecto);
 			project_number++;
@@ -427,7 +433,9 @@ public Proyecto getProjectbyId(long l) {
 		entities = datastore.prepare(q).asList(fetchOptions);
 		List<Proyecto> proyectoskey = new ArrayList<Proyecto>();
 		for(Entity entity : entities){
-			proyectoskey.add(buildProyectokey(entity));
+			try{
+				proyectoskey.add(buildProyectokey(entity));
+			}catch(Exception exp) {}
 		}
 		return proyectoskey;
 	}
@@ -457,7 +465,9 @@ public Proyecto getProjectbyId(long l) {
 		entities = datastore.prepare(q).asList(fetchOptions);
 		List<Proyecto> proyectoskey = new ArrayList<Proyecto>();
 		for(Entity entity : entities){
-			proyectoskey.add(buildProyectokey(entity));
+			try{
+				proyectoskey.add(buildProyectokey(entity));
+			}catch(Exception exp) {}
 		}
 		return proyectoskey;
 	}
@@ -530,7 +540,9 @@ public Proyecto getProjectbyId(long l) {
 			entities = datastore.prepare(q).asList(fetchOptions);
 			proyectos = new ArrayList<>();
 			for(Entity result:entities){
-				proyectos.add(buildProyecto(result));
+				try{
+					proyectos.add(buildProyecto(result));
+				}catch(Exception exp) {}
 			}
 			Proyecto impPage = new Proyecto();
 			impPage.setDetalle("0");
@@ -634,7 +646,9 @@ public Proyecto getProjectbyId(long l) {
 			proyectos = new ArrayList<Proyecto>();
 			int proyectosPages  = proyectosFinal.size();
 			for(int i = page*10; i< (page*10)+10&&i<proyectosFinal.size();i++){
-				proyectos.add(buildProyecto(proyectosFinal.get(i)));
+				try{
+					proyectos.add(buildProyecto(proyectosFinal.get(i)));
+				}catch(Exception exp) {}
 			}
 			Proyecto pages = new Proyecto();
 			pages.setDetalle(Integer.toString(proyectosPages));
@@ -661,7 +675,9 @@ public Proyecto getProjectbyId(long l) {
 		List<Proyecto> proyectos = new ArrayList<Proyecto>();
 		
 		for (Entity result : entities){
-			proyectos.add(buildProyecto(result));
+			try{
+				proyectos.add(buildProyecto(result));
+			}catch(Exception exp) {}
 		}
 
 		return proyectos;

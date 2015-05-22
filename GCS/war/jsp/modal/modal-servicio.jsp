@@ -71,33 +71,6 @@
 							</div>
 						</div>
 						
-					<!--
-						<div class="form-field">
-							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
-							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true" data-live-search="true">
-									<option value="PDTE Doc Alcance en GCS" ${servicio.estado == 'PDTE Doc Alcance en GCS' ? 'selected' : ''}>PDTE Doc Alcance en GCS</option>
-									<option value="C100 en confección" ${servicio.estado == 'C100 en confección' ? 'selected' : ''}>C100 en confección</option>
-									<option value="PDTE Valoración IT" ${servicio.estado == 'PDTE Valoración IT' ? 'selected' : ''}>PDTE Valoración IT</option>	
-									<option value="PDTE Plan de Trabajo IT" ${servicio.estado == 'PDTE Plan de Trabajo IT' ? 'selected' : ''}>PDTE Plan de Trabajo IT</option>
-									<option value="PDTE Visto Bueno del CL del plan de trabajo" ${servicio.estado == 'PDTE Visto Bueno del CL del plan de trabajo' ? 'selected' : ''}>PDTE Visto Bueno del CL del plan de trabajo</option>
-									<option value="En Desarrollo" ${servicio.estado == 'En Desarrollo' ? 'selected' : ''}>En Desarrollo</option>
-									<option value="En Test - Conectividad" ${servicio.estado == 'En Test - Conectividad' ? 'selected' : ''}>En Test - Conectividad</option>
-									<option value="En Test - Integración" ${servicio.estado == 'En Test - Integración' ? 'selected' : ''}>En Test - Integración</option>	
-									<option value="En Test - Aceptación" ${servicio.estado == 'En Test - Aceptación' ? 'selected' : ''}>En Test - Aceptación</option>	
-									<option value="Parado por producto" ${servicio.estado == 'Parado por producto' ? 'selected' : ''}>Parado por producto</option>	
-									<option value="Parado por negocio" ${servicio.estado == 'Parado por negocio' ? 'selected' : ''}>Parado por negocio</option>	
-									<option value="Parado por IT" ${servicio.estado == 'Parado por IT' ? 'selected' : ''}>Parado por IT</option>
-									<option value="Excluido por negocio" ${servicio.estado == 'Excluido por negocio' ? 'selected' : ''}>Excluido por negocio</option>	
-									<option value="Excluido por Timeout" ${servicio.estado == 'Excluido por Timeout' ? 'selected' : ''}>Excluido por Timeout</option>	
-									<option value="PDTE Implantar" ${servicio.estado == 'PDTE Implantar' ? 'selected' : ''}>PDTE Implantar</option>	
-									<option value="En Penny Test" ${servicio.estado == 'En Penny Test' ? 'selected' : ''}>En Penny Test</option>
-									<option value="Implementado con OK" ${servicio.estado == 'Implementado con OK' ? 'selected' : ''}>Implementado con OK</option>
-									<option value="Implementado sin OK" ${servicio.estado == 'Implementado sin OK' ? 'selected' : ''}>Implementado sin OK</option>										
-								</select>
-							</div>
-						</div>
-					-->
 						<div class="form-field">
 							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long" required aria-required="true">

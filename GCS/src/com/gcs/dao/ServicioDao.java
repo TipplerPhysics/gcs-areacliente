@@ -121,6 +121,26 @@ public class ServicioDao {
 		}
 	}
 	public void createServicio(Servicio s, String usermail){
+		
+		s.setCliente_name(s.getCliente_name().toUpperCase());
+		s.setCod_servicio(s.getCod_servicio().toUpperCase());
+		s.setDetalle(s.getServicio().toUpperCase());
+		s.setdetalleSubida(s.getdetalleSubida().toUpperCase());
+		s.setEstado(s.getEstado().toUpperCase());
+		s.setEstadoImplantacion(s.getEstadoImplantacion().toUpperCase());
+		s.setEstadoSubida(s.getEstadoSubida().toUpperCase());
+		s.setExtension(s.getExtension().toUpperCase());
+		s.setFormato_intermedio(s.getFormato_intermedio().toUpperCase());
+		s.setFormato_local(s.getFormato_local().toUpperCase());
+		s.setGestor_it_name(s.getGestor_it_name().toUpperCase());
+		s.setGestor_negocio_name(s.getGestor_negocio_name().toUpperCase());
+		s.setObservaciones(s.getObservaciones().toUpperCase());
+		s.setPais(s.getPais().toUpperCase());
+		s.setReferencia_local1(s.getReferencia_local1().toUpperCase());
+		s.setReferencia_local2(s.getReferencia_local2().toUpperCase());
+		s.setServicio(s.getServicio().toUpperCase());
+		
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
 		Boolean isNew = false;
 		ContadorServicioDao csDao = ContadorServicioDao.getInstance();
