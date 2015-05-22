@@ -50,4 +50,23 @@ public class EquipoDao {
 		return e;
 
 	}
+
+	public List<Equipo> getAllEquipos() {
+		Equipo e = new Equipo();
+
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+
+		String queryStr = "select from " + Equipo.class.getName();
+
+		List<Equipo> equipos = (List<Equipo>) pManager.newQuery(queryStr).execute();
+
+
+
+		transaction.commit();
+		pManager.close();
+
+		return equipos;
+	}
 }

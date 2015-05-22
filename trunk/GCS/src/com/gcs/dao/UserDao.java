@@ -31,6 +31,14 @@ public class UserDao {
 	}
 
 	public void createUser(User u, String usermail) {
+		
+		u.setApellido1(u.getApellido1().toUpperCase());
+		u.setApellido2(u.getApellido2().toUpperCase());
+		u.setAreas(u.getAreas().toUpperCase());
+		u.setDepartamento(u.getDepartamento().toUpperCase());
+		u.setNombre(u.getNombre().toUpperCase());
+		u.setPermisoStr(u.getPermisoStr().toUpperCase());
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
 		ContadorUserDao cuDao = ContadorUserDao.getInstance();
