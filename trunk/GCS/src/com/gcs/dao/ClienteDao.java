@@ -38,9 +38,9 @@ public class ClienteDao {
 	}
 	
 	public void createClienteRaw(Cliente c) {
-		c.setCriticidad(c.getCriticidad().toUpperCase());
-		c.setNombre(c.getNombre().toUpperCase());
-		c.setPaises(setToUppercase(c.getPaises()));
+		if(c.getCriticidad()!=null)c.setCriticidad(c.getCriticidad().toUpperCase());
+		if(c.getNombre()!=null)c.setNombre(c.getNombre().toUpperCase());
+		if(c.getPaises()!=null)c.setPaises(setToUppercase(c.getPaises()));
 		c.setErased(false);
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -70,9 +70,9 @@ public class ClienteDao {
 		Integer cont = ccDao.getContadorValue();
 		
 		ContadorPagClienteDao cpcDao = ContadorPagClienteDao.getInstance();
-		c.setCriticidad(c.getCriticidad().toUpperCase());
-		c.setNombre(c.getNombre().toUpperCase());
-		c.setPaises(setToUppercase(c.getPaises()));
+		if(c.getCriticidad()!=null)c.setCriticidad(c.getCriticidad().toUpperCase());
+		if(c.getNombre()!=null)c.setNombre(c.getNombre().toUpperCase());
+		if(c.getPaises()!=null)c.setPaises(setToUppercase(c.getPaises()));
 		
 		String nombre = c.getNombre();
 		String letra = nombre.substring(0,1).toUpperCase();

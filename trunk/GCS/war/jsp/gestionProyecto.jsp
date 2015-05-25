@@ -50,12 +50,12 @@
 							<div class="input">
 								<select class="selectpicker selected" name="tipo" id="tipo-imp-proj" required aria-required="true">
 									<option value="default">Seleccionar</option>
-									<option value="Implementación">Implementaci&oacuten</option>
-									<option value="Evolutivo">Evolutivo</option>
-									<option value="Prueba cliente">Prueba cliente</option>
-									<option value="Migración">Migraci&oacuten</option>
-									<option value="Consulta">Consulta</option>
-									<option value="Viabilidad">Viabilidad</option>
+									<option value="IMPLEMENTACIÓN">Implementaci&oacuten</option>
+									<option value="EVOLUTIVO">Evolutivo</option>
+									<option value="PRUEBA CLIENTE">Prueba cliente</option>
+									<option value="MIGRACIÓN">Migraci&oacuten</option>
+									<option value="CONSULTA">Consulta</option>
+									<option value="VIABILIDAD">Viabilidad</option>
 									
 									
 									

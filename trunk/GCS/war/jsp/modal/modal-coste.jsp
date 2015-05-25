@@ -76,14 +76,14 @@
 							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="equipo_modal" name="equipo" class="long selectpicker selected">
-									<option value="Innovery">Innovery</option>
-									<option value="Capgemini">Capgemini</option>
-									<option value="Gestor IT">Gestor IT</option>
-									<option value="Innovery">Innovery</option>
+									<option value="INNOVERY">Innovery</option>
+									<option value="CAPGEMINI">Capgemini</option>
+									<option value="GESTOR IT">Gestor IT</option>
+									<option value="INNOVERY">Innovery</option>
 									<option value="IS">IS</option>									
-									<option value="Solutions">Solutions</option>
-									<option value="Soporte Swift">Soporte Swift</option>									
-									<option value="Telemáticos">Telemáticos</option>
+									<option value="SOLUTIONS">Solutions</option>
+									<option value="SOPORTE SWIFT">Soporte Swift</option>									
+									<option value="TELEMÁTICOS">Telemáticos</option>
 								</select>
 							</div>
 						</div>

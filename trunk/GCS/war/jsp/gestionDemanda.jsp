@@ -130,27 +130,14 @@
 								</select>
 							</div>
 						</div>
-					<!--
-						<div class="form-field">
-							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
-							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado" required aria-required="true" data-live-search="true">
-									<option value="Pendiente de asignaci&oacute;n">Pendiente de asignaci&oacute;n</option>
-									<option value="Asignada">Asignada</option>
-									<option value="Devuelta">Devuelta</option>
-									<option value="Parada">Parada</option>
-									<option value="Desestimada">Desestimada</option>
-								</select>
-							</div>
-						</div>
-					-->
+
 						<div class="form-field">
 							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">
 								<select class="selectpicker" name="catalogacion_peticion">
 									<option value="default">Seleccionar</option>
-									<option value="Estandar">Est&aacute;ndar</option>
-									<option value="Compleja">Compleja</option>
+									<option value="ESTANDAR">Est&aacute;ndar</option>
+									<option value="COMPLEJA">Compleja</option>
 									
 								</select>
 							</div>
@@ -387,9 +374,9 @@
 							<span class="lbl">Criticidad<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="criticidad" id="criticidad" required aria-required="true">
-									<option value="Baja">Baja</option>
-									<option value="Media">Media</option>
-									<option value="Alta">Alta</option>			
+									<option value="BAJA">Baja</option>
+									<option value="MEDIA">Media</option>
+									<option value="ALTA">Alta</option>			
 									
 								</select>
 							</div>

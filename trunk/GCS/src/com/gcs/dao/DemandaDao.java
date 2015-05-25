@@ -58,11 +58,11 @@ public class DemandaDao {
 	   
 	public void createDemandaRaw(Demanda demanda){
 		PersistenceManager pm = PMF.get().getPersistenceManager();	
-		demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
-		demanda.setComentarios(demanda.getComentarios().toUpperCase());
-		demanda.setDetalle(demanda.getDetalle().toUpperCase());
-		demanda.setEstado(demanda.getDetalle().toUpperCase());
-		demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
+		if(demanda.getCatalogacion()!=null)demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
+		if(demanda.getComentarios()!=null)demanda.setComentarios(demanda.getComentarios().toUpperCase());
+		if(demanda.getDetalle()!=null)demanda.setDetalle(demanda.getDetalle().toUpperCase());
+		if(demanda.getEstado()!=null)demanda.setEstado(demanda.getDetalle().toUpperCase());
+		if(demanda.getMotivo_catalogacion()!=null)demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
 		
 		try{
 			pm.makePersistent(demanda);
@@ -83,11 +83,11 @@ public class DemandaDao {
 	
 	public void  createDemanda(Demanda demanda, String usermail){
 		
-		demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
-		demanda.setComentarios(demanda.getComentarios().toUpperCase());
-		demanda.setDetalle(demanda.getDetalle().toUpperCase());
-		demanda.setEstado(demanda.getDetalle().toUpperCase());
-		demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
+		if(demanda.getCatalogacion()!=null)demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
+		if(demanda.getComentarios()!=null)demanda.setComentarios(demanda.getComentarios().toUpperCase());
+		if(demanda.getDetalle()!=null)demanda.setDetalle(demanda.getDetalle().toUpperCase());
+		if(demanda.getEstado()!=null)demanda.setEstado(demanda.getEstado().toUpperCase());
+		if(demanda.getMotivo_catalogacion()!=null)demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
 		
 		Boolean isNew = false;
 		

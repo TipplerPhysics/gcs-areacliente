@@ -1,4 +1,4 @@
-package com.gcs.config;
+package com.gcs.servlet;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -66,11 +66,11 @@ public class MayusUpdate extends HttpServlet{
 		String usermail = (String) session.getAttribute("usermail");
 		try {
 			if ("cliente".equals(accion)) {
-				result = updateCliente(req, resp);
+				result = updateCliente(req, resp,usermail);
 				json.append("success", "true");
 				json.append("result", result);
 			} else if ("conectividad".equals(accion)) {
-				result = updateConectividad(req, resp);
+				result = updateConectividad(req, resp,usermail);
 				json.append("success", "true");
 				json.append("result", result);
 			} else if ("conectividadProyecto".equals(accion)) {
@@ -78,11 +78,11 @@ public class MayusUpdate extends HttpServlet{
 				json.append("success", "true");
 				json.append("result", result);
 			} else if ("coste".equals(accion)) {
-				result = updateCoste(req, resp);
+				result = updateCoste(req, resp, usermail);
 				json.append("success", "true");
 				json.append("result", result);
 			} else if ("demanda".equals(accion)) {
-				result = updateDemandas(req, resp);
+				result = updateDemandas(req, resp, usermail);
 				json.append("success", "true");
 				json.append("result", result);
 			} else if ("departamentos".equals(accion)) {
@@ -121,12 +121,8 @@ public class MayusUpdate extends HttpServlet{
 				result = updateServicioFile(req, resp);
 				json.append("success", "true");
 				json.append("result", result);
-			}else if ("servicioFile".equals(accion)) {
-				result = updateServicioFile(req, resp);
-				json.append("success", "true");
-				json.append("result", result);
 			}else if ("user".equals(accion)) {
-				result = updateUser(req, resp);
+				result = updateUser(req, resp,usermail);
 				json.append("success", "true");
 				json.append("result", result);
 			}
@@ -145,13 +141,12 @@ public class MayusUpdate extends HttpServlet{
 
 
 	public String updateCliente(HttpServletRequest req,
-			HttpServletResponse resp) throws InterruptedException, IOException {
+			HttpServletResponse resp, String usermail) throws InterruptedException, IOException {
 
 		String result = "";
 		try {
 			ClienteDao clientesDao = ClienteDao.getInstance();
 			List<Cliente> clientes = clientesDao.getAllClientes();
-			String usermail ="actualizacion automatica";
 			for (Cliente cliente : clientes) {
 				cliente.setCriticidad(cliente.getCriticidad().toUpperCase());
 				cliente.setNombre(cliente.getNombre().toUpperCase());
@@ -179,17 +174,16 @@ public class MayusUpdate extends HttpServlet{
 	}
 
 	public String updateConectividad(HttpServletRequest req,
-			HttpServletResponse resp) throws InterruptedException, IOException {
+			HttpServletResponse resp, String usermail) throws InterruptedException, IOException {
 
 		String result = "";
 		try {
 			ConectividadDao conectividadDao = ConectividadDao.getInstance();
 			List<Conectividad> conectividades = conectividadDao.getAllConectividades();
-			String usermail ="actualizacion automatica";
 			for (Conectividad conectividad: conectividades) {
-				conectividad.setdetalleSubida(conectividad.getdetalleSubida().toUpperCase());
-				conectividad.setEstado(conectividad.getEstado().toUpperCase());
-				conectividad.setSeguridad(conectividad.getSeguridad().toUpperCase());
+				if(conectividad.getdetalleSubida()!=null)conectividad.setdetalleSubida(conectividad.getdetalleSubida().toUpperCase());
+				if(conectividad.getEstado()!=null)conectividad.setEstado(conectividad.getEstado().toUpperCase());
+				if(conectividad.getSeguridad()!=null)conectividad.setSeguridad(conectividad.getSeguridad().toUpperCase());
 				conectividadDao.createConectividad(conectividad, usermail);
 				result += conectividad.getdetalleSubida() + ", ";
 			}
@@ -221,8 +215,7 @@ public class MayusUpdate extends HttpServlet{
 	}
 
 	public String updateCoste(HttpServletRequest req,
-			HttpServletResponse resp) throws InterruptedException, IOException {
-		String usermail = "acatualiz mayus";
+			HttpServletResponse resp,String usermail) throws InterruptedException, IOException {
 		String result = "";
 		try {
 			CosteDao CostesDao = CosteDao.getInstance();
@@ -233,7 +226,7 @@ public class MayusUpdate extends HttpServlet{
 				coste.setComentarios(coste.getComentarios().toUpperCase());
 				coste.setEquipos(coste.getEquipos().toUpperCase());
 				coste.setGestor_it_name(coste.getGestor_it_name().toUpperCase());
-				CostesDao.createCoste(coste, usermail);
+				CostesDao.createCosteRaw(coste);
 				result += coste.getDetalle() + ", ";
 			}
 		} catch (Exception e) {
@@ -244,7 +237,7 @@ public class MayusUpdate extends HttpServlet{
 	}
 
 	public String updateDemandas(HttpServletRequest req,
-			HttpServletResponse resp) throws InterruptedException, IOException {
+			HttpServletResponse resp,String usermail) throws InterruptedException, IOException {
 
 		String result = "";
 		try {
@@ -252,12 +245,12 @@ public class MayusUpdate extends HttpServlet{
 			List<Demanda> Demandas = DemandasDao.getAllDemandas();
 
 			for (Demanda demanda : Demandas) {
-				demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
-				demanda.setComentarios(demanda.getComentarios().toUpperCase());
-				demanda.setDetalle(demanda.getDetalle().toUpperCase());
-				demanda.setEstado(demanda.getDetalle().toUpperCase());
-				demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
-				DemandasDao.createDemanda(demanda,"a mayusculas demanda");
+				if(demanda.getCatalogacion()!=null)demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
+				if(demanda.getComentarios()!=null)demanda.setComentarios(demanda.getComentarios().toUpperCase());
+				if(demanda.getDetalle()!=null)demanda.setDetalle(demanda.getDetalle().toUpperCase());
+				if(demanda.getEstado()!=null)demanda.setEstado(demanda.getEstado().toUpperCase());
+				if(demanda.getMotivo_catalogacion()!=null)demanda.setMotivo_catalogacion(demanda.getMotivo_catalogacion().toUpperCase());
+				DemandasDao.createDemanda(demanda,usermail);
 				result += demanda.getCod_peticion() + ", ";
 			}
 		} catch (Exception e) {
@@ -397,13 +390,14 @@ public class MayusUpdate extends HttpServlet{
 			List<Proyecto> proyectos = proyectoDao.getAllProjects();
 
 			for (Proyecto proyecto : proyectos) {
-				proyecto.setClienteName(proyecto.getClienteName().toUpperCase());
-				proyecto.setConectividad(proyecto.getConectividad().toUpperCase());
-				proyecto.setGestor_it_name(proyecto.getGestor_it_name().toUpperCase());
-				proyecto.setProducto(proyecto.getProducto().toUpperCase());
-				proyecto.setServicio(proyecto.getServicio().toUpperCase());
-				proyecto.setSubtipo(proyecto.getSubtipo().toUpperCase());
-				proyecto.setTipo(proyecto.getTipo().toUpperCase());
+				if(proyecto.getClienteName()!=null)proyecto.setClienteName(proyecto.getClienteName().toUpperCase());
+				if(proyecto.getConectividad()!=null)proyecto.setConectividad(proyecto.getConectividad().toUpperCase());
+				if(proyecto.getGestor_it_name()!=null)proyecto.setGestor_it_name(proyecto.getGestor_it_name().toUpperCase());
+				if(proyecto.getGestor_negocio_name()!=null)proyecto.setGestor_negocio_name(proyecto.getGestor_negocio_name().toUpperCase());
+				if(proyecto.getProducto()!=null)proyecto.setProducto(proyecto.getProducto().toUpperCase());
+				if(proyecto.getServicio()!=null)proyecto.setServicio(proyecto.getServicio().toUpperCase());
+				if(proyecto.getSubtipo()!=null)proyecto.setSubtipo(proyecto.getSubtipo().toUpperCase());
+				if(proyecto.getTipo()!=null)proyecto.setTipo(proyecto.getTipo().toUpperCase());
 				proyectoDao.createProjectRaw(proyecto);
 				result += proyecto.getCod_proyecto() + ", ";
 			}
@@ -424,23 +418,23 @@ public class MayusUpdate extends HttpServlet{
 			List<Servicio> servicios = servicioDao.getAllServicios();
 
 			for (Servicio servicio: servicios) {
-				servicio.setCliente_name(servicio.getCliente_name().toUpperCase());
-				servicio.setCod_servicio(servicio.getCod_servicio().toUpperCase());
-				servicio.setDetalle(servicio.getServicio().toUpperCase());
-				servicio.setdetalleSubida(servicio.getdetalleSubida().toUpperCase());
-				servicio.setEstado(servicio.getEstado().toUpperCase());
-				servicio.setEstadoImplantacion(servicio.getEstadoImplantacion().toUpperCase());
-				servicio.setEstadoSubida(servicio.getEstadoSubida().toUpperCase());
-				servicio.setExtension(servicio.getExtension().toUpperCase());
-				servicio.setFormato_intermedio(servicio.getFormato_intermedio().toUpperCase());
-				servicio.setFormato_local(servicio.getFormato_local().toUpperCase());
-				servicio.setGestor_it_name(servicio.getGestor_it_name().toUpperCase());
-				servicio.setGestor_negocio_name(servicio.getGestor_negocio_name().toUpperCase());
-				servicio.setObservaciones(servicio.getObservaciones().toUpperCase());
-				servicio.setPais(servicio.getPais().toUpperCase());
-				servicio.setReferencia_local1(servicio.getReferencia_local1().toUpperCase());
-				servicio.setReferencia_local2(servicio.getReferencia_local2().toUpperCase());
-				servicio.setServicio(servicio.getServicio().toUpperCase());
+				if(servicio.getCliente_name()!=null)servicio.setCliente_name(servicio.getCliente_name().toUpperCase());
+				if(servicio.getCod_servicio()!=null)servicio.setCod_servicio(servicio.getCod_servicio().toUpperCase());
+				if(servicio.getDetalle()!=null)servicio.setDetalle(servicio.getDetalle().toUpperCase());
+				if(servicio.getdetalleSubida()!=null)servicio.setdetalleSubida(servicio.getdetalleSubida().toUpperCase());
+				if(servicio.getEstado()!=null)servicio.setEstado(servicio.getEstado().toUpperCase());
+				if(servicio.getEstadoImplantacion()!=null)servicio.setEstadoImplantacion(servicio.getEstadoImplantacion().toUpperCase());
+				if(servicio.getEstadoSubida()!=null)servicio.setEstadoSubida(servicio.getEstadoSubida().toUpperCase());
+				if(servicio.getExtension()!=null)servicio.setExtension(servicio.getExtension().toUpperCase());
+				if(servicio.getFormato_intermedio()!=null)servicio.setFormato_intermedio(servicio.getFormato_intermedio().toUpperCase());
+				if(servicio.getFormato_local()!=null)servicio.setFormato_local(servicio.getFormato_local().toUpperCase());
+				if(servicio.getGestor_it_name()!=null)servicio.setGestor_it_name(servicio.getGestor_it_name().toUpperCase());
+				if(servicio.getGestor_negocio_name()!=null)servicio.setGestor_negocio_name(servicio.getGestor_negocio_name().toUpperCase());
+				if(servicio.getObservaciones()!=null)servicio.setObservaciones(servicio.getObservaciones().toUpperCase());
+				if(servicio.getPais()!=null)servicio.setPais(servicio.getPais().toUpperCase());
+				if(servicio.getReferencia_local1()!=null)servicio.setReferencia_local1(servicio.getReferencia_local1().toUpperCase());
+				if(servicio.getReferencia_local2()!=null)servicio.setReferencia_local2(servicio.getReferencia_local2().toUpperCase());
+				if(servicio.getServicio()!=null)servicio.setServicio(servicio.getServicio().toUpperCase());
 				servicioDao.createServicioRaw(servicio);
 				result +=servicio.getCod_servicio() + ", ";
 			}
@@ -474,7 +468,7 @@ public class MayusUpdate extends HttpServlet{
 	
 	
 	public String updateUser(HttpServletRequest req,
-			HttpServletResponse resp) throws InterruptedException, IOException {
+			HttpServletResponse resp,String usermail) throws InterruptedException, IOException {
 
 		String result = "";
 		try {
@@ -482,13 +476,13 @@ public class MayusUpdate extends HttpServlet{
 			List<User> users = userDao.getAllUsers();
 
 			for (User user: users) {
-				user.setApellido1(user.getApellido1().toUpperCase());
-				user.setApellido2(user.getApellido2().toUpperCase());
-				user.setAreas(user.getAreas().toUpperCase());
-				user.setDepartamento(user.getDepartamento().toUpperCase());
-				user.setNombre(user.getNombre().toUpperCase());
-				user.setPermisoStr(user.getPermisoStr().toUpperCase());
-				userDao.createUser(user, "to mayus admin");
+				if(user.getApellido1()!=null)user.setApellido1(user.getApellido1().toUpperCase());
+				if(user.getApellido2()!=null)user.setApellido2(user.getApellido2().toUpperCase());
+				if(user.getAreas()!=null)user.setAreas(user.getAreas().toUpperCase());
+				if(user.getDepartamento()!=null)user.setDepartamento(user.getDepartamento().toUpperCase());
+				if(user.getNombre()!=null)user.setNombre(user.getNombre().toUpperCase());
+				if(user.getPermisoStr()!=null)user.setPermisoStr(user.getPermisoStr().toUpperCase());
+				userDao.createUser(user, usermail);
 				result += user.getNombre()+user.getApellido1()+user.getApellido2() + ", ";
 			}
 		} catch (Exception e) {

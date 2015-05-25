@@ -158,7 +158,16 @@
 	    <url-pattern>/informeExcelServlet</url-pattern>
 	  </servlet-mapping>
 
-	  
+	  <servlet>
+	    <servlet-name>MayusServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.MayusUpdate</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>MayusServlet</servlet-name>
+	    <url-pattern>/mayusServlet</url-pattern>
+	  </servlet-mapping>
+	  	  
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>

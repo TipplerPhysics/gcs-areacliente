@@ -122,23 +122,23 @@ public class ServicioDao {
 	}
 	public void createServicio(Servicio s, String usermail){
 		
-		s.setCliente_name(s.getCliente_name().toUpperCase());
-		s.setCod_servicio(s.getCod_servicio().toUpperCase());
-		s.setDetalle(s.getServicio().toUpperCase());
-		s.setdetalleSubida(s.getdetalleSubida().toUpperCase());
-		s.setEstado(s.getEstado().toUpperCase());
-		s.setEstadoImplantacion(s.getEstadoImplantacion().toUpperCase());
-		s.setEstadoSubida(s.getEstadoSubida().toUpperCase());
-		s.setExtension(s.getExtension().toUpperCase());
-		s.setFormato_intermedio(s.getFormato_intermedio().toUpperCase());
-		s.setFormato_local(s.getFormato_local().toUpperCase());
-		s.setGestor_it_name(s.getGestor_it_name().toUpperCase());
-		s.setGestor_negocio_name(s.getGestor_negocio_name().toUpperCase());
-		s.setObservaciones(s.getObservaciones().toUpperCase());
-		s.setPais(s.getPais().toUpperCase());
-		s.setReferencia_local1(s.getReferencia_local1().toUpperCase());
-		s.setReferencia_local2(s.getReferencia_local2().toUpperCase());
-		s.setServicio(s.getServicio().toUpperCase());
+		if(s.getCliente_name()!=null)s.setCliente_name(s.getCliente_name().toUpperCase());
+		if(s.getCod_servicio()!=null)s.setCod_servicio(s.getCod_servicio().toUpperCase());
+		if(s.getDetalle()!=null)s.setDetalle(s.getDetalle().toUpperCase());
+		if(s.getdetalleSubida()!=null)s.setdetalleSubida(s.getdetalleSubida().toUpperCase());
+		if(s.getEstado()!=null)s.setEstado(s.getEstado().toUpperCase());
+		if(s.getEstadoImplantacion()!=null)s.setEstadoImplantacion(s.getEstadoImplantacion().toUpperCase());
+		if(s.getEstadoSubida()!=null)s.setEstadoSubida(s.getEstadoSubida().toUpperCase());
+		if(s.getExtension()!=null)s.setExtension(s.getExtension().toUpperCase());
+		if(s.getFormato_intermedio()!=null)s.setFormato_intermedio(s.getFormato_intermedio().toUpperCase());
+		if(s.getFormato_local()!=null)s.setFormato_local(s.getFormato_local().toUpperCase());
+		if(s.getGestor_it_name()!=null)s.setGestor_it_name(s.getGestor_it_name().toUpperCase());
+		if(s.getGestor_negocio_name()!=null)s.setGestor_negocio_name(s.getGestor_negocio_name().toUpperCase());
+		if(s.getObservaciones()!=null)s.setObservaciones(s.getObservaciones().toUpperCase());
+		if(s.getPais()!=null)s.setPais(s.getPais().toUpperCase());
+		if(s.getReferencia_local1()!=null)s.setReferencia_local1(s.getReferencia_local1().toUpperCase());
+		if(s.getReferencia_local2()!=null)s.setReferencia_local2(s.getReferencia_local2().toUpperCase());
+		if(s.getServicio()!=null)s.setServicio(s.getServicio().toUpperCase());
 		
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();	

@@ -64,13 +64,13 @@ public class ProyectoDao {
 	
 	public void createProject(Proyecto p,String usermail) throws ParseException{
 		
-		p.setClienteName(p.getClienteName().toUpperCase());
-		p.setConectividad(p.getConectividad().toUpperCase());
-		p.setGestor_it_name(p.getGestor_it_name().toUpperCase());
-		p.setProducto(p.getProducto().toUpperCase());
-		p.setServicio(p.getServicio().toUpperCase());
-		p.setSubtipo(p.getSubtipo().toUpperCase());
-		p.setTipo(p.getTipo().toUpperCase());
+		if(p.getClienteName()!=null)p.setClienteName(p.getClienteName().toUpperCase());
+		if(p.getConectividad()!=null)p.setConectividad(p.getConectividad().toUpperCase());
+		if(p.getGestor_it_name()!=null)p.setGestor_it_name(p.getGestor_it_name().toUpperCase());
+		if(p.getProducto()!=null)p.setProducto(p.getProducto().toUpperCase());
+		if(p.getServicio()!=null)p.setServicio(p.getServicio().toUpperCase());
+		if(p.getSubtipo()!=null)p.setSubtipo(p.getSubtipo().toUpperCase());
+		if(p.getTipo()!=null)p.setTipo(p.getTipo().toUpperCase());
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		

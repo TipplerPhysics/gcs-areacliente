@@ -14,9 +14,9 @@
 		<span>Tipo de Criticidad</span>
 		<select class="selectpicker" id="tip_crit">
 			<option value="0">Todas</option>
-			<option value="Alta">Alta</option>
-			<option value="Media">Media</option>
-			<option value="Baja">Baja</option>
+			<option value="ALTA">Alta</option>
+			<option value="MEDIA">Media</option>
+			<option value="BAJA">Baja</option>
 		</select>
 		<span>Tipo de Cliente</span>
 		<select class="selectpicker" id="tip_client">
