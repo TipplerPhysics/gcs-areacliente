@@ -111,27 +111,14 @@
 								</div>
 						</div>
 					
-					<!--
-						<div class="form-field">
-							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
-							<div class="input">
-								<select class="selectpicker selected" name="estado" id="estado_modal" required aria-required="true">
-									<option value="Pendiente de asignación">Pendiente de asignaci&oacute;n</option>
-									<option value="Asignada">Asignada</option>
-									<option value="Devuelta">Devuelta</option>
-									<option value="Parada">Parada</option>
-									<option value="Desestimada">Desestimada</option>
-								</select>
-							</div>
-						</div>
-					-->
+
 						<div class="form-field">
 							<span class="lbl">Catalogaci&oacute;n de petici&oacute;n:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="catalogacion_peticion" id="catalogacion_peticion_modal">
 									
-									<option value="Estandar">Est&aacute;ndar</option>
-									<option value="Compleja">Compleja</option>
+									<option value="ESTANDAR">Est&aacute;ndar</option>
+									<option value="COMPLEJA">Compleja</option>
 									
 								</select>
 							</div>

@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
@@ -57,12 +58,22 @@ public class CosteDao {
 
 	}
 	
+	public void createCosteRaw(Coste c){
+		PersistenceManager pm = JDOHelper.getPersistenceManager(c);
+		try {
+			pm.makePersistent(c);
+			
+		}finally{
+			pm.close();
+		}
+	}
+	
 	public void createCoste(Coste c, String usermail) throws ParseException {
 		
-		c.setCliente_name(c.getCliente_name().toUpperCase());
-		c.setComentarios(c.getComentarios().toUpperCase());
-		c.setEquipos(c.getEquipos().toUpperCase());
-		c.setGestor_it_name(c.getGestor_it_name().toUpperCase());
+		if(c.getCliente_name()!=null)c.setCliente_name(c.getCliente_name().toUpperCase());
+		if(c.getComentarios()!=null)c.setComentarios(c.getComentarios().toUpperCase());
+		if(c.getEquipos()!=null)c.setEquipos(c.getEquipos().toUpperCase());
+		if(c.getGestor_it_name()!=null)c.setGestor_it_name(c.getGestor_it_name().toUpperCase());
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;

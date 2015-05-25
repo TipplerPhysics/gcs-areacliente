@@ -32,12 +32,12 @@ public class UserDao {
 
 	public void createUser(User u, String usermail) {
 		
-		u.setApellido1(u.getApellido1().toUpperCase());
-		u.setApellido2(u.getApellido2().toUpperCase());
-		u.setAreas(u.getAreas().toUpperCase());
-		u.setDepartamento(u.getDepartamento().toUpperCase());
-		u.setNombre(u.getNombre().toUpperCase());
-		u.setPermisoStr(u.getPermisoStr().toUpperCase());
+		if(u.getApellido1()!=null)u.setApellido1(u.getApellido1().toUpperCase());
+		if(u.getApellido2()!=null)u.setApellido2(u.getApellido2().toUpperCase());
+		if(u.getAreas()!=null)u.setAreas(u.getAreas().toUpperCase());
+		if(u.getDepartamento()!=null)u.setDepartamento(u.getDepartamento().toUpperCase());
+		if(u.getNombre()!=null)u.setNombre(u.getNombre().toUpperCase());
+		if(u.getPermisoStr()!=null)u.setPermisoStr(u.getPermisoStr().toUpperCase());
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
