@@ -2031,13 +2031,13 @@ form textarea.error {
 .clients > .clients_container > .clientes_letra > .client_box.search_h {
   display: none;
 }
-.clients > .clients_container > .clientes_letra > .client_box.crit_Alta {
+.clients > .clients_container > .clientes_letra > .client_box.crit_ALTA {
   background-color: #F6891E;
 }
-.clients > .clients_container > .clientes_letra > .client_box.crit_Media {
+.clients > .clients_container > .clientes_letra > .client_box.crit_MEDIA {
   background-color: #FDBD2C;
 }
-.clients > .clients_container > .clientes_letra > .client_box.crit_Baja {
+.clients > .clients_container > .clientes_letra > .client_box.crit_BAJA {
   background-color: #86C82D;
 }
 .clients > .clients_container > .clientes_letra > .client_box p {
