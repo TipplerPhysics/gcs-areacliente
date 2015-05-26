@@ -222,10 +222,10 @@ public class MayusUpdate extends HttpServlet{
 			List<Coste> Costes = CostesDao.getAllCostes();
 
 			for (Coste coste : Costes) {
-				coste.setCliente_name(coste.getCliente_name().toUpperCase());
-				coste.setComentarios(coste.getComentarios().toUpperCase());
-				coste.setEquipos(coste.getEquipos().toUpperCase());
-				coste.setGestor_it_name(coste.getGestor_it_name().toUpperCase());
+				if(coste.getCliente_name()!=null)coste.setCliente_name(coste.getCliente_name().toUpperCase());
+				if(coste.getComentarios()!=null)coste.setComentarios(coste.getComentarios().toUpperCase());
+				if(coste.getEquipos()!=null)coste.setEquipos(coste.getEquipos().toUpperCase());
+				if(coste.getGestor_it_name()!=null)coste.setGestor_it_name(coste.getGestor_it_name().toUpperCase());
 				CostesDao.createCosteRaw(coste);
 				result += coste.getDetalle() + ", ";
 			}

@@ -96,6 +96,7 @@ public class SeguridadDao {
 		for (Seguridad s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		pm.close();
 	}
 	
 }

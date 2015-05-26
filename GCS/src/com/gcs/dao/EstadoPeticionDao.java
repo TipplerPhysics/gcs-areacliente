@@ -96,6 +96,7 @@ public class EstadoPeticionDao {
 		for (EstadoPeticion s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		pm.close();
 	}
 	
 }

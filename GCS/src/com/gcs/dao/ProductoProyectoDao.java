@@ -96,5 +96,6 @@ public class ProductoProyectoDao {
 		for (ProductoProyecto s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		pm.close();
 	}
 }
