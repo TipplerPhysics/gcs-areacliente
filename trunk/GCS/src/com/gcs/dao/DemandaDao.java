@@ -135,7 +135,7 @@ public class DemandaDao {
 		Query q = pm.newQuery("select from " + Demanda.class.getName());		
 		q.setOrdering("fecha_entrada_peticion desc");
 		demandas = (List<Demanda>) q.execute();
-		
+		pm.close();
 		return demandas;
 	}
 	

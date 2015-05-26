@@ -112,7 +112,7 @@ public class FechaCalendadaDao {
 			for (FechaCalendada s :fechas){
 				pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 			}
-
+			pm.close();
 
 		}
 	}

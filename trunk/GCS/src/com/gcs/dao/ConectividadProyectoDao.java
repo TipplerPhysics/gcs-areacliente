@@ -117,5 +117,6 @@ public class ConectividadProyectoDao {
 		for (ConectividadProyecto s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		pm.close();
 	}
 }

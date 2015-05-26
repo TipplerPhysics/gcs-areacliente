@@ -96,6 +96,7 @@ public class DepartamentosDao {
 		for (Departamentos s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		pm.close();
 	}
 	
 }

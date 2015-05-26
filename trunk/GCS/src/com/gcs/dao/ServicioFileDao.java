@@ -157,6 +157,6 @@ public class ServicioFileDao {
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
 
-
+		pm.close();
 	}
 }

@@ -96,6 +96,7 @@ public class TipoPeticionDao {
 		for (TipoPeticion s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		pm.close();
 	}
 	
 }

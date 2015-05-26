@@ -59,13 +59,13 @@ public class CosteDao {
 	}
 	
 	public void createCosteRaw(Coste c){
-		PersistenceManager pm = JDOHelper.getPersistenceManager(c);
-		try {
-			pm.makePersistent(c);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+
+			if(c!=null)pm.makePersistent(c);
 			
-		}finally{
+
 			pm.close();
-		}
+
 	}
 	
 	public void createCoste(Coste c, String usermail) throws ParseException {
@@ -144,7 +144,7 @@ public class CosteDao {
 		Query q = pm.newQuery("select from " + Coste.class.getName());
 		q.setOrdering("fecha_alta desc");
 		costes = (List<Coste>) q.execute();
-
+pm.close();
 		return costes;
 		
 	}

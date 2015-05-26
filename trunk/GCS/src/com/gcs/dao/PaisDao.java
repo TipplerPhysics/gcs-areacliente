@@ -114,6 +114,8 @@ public class PaisDao {
 		for (Pais s :servicios){
 			pm.deletePersistent(pm.getObjectById(s.getClass(),s.getKey().getId()));
 		}
+		
+		pm.close();
 	}
 	
 }
