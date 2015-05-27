@@ -123,13 +123,9 @@ public class ProyectoDao {
 		
 		
 		
-		if (p.getKey()==null){
+		if (p.getKey()==null){			
 			Integer project_number = c.getProject_number();
-			if (project_number==null)
-				project_number=1;			
-			
-				
-		
+			if (project_number==null)project_number=1;		
 			String cod_proyecto = createProjectName(c,p,project_number);			
 			p.setCod_proyecto(cod_proyecto);
 			project_number++;
@@ -483,18 +479,23 @@ public Proyecto getProjectbyId(long l) {
 			filters++;
 		}
 		if(!codProyecto.equals("")){
+			codProyecto= codProyecto.toUpperCase();
 			filters++;
 		}
 		if(!nCliente.equals("")){
+			nCliente = nCliente.toUpperCase();
 			filters++;
 		}
 		if(!clasificacion.equals("")){
+			clasificacion= clasificacion.toUpperCase();
 			filters++;
 		}
 		if(!tipo.equals("")){
+			tipo = tipo.toUpperCase();
 			filters++;
 		}
 		if(!coste.equals("")){
+			coste= coste.toUpperCase();
 			filters++;
 		}
 		

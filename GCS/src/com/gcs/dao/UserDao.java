@@ -254,18 +254,23 @@ public class UserDao {
 		
 		int filters =0;
 		if(!nombre.equals("")){
+			nombre = nombre.toUpperCase();
 			filters++;
 		}
 		if(!apellido1.equals("")){
+			apellido1= apellido1.toUpperCase();
 			filters++;
 		}
 		if(!apellido2.equals("")){
+			apellido2=apellido2.toUpperCase();
 			filters++;
 		}
 		if(!departamento.equals("")){
+			departamento= departamento.toUpperCase();
 			filters++;
 		}
 		if(!permisoStr.equals("")){
+			permisoStr= permisoStr.toUpperCase();
 			filters++;
 		}
 		

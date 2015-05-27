@@ -162,15 +162,19 @@ public class DemandaDao {
 			filters++;
 		}
 		if(!nCliente.equals("")){
+			nCliente= nCliente.toUpperCase();
 			filters++;
 		}
 		if(!tipo.equals("")){
+			tipo=tipo.toUpperCase();
 			filters++;
 		}
 		if(!estado.equals("")){
+			estado=estado.toUpperCase();
 			filters++;
 		}
 		if(!codPeticion.equals("")){
+			codPeticion= codPeticion.toUpperCase();
 			filters++;
 		}
 		

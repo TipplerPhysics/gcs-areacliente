@@ -38,14 +38,13 @@ public class ServicioDao {
 		return new ServicioDao();
 	}
 	
-	  public Servicio getServicioById(long l) {
-	       PersistenceManager pManager = PMF.get().getPersistenceManager();
-	       Servicio servicio_temp = pManager.getObjectById(Servicio.class, l);	      
-	       Servicio servicio = pManager.detachCopy(servicio_temp);  
-	       pManager.close();
-		      
-	       return servicio;
-  }
+	public Servicio getServicioById(long l) {
+	     PersistenceManager pManager = PMF.get().getPersistenceManager();
+	     Servicio servicio_temp = pManager.getObjectById(Servicio.class, l);	      
+	     Servicio servicio = pManager.detachCopy(servicio_temp);  
+	     pManager.close();
+	     return servicio;
+	}
 	
 	public void deleteServicio(Servicio s, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -474,21 +473,27 @@ public class ServicioDao {
 		
 		int filters =0;
 		if(!codProyeto.equals("")){
+			codProyeto= codProyeto.toUpperCase();
 			filters++;
 		}
 		if(!codServicio.equals("")){
+			codServicio= codServicio.toUpperCase();
 			filters++;
 		}
 		if(!estado.equals("")){
+			estado = estado.toUpperCase();
 			filters++;
 		}
 		if(!nGestorIt.equals("")){
+			nGestorIt= nGestorIt.toUpperCase();
 			filters++;
 		}
 		if(!nGestorNegocio.equals("")){
+			nGestorNegocio= nGestorNegocio.toUpperCase();
 			filters++;
 		}
 		if(!nCliente.equals("")){
+			nCliente= nCliente.toUpperCase();
 			filters++;
 		}
 		

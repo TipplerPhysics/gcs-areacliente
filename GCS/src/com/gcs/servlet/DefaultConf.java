@@ -242,6 +242,10 @@ public class DefaultConf extends HttpServlet {
 					result = amendCost(req,resp, usermail);
 					json.append("success", "true");
 					json.append("result", result);
+				}else if ("subContProy".equals(accion)){
+					result = subirContadorProy(req,resp, usermail);
+					json.append("success", "true");
+					json.append("result", result);
 				}
 				
 				
@@ -315,6 +319,14 @@ public class DefaultConf extends HttpServlet {
 		}
 		
 		return result;
+	}
+	private String subirContadorProy(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException{
+		String nombre =req.getParameter("nombre");
+		ClienteDao clienteDao = ClienteDao.getInstance();
+		Cliente cliente = clienteDao.getClienteByName(nombre);
+		cliente.setProject_number(cliente.getProject_number()+1);
+		clienteDao.createClienteRaw(cliente);
+		return "";
 	}
 	private String correctConect(HttpServletRequest req, HttpServletResponse resp, String usermail) throws InterruptedException, ParseException{
 		ConectividadDao conectDao = ConectividadDao.getInstance();

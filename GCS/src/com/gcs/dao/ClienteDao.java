@@ -38,9 +38,9 @@ public class ClienteDao {
 	}
 	
 	public void createClienteRaw(Cliente c) {
-		if(c.getCriticidad()!=null)c.setCriticidad(c.getCriticidad().toUpperCase());
-		if(c.getNombre()!=null)c.setNombre(c.getNombre().toUpperCase());
-		if(c.getPaises()!=null)c.setPaises(setToUppercase(c.getPaises()));
+//		if(c.getCriticidad()!=null)c.setCriticidad(c.getCriticidad().toUpperCase());
+//		if(c.getNombre()!=null)c.setNombre(c.getNombre().toUpperCase());
+//		if(c.getPaises()!=null)c.setPaises(setToUppercase(c.getPaises()));
 		c.setErased(false);
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -74,11 +74,6 @@ public class ClienteDao {
 		if(c.getNombre()!=null)c.setNombre(c.getNombre().toUpperCase());
 		if(c.getPaises()!=null)c.setPaises(setToUppercase(c.getPaises()));
 		
-		String nombre = c.getNombre();
-		String letra = nombre.substring(0,1).toUpperCase();
-		String nombreMayus = letra + nombre.substring(1,nombre.length());
-		
-		c.setNombre(nombreMayus);
 		
 		boolean isNewClient = false;
 		if (c.getKey()==null){
@@ -309,21 +304,27 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 			
 			int filters =0;
 			if(!fechaEntrada.equals("")){
+				fechaEntrada= fechaEntrada.toUpperCase();
 				filters++;
 			}
 			if(!idCliente.equals("")){
+				idCliente= idCliente.toUpperCase();
 				filters++;
 			}
 			if(!nCliente.equals("")){
+				nCliente = nCliente.toUpperCase();
 				filters++;
 			}
 			if(!refGlobal.equals("")){
+				refGlobal= refGlobal.toUpperCase();
 				filters++;
 			}
 			if(!tipo.equals("")){
+				tipo = tipo.toUpperCase();
 				filters++;
 			}
 			if(!criticidad.equals("")){
+				criticidad= criticidad.toUpperCase();
 				filters++;
 			}
 

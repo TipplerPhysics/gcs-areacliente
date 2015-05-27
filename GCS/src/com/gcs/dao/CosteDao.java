@@ -198,15 +198,19 @@ pm.close();
 			filters++;
 		}
 		if(!nCliente.equals("")){
+			nCliente= nCliente.toUpperCase();
 			filters++;
 		}
 		if(!nProject.equals("")){
+			nProject=nProject.toUpperCase();
 			filters++;
 		}
 		if(!equipos.equals("")){
+			equipos= equipos.toUpperCase();
 			filters++;
 		}
 		if(!nGestorIt.equals("")){
+			nGestorIt= nGestorIt.toUpperCase();
 			filters++;
 		}
 		
@@ -261,7 +265,7 @@ pm.close();
 			List<List<Entity>> Entities = new ArrayList<List<Entity>>();
 			
 			if(!fechaEntrada.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Costes");
+				q = new com.google.appengine.api.datastore.Query("Coste");
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, fechaEntrada));
 				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.LESS_THAN, fechaEntrada+"\ufffd"));
@@ -271,7 +275,7 @@ pm.close();
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!nCliente.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Costes");
+				q = new com.google.appengine.api.datastore.Query("Coste");
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
 				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
@@ -281,7 +285,7 @@ pm.close();
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!nProject.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Costes");
+				q = new com.google.appengine.api.datastore.Query("Coste");
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("project_name",FilterOperator.GREATER_THAN_OR_EQUAL, nProject));
 				finalFilters.add(new FilterPredicate("project_name",FilterOperator.LESS_THAN, nProject+"\ufffd"));
@@ -291,7 +295,7 @@ pm.close();
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!equipos.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Costes");
+				q = new com.google.appengine.api.datastore.Query("Coste");
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("equipos",FilterOperator.GREATER_THAN_OR_EQUAL, equipos));
 				finalFilters.add(new FilterPredicate("equipos",FilterOperator.LESS_THAN, equipos+"\ufffd"));
@@ -301,7 +305,7 @@ pm.close();
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!nGestorIt.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Costes");
+				q = new com.google.appengine.api.datastore.Query("Coste");
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
