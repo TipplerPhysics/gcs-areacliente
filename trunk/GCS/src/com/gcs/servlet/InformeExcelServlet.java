@@ -1222,6 +1222,21 @@ public class InformeExcelServlet extends HttpServlet  {
 					if(servicio.getStr_fecha_implantacion_produccion()!=null&&!servicio.getStr_fecha_implantacion_produccion().equals("")){
 						int mes= Integer.parseInt(servicio.getStr_fecha_implantacion_produccion().substring(3,5));
 						int trimestre = (int)((mes-1)/3)+1;
+						
+						if(servicio.getEstado().equals("PDTE DOC ALCANCE EN GCS")||servicio.getEstado().equals("C100 EN CONFECCIÓN")||servicio.getEstado().equals("PDTE VALORACIÓN IT")
+								||servicio.getEstado().equals("PDTE PLAN DE TRABAJO IT")||servicio.getEstado().equals("PDTE VISTO BUENO DEL CL DEL PLAN DE TRABAJO")
+								||servicio.getEstado().equals("EN TEST - CONECTIVIDAD")||servicio.getEstado().equals("EN TEST - INTEGRACIÓN")){
+							trimestre = trimestre+2;
+						}else{
+							if(servicio.getEstado().equals("EN TEST - ACEPTACIÓN")||servicio.getEstado().equals("EN DESARROLLO")){
+								trimestre++;
+							}
+						}
+						
+						if(trimestre==5)trimestre=1;
+						if(trimestre==6)trimestre=2;
+						
+						
 						hoja.getRow(head).getCell(2).setCellValue(trimestre+"º");
 					}					
 					
