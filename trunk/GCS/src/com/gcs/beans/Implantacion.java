@@ -96,14 +96,7 @@ public class Implantacion {
 	public void setDetalleSubida(String detalleSubida) {
 		this.detalleSubida = detalleSubida;
 	}
-	/*
-	public Long getGestor_it() {
-		return gestor_it;
-	}
 
-	public void setGestor_it(Long gestor_it) {
-		this.gestor_it = gestor_it;
-	}*/
 	public String getGestor_it_name() {
 		return gestor_it_name;
 	}

@@ -1,5 +1,6 @@
 package com.gcs.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -54,15 +55,18 @@ public class ConectividadProyectoDao {
 		
 		ProductoProyectoDao proyectoDao = ProductoProyectoDao.getInstance();
 		List<ProductoProyecto> productos =proyectoDao.getProductoProyectoesByName(producto);
-		ProductoProyecto productoEnty = productos.get(0);
+		ProductoProyecto productoEnty=null;
+		if(!productos.isEmpty())productoEnty = productos.get(0);
 		List<ConectividadProyecto> ConectividadProyectoes;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
-		
-		Query q = pm.newQuery("select from " + ConectividadProyecto.class.getName()+" where productoId=="+productoEnty.getKey().getId());	
-		q.setOrdering("name asc");
-		ConectividadProyectoes = (List<ConectividadProyecto>) q.execute();
-		
+		if(productoEnty!=null){
+			Query q = pm.newQuery("select from " + ConectividadProyecto.class.getName()+" where productoId=="+productoEnty.getKey().getId());	
+			q.setOrdering("name asc");
+			ConectividadProyectoes = (List<ConectividadProyecto>) q.execute();
+		}else{
+			ConectividadProyectoes= new ArrayList<ConectividadProyecto>();
+		}
 		
 		pm.close();
 
