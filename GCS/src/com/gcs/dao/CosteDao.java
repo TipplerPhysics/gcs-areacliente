@@ -80,7 +80,7 @@ public class CosteDao {
 		ContadorCosteDao cstDao = ContadorCosteDao.getInstance();
 		if (c.getKey()==null)
 			isNew=true;
-		if(!c.getStr_fecha_recepcion_valoracion().equals("")&&c.getStr_fecha_recepcion_valoracion()!=null){
+		if(c.getStr_fecha_recepcion_valoracion()!=null&&!c.getStr_fecha_recepcion_valoracion().equals("")){
 			c.setFecha_recepcion_valoracion(Utils.dateConverter(c.getStr_fecha_recepcion_valoracion()));
 		}
 		

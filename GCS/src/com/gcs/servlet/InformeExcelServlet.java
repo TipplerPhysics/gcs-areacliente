@@ -16,6 +16,7 @@ import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Name;
@@ -1692,7 +1693,10 @@ public class InformeExcelServlet extends HttpServlet  {
 			}
 		}
 		
+CellStyle styleexce = workbook.createCellStyle();
+DataFormat format = workbook.createDataFormat();
 
+styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 		
 		org.apache.poi.ss.usermodel.Sheet hojaProy = workbook.getSheetAt(3);	
 		
@@ -1735,7 +1739,8 @@ public class InformeExcelServlet extends HttpServlet  {
 				if(!coste.getNum_control().equals("")&&coste.getNum_control()!=null)
 				hojaCost.getRow(headCoste).createCell(3).setCellValue(coste.getNum_control());
 				hojaCost.getRow(headCoste).createCell(4).setCellValue(coste.getEquipos());
-				hojaCost.getRow(headCoste).createCell(5).setCellValue(coste.getStr_fecha_alta());
+				hojaCost.getRow(headCoste).createCell(5).setCellStyle(styleexce);
+				hojaCost.getRow(headCoste).getCell(5).setCellValue(coste.getFecha_alta());
 				hojaCost.getRow(headCoste).createCell(6).setCellValue(coste.getGestor_it_name());
 				hojaCost.getRow(headCoste).createCell(7).setCellValue(coste.getNum_valoracion());
 				if(!coste.getComentarios().equals("")&&coste.getComentarios()!=null)
@@ -1754,8 +1759,8 @@ public class InformeExcelServlet extends HttpServlet  {
 				hojaCost.getRow(headCoste).createCell(17).setCellValue(coste.getCoste_pruebas());
 				hojaCost.getRow(headCoste).createCell(18).setCellValue(coste.getHoras_gestion());
 				hojaCost.getRow(headCoste).createCell(19).setCellValue(coste.getCoste_gestion());
-				hojaCost.getRow(headCoste).createCell(20).setCellValue(coste.getHoras_total());
-				hojaCost.getRow(headCoste).createCell(21).setCellValue(coste.getCoste_total());
+				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))hojaCost.getRow(headCoste).createCell(20).setCellValue(Double.parseDouble(coste.getHoras_total()));
+				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))hojaCost.getRow(headCoste).createCell(21).setCellValue(Double.parseDouble(coste.getCoste_total()));
 				headCoste++;
 				Double costeTotal= null;
 				Double horasTotales= null;
