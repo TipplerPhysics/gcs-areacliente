@@ -416,8 +416,11 @@ public class MayusUpdate extends HttpServlet{
 		try {
 			ServicioDao servicioDao = ServicioDao.getInstance();
 			List<Servicio> servicios = servicioDao.getAllServicios();
-
-			for (Servicio servicio: servicios) {
+			int from = Integer.parseInt(req.getParameter("from"));
+			int to = Integer.parseInt(req.getParameter("to"));
+			Servicio servicio = null;
+			for (int i = from; i<to;i++) {
+				servicio=servicios.get(i);
 				if(servicio.getCliente_name()!=null)servicio.setCliente_name(servicio.getCliente_name().toUpperCase());
 				if(servicio.getCod_servicio()!=null)servicio.setCod_servicio(servicio.getCod_servicio().toUpperCase());
 				if(servicio.getDetalle()!=null)servicio.setDetalle(servicio.getDetalle().toUpperCase());

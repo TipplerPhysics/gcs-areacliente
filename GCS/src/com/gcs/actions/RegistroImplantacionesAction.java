@@ -25,7 +25,7 @@ import com.gcs.utils.Utils;
 
 public class RegistroImplantacionesAction extends Action {
 	
-	private static final String PENDIENTE_IMPL = "PDTE Implantar";
+	private static final String PENDIENTE_IMPL = "PDTE IMPLANTAR";
 	
 	private static final String CONFIRMADO = "Confirmado";
 	

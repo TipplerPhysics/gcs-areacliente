@@ -62,9 +62,9 @@ public class ImplantacionServlet extends HttpServlet {
 	private static final String SOLICITADO = "Solicitado";
 	private static final String CONFIRMADO = "Confirmado";
 	private static final String PRODUCCION = "Produccion";
-	private static final String PENNY_TEST = "En Penny Test";
-	private static final String PENDIENTE_IMPL = "PDTE Implantar";
-	private String recipient = "david.martin.beltran.contractor@bbva.com ,aranzazu.mhervas.contractor@bbva.com ,fernando.munozb@bbva.com ,c.gallego.gomez.contractor@bbva.com ";	
+	private static final String PENNY_TEST = "EN PENNY TEST";
+	private static final String PENDIENTE_IMPL = "PDTE IMPLANTAR";
+	private String recipient = "david.martin.beltran.contractor@bbva.com ,anabelen.diez.contractor@bbva.com ,jaimeramon.gomez-cuetera.contractor@bbva.com ,c.gallego.gomez.contractor@bbva.com ";	
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) {

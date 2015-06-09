@@ -1,4 +1,11 @@
-<!-- Indices written at Mon, 8 Jun 2015 15:57:41 GMT+01:00 -->
+<!-- Indices written at Tue, 9 Jun 2015 12:08:47 GMT+01:00 -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 7 times in query history -->
+    <datastore-index kind="ServicioFile" ancestor="false" source="auto">
+        <property name="paisId" direction="asc"/>
+        <property name="name" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

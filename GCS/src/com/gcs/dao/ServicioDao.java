@@ -359,9 +359,9 @@ public class ServicioDao {
 			finalFilters.add(new FilterPredicate("estado", FilterOperator.EQUAL, estado));
 			}else{
 				ArrayList<String> estados = new ArrayList<String>();
-				estados.add("C100 en confección");
-				estados.add("PDTE Valoración IT");
-				estados.add("PDTE Plan de Trabajo IT");
+				estados.add("C100 EN CONFECCIÓN");
+				estados.add("PDTE VALORACIÓN IT");
+				estados.add("PDTE PLAN DE TRABAJO IT");
 				finalFilters.add(new FilterPredicate("estado", FilterOperator.IN, estados));			
 			}
 		}
