@@ -73,6 +73,7 @@ public class MayusUpdate extends HttpServlet{
 				result = updateConectividad(req, resp,usermail);
 				json.append("success", "true");
 				json.append("result", result);
+				//
 			} else if ("conectividadProyecto".equals(accion)) {
 				result = updateConectividadProyecto(req, resp);
 				json.append("success", "true");
@@ -85,22 +86,27 @@ public class MayusUpdate extends HttpServlet{
 				result = updateDemandas(req, resp, usermail);
 				json.append("success", "true");
 				json.append("result", result);
+				//
 			} else if ("departamentos".equals(accion)) {
 				result = updateDepartamentos(req, resp);
 				json.append("success", "true");
 				json.append("result", result);
+				//
 			} else if ("equipo".equals(accion)) {
 				result = updateEquipos(req, resp);
 				json.append("success", "true");
 				json.append("result", result);
+				//
 			} else if ("estadoPeticion".equals(accion)) {
 				result = updateEstadoPeticion(req, resp);
 				json.append("success", "true");
 				json.append("result", result);
+				//
 			} else if ("estados".equals(accion)) {
 				result = updateEstados(req, resp);
 				json.append("success", "true");
 				json.append("result", result);
+				//
 			}else if ("pais".equals(accion)) {
 				result = updatePaiss(req, resp);
 				json.append("success", "true");
@@ -147,7 +153,11 @@ public class MayusUpdate extends HttpServlet{
 		try {
 			ClienteDao clientesDao = ClienteDao.getInstance();
 			List<Cliente> clientes = clientesDao.getAllClientes();
-			for (Cliente cliente : clientes) {
+			int from = Integer.parseInt(req.getParameter("from"));
+			int to = Integer.parseInt(req.getParameter("to"));
+			Cliente cliente = null;
+			for (int i = from; i<to;i++) {
+				cliente = clientes.get(i);
 				cliente.setCriticidad(cliente.getCriticidad().toUpperCase());
 				cliente.setNombre(cliente.getNombre().toUpperCase());
 				cliente.setPaises(setToUppercase(cliente.getPaises()));
@@ -180,7 +190,12 @@ public class MayusUpdate extends HttpServlet{
 		try {
 			ConectividadDao conectividadDao = ConectividadDao.getInstance();
 			List<Conectividad> conectividades = conectividadDao.getAllConectividades();
-			for (Conectividad conectividad: conectividades) {
+			int from = Integer.parseInt(req.getParameter("from"));
+			int to = Integer.parseInt(req.getParameter("to"));
+			Conectividad conectividad = null;
+			
+			for (int i = from; i<to;i++) {
+				conectividad = conectividades.get(i);
 				if(conectividad.getdetalleSubida()!=null)conectividad.setdetalleSubida(conectividad.getdetalleSubida().toUpperCase());
 				if(conectividad.getEstado()!=null)conectividad.setEstado(conectividad.getEstado().toUpperCase());
 				if(conectividad.getSeguridad()!=null)conectividad.setSeguridad(conectividad.getSeguridad().toUpperCase());
@@ -220,8 +235,11 @@ public class MayusUpdate extends HttpServlet{
 		try {
 			CosteDao CostesDao = CosteDao.getInstance();
 			List<Coste> Costes = CostesDao.getAllCostes();
-
-			for (Coste coste : Costes) {
+			int from = Integer.parseInt(req.getParameter("from"));
+			int to = Integer.parseInt(req.getParameter("to"));
+			Coste coste = null;
+			for (int i = from; i<to;i++) {
+				coste = Costes.get(i);
 				if(coste.getCliente_name()!=null)coste.setCliente_name(coste.getCliente_name().toUpperCase());
 				if(coste.getComentarios()!=null)coste.setComentarios(coste.getComentarios().toUpperCase());
 				if(coste.getEquipos()!=null)coste.setEquipos(coste.getEquipos().toUpperCase());
@@ -243,8 +261,11 @@ public class MayusUpdate extends HttpServlet{
 		try {
 			DemandaDao DemandasDao = DemandaDao.getInstance();
 			List<Demanda> Demandas = DemandasDao.getAllDemandas();
-
-			for (Demanda demanda : Demandas) {
+			int from = Integer.parseInt(req.getParameter("from"));
+			int to = Integer.parseInt(req.getParameter("to"));
+			Demanda demanda = null;
+			for (int i = from; i<to;i++) {
+				demanda = Demandas.get(i);
 				if(demanda.getCatalogacion()!=null)demanda.setCatalogacion(demanda.getCatalogacion().toUpperCase());
 				if(demanda.getComentarios()!=null)demanda.setComentarios(demanda.getComentarios().toUpperCase());
 				if(demanda.getDetalle()!=null)demanda.setDetalle(demanda.getDetalle().toUpperCase());
@@ -388,8 +409,11 @@ public class MayusUpdate extends HttpServlet{
 		try {
 			ProyectoDao proyectoDao = ProyectoDao.getInstance();
 			List<Proyecto> proyectos = proyectoDao.getAllProjects();
-
-			for (Proyecto proyecto : proyectos) {
+			int from = Integer.parseInt(req.getParameter("from"));
+			int to = Integer.parseInt(req.getParameter("to"));
+			Proyecto proyecto = null;
+			for (int i = from; i<to;i++) {
+				proyecto = proyectos.get(i);
 				if(proyecto.getClienteName()!=null)proyecto.setClienteName(proyecto.getClienteName().toUpperCase());
 				if(proyecto.getConectividad()!=null)proyecto.setConectividad(proyecto.getConectividad().toUpperCase());
 				if(proyecto.getGestor_it_name()!=null)proyecto.setGestor_it_name(proyecto.getGestor_it_name().toUpperCase());
