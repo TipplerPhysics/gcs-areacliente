@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import com.gcs.utils.Utils;
 public class GestionDemandaAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+			throws IOException, ParseException {
 		HttpSession sesion = req.getSession();
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
@@ -63,26 +64,30 @@ public class GestionDemandaAction extends Action {
 			DemandaDao dDao = DemandaDao.getInstance();
 			List<Demanda> demandas = new ArrayList <Demanda>();
 			
-			String fechaEntradaFilter = req.getParameter("fecha");
+			String fechaDia = req.getParameter("fechaDia");
 			
 			
 			String page = req.getParameter("page");
 			int pageint = Utils.stringToInt(page);	
 			
-			if(fechaEntradaFilter!=null){
+			if(fechaDia!=null){
 				String nclienteFilter = req.getParameter("cliente");
 				String tipoFilter = req.getParameter("tipo");
+				String fechaMes = req.getParameter("fechaMes");
+				String fechaAnio = req.getParameter("fechaAnio");
 				String estadoFilter = req.getParameter("estado");
 				String codPeticionFilter = req.getParameter("cPeticion");
 				
-				demandas = dDao.getDemandaByAllParam(fechaEntradaFilter, nclienteFilter, tipoFilter, estadoFilter, codPeticionFilter, pageint);
+				demandas = dDao.getDemandaByAllParam(fechaDia,fechaMes,fechaAnio, nclienteFilter, tipoFilter, estadoFilter, codPeticionFilter, pageint);
 				int numpages = (Integer.parseInt(demandas.get(demandas.size()-1).getDetalle())/DemandaDao.DATA_SIZE)+1;
 				demandas.remove(demandas.size()-1);
 				boolean lastpage = (demandas.size() < DemandaDao.DATA_SIZE) ? true : false;
 				
 				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
-				req.setAttribute("fecha", fechaEntradaFilter);
+				req.setAttribute("fechaDia", fechaDia);
+				req.setAttribute("fechaMes", fechaMes);
+				req.setAttribute("fechaAnio", fechaAnio);
 				req.setAttribute("cliente", nclienteFilter);
 				req.setAttribute("tipo", tipoFilter);
 				req.setAttribute("estado", estadoFilter);

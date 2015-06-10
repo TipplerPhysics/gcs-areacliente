@@ -119,11 +119,7 @@
 							<th><span class="table-title">Tipo</span></th>
 							<th><span class="table-title">Criticidad</span></th>
 							<th style="width: 110px;">&nbsp;</th>
-						<!--	
-							<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-								<th style="width: 110px;">&nbsp;</th>
-							</c:if>
-						-->
+
 						</tr>
 						<tr>
 							<form id='test-header-filter' action="">
@@ -135,12 +131,6 @@
 								<th class="search-th"><input name='criticidad' value='${criticidad}'></th>
 								<th><button type='button' onclick='filteringCliente();'>  FILTRAR  </button></th>
 							
-							<!--
-								<th class="search-th"><input class="search col5"></th>
-								<c:if test="${sessionScope.permiso != 5 and sessionScope.permiso != 4}">
-									<th style="width: 110px;">&nbsp;</th>
-								</c:if>
-							-->
 							</form>
 						</tr>
 					</thead>

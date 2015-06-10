@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class GestionCostesAction extends Action{
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+			throws IOException, ParseException {
 	HttpSession sesion = req.getSession();
 	int sesionpermiso = (int) sesion.getAttribute("permiso");
 			
@@ -48,25 +49,29 @@ public class GestionCostesAction extends Action{
 		////////////////////////////////////////////////////////////
 		List<Coste> costes = new ArrayList <Coste>();
 			
-		String fechaAltaFilter = req.getParameter("fecha");
+		String fechaDia = req.getParameter("fechaDia");
 			
 		String page = req.getParameter("page");
 		int pageint = Utils.stringToInt(page);	
 			
-		if(fechaAltaFilter!=null){
+		if(fechaDia!=null){
+			String fechaMes = req.getParameter("fechaMes");
+			String fechaAnio = req.getParameter("fechaAnio");
 			String clienteNameFilter = req.getParameter("cliente");
 			String projectNameFilter = req.getParameter("codigoPro");
 			String equiposFilter = req.getParameter("equipo");
 			String gestorItNameFilter = req.getParameter("gestorIt");
 				
-			costes = coDao.getCosteByAllParam(fechaAltaFilter, clienteNameFilter, projectNameFilter, equiposFilter, gestorItNameFilter, pageint);
+			costes = coDao.getCosteByAllParam(fechaDia, fechaMes, fechaAnio, clienteNameFilter, projectNameFilter, equiposFilter, gestorItNameFilter, pageint);
 			int numpages = (Integer.parseInt(costes.get(costes.size()-1).getDetalle())/CosteDao.DATA_SIZE)+1;
 			costes.remove(costes.size()-1);
 			boolean lastpage = (costes.size() < CosteDao.DATA_SIZE) ? true : false;
 			
 			req.setAttribute("lastpage", lastpage);
 			req.setAttribute("numpages", numpages);
-			req.setAttribute("fecha", fechaAltaFilter);
+			req.setAttribute("fechaDia", fechaDia);
+			req.setAttribute("fechaMes", fechaMes);
+			req.setAttribute("fechaAnio", fechaAnio);
 			req.setAttribute("cliente", clienteNameFilter);
 			req.setAttribute("codigoPro", projectNameFilter);
 			req.setAttribute("equipo", equiposFilter);

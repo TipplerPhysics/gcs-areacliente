@@ -253,7 +253,7 @@
 						</tr>
 						<tr>
 							<form id='test-header-filter' action="">
-								<th class="search-th"><input name='fecha' value='${fecha}'></th>
+								<th style='width:18%;' class="search-th"><input style='width:28%;' name='fechaDia' value='${fechaDia}'><input style='width:28%;' name='fechaMes' value='${fechaMes}'><input style='width:44%;' name='fechaAnio' value='${fechaAnio}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
 								<th class="search-th"><input name='tipo' value='${tipo}'></th>
 								<th class="search-th"><input name='estado' value='${estado}'></th> 

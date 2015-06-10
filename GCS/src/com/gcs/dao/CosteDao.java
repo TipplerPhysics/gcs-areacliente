@@ -107,7 +107,9 @@ public class CosteDao {
 		try {
 			pm.makePersistent(c);
 			
-		} finally {
+		} catch(Exception e){
+			e.printStackTrace();
+		}finally {
 			pm.close();
 			if (isNew){
 				Utils.writeLog(usermail, "Creó", "Coste", c.getProject_name());
@@ -187,14 +189,15 @@ pm.close();
 		
 	}
 	
-	public List<Coste> getCosteByAllParam(String fechaEntrada, String nCliente, String nProject, String equipos, String nGestorIt,  Integer page){
+	public List<Coste> getCosteByAllParam(String fechaDia,String fechaMes, String fechaAnio, String nCliente, String nProject, String equipos, String nGestorIt,  Integer page) throws ParseException{
 		List<Coste> costes= null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Coste");
 		List<Filter> finalFilters = new ArrayList<>();
 		
 		int filters =0;
-		if(!fechaEntrada.equals("")){
+		if(!fechaDia.equals("")||!fechaMes.equals("")||!fechaAnio.equals("")){
+			if(fechaAnio.length()==2) fechaAnio="20"+fechaAnio;
 			filters++;
 		}
 		if(!nCliente.equals("")){
@@ -215,9 +218,32 @@ pm.close();
 		}
 		
 		if(filters<=1){
-			if(!fechaEntrada.equals("")){
-				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, fechaEntrada));
-				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.LESS_THAN, fechaEntrada+"\ufffd"));
+			if(!fechaDia.equals("")||!fechaMes.equals("")||!fechaAnio.equals("")){
+				String[] desde= {"","",""};
+				String[] hasta= {"","",""};
+				if(fechaDia.equals("")){
+					desde[0]="01";
+					hasta[0]="31";
+				}else desde[0]=hasta[0]=fechaDia;
+
+				if(fechaMes.equals("")){
+					desde[1]="01";
+					hasta[1]="12";
+				}else desde[1]=hasta[1]=fechaMes;
+				
+				if(fechaAnio.equals("")){
+					desde[2]="1991";
+					hasta[2]="2100";
+				}else desde[2]=hasta[2]=fechaAnio;
+				
+				Date desd = Utils.dateConverter(desde[0]+"/"+desde[1]+"/"+desde[2]);
+				Date hast = Utils.dateConverter(hasta[0]+"/"+hasta[1]+"/"+hasta[2]);
+				
+				finalFilters.add(new FilterPredicate("fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, desd));
+				finalFilters.add(new FilterPredicate("fecha_alta",FilterOperator.LESS_THAN_OR_EQUAL, hast));
+				
+//				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, fechaEntrada));
+//				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.LESS_THAN, fechaEntrada+"\ufffd"));
 			}
 			if(!nCliente.equals("")){
 				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
@@ -233,7 +259,7 @@ pm.close();
 			}
 			if(!nGestorIt.equals("")){
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
-				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
+				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN_OR_EQUAL, nGestorIt+"\ufffd"));
 			}
 			
 			Filter finalFilter = null;
@@ -264,11 +290,32 @@ pm.close();
 			
 			List<List<Entity>> Entities = new ArrayList<List<Entity>>();
 			
-			if(!fechaEntrada.equals("")){
+			if(!fechaDia.equals("")||!fechaMes.equals("")||!fechaAnio.equals("")){
+				String[] desde= {"","",""};
+				String[] hasta= {"","",""};
+				if(fechaDia.equals("")){
+					desde[0]="01";
+					hasta[0]="31";
+				}else desde[0]=hasta[0]=fechaDia;
+
+				if(fechaMes.equals("")){
+					desde[1]="01";
+					hasta[1]="12";
+				}else desde[1]=hasta[1]=fechaMes;
+				
+				if(fechaAnio.equals("")){
+					desde[2]="1991";
+					hasta[2]="2100";
+				}else desde[2]=hasta[2]=fechaAnio;
+				
+				Date desd = Utils.dateConverter(desde[0]+"/"+desde[1]+"/"+desde[2]);
+				Date hast = Utils.dateConverter(hasta[0]+"/"+hasta[1]+"/"+hasta[2]);
+				
+
 				q = new com.google.appengine.api.datastore.Query("Coste");
 				finalFilters = new ArrayList<>();
-				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, fechaEntrada));
-				finalFilters.add(new FilterPredicate("str_fecha_alta",FilterOperator.LESS_THAN, fechaEntrada+"\ufffd"));
+				finalFilters.add(new FilterPredicate("fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, desd));
+				finalFilters.add(new FilterPredicate("fecha_alta",FilterOperator.LESS_THAN_OR_EQUAL, hast));
 				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
 				q.setFilter(finalFilter);
 				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();

@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ import com.gcs.utils.Utils;
 public class GestionProyectoAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+			throws IOException, ParseException   {
 		HttpSession sesion = req.getSession();
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
@@ -42,26 +43,30 @@ public class GestionProyectoAction extends Action{
 			////////////////////////////////////////////////////////////
 			List<Proyecto> projects = new ArrayList <Proyecto>();
 			
-			String fechaAltaFilter = req.getParameter("fecha");
+			String fechaDia = req.getParameter("fechaDia");
 			
 			String page = req.getParameter("page");
 			int pageint = Utils.stringToInt(page);	
 			
-			if(fechaAltaFilter!=null){
+			if(fechaDia!=null){
+				String fechaMes = req.getParameter("fechaMes");
+				String fechaAnio = req.getParameter("fechaAnio");
 				String codproyectoFilter = req.getParameter("codigo");
 				String clienteNameFilter = req.getParameter("cliente");
 				String clasificacionFilter = req.getParameter("clasificacion");
 				String tipoFilter = req.getParameter("tipo");
 				String costeFilter = req.getParameter("coste");
 				
-				projects = pDao.getProyectoByAllParam(fechaAltaFilter, codproyectoFilter, clienteNameFilter, clasificacionFilter, tipoFilter, costeFilter,  pageint);
+				projects = pDao.getProyectoByAllParam(fechaDia, fechaMes, fechaAnio, codproyectoFilter, clienteNameFilter, clasificacionFilter, tipoFilter, costeFilter,  pageint);
 				int numpages = (Integer.parseInt(projects.get(projects.size()-1).getDetalle())/ProyectoDao.DATA_SIZE)+1;
 				projects.remove(projects.size()-1);
 				boolean lastpage = (projects.size() < ProyectoDao.DATA_SIZE) ? true : false;
 				
 				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
-				req.setAttribute("fecha", fechaAltaFilter);
+				req.setAttribute("fechaDia", fechaDia);
+				req.setAttribute("fechaMes", fechaMes);
+				req.setAttribute("fechaAnio", fechaAnio);
 				req.setAttribute("codigo", codproyectoFilter);
 				req.setAttribute("cliente", clienteNameFilter);
 				req.setAttribute("clasificacion", clasificacionFilter);
