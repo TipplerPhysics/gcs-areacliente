@@ -69,13 +69,13 @@
 							<span class="lbl">Equipo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select id="equipo_modal" name="equipo" class="long selectpicker selected">
-									<option value="INNOVERY" <c:if test="${coste.equipos eq 'Innovery'}">selected</c:if>>Innovery</option>
-									<option value="CAPGEMINI" <c:if test="${coste.equipos eq 'Capgemini'}">selected</c:if>>Capgemini</option>
-									<option value="SOLUTIONS" <c:if test="${coste.equipos eq 'Solutions'}">selected</c:if>>Solutions</option>
-									<option value="SOPORTE SWIFT" <c:if test="${coste.equipos eq 'Soporte Swift'}">selected</c:if>>Soporte Swift</option>
+									<option value="INNOVERY" <c:if test="${coste.equipos eq 'INNOVERY'}">selected</c:if>>INNOVERY</option>
+									<option value="CAPGEMINI" <c:if test="${coste.equipos eq 'CAPGEMINI'}">selected</c:if>>CAPGEMINI</option>
+									<option value="SOLUTIONS" <c:if test="${coste.equipos eq 'SOLUTIONS'}">selected</c:if>>SOLUTIONS</option>
+									<option value="SOPORTE SWIFT" <c:if test="${coste.equipos eq 'SOPORTE SWIFT'}">selected</c:if>>SOPORTE SWIFT</option>
 									<option value="IS" <c:if test="${coste.equipos eq 'IS'}">selected</c:if>>IS</option>
-									<option value="TELEMÁTICOS" <c:if test="${coste.equipos eq 'Telemáticos'}">selected</c:if>>Telemáticos</option>
-									<option value="GESTOR IT" <c:if test="${coste.equipos eq 'Gestor IT'}">selected</c:if>>Gestor IT</option>	
+									<option value="TELEMÁTICOS" <c:if test="${coste.equipos eq 'TELEMÁTICOS'}">selected</c:if>>TELEMÁTICOS</option>
+									<option value="GESTOR IT" <c:if test="${coste.equipos eq 'GESTOR IT'}">selected</c:if>>GESTOR IT</option>	
 								</select>
 							</div>
 						</div>

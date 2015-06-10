@@ -60,9 +60,9 @@
 							<span class="lbl">Criticidad<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="criticidad" id="criticidad" required aria-required="true">
-									<option value="BAJA">Baja</option>
-									<option value="MEDIA">Media</option>
-									<option value="ALTA">Alta</option>			
+									<option value="BAJA">BAJA</option>
+									<option value="MEDIA">MEDIA</option>
+									<option value="ALTA">ALTA</option>			
 									
 								</select>
 							</div>
@@ -83,69 +83,7 @@
 						
 						<div class="form-field paises">	
 							<span class="lbl">Paises<span class="required-asterisk">*</span>:</span>					
-							<div class="radio-div">
-<!--								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Argentina"
-										id="argentina_check" class="require-one"><label for="argentina_check"><span></span>Argentina</label>
-								</div>
-								
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="B&eacute;lgica"
-										id="belgica_check"><label for="belgica_check"><span></span>B&eacute;lgica</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Chile"
-										id="chile_check"><label for="chile_check"><span></span>Chile</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Hong Kong"
-										id="hong_kong_check"><label for="hong_kong_check"><span></span>Hong Kong</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Colombia"
-										id="colombia_check"><label for="colombia_check"><span></span>Colombia</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Espa&ntilde;a"
-										id="esp_check"><label for="esp_check"><span></span>Espa&ntilde;a</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Francia"
-										id="francia_check"><label for="francia_check"><span></span>Francia</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Italia"
-										id="italia_check"><label for="italia_check"><span></span>Italia</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="M&eacute;xico"
-										id="mexico_check"><label for="mexico_check"><span></span>M&eacute;xico</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Per&uacute;"
-										id="peru_check"><label for="peru_check"><span></span>Per&uacute;</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Portugal"
-										id="portugal_check"><label for="portugal_check"><span></span>Portugal</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Reino Unido"
-										id="uk_check"><label for="uk_check"><span></span>Reino Unido</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Uruguay"
-										id="uruguay_check"><label for="uruguay_check"><span></span>Uruguay</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="USA"
-										id="usa_check"><label for="usa_check"><span></span>USA</label>
-								</div>
-								<div class="radio-container">
-									<input type="checkbox" name='paises' value="Venezuela"
-										id="venezuela_check"><label for="venezuela_check"><span></span>Venezuela</label>
-								</div>
--->		
+							<div class="radio-div">	
 								<c:forEach items="${paises}" var="pais">	
 									<div class="radio-container">
 										<input type="checkbox" name='paises' value="${pais.name}"
@@ -189,7 +127,7 @@
 						</tr>
 						<tr>
 							<form id='test-header-filter' action="">
-								<th class="search-th"><input name='fecha' value='${fecha}'></th>
+								<th style='width:18%;' class="search-th"><input style='width:28%;' name='fechaDia' value='${fechaDia}'><input style='width:28%;' name='fechaMes' value='${fechaMes}'><input style='width:44%;' name='fechaAnio' value='${fechaAnio}'></th>
 								<th class="search-th"><input name='idCliente' value='${idCliente}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
 								<th class="search-th"><input name='referencia' value='${referencia}'></th>

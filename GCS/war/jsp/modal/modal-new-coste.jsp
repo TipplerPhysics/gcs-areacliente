@@ -87,13 +87,13 @@
 							<div class="input">
 								<select id="equipo" name="equipo" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
-									<option value="INNOVERY">Innovery</option>
-									<option value="CAPGEMINI">Capgemini</option>
-									<option value="SOLUTIONS">Solutions</option>
-									<option value="SOPORTE SWIFT">Soporte Swift</option>
-									<option value="IS">IS</option>
-									<option value="TELEMÁTICOS">Telemáticos</option>
-									<option value="GESTOR IT">Gestor IT</option>
+									<option value="CAPGEMINI">CAPGEMINI</option>
+									<option value="GESTOR IT">GESTOR IT</option>
+									<option value="INNOVERY">INNOVERY</option>
+									<option value="IS">IS</option>									
+									<option value="SOLUTIONS">SOLUTIONS</option>
+									<option value="SOPORTE SWIFT">SOPORTE SWIFT</option>									
+									<option value="TELEMÁTICOS">TELEMÁTICOS</option>
 								</select>
 							</div>
 						</div>

@@ -30,13 +30,13 @@ function autocompleteSubtipo(tipo,target){
 		target.empty();
 		target.append($("<option></option>").attr("value"," ").text("Seleccionar"));
 		if(tipo=="MIGRACI\u00D3N"){
-			target.append($("<option></option>").attr("value","NO APLICA").text("No aplica"));
-			target.append($("<option></option>").attr("value","INTEGRACI\u00D3N AM\u00C9RICA").text("Integraci\u00F3n Am\u00E9rica"));
-			target.append($("<option></option>").attr("value","PERIMETER SERVER").text("Perimeter Server"));
-			target.append($("<option></option>").attr("value","CHANNELING").text("Channeling"));
-			target.append($("<option></option>").attr("value","ONE BANK").text("One Bank"));
+			target.append($("<option></option>").attr("value","NO APLICA").text("NO APLICA"));
+			target.append($("<option></option>").attr("value","INTEGRACI\u00D3N AM\u00C9RICA").text("INTEGRACI\u00D3N AM\u00C9RICA"));
+			target.append($("<option></option>").attr("value","PERIMETER SERVER").text("PERIMETER SERVER"));
+			target.append($("<option></option>").attr("value","CHANNELING").text("CHANNELING"));
+			target.append($("<option></option>").attr("value","ONE BANK").text("ONE BANK"));
 		}else{
-			target.append($("<option></option>").attr("value","NO APLICA").text("No aplica"));
+			target.append($("<option></option>").attr("value","NO APLICA").text("NO APLICA"));
 		}		
 							
 

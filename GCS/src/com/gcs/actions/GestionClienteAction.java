@@ -1,6 +1,7 @@
 package com.gcs.actions;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class GestionClienteAction extends Action{
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+			throws IOException, ParseException {
 		HttpSession sesion = req.getSession();
 		int sesionpermiso = (int) sesion.getAttribute("permiso");
 		
@@ -42,26 +43,30 @@ public class GestionClienteAction extends Action{
 			ClienteDao cDao = ClienteDao.getInstance();
 			List<Cliente> clientes = new ArrayList <Cliente>();
 				
-			String fechaEntradaFilter = req.getParameter("fecha");
+			String fechaDia = req.getParameter("fechaDia");
 			
 					
 			String page = req.getParameter("page");
 			int pageint = Utils.stringToInt(page);	
 					
-			if(fechaEntradaFilter!=null){
+			if(fechaDia!=null){
 				String idClienteFilter = req.getParameter("idCliente");
+				String fechaMes = req.getParameter("fechaMes");
+				String fechaAnio = req.getParameter("fechaAnio");
 				String nClienteFilter = req.getParameter("cliente");
 				String refGlobalFilter = req.getParameter("referencia");
 				String tipoFilter = req.getParameter("tipo");
 				String criticidadFilter = req.getParameter("criticidad");
-				clientes = cDao.getClienteByAllParam(fechaEntradaFilter, idClienteFilter, nClienteFilter, refGlobalFilter, tipoFilter, criticidadFilter,  pageint);
+				clientes = cDao.getClienteByAllParam(fechaDia, fechaMes, fechaAnio, idClienteFilter, nClienteFilter, refGlobalFilter, tipoFilter, criticidadFilter,  pageint);
 				int numpages = (Integer.parseInt(clientes.get(clientes.size()-1).getDetalle())/ClienteDao.DATA_SIZE)+1;
 				clientes.remove(clientes.size()-1);
 				boolean lastpage = (clientes.size() < ServicioDao.DATA_SIZE) ? true : false;
 				
 				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
-				req.setAttribute("fecha", fechaEntradaFilter);
+				req.setAttribute("fechaDia", fechaDia);
+				req.setAttribute("fechaMes", fechaMes);
+				req.setAttribute("fechaAnio", fechaAnio);
 				req.setAttribute("idCliente", idClienteFilter);
 				req.setAttribute("cliente", nClienteFilter);
 				req.setAttribute("referencia", refGlobalFilter);

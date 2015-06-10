@@ -37,9 +37,9 @@
 							<span class="lbl">Criticidad<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="criticidad" id="criticidad_modal" required aria-required="true">
-									<option value="BAJA">Baja</option>
-									<option value="MEDIA">Media</option>
-									<option value="ALTA">Alta</option>			
+									<option value="BAJA">BAJA</option>
+									<option value="MEDIA">MEDIA</option>
+									<option value="ALTA">ALTA</option>			
 									
 								</select>
 							</div>
