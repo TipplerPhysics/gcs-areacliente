@@ -25,13 +25,13 @@ import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 
 
 public class ClienteDao {
 
 	public static final int DATA_SIZE = 10;
-	
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
 	public static ClienteDao getInstance() {
@@ -300,7 +300,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 		public List<Cliente> getClienteByAllParam(String fechaDia,String fechaMes, String fechaAnio, String idCliente, String nCliente, String refGlobal, String tipo, String criticidad,  Integer page) throws ParseException{
 			List<Cliente> clientes= null;
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente");
+			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 			List<Filter> finalFilters = new ArrayList<>();
 			
 			int filters =0;
@@ -429,7 +429,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 					Date hast = Utils.dateConverter(hasta[0]+"/"+hasta[1]+"/"+hasta[2]);
 					
 					
-					q = new com.google.appengine.api.datastore.Query("Cliente");
+					q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 					finalFilters = new ArrayList<>();
 					finalFilters.add(new FilterPredicate("fecha_alta_cliente",FilterOperator.GREATER_THAN_OR_EQUAL, desd));
 					finalFilters.add(new FilterPredicate("fecha_alta_cliente",FilterOperator.LESS_THAN_OR_EQUAL, hast));
@@ -439,7 +439,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 					Entities.add(datastore.prepare(q).asList(fetchOptions));
 				}
 				if(!idCliente.equals("")){
-					q = new com.google.appengine.api.datastore.Query("Cliente");
+					q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 					finalFilters = new ArrayList<>();
 					finalFilters.add(new FilterPredicate("clientId",FilterOperator.GREATER_THAN_OR_EQUAL, idCliente));
 					finalFilters.add(new FilterPredicate("clientId",FilterOperator.LESS_THAN, idCliente+"\ufffd"));
@@ -449,7 +449,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 					Entities.add(datastore.prepare(q).asList(fetchOptions));
 				}
 				if(!nCliente.equals("")){
-					q = new com.google.appengine.api.datastore.Query("Cliente");
+					q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 					finalFilters = new ArrayList<>();
 					finalFilters.add(new FilterPredicate("nombre",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
 					finalFilters.add(new FilterPredicate("nombre",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
@@ -459,7 +459,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 					Entities.add(datastore.prepare(q).asList(fetchOptions));
 				}
 				if(!refGlobal.equals("")){
-					q = new com.google.appengine.api.datastore.Query("Cliente");
+					q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 					finalFilters = new ArrayList<>();
 					finalFilters.add(new FilterPredicate("ref_global",FilterOperator.GREATER_THAN_OR_EQUAL, refGlobal));
 					finalFilters.add(new FilterPredicate("ref_global",FilterOperator.LESS_THAN, refGlobal+"\ufffd"));
@@ -469,7 +469,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 					Entities.add(datastore.prepare(q).asList(fetchOptions));
 				}
 				if(!tipo.equals("")){
-					q = new com.google.appengine.api.datastore.Query("Cliente");
+					q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 					finalFilters = new ArrayList<>();
 					finalFilters.add(new FilterPredicate("tipo",FilterOperator.GREATER_THAN_OR_EQUAL, tipo));
 					finalFilters.add(new FilterPredicate("tipo",FilterOperator.LESS_THAN, tipo+"\ufffd"));
@@ -479,7 +479,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 					Entities.add(datastore.prepare(q).asList(fetchOptions));
 				}
 				if(!criticidad.equals("")){
-					q = new com.google.appengine.api.datastore.Query("Cliente");
+					q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 					finalFilters = new ArrayList<>();
 					finalFilters.add(new FilterPredicate("criticidad",FilterOperator.GREATER_THAN_OR_EQUAL, criticidad));
 					finalFilters.add(new FilterPredicate("criticidad",FilterOperator.LESS_THAN, criticidad+"\ufffd"));
@@ -549,7 +549,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 		}
 		public List<Cliente> getClienteByIdIn(String[] ids) {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente");
+			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 			List<Cliente> clientes = null;
 			List<Entity> entities = null;
 			FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
@@ -576,7 +576,7 @@ public List<Cliente> getAllNonDeletedClientsAlphabet(){
 
 			
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente");
+			com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Cliente").addSort("fecha_alta_cliente",SortDirection.DESCENDING);
 			
 			List<Entity> entities = null;
 			FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();

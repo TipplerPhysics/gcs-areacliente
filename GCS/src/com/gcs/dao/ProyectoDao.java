@@ -26,6 +26,7 @@ import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 public class ProyectoDao {
 	
@@ -404,7 +405,7 @@ public Proyecto getProjectbyId(long l) {
 
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 		
 		List<Entity> entities = null;
 		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
@@ -442,7 +443,7 @@ public Proyecto getProjectbyId(long l) {
 
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 		
 		List<Entity> entities = null;
 		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
@@ -471,7 +472,7 @@ public Proyecto getProjectbyId(long l) {
 	public List<Proyecto> getProyectoByAllParam(String fechaDia,String fechaMes, String fechaAnio, String codProyecto, String nCliente, String clasificacion, String tipo, String coste,  Integer page) throws ParseException{
 		List<Proyecto> proyectos= null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 		List<Filter> finalFilters = new ArrayList<>();
 		
 		int filters =0;
@@ -598,7 +599,7 @@ public Proyecto getProjectbyId(long l) {
 				Date desd = Utils.dateConverter(desde[0]+"/"+desde[1]+"/"+desde[2]);
 				Date hast = Utils.dateConverter(hasta[0]+"/"+hasta[1]+"/"+hasta[2]);
 				
-				q = new com.google.appengine.api.datastore.Query("Proyecto");
+				q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("fecha_alta",FilterOperator.GREATER_THAN_OR_EQUAL, desd));
 				finalFilters.add(new FilterPredicate("fecha_alta",FilterOperator.LESS_THAN_OR_EQUAL, hast));
@@ -608,7 +609,7 @@ public Proyecto getProjectbyId(long l) {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!codProyecto.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Proyecto");
+				q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.GREATER_THAN_OR_EQUAL, codProyecto));
 				finalFilters.add(new FilterPredicate("cod_proyecto",FilterOperator.LESS_THAN, codProyecto+"\ufffd"));
@@ -618,7 +619,7 @@ public Proyecto getProjectbyId(long l) {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!nCliente.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Proyecto");
+				q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("clienteName",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
 				finalFilters.add(new FilterPredicate("clienteName",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
@@ -628,7 +629,7 @@ public Proyecto getProjectbyId(long l) {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!clasificacion.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Proyecto");
+				q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.GREATER_THAN_OR_EQUAL, clasificacion));
 				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.LESS_THAN, clasificacion+"\ufffd"));
@@ -638,7 +639,7 @@ public Proyecto getProjectbyId(long l) {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!tipo.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Proyecto");
+				q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("tipo",FilterOperator.GREATER_THAN_OR_EQUAL, tipo));
 				finalFilters.add(new FilterPredicate("tipo",FilterOperator.LESS_THAN, tipo+"\ufffd"));
@@ -648,7 +649,7 @@ public Proyecto getProjectbyId(long l) {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!coste.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Proyecto");
+				q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("coste",FilterOperator.GREATER_THAN_OR_EQUAL, coste));
 				finalFilters.add(new FilterPredicate("coste",FilterOperator.LESS_THAN, coste+"\ufffd"));
@@ -706,7 +707,7 @@ public Proyecto getProjectbyId(long l) {
 
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Proyecto").addSort("fecha_alta",SortDirection.DESCENDING);
 		
 		List<Entity> entities = null;
 		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();

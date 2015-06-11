@@ -23,6 +23,7 @@ import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 public class DemandaDao {
 
@@ -30,7 +31,7 @@ public class DemandaDao {
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
 	public static DemandaDao getInstance() {
-        return new DemandaDao();
+		return new DemandaDao();
     }
 	
 	public void deleteDemanda(Demanda d, String usermail){
@@ -154,7 +155,7 @@ public class DemandaDao {
 	public List<Demanda> getDemandaByAllParam(String fechaDia,String fechaMes, String fechaAnio, String nCliente, String tipo, String estado,  String codPeticion, Integer page) throws ParseException{
 		List<Demanda> demandas= null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 		List<Filter> finalFilters = new ArrayList<>();
 		
 		int filters =0;
@@ -272,7 +273,7 @@ public class DemandaDao {
 				
 				Date desd = Utils.dateConverter(desde[0]+"/"+desde[1]+"/"+desde[2]);
 				Date hast = Utils.dateConverter(hasta[0]+"/"+hasta[1]+"/"+hasta[2]);
-				q = new com.google.appengine.api.datastore.Query("Demanda");
+				q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("fecha_entrada_peticion",FilterOperator.GREATER_THAN_OR_EQUAL, desd));
 				finalFilters.add(new FilterPredicate("fecha_entrada_peticion",FilterOperator.LESS_THAN_OR_EQUAL, hast));
@@ -282,7 +283,7 @@ public class DemandaDao {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!nCliente.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Demanda");
+				q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("clienteName",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
 				finalFilters.add(new FilterPredicate("clienteName",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
@@ -292,7 +293,7 @@ public class DemandaDao {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!tipo.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Demanda");
+				q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("tipo",FilterOperator.GREATER_THAN_OR_EQUAL, tipo));
 				finalFilters.add(new FilterPredicate("tipo",FilterOperator.LESS_THAN, tipo+"\ufffd"));
@@ -302,7 +303,7 @@ public class DemandaDao {
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
 			if(!estado.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Demanda");
+				q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("estado",FilterOperator.GREATER_THAN_OR_EQUAL, estado));
 				finalFilters.add(new FilterPredicate("estado",FilterOperator.LESS_THAN, estado+"\ufffd"));
@@ -313,7 +314,7 @@ public class DemandaDao {
 			}
 			
 			if(!codPeticion.equals("")){
-				q = new com.google.appengine.api.datastore.Query("Demanda");
+				q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("cod_peticion",FilterOperator.GREATER_THAN_OR_EQUAL, codPeticion));
 				finalFilters.add(new FilterPredicate("cod_peticion",FilterOperator.LESS_THAN, codPeticion+"\ufffd"));
@@ -371,7 +372,7 @@ public class DemandaDao {
 
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 		
 		List<Entity> entities = null;
 		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
@@ -400,7 +401,7 @@ public class DemandaDao {
 
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 		
 		List<Entity> entities = null;
 		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
@@ -438,7 +439,7 @@ public Integer countSolicBetweenDatesEstado(String desde, String hasta,String ti
 
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda");
+		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Demanda").addSort("fecha_entrada_peticion",SortDirection.DESCENDING);
 		
 		List<Entity> entities = null;
 		FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
