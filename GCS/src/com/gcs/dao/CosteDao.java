@@ -511,6 +511,12 @@ pm.close();
 			coste.setGestor_it_key(gestorItKey);
 		}
 		
+		String gestorItName =  getString(entity, "gestor_it_name");
+		if(gestorItKey != null) {
+			coste.setGestor_it_name(gestorItName);
+		}
+		
+		
 		String horasAnalisis =  getString(entity, "horas_analisis");
 		if(horasAnalisis != null) {
 			coste.setHoras_analisis(horasAnalisis);
@@ -568,7 +574,7 @@ pm.close();
 		
 		String strFechaRecepcionValoracion =  getString(entity, "str_fecha_recepcion_valoracion");
 		if(strFechaRecepcionValoracion != null) {
-			coste.setStr_fecha_alta(strFechaRecepcionValoracion);
+			coste.setStr_fecha_recepcion_valoracion(strFechaRecepcionValoracion);
 		}
 		
 		String strFechaSolicitudValoracion =  getString(entity, "str_fecha_solicitud_valoracion");
