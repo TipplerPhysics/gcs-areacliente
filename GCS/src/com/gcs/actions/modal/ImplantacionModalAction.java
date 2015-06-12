@@ -24,8 +24,8 @@ import com.gcs.dao.ServicioDao;
 public class ImplantacionModalAction extends Action {
 	
 	private static final String VACIO = "";
-	private static final String SOLICITADO = "Solicitado";
-	private static final String CONFIRMADO = "Confirmado";
+	private static final String SOLICITADO = "SOLICITADO";
+	private static final String CONFIRMADO = "CONFIRMADO";
 	private static final String OK = "OK";
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
