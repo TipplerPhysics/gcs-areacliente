@@ -11,8 +11,8 @@ import com.gcs.utils.Utils;
 
 public class ConectividadDao {
 	
-	private static final String SOLICITADO = "Solicitado";
-	private static final String CONFIRMADO = "Confirmado";
+	private static final String SOLICITADO = "SOLICITADO";
+	private static final String CONFIRMADO = "CONFIRMADO";
 	
 	public static ConectividadDao getInstance() {
 		return new ConectividadDao();

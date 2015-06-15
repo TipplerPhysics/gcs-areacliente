@@ -1,6 +1,8 @@
 package com.gcs.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,7 +60,7 @@ public class MayusUpdate extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession sesion = req.getSession();
 		JSONObject json = new JSONObject();
-		String result = "";
+		String result = "hola";
 
 		String accion = req.getParameter("accion");
 
@@ -166,6 +168,7 @@ public class MayusUpdate extends HttpServlet{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			result= e.toString();
 		}
 
 		return result;
@@ -307,17 +310,29 @@ public class MayusUpdate extends HttpServlet{
 		String result = "";
 		try {
 			EquipoDao EquiposDao = EquipoDao.getInstance();
-			List<Equipo> Equipos = EquiposDao.getAllEquipos();
-
-			for (Equipo Equipo : Equipos) {
-				Equipo.setNombre(Equipo.getNombre().toUpperCase());
-				EquiposDao.createEquipo(Equipo);
-				result += Equipo.getNombre() + ", ";
+			List<Equipo> Equipos =null;
+			try{
+			Equipos = EquiposDao.getAllEquipos();
+			} catch (Exception e) {
+				StringWriter sw = new StringWriter();
+				PrintWriter pw = new PrintWriter(sw);
+				e.printStackTrace(pw);
+				result+=sw.toString();
+						}
+			Equipo equipo = null;
+			result+="holasemi";
+			for (int i = 0 ; i< Equipos.size();i++) {
+				result+="holadent";
+				equipo = Equipos.get(i);
+				equipo.setNombre(equipo.getNombre().toUpperCase());
+				EquiposDao.createEquipo(equipo);
+				result += equipo.getNombre() + ", ";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+				result+="holaerror";
 		}
-
+		result+="hola";
 		return result;
 	}
 

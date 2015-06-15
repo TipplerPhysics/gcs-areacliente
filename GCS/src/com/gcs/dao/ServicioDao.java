@@ -29,8 +29,8 @@ public class ServicioDao {
 	
 			
 			
-	private static final String SOLICITADO = "Solicitado";
-	private static final String CONFIRMADO = "Confirmado";
+	private static final String SOLICITADO = "SOLICITADO";
+	private static final String CONFIRMADO = "CONFIRMADO";
 	
 	public static final int DATA_SIZE = 10;
 
@@ -1004,7 +1004,7 @@ public int[] getServiciosForExcelGestor(String gestor){
 			
 			String estadoImp = (String) servicio.getProperty("estadoImplantacion");
 			
-			if(estadoImp!=null&&(estadoImp.equals("Solicitado")||estadoImp.equals("Confirmado"))){
+			if(estadoImp!=null&&(estadoImp.equals("SOLICITADO")||estadoImp.equals("CONFIRMADO"))){
 				resultados[5]++;
 			}
 		}

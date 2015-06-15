@@ -26,6 +26,7 @@ public class ImplantacionModalAction extends Action {
 	private static final String VACIO = "";
 	private static final String SOLICITADO = "SOLICITADO";
 	private static final String CONFIRMADO = "CONFIRMADO";
+	private static final String PRODUCCION = "PRODUCCION";
 	private static final String OK = "OK";
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -116,6 +117,18 @@ public class ImplantacionModalAction extends Action {
 			req.setAttribute("fecha_implantacion", ultimaFechaImplantacion);
 			
 			return mapping.findForward("email3");			
+		}
+		else if( PRODUCCION.equals(ultimoEstadoServicio) || PRODUCCION.equals(ultimoEstadoConectividad) ){
+			FechaCalendadaDao fechDao = FechaCalendadaDao.getInstance();
+			List<FechaCalendada> fechas = fechDao.getAllFutureFechas();
+			List<String> fechasStr = fechDao.getAllFutureFechasStr();
+			req.setAttribute("fechas",fechas);
+			req.setAttribute("fechasStr",fechasStr);
+			req.setAttribute("servicios", serviciosParam);
+			req.setAttribute("conectividades", conectividadesParam);
+			
+			
+			return mapping.findForward("email1");			
 		}
 		else{
 			//msg de error ya que tenemos Implementaciones en diferentes estados de implantacion

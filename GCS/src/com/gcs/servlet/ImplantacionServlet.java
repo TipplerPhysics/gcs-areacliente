@@ -61,7 +61,7 @@ public class ImplantacionServlet extends HttpServlet {
 	private static final String KO = "KO";
 	private static final String SOLICITADO = "SOLICITADO";
 	private static final String CONFIRMADO = "CONFIRMADO";
-	private static final String PRODUCCION = "Produccion";
+	private static final String PRODUCCION = "PRODUCCION";
 	private static final String PENNY_TEST = "EN PENNY TEST";
 	private static final String PENDIENTE_IMPL = "PDTE IMPLANTAR";
 	private String recipient = "anabelen.diez.contractor@bbva.com ,jaimeramon.gomez-cuetera.contractor@bbva.com ,c.gallego.gomez.contractor@bbva.com ";	
@@ -148,13 +148,13 @@ public class ImplantacionServlet extends HttpServlet {
 						cObj.setdetalleSubida("");
 						if(CALENDADA.equals(tipoSubida)) {
 							cObj.setsubidaCalendada(true);
-							cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacionCalendada));
 							cObj.setStr_fecha_implantacion(fechaImplantacionCalendada);
+							cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacionCalendada));
 						}
 						else {
 							cObj.setsubidaCalendada(false);
-							cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacionNoCalendada));
 							cObj.setStr_fecha_implantacion(fechaImplantacionNoCalendada);
+							cObj.setFecha_implantacion(Utils.dateConverter(fechaImplantacionNoCalendada));
 						}
 						cDao.createConectividad(cObj, usermail);
 					}

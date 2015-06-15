@@ -1572,7 +1572,7 @@ $(function() {
 		
 		var formURL = $form.attr("action");
 		var $formData = $form.serialize();
-		var postData= $formData+"&accion=Solicitado&servicios="+ servicios+"&conectividades="+conectividades+"&tipo_subida="+tipo_subida+"&fecha_implantacion_calendada="+fecha_implantacion_calendada+"&fecha_implantacion_no_calendada="+fecha_implantacion_no_calendada ;
+		var postData= $formData+"&accion=SOLICITADO&servicios="+ servicios+"&conectividades="+conectividades+"&tipo_subida="+tipo_subida+"&fecha_implantacion_calendada="+fecha_implantacion_calendada+"&fecha_implantacion_no_calendada="+fecha_implantacion_no_calendada ;
 		$.ajax(			
 			{
 				url : formURL,
@@ -1605,7 +1605,7 @@ function sendEmailConfirmacion(){
 	
 	var formURL = $form.attr("action");
 	var $formData = $form.serialize();
-	var postData= $formData+"&accion=Confirmado&servicios="+ servicios+"&conectividades="+conectividades;
+	var postData= $formData+"&accion=CONFIRMADO&servicios="+ servicios+"&conectividades="+conectividades;
 	$.ajax(			
 		{
 			url : formURL,
@@ -1637,7 +1637,7 @@ function sendEmailProduccion(){
 	
 	var formURL = $form.attr("action");
 	var $formData = $form.serialize();
-	var postData= $formData+"&accion=Produccion&servicios="+ servicios+"&conectividades="+conectividades;
+	var postData= $formData+"&accion=PRODUCCION&servicios="+ servicios+"&conectividades="+conectividades;
 	$.ajax(			
 		{
 			url : formURL,
@@ -1665,7 +1665,7 @@ function sendEmailProduccion(){
 	
 	var formURL = $form.attr("action");
 	var $formData = $form.serialize();
-	var postData= $formData+"&accion=Produccion&servicios="+ servicios+"&conectividades="+conectividades;
+	var postData= $formData+"&accion=PRODUCCION&servicios="+ servicios+"&conectividades="+conectividades;
 	$.ajax(			
 		{
 			url : formURL,

@@ -27,7 +27,7 @@ public class RegistroImplantacionesAction extends Action {
 	
 	private static final String PENDIENTE_IMPL = "PDTE IMPLANTAR";
 	
-	private static final String CONFIRMADO = "Confirmado";
+	private static final String CONFIRMADO = "CONFIRMADO";
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest req, HttpServletResponse resp)

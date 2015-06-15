@@ -103,14 +103,14 @@
 													<c:if
 														test="${conectividad.key.id==implantacion.conectividadkey}">
 														<c:if
-															test="${conectividad.estadoImplantacion eq 'Solicitado'}">
+															test="${conectividad.estadoImplantacion eq 'SOLICITADO'}">
 															<a class="lapiz dropbutton" data-id=${conectividad.key.id}></a>
 														</c:if>
 													</c:if>
 												</c:forEach> <c:forEach items="${servicios}" var="servicio">
 													<c:if test="${servicio.key.id==implantacion.serviciokey}">
 														<c:if
-															test="${servicio.estadoImplantacion eq 'Solicitado'}">
+															test="${servicio.estadoImplantacion eq 'SOLICITADO'}">
 															<a class="lapiz dropbutton" data-id=${servicio.key.id} ></a>
 														</c:if>
 													</c:if>
@@ -121,7 +121,7 @@
 										<c:if
 											test="${conectividad.key.id==implantacion.conectividadkey}">
 											<c:if
-												test="${conectividad.estadoImplantacion eq 'Solicitado'}">
+												test="${conectividad.estadoImplantacion eq 'SOLICITADO'}">
 												<tr id="line${conectividad.key.id}"
 													class="modifHolder oculto">
 													<td class="edit-impl-row" colspan="8">
@@ -158,7 +158,7 @@
 									</c:forEach>
 									<c:forEach items="${servicios}" var="servicio">
 										<c:if test="${servicio.key.id==implantacion.serviciokey}">
-											<c:if test="${servicio.estadoImplantacion eq 'Solicitado'}">
+											<c:if test="${servicio.estadoImplantacion eq 'SOLICITADO'}">
 
 
 												<tr id="line${servicio.key.id}" class="modifHolder oculto">
