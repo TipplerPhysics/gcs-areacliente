@@ -66,15 +66,15 @@ public class ClientProfileAction extends Action{
 			
 			for (Servicio ser : servicios){
 				if(ser.getEstadoImplantacion()!=null&&ser.getEstado()!=null){
-					if(ser.getEstadoImplantacion().equals("Produccion"))enproduccion=true;
-					if(ser.getEstado().equals("Parado")||ser.getEstado().equals("Excluido"))enimplementacion=false;
+					if(ser.getEstadoImplantacion().equals("PRODUCCION"))enproduccion=true;
+					if(ser.getEstado().equals("PARADO")||ser.getEstado().equals("EXCLUIDO"))enimplementacion=false;
 				}
 			}
 			
 			for (Conectividad ser : conectividades){
 				if(ser.getEstadoImplantacion()!=null&&ser.getEstado()!=null){
-					if(ser.getEstadoImplantacion().equals("Produccion"))enproduccion=true;
-					if(ser.getEstado().equals("Parado")||ser.getEstado().equals("Excluido"))enimplementacion=false;
+					if(ser.getEstadoImplantacion().equals("PRODUCCION"))enproduccion=true;
+					if(ser.getEstado().equals("PARADO")||ser.getEstado().equals("EXCLUIDO"))enimplementacion=false;
 				}
 			}
 			
