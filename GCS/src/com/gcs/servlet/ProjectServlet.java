@@ -34,6 +34,7 @@ import com.gcs.dao.ConectividadProyectoDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProductoProyectoDao;
 import com.gcs.dao.ProyectoDao;
+import com.gcs.dao.ServicioFileDao;
 import com.gcs.utils.Utils;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
@@ -65,6 +66,8 @@ public class ProjectServlet extends HttpServlet{
 				getProjectsByClient(req,resp);
 			}else if ("getConectividades".equals(accion)){
 				getConectividades(req,resp);
+			}else if ("getConectividadesByProduct".equals(accion)){
+				getConectividadesByProduct(req,resp);
 			}else if ("clone".equals(accion)){
 				cloneProject(req,resp,usermail);
 			}
@@ -131,16 +134,17 @@ public class ProjectServlet extends HttpServlet{
 		    s.setColumnView(5, 30);
 		    s.setColumnView(6, 30);
 		    s.setColumnView(7, 20);
+		    s.setColumnView(8, 30);
 		    
-		    s.setColumnView(8, 20);
 		    s.setColumnView(9, 20);
-		    s.setColumnView(10, 30);
+		    s.setColumnView(10, 20);
 		    s.setColumnView(11, 30);
 		    s.setColumnView(12, 30);
 		    s.setColumnView(13, 30);
-		    
 		    s.setColumnView(14, 30);
+		    
 		    s.setColumnView(15, 30);
+		    s.setColumnView(16, 30);
 		    
 		    
 		    s.setRowView(0, 900);
@@ -153,16 +157,17 @@ public class ProjectServlet extends HttpServlet{
 			s.addCell(new Label(5, 0, "GESTOR IT",cellFormat));
 			s.addCell(new Label(6, 0, "GESTOR NEGOCIO",cellFormat));
 			s.addCell(new Label(7, 0, "COSTE",cellFormat));
+			s.addCell(new Label(8, 0, "PETICION",cellFormat));
 			
-			s.addCell(new Label(8, 0, "PRODUCTO",cellFormat));
-			s.addCell(new Label(9, 0, "CONECTIVIDAD",cellFormat));
-			s.addCell(new Label(10, 0, "FECHA INICIO VALORACION",cellFormat));
-			s.addCell(new Label(11, 0, "FECHA FIN VALORACION",cellFormat));
-			s.addCell(new Label(12, 0, "FECHA INICIO VIABILIDAD",cellFormat));
-			s.addCell(new Label(13, 0, "FECHA FIN VIABILIDAD",cellFormat));
+			s.addCell(new Label(9, 0, "PRODUCTO",cellFormat));
+			s.addCell(new Label(10, 0, "CONECTIVIDAD",cellFormat));
+			s.addCell(new Label(11, 0, "FECHA INICIO VALORACION",cellFormat));
+			s.addCell(new Label(12, 0, "FECHA FIN VALORACION",cellFormat));
+			s.addCell(new Label(13, 0, "FECHA INICIO VIABILIDAD",cellFormat));
+			s.addCell(new Label(14, 0, "FECHA FIN VIABILIDAD",cellFormat));
 			
-			s.addCell(new Label(14, 0, "FECHA ENVIO C100",cellFormat));
-			s.addCell(new Label(15, 0, "FECHA OK NEGOCIO",cellFormat));
+			s.addCell(new Label(15, 0, "FECHA ENVIO C100",cellFormat));
+			s.addCell(new Label(16, 0, "FECHA OK NEGOCIO",cellFormat));
 			
 			
 			int aux=1;
@@ -174,22 +179,23 @@ public class ProjectServlet extends HttpServlet{
 								
 				s.addCell(new Label(0, aux, p.getFecha_alta_str()));
 				s.addCell(new Label(1, aux, p.getCod_proyecto()));
-				s.addCell(new Label(2, aux, p.getTipo()));
+				s.addCell(new Label(2, aux, p.getTipo().trim()));
 				s.addCell(new Label(3, aux, p.getClienteName()));
 				s.addCell(new Label(4, aux, Integer.toString(p.getClasificacion())));
 				s.addCell(new Label(5, aux, p.getGestor_it_name()));
 				s.addCell(new Label(6, aux, p.getGestor_negocio_name()));
 				s.addCell(new Label(7, aux, p.getCoste() + " €"));
+				s.addCell(new Label(8, aux, p.getUrl_doc_google_drive()));
 				
-				s.addCell(new Label(8, aux, p.getProducto()));
-				s.addCell(new Label(9, aux, p.getConectividad()));
-				s.addCell(new Label(10, aux, p.getStr_fecha_inicio_valoracion()));
-				s.addCell(new Label(11, aux, p.getStr_fecha_fin_valoracion()));
-				s.addCell(new Label(12, aux, p.getStr_fecha_inicio_viabilidad()));
-				s.addCell(new Label(13, aux, p.getStr_fecha_fin_viabilidad()));
+				s.addCell(new Label(9, aux, p.getProducto()));
+				s.addCell(new Label(10, aux, p.getConectividad()));
+				s.addCell(new Label(11, aux, p.getStr_fecha_inicio_valoracion()));
+				s.addCell(new Label(12, aux, p.getStr_fecha_fin_valoracion()));
+				s.addCell(new Label(13, aux, p.getStr_fecha_inicio_viabilidad()));
+				s.addCell(new Label(14, aux, p.getStr_fecha_fin_viabilidad()));
 				
-				s.addCell(new Label(14, aux, p.getStr_envioC100()));
-				s.addCell(new Label(15, aux, p.getStr_OKNegocio()));
+				s.addCell(new Label(15, aux, p.getStr_envioC100()));
+				s.addCell(new Label(16, aux, p.getStr_OKNegocio()));
 				aux++;
 			}		
 			
@@ -202,6 +208,42 @@ public class ProjectServlet extends HttpServlet{
 				out.close();
 		}
 
+	}
+	
+	public static List<ConectividadProyecto> getConectividadByProductoJSON(String producto) throws JSONException{
+		
+		ConectividadProyectoDao conectividadDao = ConectividadProyectoDao.getInstance();
+		List<ConectividadProyecto> conectividades = conectividadDao.getConectividadesByProducto(producto);	
+		return conectividades;
+	}
+	
+	private void getConectividadesByProduct(HttpServletRequest req, HttpServletResponse resp){
+		String producto = req.getParameter("producto");
+																
+		try{			
+						
+			List<ConectividadProyecto> list = getConectividadByProductoJSON(producto);
+			JSONObject json = new JSONObject();
+			JSONArray jarray = new JSONArray();
+			
+			for(ConectividadProyecto o:list){
+				jarray.put(o.getName());
+			}
+			
+			json.append("success","true");
+			json.append("conectividades", jarray);
+			
+			resp.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			resp.getWriter().println(json);
+		
+		} catch (IOException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 	
 	
@@ -267,15 +309,15 @@ public class ProjectServlet extends HttpServlet{
 			Proyecto p = pDao.getProjectbyId(Long.parseLong(id));
 			
 			if (p!=null){
-				String fecha_alta_str = req.getParameter("fecha_alta_cliente");
+				//String fecha_alta_str = req.getParameter("fecha_alta_cliente");
 				
-				String tipo = req.getParameter("tipo");
+				//String tipo = req.getParameter("tipo");
 				
 				//String cliente = req.getParameter("cliente");
 				String clasificacion = req.getParameter("clasificacion");
 				String gestor_it_str = req.getParameter("gestor_it");
 				String gestor_negocio_str = req.getParameter("gestor_negocio");
-				String coste = req.getParameter("coste");
+				//String coste = req.getParameter("coste");
 				String url_doc_google_drive = req.getParameter("url_doc_google_drive");
 				String producto = req.getParameter("producto");
 				String conectividad = req.getParameter("conectividad");
@@ -289,31 +331,47 @@ public class ProjectServlet extends HttpServlet{
 				String ok_negocio = req.getParameter("ok_negocio");
 				String ok_negocio_check = req.getParameter("ok_negocio_check");
 				
-				String cliente_nombre = req.getParameter("cliente_id");
+				//String cliente_nombre = req.getParameter("cliente_id");
 				
 
+				//p.setFecha_alta_str(fecha_alta_str);
+				//p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
+
 				
-				p.setFecha_alta_str(fecha_alta_str);					
-				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));
-				
-				p.setTipo(tipo);
-				p.setClienteKey(Long.parseLong(cliente_nombre));
+				//p.setTipo(tipo);
+				//p.setClienteKey(Long.parseLong(cliente_nombre));
+				if (!"".equals(clasificacion))
 				p.setClasificacion(Integer.parseInt(clasificacion));
+				if (!"".equals(gestor_it_str))
 				p.setGestor_it(Long.parseLong(gestor_it_str));
+				if (!"".equals(gestor_negocio_str))
 				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
-				p.setCoste(coste);
-				p.setUrl_doc_google_drive(url_doc_google_drive);				
-				p.setProducto(producto);
-				if (!"default".equals(conectividad))
-					p.setConectividad(conectividad);			
+				//p.setCoste(coste);
+				if (!"".equals(url_doc_google_drive))
+				p.setUrl_doc_google_drive(url_doc_google_drive);
+				if (!"default".equals(producto) && !"".equals(producto)){
+					p.setProducto(producto);
+				}
+				if (!"default".equals(conectividad) && !"".equals(conectividad)){
+					p.setConectividad(conectividad);	
+				}
+				if (!"".equals(fecha_inicio_valoracion_str))
 				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
+				if (!"".equals(fecha_fin_valoracion_str))
 				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				if (!"".equals(fecha_inicio_viabilidad_str))
 				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				if (!"".equals(fecha_fin_viabilidad_str))
 				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				if (!"".equals(fecha_plan_trabajo_str))
 				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
+				if (!"".equals(fecha_disponible_conectividad_str))
 				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
+				if (!"".equals(envioC100))
 				p.setStr_envioC100(envioC100);
+				if (!"".equals(ok_negocio))
 				p.setStr_OKNegocio(ok_negocio);
+				if (!"".equals(ok_negocio_check))
 				p.setStr_OKNegocioCheck(ok_negocio_check);
 					
 				pDao.createProject(p,usermail);
@@ -335,7 +393,7 @@ public class ProjectServlet extends HttpServlet{
 		resp.getWriter().println(json);		
 		
 	}
-	
+//////////////////////////////////////////////////////////////////////////
 	private void createProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		
 		JSONObject json = new JSONObject();
@@ -432,7 +490,107 @@ public class ProjectServlet extends HttpServlet{
 		resp.setContentType("application/json");
 		resp.getWriter().println(json);
 	}
+	
+//////////////////////////////////////////////////////////////////////////
+	/*
+	private void createProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
+		
+		JSONObject json = new JSONObject();
+		Proyecto p = new Proyecto();
+	
+		try {
+			
+			String fecha_alta_str = req.getParameter("fecha_alta_cliente");
+			
+			String envioC100 = req.getParameter("envio_c100");
+			String ok_negocio = req.getParameter("ok_negocio");
+			String ok_negocio_check = req.getParameter("ok_negocio_check");
+			
+			String fecha_inicio_valoracion_str = req.getParameter("fecha_inicio_valoracion");
+			String fecha_fin_valoracion_str = req.getParameter("fecha_fin_valoracion");
+			
+			String fecha_inicio_viabilidad_str = req.getParameter("fecha_inicio_viabilidad");
+			String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
+			
+			String fecha_plan_trabajo_str = req.getParameter("fecha_plan_trabajo");
+			String fecha_disponible_conectividad_str = req.getParameter("fecha_disponible_conectividad");
+			
+			String producto = req.getParameter("producto");
+			String conectividad = req.getParameter("conectividad");
+			String subtipo = req.getParameter("subtipo");
+			
+			
+			
+			
+			String tipo = req.getParameter("tipo");
+			String cliente = req.getParameter("cliente");
 
+			
+			String clasificacion = req.getParameter("clasificacion");
+			String gestor_it_str = req.getParameter("gestor_it");
+			String gestor_negocio_str = req.getParameter("gestor_negocio");
+			String coste = req.getParameter("coste");
+			String url_doc_google_drive = req.getParameter("url_doc_google_drive");
+			
+			if (fecha_alta_str.equals("")||tipo.equals("")||cliente.equals("")||clasificacion.equals("")
+					||gestor_it_str.equals("")||gestor_negocio_str.equals("")){
+				json.append("failure", "true");
+				json.append("error","Faltan campos obligatorios.");
+				
+			}else{
+				
+				ProyectoDao pDao = ProyectoDao.getInstance();		
+				
+				p.setStr_envioC100(envioC100);
+				p.setStr_OKNegocio(ok_negocio);
+				p.setStr_OKNegocioCheck(ok_negocio_check);
+				
+				p.setSubtipo(subtipo);
+				
+				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
+				
+				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				
+				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
+				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
+				
+				p.setProducto(producto);
+				
+				if (!"default".equals(conectividad))
+					p.setConectividad(conectividad);
+				
+				
+				p.setFecha_alta_str(fecha_alta_str);					
+				p.setFecha_alta(Utils.dateConverter(fecha_alta_str));					
+				
+				p.setTipo(tipo);
+				p.setClienteKey(Long.parseLong(cliente));
+				p.setClasificacion(Integer.parseInt(clasificacion));
+				p.setGestor_it(Long.parseLong(gestor_it_str));
+				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
+				p.setCoste(coste);
+				p.setUrl_doc_google_drive(url_doc_google_drive);
+				
+				
+				pDao.createProject(p,usermail);
+				
+				json.append("success", "true");
+				json.append("id", p.getKey().getId());
+							
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.getWriter().println(json);
+	}
+	*/
+//////////////////////////////////////////////////////////////////////////
 	
 	private void cloneProject(HttpServletRequest req, HttpServletResponse resp, String usermail) throws IOException, JSONException{
 		

@@ -217,6 +217,20 @@ public class ClienteDao {
 		return clientes;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Cliente> getAllClientesSortedName() {
+
+		List<Cliente> clientes;
+		PersistenceManager pm = PMF.get().getPersistenceManager();		
+		
+		Query q = pm.newQuery("select from " + Cliente.class.getName());		
+		q.setOrdering("nombre asc");
+		clientes = (List<Cliente>) q.execute();
+		
+		pm.close();
+
+		return clientes;
+	}
 	
 public List<Cliente> getAllNonDeletedClients(){
 		

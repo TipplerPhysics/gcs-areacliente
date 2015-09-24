@@ -90,8 +90,8 @@ public class CosteServlet extends HttpServlet {
 			resp.setHeader("Content-Disposition",
 					"attachment; filename=CostesGCS.xls");
 
-			WritableWorkbook w = Workbook
-					.createWorkbook(resp.getOutputStream());
+			WritableWorkbook w = Workbook.createWorkbook(resp
+					.getOutputStream());
 
 			CosteDao cDao = CosteDao.getInstance();
 			List<Coste> costes = cDao.getAllCostes();
@@ -194,11 +194,14 @@ public class CosteServlet extends HttpServlet {
 			s.addCell(new Label(21, 1, "COSTE", cellFormat));
 			
 
-			UserDao uDao = UserDao.getInstance();
-			User u = new User();
+			////////////////////////////////////////UserDao uDao = UserDao.getInstance();
+			////////////////////////////////////////User u = new User();
 
 			int aux = 2;
 
+			
+			////////////////////////////////////////////
+			
 			for (Coste c : costes) {
 				
 				s.addCell(new Label(0, aux, c.getCliente_name()));
@@ -213,15 +216,15 @@ public class CosteServlet extends HttpServlet {
 				if(!c.getComentarios().equals("")&&c.getComentarios()!=null)
 				s.addCell(new Label(7, aux, c.getComentarios()));
 				
-				if(!c.getStr_fecha_solicitud_valoracion().equals("")&&c.getStr_fecha_solicitud_valoracion()!=null)
+				if(c.getStr_fecha_solicitud_valoracion()!=null)
 					s.addCell(new Label(8, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
 				
-				if(!c.getStr_fecha_recepcion_valoracion().equals("")&&c.getStr_fecha_recepcion_valoracion()!=null)
-					s.addCell(new Label(9, aux,c.getStr_fecha_recepcion_valoracion()));
-				
+				if(c.getStr_fecha_recepcion_valoracion()!=null)
+					s.addCell(new Label(9, aux, c.getStr_fecha_recepcion_valoracion().replace(",", ".")));					
+		
 				if (!"".equals(c.getHoras_analisis())&&c.getHoras_analisis()!=null)
 					s.addCell(new Number(10, aux, Double.parseDouble(c.getHoras_analisis().replace(",", ".")),cellFormatRight));
-				
+								
 				if (!"".equals(c.getCoste_analisis())&&c.getCoste_analisis()!=null)
 					s.addCell(new Number(11, aux, Double.parseDouble(c.getCoste_analisis().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
@@ -261,6 +264,16 @@ public class CosteServlet extends HttpServlet {
 				
 				aux++;
 			}
+						
+			////////////////////////////////////////////
+			/*
+			    if(!c.getStr_fecha_solicitud_valoracion().equals("")&&c.getStr_fecha_solicitud_valoracion()!=null)
+					s.addCell(new Label(8, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
+					
+				if(!c.getStr_fecha_recepcion_valoracion().equals("")&&c.getStr_fecha_recepcion_valoracion()!=null)
+					s.addCell(new Label(9, aux,c.getStr_fecha_recepcion_valoracion()));							
+			*/
+			////////////////////////////////////////////////
 
 			w.write();
 			w.close();

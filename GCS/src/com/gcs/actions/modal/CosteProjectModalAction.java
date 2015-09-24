@@ -39,8 +39,9 @@ public class CosteProjectModalAction extends Action {
 			gestores_it.addAll(gestores_it_jdo);
 				
 			String git_str = req.getParameter("git");
-			if (!"undefined".equals(git_str)){
-				User git = uDao.getUserbyId(Long.parseLong(git_str));
+			User git = uDao.getUserbyId(Long.parseLong(git_str));
+			
+			if(git!=null){	
 				if (!gestores_it.contains(git)){
 					gestores_it.add(git);
 				}
@@ -48,8 +49,7 @@ public class CosteProjectModalAction extends Action {
 			
 			req.setAttribute("gestores_it", gestores_it);
 			req.setAttribute("coste", c);
-		
-
+			
 		return mapping.findForward("ok");
 	}
 }

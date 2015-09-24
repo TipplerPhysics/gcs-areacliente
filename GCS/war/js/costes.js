@@ -305,6 +305,21 @@ $(function() {
 		$('#total_horas').val(stringSuma.toString());
 	});
 	
+	$('.calcCoste').on('change', function(e) {
+		var a = parseFloat($('#analisis_coste').val());
+		if (isNaN(a))a=0;
+		var b = parseFloat($('#disenio_coste').val());
+		if (isNaN(b))b=0;
+		var c = parseFloat($('#construccion_coste').val());
+		if (isNaN(c))c=0;
+		var d = parseFloat($('#pruebas_coste').val());
+		if (isNaN(d))d=0;
+		var e = parseFloat($('#gestion_coste').val());
+		if (isNaN(e))e=0;
+		var stringSuma = a+b+c+d+e;
+		$('#total_coste').val(stringSuma.toString());
+	});
+	
 	$('#deleteCoste').on('click', function(e) {
 		var id= $(this).attr('name');
 		 var formURL = "/costeServlet?";

@@ -67,15 +67,15 @@ public class Utils {
 		String s = "";
 		
 		switch(permiso){
-		case 1: s="Admin";
+		case 1: s="ADMIN";
 			break;
-		case 2: s="Gestor Demanda";
+		case 2: s="GESTOR DEMANDA";
 			break;
-		case 3: s="Gestor IT";
+		case 3: s="GESTOR IT";
 			break;
-		case 4: s="Gestor Negocio";
+		case 4: s="GESTOR NEGOCIO";
 			break;
-		case 5: s="Consulta";
+		case 5: s="CONSULTA";
 			break;
 		}
 		

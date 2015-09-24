@@ -132,7 +132,7 @@ public class ServicioServlet extends HttpServlet {
 			s.addCell(new Label(1, 0, "PAIS",cellFormat));
 			s.addCell(new Label(2, 0, "SERVICIO",cellFormat));
 			s.addCell(new Label(3, 0, "ESTADO",cellFormat));
-			s.addCell(new Label(4, 0, "COD. SERVICIO",cellFormat));
+			s.addCell(new Label(4, 0, "COD. REDMINE",cellFormat));
 			s.addCell(new Label(5, 0, "OBSERVACIONES",cellFormat));
 			s.addCell(new Label(6, 0, "FORMATO INTERMEDIO",cellFormat));
 			s.addCell(new Label(7, 0, "FORMATO LOCAL",cellFormat));

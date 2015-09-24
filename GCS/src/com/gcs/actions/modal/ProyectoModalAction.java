@@ -85,6 +85,11 @@ public class ProyectoModalAction extends Action {
 		}
 		List<ProductoProyecto> productoProyecto = ProductoProyectoDao.getInstance().getAllProductoProyectoes();
 		
+		List<Integer> clasificaciones = new ArrayList<Integer>();
+		for(int i=1;i<=4;i++){
+			clasificaciones.add(i);
+		}
+				
 		List<ConectividadProyecto> conectividadProyecto = ConectividadProyectoDao.getInstance().getConectividadesByProducto(p.getProducto());
 		req.setAttribute("conectividades", conectividadProyecto);
 		req.setAttribute("productos", productoProyecto);
@@ -93,7 +98,7 @@ public class ProyectoModalAction extends Action {
 		req.setAttribute("gestores_negocio", gestores_negocio);
 		req.setAttribute("coste", coste);
 		req.setAttribute("proyecto", p);
-		
+		req.setAttribute("clasificaciones", clasificaciones);
 		
 
 		return mapping.findForward("ok");

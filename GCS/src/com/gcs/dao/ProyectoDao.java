@@ -3,6 +3,8 @@ package com.gcs.dao;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Comparator;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -347,6 +349,34 @@ public List<Proyecto> getProjectsByClientByDates(Long id,Date desde, Date hasta)
 
 	return projects;
 }
+
+public List<Proyecto> getProjectsByClientByDatesSortedCode(Long id,Date desde, Date hasta){
+	
+	PersistenceManager pManager = PMF.get().getPersistenceManager();
+	Transaction transaction = pManager.currentTransaction();
+	transaction.begin();
+
+	Query q = pManager.newQuery("select from " + Proyecto.class.getName());
+	
+	q.declareParameters("java.util.Date fechaDesde , java.util.Date fechaHasta, Long id");
+	q.setFilter("fecha_alta >= fechaDesde && fecha_alta <= fechaHasta && clienteKey == id");
+	
+	List<Proyecto> projects = (List<Proyecto>) q.execute(desde, hasta, id);
+	
+	Collections.sort(projects, new Comparator<Proyecto>() {
+		@Override
+		public  int compare(Proyecto p1, Proyecto p2) {
+			return p1.getCod_proyecto().compareTo(p2.getCod_proyecto());
+		}
+	});
+	
+	transaction.commit();
+
+	pManager.close();
+
+	return projects;
+}
+
 public List<Proyecto> getProjectsByCode(String id){
 	
 	
@@ -540,8 +570,7 @@ public Proyecto getProjectbyId(long l) {
 				finalFilters.add(new FilterPredicate("clienteName",FilterOperator.LESS_THAN, nCliente+"\ufffd"));
 			}
 			if(!clasificacion.equals("")){
-				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.GREATER_THAN_OR_EQUAL, clasificacion));
-				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.LESS_THAN, clasificacion+"\ufffd"));
+				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.EQUAL, Long.parseLong(clasificacion)));
 			}
 			if(!tipo.equals("")){
 				finalFilters.add(new FilterPredicate("tipo",FilterOperator.GREATER_THAN_OR_EQUAL, tipo));
@@ -566,7 +595,7 @@ public Proyecto getProjectbyId(long l) {
 			}
 			
 			entities = datastore.prepare(q).asList(fetchOptions);
-			proyectos = new ArrayList<>();
+			proyectos = new ArrayList<Proyecto>();
 			for(Entity result:entities){
 				try{
 					proyectos.add(buildProyecto(result));
@@ -632,10 +661,7 @@ public Proyecto getProjectbyId(long l) {
 			}
 			if(!clasificacion.equals("")){
 				q = new com.google.appengine.api.datastore.Query("Proyecto");
-				finalFilters = new ArrayList<>();
-				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.GREATER_THAN_OR_EQUAL, clasificacion));
-				finalFilters.add(new FilterPredicate("clasificacion",FilterOperator.LESS_THAN, clasificacion+"\ufffd"));
-				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				Filter finalFilter = new FilterPredicate("clasificacion",FilterOperator.EQUAL, Long.parseLong(clasificacion));
 				q.setFilter(finalFilter);
 				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
@@ -742,9 +768,14 @@ public Proyecto getProjectbyId(long l) {
 		
 		proyecto.setKey(entity.getKey());
 		
-		Integer clasificacion = getInteger(entity, "clasificacion");
+		/*Integer clasificacion = getInteger(entity, "clasificacion");
 		if(clasificacion != null) {
 			proyecto.setClasificacion(clasificacion);
+		}*/
+		
+		Long clasificacion = getLong(entity, "clasificacion");
+		if(clasificacion != null) {
+			proyecto.setClasificacion(Integer.parseInt(clasificacion.toString()));
 		}
 		
 		Long clienteKey =  getLong(entity, "clienteKey");

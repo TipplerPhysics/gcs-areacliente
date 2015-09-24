@@ -590,42 +590,8 @@ public class InformeExcelServlet extends HttpServlet  {
 		workbook.write(resp.getOutputStream());
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private void informeCartera(HttpServletRequest req, HttpServletResponse resp)throws Exception {
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	/*private void informeCartera(HttpServletRequest req, HttpServletResponse resp)throws Exception {
 		
 		
 		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -670,118 +636,539 @@ public class InformeExcelServlet extends HttpServlet  {
 				for(Proyecto proyecto:proyectos){
 					servicios = serviciosDao.getServiciosByProject(proyecto.getKey().getId());
 					conectividades = conectividadDao.getConectividadesByProject(proyecto.getKey().getId());
-					
-					for(Servicio servicio:servicios){
-					hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
-					hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
-					hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
-					hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
-					hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
-					hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
-					hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-					hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
-					hoja.getRow(head).createCell(8).setCellValue("");//conectividad.getSeguridad());
-					hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
-					hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
-					hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
-					hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
-					hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
-					hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
-					hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
-					hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
-					hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
-					hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
-					hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
-					hoja.getRow(head).createCell(20).setCellValue(servicio.getObservaciones());//observaciones
-					hoja.getRow(head).createCell(21).setCellValue(servicio.getFormato_intermedio());//formato intermedio
-					hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_local());//formato local
-					hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//
-					hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local2());//referencia local
-					hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
-					hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
-					hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_envioC100());
-					hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_OKNegocio());
-					hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
-					hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
-					hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_plan_trabajo());
-					hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_OKNegocioCheck());
-					hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
-					hoja.getRow(head).createCell(34).setCellValue(servicio.getStr_fecha_ini_pruebas());//fecha estimada pruebas
-					hoja.getRow(head).createCell(35).setCellValue(servicio.getStr_fecha_fin_pruebas());//fecha estimada fin pruebas
-					hoja.getRow(head).createCell(36).setCellValue("");//conectividad.getStr_fecha_ini_infraestructura());
-					hoja.getRow(head).createCell(37).setCellValue("");//conectividad.getStr_fecha_fin_infraestructura());
-					hoja.getRow(head).createCell(38).setCellValue("");//conectividad.getStr_fecha_implantacion());
-					hoja.getRow(head).createCell(39).setCellValue("");//conectividad.getStr_fecha_ini_seguridad());
-					hoja.getRow(head).createCell(40).setCellValue("");//conectividad.getStr_fecha_fin_seguridad());
-					hoja.getRow(head).createCell(41).setCellValue("");//conectividad.getEstado());
-					hoja.getRow(head).createCell(42).setCellValue(servicio.getStr_fecha_ini_integradas());//fecha inicio pruebas integradas
-					hoja.getRow(head).createCell(43).setCellValue(servicio.getStr_fecha_fin_integradas());//fecha fin pruebas integradas
-					hoja.getRow(head).createCell(44).setCellValue(servicio.getStr_fecha_ini_aceptacion());//fecha inicio pruebas aceptacion
-					hoja.getRow(head).createCell(45).setCellValue(servicio.getStr_fecha_fin_aceptacion());//fecha fin pruebas aceptacion
-					hoja.getRow(head).createCell(46).setCellValue(servicio.getStr_fecha_implantacion_produccion());//fehca implantacion servicio produccion
-					hoja.getRow(head).createCell(47).setCellValue(servicio.getStr_fecha_ini_validacion());//fecha inicio validacion 
-					hoja.getRow(head).createCell(48).setCellValue(servicio.getStr_fecha_fin_validacion());//fehca fin validacion
-					hoja.getRow(head).createCell(49).setCellValue(servicio.getStr_fecha_ini_primera_operacion());//fecha inicio primera operacion
-					hoja.getRow(head).createCell(50).setCellValue(servicio.getStr_fecha_fin_primera_operacion());//fehca fin primera operacion
-					hoja.getRow(head).createCell(51).setCellValue(servicio.getStr_fecha_ini_op_cliente());//fecha inicio operacion cliente
-					hoja.getRow(head).createCell(52).setCellValue(servicio.getStr_fecha_ANS());//fecha paso a ans
-					head++;
+					if(servicios.size()!=0){
+						if(conectividades.size()!=0){
+							for(Servicio servicio:servicios){
+								for(Conectividad conectividad:conectividades){
+									hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+									hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+									hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+									hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+									hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+									hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+									hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+									hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+									hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
+									hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
+									hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
+									hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
+									hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
+									hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
+									hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+									hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+									hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+									hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+									hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+									hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+									hoja.getRow(head).createCell(20).setCellValue(servicio.getObservaciones());//observaciones
+									hoja.getRow(head).createCell(21).setCellValue(servicio.getFormato_intermedio());//formato intermedio
+									hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_local());//formato local
+									hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//
+									hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local2());//referencia local
+									hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+									hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+									hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_envioC100());
+									hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_OKNegocio());
+									hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+									hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+									hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+									hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_OKNegocioCheck());
+									hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+									hoja.getRow(head).createCell(34).setCellValue(servicio.getStr_fecha_ini_pruebas());//fecha estimada pruebas
+									hoja.getRow(head).createCell(35).setCellValue(servicio.getStr_fecha_fin_pruebas());//fecha estimada fin pruebas
+									hoja.getRow(head).createCell(36).setCellValue(conectividad.getStr_fecha_ini_infraestructura());
+									hoja.getRow(head).createCell(37).setCellValue(conectividad.getStr_fecha_fin_infraestructura());
+									hoja.getRow(head).createCell(38).setCellValue(conectividad.getStr_fecha_implantacion());
+									hoja.getRow(head).createCell(39).setCellValue(conectividad.getStr_fecha_ini_seguridad());
+									hoja.getRow(head).createCell(40).setCellValue(conectividad.getStr_fecha_fin_seguridad());
+									hoja.getRow(head).createCell(41).setCellValue(conectividad.getEstado());
+									hoja.getRow(head).createCell(42).setCellValue(servicio.getStr_fecha_ini_integradas());//fecha inicio pruebas integradas
+									hoja.getRow(head).createCell(43).setCellValue(servicio.getStr_fecha_fin_integradas());//fecha fin pruebas integradas
+									hoja.getRow(head).createCell(44).setCellValue(servicio.getStr_fecha_ini_aceptacion());//fecha inicio pruebas aceptacion
+									hoja.getRow(head).createCell(45).setCellValue(servicio.getStr_fecha_fin_aceptacion());//fecha fin pruebas aceptacion
+									hoja.getRow(head).createCell(46).setCellValue(servicio.getStr_fecha_implantacion_produccion());//fehca implantacion servicio produccion
+									hoja.getRow(head).createCell(47).setCellValue(servicio.getStr_fecha_ini_validacion());//fecha inicio validacion 
+									hoja.getRow(head).createCell(48).setCellValue(servicio.getStr_fecha_fin_validacion());//fehca fin validacion
+									hoja.getRow(head).createCell(49).setCellValue(servicio.getStr_fecha_ini_primera_operacion());//fecha inicio primera operacion
+									hoja.getRow(head).createCell(50).setCellValue(servicio.getStr_fecha_fin_primera_operacion());//fehca fin primera operacion
+									hoja.getRow(head).createCell(51).setCellValue(servicio.getStr_fecha_ini_op_cliente());//fecha inicio operacion cliente
+									hoja.getRow(head).createCell(52).setCellValue(servicio.getStr_fecha_ANS());//fecha paso a ans
+									head++;
+								}
+							}
+						}else{
+							for(Servicio servicio:servicios){							
+								hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+								hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+								hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+								hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+								hoja.getRow(head).createCell(8).setCellValue("");//conectividad.getSeguridad());
+								hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
+								hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
+								hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
+								hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
+								hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
+								hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+								hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+								hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+								hoja.getRow(head).createCell(20).setCellValue(servicio.getObservaciones());//observaciones
+								hoja.getRow(head).createCell(21).setCellValue(servicio.getFormato_intermedio());//formato intermedio
+								hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_local());//formato local
+								hoja.getRow(head).createCell(23).setCellValue(servicio.getReferencia_local1());//
+								hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local2());//referencia local
+								hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+								hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+								hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_envioC100());
+								hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_OKNegocio());
+								hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+								hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+								hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+								hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_OKNegocioCheck());
+								hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+								hoja.getRow(head).createCell(34).setCellValue(servicio.getStr_fecha_ini_pruebas());//fecha estimada pruebas
+								hoja.getRow(head).createCell(35).setCellValue(servicio.getStr_fecha_fin_pruebas());//fecha estimada fin pruebas
+								hoja.getRow(head).createCell(36).setCellValue("");//conectividad.getStr_fecha_ini_infraestructura());
+								hoja.getRow(head).createCell(37).setCellValue("");//conectividad.getStr_fecha_fin_infraestructura());
+								hoja.getRow(head).createCell(38).setCellValue("");//conectividad.getStr_fecha_implantacion());
+								hoja.getRow(head).createCell(39).setCellValue("");//conectividad.getStr_fecha_ini_seguridad());
+								hoja.getRow(head).createCell(40).setCellValue("");//conectividad.getStr_fecha_fin_seguridad());
+								hoja.getRow(head).createCell(41).setCellValue("");//conectividad.getEstado());
+								hoja.getRow(head).createCell(42).setCellValue(servicio.getStr_fecha_ini_integradas());//fecha inicio pruebas integradas
+								hoja.getRow(head).createCell(43).setCellValue(servicio.getStr_fecha_fin_integradas());//fecha fin pruebas integradas
+								hoja.getRow(head).createCell(44).setCellValue(servicio.getStr_fecha_ini_aceptacion());//fecha inicio pruebas aceptacion
+								hoja.getRow(head).createCell(45).setCellValue(servicio.getStr_fecha_fin_aceptacion());//fecha fin pruebas aceptacion
+								hoja.getRow(head).createCell(46).setCellValue(servicio.getStr_fecha_implantacion_produccion());//fehca implantacion servicio produccion
+								hoja.getRow(head).createCell(47).setCellValue(servicio.getStr_fecha_ini_validacion());//fecha inicio validacion 
+								hoja.getRow(head).createCell(48).setCellValue(servicio.getStr_fecha_fin_validacion());//fehca fin validacion
+								hoja.getRow(head).createCell(49).setCellValue(servicio.getStr_fecha_ini_primera_operacion());//fecha inicio primera operacion
+								hoja.getRow(head).createCell(50).setCellValue(servicio.getStr_fecha_fin_primera_operacion());//fehca fin primera operacion
+								hoja.getRow(head).createCell(51).setCellValue(servicio.getStr_fecha_ini_op_cliente());//fecha inicio operacion cliente
+								hoja.getRow(head).createCell(52).setCellValue(servicio.getStr_fecha_ANS());//fecha paso a ans
+								head++;
+							}
+						}	
+					}else{
+						if(conectividades.size()!=0){
+							for(Conectividad conectividad:conectividades){
+								hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+								hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+								hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+								hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+								hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
+								hoja.getRow(head).createCell(9).setCellValue("");//servicio
+								hoja.getRow(head).createCell(10).setCellValue("");//pais
+								hoja.getRow(head).createCell(11).setCellValue("");//extension
+								hoja.getRow(head).createCell(12).setCellValue("");//codigo
+								hoja.getRow(head).createCell(13).setCellValue("");//estado
+								hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+								hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+								hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+								hoja.getRow(head).createCell(20).setCellValue("");//observaciones
+								hoja.getRow(head).createCell(21).setCellValue("");//formato intermedio
+								hoja.getRow(head).createCell(22).setCellValue("");//formato local
+								hoja.getRow(head).createCell(23).setCellValue("");//referencia local integ
+								hoja.getRow(head).createCell(24).setCellValue("");//referencia local
+								hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+								hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+								hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_envioC100());
+								hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_OKNegocio());
+								hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+								hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+								hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+								hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_OKNegocioCheck());
+								hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+								hoja.getRow(head).createCell(34).setCellValue("");//fecha estimada pruebas
+								hoja.getRow(head).createCell(35).setCellValue("");//fecha estimada fin pruebas
+								hoja.getRow(head).createCell(36).setCellValue(conectividad.getStr_fecha_ini_infraestructura());
+								hoja.getRow(head).createCell(37).setCellValue(conectividad.getStr_fecha_fin_infraestructura());
+								hoja.getRow(head).createCell(38).setCellValue(conectividad.getStr_fecha_implantacion());
+								hoja.getRow(head).createCell(39).setCellValue(conectividad.getStr_fecha_ini_seguridad());
+								hoja.getRow(head).createCell(40).setCellValue(conectividad.getStr_fecha_fin_seguridad());
+								hoja.getRow(head).createCell(41).setCellValue(conectividad.getEstado());
+								hoja.getRow(head).createCell(42).setCellValue("");//fecha inicio pruebas integradas
+								hoja.getRow(head).createCell(43).setCellValue("");//fecha fin pruebas integradas
+								hoja.getRow(head).createCell(44).setCellValue("");//fecha inicio pruebas aceptacion
+								hoja.getRow(head).createCell(45).setCellValue("");//fecha fin pruebas aceptacion
+								hoja.getRow(head).createCell(46).setCellValue("");//fehca implantacion servicio produccion
+								hoja.getRow(head).createCell(47).setCellValue("");//fecha inicio validacion 
+								hoja.getRow(head).createCell(48).setCellValue("");//fehca fin validacion
+								hoja.getRow(head).createCell(49).setCellValue("");//fecha inicio primera operacion
+								hoja.getRow(head).createCell(50).setCellValue("");//fehca fin primera operacion
+								hoja.getRow(head).createCell(51).setCellValue("");//fecha inicio operacion cliente
+								hoja.getRow(head).createCell(52).setCellValue("");//fecha paso a ans
+								head++;
+							}
+						}else{
+							hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+							hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+							hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+							hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+							hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+							hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+							hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+							hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+							hoja.getRow(head).createCell(8).setCellValue("");
+							hoja.getRow(head).createCell(9).setCellValue("");//servicio
+							hoja.getRow(head).createCell(10).setCellValue("");//pais
+							hoja.getRow(head).createCell(11).setCellValue("");//extension
+							hoja.getRow(head).createCell(12).setCellValue("");//codigo
+							hoja.getRow(head).createCell(13).setCellValue("");//estado
+							hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+							hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+							hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+							hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+							hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+							hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+							hoja.getRow(head).createCell(20).setCellValue("");//observaciones
+							hoja.getRow(head).createCell(21).setCellValue("");//formato intermedio
+							hoja.getRow(head).createCell(22).setCellValue("");//formato local
+							hoja.getRow(head).createCell(23).setCellValue("");//referencia local integ
+							hoja.getRow(head).createCell(24).setCellValue("");//referencia local
+							hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+							hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+							hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_envioC100());
+							hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_OKNegocio());
+							hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+							hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+							hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+							hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_OKNegocioCheck());
+							hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+							hoja.getRow(head).createCell(34).setCellValue("");//fecha estimada pruebas
+							hoja.getRow(head).createCell(35).setCellValue("");//fecha estimada fin pruebas
+							hoja.getRow(head).createCell(36).setCellValue("");
+							hoja.getRow(head).createCell(37).setCellValue("");
+							hoja.getRow(head).createCell(38).setCellValue("");
+							hoja.getRow(head).createCell(39).setCellValue("");
+							hoja.getRow(head).createCell(40).setCellValue("");
+							hoja.getRow(head).createCell(41).setCellValue("");
+							hoja.getRow(head).createCell(42).setCellValue("");//fecha inicio pruebas integradas
+							hoja.getRow(head).createCell(43).setCellValue("");//fecha fin pruebas integradas
+							hoja.getRow(head).createCell(44).setCellValue("");//fecha inicio pruebas aceptacion
+							hoja.getRow(head).createCell(45).setCellValue("");//fecha fin pruebas aceptacion
+							hoja.getRow(head).createCell(46).setCellValue("");//fehca implantacion servicio produccion
+							hoja.getRow(head).createCell(47).setCellValue("");//fecha inicio validacion 
+							hoja.getRow(head).createCell(48).setCellValue("");//fehca fin validacion
+							hoja.getRow(head).createCell(49).setCellValue("");//fecha inicio primera operacion
+							hoja.getRow(head).createCell(50).setCellValue("");//fehca fin primera operacion
+							hoja.getRow(head).createCell(51).setCellValue("");//fecha inicio operacion cliente
+							hoja.getRow(head).createCell(52).setCellValue("");//fecha paso a ans
+							head++;
+						}
 					}
-					for(Conectividad conectividad:conectividades){
-					hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
-					hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
-					hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
-					hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
-					hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
-					hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
-					hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-					hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
-					hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
-					hoja.getRow(head).createCell(9).setCellValue("");//servicio
-					hoja.getRow(head).createCell(10).setCellValue("");//pais
-					hoja.getRow(head).createCell(11).setCellValue("");//extension
-					hoja.getRow(head).createCell(12).setCellValue("");//codigo
-					hoja.getRow(head).createCell(13).setCellValue("");//estado
-					hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
-					hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
-					hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
-					hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
-					hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
-					hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
-					hoja.getRow(head).createCell(20).setCellValue("");//observaciones
-					hoja.getRow(head).createCell(21).setCellValue("");//formato intermedio
-					hoja.getRow(head).createCell(22).setCellValue("");//formato local
-					hoja.getRow(head).createCell(23).setCellValue("");//referencia local integ
-					hoja.getRow(head).createCell(24).setCellValue("");//referencia local
-					hoja.getRow(head).createCell(25).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
-					hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_fin_valoracion());
-					hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_envioC100());
-					hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_OKNegocio());
-					hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
-					hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
-					hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_plan_trabajo());
-					hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_OKNegocioCheck());
-					hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
-					hoja.getRow(head).createCell(34).setCellValue("");//fecha estimada pruebas
-					hoja.getRow(head).createCell(35).setCellValue("");//fecha estimada fin pruebas
-					hoja.getRow(head).createCell(36).setCellValue(conectividad.getStr_fecha_ini_infraestructura());
-					hoja.getRow(head).createCell(37).setCellValue(conectividad.getStr_fecha_fin_infraestructura());
-					hoja.getRow(head).createCell(38).setCellValue(conectividad.getStr_fecha_implantacion());
-					hoja.getRow(head).createCell(39).setCellValue(conectividad.getStr_fecha_ini_seguridad());
-					hoja.getRow(head).createCell(40).setCellValue(conectividad.getStr_fecha_fin_seguridad());
-					hoja.getRow(head).createCell(41).setCellValue(conectividad.getEstado());
-					hoja.getRow(head).createCell(42).setCellValue("");//fecha inicio pruebas integradas
-					hoja.getRow(head).createCell(43).setCellValue("");//fecha fin pruebas integradas
-					hoja.getRow(head).createCell(44).setCellValue("");//fecha inicio pruebas aceptacion
-					hoja.getRow(head).createCell(45).setCellValue("");//fecha fin pruebas aceptacion
-					hoja.getRow(head).createCell(46).setCellValue("");//fehca implantacion servicio produccion
-					hoja.getRow(head).createCell(47).setCellValue("");//fecha inicio validacion 
-					hoja.getRow(head).createCell(48).setCellValue("");//fehca fin validacion
-					hoja.getRow(head).createCell(49).setCellValue("");//fecha inicio primera operacion
-					hoja.getRow(head).createCell(50).setCellValue("");//fehca fin primera operacion
-					hoja.getRow(head).createCell(51).setCellValue("");//fecha inicio operacion cliente
-					hoja.getRow(head).createCell(52).setCellValue("");//fecha paso a ans
-					head++;
+				}
+				
+				
+			}
+			
+		}
+		
+		workbook.write(resp.getOutputStream());		
+	}*/
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+private void informeCartera(HttpServletRequest req, HttpServletResponse resp)throws Exception {
+		
+		
+		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+		resp.setHeader("Content-Disposition","attachment; filename=InformeCarteraGCS.xlsx");
+		String link= "/datadocs/templateCartera.xlsx";
+		InputStream inp = this.getServletContext().getResourceAsStream(link);
+		Workbook workbook = new XSSFWorkbook(OPCPackage.open(inp));
+		
+		ServicioDao serviciosDao = ServicioDao.getInstance();
+		ProyectoDao proyectoDao = ProyectoDao.getInstance();
+		ConectividadDao conectividadDao = ConectividadDao.getInstance();
+		ClienteDao clienteDao = ClienteDao.getInstance();
+		
+
+		org.apache.poi.ss.usermodel.Sheet hoja = workbook.getSheetAt(0);
+		
+		String desde = req.getParameter("desde");
+		String hasta = req.getParameter("hasta");
+		
+		if(desde.equals("")){
+			desde="01/01/1900";
+		}
+		if(hasta.equals("")){
+			hasta="01/01/2500";
+		}
+		
+		java.util.Date desdeDate = Utils.dateConverter(desde);
+		java.util.Date hastaDate = Utils.dateConverter(hasta);
+		
+		List<Servicio> servicios = null;
+		List<Conectividad> conectividades = null;
+		
+		
+		List<Cliente> clientes = clienteDao.getAllClientesSortedName();
+		
+		int head = 1;
+		
+		
+		for(Cliente cliente:clientes){
+			List<Proyecto> proyectos = proyectoDao.getProjectsByClientByDatesSortedCode(cliente.getKey().getId(),desdeDate, hastaDate);
+			if(proyectos.size()!=0){
+				for(Proyecto proyecto:proyectos){
+					servicios = serviciosDao.getServiciosByProject(proyecto.getKey().getId());
+					conectividades = conectividadDao.getConectividadesByProject(proyecto.getKey().getId());
+					if(servicios.size()!=0){
+						if(conectividades.size()!=0){
+							for(Servicio servicio:servicios){
+								for(Conectividad conectividad:conectividades){
+									hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+									hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+									hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+									hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+									hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+									hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+									hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+									hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+									hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
+									hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
+									hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
+									hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
+									hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
+									hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
+									hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+									hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+									hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+									hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+									hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+									hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+									if(proyecto.getUrl_doc_google_drive() != null){
+										hoja.getRow(head).createCell(20).setCellValue(proyecto.getUrl_doc_google_drive());
+									}
+									hoja.getRow(head).createCell(21).setCellValue(servicio.getObservaciones());//observaciones
+									hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_intermedio());//formato intermedio
+									hoja.getRow(head).createCell(23).setCellValue(servicio.getFormato_local());//formato local
+									hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local1());//
+									hoja.getRow(head).createCell(25).setCellValue(servicio.getReferencia_local2());//referencia local
+									hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+									hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+									hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_envioC100());
+									hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_OKNegocio());
+									hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+									hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+									hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+									hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_OKNegocioCheck());
+									hoja.getRow(head).createCell(34).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+									hoja.getRow(head).createCell(35).setCellValue(servicio.getStr_fecha_ini_pruebas());//fecha estimada pruebas
+									hoja.getRow(head).createCell(36).setCellValue(servicio.getStr_fecha_fin_pruebas());//fecha estimada fin pruebas
+									hoja.getRow(head).createCell(37).setCellValue(conectividad.getStr_fecha_ini_infraestructura());
+									hoja.getRow(head).createCell(38).setCellValue(conectividad.getStr_fecha_fin_infraestructura());
+									hoja.getRow(head).createCell(39).setCellValue(conectividad.getStr_fecha_implantacion());
+									hoja.getRow(head).createCell(40).setCellValue(conectividad.getStr_fecha_ini_seguridad());
+									hoja.getRow(head).createCell(41).setCellValue(conectividad.getStr_fecha_fin_seguridad());
+									hoja.getRow(head).createCell(42).setCellValue(conectividad.getEstado());
+									hoja.getRow(head).createCell(43).setCellValue(servicio.getStr_fecha_ini_integradas());//fecha inicio pruebas integradas
+									hoja.getRow(head).createCell(44).setCellValue(servicio.getStr_fecha_fin_integradas());//fecha fin pruebas integradas
+									hoja.getRow(head).createCell(45).setCellValue(servicio.getStr_fecha_ini_aceptacion());//fecha inicio pruebas aceptacion
+									hoja.getRow(head).createCell(46).setCellValue(servicio.getStr_fecha_fin_aceptacion());//fecha fin pruebas aceptacion
+									hoja.getRow(head).createCell(47).setCellValue(servicio.getStr_fecha_implantacion_produccion());//fehca implantacion servicio produccion
+									hoja.getRow(head).createCell(48).setCellValue(servicio.getStr_fecha_ini_validacion());//fecha inicio validacion 
+									hoja.getRow(head).createCell(49).setCellValue(servicio.getStr_fecha_fin_validacion());//fehca fin validacion
+									hoja.getRow(head).createCell(50).setCellValue(servicio.getStr_fecha_ini_primera_operacion());//fecha inicio primera operacion
+									hoja.getRow(head).createCell(51).setCellValue(servicio.getStr_fecha_fin_primera_operacion());//fehca fin primera operacion
+									hoja.getRow(head).createCell(52).setCellValue(servicio.getStr_fecha_ini_op_cliente());//fecha inicio operacion cliente
+									hoja.getRow(head).createCell(53).setCellValue(servicio.getStr_fecha_ANS());//fecha paso a ans
+									head++;
+								}
+							}
+						}else{
+							for(Servicio servicio:servicios){							
+								hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+								hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+								hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+								hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+								hoja.getRow(head).createCell(8).setCellValue("");//conectividad.getSeguridad());
+								hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
+								hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
+								hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
+								hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
+								hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
+								hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+								hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+								hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+								if(proyecto.getUrl_doc_google_drive() != null){
+									hoja.getRow(head).createCell(20).setCellValue(proyecto.getUrl_doc_google_drive());
+								}						
+								hoja.getRow(head).createCell(21).setCellValue(servicio.getObservaciones());//observaciones
+								hoja.getRow(head).createCell(22).setCellValue(servicio.getFormato_intermedio());//formato intermedio
+								hoja.getRow(head).createCell(23).setCellValue(servicio.getFormato_local());//formato local
+								hoja.getRow(head).createCell(24).setCellValue(servicio.getReferencia_local1());//
+								hoja.getRow(head).createCell(25).setCellValue(servicio.getReferencia_local2());//referencia local
+								hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+								hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+								hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_envioC100());
+								hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_OKNegocio());
+								hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+								hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+								hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+								hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_OKNegocioCheck());
+								hoja.getRow(head).createCell(34).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+								hoja.getRow(head).createCell(35).setCellValue(servicio.getStr_fecha_ini_pruebas());//fecha estimada pruebas
+								hoja.getRow(head).createCell(36).setCellValue(servicio.getStr_fecha_fin_pruebas());//fecha estimada fin pruebas
+								hoja.getRow(head).createCell(37).setCellValue("");//conectividad.getStr_fecha_ini_infraestructura());
+								hoja.getRow(head).createCell(38).setCellValue("");//conectividad.getStr_fecha_fin_infraestructura());
+								hoja.getRow(head).createCell(39).setCellValue("");//conectividad.getStr_fecha_implantacion());
+								hoja.getRow(head).createCell(40).setCellValue("");//conectividad.getStr_fecha_ini_seguridad());
+								hoja.getRow(head).createCell(41).setCellValue("");//conectividad.getStr_fecha_fin_seguridad());
+								hoja.getRow(head).createCell(42).setCellValue("");//conectividad.getEstado());
+								hoja.getRow(head).createCell(43).setCellValue(servicio.getStr_fecha_ini_integradas());//fecha inicio pruebas integradas
+								hoja.getRow(head).createCell(44).setCellValue(servicio.getStr_fecha_fin_integradas());//fecha fin pruebas integradas
+								hoja.getRow(head).createCell(45).setCellValue(servicio.getStr_fecha_ini_aceptacion());//fecha inicio pruebas aceptacion
+								hoja.getRow(head).createCell(46).setCellValue(servicio.getStr_fecha_fin_aceptacion());//fecha fin pruebas aceptacion
+								hoja.getRow(head).createCell(47).setCellValue(servicio.getStr_fecha_implantacion_produccion());//fehca implantacion servicio produccion
+								hoja.getRow(head).createCell(48).setCellValue(servicio.getStr_fecha_ini_validacion());//fecha inicio validacion 
+								hoja.getRow(head).createCell(49).setCellValue(servicio.getStr_fecha_fin_validacion());//fehca fin validacion
+								hoja.getRow(head).createCell(50).setCellValue(servicio.getStr_fecha_ini_primera_operacion());//fecha inicio primera operacion
+								hoja.getRow(head).createCell(51).setCellValue(servicio.getStr_fecha_fin_primera_operacion());//fehca fin primera operacion
+								hoja.getRow(head).createCell(52).setCellValue(servicio.getStr_fecha_ini_op_cliente());//fecha inicio operacion cliente
+								hoja.getRow(head).createCell(53).setCellValue(servicio.getStr_fecha_ANS());//fecha paso a ans
+								head++;
+							}
+						}	
+					}else{
+						if(conectividades.size()!=0){
+							for(Conectividad conectividad:conectividades){
+								hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+								hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+								hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+								hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+								hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
+								hoja.getRow(head).createCell(9).setCellValue("");//servicio
+								hoja.getRow(head).createCell(10).setCellValue("");//pais
+								hoja.getRow(head).createCell(11).setCellValue("");//extension
+								hoja.getRow(head).createCell(12).setCellValue("");//codigo
+								hoja.getRow(head).createCell(13).setCellValue("");//estado
+								hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+								hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+								hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+								if(proyecto.getUrl_doc_google_drive() != null){
+									hoja.getRow(head).createCell(20).setCellValue(proyecto.getUrl_doc_google_drive());
+								}							
+								hoja.getRow(head).createCell(21).setCellValue("");//observaciones
+								hoja.getRow(head).createCell(22).setCellValue("");//formato intermedio
+								hoja.getRow(head).createCell(23).setCellValue("");//formato local
+								hoja.getRow(head).createCell(24).setCellValue("");//referencia local integ
+								hoja.getRow(head).createCell(25).setCellValue("");//referencia local
+								hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+								hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+								hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_envioC100());
+								hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_OKNegocio());
+								hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+								hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+								hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+								hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_OKNegocioCheck());
+								hoja.getRow(head).createCell(34).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+								hoja.getRow(head).createCell(35).setCellValue("");//fecha estimada pruebas
+								hoja.getRow(head).createCell(36).setCellValue("");//fecha estimada fin pruebas
+								hoja.getRow(head).createCell(37).setCellValue(conectividad.getStr_fecha_ini_infraestructura());
+								hoja.getRow(head).createCell(38).setCellValue(conectividad.getStr_fecha_fin_infraestructura());
+								hoja.getRow(head).createCell(39).setCellValue(conectividad.getStr_fecha_implantacion());
+								hoja.getRow(head).createCell(40).setCellValue(conectividad.getStr_fecha_ini_seguridad());
+								hoja.getRow(head).createCell(41).setCellValue(conectividad.getStr_fecha_fin_seguridad());
+								hoja.getRow(head).createCell(42).setCellValue(conectividad.getEstado());
+								hoja.getRow(head).createCell(43).setCellValue("");//fecha inicio pruebas integradas
+								hoja.getRow(head).createCell(44).setCellValue("");//fecha fin pruebas integradas
+								hoja.getRow(head).createCell(45).setCellValue("");//fecha inicio pruebas aceptacion
+								hoja.getRow(head).createCell(46).setCellValue("");//fecha fin pruebas aceptacion
+								hoja.getRow(head).createCell(47).setCellValue("");//fehca implantacion servicio produccion
+								hoja.getRow(head).createCell(48).setCellValue("");//fecha inicio validacion 
+								hoja.getRow(head).createCell(49).setCellValue("");//fehca fin validacion
+								hoja.getRow(head).createCell(50).setCellValue("");//fecha inicio primera operacion
+								hoja.getRow(head).createCell(51).setCellValue("");//fehca fin primera operacion
+								hoja.getRow(head).createCell(52).setCellValue("");//fecha inicio operacion cliente
+								hoja.getRow(head).createCell(53).setCellValue("");//fecha paso a ans
+								head++;
+							}
+						}else{
+							hoja.createRow(head).createCell(0).setCellValue(cliente.getNombre());
+							hoja.getRow(head).createCell(1).setCellValue(cliente.getClientId());
+							hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
+							hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
+							hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
+							hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
+							hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
+							hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
+							hoja.getRow(head).createCell(8).setCellValue("");
+							hoja.getRow(head).createCell(9).setCellValue("");//servicio
+							hoja.getRow(head).createCell(10).setCellValue("");//pais
+							hoja.getRow(head).createCell(11).setCellValue("");//extension
+							hoja.getRow(head).createCell(12).setCellValue("");//codigo
+							hoja.getRow(head).createCell(13).setCellValue("");//estado
+							hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
+							hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
+							hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
+							hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+							hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
+							hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
+							if(proyecto.getUrl_doc_google_drive() != null){
+								hoja.getRow(head).createCell(20).setCellValue(proyecto.getUrl_doc_google_drive());
+							}					
+							hoja.getRow(head).createCell(21).setCellValue("");//observaciones
+							hoja.getRow(head).createCell(22).setCellValue("");//formato intermedio
+							hoja.getRow(head).createCell(23).setCellValue("");//formato local
+							hoja.getRow(head).createCell(24).setCellValue("");//referencia local integ
+							hoja.getRow(head).createCell(25).setCellValue("");//referencia local
+							hoja.getRow(head).createCell(26).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
+							hoja.getRow(head).createCell(27).setCellValue(proyecto.getStr_fecha_fin_valoracion());
+							hoja.getRow(head).createCell(28).setCellValue(proyecto.getStr_envioC100());
+							hoja.getRow(head).createCell(29).setCellValue(proyecto.getStr_OKNegocio());
+							hoja.getRow(head).createCell(30).setCellValue(proyecto.getStr_fecha_inicio_viabilidad());
+							hoja.getRow(head).createCell(31).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
+							hoja.getRow(head).createCell(32).setCellValue(proyecto.getStr_fecha_plan_trabajo());
+							hoja.getRow(head).createCell(33).setCellValue(proyecto.getStr_OKNegocioCheck());
+							hoja.getRow(head).createCell(34).setCellValue(proyecto.getStr_fecha_disponible_conectividad());
+							hoja.getRow(head).createCell(35).setCellValue("");//fecha estimada pruebas
+							hoja.getRow(head).createCell(36).setCellValue("");//fecha estimada fin pruebas
+							hoja.getRow(head).createCell(37).setCellValue("");
+							hoja.getRow(head).createCell(38).setCellValue("");
+							hoja.getRow(head).createCell(39).setCellValue("");
+							hoja.getRow(head).createCell(40).setCellValue("");
+							hoja.getRow(head).createCell(41).setCellValue("");
+							hoja.getRow(head).createCell(42).setCellValue("");
+							hoja.getRow(head).createCell(43).setCellValue("");//fecha inicio pruebas integradas
+							hoja.getRow(head).createCell(44).setCellValue("");//fecha fin pruebas integradas
+							hoja.getRow(head).createCell(45).setCellValue("");//fecha inicio pruebas aceptacion
+							hoja.getRow(head).createCell(46).setCellValue("");//fecha fin pruebas aceptacion
+							hoja.getRow(head).createCell(47).setCellValue("");//fehca implantacion servicio produccion
+							hoja.getRow(head).createCell(48).setCellValue("");//fecha inicio validacion 
+							hoja.getRow(head).createCell(49).setCellValue("");//fehca fin validacion
+							hoja.getRow(head).createCell(50).setCellValue("");//fecha inicio primera operacion
+							hoja.getRow(head).createCell(51).setCellValue("");//fehca fin primera operacion
+							hoja.getRow(head).createCell(52).setCellValue("");//fecha inicio operacion cliente
+							hoja.getRow(head).createCell(53).setCellValue("");//fecha paso a ans
+							head++;
+						}
 					}
 				}
 				
@@ -792,6 +1179,7 @@ public class InformeExcelServlet extends HttpServlet  {
 		
 		workbook.write(resp.getOutputStream());		
 	}
+	
 	private void informePaises(HttpServletRequest req, HttpServletResponse resp)throws Exception {
 		
 		
@@ -927,7 +1315,9 @@ public class InformeExcelServlet extends HttpServlet  {
 					
 					hoja.getRow(head).createCell(2).setCellStyle(bodyStyle);
 					
-					if(servicio.getStr_fecha_implantacion_produccion()!=null&&!servicio.getStr_fecha_implantacion_produccion().equals("")){
+					//////////////////////////////////////////
+					////el campo fecha implantacion produccion esta vacio para la mayoria de los campos 
+					/*if(servicio.getStr_fecha_implantacion_produccion()!=null&&!servicio.getStr_fecha_implantacion_produccion().equals("")){
 						int mes= Integer.parseInt(servicio.getStr_fecha_implantacion_produccion().substring(3,5));
 						int trimestre = (int)((mes-1)/3)+1;
 						
@@ -944,11 +1334,43 @@ public class InformeExcelServlet extends HttpServlet  {
 						if(trimestre==5)trimestre=1;
 						if(trimestre==6)trimestre=2;
 						
-						
 						hoja.getRow(head).getCell(2).setCellValue(trimestre+"º");
-					}					
+					}*/
+					///////////////////////////////////////////
+					int mes;
+					int trimestre;
 					
-					
+					java.util.Date fecha = new Date();
+					mes = fecha.getMonth();
+					trimestre =	(int)(mes/3)+1;	
+					if(servicio.getEstado().equals("PDTE DOC ALCANCE EN GCS")||servicio.getEstado().equals("C100 EN CONFECCIÓN")||servicio.getEstado().equals("PDTE VALORACIÓN IT")
+							||servicio.getEstado().equals("PDTE PLAN DE TRABAJO IT")||servicio.getEstado().equals("PDTE VISTO BUENO DEL CL DEL PLAN DE TRABAJO")
+							||servicio.getEstado().equals("EN TEST - CONECTIVIDAD")||servicio.getEstado().equals("EN TEST - INTEGRACIÓN")){
+						trimestre = trimestre+2;							
+					}else{
+						if(servicio.getEstado().equals("EN TEST - ACEPTACIÓN")||servicio.getEstado().equals("EN DESARROLLO")){
+							trimestre++;
+						}else{
+							if(servicio.getEstado().equals("PARADO POR PRODUCTO")||servicio.getEstado().equals("PARADO POR NEGOCIO")||servicio.getEstado().equals("PARADO POR IT")
+									||servicio.getEstado().equals("EXCLUIDO POR NEGOCIO")||servicio.getEstado().equals("EXCLUIDO POR TIMEOUT")||servicio.getEstado().equals("EN PENNY TEST")
+									||servicio.getEstado().equals("IMPLEMENTADO CON OK")||servicio.getEstado().equals("IMPLEMENTADO SIN OK")){
+								trimestre = 0;
+							}
+						}
+					}
+						
+					if(trimestre == 1 || trimestre == 2 || trimestre == 3 || trimestre == 4){
+						hoja.getRow(head).getCell(2).setCellValue(trimestre+"º");
+					}else{
+						if(trimestre == 5 || trimestre == 6){
+							hoja.getRow(head).getCell(2).setCellValue("Próximo año");
+						}else{
+							hoja.getRow(head).getCell(2).setCellValue("");
+						}
+					}	
+						
+					//////////////////////////////////////////////
+										
 					hoja.getRow(head).createCell(3).setCellStyle(bodyStyle);
 					hoja.getRow(head).getCell(3).setCellValue(servicio.getCliente_name());
 					
@@ -1415,6 +1837,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 		
 		int headProy = 1;
 		int headCoste = 1;
+		String fechaString="";
 		
 		for(Proyecto proyecto: proyectos){
 			hojaProy.createRow(headProy).createCell(0).setCellValue(proyecto.getFecha_alta_str());
@@ -1447,27 +1870,34 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 				hojaCost.getRow(headCoste).createCell(3).setCellValue(coste.getNum_control());
 				hojaCost.getRow(headCoste).createCell(4).setCellValue(coste.getEquipos());
 				hojaCost.getRow(headCoste).createCell(5).setCellStyle(styleexce);
-				hojaCost.getRow(headCoste).getCell(5).setCellValue(coste.getFecha_alta());
+				fechaString = coste.getStr_fecha_alta();
+				if(fechaString.indexOf("2015")>-1){
+					hojaCost.getRow(headCoste).getCell(5).setCellValue(coste.getFecha_alta());
+				}else{
+					hojaCost.getRow(headCoste).getCell(5).setCellValue("");
+				}
 				hojaCost.getRow(headCoste).createCell(6).setCellValue(coste.getGestor_it_name());
 				hojaCost.getRow(headCoste).createCell(7).setCellValue(coste.getNum_valoracion());
 				if(!coste.getComentarios().equals("")&&coste.getComentarios()!=null)
 				hojaCost.getRow(headCoste).createCell(8).setCellValue(coste.getComentarios());
-				if(!coste.getStr_fecha_solicitud_valoracion().equals("")&&coste.getStr_fecha_solicitud_valoracion()!=null)
-				hojaCost.getRow(headCoste).createCell(9).setCellValue(coste.getStr_fecha_solicitud_valoracion());
+				if(coste.getStr_fecha_solicitud_valoracion()!=null)
+				hojaCost.getRow(headCoste).createCell(9).setCellValue(coste.getStr_fecha_solicitud_valoracion());		
+				if(coste.getStr_fecha_recepcion_valoracion()!=null)
+				hojaCost.getRow(headCoste).createCell(10).setCellValue(coste.getStr_fecha_recepcion_valoracion());			
 				if (!"".equals(coste.getHoras_analisis())&&coste.getHoras_analisis()!=null)
-				hojaCost.getRow(headCoste).createCell(10).setCellValue(coste.getHoras_analisis());
+				hojaCost.getRow(headCoste).createCell(11).setCellValue(coste.getHoras_analisis());
 				if (!"".equals(coste.getCoste_analisis())&&coste.getCoste_analisis()!=null)
-				hojaCost.getRow(headCoste).createCell(11).setCellValue(coste.getCoste_analisis());
-				hojaCost.getRow(headCoste).createCell(12).setCellValue(coste.getHoras_diseño());
-				hojaCost.getRow(headCoste).createCell(13).setCellValue(coste.getCoste_diseño());
-				hojaCost.getRow(headCoste).createCell(14).setCellValue(coste.getHoras_construccion());
-				hojaCost.getRow(headCoste).createCell(15).setCellValue(coste.getCoste_construccion());
-				hojaCost.getRow(headCoste).createCell(16).setCellValue(coste.getHoras_pruebas());
-				hojaCost.getRow(headCoste).createCell(17).setCellValue(coste.getCoste_pruebas());
-				hojaCost.getRow(headCoste).createCell(18).setCellValue(coste.getHoras_gestion());
-				hojaCost.getRow(headCoste).createCell(19).setCellValue(coste.getCoste_gestion());
-				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))hojaCost.getRow(headCoste).createCell(20).setCellValue(Double.parseDouble(coste.getHoras_total()));
-				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))hojaCost.getRow(headCoste).createCell(21).setCellValue(Double.parseDouble(coste.getCoste_total()));
+				hojaCost.getRow(headCoste).createCell(12).setCellValue(coste.getCoste_analisis());
+				hojaCost.getRow(headCoste).createCell(13).setCellValue(coste.getHoras_diseño());
+				hojaCost.getRow(headCoste).createCell(14).setCellValue(coste.getCoste_diseño());
+				hojaCost.getRow(headCoste).createCell(15).setCellValue(coste.getHoras_construccion());
+				hojaCost.getRow(headCoste).createCell(16).setCellValue(coste.getCoste_construccion());
+				hojaCost.getRow(headCoste).createCell(17).setCellValue(coste.getHoras_pruebas());
+				hojaCost.getRow(headCoste).createCell(18).setCellValue(coste.getCoste_pruebas());
+				hojaCost.getRow(headCoste).createCell(19).setCellValue(coste.getHoras_gestion());
+				hojaCost.getRow(headCoste).createCell(20).setCellValue(coste.getCoste_gestion());
+				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))hojaCost.getRow(headCoste).createCell(21).setCellValue(Double.parseDouble(coste.getHoras_total()));
+				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))hojaCost.getRow(headCoste).createCell(22).setCellValue(Double.parseDouble(coste.getCoste_total()));
 				headCoste++;
 				Double costeTotal= null;
 				Double horasTotales= null;

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="modal_ajax">
-<div class="">
+<div class="" id="modal_user_edit">
 				<h2>Editar usuario</h2>
 				<hr />
 			</div>
@@ -43,8 +43,8 @@
 								<span class="lbl">Perfil<span class="required-asterisk">*</span>:</span>
 								<select id="permiso_select_modal" class="long selected selectpicker"
 									name="permiso" data-live-search="true">
-									<c:forEach items="${permisos}" var="permiso">		         	
-										<option value="${permiso.value}">${permiso.desc}</option>
+									<c:forEach items="${permisos}" var="permiso">
+										<option value="${permiso.value}" >${permiso.desc}</option>
 									</c:forEach>
 								</select>
 							</div>

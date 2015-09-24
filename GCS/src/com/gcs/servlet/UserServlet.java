@@ -98,7 +98,7 @@ public class UserServlet extends HttpServlet {
 
 		
 		String id = req.getParameter("id");
-		
+
 		Integer permiso = Integer.parseInt(req.getParameter("permiso"));
 		String permisoStr = Utils.getPermisoStr(permiso);
 		
@@ -284,11 +284,11 @@ public class UserServlet extends HttpServlet {
 				areas = areas.replace("-", " - ");
 				areas = areas.replace("_", " - ");
 				}
-				s.addCell(new Label(0, aux, u.getNombre()));
-				s.addCell(new Label(1, aux, u.getApellido1()));
-				s.addCell(new Label(2, aux, u.getApellido2()));
-				s.addCell(new Label(3, aux, u.getEmail()));
-				s.addCell(new Label(4, aux, u.getPermisoStr()));
+				s.addCell(new Label(0, aux, u.getNombre().trim()));
+				s.addCell(new Label(1, aux, u.getApellido1().trim()));
+				s.addCell(new Label(2, aux, u.getApellido2().trim()));
+				s.addCell(new Label(3, aux, u.getEmail().trim()));
+				s.addCell(new Label(4, aux, u.getPermisoStr().trim()));
 				s.addCell(new Label(5, aux, u.getDepartamento()));
 				s.addCell(new Label(6, aux, areas));
 				

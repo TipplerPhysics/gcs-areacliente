@@ -384,6 +384,9 @@ function generateChecks(pagina,destino){
 	},'html');
 }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function editRow(id){
 	var $currentRow = $('#row'+id);
 	var $table = $currentRow.closest('table');
@@ -403,26 +406,40 @@ function editRow(id){
 	}
 	dto= $currentRow.attr('data-dto');
 	// Current known values from item.
-	var celdas = $currentRow.children();
-	cnombre = $(celdas[0]).children().html();
-	cap1 = $(celdas[1]).children().html();
-	cap2 = $(celdas[2]).children().html();
+	cnombre = $currentRow.attr('data-nombre');
+	cap1 = $currentRow.attr('data-apellido1');
+	cap2 = $currentRow.attr('data-apellido2');
 	cdepartamento = $currentRow.data('dto');
 	cpermiso = $currentRow.data('permiso');
 	email = $currentRow.attr('data-mail');
-	
+		
 	$("#id_modal").val(id);
 	$("#nombre_modal").val(cnombre);
 	$("#ap1_modal").val(cap1);
 	$("#ap2_modal").val(cap2);
 	$("#email_modal").val(email);
 	$("#dto_select_modal").val(cdepartamento);
-	$("#permiso_select_modal").val(cpermiso);
-	
+	if(cpermiso == "CONSULTA"){
+		$("#permiso_select_modal").val("5");
+	}
+	if(cpermiso == "GESTOR NEGOCIO"){
+		$("#permiso_select_modal").val("4");
+	}
+	if(cpermiso == "GESTOR IT"){
+		$("#permiso_select_modal").val("3");
+	}
+	if(cpermiso == "GESTOR DEMANDA"){
+		$("#permiso_select_modal").val("2");
+	}
+	if(cpermiso == "ADMIN"){
+		$("#permiso_select_modal").val("1");
+	}
 	
 	showModal();
 	
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function drawChecksAreas(str){
 	for (x=0;x<str.length;x++){

@@ -31,7 +31,7 @@
 								<input name="radio" id="radio_${coste.key.id}" data-git="${coste.gestor_it_key}" type="radio"/>
 							</label>
 						</td>
-						<td><span>${coste.num_control}</span></td>
+						<td><span>${coste.num_control}</span></td> 
 						<td><span>${coste.equipos}</span></td>
 						<td><span>${coste.project_name}</span></td>
 					</tr>

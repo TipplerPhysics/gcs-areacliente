@@ -101,6 +101,7 @@
 									<option value="INNOVERY">INNOVERY</option>
 									<option value="IS">IS</option>									
 									<option value="SOLUTIONS">SOLUTIONS</option>
+									<option value="SOPORTE GNC">SOPORTE GNC</option>
 									<option value="SOPORTE SWIFT">SOPORTE SWIFT</option>									
 									<option value="TELEMÁTICOS">TELEMÁTICOS</option>
 									
@@ -134,7 +135,7 @@
 						<div class="form-field">
 							<span class="lbl">Análisis:</span>
 							<div class="input">
-								<input id="analisis_horas" name="analisis_horas" class="horas number calcHoras"/><input id="analisis_coste" name="analisis_coste" class="coste number"/>
+								<input id="analisis_horas" name="analisis_horas" class="horas number calcHoras"/><input id="analisis_coste" name="analisis_coste" class="coste number calcCoste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -144,7 +145,7 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="disenio_horas" name="diseño_horas" class="horas number calcHoras disenio_horeas"/><input id="diseño_coste" name="diseño_coste" class="coste number"/>
+								<input id="disenio_horas" name="diseño_horas" class="horas number calcHoras disenio_horeas"/><input id="disenio_coste" name="diseño_coste" class="coste number calcCoste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -154,7 +155,7 @@
 						<div class="form-field">
 							<span class="lbl">Construcción:</span>
 							<div class="input">
-								<input id="construccion_horas" name="construccion_horas" class="horas number calcHoras"/><input id="construccion_coste" name="construccion_coste" class="coste number"/>
+								<input id="construccion_horas" name="construccion_horas" class="horas number calcHoras"/><input id="construccion_coste" name="construccion_coste" class="coste number calcCoste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -164,7 +165,7 @@
 						<div class="form-field">
 							<span class="lbl">Pruebas:</span>
 							<div class="input">
-								<input id="pruebas_horas" name="pruebas_horas" class="horas number calcHoras"/><input id="pruebas_coste" name="pruebas_coste" class="coste number"/>
+								<input id="pruebas_horas" name="pruebas_horas" class="horas number calcHoras"/><input id="pruebas_coste" name="pruebas_coste" class="coste number calcCoste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -174,7 +175,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestión:</span>
 							<div class="input">
-								<input id="gestion_horas" name="gestion_horas" class="horas calcHoras number"/><input id="gestion_coste" name="gestion_coste" class="coste number"/>
+								<input id="gestion_horas" name="gestion_horas" class="horas calcHoras number"/><input id="gestion_coste" name="gestion_coste" class="coste number calcCoste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>

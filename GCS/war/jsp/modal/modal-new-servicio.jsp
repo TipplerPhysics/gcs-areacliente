@@ -67,7 +67,7 @@
 						
 			
 						<div class="form-field">
-							<span class="lbl">Cod. servicio<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Cod. Redmine<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio" name="cod_servicio" maxlength="25" class="long" required aria-required="true">
 						</div>
 						

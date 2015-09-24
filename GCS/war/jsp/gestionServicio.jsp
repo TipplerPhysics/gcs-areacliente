@@ -95,9 +95,15 @@
 						</div>
 					
 						<div class="form-field">
-							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
-							<input type="text" id="cod_servicio" name="cod_servicio" class="long" required aria-required="true" maxlength="25">
+							<span class="lbl">Cód. Redmine:</span>
+							<input type="text" id="cod_servicio" name="cod_servicio" class="long" maxlength="25">
 						</div>
+						
+						<!-- <div class="form-field">
+							<span class="lbl">Cód. Redmine<span class="required-asterisk">*</span>:</span>
+							<input type="text" id="cod_servicio" name="cod_servicio" class="long" required aria-required="true" maxlength="25">
+						</div> -->
+						
 						
 						<div class="form-field">
 							<span class="lbl">Observaciones:</span>

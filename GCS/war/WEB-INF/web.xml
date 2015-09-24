@@ -7,7 +7,17 @@
 	
 	
 	<!-- LISTADO DE SERVLETS -->
+	  
+	 <!-- <servlet>
+	    <servlet-name>NuevoServicio</servlet-name>
+	    <servlet-class>com.gcs.servlet.newElementsServlet</servlet-class>
+	  </servlet>
 	
+	  <servlet-mapping>
+	    <servlet-name>NuevoServicio</servlet-name>
+	    <url-pattern>/nuevoservicio</url-pattern>
+	  </servlet-mapping> -->
+	  
 	  <servlet>
 	    <servlet-name>DefaultConf</servlet-name>
 	    <servlet-class>com.gcs.servlet.DefaultConf</servlet-class>
@@ -118,7 +128,7 @@
 	    <url-pattern>/serviceServlet</url-pattern>
 	  </servlet-mapping>
 	  
-	   <servlet>
+	  <servlet>
 	    <servlet-name>ClienteServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.ClienteServlet</servlet-class>
 	  </servlet>
@@ -126,7 +136,7 @@
 	  <servlet-mapping>
 	    <servlet-name>ClienteServlet</servlet-name>
 	    <url-pattern>/clienteServlet</url-pattern>
-	  </servlet-mapping>
+	  </servlet-mapping>	  
 	  
 	  <servlet>
 	    <servlet-name>ImplantacionServlet</servlet-name>

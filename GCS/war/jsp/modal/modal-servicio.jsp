@@ -72,10 +72,14 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Cód. servicio<span class="required-asterisk">*</span>:</span>
-							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long" required aria-required="true">
-
+							<span class="lbl">Cód. Redmine:</span>
+							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long">
 						</div>
+						
+						<!-- <div class="form-field">
+							<span class="lbl">Cód. Redmine<span class="required-asterisk">*</span>:</span>
+							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long" required aria-required="true">
+						</div> -->
 						
 						<div class="form-field">
 							<span class="lbl">Observaciones:</span>

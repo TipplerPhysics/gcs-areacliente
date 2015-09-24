@@ -85,17 +85,20 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Clasificaci&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Clasificación<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="clasificacion" id="clasificacion" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
-									<option value="4">4</option>									
+									<option value="4">4</option>
+									
+									
+																		
 								</select>
 							</div>
-						</div>
+						</div>																			
 						
 						<div class="form-field">
 							<span class="lbl">Gestor IT<span class="required-asterisk">*</span>:</span>
@@ -132,9 +135,14 @@
 						</div>
 						
 						<div class="form-field" style="margin-bottom: 0px;">
-							<span class="lbl">Url carpeta Google Drive:</span>
+							<span class="lbl">Petición:</span>
 							<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
 						</div>
+						
+						<!-- <div class="form-field" style="margin-bottom: 0px;">
+							<span class="lbl">Url carpeta Google Drive:</span>
+							<input type="text" id="url_doc_google_drive" name="url_doc_google_drive" class="long" maxlength="500">
+						</div> -->
 					
 				</div>
 				
@@ -301,11 +309,11 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${proyectos}" var="proyecto">
-									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-servicio="${proyecto.servicio}" data-conectividad="${proyecto.conectividad}" data-producto="${proyecto.producto}" data-fecha-ini-viabilidad="${proyecto.str_fecha_inicio_viabilidad}" data-subtipo="${proyecto.subtipo}" data-fecha-fin-viabilidad="${proyecto.str_fecha_fin_viabilidad}" data-fecha-fin-valoracion="${proyecto.str_fecha_fin_valoracion}" data-fecha-ini-valoracion="${proyecto.str_fecha_inicio_valoracion}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-cliente-name="${proyecto.clienteName}" data-nombre="${proyecto.cod_proyecto}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}"  data-url-doc-google-drive="${proyecto.url_doc_google_drive}">
+									<tr class="valid-result" id="row${proyecto.key.id}" name="${proyecto.key.id}" data-servicio="${proyecto.servicio}" data-fecha-plan-trabajo="${proyecto.str_fecha_plan_trabajo}" data-fecha-disponible-conectividad="${proyecto.str_fecha_disponible_conectividad}" data-envio-c100="${proyecto.str_envioC100}" data-ok-negocio="${proyecto.str_OKNegocio}" data-ok-negocio-check="${proyecto.str_OKNegocioCheck}" data-conectividad="${proyecto.conectividad}" data-producto="${proyecto.producto}" data-fecha-ini-viabilidad="${proyecto.str_fecha_inicio_viabilidad}" data-subtipo="${proyecto.subtipo}" data-fecha-fin-viabilidad="${proyecto.str_fecha_fin_viabilidad}" data-fecha-fin-valoracion="${proyecto.str_fecha_fin_valoracion}" data-fecha-ini-valoracion="${proyecto.str_fecha_inicio_valoracion}" data-fecha-alta="${proyecto.fecha_alta_str}" data-coste="${proyecto.coste}" data-cliente="${proyecto.clienteKey}" data-cliente-name="${proyecto.clienteName}" data-nombre="${proyecto.cod_proyecto}" data-tipo="${proyecto.tipo}" data-clasificacion="${proyecto.clasificacion}" data-gestor-it="${proyecto.gestor_it}" data-gestor-negocio="${proyecto.gestor_negocio}"  data-url-doc-google-drive="${proyecto.url_doc_google_drive}">
 										<td><span>${proyecto.fecha_alta_str}</span></td>
 										<td><span>${proyecto.cod_proyecto}</span></td>
 										<td><span>${proyecto.clienteName}</span></td>
-										<td><span>${proyecto.clasificacion}</span></td>
+										<td><span>${proyecto.clasificacion}</span></td>										
 										<td><span>${proyecto.tipo}</span></td>
 										<c:choose>
 											<c:when test="${proyecto.coste eq ''}">

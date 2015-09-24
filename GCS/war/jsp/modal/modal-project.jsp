@@ -25,12 +25,12 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">C&oacute;digo Proyecto<span class="required-asterisk">*</span>:</span>
+						<span class="lbl">Código Proyecto<span class="required-asterisk">*</span>:</span>
 						<input type="text" id="project_name_modal" readonly="" name="project_name" class="readonly" maxlength="25">
 					</div>
 					
 					<div class="form-field">
-							<span class="lbl">Tipo implementaci&oacuten<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Tipo implementación<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" id="tipo_modal" name="tipo" readonly="" class="readonly" maxlength="25">
 							</div>
@@ -46,19 +46,18 @@
 						<div class="form-field">
 							<span class="lbl">Cliente<span class="required-asterisk">*</span>:</span>
 							<div class="input">	
-								<input type="hidden" id="input_cliente_id"  readonly name="cliente_id" class="readonly" value="hiddenValue" maxlength="25">							
-								<input type="text" id="input_cliente_modal"  readonly name="cliente" class="readonly" maxlength="25">
+								<input type="hidden" id="input_cliente_id"  readonly="" name="cliente_id" class="readonly" value="hiddenValue" maxlength="25">							
+								<input type="text" id="input_cliente_modal"  readonly="" name="cliente" class="readonly" maxlength="25">
 							</div>
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Clasificaci&oacute;n<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Clasificación<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" name="clasificacion" id="clasificacion_modal" required aria-required="true">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>									
+								<select id="clasificacion_modal_proy" class="long selected selectpicker" name="clasificacion" data-live-search="true">
+									<c:forEach items="${clasificaciones}" var="clasif">
+										<option value="${clasif}" ${proyecto.clasificacion == clasif ? 'selected' : ''}>${clasif}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -96,9 +95,14 @@
 					</div>
 					
 					<div class="form-field">
-						<span class="lbl">Url carpeta Google Drive:</span>
+						<span class="lbl">Petición:</span>
 						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
 					</div>
+					
+					<!-- <div class="form-field">
+						<span class="lbl">Url carpeta Google Drive:</span>
+						<input type="text" value="${proyecto.url_doc_google_drive}" id="url_doc_google_drive_modal" name="url_doc_google_drive" class="long">
+					</div> -->
 
 				</div>
 				
@@ -108,22 +112,22 @@
 					
 					<div class="form-field">
 						<span class="lbl">Producto<span class="required-asterisk">*</span>:</span>
-						<div class="input">
-							<select class="selectpicker selected" id="producto_modal" name="producto" required aria-required="true">
+						<div class="input">							
+							<select class="selectpicker selected" id="producto_modal" name="producto" required aria-required="true" data-live-search="true">
 							    <option value="default">Seleccionar</option>
 							    <c:forEach items="${productos}" var="producto">
-							    	<option value="${producto.name}">${producto.name}</option>
+							    	<option value="${producto.name}" ${proyecto.producto == producto.name ? 'selected' : ''}>${producto.name}</option>
 								</c:forEach>											
 							</select>
 						</div>
-					</div>
+					</div>																														
 					
 					<div class="form-field">
 						<span class="lbl">Conectividad:</span>
 						<div class="input">
-							<select class="selectpicker" id="conectividad_modal" name="conectividad" data-live-search="true">
-							    <c:forEach items="${conectividades}" var="conectividad">
-							    <option value="${conectividad.name}">${conectividad.name}</option>
+							<select class="selectpicker selected" id="conectividad_modal" name="conectividad" data-live-search="true">
+							    <c:forEach items="${conectividades}" var="con">
+							    <option value="${con.name}" ${proyecto.conectividad == con.name ? 'selected' : ''}>${con.name}</option>
 								</c:forEach>												
 							</select>
 						</div>
@@ -132,28 +136,28 @@
 					<div class="form-field">
 						<span class="lbl">Fecha inicio especificaciones:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_valoracion_modal' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion_modal">
+							<input type="text" value="${proyecto.str_fecha_inicio_valoracion}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_valoracion_modal' name="fecha_inicio_valoracion" id="fecha_inicio_valoracion_modal">
 						</div>
-					</div>
-					
+					</div>					
+									
 					<div class="form-field">
 						<span class="lbl">Fecha fin especificaciones:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_valoracion" id="fecha_fin_valoracion_modal">
+							<input type="text" value="${proyecto.str_fecha_fin_valoracion}" size="16" maxlength="25" class="datepicker" name="fecha_fin_valoracion" id="fecha_fin_valoracion_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha inicio viabilidad:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_viabilidad_modal' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad_modal">
+							<input type="text" value="${proyecto.str_fecha_inicio_viabilidad}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_viabilidad_modal' name="fecha_inicio_viabilidad" id="fecha_inicio_viabilidad_modal">
 						</div>
 					</div>
 					
 					<div class="form-field">
 						<span class="lbl">Fecha fin viabilidad:</span>
 						<div class="input">
-							<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_viabilidad_modal' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad_modal">
+							<input type="text" value="${proyecto.str_fecha_fin_viabilidad}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_fin_viabilidad_modal' name="fecha_fin_viabilidad" id="fecha_fin_viabilidad_modal">
 						</div>
 					</div>
 					
@@ -211,4 +215,8 @@
 		<button onclick="sendEditProject();" id="edit_project_form_modal" class="" type="button">Guardar</button>
 		<button data-dismiss="modal" class="dismis_edit_project" type="button">Cancelar</button>
 	</div>	
+</div>
+
+<div class="ajax_loader" id="ajax_loader">
+	<img src="../../img/ajax-loader.gif" />
 </div>

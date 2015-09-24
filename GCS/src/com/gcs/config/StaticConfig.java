@@ -7,11 +7,11 @@ public class StaticConfig {
 
 	static public ArrayList<Config> permisos =
 			new ArrayList<Config>(Arrays.asList(
-					new Config("5", "Consulta"),
-					new Config("4", "Gestor Negocio"),
-					new Config("3", "Gestor IT"),
-					new Config("2", "Gestor Demanda"),
-					new Config("1", "Admin")));
+					new Config("5", "CONSULTA"),
+					new Config("4", "GESTOR NEGOCIO"),
+					new Config("3", "GESTOR IT"),
+					new Config("2", "GESTOR DEMANDA"),
+					new Config("1", "ADMIN")));
 	
 	static public ArrayList<Config> departamentos =
 			new ArrayList<Config>(Arrays.asList(

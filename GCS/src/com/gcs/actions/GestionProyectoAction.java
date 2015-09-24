@@ -67,10 +67,10 @@ public class GestionProyectoAction extends Action{
 				req.setAttribute("fechaDia", fechaDia);
 				req.setAttribute("fechaMes", fechaMes);
 				req.setAttribute("fechaAnio", fechaAnio);
-				req.setAttribute("codigo", codproyectoFilter);
-				req.setAttribute("cliente", clienteNameFilter);
+				req.setAttribute("codigo", codproyectoFilter.toUpperCase());
+				req.setAttribute("cliente", clienteNameFilter.toUpperCase());
 				req.setAttribute("clasificacion", clasificacionFilter);
-				req.setAttribute("tipo", tipoFilter);
+				req.setAttribute("tipo", tipoFilter.toUpperCase());
 				req.setAttribute("coste", costeFilter);
 				
 			}else{

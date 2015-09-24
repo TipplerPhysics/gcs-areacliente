@@ -63,11 +63,7 @@
 			<forward name="swift" path="/jsp/modal/swift-modal.jsp" />
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />			
 		</action>
-		
-	
-		
-		
-		
+			
 		<action path="/demandaModal" type="com.gcs.actions.modal.DemandaModalAction">
 			<forward name="ok" path="/jsp/modal/modal-demanda.jsp" />
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />

@@ -155,8 +155,10 @@
 							<c:otherwise>
 								<c:forEach items="${userList}" var="user">
 									<tr class="valid-result" id="row${user.key.id}"
-										data-area="${user.areas}" data-permiso="${user.permiso}"
-										data-mail="${user.email}" data-dto="${user.departamento}">
+										data-area="${user.areas}" data-permiso="${user.permisoStr}"
+										data-mail="${user.email}" data-dto="${user.departamento}"
+										data-nombre="${user.nombre}" data-apellido1="${user.apellido1}"
+										data-apellido2="${user.apellido2}">
 										<td><span>${user.nombre}</span></td>
 										<td><span>${user.apellido1}</span></td>
 										<td><span>${user.apellido2}</span></td>

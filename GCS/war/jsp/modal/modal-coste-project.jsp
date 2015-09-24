@@ -54,7 +54,12 @@
 								<input type="text" value="${coste.str_fecha_solicitud_valoracion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_solicitud_valoracion_modal' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion_modal" required aria-required="true">
 							</div>
 						</div>
-						
+						<div class="form-field">
+							<span class="lbl">Fecha recepción valoración<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" value="${coste.str_fecha_recepcion_valoracion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_recepcion_valoracion_modal' name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion_modal" required aria-required="true">
+							</div>
+						</div>
 
 					</div>
 					<div class="form-field-divider right">
@@ -72,6 +77,7 @@
 									<option value="INNOVERY" <c:if test="${coste.equipos eq 'INNOVERY'}">selected</c:if>>INNOVERY</option>
 									<option value="CAPGEMINI" <c:if test="${coste.equipos eq 'CAPGEMINI'}">selected</c:if>>CAPGEMINI</option>
 									<option value="SOLUTIONS" <c:if test="${coste.equipos eq 'SOLUTIONS'}">selected</c:if>>SOLUTIONS</option>
+									<option value="SOPORTE GNC" <c:if test="${coste.equipos eq 'SOPORTE GNC'}">selected</c:if>>SOPORTE GNC</option>
 									<option value="SOPORTE SWIFT" <c:if test="${coste.equipos eq 'SOPORTE SWIFT'}">selected</c:if>>SOPORTE SWIFT</option>
 									<option value="IS" <c:if test="${coste.equipos eq 'IS'}">selected</c:if>>IS</option>
 									<option value="TELEMÁTICOS" <c:if test="${coste.equipos eq 'TELEMÁTICOS'}">selected</c:if>>TELEMÁTICOS</option>
@@ -80,17 +86,18 @@
 							</div>
 						</div>
 										
-						<div class="form-field">
+						 <div class="form-field">
 							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker selected" id="gestor_it_modal" name="gestor_it" data-live-search="true">	
-								
-									<c:forEach items="${gestores_it}" var="user">
-										<option value="${user.key.id}" <c:if test="${coste.gestor_it_key eq user.key.id}">selected</c:if>>${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
-									</c:forEach>
+								<select class="selectpicker selected" id="gestor_modal" name="gestor_it" data-live-search="true">				
+									 <c:forEach items="${gestores_it}" var="user">
+										<option value="${user.key.id}" <c:if test="${coste.gestor_it_key eq user.key.id}"> selected="selected" </c:if>>${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
+									 </c:forEach>
 								</select>
 							</div>
-						</div>
+						</div> 
+						
+						
 						<div class="form-field">
 							<span class="lbl">Comentarios:</span>
 							<div class="input">
@@ -106,7 +113,7 @@
 							<span class="lbl">An&aacute;lisis:</span>
 							<div class="input">
 								<input id="analisis_horas_modal" name="analisis_horas" class="horas number calcHorasMod" value="${coste.horas_analisis}"/>
-								<input id="analisis_coste_modal" name="analisis_coste" class="coste number" value="${coste.coste_analisis}"/>
+								<input id="analisis_coste_modal" name="analisis_coste" class="coste number calcCosteMod" value="${coste.coste_analisis}"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -117,7 +124,7 @@
 							<span class="lbl">Diseño:</span>
 							<div class="input">
 								<input id="disenio_horas_modal" name="diseño_horas" class="horas number calcHorasMod" value="${coste.horas_diseño}"/>
-								<input id="disenio_coste_modal" name="diseño_coste" class="coste number" value="${coste.coste_diseño}"/>
+								<input id="disenio_coste_modal" name="diseño_coste" class="coste number calcCosteMod" value="${coste.coste_diseño}"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -128,7 +135,7 @@
 							<span class="lbl">Construcción:</span>
 							<div class="input">
 								<input id="construccion_horas_modal" name="construccion_horas" class="horas calcHorasMod" value="${coste.horas_construccion}"/>
-								<input id="construccion_coste_modal" name="construccion_coste" class="coste number" value="${coste.coste_construccion}"/>
+								<input id="construccion_coste_modal" name="construccion_coste" class="coste number calcCosteMod" value="${coste.coste_construccion}"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -139,7 +146,7 @@
 							<span class="lbl">Pruebas:</span>
 							<div class="input">
 								<input id="pruebas_horas_modal" name="pruebas_horas" class="horas number calcHorasMod" value="${coste.horas_pruebas}"/>
-								<input id="pruebas_coste_modal" name="pruebas_coste" class="coste number" value="${coste.coste_pruebas}"/>
+								<input id="pruebas_coste_modal" name="pruebas_coste" class="coste number calcCosteMod" value="${coste.coste_pruebas}"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -150,7 +157,7 @@
 							<span class="lbl">Gestión:</span>
 							<div class="input">
 								<input id="gestion_horas_modal" name="gestion_horas" class="horas number calcHorasMod" value="${coste.horas_gestion}"/>
-								<input id="gestion_coste_modal" name="gestion_coste" class="coste number" value="${coste.coste_gestion}"/>
+								<input id="gestion_coste_modal" name="gestion_coste" class="coste number calcCosteMod" value="${coste.coste_gestion}"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -202,5 +209,22 @@
 		var stringSuma = a+b+c+d+e;
 		$('#total_horas_modal').val(stringSuma.toString());
 	});
+	
+////////////////////////////////////
+	$('.calcCosteMod').on('change', function(e) {
+		var a =parseFloat($('#analisis_coste_modal').val());
+		if (isNaN(a))a=0;
+		var b =parseFloat($('#disenio_coste_modal').val());
+		if (isNaN(b))b=0;
+		var c = parseFloat($('#construccion_coste_modal').val());
+		if (isNaN(c))c=0;
+		var d = parseFloat($('#pruebas_coste_modal').val());
+		if (isNaN(d))d=0;
+		var e = parseFloat($('#gestion_coste_modal').val());
+		if (isNaN(e))e=0;
+		var stringSuma = a+b+c+d+e;
+		$('#total_coste_modal').val(stringSuma.toString());
+	});
+////////////////////////////////////
 	
 </script>
