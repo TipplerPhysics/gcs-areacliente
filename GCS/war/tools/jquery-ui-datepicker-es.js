@@ -14,8 +14,10 @@ $(function($){
         dateFormat: 'dd/mm/yy',
         firstDay: 1,
         isRTL: false,
+        changeYear: true,
         showMonthAfterYear: false,
         yearSuffix: ''
+        	
     };
     $.datepicker.setDefaults($.datepicker.regional['es']);
 });
