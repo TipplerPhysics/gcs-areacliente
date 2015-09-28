@@ -162,10 +162,10 @@ public class InformeExcelServlet extends HttpServlet  {
 		if(containProyect){
 			jarray.put("<(*)head(*)>");
 			jarray.put("Cliente");
-			jarray.put("Código proyecto");
+			jarray.put("CÃ³digo proyecto");
 			if(containTipoCliente)jarray.put("Tipo cliente");
 			if(containFechaInicio)jarray.put("Fecha inicio");
-			if(containImplementacion)jarray.put("Tipo implementación");
+			if(containImplementacion)jarray.put("Tipo implementaciÃ³n");
 			if(containProducto)jarray.put("Producto");
 			jarray.put("<(*)finHead(*)>");
 		}
@@ -195,7 +195,7 @@ public class InformeExcelServlet extends HttpServlet  {
 			jarray.put("Cliente");
 			if(containTipoCliente)jarray.put("Tipo cliente");
 			if(containFechaImplementacion)jarray.put("Fecha implementacion");
-			if(containPaises)jarray.put("País");
+			if(containPaises)jarray.put("PaÃ­s");
 			if(containEstadosServicio)jarray.put("Estado");
 			jarray.put("<(*)finHead(*)>");
 			ServicioDao servicioDao = ServicioDao.getInstance();
@@ -487,7 +487,7 @@ public class InformeExcelServlet extends HttpServlet  {
 			
 			if(containPaises){
 				hoja.getRow(head).createCell(column).setCellStyle(headerBlue);
-				hoja.getRow(head).getCell(column).setCellValue("País");
+				hoja.getRow(head).getCell(column).setCellValue("PaÃ­s");
 				column++;
 				totalColumn++;
 			}
@@ -936,17 +936,18 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 									hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
 									hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
 									hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-									hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
-									hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
-									hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
-									hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
-									hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
-									hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
-									hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
-									hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
-									hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
-									hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
-									hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+									hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+									hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
+									hoja.getRow(head).createCell(9).setCellValue(conectividad.getSeguridad());
+									hoja.getRow(head).createCell(10).setCellValue(servicio.getServicio());//servicio
+									hoja.getRow(head).createCell(11).setCellValue(servicio.getPais());//pais
+									hoja.getRow(head).createCell(12).setCellValue(servicio.getExtension());//extension
+									hoja.getRow(head).createCell(13).setCellValue(servicio.getCod_servicio());//codigo
+									hoja.getRow(head).createCell(14).setCellValue(servicio.getEstado());//estado
+									hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
+									hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
+									hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
+									
 									hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 									hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 									if(proyecto.getUrl_doc_google_drive() != null){
@@ -997,17 +998,18 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
 								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
 								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-								hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
-								hoja.getRow(head).createCell(8).setCellValue("");//conectividad.getSeguridad());
-								hoja.getRow(head).createCell(9).setCellValue(servicio.getServicio());//servicio
-								hoja.getRow(head).createCell(10).setCellValue(servicio.getPais());//pais
-								hoja.getRow(head).createCell(11).setCellValue(servicio.getExtension());//extension
-								hoja.getRow(head).createCell(12).setCellValue(servicio.getCod_servicio());//codigo
-								hoja.getRow(head).createCell(13).setCellValue(servicio.getEstado());//estado
-								hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
-								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
-								hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
-								hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
+								hoja.getRow(head).createCell(9).setCellValue("");//conectividad.getSeguridad());
+								hoja.getRow(head).createCell(10).setCellValue(servicio.getServicio());//servicio
+								hoja.getRow(head).createCell(11).setCellValue(servicio.getPais());//pais
+								hoja.getRow(head).createCell(12).setCellValue(servicio.getExtension());//extension
+								hoja.getRow(head).createCell(13).setCellValue(servicio.getCod_servicio());//codigo
+								hoja.getRow(head).createCell(14).setCellValue(servicio.getEstado());//estado
+								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
+								hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
+								hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
+								
 								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 								if(proyecto.getUrl_doc_google_drive() != null){
@@ -1059,17 +1061,18 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
 								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
 								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-								hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
-								hoja.getRow(head).createCell(8).setCellValue(conectividad.getSeguridad());
-								hoja.getRow(head).createCell(9).setCellValue("");//servicio
-								hoja.getRow(head).createCell(10).setCellValue("");//pais
-								hoja.getRow(head).createCell(11).setCellValue("");//extension
-								hoja.getRow(head).createCell(12).setCellValue("");//codigo
-								hoja.getRow(head).createCell(13).setCellValue("");//estado
-								hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
-								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
-								hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
-								hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
+								hoja.getRow(head).createCell(9).setCellValue(conectividad.getSeguridad());
+								hoja.getRow(head).createCell(10).setCellValue("");//servicio
+								hoja.getRow(head).createCell(11).setCellValue("");//pais
+								hoja.getRow(head).createCell(12).setCellValue("");//extension
+								hoja.getRow(head).createCell(13).setCellValue("");//codigo
+								hoja.getRow(head).createCell(14).setCellValue("");//estado
+								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
+								hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
+								hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
+								
 								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 								if(proyecto.getUrl_doc_google_drive() != null){
@@ -1101,7 +1104,7 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(44).setCellValue("");//fecha fin pruebas integradas
 								hoja.getRow(head).createCell(45).setCellValue("");//fecha inicio pruebas aceptacion
 								hoja.getRow(head).createCell(46).setCellValue("");//fecha fin pruebas aceptacion
-								hoja.getRow(head).createCell(47).setCellValue("");//fehca implantacion servicio produccion
+								hoja.getRow(head).createCell(47).setCellValue("");//fecha implantacion servicio produccion
 								hoja.getRow(head).createCell(48).setCellValue("");//fecha inicio validacion 
 								hoja.getRow(head).createCell(49).setCellValue("");//fehca fin validacion
 								hoja.getRow(head).createCell(50).setCellValue("");//fecha inicio primera operacion
@@ -1118,17 +1121,18 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 							hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
 							hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
 							hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-							hoja.getRow(head).createCell(7).setCellValue(proyecto.getConectividad());
-							hoja.getRow(head).createCell(8).setCellValue("");
-							hoja.getRow(head).createCell(9).setCellValue("");//servicio
-							hoja.getRow(head).createCell(10).setCellValue("");//pais
-							hoja.getRow(head).createCell(11).setCellValue("");//extension
-							hoja.getRow(head).createCell(12).setCellValue("");//codigo
-							hoja.getRow(head).createCell(13).setCellValue("");//estado
-							hoja.getRow(head).createCell(14).setCellValue(proyecto.getGestor_it_name());
-							hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_negocio_name());
-							hoja.getRow(head).createCell(16).setCellValue(proyecto.getFecha_alta_str());
-							hoja.getRow(head).createCell(17).setCellValue(proyecto.getSubtipo());
+							hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+							hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
+							hoja.getRow(head).createCell(9).setCellValue("");
+							hoja.getRow(head).createCell(10).setCellValue("");//servicio
+							hoja.getRow(head).createCell(11).setCellValue("");//pais
+							hoja.getRow(head).createCell(12).setCellValue("");//extension
+							hoja.getRow(head).createCell(13).setCellValue("");//codigo
+							hoja.getRow(head).createCell(14).setCellValue("");//estado
+							hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
+							hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
+							hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
+							
 							hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 							hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 							if(proyecto.getUrl_doc_google_drive() != null){
@@ -1277,7 +1281,7 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 			hoja.getRow(head).createCell(7).setCellStyle(cellStyle);
 			hoja.getRow(head).createCell(8).setCellStyle(headerGreen);
 			
-			hoja.getRow(head).getCell(1).setCellValue("AÑO");
+			hoja.getRow(head).getCell(1).setCellValue("AÃ‘O");
 			hoja.getRow(head).getCell(2).setCellValue("TRIMESTRE");
 			hoja.getRow(head).getCell(3).setCellValue("CLIENTE");
 			hoja.getRow(head).getCell(4).setCellValue("BANCA");
@@ -1321,12 +1325,12 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 						int mes= Integer.parseInt(servicio.getStr_fecha_implantacion_produccion().substring(3,5));
 						int trimestre = (int)((mes-1)/3)+1;
 						
-						if(servicio.getEstado().equals("PDTE DOC ALCANCE EN GCS")||servicio.getEstado().equals("C100 EN CONFECCIÓN")||servicio.getEstado().equals("PDTE VALORACIÓN IT")
+						if(servicio.getEstado().equals("PDTE DOC ALCANCE EN GCS")||servicio.getEstado().equals("C100 EN CONFECCIÃ“N")||servicio.getEstado().equals("PDTE VALORACIÃ“N IT")
 								||servicio.getEstado().equals("PDTE PLAN DE TRABAJO IT")||servicio.getEstado().equals("PDTE VISTO BUENO DEL CL DEL PLAN DE TRABAJO")
-								||servicio.getEstado().equals("EN TEST - CONECTIVIDAD")||servicio.getEstado().equals("EN TEST - INTEGRACIÓN")){
+								||servicio.getEstado().equals("EN TEST - CONECTIVIDAD")||servicio.getEstado().equals("EN TEST - INTEGRACIÃ“N")){
 							trimestre = trimestre+2;
 						}else{
-							if(servicio.getEstado().equals("EN TEST - ACEPTACIÓN")||servicio.getEstado().equals("EN DESARROLLO")){
+							if(servicio.getEstado().equals("EN TEST - ACEPTACIÃ“N")||servicio.getEstado().equals("EN DESARROLLO")){
 								trimestre++;
 							}
 						}
@@ -1334,7 +1338,7 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 						if(trimestre==5)trimestre=1;
 						if(trimestre==6)trimestre=2;
 						
-						hoja.getRow(head).getCell(2).setCellValue(trimestre+"º");
+						hoja.getRow(head).getCell(2).setCellValue(trimestre+"Âº");
 					}*/
 					///////////////////////////////////////////
 					int mes;
@@ -1343,12 +1347,12 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 					java.util.Date fecha = new Date();
 					mes = fecha.getMonth();
 					trimestre =	(int)(mes/3)+1;	
-					if(servicio.getEstado().equals("PDTE DOC ALCANCE EN GCS")||servicio.getEstado().equals("C100 EN CONFECCIÓN")||servicio.getEstado().equals("PDTE VALORACIÓN IT")
+					if(servicio.getEstado().equals("PDTE DOC ALCANCE EN GCS")||servicio.getEstado().equals("C100 EN CONFECCIÃ“N")||servicio.getEstado().equals("PDTE VALORACIÃ“N IT")
 							||servicio.getEstado().equals("PDTE PLAN DE TRABAJO IT")||servicio.getEstado().equals("PDTE VISTO BUENO DEL CL DEL PLAN DE TRABAJO")
-							||servicio.getEstado().equals("EN TEST - CONECTIVIDAD")||servicio.getEstado().equals("EN TEST - INTEGRACIÓN")){
+							||servicio.getEstado().equals("EN TEST - CONECTIVIDAD")||servicio.getEstado().equals("EN TEST - INTEGRACIÃ“N")){
 						trimestre = trimestre+2;							
 					}else{
-						if(servicio.getEstado().equals("EN TEST - ACEPTACIÓN")||servicio.getEstado().equals("EN DESARROLLO")){
+						if(servicio.getEstado().equals("EN TEST - ACEPTACIÃ“N")||servicio.getEstado().equals("EN DESARROLLO")){
 							trimestre++;
 						}else{
 							if(servicio.getEstado().equals("PARADO POR PRODUCTO")||servicio.getEstado().equals("PARADO POR NEGOCIO")||servicio.getEstado().equals("PARADO POR IT")
@@ -1360,10 +1364,10 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 					}
 						
 					if(trimestre == 1 || trimestre == 2 || trimestre == 3 || trimestre == 4){
-						hoja.getRow(head).getCell(2).setCellValue(trimestre+"º");
+						hoja.getRow(head).getCell(2).setCellValue(trimestre+"Âº");
 					}else{
 						if(trimestre == 5 || trimestre == 6){
-							hoja.getRow(head).getCell(2).setCellValue("Próximo año");
+							hoja.getRow(head).getCell(2).setCellValue("PrÃ³ximo aÃ±o");
 						}else{
 							hoja.getRow(head).getCell(2).setCellValue("");
 						}
@@ -1424,8 +1428,8 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 
 			
 			
-			hoja.getRow(head).getCell(1).setCellValue("AÑO");
-			hoja.getRow(head).getCell(2).setCellValue("FECHA\n IMPLANTACIÓN");
+			hoja.getRow(head).getCell(1).setCellValue("AÃ‘O");
+			hoja.getRow(head).getCell(2).setCellValue("FECHA\n IMPLANTACIÃ“N");
 			hoja.getRow(head).getCell(3).setCellValue("CLIENTE");
 			hoja.getRow(head).getCell(4).setCellValue("BANCA");
 			hoja.getRow(head).getCell(5).setCellValue("PRODUCTO");
@@ -1581,8 +1585,8 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 		hoja.getRow(head).getCell(6).setCellValue("COSTE");
 		hoja.getRow(head).getCell(7).setCellValue("PRODUCTO");
 		hoja.getRow(head).getCell(8).setCellValue("CONECTIVIDAD");
-		hoja.getRow(head).getCell(9).setCellValue("FECHA\n INICIO\n VALORACIÓN");
-		hoja.getRow(head).getCell(10).setCellValue("FECHA\n FIN\n VALORACIÓN");
+		hoja.getRow(head).getCell(9).setCellValue("FECHA\n INICIO\n VALORACIÃ“N");
+		hoja.getRow(head).getCell(10).setCellValue("FECHA\n FIN\n VALORACIÃ“N");
 		hoja.getRow(head).getCell(10).setCellValue("FECHA\n INICIO\n VIABILIDAD");
 		hoja.getRow(head).getCell(10).setCellValue("FECHA\n FIN\n VIABILIDAD");
 		hoja.getRow(head).getCell(10).setCellValue("FECHA\n ENVIO\n C100");
@@ -1694,12 +1698,12 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 		
 		String[] estados = new String[]{
 				"PDTE DOC ALCANCE EN GCS",
-				"ANÁLISIS",
+				"ANÃ�LISIS",
 				"PDTE VISTO BUENO DEL CL DEL PLAN DE TRABAJO",
 				"EN DESARROLLO",
 				"EN TEST - CONECTIVIDAD",
-				"EN TEST - INTEGRACIÓN",
-				"EN TEST - ACEPTACIÓN",
+				"EN TEST - INTEGRACIÃ“N",
+				"EN TEST - ACEPTACIÃ“N",
 				"PDTE IMPLANTAR",
 				"EN PENNY TEST",
 				"PARADO POR NEGOCIO",
@@ -1732,7 +1736,7 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 		hoja3.getRow(9).getCell(6).setCellValue(totalesProducto[2]);
 		hoja3.getRow(9).getCell(7).setCellValue(totalesProducto[3]);
 		
-		String [] paises = new String[]{"ARGENTINA","COLOMBIA","PERÚ","VENEZUELA","CHILE","MÉXICO","ESPAÑA","FRANCIA","REINO UNIDO","USA","ITALIA"};
+		String [] paises = new String[]{"ARGENTINA","COLOMBIA","PERÃš","VENEZUELA","CHILE","MÃ‰XICO","ESPAÃ‘A","FRANCIA","REINO UNIDO","USA","ITALIA"};
 		i=0;
 		for(String pais: paises){
 			hoja3.getRow(i+19).getCell(4).setCellValue(servicioDao.countByPais(pais));
@@ -1847,7 +1851,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 			hojaProy.getRow(headProy).createCell(4).setCellValue(Integer.toString(proyecto.getClasificacion()));
 			hojaProy.getRow(headProy).createCell(5).setCellValue(proyecto.getGestor_it_name());
 			hojaProy.getRow(headProy).createCell(6).setCellValue(proyecto.getGestor_negocio_name());
-			hojaProy.getRow(headProy).createCell(7).setCellValue(proyecto.getCoste()+" €");
+			hojaProy.getRow(headProy).createCell(7).setCellValue(proyecto.getCoste()+" â‚¬");
 			hojaProy.getRow(headProy).createCell(8).setCellValue(proyecto.getProducto());
 			hojaProy.getRow(headProy).createCell(9).setCellValue(proyecto.getConectividad());
 			hojaProy.getRow(headProy).createCell(10).setCellValue(proyecto.getStr_fecha_inicio_valoracion());
@@ -1907,7 +1911,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 				
 				if(coste.getFecha_alta().getYear()==dateNow.getYear()){
 					if(costeTotal!=null){
-						if(proyecto.getTipo().equals("IMPLEMENTACIÓN")){
+						if(proyecto.getTipo().equals("IMPLEMENTACIÃ“N")){
 							resultados[0][0][0] +=  costeTotal;
 							if(coste.getEquipos().equals("CAPGEMINI"))resultados[1][0][0] +=  costeTotal;								
 							if(coste.getEquipos().equals("INNOVERY"))resultados[2][0][0] +=  costeTotal;
@@ -1922,7 +1926,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 							if(coste.getEquipos().equals("CAPGEMINI"))resultados[1][2][0] +=  costeTotal;
 							if(coste.getEquipos().equals("INNOVERY"))resultados[2][3][0] +=  costeTotal;
 						}
-						if(proyecto.getTipo().equals("MIGRACIÓN")){
+						if(proyecto.getTipo().equals("MIGRACIÃ“N")){
 							resultados[0][3][0] +=  costeTotal;
 							if(coste.getEquipos().equals("CAPGEMINI"))resultados[1][3][0] +=  costeTotal;
 							if(coste.getEquipos().equals("INNOVERY"))resultados[2][3][0] +=  costeTotal;
@@ -1943,7 +1947,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 					if(horasTotales!=null){
 						
 						
-						if(proyecto.getTipo().equals("IMPLEMENTACIÓN")){
+						if(proyecto.getTipo().equals("IMPLEMENTACIÃ“N")){
 							resultados[0][0][1] +=  horasTotales;
 							if(coste.getEquipos().equals("CAPGEMINI"))resultados[1][0][1] +=  horasTotales;							
 							if(coste.getEquipos().equals("INNOVERY"))resultados[2][0][1] +=  horasTotales;
@@ -1958,7 +1962,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 							if(coste.getEquipos().equals("CAPGEMINI"))resultados[1][2][1] +=  horasTotales;							
 							if(coste.getEquipos().equals("INNOVERY"))resultados[2][3][1] +=  horasTotales;
 						}
-						if(proyecto.getTipo().equals("MIGRACIÓN")){
+						if(proyecto.getTipo().equals("MIGRACIÃ“N")){
 							resultados[0][3][1] +=  horasTotales;
 							if(coste.getEquipos().equals("CAPGEMINI"))resultados[1][3][1] +=  horasTotales;							
 							if(coste.getEquipos().equals("INNOVERY"))resultados[2][3][1] +=  horasTotales;
@@ -2156,7 +2160,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 		
 		hoja.getRow(head).getCell(1).setCellValue("Etiquetas de fila");
 		hoja.getRow(head).getCell(2).setCellValue("PDTE Doc Alcance en GCS");
-		hoja.getRow(head).getCell(3).setCellValue("PDTE Valoración IT");
+		hoja.getRow(head).getCell(3).setCellValue("PDTE ValoraciÃ³n IT");
 		hoja.getRow(head).getCell(4).setCellValue("En Desarrollo");
 		hoja.getRow(head).getCell(5).setCellValue("En Test");
 		hoja.getRow(head).getCell(6).setCellValue("En Penny Test");
@@ -2166,7 +2170,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 		hoja.getRow(head).createCell(11).setCellStyle(headerGreen);
 		
 		hoja.getRow(head).getCell(10).setCellValue("TOT CURSO");
-		hoja.getRow(head).getCell(11).setCellValue("Asignación");
+		hoja.getRow(head).getCell(11).setCellValue("AsignaciÃ³n");
 		
 		
 		head++;
@@ -2368,7 +2372,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 		hoja.createRow(head);
 		hoja.getRow(head).setHeightInPoints(20);
 		hoja.getRow(head).createCell(1).setCellStyle(headerBlue);
-		hoja.getRow(head).getCell(1).setCellValue("Nº Servicios activos (en curso) por Gestor 2015");;
+		hoja.getRow(head).getCell(1).setCellValue("NÂº Servicios activos (en curso) por Gestor 2015");;
 		
 		head++;
 		/*
@@ -2419,7 +2423,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 //		
 //		hoja.getRow(head).getCell(1).setCellValue("Etiquetas de fila");
 //		hoja.getRow(head).getCell(2).setCellValue("PDTE Doc Alcance en GCS");
-//		hoja.getRow(head).getCell(3).setCellValue("PDTE Valoración IT");
+//		hoja.getRow(head).getCell(3).setCellValue("PDTE ValoraciÃ³n IT");
 //		hoja.getRow(head).getCell(4).setCellValue("En Desarrollo");
 //		hoja.getRow(head).getCell(5).setCellValue("En Test");
 //		hoja.getRow(head).getCell(6).setCellValue("En Penny Test");
@@ -2429,7 +2433,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 //		hoja.getRow(head).createCell(11).setCellStyle(headerGreen);
 //		
 //		hoja.getRow(head).getCell(10).setCellValue("TOT CURSO");
-//		hoja.getRow(head).getCell(11).setCellValue("Asignación");
+//		hoja.getRow(head).getCell(11).setCellValue("AsignaciÃ³n");
 //		
 //		
 //		head++;
