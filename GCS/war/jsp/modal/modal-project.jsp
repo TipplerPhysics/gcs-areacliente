@@ -125,7 +125,8 @@
 					<div class="form-field">
 						<span class="lbl">Conectividad:</span>
 						<div class="input">
-							<select class="selectpicker selected" id="conectividad_modal" name="conectividad" data-live-search="true">
+							<select class="selectpicker selected" id="conectividad_modal" name="conectividad">
+							    <option value="-">-</option>
 							    <c:forEach items="${conectividades}" var="con">
 							    <option value="${con.name}" ${proyecto.conectividad == con.name ? 'selected' : ''}>${con.name}</option>
 								</c:forEach>												
