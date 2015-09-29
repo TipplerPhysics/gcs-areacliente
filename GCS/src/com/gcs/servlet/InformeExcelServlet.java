@@ -934,9 +934,9 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 									hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
 									hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
 									hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
-									hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
-									hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-									hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+									hoja.getRow(head).createCell(5).setCellValue(proyecto.getSubtipo());
+									hoja.getRow(head).createCell(6).setCellValue(proyecto.getCod_proyecto());
+									hoja.getRow(head).createCell(7).setCellValue(proyecto.getProducto());
 									hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
 									hoja.getRow(head).createCell(9).setCellValue(conectividad.getSeguridad());
 									hoja.getRow(head).createCell(10).setCellValue(servicio.getServicio());//servicio
@@ -947,7 +947,6 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 									hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
 									hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
 									hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
-									
 									hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 									hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 									if(proyecto.getUrl_doc_google_drive() != null){
@@ -996,9 +995,9 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
 								hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
 								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
-								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
-								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-								hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(5).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(6).setCellValue(proyecto.getCod_proyecto());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getProducto());
 								hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
 								hoja.getRow(head).createCell(9).setCellValue("");//conectividad.getSeguridad());
 								hoja.getRow(head).createCell(10).setCellValue(servicio.getServicio());//servicio
@@ -1009,7 +1008,6 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
 								hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
 								hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
-								
 								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 								if(proyecto.getUrl_doc_google_drive() != null){
@@ -1059,9 +1057,9 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
 								hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
 								hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
-								hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
-								hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-								hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(5).setCellValue(proyecto.getSubtipo());
+								hoja.getRow(head).createCell(6).setCellValue(proyecto.getCod_proyecto());
+								hoja.getRow(head).createCell(7).setCellValue(proyecto.getProducto());
 								hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
 								hoja.getRow(head).createCell(9).setCellValue(conectividad.getSeguridad());
 								hoja.getRow(head).createCell(10).setCellValue("");//servicio
@@ -1072,7 +1070,6 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
 								hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
 								hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
-								
 								hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 								hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 								if(proyecto.getUrl_doc_google_drive() != null){
@@ -1119,9 +1116,9 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 							hoja.getRow(head).createCell(2).setCellValue(cliente.getRef_global());
 							hoja.getRow(head).createCell(3).setCellValue(cliente.getTipo());
 							hoja.getRow(head).createCell(4).setCellValue(proyecto.getTipo());
-							hoja.getRow(head).createCell(5).setCellValue(proyecto.getCod_proyecto());
-							hoja.getRow(head).createCell(6).setCellValue(proyecto.getProducto());
-							hoja.getRow(head).createCell(7).setCellValue(proyecto.getSubtipo());
+							hoja.getRow(head).createCell(5).setCellValue(proyecto.getSubtipo());
+							hoja.getRow(head).createCell(6).setCellValue(proyecto.getCod_proyecto());
+							hoja.getRow(head).createCell(7).setCellValue(proyecto.getProducto());
 							hoja.getRow(head).createCell(8).setCellValue(proyecto.getConectividad());
 							hoja.getRow(head).createCell(9).setCellValue("");
 							hoja.getRow(head).createCell(10).setCellValue("");//servicio
@@ -1132,7 +1129,6 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 							hoja.getRow(head).createCell(15).setCellValue(proyecto.getGestor_it_name());
 							hoja.getRow(head).createCell(16).setCellValue(proyecto.getGestor_negocio_name());
 							hoja.getRow(head).createCell(17).setCellValue(proyecto.getFecha_alta_str());
-							
 							hoja.getRow(head).createCell(18).setCellValue(proyecto.getClasificacion());
 							hoja.getRow(head).createCell(19).setCellValue(proyecto.getCoste());
 							if(proyecto.getUrl_doc_google_drive() != null){
