@@ -47,7 +47,7 @@
 						
 						<div class="form-field">
 							<span class="lbl">Referencia Global B2B:</span>
-							<input type="text" minlength="11" id="ref_global_modal" name="ref_global" class="long" maxlength="25">
+							<input type="text" minlength="11" id="ref_global_modal" name="ref_global" class="long" maxlength="300">
 						</div>
 						
 					</div><div class="form-field-divider right">
