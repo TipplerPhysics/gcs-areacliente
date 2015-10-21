@@ -27,6 +27,13 @@ public class Servicio {
 	
 	@Persistent
 	private String gestor_negocio_name;	
+	
+	@Persistent
+	private Long gestor_pruebas_key;
+	
+	@Persistent
+	private String gestor_pruebas_name;	
+
 
 	@Persistent
 	private Long cliente_key;
@@ -213,6 +220,24 @@ public class Servicio {
 
 	public void setGestor_negocio_name(String gestor_negocio_name) {
 		this.gestor_negocio_name = gestor_negocio_name;
+	}
+
+	
+	
+	public Long getGestor_pruebas_key() {
+		return gestor_pruebas_key;
+	}
+
+	public void setGestor_pruebas_key(Long gestor_pruebas_key) {
+		this.gestor_pruebas_key = gestor_pruebas_key;
+	}
+
+	public String getGestor_pruebas_name() {
+		return gestor_pruebas_name;
+	}
+
+	public void setGestor_pruebas_name(String gestor_pruebas_name) {
+		this.gestor_pruebas_name = gestor_pruebas_name;
 	}
 
 	public Long getCliente_key() {
@@ -614,6 +639,8 @@ public class Servicio {
 				+ ", gestor_it_name=" + gestor_it_name
 				+ ", gestor_negocio_key=" + gestor_negocio_key
 				+ ", gestor_negocio_name=" + gestor_negocio_name
+				+ ", gestor_pruebas_key=" + gestor_pruebas_key
+				+ ", gestor_pruebas_name=" + gestor_pruebas_name
 				+ ", cliente_key=" + cliente_key + ", cliente_name="
 				+ cliente_name + ", pais=" + pais + ", cod_proyecto="
 				+ cod_proyecto + ", id_proyecto=" + id_proyecto + ", servicio="

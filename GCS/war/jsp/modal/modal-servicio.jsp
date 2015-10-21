@@ -72,6 +72,19 @@
 						</div>
 						
 						<div class="form-field">
+							<span class="lbl">Gestor Pruebas:</span>
+							<div class="input">
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_pruebas" data-live-search="true">
+								<option value="default">${servicio.gestor_pruebas_name}</option>	
+									<c:forEach items="${gestores_it}" var="user">
+										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
+									</c:forEach>
+									
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
 							<span class="lbl">Cód. Redmine:</span>
 							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long">
 						</div>
@@ -97,6 +110,8 @@
 							<span class="lbl">Formato local:</span>
 							<input type="text" id="formato_local_modal" value="${servicio.formato_local}" maxlength="25" name="formato_local" class="long">
 						</div>
+						
+						
 						
 						<div class="form-field">
 							<span class="lbl">Referencia local integrado:</span>

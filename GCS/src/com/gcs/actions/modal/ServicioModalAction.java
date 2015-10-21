@@ -16,10 +16,12 @@ import com.gcs.beans.Estados;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
+import com.gcs.beans.User;
 import com.gcs.dao.EstadosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ServicioFileDao;
+import com.gcs.dao.UserDao;
 import com.gcs.servlet.ServicioServlet;
 
 public class ServicioModalAction extends Action {
@@ -52,7 +54,14 @@ public class ServicioModalAction extends Action {
 			ServicioFile servicioFile = serviciosFileDao.getServicioFileByNamePais(s.getServicio(),s.getPais());
 			ArrayList<String> extensiones = servicioFile.getExtensiones();
 			req.setAttribute("extensiones", extensiones);
-
+			
+			UserDao uDao = UserDao.getInstance();
+			
+			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
+			
+			
+			
+			req.setAttribute("gestores_it", gestores_it);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

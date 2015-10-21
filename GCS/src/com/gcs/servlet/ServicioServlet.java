@@ -26,11 +26,13 @@ import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
+import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ServicioFileDao;
+import com.gcs.dao.UserDao;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -234,6 +236,8 @@ public class ServicioServlet extends HttpServlet {
 			String observaciones = req.getParameter("observaciones");
 			String formato_intermedio = req.getParameter("formato_intermedio");		
 			String formato_local = req.getParameter("formato_local");
+			String gestor_pruebas_key = req.getParameter("gestor_pruebas");
+			
 			
 			String referencia_local1 = req.getParameter("ref_local1");
 			String referencia_local2 = req.getParameter("ref_local2");
@@ -255,6 +259,7 @@ public class ServicioServlet extends HttpServlet {
 			String str_fecha_inicio_op_cliente = req.getParameter("fecha_inicio_op_cliente");
 			String str_fecha_ans = req.getParameter("ans");
 			
+			
 			String str_fecha_inicio_pruebas = req.getParameter("fecha_inicio_pruebas");
 			String str_fecha_fin_pruebas = req.getParameter("fecha_fin_pruebas");
 			
@@ -275,6 +280,16 @@ public class ServicioServlet extends HttpServlet {
 			s.setObservaciones(observaciones);
 			s.setFormato_intermedio(formato_intermedio);
 			s.setFormato_local(formato_local);
+			
+			
+			s.setGestor_pruebas_key((Long.parseLong(gestor_pruebas_key)));
+			
+			if(gestor_pruebas_key != null){
+				UserDao uDao = new UserDao();
+				User user = uDao.getUserbyId((Long.parseLong(gestor_pruebas_key)));
+				String gestor_pruebas_name = user.getFullName();
+				s.setGestor_pruebas_name(gestor_pruebas_name);
+			}
 			s.setReferencia_local1(referencia_local1);
 			s.setReferencia_local2(referencia_local2);
 			
@@ -567,6 +582,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			String str_fecha_inicio_pruebas = req.getParameter("fecha_inicio_pruebas");
 			String str_fecha_fin_pruebas = req.getParameter("fecha_fin_pruebas");
+			String gestor_pruebas_key = req.getParameter("gestor_pruebas");
 			
 			//String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
 			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
@@ -611,6 +627,14 @@ public class ServicioServlet extends HttpServlet {
 			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			s.setExtension(extension);
+			s.setGestor_pruebas_key((Long.parseLong(gestor_pruebas_key)));
+			
+			if(gestor_pruebas_key != null){
+				UserDao uDao = new UserDao();
+				User user = uDao.getUserbyId((Long.parseLong(gestor_pruebas_key)));
+				String gestor_pruebas_name = user.getFullName();
+				s.setGestor_pruebas_name(gestor_pruebas_name);
+			}
 			
 			ServicioDao sDao = ServicioDao.getInstance();
 			sDao.createServicio(s,usermail);
@@ -649,6 +673,7 @@ private void cloneService(HttpServletRequest req, HttpServletResponse resp, Stri
 			String formato_intermedio = req.getParameter("formato_intermedio");		
 			String formato_local = req.getParameter("formato_local");
 			
+			
 			String referencia_local1 = req.getParameter("ref_local1");
 			String referencia_local2 = req.getParameter("ref_local2");
 			
@@ -671,6 +696,7 @@ private void cloneService(HttpServletRequest req, HttpServletResponse resp, Stri
 			
 			String str_fecha_inicio_pruebas = req.getParameter("fecha_inicio_pruebas");
 			String str_fecha_fin_pruebas = req.getParameter("fecha_fin_pruebas");
+			//String gestor_pruebas_key = req.getParameter("gestor_pruebas");
 			
 			//String str_fecha_mig_channeling = req.getParameter("fecha_mig_channeling");
 			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
@@ -711,7 +737,15 @@ private void cloneService(HttpServletRequest req, HttpServletResponse resp, Stri
 			
 			s.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
 			s.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
+			/*s.setGestor_pruebas_key((Long.parseLong(gestor_pruebas_key)));
 			
+			if(gestor_pruebas_key != null){
+				UserDao uDao = new UserDao();
+				User user = uDao.getUserbyId((Long.parseLong(gestor_pruebas_key)));
+				String gestor_pruebas_name = user.getFullName();
+				s.setGestor_pruebas_name(gestor_pruebas_name);
+			}
+			*/
 			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			s.setExtension(extension);

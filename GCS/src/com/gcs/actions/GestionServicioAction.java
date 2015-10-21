@@ -19,6 +19,7 @@ import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
+import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorServicioDao;
 import com.gcs.dao.EstadosDao;
@@ -26,6 +27,7 @@ import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ServicioFileDao;
+import com.gcs.dao.UserDao;
 import com.gcs.utils.Utils;
 
 
@@ -67,6 +69,7 @@ public class GestionServicioAction extends Action {
 				int numpages = (Integer.parseInt(servicios.get(servicios.size()-1).getDetalle())/ServicioDao.DATA_SIZE)+1;
 				servicios.remove(servicios.size()-1);
 				boolean lastpage = (servicios.size() < ServicioDao.DATA_SIZE) ? true : false;
+				
 				
 				req.setAttribute("lastpage", lastpage);
 				req.setAttribute("numpages", numpages);
@@ -112,12 +115,20 @@ public class GestionServicioAction extends Action {
 			EstadosDao estDao = EstadosDao.getInstance();
 			List<Estados> estados = estDao.getAllEstados();
 			
+			UserDao uDao = UserDao.getInstance();
+			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
+			
+			
+			
+			
+			
 			req.setAttribute("proyectos", proyectos);
 			req.setAttribute("servicios", servicios);
 			req.setAttribute("clientes", clientes);
 			req.setAttribute("serviciosFile", serviciosFile);
 			req.setAttribute("paises", paises);
 			req.setAttribute("estados", estados);
+			req.setAttribute("gestores_it", gestores_it);
 			
 			return mapping.findForward("ok");
 		}else{
