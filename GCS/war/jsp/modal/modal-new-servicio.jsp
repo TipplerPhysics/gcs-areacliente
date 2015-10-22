@@ -95,7 +95,7 @@
 						</div>
 
 						<div class="form-field">
-							<span class="lbl">Referencia local:</span>
+							<span class="lbl">Referencia local producción:</span>
 							<input type="text" id="ref_local2" name="ref_local2" maxlength="25" class="long">
 						</div>
 						

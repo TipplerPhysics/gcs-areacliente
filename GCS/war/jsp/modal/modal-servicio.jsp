@@ -120,7 +120,7 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Referencia:</span>
+							<span class="lbl">Referencia local producción:</span>
 						<input type="text" id="ref_local2_modal" value="${servicio.referencia_local2}" maxlength="25" name="ref_local2" class="long">
 						</div>
 					</div>
