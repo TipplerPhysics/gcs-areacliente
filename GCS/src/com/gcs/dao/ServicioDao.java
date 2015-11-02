@@ -132,8 +132,8 @@ public class ServicioDao {
 		if(s.getFormato_intermedio()!=null)s.setFormato_intermedio(s.getFormato_intermedio().toUpperCase());
 		if(s.getFormato_local()!=null)s.setFormato_local(s.getFormato_local().toUpperCase());
 		if(s.getGestor_it_name()!=null)s.setGestor_it_name(s.getGestor_it_name().toUpperCase());
-		//if(s.getGestor_pruebas_name()!=null)s.setGestor_pruebas_name(s.getGestor_pruebas_name().toUpperCase());
-		//if(s.getGestor_pruebas_key()!=null)s.setGestor_pruebas_key(s.getGestor_pruebas_key());
+		if(s.getGestor_pruebas_name()!=null)s.setGestor_pruebas_name(s.getGestor_pruebas_name().toUpperCase());
+		if(s.getGestor_pruebas_key()!=null)s.setGestor_pruebas_key(s.getGestor_pruebas_key());
 		if(s.getGestor_negocio_name()!=null)s.setGestor_negocio_name(s.getGestor_negocio_name().toUpperCase());
 		if(s.getObservaciones()!=null)s.setObservaciones(s.getObservaciones().toUpperCase());
 		if(s.getPais()!=null)s.setPais(s.getPais().toUpperCase());
@@ -820,7 +820,7 @@ public class ServicioDao {
 			servicio.setGestor_it_name(gestorItName);
 		}
 		
-		/*Long gestorPruebasKey =  getLong(entity, "gestor_pruebas_key");
+		Long gestorPruebasKey =  getLong(entity, "gestor_pruebas_key");
 		if(gestorPruebasKey != null) {
 			servicio.setGestor_pruebas_key(gestorPruebasKey);
 		}
@@ -828,7 +828,7 @@ public class ServicioDao {
 		String gestorPruebasName =  getString(entity, "gestor_pruebas_name");
 		if(gestorPruebasName != null) {
 			servicio.setGestor_pruebas_name(gestorPruebasName);
-		}*/
+		}
 		
 		Long gestorNegocioKey =  getLong(entity, "gestor_negocio_key");
 		if(gestorNegocioKey != null) {

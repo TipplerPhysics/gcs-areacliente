@@ -74,7 +74,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor Pruebas:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_it_modal" name="gestor_pruebas" data-live-search="true">
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_pruebas">
 								<option value="default">${servicio.gestor_pruebas_name}</option>	
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
