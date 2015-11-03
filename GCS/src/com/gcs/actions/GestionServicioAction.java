@@ -62,10 +62,10 @@ public class GestionServicioAction extends Action {
 				String codServicioFilter = req.getParameter("servicio");
 				String estadoFilter = req.getParameter("estado");
 				String gestorItNameFilter = req.getParameter("gestorIt");
-				String gestorNegocioNameFilter = req.getParameter("gestorNeg");
+				String paisFilter = req.getParameter("pais");
 				String clienteNameFilter = req.getParameter("cliente");
 				
-				servicios = sDao.getServicioByAllParam(codProyectoFilter, codServicioFilter, estadoFilter, gestorItNameFilter, gestorNegocioNameFilter, clienteNameFilter,  pageint);
+				servicios = sDao.getServicioByAllParam(codProyectoFilter, codServicioFilter, estadoFilter, gestorItNameFilter, paisFilter, clienteNameFilter,  pageint);
 				int numpages = (Integer.parseInt(servicios.get(servicios.size()-1).getDetalle())/ServicioDao.DATA_SIZE)+1;
 				servicios.remove(servicios.size()-1);
 				boolean lastpage = (servicios.size() < ServicioDao.DATA_SIZE) ? true : false;
@@ -77,7 +77,7 @@ public class GestionServicioAction extends Action {
 				req.setAttribute("servicio", codServicioFilter);
 				req.setAttribute("estado", estadoFilter);
 				req.setAttribute("gestorIt", gestorItNameFilter);
-				req.setAttribute("gestorNeg", gestorNegocioNameFilter);
+				req.setAttribute("pais", paisFilter);
 				req.setAttribute("cliente", clienteNameFilter);
 			}else{
 				servicios = sDao.getAllServicioPagin(pageint);

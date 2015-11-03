@@ -469,7 +469,7 @@ public class ServicioDao {
 		return servicio;		
 	}
 	
-	public List<Servicio> getServicioByAllParam(String codProyeto, String codServicio, String estado, String nGestorIt, String nGestorNegocio, String nCliente,  Integer page){
+	public List<Servicio> getServicioByAllParam(String codProyeto, String codServicio, String estado, String nGestorIt, String pais, String nCliente,  Integer page){
 		List<Servicio> servicios= null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Servicio");
@@ -492,8 +492,8 @@ public class ServicioDao {
 			nGestorIt= nGestorIt.toUpperCase();
 			filters++;
 		}
-		if(!nGestorNegocio.equals("")){
-			nGestorNegocio= nGestorNegocio.toUpperCase();
+		if(!pais.equals("")){
+			pais= pais.toUpperCase();
 			filters++;
 		}
 		if(!nCliente.equals("")){
@@ -518,9 +518,9 @@ public class ServicioDao {
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
 			}
-			if(!nGestorNegocio.equals("")){
-				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorNegocio));
-				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.LESS_THAN, nGestorNegocio+"\ufffd"));
+			if(!pais.equals("")){
+				finalFilters.add(new FilterPredicate("pais",FilterOperator.GREATER_THAN_OR_EQUAL, pais));
+				finalFilters.add(new FilterPredicate("pais",FilterOperator.LESS_THAN, pais+"\ufffd"));
 			}
 			if(!nCliente.equals("")){
 				finalFilters.add(new FilterPredicate("cliente_name",FilterOperator.GREATER_THAN_OR_EQUAL, nCliente));
@@ -593,11 +593,11 @@ public class ServicioDao {
 				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
 				Entities.add(datastore.prepare(q).asList(fetchOptions));
 			}
-			if(!nGestorNegocio.equals("")){
+			if(!pais.equals("")){
 				q = new com.google.appengine.api.datastore.Query("Servicio");
 				finalFilters = new ArrayList<>();
-				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorNegocio));
-				finalFilters.add(new FilterPredicate("gestor_negocio_name",FilterOperator.LESS_THAN, nGestorNegocio+"\ufffd"));
+				finalFilters.add(new FilterPredicate("pais",FilterOperator.GREATER_THAN_OR_EQUAL, pais));
+				finalFilters.add(new FilterPredicate("pais",FilterOperator.LESS_THAN, pais+"\ufffd"));
 				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
 				q.setFilter(finalFilter);
 				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();

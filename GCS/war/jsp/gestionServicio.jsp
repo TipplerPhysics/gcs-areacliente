@@ -265,7 +265,7 @@
 							<th><span class="table-title">Servicio</span></th>
 							<th><span class="table-title">Estado</span></th>
 							<th><span class="table-title">Gestor IT</span></th>
-							<th><span class="table-title">Gestor Negocio</span></th>
+							<th><span class="table-title">País</span></th>
 							<th><span class="table-title">Cliente</span></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
@@ -286,7 +286,7 @@
 								<th class="search-th"><input name='servicio' value='${servicio}'></th>
 								<th class="search-th"><input name='estado' value='${estado}'></th>
 								<th class="search-th"><input name='gestorIt' value='${gestorIt}'></th>
-								<th class="search-th"><input name='gestorNeg' value='${gestorNeg}'></th>
+								<th class="search-th"><input name='pais' value='${pais}'></th>
 								<th class="search-th"><input name='cliente' value='${cliente}'></th>
 								<th><button type='button' onclick='filteringServicio();'>  FILTRAR  </button></th>
 							</form>
@@ -300,7 +300,7 @@
 								<td><span>${servicio.servicio}</span></td>
 								<td><span>${servicio.estado}</span></td>										
 								<td><span>${servicio.gestor_it_name}</span></td>
-								<td><span>${servicio.gestor_negocio_name}</span></td>
+								<td><span>${servicio.pais}</span></td>
 								<td><span>${servicio.cliente_name}</span></td>
 								
 								<td>										
