@@ -55,6 +55,10 @@ public class ServicioModalAction extends Action {
 			ArrayList<String> extensiones = servicioFile.getExtensiones();
 			req.setAttribute("extensiones", extensiones);
 			
+			
+			List<Servicio> formatos = sDao.getAllFormatos();
+			req.setAttribute("formatos", formatos);
+			
 			UserDao uDao = UserDao.getInstance();
 			
 			List<User> gestores_it = uDao.getUsersByPermisoStr(3);

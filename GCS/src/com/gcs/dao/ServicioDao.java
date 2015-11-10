@@ -37,6 +37,24 @@ public class ServicioDao {
 	public static ServicioDao getInstance() {
 		return new ServicioDao();
 	}
+
+	
+	
+	public List<Servicio> getAllFormatos() {
+
+		List<Servicio> formatos;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		Query q = pm.newQuery("select distinct formato_local from " + "Formatos ");	
+		q.setOrdering("formato_local asc");
+		formatos = (List<Servicio>) q.execute();
+		
+		
+		pm.close();
+
+		return formatos;
+	}
 	
 	public Servicio getServicioById(long l) {
 	     PersistenceManager pManager = PMF.get().getPersistenceManager();
