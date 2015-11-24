@@ -126,9 +126,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Formato de entrada/salida:</span>
+							<span class="lbl">Formato de entrada/salida<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select class="selectpicker" name="formato_intermedio" id="formato_intermedio_modal"> 
+								<select class="selectpicker selected" name="formato_intermedio" id="formato_intermedio_modal" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 										<c:forEach items="${formatos}" var="form">	
 										<option value="${form}">${form}</option>
