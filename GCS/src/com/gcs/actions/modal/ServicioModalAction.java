@@ -13,11 +13,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Estados;
+import com.gcs.beans.Formatos;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Servicio;
 import com.gcs.beans.ServicioFile;
 import com.gcs.beans.User;
 import com.gcs.dao.EstadosDao;
+import com.gcs.dao.FormatosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ServicioDao;
 import com.gcs.dao.ServicioFileDao;
@@ -29,6 +31,10 @@ public class ServicioModalAction extends Action {
 			HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		try {
+			String exc_por_negocio = "EXCLUIDO POR NEGOCIO";
+			String exc_por_timeout = "EXCLUIDO POR TIMEOUT";
+			String imp_con_ok = "IMPLEMENTADO CON OK";
+			String imp_sin_ok = "IMPLEMENTADO SIN OK";
 			
 			String id= req.getParameter("id");
 			
@@ -40,8 +46,12 @@ public class ServicioModalAction extends Action {
 			ServicioDao sDao = ServicioDao.getInstance();
 			
 			Servicio s = sDao.getServicioById(Long.parseLong(id));
+			
+			
+			
 			ServicioFileDao serviciosFileDao = ServicioFileDao.getInstance();
 			PaisDao paisDao = PaisDao.getInstance();
+			FormatosDao formatosDao = FormatosDao.getInstance();
 			Pais pais = paisDao.getPaisByName(s.getPais());
 			List<ServicioFile> servicios_pais = serviciosFileDao.getAllServiciosForPais(pais);
 			
@@ -56,8 +66,19 @@ public class ServicioModalAction extends Action {
 			req.setAttribute("extensiones", extensiones);
 			
 			
-			List<Servicio> formatos = sDao.getAllFormatos();
+			List<Formatos> formatos = formatosDao.getAllFormatos();
 			req.setAttribute("formatos", formatos);
+			
+			if(!formatos.contains(s.getFormato_intermedio())){
+				if(s.getEstado().equals(exc_por_negocio)||s.getEstado().equals(exc_por_timeout)
+						||s.getEstado().equals(imp_con_ok)||s.getEstado().equals(imp_sin_ok)){
+					
+						s.setFormato_intermedio("ANTIGUO");
+					}else {
+						
+						s.setFormato_intermedio("PENDIENTE");
+				}
+			}
 			
 			UserDao uDao = UserDao.getInstance();
 			

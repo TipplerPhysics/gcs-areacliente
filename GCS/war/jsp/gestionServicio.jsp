@@ -97,7 +97,7 @@
 						<div class="form-field">
 							<span class="lbl">Gestor Pruebas:</span>
 							<div class="input">
-								<select class="selectpicker" id="gestor_it_modal" name="gestor_pruebas"  data-live-search="true">
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_pruebas">
 								<option selected value="default">Seleccionar</option>
 									<c:forEach items="${gestores_it}" var="user">
 										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
@@ -126,8 +126,15 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Formato intermedio:</span>
-							<input type="text" id="formato_intermedio" name="formato_intermedio" class="long" maxlength="25">
+							<span class="lbl">Formato de entrada/salida:</span>
+							<div class="input">
+								<select class="selectpicker" name="formato_intermedio" id="formato_intermedio_modal"> 
+									<option value="default">Seleccionar</option>
+										<c:forEach items="${formatos}" var="form">	
+										<option value="${form}">${form}</option>
+									</c:forEach>																	
+								</select>
+							</div>
 						</div>
 						
 						<div class="form-field">

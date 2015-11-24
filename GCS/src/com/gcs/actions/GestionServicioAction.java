@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
 import com.gcs.beans.Estados;
+import com.gcs.beans.Formatos;
 import com.gcs.beans.Pais;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.Servicio;
@@ -23,6 +24,7 @@ import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorServicioDao;
 import com.gcs.dao.EstadosDao;
+import com.gcs.dao.FormatosDao;
 import com.gcs.dao.PaisDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.ServicioDao;
@@ -118,6 +120,10 @@ public class GestionServicioAction extends Action {
 			UserDao uDao = UserDao.getInstance();
 			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
 			
+			FormatosDao fDao = FormatosDao.getInstance();
+			List<Formatos> formatos = fDao.getAllFormatos();
+			
+			
 			
 			
 			
@@ -129,6 +135,7 @@ public class GestionServicioAction extends Action {
 			req.setAttribute("paises", paises);
 			req.setAttribute("estados", estados);
 			req.setAttribute("gestores_it", gestores_it);
+			req.setAttribute("formatos", formatos);
 			
 			return mapping.findForward("ok");
 		}else{
