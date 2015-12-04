@@ -124,13 +124,13 @@ public class CosteServlet extends HttpServlet {
 			s.setColumnView(1, 30);
 			s.setColumnView(2, 30);
 			s.setColumnView(3, 30);
-			s.setColumnView(4, 30);
-			s.setColumnView(5, 25);
+			s.setColumnView(4, 25);
+			s.setColumnView(5, 30);
 			s.setColumnView(6, 25);
-			s.setColumnView(7, 50);
-			s.setColumnView(8, 40);
+			s.setColumnView(7, 25);
+			s.setColumnView(8, 50);
 			s.setColumnView(9, 40);
-			s.setColumnView(10, 10);
+			s.setColumnView(10, 40);
 			s.setColumnView(11, 10);
 			s.setColumnView(12, 10);
 			s.setColumnView(13, 10);
@@ -143,6 +143,8 @@ public class CosteServlet extends HttpServlet {
 			s.setColumnView(20, 10);
 			s.setColumnView(21, 10);
 			s.setColumnView(22, 10);
+			s.setColumnView(23, 10);
+			
 			//s.setColumnView(15, 30);
 			//s.setRowView(0, 900);
 			
@@ -156,42 +158,46 @@ public class CosteServlet extends HttpServlet {
 			s.mergeCells(7, 0, 7, 1);
 			s.mergeCells(8, 0, 8, 1);
 			s.mergeCells(9, 0, 9, 1);
-			s.mergeCells(10, 0, 11, 0);
-			s.mergeCells(12, 0, 13, 0);
-			s.mergeCells(14, 0, 15, 0);
-			s.mergeCells(16, 0, 17, 0);
-			s.mergeCells(18, 0, 19, 0);
-			s.mergeCells(20, 0, 21, 0);
+			s.mergeCells(10, 0, 10, 1);
+			s.mergeCells(11, 0, 12, 0);
+			s.mergeCells(13, 0, 14, 0);
+			s.mergeCells(15, 0, 16, 0);
+			s.mergeCells(17, 0, 18, 0);
+			s.mergeCells(19, 0, 20, 0);
+			s.mergeCells(21, 0, 22, 0);
+			s.mergeCells(23, 0, 23, 1);
 			
 
 			s.addCell(new Label(0, 0, "CLIENTE", cellFormat));
 			s.addCell(new Label(1, 0, "NOMBRE PROYECTO", cellFormat));
 			s.addCell(new Label(2, 0, "NUM. CONTROL", cellFormat));
 			s.addCell(new Label(3, 0, "EQUIPO", cellFormat));
-			s.addCell(new Label(4, 0, "FECHA ALTA COSTES", cellFormat));
-			s.addCell(new Label(5, 0, "GESTOR IT", cellFormat));
-			s.addCell(new Label(6, 0, "NUM. VALORACION", cellFormat));
-			s.addCell(new Label(7, 0, "COMENTARIOS", cellFormat));
-			s.addCell(new Label(8, 0, "FECHA SOLICITUD VALORACION", cellFormat));
-			s.addCell(new Label(9, 0, "FECHA RECEPCION VALORACION", cellFormat));
-			s.addCell(new Label(10, 0, "ANALISIS", cellFormat));
-			s.addCell(new Label(10, 1, "HORAS", cellFormat));
-			s.addCell(new Label(11, 1, "COSTE", cellFormat));
-			s.addCell(new Label(12, 0, "DISEÑO", cellFormat));
-			s.addCell(new Label(12, 1, "HORAS", cellFormat));
-			s.addCell(new Label(13, 1, "COSTE", cellFormat));
-			s.addCell(new Label(14, 0, "CONSTRUCCIÓN", cellFormat));
-			s.addCell(new Label(14, 1, "HORAS", cellFormat));
-			s.addCell(new Label(15, 1, "COSTE", cellFormat));
-			s.addCell(new Label(16, 0, "PRUEBAS", cellFormat));
-			s.addCell(new Label(16, 1, "HORAS", cellFormat));
-			s.addCell(new Label(17, 1, "COSTE", cellFormat));
-			s.addCell(new Label(18, 0, "GESTIÓN",cellFormat));
-			s.addCell(new Label(18, 1, "HORAS", cellFormat));
-			s.addCell(new Label(19, 1, "COSTE", cellFormat));
-			s.addCell(new Label(20, 0, "TOTAL", cellFormat));
-			s.addCell(new Label(20, 1, "HORAS", cellFormat));
-			s.addCell(new Label(21, 1, "COSTE", cellFormat));
+			s.addCell(new Label(4, 0, "CONTROL PRESUPUESTARIO", cellFormat));
+			s.addCell(new Label(5, 0, "FECHA ALTA COSTES", cellFormat));
+			s.addCell(new Label(6, 0, "GESTOR IT", cellFormat));
+			s.addCell(new Label(7, 0, "NUM. VALORACION", cellFormat));
+			s.addCell(new Label(8, 0, "COMENTARIOS", cellFormat));
+			s.addCell(new Label(9, 0, "FECHA SOLICITUD VALORACION", cellFormat));
+			s.addCell(new Label(10, 0, "FECHA RECEPCION VALORACION", cellFormat));
+			s.addCell(new Label(11, 0, "ANALISIS", cellFormat));
+			s.addCell(new Label(11, 1, "HORAS", cellFormat));
+			s.addCell(new Label(12, 1, "COSTE", cellFormat));
+			s.addCell(new Label(13, 0, "DISEÑO", cellFormat));
+			s.addCell(new Label(13, 1, "HORAS", cellFormat));
+			s.addCell(new Label(14, 1, "COSTE", cellFormat));
+			s.addCell(new Label(15, 0, "CONSTRUCCIÓN", cellFormat));
+			s.addCell(new Label(15, 1, "HORAS", cellFormat));
+			s.addCell(new Label(16, 1, "COSTE", cellFormat));
+			s.addCell(new Label(17, 0, "PRUEBAS", cellFormat));
+			s.addCell(new Label(17, 1, "HORAS", cellFormat));
+			s.addCell(new Label(18, 1, "COSTE", cellFormat));
+			s.addCell(new Label(19, 0, "GESTIÓN",cellFormat));
+			s.addCell(new Label(19, 1, "HORAS", cellFormat));
+			s.addCell(new Label(20, 1, "COSTE", cellFormat));
+			s.addCell(new Label(21, 0, "TOTAL", cellFormat));
+			s.addCell(new Label(21, 1, "HORAS", cellFormat));
+			s.addCell(new Label(22, 1, "COSTE", cellFormat));
+			
 			
 
 			////////////////////////////////////////UserDao uDao = UserDao.getInstance();
@@ -209,59 +215,63 @@ public class CosteServlet extends HttpServlet {
 				if(!c.getNum_control().equals("")&&c.getNum_control()!=null)
 				s.addCell(new Label(2, aux, c.getNum_control()));
 				s.addCell(new Label(3, aux, c.getEquipos()));
-				s.addCell(new Label(4, aux, c.getStr_fecha_alta()));
-				s.addCell(new Label(5, aux, c.getGestor_it_name()));
-				s.addCell(new Label(6, aux, c.getNum_valoracion()));
+				s.addCell(new Label(4, aux, c.getControl_presupuestario()));
+				s.addCell(new Label(5, aux, c.getStr_fecha_alta()));
+				s.addCell(new Label(6, aux, c.getGestor_it_name()));
+				s.addCell(new Label(7, aux, c.getNum_valoracion()));
 				
 				if(!c.getComentarios().equals("")&&c.getComentarios()!=null)
-				s.addCell(new Label(7, aux, c.getComentarios()));
+				s.addCell(new Label(8, aux, c.getComentarios()));
 				
 				if(c.getStr_fecha_solicitud_valoracion()!=null)
-					s.addCell(new Label(8, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
+					s.addCell(new Label(9, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
 				
 				if(c.getStr_fecha_recepcion_valoracion()!=null)
-					s.addCell(new Label(9, aux, c.getStr_fecha_recepcion_valoracion().replace(",", ".")));					
+					s.addCell(new Label(10, aux, c.getStr_fecha_recepcion_valoracion().replace(",", ".")));					
 		
 				if (!"".equals(c.getHoras_analisis())&&c.getHoras_analisis()!=null)
-					s.addCell(new Number(10, aux, Double.parseDouble(c.getHoras_analisis().replace(",", ".")),cellFormatRight));
+					s.addCell(new Number(11, aux, Double.parseDouble(c.getHoras_analisis().replace(",", ".")),cellFormatRight));
 								
 				if (!"".equals(c.getCoste_analisis())&&c.getCoste_analisis()!=null)
-					s.addCell(new Number(11, aux, Double.parseDouble(c.getCoste_analisis().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(12, aux, Double.parseDouble(c.getCoste_analisis().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_diseño())&&c.getHoras_diseño()!=null)
-					s.addCell(new Number(12, aux, Double.parseDouble(c.getHoras_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(13, aux, Double.parseDouble(c.getHoras_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_diseño())&&c.getCoste_diseño()!=null)
-					s.addCell(new Number(13, aux, Double.parseDouble(c.getCoste_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(14, aux, Double.parseDouble(c.getCoste_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_construccion())&&c.getHoras_construccion()!=null)
-					s.addCell(new Number(14, aux, Double.parseDouble(c.getHoras_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(15, aux, Double.parseDouble(c.getHoras_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_construccion())&&c.getCoste_construccion()!=null)
-					s.addCell(new Number(15, aux, Double.parseDouble(c.getCoste_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(16, aux, Double.parseDouble(c.getCoste_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_pruebas())&&c.getHoras_pruebas()!=null)
-					s.addCell(new Number(16, aux, Double.parseDouble(c.getHoras_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(17, aux, Double.parseDouble(c.getHoras_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_pruebas())&&c.getCoste_pruebas()!=null)
-					s.addCell(new Number(17, aux, Double.parseDouble(c.getCoste_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(18, aux, Double.parseDouble(c.getCoste_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_gestion())&&c.getHoras_gestion()!=null)
-					s.addCell(new Number(18, aux, Double.parseDouble(c.getHoras_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(19, aux, Double.parseDouble(c.getHoras_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_gestion())&&c.getCoste_gestion()!=null)
-					s.addCell(new Number(19, aux, Double.parseDouble(c.getCoste_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(20, aux, Double.parseDouble(c.getCoste_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_total())&&c.getHoras_total()!=null)
 					
-					s.addCell(new Number(20, aux, Double.parseDouble(c.getHoras_total().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(21, aux, Double.parseDouble(c.getHoras_total().replace(",", ".").replace(" ", "")),cellFormatRight));
+				
+				
 				
 				if (!"".equals(c.getCoste_total())&&c.getCoste_total()!=null){
 					String costetotal = c.getCoste_total();
 					if(costetotal.contains(".")&&costetotal.contains(","))costetotal.replace(".", "");
-					s.addCell(new Number(21, aux, Double.parseDouble(costetotal.replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(22, aux, Double.parseDouble(costetotal.replace(",", ".").replace(" ", "")),cellFormatRight));
 				}
 				
+				s.addCell(new Label(23, aux, c.getControl_presupuestario()));
 				aux++;
 			}
 						
