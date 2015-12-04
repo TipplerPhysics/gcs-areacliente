@@ -101,6 +101,9 @@ public class Coste {
 	@Persistent
 	private String detalle;
 	
+	@Persistent
+	private String control_presupuestario;
+	
 	public String getDetalle() {
 		return detalle;
 	}
@@ -349,6 +352,14 @@ public class Coste {
 
 	@Persistent
 	private String coste_gestion;
+
+	public String getControl_presupuestario() {
+		return control_presupuestario;
+	}
+
+	public void setControl_presupuestario(String control_presupuestario) {
+		this.control_presupuestario = control_presupuestario;
+	}
 
 	
 	

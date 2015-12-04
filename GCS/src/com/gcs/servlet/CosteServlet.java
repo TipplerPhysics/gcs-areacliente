@@ -316,6 +316,7 @@ public class CosteServlet extends HttpServlet {
 			String total_horas = req.getParameter("total_horas");
 			String num_valoracion = req.getParameter("num_valoracion");
 			String num_control = req.getParameter("numero_control");
+			String control_presupuestario = req.getParameter("control_presupuestario");
 
 			CosteDao cDao = CosteDao.getInstance();
 
@@ -325,6 +326,7 @@ public class CosteServlet extends HttpServlet {
 			c.setCoste_analisis(analisis_coste);
 			c.setHoras_analisis(analisis_horas);
 			c.setComentarios(comentarios);
+			c.setControl_presupuestario(control_presupuestario);
 			c.setCoste_construccion(construccion_coste);
 			c.setHoras_construccion(construccion_horas);
 			c.setHoras_diseño(diseño_horas);
@@ -354,6 +356,7 @@ public class CosteServlet extends HttpServlet {
 
 			c.setCoste_total(total_coste);
 			c.setHoras_total(total_horas);
+			
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
@@ -402,6 +405,7 @@ public class CosteServlet extends HttpServlet {
 			String total_horas = req.getParameter("total_horas");
 			String num_valoracion = req.getParameter("num_valoracion");
 			String num_control = req.getParameter("numero_control");
+			String control_presupuestario = req.getParameter("control_presupuestario");
 
 			CosteDao cDao = CosteDao.getInstance();
 			ClienteDao clDao = ClienteDao.getInstance();
@@ -449,6 +453,7 @@ public class CosteServlet extends HttpServlet {
 
 			c.setCoste_total(total_coste);
 			c.setHoras_total(total_horas);
+			c.setControl_presupuestario(control_presupuestario);
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
@@ -498,6 +503,7 @@ public class CosteServlet extends HttpServlet {
 			String total_horas = req.getParameter("total_horas");
 			String num_valoracion = req.getParameter("num_valoracion");
 			String num_control = req.getParameter("numero_control");
+			String control_presupuestario = req.getParameter("control_presupuestario");
 
 			CosteDao cDao = CosteDao.getInstance();
 			ClienteDao clDao = ClienteDao.getInstance();
@@ -510,6 +516,7 @@ public class CosteServlet extends HttpServlet {
 			Cliente cliente_obj = clDao.getClienteByName(cliente);
 			
 			c.setNum_control(num_control);
+			c.setControl_presupuestario(control_presupuestario);
 			c.setCliente_name(cliente_obj.getNombre());
 			c.setClienteKey(cliente_obj.getKey().getId());
 			c.setCoste_analisis(analisis_coste);

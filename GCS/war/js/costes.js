@@ -239,6 +239,9 @@ function editCoste(id){
 	var total_coste = $currentRow.data('total-coste');
 	var total_horas = $currentRow.data('total-horas');	
 	
+	var comentarios = $currentRow.data('comentarios');
+	var contol_presupuestario = $currentRow.data('control-presupuestario');
+	
 	
 	$('#cliente_modal').val(nombre_cliente);
 	$('#project_modal').val(nombre_proyecto);
@@ -247,7 +250,8 @@ function editCoste(id){
 	
 	$('#fecha_alta_costes_modal').val(fecha_alta);
 	$('#gestor_it_modal').val(gestor_it);
-	$('#comentarios_modal').val(comentarios);	
+	$('#comentarios_modal').val(comentarios);
+	$('#control_presupuestario_modal').val(control_presupuestario);
 	$('#num_valoracion_modal').val(num_valoracion);
 	
 	$('#fecha_solicitud_valoracion_modal').val(fecha_solicitud_val);

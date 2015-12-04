@@ -111,11 +111,17 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Comentarios:</span>
+							<span class="lbl">:</span>
 							<div class="input">
 								<textarea name="comentarios" id="comentarios"></textarea>
 							</div>
-						</div>							
+						</div>	
+						<div class="form-field">
+							<span class="lbl">Control Presupuestario:</span>
+							<div class="input">
+								<input type="text" value=""  size="16" maxlength="25" name="control_presupuestario" id="control_presupuestario">
+							</div>
+						</div>								
 					</div>	
 					<div class="form-field-down">
 					

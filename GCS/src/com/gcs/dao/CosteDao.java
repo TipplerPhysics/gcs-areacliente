@@ -454,6 +454,11 @@ pm.close();
 			coste.setComentarios(comentarios);
 		}
 		
+		String control_presupuestario =  getString(entity, "control_presupuestario");
+		if(control_presupuestario != null) {
+			coste.setControl_presupuestario(control_presupuestario);
+		}
+		
 		String costeAnalisis =  getString(entity, "coste_analisis");
 		if(costeAnalisis != null) {
 			coste.setCoste_analisis(costeAnalisis);

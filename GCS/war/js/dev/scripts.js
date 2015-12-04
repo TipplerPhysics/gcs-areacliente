@@ -799,7 +799,8 @@ function editCoste(id){
 	var gestion_coste = $currentRow.data('gestion-coste');
 	var gestion_horas = $currentRow.data('gestion-horas');
 	var total_coste = $currentRow.data('total-coste');
-	var total_horas = $currentRow.data('total-horas');	
+	var total_horas = $currentRow.data('total-horas');
+	var control_presupuestario = $currentRow.data('control-presupuestario');
 	
 	
 	$('#cliente_modal').val(nombre_cliente);
@@ -831,6 +832,7 @@ function editCoste(id){
 	
 	$('#total_horas_modal').val(total_horas);
 	$('#total_coste_modal').val(total_coste);
+	$('#control_presupuestario_modal').val(control_presupuestario);
 	
 
 	

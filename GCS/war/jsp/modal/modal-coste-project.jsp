@@ -105,6 +105,12 @@
 							</div>
 						</div>
 						
+						<div class="form-field">
+							<span class="lbl">Control presupuestario:</span>
+							<div class="input">
+								<input type="text" size="16" maxlength="25" name="control_presupuestario" id="control_presupuestario_modal" value = "${coste.control_presupuestario}">
+							</div>
+						</div>
 							
 					</div>	
 					<div class="form-field-down">
