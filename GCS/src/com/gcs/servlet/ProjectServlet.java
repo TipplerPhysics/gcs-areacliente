@@ -355,7 +355,7 @@ public class ProjectServlet extends HttpServlet{
 				if (!"default".equals(conectividad) && !"".equals(conectividad)){
 					p.setConectividad(conectividad);	
 				}
-				if (!"".equals(fecha_inicio_valoracion_str))
+				/*if (!"".equals(fecha_inicio_valoracion_str))
 				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
 				if (!"".equals(fecha_fin_valoracion_str))
 				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
@@ -366,11 +366,21 @@ public class ProjectServlet extends HttpServlet{
 				if (!"".equals(fecha_plan_trabajo_str))
 				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
 				if (!"".equals(fecha_disponible_conectividad_str))
+				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);*/
+				
+				p.setStr_fecha_inicio_valoracion(fecha_inicio_valoracion_str);
+				p.setStr_fecha_fin_valoracion(fecha_fin_valoracion_str);
+				p.setStr_fecha_inicio_viabilidad(fecha_inicio_viabilidad_str);
+				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
+				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
 				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
-				if (!"".equals(envioC100))
+				p.setStr_envioC100(envioC100);
+				p.setStr_OKNegocio(ok_negocio);
+					
+				/*if (!"".equals(envioC100))
 				p.setStr_envioC100(envioC100);
 				if (!"".equals(ok_negocio))
-				p.setStr_OKNegocio(ok_negocio);
+				p.setStr_OKNegocio(ok_negocio);*/
 				if (!"".equals(ok_negocio_check))
 				p.setStr_OKNegocioCheck(ok_negocio_check);
 					
