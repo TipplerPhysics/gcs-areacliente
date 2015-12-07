@@ -271,7 +271,7 @@ public class CosteServlet extends HttpServlet {
 					s.addCell(new Number(22, aux, Double.parseDouble(costetotal.replace(",", ".").replace(" ", "")),cellFormatRight));
 				}
 				
-				s.addCell(new Label(23, aux, c.getControl_presupuestario()));
+				
 				aux++;
 			}
 						
