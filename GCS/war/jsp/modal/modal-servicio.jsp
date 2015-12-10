@@ -131,6 +131,11 @@
 							<span class="lbl">Referencia local producción:</span>
 						<input type="text" id="ref_local2_modal" value="${servicio.referencia_local2}" maxlength="25" name="ref_local2" class="long">
 						</div>
+						
+						<div class="form-field">
+							<span class="lbl">BEI:</span>
+						<input type="text" id="cod_bei_modal" value="${servicio.cod_bei}" maxlength="11" name="cod_bei" class="long">
+						</div>
 					</div>
 					<div class="form-field-divider right">
 						

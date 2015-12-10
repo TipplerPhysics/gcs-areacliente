@@ -99,6 +99,11 @@
 							<input type="text" id="ref_local2" name="ref_local2" maxlength="25" class="long">
 						</div>
 						
+						<div class="form-field">
+							<span class="lbl">BEI:</span>
+							<input type="text" id="cod_bei" name="cod_bei" maxlength="11" class="long">
+						</div>
+						
 					</div>
 					<div class="form-field-divider right">
 						

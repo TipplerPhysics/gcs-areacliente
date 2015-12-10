@@ -102,16 +102,16 @@ public class ServicioServlet extends HttpServlet {
 		    cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE);			
 			
 		    s.setColumnView(0, 20);
-		    s.setColumnView(1, 20);
-		    s.setColumnView(2, 30);
+		    s.setColumnView(1, 11);
+		    s.setColumnView(2, 20);
 		    s.setColumnView(3, 30);
 		    s.setColumnView(4, 30);
-		    s.setColumnView(5, 20);
-		    s.setColumnView(6, 30);
+		    s.setColumnView(5, 30);
+		    s.setColumnView(6, 20);
 		    s.setColumnView(7, 30);
-		    s.setColumnView(8, 20);
+		    s.setColumnView(8, 30);
+		    s.setColumnView(9, 20);
 		    
-		    s.setColumnView(9, 30);
 		    s.setColumnView(10, 30);
 		    s.setColumnView(11, 30);
 		    s.setColumnView(12, 30);
@@ -119,44 +119,46 @@ public class ServicioServlet extends HttpServlet {
 		    s.setColumnView(14, 30);
 		    s.setColumnView(15, 30);
 		    s.setColumnView(16, 30);
-		    s.setColumnView(17, 35);
+		    s.setColumnView(17, 30);
 		    s.setColumnView(18, 35);
 		    s.setColumnView(19, 35);
 		    s.setColumnView(20, 35);
-		    s.setColumnView(21, 30);
-		    s.setColumnView(22, 35);
+		    s.setColumnView(21, 35);
+		    s.setColumnView(22, 30);
 		    s.setColumnView(23, 35);
+		    s.setColumnView(24, 35);
 		    //s.setColumnView(23, 35);
 		    //s.setColumnView(24, 35);
 		    
 		    s.setRowView(0, 900);
 						
 			s.addCell(new Label(0, 0, "COD. PROYECTO",cellFormat));
-			s.addCell(new Label(1, 0, "PAIS",cellFormat));
-			s.addCell(new Label(2, 0, "SERVICIO",cellFormat));
-			s.addCell(new Label(3, 0, "ESTADO",cellFormat));
-			s.addCell(new Label(4, 0, "GESTOR PRUEBAS",cellFormat));
-			s.addCell(new Label(5, 0, "COD. REDMINE",cellFormat));
-			s.addCell(new Label(6, 0, "OBSERVACIONES",cellFormat));
-			s.addCell(new Label(7, 0, "FORMATO INTERMEDIO",cellFormat));
-			s.addCell(new Label(8, 0, "FORMATO LOCAL",cellFormat));
+			s.addCell(new Label(1, 0, "BEI",cellFormat));
+			s.addCell(new Label(2, 0, "PAIS",cellFormat));
+			s.addCell(new Label(3, 0, "SERVICIO",cellFormat));
+			s.addCell(new Label(4, 0, "ESTADO",cellFormat));
+			s.addCell(new Label(5, 0, "GESTOR PRUEBAS",cellFormat));
+			s.addCell(new Label(6, 0, "COD. REDMINE",cellFormat));
+			s.addCell(new Label(7, 0, "OBSERVACIONES",cellFormat));
+			s.addCell(new Label(8, 0, "FORMATO INTERMEDIO",cellFormat));
+			s.addCell(new Label(9, 0, "FORMATO LOCAL",cellFormat));
 			
-			s.addCell(new Label(9, 0, "REF. LOCAL",cellFormat));
-			s.addCell(new Label(10, 0, "REF. LOCAL INTEGRADO",cellFormat));
-			s.addCell(new Label(11, 0, "FECHA INICIO INTEGRADAS",cellFormat));
-			s.addCell(new Label(12, 0, "FECHA FIN INTEGRADAS",cellFormat));
-			s.addCell(new Label(13, 0, "FECHA INICIO ACEPTACIÓN",cellFormat));
-			s.addCell(new Label(14, 0, "FECHA FIN ACEPTACIÓN",cellFormat));
-			s.addCell(new Label(15, 0, "FECHA INICIO VALIDACION",cellFormat));
-			s.addCell(new Label(16, 0, "FECHA FIN VALIDACION",cellFormat));
-			s.addCell(new Label(17, 0, "FECHA IMPLANTACION-PRODUCCIÓN",cellFormat));
+			s.addCell(new Label(10, 0, "REF. LOCAL",cellFormat));
+			s.addCell(new Label(11, 0, "REF. LOCAL INTEGRADO",cellFormat));
+			s.addCell(new Label(12, 0, "FECHA INICIO INTEGRADAS",cellFormat));
+			s.addCell(new Label(13, 0, "FECHA FIN INTEGRADAS",cellFormat));
+			s.addCell(new Label(14, 0, "FECHA INICIO ACEPTACIÓN",cellFormat));
+			s.addCell(new Label(15, 0, "FECHA FIN ACEPTACIÓN",cellFormat));
+			s.addCell(new Label(16, 0, "FECHA INICIO VALIDACION",cellFormat));
+			s.addCell(new Label(17, 0, "FECHA FIN VALIDACION",cellFormat));
+			s.addCell(new Label(18, 0, "FECHA IMPLANTACION-PRODUCCIÓN",cellFormat));
 			
-			s.addCell(new Label(18, 0, "FECHA INICIO PRIMERA OPERACIÓN",cellFormat));
-			s.addCell(new Label(19, 0, "FECHA FIN PRIMERA OPERACIÓN",cellFormat));
-			s.addCell(new Label(20, 0, "FECHA INICIO OPERACIÓN CLIENTE",cellFormat));
-			s.addCell(new Label(21, 0, "FECHA PASO ANS",cellFormat));
-			s.addCell(new Label(22, 0, "FECHA ESTIMADA PRUEBAS",cellFormat));
-			s.addCell(new Label(23, 0, "FECHA ESTIMADA FIN PRUEBAS",cellFormat));
+			s.addCell(new Label(19, 0, "FECHA INICIO PRIMERA OPERACIÓN",cellFormat));
+			s.addCell(new Label(20, 0, "FECHA FIN PRIMERA OPERACIÓN",cellFormat));
+			s.addCell(new Label(21, 0, "FECHA INICIO OPERACIÓN CLIENTE",cellFormat));
+			s.addCell(new Label(22, 0, "FECHA PASO ANS",cellFormat));
+			s.addCell(new Label(23, 0, "FECHA ESTIMADA PRUEBAS",cellFormat));
+			s.addCell(new Label(24, 0, "FECHA ESTIMADA FIN PRUEBAS",cellFormat));
 			//s.addCell(new Label(23, 0, "FECHA MIGRACION CHANNELING",cellFormat));
 			//s.addCell(new Label(24, 0, "FECHA MIGRACION INFRAESTRUCTURA",cellFormat));
 
@@ -172,30 +174,31 @@ public class ServicioServlet extends HttpServlet {
 				
 								
 				s.addCell(new Label(0, aux, serv.getCod_proyecto()));
-				s.addCell(new Label(1, aux, serv.getPais()));
-				s.addCell(new Label(2, aux, serv.getServicio()));
-				s.addCell(new Label(3, aux, serv.getEstado()));
-				s.addCell(new Label(4, aux, serv.getGestor_pruebas_name()));
-				s.addCell(new Label(5, aux, serv.getCod_servicio()));
-				s.addCell(new Label(6, aux, serv.getObservaciones()));
-				s.addCell(new Label(7, aux, serv.getFormato_intermedio()));
-				s.addCell(new Label(8, aux, serv.getFormato_local()));
+				s.addCell(new Label(1, aux, serv.getCod_bei()));
+				s.addCell(new Label(2, aux, serv.getPais()));
+				s.addCell(new Label(3, aux, serv.getServicio()));
+				s.addCell(new Label(4, aux, serv.getEstado()));
+				s.addCell(new Label(5, aux, serv.getGestor_pruebas_name()));
+				s.addCell(new Label(6, aux, serv.getCod_servicio()));
+				s.addCell(new Label(7, aux, serv.getObservaciones()));
+				s.addCell(new Label(8, aux, serv.getFormato_intermedio()));
+				s.addCell(new Label(9, aux, serv.getFormato_local()));
 				
-				s.addCell(new Label(9, aux, serv.getReferencia_local1() ));
-				s.addCell(new Label(10, aux, serv.getReferencia_local2() ));
-				s.addCell(new Label(11, aux, serv.getStr_fecha_ini_integradas() ));
-				s.addCell(new Label(12, aux, serv.getStr_fecha_fin_integradas() ));
-				s.addCell(new Label(13, aux, serv.getStr_fecha_ini_aceptacion() ));
-				s.addCell(new Label(14, aux, serv.getStr_fecha_fin_aceptacion() ));
-				s.addCell(new Label(15, aux, serv.getStr_fecha_ini_validacion() ));
-				s.addCell(new Label(16, aux, serv.getStr_fecha_fin_validacion() ));
-				s.addCell(new Label(17, aux, serv.getStr_fecha_implantacion_produccion() ));
-				s.addCell(new Label(18, aux, serv.getStr_fecha_ini_primera_operacion() ));
-				s.addCell(new Label(19, aux, serv.getStr_fecha_fin_primera_operacion() ));
-				s.addCell(new Label(20, aux, serv.getStr_fecha_ini_op_cliente() ));				
-				s.addCell(new Label(21, aux, serv.getStr_fecha_ANS() ));
-				s.addCell(new Label(22, aux, serv.getStr_fecha_ini_pruebas() ));
-				s.addCell(new Label(23, aux, serv.getStr_fecha_fin_pruebas() ));
+				s.addCell(new Label(10, aux, serv.getReferencia_local1() ));
+				s.addCell(new Label(11, aux, serv.getReferencia_local2() ));
+				s.addCell(new Label(12, aux, serv.getStr_fecha_ini_integradas() ));
+				s.addCell(new Label(13, aux, serv.getStr_fecha_fin_integradas() ));
+				s.addCell(new Label(14, aux, serv.getStr_fecha_ini_aceptacion() ));
+				s.addCell(new Label(15, aux, serv.getStr_fecha_fin_aceptacion() ));
+				s.addCell(new Label(16, aux, serv.getStr_fecha_ini_validacion() ));
+				s.addCell(new Label(17, aux, serv.getStr_fecha_fin_validacion() ));
+				s.addCell(new Label(18, aux, serv.getStr_fecha_implantacion_produccion() ));
+				s.addCell(new Label(19, aux, serv.getStr_fecha_ini_primera_operacion() ));
+				s.addCell(new Label(20, aux, serv.getStr_fecha_fin_primera_operacion() ));
+				s.addCell(new Label(21, aux, serv.getStr_fecha_ini_op_cliente() ));				
+				s.addCell(new Label(22, aux, serv.getStr_fecha_ANS() ));
+				s.addCell(new Label(23, aux, serv.getStr_fecha_ini_pruebas() ));
+				s.addCell(new Label(24, aux, serv.getStr_fecha_fin_pruebas() ));
 				//s.addCell(new Label(23, aux, serv.getStr_migracion_channeling() ));
 				//s.addCell(new Label(24, aux, serv.getStr_migracion_infra() ));
 				
@@ -284,6 +287,7 @@ public class ServicioServlet extends HttpServlet {
 			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
 			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
+			String cod_bei = req.getParameter("cod_bei");
 
 			
 			//s.setId_proyecto(p.getKey().getId());
@@ -321,6 +325,7 @@ public class ServicioServlet extends HttpServlet {
 			
 			s.setStr_fecha_ini_pruebas(str_fecha_inicio_pruebas);
 			s.setStr_fecha_fin_pruebas(str_fecha_fin_pruebas);
+			s.setCod_bei(cod_bei);
 			
 			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
@@ -598,6 +603,7 @@ public class ServicioServlet extends HttpServlet {
 			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
 			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
+			String cod_bei = req.getParameter("cod_bei");
 
 			Servicio s = new Servicio();
 			s.setId_proyecto(p.getKey().getId());
@@ -639,6 +645,7 @@ public class ServicioServlet extends HttpServlet {
 			s.setExtension(extension);
 			s.setGestor_pruebas_key((Long.parseLong(str_gestor_pruebas_key)));
 			s.setGestor_pruebas_name(str_gestor_pruebas_name);
+			s.setCod_bei(cod_bei);
 			
 			
 			ServicioDao sDao = ServicioDao.getInstance();
@@ -707,6 +714,7 @@ private void cloneService(HttpServletRequest req, HttpServletResponse resp, Stri
 			//String str_fecha_mig_infraestructura = req.getParameter("fecha_mig_infraestructura");
 			String extension = req.getParameter("extension");
 			String pais = req.getParameter("pais");
+			String cod_bei = req.getParameter("cod_bei");
 
 			Servicio s = new Servicio();
 			s.setId_proyecto(p.getKey().getId());
@@ -754,6 +762,7 @@ private void cloneService(HttpServletRequest req, HttpServletResponse resp, Stri
 			//s.setStr_migracion_channeling(str_fecha_mig_channeling);
 			//s.setStr_migracion_infra(str_fecha_mig_infraestructura);
 			s.setExtension(extension);
+			s.setCod_bei(cod_bei);
 			
 			ServicioDao sDao = ServicioDao.getInstance();
 			sDao.createServicio(s,usermail);

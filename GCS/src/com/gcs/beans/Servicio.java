@@ -170,6 +170,9 @@ public class Servicio {
 	@Persistent
 	private String detalle;
 	
+	@Persistent
+	private String cod_bei;
+	
 	public Key getKey() {
 		return key;
 	}
@@ -581,15 +584,23 @@ public class Servicio {
 		this.str_fecha_fin_pruebas = str_fecha_fin_pruebas;
 	}
 	
-	 public String getDetalle() {
-			return detalle;
-		}
+	public String getDetalle() {
+		return detalle;
+	}
 
-		public void setDetalle(String det) {
-			this.detalle = det;
-		}
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
 
-/*	public Date getFecha_migracion_channeling() {
+	public String getCod_bei() {
+		return cod_bei;
+	}
+
+	public void setCod_bei(String cod_bei) {
+		this.cod_bei = cod_bei;
+	}
+
+	/*	public Date getFecha_migracion_channeling() {
 		return fecha_migracion_channeling;
 	}
 
@@ -641,6 +652,7 @@ public class Servicio {
 				+ ", gestor_negocio_name=" + gestor_negocio_name
 				+ ", gestor_pruebas_key=" + gestor_pruebas_key
 				+ ", gestor_pruebas_name=" + gestor_pruebas_name
+				+ ", cod_bei=" + cod_bei
 				+ ", cliente_key=" + cliente_key + ", cliente_name="
 				+ cliente_name + ", pais=" + pais + ", cod_proyecto="
 				+ cod_proyecto + ", id_proyecto=" + id_proyecto + ", servicio="
