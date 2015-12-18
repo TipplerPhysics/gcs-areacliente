@@ -1874,35 +1874,36 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 				if(!coste.getNum_control().equals("")&&coste.getNum_control()!=null)
 				hojaCost.getRow(headCoste).createCell(3).setCellValue(coste.getNum_control());
 				hojaCost.getRow(headCoste).createCell(4).setCellValue(coste.getEquipos());
-				hojaCost.getRow(headCoste).createCell(5).setCellStyle(styleexce);
+				hojaCost.getRow(headCoste).createCell(5).setCellValue(coste.getControl_presupuestario());
+				hojaCost.getRow(headCoste).createCell(6).setCellStyle(styleexce);
 				fechaString = coste.getStr_fecha_alta();
 				if(fechaString.indexOf("2015")>-1){
-					hojaCost.getRow(headCoste).getCell(5).setCellValue(coste.getFecha_alta());
+					hojaCost.getRow(headCoste).getCell(6).setCellValue(coste.getFecha_alta());
 				}else{
-					hojaCost.getRow(headCoste).getCell(5).setCellValue("");
+					hojaCost.getRow(headCoste).getCell(6).setCellValue("");
 				}
-				hojaCost.getRow(headCoste).createCell(6).setCellValue(coste.getGestor_it_name());
-				hojaCost.getRow(headCoste).createCell(7).setCellValue(coste.getNum_valoracion());
+				hojaCost.getRow(headCoste).createCell(7).setCellValue(coste.getGestor_it_name());
+				hojaCost.getRow(headCoste).createCell(8).setCellValue(coste.getNum_valoracion());
 				if(!coste.getComentarios().equals("")&&coste.getComentarios()!=null)
-				hojaCost.getRow(headCoste).createCell(8).setCellValue(coste.getComentarios());
+				hojaCost.getRow(headCoste).createCell(9).setCellValue(coste.getComentarios());
 				if(coste.getStr_fecha_solicitud_valoracion()!=null)
-				hojaCost.getRow(headCoste).createCell(9).setCellValue(coste.getStr_fecha_solicitud_valoracion());		
+				hojaCost.getRow(headCoste).createCell(10).setCellValue(coste.getStr_fecha_solicitud_valoracion());		
 				if(coste.getStr_fecha_recepcion_valoracion()!=null)
-				hojaCost.getRow(headCoste).createCell(10).setCellValue(coste.getStr_fecha_recepcion_valoracion());			
+				hojaCost.getRow(headCoste).createCell(11).setCellValue(coste.getStr_fecha_recepcion_valoracion());			
 				if (!"".equals(coste.getHoras_analisis())&&coste.getHoras_analisis()!=null)
-				hojaCost.getRow(headCoste).createCell(11).setCellValue(coste.getHoras_analisis());
+				hojaCost.getRow(headCoste).createCell(12).setCellValue(coste.getHoras_analisis());
 				if (!"".equals(coste.getCoste_analisis())&&coste.getCoste_analisis()!=null)
-				hojaCost.getRow(headCoste).createCell(12).setCellValue(coste.getCoste_analisis());
-				hojaCost.getRow(headCoste).createCell(13).setCellValue(coste.getHoras_diseño());
-				hojaCost.getRow(headCoste).createCell(14).setCellValue(coste.getCoste_diseño());
-				hojaCost.getRow(headCoste).createCell(15).setCellValue(coste.getHoras_construccion());
-				hojaCost.getRow(headCoste).createCell(16).setCellValue(coste.getCoste_construccion());
-				hojaCost.getRow(headCoste).createCell(17).setCellValue(coste.getHoras_pruebas());
-				hojaCost.getRow(headCoste).createCell(18).setCellValue(coste.getCoste_pruebas());
-				hojaCost.getRow(headCoste).createCell(19).setCellValue(coste.getHoras_gestion());
-				hojaCost.getRow(headCoste).createCell(20).setCellValue(coste.getCoste_gestion());
-				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))hojaCost.getRow(headCoste).createCell(21).setCellValue(Double.parseDouble(coste.getHoras_total()));
-				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))hojaCost.getRow(headCoste).createCell(22).setCellValue(Double.parseDouble(coste.getCoste_total()));
+				hojaCost.getRow(headCoste).createCell(13).setCellValue(coste.getCoste_analisis());
+				hojaCost.getRow(headCoste).createCell(14).setCellValue(coste.getHoras_diseño());
+				hojaCost.getRow(headCoste).createCell(15).setCellValue(coste.getCoste_diseño());
+				hojaCost.getRow(headCoste).createCell(16).setCellValue(coste.getHoras_construccion());
+				hojaCost.getRow(headCoste).createCell(17).setCellValue(coste.getCoste_construccion());
+				hojaCost.getRow(headCoste).createCell(18).setCellValue(coste.getHoras_pruebas());
+				hojaCost.getRow(headCoste).createCell(19).setCellValue(coste.getCoste_pruebas());
+				hojaCost.getRow(headCoste).createCell(20).setCellValue(coste.getHoras_gestion());
+				hojaCost.getRow(headCoste).createCell(21).setCellValue(coste.getCoste_gestion());
+				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))hojaCost.getRow(headCoste).createCell(22).setCellValue(Double.parseDouble(coste.getHoras_total()));
+				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))hojaCost.getRow(headCoste).createCell(23).setCellValue(Double.parseDouble(coste.getCoste_total()));
 				headCoste++;
 				Double costeTotal= null;
 				Double horasTotales= null;

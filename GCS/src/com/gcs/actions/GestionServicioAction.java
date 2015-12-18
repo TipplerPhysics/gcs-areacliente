@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.gcs.beans.Cliente;
+import com.gcs.beans.Coste;
 import com.gcs.beans.Estados;
 import com.gcs.beans.Formatos;
 import com.gcs.beans.Pais;
@@ -23,6 +24,7 @@ import com.gcs.beans.ServicioFile;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
 import com.gcs.dao.ContadorServicioDao;
+import com.gcs.dao.CosteDao;
 import com.gcs.dao.EstadosDao;
 import com.gcs.dao.FormatosDao;
 import com.gcs.dao.PaisDao;
@@ -121,7 +123,12 @@ public class GestionServicioAction extends Action {
 			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
 			
 			FormatosDao fDao = FormatosDao.getInstance();
+			//CosteDao fDao = CosteDao.getInstance();
+			
 			List<Formatos> formatos = fDao.getAllFormatos();
+			//List<Coste> formatos = fDao.select();
+			
+			//fDao.update(formatos);
 			
 			
 			
