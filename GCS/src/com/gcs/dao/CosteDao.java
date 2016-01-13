@@ -416,7 +416,7 @@ pm.close();
 	
 		
 		Query q = pm.newQuery("select from " + Coste.class.getName());
-		q.setOrdering("num_control asc");;
+		q.setOrdering("num_control asc");
 		coste = (List<Coste>) q.execute();
 		
 		
@@ -439,10 +439,19 @@ pm.close();
 				 
 				 String num_control = coste.get(i).getNum_control();
 				 Coste c = pm.getObjectById(Coste.class, coste.get(i).getKey().getId());
-				if(num_control.equalsIgnoreCase("CAP_2014001")||num_control.equalsIgnoreCase("CAP_2014002")||num_control.equalsIgnoreCase("CAP_2014003")||
-						num_control.equalsIgnoreCase("CAP_2014006")||num_control.equalsIgnoreCase("CAP_2014007")||num_control.equalsIgnoreCase("CAP_2014008")||
-						num_control.equalsIgnoreCase("CAP_2014009")||num_control.equalsIgnoreCase("CAP_2014010")||num_control.equalsIgnoreCase("CAP_2014013")){ 
-						 	c.setControl_presupuestario("2014"); 
+				if(num_control.equalsIgnoreCase("INN_2015028")||num_control.equalsIgnoreCase("INN_2015023")||num_control.equalsIgnoreCase("INN_2015021")||num_control.equalsIgnoreCase("INN_2015033")||
+						num_control.equalsIgnoreCase("INN_2015034")||num_control.equalsIgnoreCase("INN_2015039")||num_control.equalsIgnoreCase("INN_2015037")||
+						num_control.equalsIgnoreCase("INN_2015035")||num_control.equalsIgnoreCase("INN_2015025")||num_control.equalsIgnoreCase("INN_2015016")||
+						num_control.equalsIgnoreCase("INN_2015034")||num_control.equalsIgnoreCase("INN_2015007")||num_control.equalsIgnoreCase("INN_2015011")||
+						num_control.equalsIgnoreCase("INN_2014128")||num_control.equalsIgnoreCase("INN_2014130")||num_control.equalsIgnoreCase("INN_2015036")||
+						num_control.equalsIgnoreCase("INN_2015032")||num_control.equalsIgnoreCase("INN_2015018")||num_control.equalsIgnoreCase("INN_2015002")||
+						num_control.equalsIgnoreCase("INN_2015014")||num_control.equalsIgnoreCase("INN_2015030")||num_control.equalsIgnoreCase("INN_2015017")||
+						num_control.equalsIgnoreCase("INN_2014126")||num_control.equalsIgnoreCase("INN_2015027")||num_control.equalsIgnoreCase("INN_2015013")||
+						num_control.equalsIgnoreCase("INN_2015015")||num_control.equalsIgnoreCase("INN_2014132")||num_control.equalsIgnoreCase("INN_2015019")||
+						num_control.equalsIgnoreCase("INN_2014129")||num_control.equalsIgnoreCase("INN_2015029")||num_control.equalsIgnoreCase("INN_2015026")||
+						num_control.equalsIgnoreCase("INN_2015003")||num_control.equalsIgnoreCase("INN_2015009")||num_control.equalsIgnoreCase("INN_2015038")||
+						num_control.equalsIgnoreCase("INN_2014131")){ 
+						 	c.setControl_presupuestario("2015"); 
 					         pm.makePersistent(c);
 				}
 				}

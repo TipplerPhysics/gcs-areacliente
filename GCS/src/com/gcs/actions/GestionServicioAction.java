@@ -121,13 +121,15 @@ public class GestionServicioAction extends Action {
 			
 			UserDao uDao = UserDao.getInstance();
 			List<User> gestores_it = uDao.getUsersByPermisoStr(3);
-			
+  			
+			//Bloque a comentar para queries masivas
 			FormatosDao fDao = FormatosDao.getInstance();
-			//CosteDao fDao = CosteDao.getInstance();
-			
 			List<Formatos> formatos = fDao.getAllFormatos();
-			//List<Coste> formatos = fDao.select();
 			
+			// Bloque a descomentar para queries masivas 
+			
+			//CosteDao fDao = CosteDao.getInstance();
+			//List<Coste> formatos = fDao.select();
 			//fDao.update(formatos);
 			
 			

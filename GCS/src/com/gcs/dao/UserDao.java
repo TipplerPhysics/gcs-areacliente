@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.gcs.beans.User;
@@ -219,8 +220,62 @@ public class UserDao {
 		return agrupations;
 	}
 	
-
+	
 	public List<User> getUsersByPermisoStr(int permiso) {
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Transaction transaction = pManager.currentTransaction();
+		transaction.begin();
+		/*se ejecutan dos queries una que saca todos los usuarios ordenados alfabeticamente y otra con los usuarios existentes con permisos
+		 * ya que las limitaciones de google no nos permite hacerlo en una sola query*/
+		Query queryStr = pManager.newQuery( "select from " + User.class.getName());
+		
+		Query queryPerm= pManager.newQuery("select from " + User.class.getName()
+				+ " WHERE permiso == :permiso && erased == false");
+		
+		queryStr.setOrdering("nombre asc");
+		
+		
+
+		@SuppressWarnings("unchecked")
+		List<User> users = (List<User>) queryStr.execute(permiso);
+		List<User> perm = (List<User>) queryPerm.execute(permiso);
+		
+		List<User> agrupations =new ArrayList<User>();
+		List<User> definitiva =new ArrayList<User>();
+		
+		/*se copian los resultado de la query en otra lista para que nos permita eliminar los usuarios sin permisos
+		  ya que google no permite eliminar directamente de una lista sacada de la ejecución de una query.*/
+		agrupations.addAll(perm);
+		definitiva.addAll(users);
+		
+
+		transaction.commit();
+	
+		
+		definitiva.retainAll(agrupations);
+		/*for(int i=0;i<agrupations.size();i++){
+			int permisoBBDD = agrupations.get(i).getPermiso();
+			boolean erased = agrupations.get(i).getErased();
+			
+			
+			if (permisoBBDD != permiso || erased == true){
+				
+				users.remove(i);
+			}
+		}*/
+
+		pManager.close();
+		
+		
+		
+		
+		
+		
+
+		return definitiva;
+	}
+
+	/*public List<User> getUsersByPermisoStr(int permiso) {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		Transaction transaction = pManager.currentTransaction();
 		transaction.begin();
@@ -236,7 +291,7 @@ public class UserDao {
 		pManager.close();
 
 		return agrupations;
-	}
+	}*/
 	
 	public void deleteAll(){
 		UserDao usrDao = UserDao.getInstance();
