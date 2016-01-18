@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.gcs.beans.Servicio;
 import com.gcs.beans.User;
 import com.gcs.persistence.PMF;
 import com.gcs.utils.Utils;
@@ -30,7 +31,64 @@ public class UserDao {
 	public static UserDao getInstance() {
 		return new UserDao();
 	}
+	
+	
+	/* Descomentar para select y update para queries masivas en tabla Servicio*/
+	/*
+	
+	public List<User> select() {
 
+		List<User> coste;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	
+		
+		Query q = pm.newQuery("select from " + User.class.getName());
+		coste = (List<User>) q.execute();
+		
+		
+		pm.close();
+
+		return coste;
+	}
+	
+	
+	public void update( List<User> coste) {
+
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		 try {
+			
+			 
+			 for(int i=0;i<coste.size();i++){
+				 
+				 String nombre = coste.get(i).getNombre();
+				 User c = pm.getObjectById(User.class, coste.get(i).getKey().getId());
+				
+				if (nombre !=null ){
+				 if(nombre.equalsIgnoreCase("ÁNGEL")){ 
+						 	c.setNombre("ANGEL"); 
+					         pm.makePersistent(c);
+				}
+				}
+				}
+				
+				 
+					 
+			 
+			 
+			
+			 
+	        } finally {
+	            pm.close();
+	        }
+	
+		
+		pm.close();
+
+	}
+	*/
 	public void createUser(User u, String usermail) {
 		
 		if(u.getApellido1()!=null)u.setApellido1(u.getApellido1().toUpperCase());

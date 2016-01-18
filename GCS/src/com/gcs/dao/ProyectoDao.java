@@ -40,6 +40,58 @@ public class ProyectoDao {
 		return new ProyectoDao();
 	}
 	
+	
+	/* Descomentar para select y update para queries masivas en tabla Proyecto*/
+	/*public List<Proyecto> select() {
+
+		List<Proyecto> coste;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	
+		
+		Query q = pm.newQuery("select from " + Proyecto.class.getName());
+		coste = (List<Proyecto>) q.execute();
+		
+		
+		pm.close();
+
+		return coste;
+	}
+	
+	
+	public void update( List<Proyecto> coste) {
+
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		 try {
+			
+			 
+			 for(int i=0;i<coste.size();i++){
+				 
+				 String gestor_negocio_name = coste.get(i).getGestor_negocio_name();
+				 Proyecto c = pm.getObjectById(Proyecto.class, coste.get(i).getKey().getId());
+				if(gestor_negocio_name.equalsIgnoreCase("ÁNGEL DÍAZ MORALES")){ 
+						 	c.setGestor_negocio_name("ANGEL DÍAZ MORALES"); 
+					         pm.makePersistent(c);
+				}
+				}
+				
+				 
+					 
+			 
+			 
+			
+			 
+	        } finally {
+	            pm.close();
+	        }
+	
+		
+		pm.close();
+
+	}
+	*/
 	public String getCoste(Proyecto p){
 		
 		ProyectoDao pDao = ProyectoDao.getInstance();

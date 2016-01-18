@@ -408,16 +408,19 @@ pm.close();
 		}
 		return costes;
 	}
-	
-	public List<Coste> select() {
 
-		List<Coste> coste;
+	
+	/* Descomentar para select y update para queries masivas en tabla Coste*/
+	
+	
+	/*public List<Proyecto> select() {
+
+		List<Proyecto> coste;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	
 		
-		Query q = pm.newQuery("select from " + Coste.class.getName());
-		q.setOrdering("num_control asc");
-		coste = (List<Coste>) q.execute();
+		Query q = pm.newQuery("select from " + Proyecto.class.getName());
+		coste = (List<Proyecto>) q.execute();
 		
 		
 		pm.close();
@@ -425,33 +428,22 @@ pm.close();
 		return coste;
 	}
 	
-	
-	public void update( List<Coste> coste) {
+
+	public void update( List<Proyecto> coste) {
 
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 		
 		 try {
-			 String values = "INN_2015028";
+			
 			 
 			 for(int i=0;i<coste.size();i++){
 				 
-				 String num_control = coste.get(i).getNum_control();
+				 String gestor_it_name = coste.get(i).getGestor_it_name();
 				 Coste c = pm.getObjectById(Coste.class, coste.get(i).getKey().getId());
-				if(num_control.equalsIgnoreCase("INN_2015028")||num_control.equalsIgnoreCase("INN_2015023")||num_control.equalsIgnoreCase("INN_2015021")||num_control.equalsIgnoreCase("INN_2015033")||
-						num_control.equalsIgnoreCase("INN_2015034")||num_control.equalsIgnoreCase("INN_2015039")||num_control.equalsIgnoreCase("INN_2015037")||
-						num_control.equalsIgnoreCase("INN_2015035")||num_control.equalsIgnoreCase("INN_2015025")||num_control.equalsIgnoreCase("INN_2015016")||
-						num_control.equalsIgnoreCase("INN_2015034")||num_control.equalsIgnoreCase("INN_2015007")||num_control.equalsIgnoreCase("INN_2015011")||
-						num_control.equalsIgnoreCase("INN_2014128")||num_control.equalsIgnoreCase("INN_2014130")||num_control.equalsIgnoreCase("INN_2015036")||
-						num_control.equalsIgnoreCase("INN_2015032")||num_control.equalsIgnoreCase("INN_2015018")||num_control.equalsIgnoreCase("INN_2015002")||
-						num_control.equalsIgnoreCase("INN_2015014")||num_control.equalsIgnoreCase("INN_2015030")||num_control.equalsIgnoreCase("INN_2015017")||
-						num_control.equalsIgnoreCase("INN_2014126")||num_control.equalsIgnoreCase("INN_2015027")||num_control.equalsIgnoreCase("INN_2015013")||
-						num_control.equalsIgnoreCase("INN_2015015")||num_control.equalsIgnoreCase("INN_2014132")||num_control.equalsIgnoreCase("INN_2015019")||
-						num_control.equalsIgnoreCase("INN_2014129")||num_control.equalsIgnoreCase("INN_2015029")||num_control.equalsIgnoreCase("INN_2015026")||
-						num_control.equalsIgnoreCase("INN_2015003")||num_control.equalsIgnoreCase("INN_2015009")||num_control.equalsIgnoreCase("INN_2015038")||
-						num_control.equalsIgnoreCase("INN_2014131")){ 
-						 	c.setControl_presupuestario("2015"); 
+				if(gestor_it_name.equalsIgnoreCase("ÁLVARO BORJAS GUERRERO")){ 
+						 	c.setGestor_it_name("ALVARO BORJAS GUERRERO"); 
 					         pm.makePersistent(c);
 				}
 				}
@@ -469,7 +461,7 @@ pm.close();
 		
 		pm.close();
 
-	}
+	}*/
 
 	public List<Coste> getAllCostePagin(Integer page) {
 		

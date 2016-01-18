@@ -39,6 +39,63 @@ public class ServicioDao {
 	}
 
 	
+
+	/* Descomentar para select y update para queries masivas en tabla Servicio*/
+	
+	
+	/*public List<Servicio> select() {
+
+		List<Servicio> coste;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	
+		
+		Query q = pm.newQuery("select from " + Servicio.class.getName());
+		coste = (List<Servicio>) q.execute();
+		
+		
+		pm.close();
+
+		return coste;
+	}
+	
+	
+	public void update( List<Servicio> coste) {
+
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		 try {
+			
+			 
+			 for(int i=0;i<coste.size();i++){
+				 
+				 String gestor_pruebas_name = coste.get(i).getGestor_pruebas_name();
+				 Servicio c = pm.getObjectById(Servicio.class, coste.get(i).getKey().getId());
+				
+				if (gestor_pruebas_name !=null ){
+				 if(gestor_pruebas_name.equalsIgnoreCase("ÁLVARO BORJAS GUERRERO")){ 
+						 	c.setGestor_pruebas_name("ALVARO BORJAS GUERRERO"); 
+					         pm.makePersistent(c);
+				}
+				}
+				}
+				
+				 
+					 
+			 
+			 
+			
+			 
+	        } finally {
+	            pm.close();
+	        }
+	
+		
+		pm.close();
+
+	}*/
+	
 	
 	public List<Servicio> getAllFormatos() {
 
