@@ -1844,7 +1844,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 		String fechaString="";
 		
 		for(Proyecto proyecto: proyectos){
-			hojaProy.createRow(headProy).createCell(0).setCellValue(proyecto.getFecha_alta_str());
+			/*hojaProy.createRow(headProy).createCell(0).setCellValue(proyecto.getFecha_alta_str());
 			hojaProy.getRow(headProy).createCell(1).setCellValue(proyecto.getCod_proyecto());
 			hojaProy.getRow(headProy).createCell(2).setCellValue(proyecto.getTipo());
 			hojaProy.getRow(headProy).createCell(3).setCellValue(proyecto.getClienteName());
@@ -1861,8 +1861,8 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 			hojaProy.getRow(headProy).createCell(13).setCellValue(proyecto.getStr_fecha_fin_viabilidad());
 			hojaProy.getRow(headProy).createCell(14).setCellValue(proyecto.getStr_envioC100());
 			hojaProy.getRow(headProy).createCell(15).setCellValue(proyecto.getStr_OKNegocio());			
-			headProy++;
-			Long proyec = proyecto.getKey().getId();
+			headProy++;*/
+			//Long proyec = proyecto.getKey().getId();
 			costes = costeDao.getCostesByProject(proyecto.getKey().getId());
 			
 			
@@ -1886,10 +1886,12 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 				hojaCost.getRow(headCoste).createCell(8).setCellValue(coste.getNum_valoracion());
 				if(!coste.getComentarios().equals("")&&coste.getComentarios()!=null)
 				hojaCost.getRow(headCoste).createCell(9).setCellValue(coste.getComentarios());
-				if(coste.getStr_fecha_solicitud_valoracion()!=null)
-				hojaCost.getRow(headCoste).createCell(10).setCellValue(coste.getStr_fecha_solicitud_valoracion());		
-				if(coste.getStr_fecha_recepcion_valoracion()!=null)
-				hojaCost.getRow(headCoste).createCell(11).setCellValue(coste.getStr_fecha_recepcion_valoracion());			
+				hojaCost.getRow(headCoste).createCell(10).setCellStyle(styleexce);
+				if(coste.getFecha_solicitud_valoracion()!=null)
+				hojaCost.getRow(headCoste).getCell(10).setCellValue(coste.getFecha_solicitud_valoracion());
+				hojaCost.getRow(headCoste).createCell(11).setCellStyle(styleexce);
+				if(coste.getFecha_recepcion_valoracion()!=null)
+					hojaCost.getRow(headCoste).getCell(11).setCellValue(coste.getFecha_recepcion_valoracion());
 				if (!"".equals(coste.getHoras_analisis())&&coste.getHoras_analisis()!=null)
 				hojaCost.getRow(headCoste).createCell(12).setCellValue(coste.getHoras_analisis());
 				if (!"".equals(coste.getCoste_analisis())&&coste.getCoste_analisis()!=null)
