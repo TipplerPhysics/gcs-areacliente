@@ -40,7 +40,7 @@
 						<div class="form-field">
 							<span class="lbl">Código de control:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" name="numero_control" id="numero_control">
+								<input type="text" value="" size="16" maxlength="25" name="numero_control" id="numero_control" class="long readonly" unselectable="on" readonly="true">
 							</div>
 						</div>
 
@@ -65,6 +65,21 @@
 									<option value="7">7</option>
 								</select>
 							</div>
+						</div>	
+						 <div class="form-field">
+							<span class="lbl">Tipo Coste<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_coste" class="long selectpicker selected" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+								</select>
+							</div>
 						</div>
 						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
@@ -77,6 +92,13 @@
 							<span class="lbl">Fecha recepción valoración:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion">
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Plazo estimado:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="plazo_estimado" id="plazo_estimado">
 							</div>
 						</div>
 
@@ -125,6 +147,13 @@
 							<span class="lbl">Comentarios:</span>
 							<div class="input">
 								<textarea name="comentarios" id="comentarios"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Asunto:</span>
+							<div class="input">
+								<textarea name="asunto" id="asunto"></textarea>
 							</div>
 						</div>
 						

@@ -104,6 +104,18 @@ public class Coste {
 	@Persistent
 	private String control_presupuestario;
 	
+	@Persistent
+	private String tipo_coste;
+	
+	@Persistent
+	private String asunto;
+	
+	@Persistent
+	private Date plazo_estimado;
+	
+	@Persistent
+	private String str_plazo_estimado;
+	
 	public String getDetalle() {
 		return detalle;
 	}
@@ -360,6 +372,42 @@ public class Coste {
 	public void setControl_presupuestario(String control_presupuestario) {
 		this.control_presupuestario = control_presupuestario;
 	}
+
+	
+	public String getAsunto() {
+		return asunto;
+	}
+
+	public void setAsunto(String asunto) {
+		this.asunto = asunto;
+	}
+
+	public Date getPlazo_estimado() {
+		return plazo_estimado;
+	}
+
+	public void setPlazo_estimado(Date plazo_estimado) {
+		this.plazo_estimado = plazo_estimado;
+	}
+
+	public String getStr_plazo_estimado() {
+		return str_plazo_estimado;
+	}
+
+	public void setStr_plazo_estimado(String str_plazo_estimado) {
+		this.str_plazo_estimado = str_plazo_estimado;
+	}
+
+	public String getTipo_coste() {
+		return tipo_coste;
+	}
+
+	public void setTipo_coste(String tipo_coste) {
+		this.tipo_coste = tipo_coste;
+	}
+	
+	
+	
 
 	
 	

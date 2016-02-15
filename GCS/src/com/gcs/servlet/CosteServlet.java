@@ -28,6 +28,7 @@ import com.gcs.beans.Coste;
 import com.gcs.beans.Proyecto;
 import com.gcs.beans.User;
 import com.gcs.dao.ClienteDao;
+import com.gcs.dao.ContadorCodCosteDao;
 import com.gcs.dao.CosteDao;
 import com.gcs.dao.ProyectoDao;
 import com.gcs.dao.UserDao;
@@ -405,6 +406,8 @@ public class CosteServlet extends HttpServlet {
 					.getParameter("fecha_solicitud_valoracion");
 			String fecha_recepcion_valoracion = req
 					.getParameter("fecha_recepcion_valoracion");
+			String plazo_estimado = req
+					.getParameter("plazo_estimado");
 			String gestion_coste = req.getParameter("gestion_coste");
 			String gestion_horas = req.getParameter("gestion_horas");
 			String gestor_it = req.getParameter("gestor_it");
@@ -414,7 +417,12 @@ public class CosteServlet extends HttpServlet {
 			String total_coste = req.getParameter("total_coste");
 			String total_horas = req.getParameter("total_horas");
 			String num_valoracion = req.getParameter("num_valoracion");
-			String num_control = req.getParameter("numero_control");
+			String asunto = req.getParameter("asunto");
+			String tipo_coste = req.getParameter("tipo_coste");
+			
+			ContadorCodCosteDao contDao = ContadorCodCosteDao.getInstance();
+			contDao.increaseCont();
+			//String num_control = String.valueOf(contDao.getContadorValue());
 			String control_presupuestario = req.getParameter("control_presupuestario");
 
 			CosteDao cDao = CosteDao.getInstance();
@@ -425,7 +433,7 @@ public class CosteServlet extends HttpServlet {
 
 			Cliente cliente_obj = clDao.getClienteById(Long.parseLong(cliente));
 			
-			c.setNum_control(num_control);
+			//c.setNum_control(num_control);
 			c.setCliente_name(cliente_obj.getNombre());
 			c.setClienteKey(Long.parseLong(cliente));
 			c.setCoste_analisis(analisis_coste);
@@ -443,6 +451,8 @@ public class CosteServlet extends HttpServlet {
 			c.setStr_fecha_recepcion_valoracion(fecha_recepcion_valoracion);
 			c.setFecha_solicitud_valoracion(Utils
 					.dateConverter(fecha_solicitud_valoracion));
+			c.setFecha_recepcion_valoracion(Utils
+					.dateConverter(fecha_recepcion_valoracion));
 			c.setHoras_gestion(gestion_horas);
 			c.setCoste_gestion(gestion_coste);
 			if (!"default".equals(gestor_it)) {
@@ -464,6 +474,11 @@ public class CosteServlet extends HttpServlet {
 			c.setCoste_total(total_coste);
 			c.setHoras_total(total_horas);
 			c.setControl_presupuestario(control_presupuestario);
+			c.setStr_plazo_estimado(plazo_estimado);
+			c.setPlazo_estimado(Utils
+					.dateConverter(plazo_estimado));
+			c.setTipo_coste(tipo_coste);
+			c.setAsunto(asunto);
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
@@ -514,6 +529,9 @@ public class CosteServlet extends HttpServlet {
 			String num_valoracion = req.getParameter("num_valoracion");
 			String num_control = req.getParameter("numero_control");
 			String control_presupuestario = req.getParameter("control_presupuestario");
+			String asunto = req.getParameter("asunto");
+			String tipo_coste = req.getParameter("tipo_coste");
+			String plazo_estimado = req.getParameter("plazo_estimado");
 
 			CosteDao cDao = CosteDao.getInstance();
 			ClienteDao clDao = ClienteDao.getInstance();
@@ -564,6 +582,10 @@ public class CosteServlet extends HttpServlet {
 
 			c.setCoste_total(total_coste);
 			c.setHoras_total(total_horas);
+			c.setAsunto(asunto);
+			c.setTipo_coste(tipo_coste);
+			c.setPlazo_estimado(Utils
+					.dateConverter(plazo_estimado));
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);

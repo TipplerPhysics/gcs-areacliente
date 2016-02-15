@@ -75,6 +75,8 @@ public class CosteDao {
 		if(c.getComentarios()!=null)c.setComentarios(c.getComentarios().toUpperCase());
 		if(c.getEquipos()!=null)c.setEquipos(c.getEquipos().toUpperCase());
 		if(c.getGestor_it_name()!=null)c.setGestor_it_name(c.getGestor_it_name().toUpperCase());
+		if(c.getAsunto()!=null)c.setAsunto(c.getAsunto().toUpperCase());
+		c.setTipo_coste(c.getTipo_coste());
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
@@ -83,6 +85,10 @@ public class CosteDao {
 			isNew=true;
 		if(c.getStr_fecha_recepcion_valoracion()!=null&&!c.getStr_fecha_recepcion_valoracion().equals("")){
 			c.setFecha_recepcion_valoracion(Utils.dateConverter(c.getStr_fecha_recepcion_valoracion()));
+		}
+		
+		if(c.getStr_plazo_estimado()!=null&&!c.getStr_plazo_estimado().equals("")){
+			c.setPlazo_estimado(Utils.dateConverter(c.getStr_plazo_estimado()));
 		}
 		
 		if (c.getKey()==null){
@@ -563,6 +569,11 @@ pm.close();
 			coste.setFecha_recepcion_valoracion(fechaRecepcionValoracion);
 		}
 		
+		Date plazo_estimado = getDate(entity, "plazo_estimado");
+		if(plazo_estimado != null) {
+			coste.setPlazo_estimado(plazo_estimado);
+		}
+		
 		Date fechaSolicitudValoracion = getDate(entity, "fecha_solicitud_valoracion");
 		if(fechaSolicitudValoracion != null) {
 			coste.setFecha_solicitud_valoracion(fechaSolicitudValoracion);
@@ -637,6 +648,11 @@ pm.close();
 		String strFechaRecepcionValoracion =  getString(entity, "str_fecha_recepcion_valoracion");
 		if(strFechaRecepcionValoracion != null) {
 			coste.setStr_fecha_recepcion_valoracion(strFechaRecepcionValoracion);
+		}
+		
+		String strPlazoEstimado =  getString(entity, "str_plazo_estimado");
+		if(strPlazoEstimado!= null) {
+			coste.setStr_plazo_estimado(strPlazoEstimado);
 		}
 		
 		String strFechaSolicitudValoracion =  getString(entity, "str_fecha_solicitud_valoracion");
