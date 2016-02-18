@@ -69,11 +69,12 @@ public class ServicioModalAction extends Action {
 			List<Formatos> formatos = formatosDao.getAllFormatos();
 			req.setAttribute("formatos", formatos);
 			
-			if(!formatos.contains(s.getFormato_intermedio())){
+			if(!formatos.contains(s.getFormato_intermedio()) || s.getFormato_intermedio()==null ||s.getFormato_intermedio()==""){
 				if(s.getEstado().equals(exc_por_negocio)||s.getEstado().equals(exc_por_timeout)
 						||s.getEstado().equals(imp_con_ok)||s.getEstado().equals(imp_sin_ok)){
 					
 						s.setFormato_intermedio("ANTIGUO");
+						
 					}else {
 						
 						s.setFormato_intermedio("PENDIENTE");

@@ -242,20 +242,29 @@ function editCoste(id){
 	var comentarios = $currentRow.data('comentarios');
 	var contol_presupuestario = $currentRow.data('control-presupuestario');
 	
+	var asunto = $currentRow.data('asunto');
+	var plazo_estimado = $currentRow.data('plazo-estimado');
+	var tipo_coste = $currentRow.data('tipo-coste');
+	var tipo_coste = $currentRow.data('tipo-desarrollo');
+	
 	
 	$('#cliente_modal').val(nombre_cliente);
 	$('#project_modal').val(nombre_proyecto);
 	$('#numero_control_modal').val(num_control);
+	$('#tipo_coste_modal').val(tipo_coste);
+	$('#tipo_desarrollo_modal').val(tipo_desarrollo);
 	$('#equipo_modal').val(equipo);
 	
 	$('#fecha_alta_costes_modal').val(fecha_alta);
 	$('#gestor_it_modal').val(gestor_it);
 	$('#comentarios_modal').val(comentarios);
+	$('#asunto_modal').val(asunto);
 	$('#control_presupuestario_modal').val(control_presupuestario);
 	$('#num_valoracion_modal').val(num_valoracion);
 	
 	$('#fecha_solicitud_valoracion_modal').val(fecha_solicitud_val);
 	$('#fecha_recepcion_valoracion_modal').val(fecha_recepcion_val);
+	$('#plazo_estimado_modal').val(plazo_estimado);
 	$('#analisis_horas_modal').val(analisis_horas);
 	$('#analisis_coste_modal').val(analisis_coste);
 	

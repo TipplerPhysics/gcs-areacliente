@@ -75,8 +75,8 @@ public class CosteDao {
 		if(c.getComentarios()!=null)c.setComentarios(c.getComentarios().toUpperCase());
 		if(c.getEquipos()!=null)c.setEquipos(c.getEquipos().toUpperCase());
 		if(c.getGestor_it_name()!=null)c.setGestor_it_name(c.getGestor_it_name().toUpperCase());
-		if(c.getAsunto()!=null)c.setAsunto(c.getAsunto().toUpperCase());
-		c.setTipo_coste(c.getTipo_coste());
+	
+		
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Boolean isNew = false;
@@ -658,6 +658,21 @@ pm.close();
 		String strFechaSolicitudValoracion =  getString(entity, "str_fecha_solicitud_valoracion");
 		if(strFechaSolicitudValoracion != null) {
 			coste.setStr_fecha_solicitud_valoracion(strFechaSolicitudValoracion);
+		}
+		
+		String asunto =  getString(entity, "asunto");
+		if(asunto != null) {
+			coste.setAsunto(asunto);
+		}
+		
+		String tipo_coste =  getString(entity, "tipo_coste");
+		if(tipo_coste != null) {
+			coste.setTipo_coste(tipo_coste);
+		}
+		
+		String tipo_desarrollo =  getString(entity, "tipo_desarrollo");
+		if(tipo_desarrollo != null) {
+			coste.setTipo_desarrollo(tipo_desarrollo);
 		}
 		
 		return coste;

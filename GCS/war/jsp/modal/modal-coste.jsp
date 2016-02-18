@@ -24,7 +24,7 @@
 						<div class="form-field">
 							<span class="lbl">Código de control:</span>
 							<div class="input">
-								<input type="text" size="16" maxlength="25"  name="numero_control" id="numero_control_modal">
+								<input type="text" size="16" maxlength="25"  name="numero_control" id="numero_control_modal" class="readonly" readonly >
 							</div>
 						</div>
 
@@ -51,6 +51,38 @@
 							</div>
 						</div>
 						<div class="form-field">
+							<span class="lbl">Tipo Petición<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_coste" id="tipo_coste_modal" class="long selectpicker selected" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker selected" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
+									<option value="Redescargas">Redescargas</option>
+									<option value="Normalización">Normalización</option>
+									<option value="Respuestas Dedicadas">Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas">Normalización + Redescargas</option>
+									<option value="Normalización + Respuestas Dedicadas">Normalización + Respuestas Dedicadas</option>
+									<option value="Redescarga + Respuestas Dedicadas">Redescarga + Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas + Respuestas Dedicadas">Normalización + Redescargas + Respuestas Dedicadas</option>
+									
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_solicitud_valoracion_modal' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion_modal" required aria-required="true">
@@ -61,6 +93,13 @@
 							<span class="lbl">Fecha recepción valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_recepcion_valoracion_modal' name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion_modal" >
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Plazo estimado<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='plazo_estimado_modal' name="plazo_estimado" id="plazo_estimado_modal" >
 							</div>
 						</div>
 					</div>
@@ -89,7 +128,7 @@
 						</div>
 										
 						<div class="form-field">
-							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Gestor IT-solicitante<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker" id="gestor_it_modal" name="gestor_it" data-live-search="true">	
 								
@@ -103,6 +142,12 @@
 							<span class="lbl">Comentarios:</span>
 							<div class="input">
 								<textarea name="comentarios" id="comentarios_modal"></textarea>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Asunto:</span>
+							<div class="input">
+								<textarea name="asunto" id="asunto_modal"></textarea>
 							</div>
 						</div>
 						<div class="form-field">

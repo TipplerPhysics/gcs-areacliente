@@ -108,6 +108,9 @@ public class Coste {
 	private String tipo_coste;
 	
 	@Persistent
+	private String tipo_desarrollo;
+	
+	@Persistent
 	private String asunto;
 	
 	@Persistent
@@ -405,6 +408,16 @@ public class Coste {
 	public void setTipo_coste(String tipo_coste) {
 		this.tipo_coste = tipo_coste;
 	}
+
+	public String getTipo_desarrollo() {
+		return tipo_desarrollo;
+	}
+
+	public void setTipo_desarrollo(String tipo_desarrollo) {
+		this.tipo_desarrollo = tipo_desarrollo;
+	}
+
+	
 	
 	
 	

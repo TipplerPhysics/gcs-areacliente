@@ -20,9 +20,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Código de control:</span>
+							<span class="lbl">Código de control<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="${coste.num_control}" size="16" maxlength="25" name="numero_control" id="numero_control_modal">
+								<input type="text" value="${coste.num_control}" class="readonly" size="16" maxlength="25" name="numero_control" id="numero_control_modal">
 							</div>
 						</div>
 
@@ -34,7 +34,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Número valoración:</span>
+							<span class="lbl">Número valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select name="num_valoracion" id="num_valoracion_modal" class="long selectpicker">
 									
@@ -49,6 +49,37 @@
 							</div>
 						</div>
 						<div class="form-field">
+							<span class="lbl">Tipo Petición<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_coste" id="tipo_coste_modal" class="long selectpicker">
+									
+									<option value="1" <c:if test="${coste.tipo_coste eq '1'}">selected</c:if>>1</option>
+									<option value="2" <c:if test="${coste.tipo_coste eq '2'}">selected</c:if>>2</option>
+									<option value="3" <c:if test="${coste.tipo_coste eq '3'}">selected</c:if>>3</option>
+									<option value="4" <c:if test="${coste.tipo_coste eq '4'}">selected</c:if>>4</option>
+									<option value="5" <c:if test="${coste.tipo_coste eq '5'}">selected</c:if>>5</option>
+									<option value="6" <c:if test="${coste.tipo_coste eq '6'}">selected</c:if>>6</option>
+									<option value="7" <c:if test="${coste.tipo_coste eq '7'}">selected</c:if>>7</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker">
+									
+									<option value="Soporte a Pruebas" <c:if test="${coste.tipo_desarrollo eq 'Soporte a Pruebas'}">selected</c:if>>Soporte a Pruebas</option>
+									<option value="Redescargas" <c:if test="${coste.tipo_desarrollo eq 'Redescargas'}">selected</c:if>>Redescargas</option>
+									<option value="Normalización" <c:if test="${coste.tipo_desarrollo eq 'Normalización'}">selected</c:if>>Normalización</option>
+									<option value="Respuestas Dedicadas" <c:if test="${coste.tipo_desarrollo eq 'Respuestas Dedicadas'}">selected</c:if>>Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas" <c:if test="${coste.tipo_desarrollo eq 'Normalización + Redescargas'}">selected</c:if>>Normalización + Redescargas</option>
+									<option value="Normalización + Respuestas Dedicadas" <c:if test="${coste.tipo_desarrollo eq 'Normalización + Respuestas Dedicadas'}">selected</c:if>>Normalización + Respuestas Dedicadas</option>
+									<option value="Redescarga + Respuestas Dedicadas" <c:if test="${coste.tipo_desarrollo eq 'Redescarga + Respuestas Dedicadas'}">selected</c:if>>Redescarga + Respuestas Dedicadas</option>
+								    <option value="Normalización + Redescargas + Respuestas Dedicadas" <c:if test="${coste.tipo_desarrollo eq 'Normalización + Redescargas + Respuestas Dedicadas'}">selected</c:if>>Normalización + Redescargas + Respuestas Dedicadas</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" value="${coste.str_fecha_solicitud_valoracion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_solicitud_valoracion_modal' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion_modal" required aria-required="true">
@@ -58,6 +89,12 @@
 							<span class="lbl">Fecha recepción valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<input type="text" value="${coste.str_fecha_recepcion_valoracion}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_recepcion_valoracion_modal' name="fecha_recepcion_valoracion" id="fecha_recepcion_valoracion_modal" required aria-required="true">
+							</div>
+						</div>
+						<div class="form-field">
+							<span class="lbl">Plazo estimado:</span>
+							<div class="input">
+								<input type="text" value="${coste.str_plazo_estimado}" size="16" maxlength="25" class="datepicker" data-target-id='plazo_estimado_modal' name="plazo_estimado" id="plazo_estimado_modal" required aria-required="true">
 							</div>
 						</div>
 
@@ -87,7 +124,7 @@
 						</div>
 										
 						 <div class="form-field">
-							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Gestor IT-solicitante<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" id="gestor_modal" name="gestor_it" data-live-search="true">				
 									 <c:forEach items="${gestores_it}" var="user">
@@ -102,6 +139,13 @@
 							<span class="lbl">Comentarios:</span>
 							<div class="input">
 								<textarea name="comentarios" id="comentarios_modal">${coste.comentarios}</textarea>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Asunto:</span>
+							<div class="input">
+								<textarea name="asunto" id="asunto_modal">${coste.asunto}</textarea>
 							</div>
 						</div>
 						

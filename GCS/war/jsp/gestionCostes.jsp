@@ -67,7 +67,7 @@
 							</div>
 						</div>	
 						 <div class="form-field">
-							<span class="lbl">Tipo Coste<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Tipo Petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select name="tipo_coste" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
@@ -78,6 +78,22 @@
 									<option value="5">5</option>
 									<option value="6">6</option>
 									<option value="7">7</option>
+								</select>
+							</div>
+						</div>
+						 <div class="form-field">
+							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_desarrollo" id = "tipo_desarrollo" class="long selectpicker selected" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
+									<option value="Redescargas">Redescargas</option>
+									<option value="Normalización">Normalización</option>
+									<option value="Respuestas Dedicadas">Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas">Normalización + Redescargas</option>
+									<option value="Normalización + Respuestas Dedicadas">Normalización + Respuestas Dedicadas</option>
+									<option value="Redescarga + Respuestas Dedicadas">Redescarga + Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas + Respuestas Dedicadas">Normalización + Redescargas + Respuestas Dedicadas</option>
 								</select>
 							</div>
 						</div>
@@ -133,7 +149,7 @@
 						</div>
 										
 						<div class="form-field">
-							<span class="lbl">Gestor IT-registro<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Gestor IT-solicitante<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" required aria-required="true"  id="gestor_it" name="gestor_it" data-live-search="true">	
 								<option value="default" selected>Seleccionar</option>
@@ -221,7 +237,7 @@
 						<div class="form-field total">
 						<span class="lbl"></span>
 							<div class="input total">
-								<input id="total_horas" required name="total_horas" class="horas number " value="0"/><input id="total_coste" name="total_coste" class="coste number"/>
+								<input id="total_horas" required name="total_horas" class="horas number "/><input id="total_coste" name="total_coste" class="coste number"/>
 							</div>
 							<div class="input">
 								<span class="lbl">Total Horas<span class="required-asterisk"> </span></span><span class="lbl">Total Coste</span>
@@ -254,7 +270,7 @@
 							<th><span class="table-title">Cliente</span></th>
 							<th><span class="table-title">Código Proyecto</span></th>
 							<th><span class="table-title">Equipo</span></th>
-							<th><span class="table-title">Gestor IT-Registro</span></th>
+							<th><span class="table-title">Gestor IT-Solicitante</span></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
 						<!--
@@ -293,7 +309,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${costes}" var="coste">
-									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-control-presupuestario="${coste.control_presupuestario}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}" data-fecha-recepcion-val="${coste.str_fecha_recepcion_valoracion}">
+									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-control-presupuestario="${coste.control_presupuestario}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}" data-fecha-recepcion-val="${coste.str_fecha_recepcion_valoracion}" data-plazo-estimado="${coste.str_plazo_estimado}" data-tipo-coste="${coste.tipo_coste}" data-asunto="${coste.asunto}" data-tipo-desarrollo="${coste.tipo_desarrollo}" >
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
 										<td><span>${coste.project_name}</span></td>

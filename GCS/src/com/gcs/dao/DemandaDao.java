@@ -34,6 +34,66 @@ public class DemandaDao {
 		return new DemandaDao();
     }
 	
+	
+	
+/*	 Descomentar para select y update para queries masivas en tabla Servicio*/
+	/*
+	
+	public List<Demanda> select() {
+
+		List<Demanda> coste;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	
+		
+		Query q = pm.newQuery("select from " + Demanda.class.getName());
+		coste = (List<Demanda>) q.execute();
+		
+		
+		pm.close();
+
+		return coste;
+	}
+	
+	
+	public void update( List<Demanda> coste) {
+
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		
+		
+		 try {
+			
+			 
+			 for(int i=0;i<coste.size();i++){
+				 
+				 String nombre_cliente = coste.get(i).getClienteName();
+				 Demanda c = pm.getObjectById(Demanda.class, coste.get(i).getKey().getId());
+				
+				if (nombre_cliente !=null ){
+				 if(nombre_cliente.equalsIgnoreCase("ENERSYS")){ 
+						 	c.setClienteName("ENERSIS");
+					         pm.makePersistent(c);
+				}
+				}
+				}
+				
+				 
+					 
+			 
+			 
+			
+			 
+	        } finally {
+	            pm.close();
+	        }
+	
+		
+		pm.close();
+
+	}*/
+	
+	
+	
 	public void deleteDemanda(Demanda d, String usermail){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.deletePersistent( pm.getObjectById( d.getClass(), d.getKey().getId())); 

@@ -125,17 +125,17 @@ public class CosteServlet extends HttpServlet {
 			s.setColumnView(1, 30);
 			s.setColumnView(2, 30);
 			s.setColumnView(3, 30);
-			s.setColumnView(4, 25);
+			s.setColumnView(4, 30);
 			s.setColumnView(5, 30);
 			s.setColumnView(6, 25);
-			s.setColumnView(7, 25);
-			s.setColumnView(8, 50);
-			s.setColumnView(9, 40);
-			s.setColumnView(10, 40);
-			s.setColumnView(11, 10);
-			s.setColumnView(12, 10);
-			s.setColumnView(13, 10);
-			s.setColumnView(14, 10);
+			s.setColumnView(7, 30);
+			s.setColumnView(8, 25);
+			s.setColumnView(9, 25);
+			s.setColumnView(10, 50);
+			s.setColumnView(11, 50);
+			s.setColumnView(12, 40);
+			s.setColumnView(13, 40);
+			s.setColumnView(14, 40);
 			s.setColumnView(15, 10);
 			s.setColumnView(16, 10);
 			s.setColumnView(17, 10);
@@ -145,6 +145,11 @@ public class CosteServlet extends HttpServlet {
 			s.setColumnView(21, 10);
 			s.setColumnView(22, 10);
 			s.setColumnView(23, 10);
+			s.setColumnView(24, 10);
+			s.setColumnView(25, 10);
+			s.setColumnView(26, 10);
+			s.setColumnView(27, 10);
+			
 			
 			//s.setColumnView(15, 30);
 			//s.setRowView(0, 900);
@@ -160,44 +165,52 @@ public class CosteServlet extends HttpServlet {
 			s.mergeCells(8, 0, 8, 1);
 			s.mergeCells(9, 0, 9, 1);
 			s.mergeCells(10, 0, 10, 1);
-			s.mergeCells(11, 0, 12, 0);
-			s.mergeCells(13, 0, 14, 0);
+			s.mergeCells(11, 0, 11, 1);
+			s.mergeCells(12, 0, 12, 1);
+			s.mergeCells(13, 0, 13, 1);
+			s.mergeCells(14, 0, 14, 1);
 			s.mergeCells(15, 0, 16, 0);
 			s.mergeCells(17, 0, 18, 0);
 			s.mergeCells(19, 0, 20, 0);
 			s.mergeCells(21, 0, 22, 0);
-			s.mergeCells(23, 0, 23, 1);
+			s.mergeCells(23, 0, 24, 0);
+			s.mergeCells(25, 0, 26, 0);
+			s.mergeCells(27, 0, 27, 1);
 			
 
 			s.addCell(new Label(0, 0, "CLIENTE", cellFormat));
 			s.addCell(new Label(1, 0, "NOMBRE PROYECTO", cellFormat));
 			s.addCell(new Label(2, 0, "NUM. CONTROL", cellFormat));
-			s.addCell(new Label(3, 0, "EQUIPO", cellFormat));
-			s.addCell(new Label(4, 0, "CONTROL PRESUPUESTARIO", cellFormat));
-			s.addCell(new Label(5, 0, "FECHA ALTA COSTES", cellFormat));
-			s.addCell(new Label(6, 0, "GESTOR IT", cellFormat));
-			s.addCell(new Label(7, 0, "NUM. VALORACION", cellFormat));
-			s.addCell(new Label(8, 0, "COMENTARIOS", cellFormat));
-			s.addCell(new Label(9, 0, "FECHA SOLICITUD VALORACION", cellFormat));
-			s.addCell(new Label(10, 0, "FECHA RECEPCION VALORACION", cellFormat));
-			s.addCell(new Label(11, 0, "ANALISIS", cellFormat));
-			s.addCell(new Label(11, 1, "HORAS", cellFormat));
-			s.addCell(new Label(12, 1, "COSTE", cellFormat));
-			s.addCell(new Label(13, 0, "DISEÑO", cellFormat));
-			s.addCell(new Label(13, 1, "HORAS", cellFormat));
-			s.addCell(new Label(14, 1, "COSTE", cellFormat));
-			s.addCell(new Label(15, 0, "CONSTRUCCIÓN", cellFormat));
+			s.addCell(new Label(3, 0, "TIPO PETICION", cellFormat));
+			s.addCell(new Label(4, 0, "TIPO DESARROLLO", cellFormat));
+			s.addCell(new Label(5, 0, "EQUIPO", cellFormat));
+			s.addCell(new Label(6, 0, "CONTROL PRESUPUESTARIO", cellFormat));
+			s.addCell(new Label(7, 0, "FECHA ALTA COSTES", cellFormat));
+			s.addCell(new Label(8, 0, "GESTOR IT", cellFormat));
+			s.addCell(new Label(9, 0, "NUM. VALORACION", cellFormat));
+			s.addCell(new Label(10, 0, "COMENTARIOS", cellFormat));
+			s.addCell(new Label(11, 0, "ASUNTO", cellFormat));
+			s.addCell(new Label(12, 0, "FECHA SOLICITUD VALORACION", cellFormat));
+			s.addCell(new Label(13, 0, "FECHA RECEPCION VALORACION", cellFormat));
+			s.addCell(new Label(14, 0, "PLAZO ESTIMADO", cellFormat));
+			s.addCell(new Label(15, 0, "ANALISIS", cellFormat));
 			s.addCell(new Label(15, 1, "HORAS", cellFormat));
 			s.addCell(new Label(16, 1, "COSTE", cellFormat));
-			s.addCell(new Label(17, 0, "PRUEBAS", cellFormat));
+			s.addCell(new Label(17, 0, "DISEÑO", cellFormat));
 			s.addCell(new Label(17, 1, "HORAS", cellFormat));
 			s.addCell(new Label(18, 1, "COSTE", cellFormat));
-			s.addCell(new Label(19, 0, "GESTIÓN",cellFormat));
+			s.addCell(new Label(19, 0, "CONSTRUCCIÓN", cellFormat));
 			s.addCell(new Label(19, 1, "HORAS", cellFormat));
 			s.addCell(new Label(20, 1, "COSTE", cellFormat));
-			s.addCell(new Label(21, 0, "TOTAL", cellFormat));
+			s.addCell(new Label(21, 0, "PRUEBAS", cellFormat));
 			s.addCell(new Label(21, 1, "HORAS", cellFormat));
 			s.addCell(new Label(22, 1, "COSTE", cellFormat));
+			s.addCell(new Label(23, 0, "GESTIÓN",cellFormat));
+			s.addCell(new Label(23, 1, "HORAS", cellFormat));
+			s.addCell(new Label(24, 1, "COSTE", cellFormat));
+			s.addCell(new Label(25, 0, "TOTAL", cellFormat));
+			s.addCell(new Label(25, 1, "HORAS", cellFormat));
+			s.addCell(new Label(26, 1, "COSTE", cellFormat));
 			
 			
 
@@ -215,61 +228,70 @@ public class CosteServlet extends HttpServlet {
 				s.addCell(new Label(1, aux, c.getProject_name()));
 				if(!c.getNum_control().equals("")&&c.getNum_control()!=null)
 				s.addCell(new Label(2, aux, c.getNum_control()));
-				s.addCell(new Label(3, aux, c.getEquipos()));
-				s.addCell(new Label(4, aux, c.getControl_presupuestario()));
-				s.addCell(new Label(5, aux, c.getStr_fecha_alta()));
-				s.addCell(new Label(6, aux, c.getGestor_it_name()));
-				s.addCell(new Label(7, aux, c.getNum_valoracion()));
+				s.addCell(new Label(3, aux, c.getTipo_coste()));
+				s.addCell(new Label(4, aux, c.getTipo_desarrollo()));
+				s.addCell(new Label(5, aux, c.getEquipos()));
+				s.addCell(new Label(6, aux, c.getControl_presupuestario()));
+				s.addCell(new Label(7, aux, c.getStr_fecha_alta()));
+				s.addCell(new Label(8, aux, c.getGestor_it_name()));
+				s.addCell(new Label(9, aux, c.getNum_valoracion()));
 				
 				if(!c.getComentarios().equals("")&&c.getComentarios()!=null)
-				s.addCell(new Label(8, aux, c.getComentarios()));
+				s.addCell(new Label(10, aux, c.getComentarios()));
+				
+				
+					s.addCell(new Label(11, aux, c.getAsunto()));
 				
 				if(c.getStr_fecha_solicitud_valoracion()!=null)
-					s.addCell(new Label(9, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
+					s.addCell(new Label(12, aux, c.getStr_fecha_solicitud_valoracion().replace(",", ".")));
 				
 				if(c.getStr_fecha_recepcion_valoracion()!=null)
-					s.addCell(new Label(10, aux, c.getStr_fecha_recepcion_valoracion().replace(",", ".")));					
+					s.addCell(new Label(13, aux, c.getStr_fecha_recepcion_valoracion().replace(",", ".")));
+				
+				if(c.getStr_plazo_estimado()!=null)
+					s.addCell(new Label(14, aux, c.getStr_plazo_estimado().replace(",", ".")));
+				
 		
 				if (!"".equals(c.getHoras_analisis())&&c.getHoras_analisis()!=null)
-					s.addCell(new Number(11, aux, Double.parseDouble(c.getHoras_analisis().replace(",", ".")),cellFormatRight));
+					s.addCell(new Number(15, aux, Double.parseDouble(c.getHoras_analisis().replace(",", ".")),cellFormatRight));
 								
 				if (!"".equals(c.getCoste_analisis())&&c.getCoste_analisis()!=null)
-					s.addCell(new Number(12, aux, Double.parseDouble(c.getCoste_analisis().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(16, aux, Double.parseDouble(c.getCoste_analisis().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_diseño())&&c.getHoras_diseño()!=null)
-					s.addCell(new Number(13, aux, Double.parseDouble(c.getHoras_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(17, aux, Double.parseDouble(c.getHoras_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_diseño())&&c.getCoste_diseño()!=null)
-					s.addCell(new Number(14, aux, Double.parseDouble(c.getCoste_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(18, aux, Double.parseDouble(c.getCoste_diseño().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_construccion())&&c.getHoras_construccion()!=null)
-					s.addCell(new Number(15, aux, Double.parseDouble(c.getHoras_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(19, aux, Double.parseDouble(c.getHoras_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_construccion())&&c.getCoste_construccion()!=null)
-					s.addCell(new Number(16, aux, Double.parseDouble(c.getCoste_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(20, aux, Double.parseDouble(c.getCoste_construccion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_pruebas())&&c.getHoras_pruebas()!=null)
-					s.addCell(new Number(17, aux, Double.parseDouble(c.getHoras_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(21, aux, Double.parseDouble(c.getHoras_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_pruebas())&&c.getCoste_pruebas()!=null)
-					s.addCell(new Number(18, aux, Double.parseDouble(c.getCoste_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(22, aux, Double.parseDouble(c.getCoste_pruebas().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_gestion())&&c.getHoras_gestion()!=null)
-					s.addCell(new Number(19, aux, Double.parseDouble(c.getHoras_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(23, aux, Double.parseDouble(c.getHoras_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getCoste_gestion())&&c.getCoste_gestion()!=null)
-					s.addCell(new Number(20, aux, Double.parseDouble(c.getCoste_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(24, aux, Double.parseDouble(c.getCoste_gestion().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				if (!"".equals(c.getHoras_total())&&c.getHoras_total()!=null)
 					
-					s.addCell(new Number(21, aux, Double.parseDouble(c.getHoras_total().replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(25, aux, Double.parseDouble(c.getHoras_total().replace(",", ".").replace(" ", "")),cellFormatRight));
 				
 				
 				
 				if (!"".equals(c.getCoste_total())&&c.getCoste_total()!=null){
 					String costetotal = c.getCoste_total();
 					if(costetotal.contains(".")&&costetotal.contains(","))costetotal.replace(".", "");
-					s.addCell(new Number(22, aux, Double.parseDouble(costetotal.replace(",", ".").replace(" ", "")),cellFormatRight));
+					s.addCell(new Number(26, aux, Double.parseDouble(costetotal.replace(",", ".").replace(" ", "")),cellFormatRight));
 				}
 				
 				
@@ -328,6 +350,12 @@ public class CosteServlet extends HttpServlet {
 			String num_valoracion = req.getParameter("num_valoracion");
 			String num_control = req.getParameter("numero_control");
 			String control_presupuestario = req.getParameter("control_presupuestario");
+			String asunto = req.getParameter("asunto");
+			String tipo_coste = req.getParameter("tipo_coste");
+			String tipo_desarrollo = req.getParameter("tipo_desarrollo");
+			String plazo_estimado = req
+					.getParameter("plazo_estimado");
+			
 
 			CosteDao cDao = CosteDao.getInstance();
 
@@ -367,6 +395,10 @@ public class CosteServlet extends HttpServlet {
 
 			c.setCoste_total(total_coste);
 			c.setHoras_total(total_horas);
+			c.setAsunto(asunto);
+			c.setStr_plazo_estimado(plazo_estimado);
+			c.setTipo_coste(tipo_coste);
+			c.setTipo_desarrollo(tipo_desarrollo);
 			
 
 			if (!"default".equals(num_valoracion))
@@ -419,10 +451,11 @@ public class CosteServlet extends HttpServlet {
 			String num_valoracion = req.getParameter("num_valoracion");
 			String asunto = req.getParameter("asunto");
 			String tipo_coste = req.getParameter("tipo_coste");
+			String tipo_desarrollo = req.getParameter("tipo_desarrollo");
 			
 			ContadorCodCosteDao contDao = ContadorCodCosteDao.getInstance();
 			contDao.increaseCont();
-			//String num_control = String.valueOf(contDao.getContadorValue());
+			String num_control = String.valueOf(contDao.getContadorValue());
 			String control_presupuestario = req.getParameter("control_presupuestario");
 
 			CosteDao cDao = CosteDao.getInstance();
@@ -433,7 +466,7 @@ public class CosteServlet extends HttpServlet {
 
 			Cliente cliente_obj = clDao.getClienteById(Long.parseLong(cliente));
 			
-			//c.setNum_control(num_control);
+			c.setNum_control(num_control);
 			c.setCliente_name(cliente_obj.getNombre());
 			c.setClienteKey(Long.parseLong(cliente));
 			c.setCoste_analisis(analisis_coste);
@@ -451,8 +484,6 @@ public class CosteServlet extends HttpServlet {
 			c.setStr_fecha_recepcion_valoracion(fecha_recepcion_valoracion);
 			c.setFecha_solicitud_valoracion(Utils
 					.dateConverter(fecha_solicitud_valoracion));
-			c.setFecha_recepcion_valoracion(Utils
-					.dateConverter(fecha_recepcion_valoracion));
 			c.setHoras_gestion(gestion_horas);
 			c.setCoste_gestion(gestion_coste);
 			if (!"default".equals(gestor_it)) {
@@ -475,10 +506,9 @@ public class CosteServlet extends HttpServlet {
 			c.setHoras_total(total_horas);
 			c.setControl_presupuestario(control_presupuestario);
 			c.setStr_plazo_estimado(plazo_estimado);
-			c.setPlazo_estimado(Utils
-					.dateConverter(plazo_estimado));
 			c.setTipo_coste(tipo_coste);
 			c.setAsunto(asunto);
+			c.setTipo_desarrollo(tipo_desarrollo);
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
@@ -531,6 +561,7 @@ public class CosteServlet extends HttpServlet {
 			String control_presupuestario = req.getParameter("control_presupuestario");
 			String asunto = req.getParameter("asunto");
 			String tipo_coste = req.getParameter("tipo_coste");
+			String tipo_desarrollo = req.getParameter("tipo_desarrollo");
 			String plazo_estimado = req.getParameter("plazo_estimado");
 
 			CosteDao cDao = CosteDao.getInstance();
@@ -584,8 +615,8 @@ public class CosteServlet extends HttpServlet {
 			c.setHoras_total(total_horas);
 			c.setAsunto(asunto);
 			c.setTipo_coste(tipo_coste);
-			c.setPlazo_estimado(Utils
-					.dateConverter(plazo_estimado));
+			c.setTipo_desarrollo(tipo_desarrollo);
+			c.setStr_plazo_estimado(plazo_estimado);
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);

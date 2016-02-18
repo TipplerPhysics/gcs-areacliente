@@ -777,6 +777,7 @@ function editCoste(id){
 	var fecha_solicitud_val = $currentRow.data('fecha-solicitud-val');
 	var fecha_recepcion_val = $currentRow.data('fecha-recepcion-val');
 	var comentarios = $currentRow.data('comentarios');
+	var asunto = $currentRow.data('asunto');
 	var num_valoracion = $currentRow.data('num-valoracion');
 	var gestor_it = $currentRow.data('gestor-it');
 	var fecha_alta = $currentRow.data('fecha-alta');
@@ -801,20 +802,29 @@ function editCoste(id){
 	var total_coste = $currentRow.data('total-coste');
 	var total_horas = $currentRow.data('total-horas');
 	var control_presupuestario = $currentRow.data('control-presupuestario');
+	var tipo_coste = $currentRow.data('tipo-coste');
+	var tipo_desarrollo = $currentRow.data('tipo-desarrollo');
+	var plazo_estimado  = $currentRow.data('plazo-estimado');
+	
+	
 	
 	
 	$('#cliente_modal').val(nombre_cliente);
 	$('#project_modal').val(nombre_proyecto);
 	$('#numero_control_modal').val(num_control);
+	$('#tipo_coste_modal').val(tipo_coste);
+	$('#tipo_desarrollo_modal').val(tipo_desarrollo);
 	$('#equipo_modal').val(equipo);
 	
 	$('#fecha_alta_costes_modal').val(fecha_alta);
 	$('#gestor_it_modal').val(gestor_it);
-	$('#comentarios_modal').val(comentarios);	
+	$('#comentarios_modal').val(comentarios);
+	$('#asunto_modal').val(asunto);
 	$('#num_valoracion_modal').val(num_valoracion);
 	
 	$('#fecha_solicitud_valoracion_modal').val(fecha_solicitud_val);
 	$('#fecha_recepcion_valoracion_modal').val(fecha_recepcion_val);
+	$('#plazo_estimado_modal').val(plazo_estimado);
 	$('#analisis_horas_modal').val(analisis_horas);
 	$('#analisis_coste_modal').val(analisis_coste);
 	
@@ -2654,6 +2664,47 @@ function autocompleteSubtipo(tipo,target){
 	target.selectpicker("refresh");
 }
 
+function autocompleteCoste(tipo,target1,target2,target3,target4,target5,target6){
+	
+	var f = new Date();
+	target1.empty();
+	target2.empty();
+	target3.empty();
+	target4.empty();
+	target5.empty();
+	target6.empty();
+	
+	
+	if (tipo!="default"){
+
+		if(tipo=="Soporte a Pruebas"){
+			target1.attr("value","Soporte a pruebas").text("Soporte a pruebas");
+			target2.attr("value","4").text("4");
+			target3.attr("value","180.48").text("180.48");
+			target4.attr("value",f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()).text(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+			target5.attr("value","4").text("4");
+			target6.attr("value","180.48").text("180.48");
+			
+		}
+		
+		else{
+			
+			
+			    target1.attr("value","").text("");
+				target2.attr("value","").text("");
+				target3.attr("value","").text("");
+				target4.attr("value","").text("");
+				target5.attr("value","").text("");
+				target6.attr("value","").text("");
+			
+			
+		}
+							
+
+
+	}
+}
+
 function loadCosteModal(){
 	var radios = $('#costes-by-project-table').find(":radio");
 	var a =0;
@@ -2906,6 +2957,18 @@ $(function() {
 		var tipo = $('#tipo-imp-proj').val();
 		var target = $("#subtipo_imp");
 		autocompleteSubtipo(tipo,target);
+				
+	});
+	
+	$('#new-coste-form').on('change', '#tipo_desarrollo', function(e) {
+		var tipo = $('#tipo_desarrollo').val();
+		var target = $("#comentarios");
+		var target2 = $("#pruebas_horas");
+		var target3 = $("#pruebas_coste");
+		var target4 = $("#plazo_estimado");
+		var target5 = $("#total_horas");
+		var target6 = $("#total_coste");
+		autocompleteCoste(tipo,target,target2,target3,target4,target5,target6);
 				
 	});
 	

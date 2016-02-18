@@ -69,10 +69,10 @@ public class ProyectoDao {
 			 
 			 for(int i=0;i<coste.size();i++){
 				 
-				 String gestor_negocio_name = coste.get(i).getGestor_negocio_name();
+				 String cliente_name = coste.get(i).getClienteName();
 				 Proyecto c = pm.getObjectById(Proyecto.class, coste.get(i).getKey().getId());
-				if(gestor_negocio_name.equalsIgnoreCase("ÁNGEL DÍAZ MORALES")){ 
-						 	c.setGestor_negocio_name("ANGEL DÍAZ MORALES"); 
+				if(cliente_name.equalsIgnoreCase("ENERSYS")){ 
+						 	c.setClienteName("ENERSIS"); 
 					         pm.makePersistent(c);
 				}
 				}
