@@ -52,7 +52,7 @@
 							<span class="lbl">Tipo Petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select name="tipo_coste" id="tipo_coste_modal" class="long selectpicker">
-									
+									<option value="N/A" <c:if test="${coste.tipo_coste eq 'N/A'}">selected</c:if>>N/A</option>
 									<option value="1" <c:if test="${coste.tipo_coste eq '1'}">selected</c:if>>1</option>
 									<option value="2" <c:if test="${coste.tipo_coste eq '2'}">selected</c:if>>2</option>
 									<option value="3" <c:if test="${coste.tipo_coste eq '3'}">selected</c:if>>3</option>
@@ -67,7 +67,7 @@
 							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker">
-									
+									<option value="N/A" <c:if test="${coste.tipo_desarrollo eq 'N/A'}">selected</c:if>>N/A</option>
 									<option value="Soporte a Pruebas" <c:if test="${coste.tipo_desarrollo eq 'Soporte a Pruebas'}">selected</c:if>>Soporte a Pruebas</option>
 									<option value="Redescargas" <c:if test="${coste.tipo_desarrollo eq 'Redescargas'}">selected</c:if>>Redescargas</option>
 									<option value="Normalización" <c:if test="${coste.tipo_desarrollo eq 'Normalización'}">selected</c:if>>Normalización</option>

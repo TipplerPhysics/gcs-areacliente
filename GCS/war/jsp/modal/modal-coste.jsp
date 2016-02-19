@@ -55,6 +55,7 @@
 							<div class="input">
 								<select name="tipo_coste" id="tipo_coste_modal" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
+									<option value="N/A">N/A</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -70,6 +71,7 @@
 							<div class="input">
 								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
+									<option value="N/A">N/A</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
 									<option value="Redescargas">Redescargas</option>
 									<option value="Normalización">Normalización</option>
