@@ -61,8 +61,9 @@ public class GestionCostesAction extends Action{
 			String projectNameFilter = req.getParameter("codigoPro");
 			String equiposFilter = req.getParameter("equipo");
 			String gestorItNameFilter = req.getParameter("gestorIt");
+			String costeTotalNameFilter = req.getParameter("costeTotal");
 				
-			costes = coDao.getCosteByAllParam(fechaDia, fechaMes, fechaAnio, clienteNameFilter, projectNameFilter, equiposFilter, gestorItNameFilter, pageint);
+			costes = coDao.getCosteByAllParam(fechaDia, fechaMes, fechaAnio, clienteNameFilter, projectNameFilter, equiposFilter, gestorItNameFilter, pageint,costeTotalNameFilter);
 			int numpages = (Integer.parseInt(costes.get(costes.size()-1).getDetalle())/CosteDao.DATA_SIZE)+1;
 			costes.remove(costes.size()-1);
 			boolean lastpage = (costes.size() < CosteDao.DATA_SIZE) ? true : false;
@@ -76,6 +77,7 @@ public class GestionCostesAction extends Action{
 			req.setAttribute("codigoPro", projectNameFilter);
 			req.setAttribute("equipo", equiposFilter);
 			req.setAttribute("gestorIt", gestorItNameFilter);
+			req.setAttribute("costeTotal", costeTotalNameFilter);
 			
 		}else{
 			costes = coDao.getAllCostePagin(pageint);

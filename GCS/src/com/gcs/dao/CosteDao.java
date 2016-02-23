@@ -196,7 +196,7 @@ pm.close();
 		
 	}
 	
-	public List<Coste> getCosteByAllParam(String fechaDia,String fechaMes, String fechaAnio, String nCliente, String nProject, String equipos, String nGestorIt,  Integer page) throws ParseException{
+	public List<Coste> getCosteByAllParam(String fechaDia,String fechaMes, String fechaAnio, String nCliente, String nProject, String equipos, String nGestorIt,  Integer page, String ntotalCoste) throws ParseException{
 		List<Coste> costes= null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		com.google.appengine.api.datastore.Query q = new com.google.appengine.api.datastore.Query("Coste");
@@ -221,6 +221,11 @@ pm.close();
 		}
 		if(!nGestorIt.equals("")){
 			nGestorIt= nGestorIt.toUpperCase();
+			filters++;
+		}
+		
+		if(!ntotalCoste.equals("")){
+			ntotalCoste= ntotalCoste.toUpperCase();
 			filters++;
 		}
 		
@@ -269,6 +274,11 @@ pm.close();
 			if(!nGestorIt.equals("")){
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN_OR_EQUAL, nGestorIt+"\ufffd"));
+			}
+			
+			if(!ntotalCoste.equals("")){
+				finalFilters.add(new FilterPredicate("coste_total",FilterOperator.GREATER_THAN_OR_EQUAL, ntotalCoste));
+				finalFilters.add(new FilterPredicate("coste_total",FilterOperator.LESS_THAN_OR_EQUAL, ntotalCoste+"\ufffd"));
 			}
 			
 			Filter finalFilter = null;
@@ -365,6 +375,17 @@ pm.close();
 				finalFilters = new ArrayList<>();
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.GREATER_THAN_OR_EQUAL, nGestorIt));
 				finalFilters.add(new FilterPredicate("gestor_it_name",FilterOperator.LESS_THAN, nGestorIt+"\ufffd"));
+				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
+				q.setFilter(finalFilter);
+				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();
+				Entities.add(datastore.prepare(q).asList(fetchOptions));
+			}
+			
+			if(!ntotalCoste.equals("")){
+				q = new com.google.appengine.api.datastore.Query("Coste");
+				finalFilters = new ArrayList<>();
+				finalFilters.add(new FilterPredicate("coste_total",FilterOperator.GREATER_THAN_OR_EQUAL, ntotalCoste));
+				finalFilters.add(new FilterPredicate("coste_total",FilterOperator.LESS_THAN, ntotalCoste+"\ufffd"));
 				Filter finalFilter = CompositeFilterOperator.and(finalFilters);
 				q.setFilter(finalFilter);
 				FetchOptions fetchOptions=FetchOptions.Builder.withDefaults();

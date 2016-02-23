@@ -272,7 +272,8 @@
 							<th><span class="table-title">Cliente</span></th>
 							<th><span class="table-title">Código Proyecto</span></th>
 							<th><span class="table-title">Equipo</span></th>
-							<th><span class="table-title">Gestor IT-Solicitante</span></th>
+							<th><span class="table-title">Gestor IT-Sol</span></th>
+							<th><span class="table-title"> Total Coste</span></th>
 							<th style="width: 110px;">&nbsp;</th>
 						</tr>
 						<!--
@@ -294,6 +295,7 @@
 								<th class="search-th"><input name='codigoPro' value='${codigoPro}'></th>
 								<th class="search-th"><input name='equipo' value='${equipo}'></th>
 								<th class="search-th"><input name='gestorIt' value='${gestorIt}'></th>
+								<th class="search-th"><input name='costeTotal' value='${costeTotal}'></th>
 								<th><button type='button' onclick='filteringCostes();'>  FILTRAR  </button></th>
 							</form>
 						</tr>
@@ -317,6 +319,7 @@
 										<td><span>${coste.project_name}</span></td>
 										<td><span>${coste.equipos}</span></td>
 										<td><span>${coste.gestor_it_name}</span></td>
+										<td><span>${coste.coste_total}</span></td>
 										
 										<td>										
 											<img class="vs" src="../img/vs.png">								
