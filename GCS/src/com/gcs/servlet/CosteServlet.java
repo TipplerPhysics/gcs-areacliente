@@ -397,9 +397,12 @@ public class CosteServlet extends HttpServlet {
 			c.setHoras_total(total_horas);
 			c.setAsunto(asunto);
 			c.setStr_plazo_estimado(plazo_estimado);
+			if (!"default".equals(tipo_coste)) {
 			c.setTipo_coste(tipo_coste);
+			}
+			if (!"default".equals(tipo_desarrollo)) {
 			c.setTipo_desarrollo(tipo_desarrollo);
-			
+			}
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);
@@ -506,8 +509,12 @@ public class CosteServlet extends HttpServlet {
 			c.setHoras_total(total_horas);
 			c.setControl_presupuestario(control_presupuestario);
 			c.setStr_plazo_estimado(plazo_estimado);
+			if (!"default".equals(tipo_coste))
 			c.setTipo_coste(tipo_coste);
+			
 			c.setAsunto(asunto);
+			
+			if (!"default".equals(tipo_desarrollo))
 			c.setTipo_desarrollo(tipo_desarrollo);
 
 			if (!"default".equals(num_valoracion))

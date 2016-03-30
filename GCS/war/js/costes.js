@@ -245,7 +245,7 @@ function editCoste(id){
 	var asunto = $currentRow.data('asunto');
 	var plazo_estimado = $currentRow.data('plazo-estimado');
 	var tipo_coste = $currentRow.data('tipo-coste');
-	var tipo_coste = $currentRow.data('tipo-desarrollo');
+	var tipo_desarrollo = $currentRow.data('tipo-desarrollo');
 	
 	
 	$('#cliente_modal').val(nombre_cliente);

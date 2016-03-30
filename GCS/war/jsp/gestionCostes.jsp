@@ -54,7 +54,7 @@
 						<div class="form-field">
 							<span class="lbl">Número valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="num_valoracion" class="long selectpicker selected" required aria-required="true">
+								<select name="num_valoracion" id="num_valoracion" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -69,7 +69,7 @@
 						 <div class="form-field">
 							<span class="lbl">Tipo Petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_coste" class="long selectpicker selected" required aria-required="true">
+								<select name="tipo_coste" id="tipo_coste" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="N/A">N/A</option>
 									<option value="1">1</option>
@@ -85,7 +85,7 @@
 						 <div class="form-field">
 							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_desarrollo" id = "tipo_desarrollo" class="long selectpicker selected" required aria-required="true">
+								<select name="tipo_desarrollo" id="tipo_desarrollo" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="N/A">N/A</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
@@ -102,7 +102,7 @@
 						<div class="form-field">
 							<span class="lbl">Fecha solicitud valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_recepcion_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_solicitud_valoracion' name="fecha_solicitud_valoracion" id="fecha_solicitud_valoracion" required aria-required="true">
 							</div>
 						</div>
 						

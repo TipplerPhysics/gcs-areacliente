@@ -214,6 +214,9 @@ public class ServicioDao {
 		if(s.getPais()!=null)s.setPais(s.getPais().toUpperCase());
 		if(s.getReferencia_local1()!=null)s.setReferencia_local1(s.getReferencia_local1().toUpperCase());
 		if(s.getReferencia_local2()!=null)s.setReferencia_local2(s.getReferencia_local2().toUpperCase());
+		if(s.getTipo_desarrollo()!=null)s.setTipo_desarrollo(s.getTipo_desarrollo().toUpperCase());
+		if(s.getEscenario_opi()!=null)s.setEscenario_opi(s.getEscenario_opi().toUpperCase());
+		if(s.getFlujo()!=null)s.setFlujo(s.getFlujo().toUpperCase());
 		if(s.getServicio()!=null)s.setServicio(s.getServicio().toUpperCase());
 		
 		

@@ -173,6 +173,15 @@ public class Servicio {
 	@Persistent
 	private String cod_bei;
 	
+	@Persistent
+	private String tipo_desarrollo;
+	
+	@Persistent
+	private String escenario_opi;
+	
+	@Persistent
+	private String flujo;
+	
 	public Key getKey() {
 		return key;
 	}
@@ -599,6 +608,31 @@ public class Servicio {
 	public void setCod_bei(String cod_bei) {
 		this.cod_bei = cod_bei;
 	}
+	
+	
+	public String getTipo_desarrollo() {
+		return tipo_desarrollo;
+	}
+
+	public void setTipo_desarrollo(String tipo_desarrollo) {
+		this.tipo_desarrollo = tipo_desarrollo;
+	}
+	
+	public String getEscenario_opi() {
+		return escenario_opi;
+	}
+
+	public void setEscenario_opi(String escenario_opi) {
+		this.escenario_opi = escenario_opi;
+	}
+
+	public String getFlujo() {
+		return flujo;
+	}
+
+	public void setFlujo(String flujo) {
+		this.flujo = flujo;
+	}
 
 	/*	public Date getFecha_migracion_channeling() {
 		return fecha_migracion_channeling;
@@ -648,6 +682,9 @@ public class Servicio {
 	public String toString() {
 		return "Servicio [key=" + key + ", gestor_it_key=" + gestor_it_key
 				+ ", gestor_it_name=" + gestor_it_name
+				+ ", tipo_desarrollo=" + tipo_desarrollo
+				+ ", escenario_opi=" + escenario_opi
+				+ ", flujo=" + flujo
 				+ ", gestor_negocio_key=" + gestor_negocio_key
 				+ ", gestor_negocio_name=" + gestor_negocio_name
 				+ ", gestor_pruebas_key=" + gestor_pruebas_key

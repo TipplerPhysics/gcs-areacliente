@@ -83,6 +83,17 @@
 						</div>
 						
 						<div class="form-field">
+							<span class="lbl">Flujo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="flujo" id="flujo_modal" class="selectpicker selected" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<option value="B-C">B-C</option>
+									<option value="C-B">C-B</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="estado" id="estado" data-live-search="true">
@@ -117,13 +128,6 @@
 							<input type="text" id="cod_servicio" name="cod_servicio" class="long" required aria-required="true" maxlength="25">
 						</div> -->
 						
-						
-						<div class="form-field">
-							<span class="lbl">Observaciones:</span>
-							<div class="input">
-								<textarea name="observaciones" maxlength="500" id="observaciones"></textarea>
-							</div>
-						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Formato de entrada/salida<span class="required-asterisk">*</span>:</span>
@@ -162,10 +166,48 @@
 					
 					<div class="form-field-divider right">
 						
-						<div class="form-field">
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha inicio aceptación:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_aceptacion' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion">
+							</div>
+						</div> -->
+						
+						<div class="form-field">
+							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="selectpicker selected" required aria-required="true">
+									<option value="default">Seleccionar</option>
+									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
+									<option value="Redescargas">Redescargas</option>
+									<option value="Normalización">Normalización</option>
+									<option value="Respuestas Dedicadas">Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas">Normalización + Redescargas</option>
+									<option value="Normalización + Respuestas Dedicadas">Normalización + Respuestas Dedicadas</option>
+									<option value="Redescarga + Respuestas Dedicadas">Redescarga + Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas + Respuestas Dedicadas">Normalización + Redescargas + Respuestas Dedicadas</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Escenario OPI:</span>
+							<div class="input">
+								<select name="escenario_opi" id="escenario_opi_modal" class="long selectpicker">
+									<option value="default">Seleccionar</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-field">
+							<span class="lbl">Fecha inicio integradas:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
 							</div>
 						</div>
 						
@@ -176,20 +218,20 @@
 							</div>
 						</div>
 						
-						<div class="form-field">
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha inicio validación:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_validacion' name="fecha_inicio_validacion" id="fecha_inicio_validacion">
 							</div>
 						</div>
-						
-						<div class="form-field">
+						 -->
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha fin validación:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_validacion" id="fecha_fin_validacion">
 							</div>
 						</div>
-						
+						 -->
 						<div class="form-field">
 							<span class="lbl">Fecha Implantación-Producción:</span>
 							<div class="input">
@@ -212,46 +254,48 @@
 						</div>
 						
 						<div class="form-field">
+							<span class="lbl">Observaciones:</span>
+							<div class="input">
+								<textarea name="observaciones" maxlength="500" id="observaciones"></textarea>
+							</div>
+						</div>
+						
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha inicio operación cliente:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_inicio_op_cliente" id="fecha_inicio_op_cliente">
 							</div>
 						</div>
-						
-						<div class="form-field">
+						 -->
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha paso ANS:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='ans' name="ans" id="ans">
 							</div>
-						</div>
+						</div> -->
 						
-						<div class="form-field">
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha estimada pruebas:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_pruebas' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas">
 							</div>
-						</div>
+						</div> -->
 						
-						<div class="form-field">
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha prevista fin pruebas:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_pruebas" id="fecha_fin_pruebas">
 							</div>
-						</div>
+						</div> -->
 						
-						<div class="form-field">
-							<span class="lbl">Fecha inicio integradas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas' name="fecha_inicio_integradas" id="fecha_inicio_integradas">
-							</div>
-						</div>
 						
-						<div class="form-field">
+						
+						<!-- <div class="form-field">
 							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
 							</div>
-						</div>
+						</div> -->
 					</div>					
 				</div>
 				

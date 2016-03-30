@@ -58,6 +58,18 @@
 								</select>
 							</div>
 						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Flujo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="flujo" id="flujo" class="long selectpicker selected" required aria-required="true">
+									<option value="${servicio.flujo}">${servicio.flujo}</option>
+									<option value="Antiguo">Antiguo</option>
+									<option value="B-C">B-C</option>
+									<option value="C-B">C-B</option>
+								</select>
+							</div>
+						</div>
 												
 						<div class="form-field">
 							<span class="lbl">Estado<span class="required-asterisk">*</span>:</span>
@@ -93,13 +105,6 @@
 							<span class="lbl">Cód. Redmine<span class="required-asterisk">*</span>:</span>
 							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long" required aria-required="true">
 						</div> -->
-						
-						<div class="form-field">
-							<span class="lbl">Observaciones:</span>
-							<div class="input">
-								<textarea name="observaciones"  maxlength="500" id="observaciones_modal">${servicio.observaciones}</textarea>
-							</div>
-						</div>
 						
 						<div class="form-field">
 							<span class="lbl">Formato de entrada/salida:<span class="required-asterisk">*</span>:</span>
@@ -140,10 +145,49 @@
 					<div class="form-field-divider right">
 						
 						
-						<div class="form-field">
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha inicio aceptación:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_ini_aceptacion}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_aceptacion_modal' name="fecha_inicio_aceptacion" id="fecha_inicio_aceptacion_modal">
+							</div>
+						</div> --%>
+						
+						<div class="form-field">
+							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker selected" required aria-required="true">
+									<option value="${servicio.tipo_desarrollo}">${servicio.tipo_desarrollo}</option>
+									<option value="N/A">N/A</option>
+									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
+									<option value="Redescargas">Redescargas</option>
+									<option value="Normalización">Normalización</option>
+									<option value="Respuestas Dedicadas">Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas">Normalización + Redescargas</option>
+									<option value="Normalización + Respuestas Dedicadas">Normalización + Respuestas Dedicadas</option>
+									<option value="Redescarga + Respuestas Dedicadas">Redescarga + Respuestas Dedicadas</option>
+									<option value="Normalización + Redescargas + Respuestas Dedicadas">Normalización + Redescargas + Respuestas Dedicadas</option>
+									
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Escenario OPI:</span>
+							<div class="input">
+								<select name="escenario_opi" id="escenario_opi_modal" class="long selectpicker">
+									<option value="${servicio.escenario_opi}">${servicio.escenario_opi}</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						<div class="form-field">
+							<span class="lbl">Fecha inicio integradas:</span>
+							<div class="input">
+								<input type="text" value="${servicio.str_fecha_ini_integradas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas_modal' name="fecha_inicio_integradas" id="fecha_inicio_integradas_modal">
 							</div>
 						</div>
 						
@@ -154,19 +198,20 @@
 							</div>
 						</div>
 						
-						<div class="form-field">
+						
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha inicio validación:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_ini_validacion}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_validacion_modal' name="fecha_inicio_validacion" id="fecha_inicio_validacion_modal">
 							</div>
-						</div>
+						</div> --%>
 						
-						<div class="form-field">
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha fin validación:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_fin_validacion}" size="16" maxlength="25" class="datepicker" name="fecha_fin_validacion" id="fecha_fin_validacion_modal">
 							</div>
-						</div>
+						</div> --%>
 						
 						<div class="form-field">
 							<span class="lbl">Fecha Implantación-Producción:</span>
@@ -190,46 +235,49 @@
 						</div>
 						
 						<div class="form-field">
+							<span class="lbl">Observaciones:</span>
+							<div class="input">
+								<textarea name="observaciones"  maxlength="500" id="observaciones_modal">${servicio.observaciones}</textarea>
+							</div>
+						</div>
+						
+						
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha inicio operación cliente:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_ini_op_cliente}" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_op_cliente_modal' name="fecha_inicio_op_cliente" id="fecha_inicio_op_cliente_modal">
 							</div>
-						</div>
+						</div> --%>
 						
-						<div class="form-field">
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha paso ANS:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_ANS}" size="16" maxlength="25" class="datepicker" data-target-id='ans_modal' name="ans" id="ans_modal">
 							</div>
-						</div>
+						</div> --%>
 						
-						<div class="form-field">
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha estimada pruebas:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_ini_pruebas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_pruebas_modal' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas_modal">
 							</div>
-						</div>
+						</div> --%>
 						
-						<div class="form-field">
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha prevista fin pruebas:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_fin_pruebas}" size="16" maxlength="25" class="datepicker" name="fecha_fin_pruebas" id="fecha_fin_pruebas_modal">
 							</div>
-						</div>
+						</div> --%>
 						
-						<div class="form-field">
-							<span class="lbl">Fecha inicio integradas:</span>
-							<div class="input">
-								<input type="text" value="${servicio.str_fecha_ini_integradas}" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_integradas_modal' name="fecha_inicio_integradas" id="fecha_inicio_integradas_modal">
-							</div>
-						</div>
 						
-						<div class="form-field">
+						
+						<%-- <div class="form-field">
 							<span class="lbl">Fecha fin integradas:</span>
 							<div class="input">
 								<input type="text" value="${servicio.str_fecha_fin_integradas}" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas_modal">
 							</div>
-						</div>
+						</div> --%>
 						
 					</div>					 
 					

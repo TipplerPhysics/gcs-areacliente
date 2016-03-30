@@ -36,7 +36,7 @@
 						<div class="form-field">
 							<span class="lbl">Número valoración<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="num_valoracion" id="num_valoracion_modal" class="long selectpicker">
+								<select name="num_valoracion" id="num_valoracion_modal" class="long selectpicker" required aria-required="true">
 									
 									<option value="1" <c:if test="${coste.num_valoracion eq '1'}">selected</c:if>>1</option>
 									<option value="2" <c:if test="${coste.num_valoracion eq '2'}">selected</c:if>>2</option>
@@ -51,7 +51,8 @@
 						<div class="form-field">
 							<span class="lbl">Tipo Petición<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_coste" id="tipo_coste_modal" class="long selectpicker">
+								<select name="tipo_coste" id="tipo_coste_modal" class="long selectpicker" required aria-required="true"> 
+									<option value="default" <c:if test="${coste.tipo_coste eq 'N/A'}">selected</c:if>>N/A</option>
 									<option value="N/A" <c:if test="${coste.tipo_coste eq 'N/A'}">selected</c:if>>N/A</option>
 									<option value="1" <c:if test="${coste.tipo_coste eq '1'}">selected</c:if>>1</option>
 									<option value="2" <c:if test="${coste.tipo_coste eq '2'}">selected</c:if>>2</option>
@@ -66,7 +67,7 @@
 						<div class="form-field">
 							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker">
+								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker" >
 									<option value="N/A" <c:if test="${coste.tipo_desarrollo eq 'N/A'}">selected</c:if>>N/A</option>
 									<option value="Soporte a Pruebas" <c:if test="${coste.tipo_desarrollo eq 'Soporte a Pruebas'}">selected</c:if>>Soporte a Pruebas</option>
 									<option value="Redescargas" <c:if test="${coste.tipo_desarrollo eq 'Redescargas'}">selected</c:if>>Redescargas</option>
@@ -94,7 +95,7 @@
 						<div class="form-field">
 							<span class="lbl">Plazo estimado:</span>
 							<div class="input">
-								<input type="text" value="${coste.str_plazo_estimado}" size="16" maxlength="25" class="datepicker" data-target-id='plazo_estimado_modal' name="plazo_estimado" id="plazo_estimado_modal" required aria-required="true">
+								<input type="text" value="${coste.str_plazo_estimado}" size="16" maxlength="25" class="datepicker" data-target-id='plazo_estimado_modal' name="plazo_estimado" id="plazo_estimado_modal">
 							</div>
 						</div>
 

@@ -440,14 +440,14 @@ pm.close();
 	/* Descomentar para select y update para queries masivas en tabla Coste*/
 	
 	
-	/*public List<Proyecto> select() {
+	/*public List<Coste> select() {
 
-		List<Proyecto> coste;
+		List<Coste> coste;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	
 		
-		Query q = pm.newQuery("select from " + Proyecto.class.getName());
-		coste = (List<Proyecto>) q.execute();
+		Query q = pm.newQuery("select from " + Coste.class.getName());
+		coste = (List<Coste>) q.execute();
 		
 		
 		pm.close();
@@ -456,7 +456,7 @@ pm.close();
 	}
 	
 
-	public void update( List<Proyecto> coste) {
+	public void update( List<Coste> coste) {
 
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -467,10 +467,11 @@ pm.close();
 			 
 			 for(int i=0;i<coste.size();i++){
 				 
-				 String gestor_it_name = coste.get(i).getGestor_it_name();
+				 String tipo_coste = coste.get(i).getTipo_coste();
+				 String tipo_desarrollo = coste.get(i).getTipo_desarrollo();
 				 Coste c = pm.getObjectById(Coste.class, coste.get(i).getKey().getId());
-				if(gestor_it_name.equalsIgnoreCase("ÁLVARO BORJAS GUERRERO")){ 
-						 	c.setGestor_it_name("ALVARO BORJAS GUERRERO"); 
+				if((tipo_desarrollo.equalsIgnoreCase(""))){ 
+						 	c.setTipo_desarrollo("N/A"); 
 					         pm.makePersistent(c);
 				}
 				}

@@ -104,7 +104,7 @@
 							</div>
 						</div>
 						<div class="form-field">
-							<span class="lbl">Plazo estimado<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Plazo estimado :</span>
 							<div class="input">
 								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="plazo_estimado" id="plazo_estimado">
 							</div>
