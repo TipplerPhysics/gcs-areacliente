@@ -62,8 +62,9 @@
 						<div class="form-field">
 							<span class="lbl">Flujo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="flujo" id="flujo" class="long selectpicker selected" required aria-required="true">
-									<option value="${servicio.flujo}">${servicio.flujo}</option>
+								<select name="flujo" id="flujo_modal" class="selectpicker selected" required aria-required="true">
+									<option selected value="${servicio.flujo}">${servicio.flujo}</option>
+									<option value="default">Seleccionar</option>
 									<option value="Antiguo">Antiguo</option>
 									<option value="B-C">B-C</option>
 									<option value="C-B">C-B</option>
@@ -107,7 +108,7 @@
 						</div> -->
 						
 						<div class="form-field">
-							<span class="lbl">Formato de entrada/salida:<span class="required-asterisk">*</span>:</span>
+							<span class="lbl">Formato de entrada/salida<span class="required-asterisk">*</span>:</span>
 							<div class="input">
 								<select class="selectpicker selected" name="formato_intermedio" id="formato_intermedio_modal" required aria-required="true" data-live-search="true"> 
 									<option value="default">${servicio.formato_intermedio}</option>
@@ -155,9 +156,9 @@
 						<div class="form-field">
 							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker selected" required aria-required="true">
-									<option value="${servicio.tipo_desarrollo}">${servicio.tipo_desarrollo}</option>
-									<option value="N/A">N/A</option>
+								<select name="tipo_desarrollo" id="tipo_desarrollo" class="long selectpicker selected" required aria-required="true">
+									<option selected value="${servicio.tipo_desarrollo}">${servicio.tipo_desarrollo}</option>
+									<option value="Antiguo">Antiguo</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
 									<option value="Redescargas">Redescargas</option>
 									<option value="Normalización">Normalización</option>
@@ -166,7 +167,6 @@
 									<option value="Normalización + Respuestas Dedicadas">Normalización + Respuestas Dedicadas</option>
 									<option value="Redescarga + Respuestas Dedicadas">Redescarga + Respuestas Dedicadas</option>
 									<option value="Normalización + Redescargas + Respuestas Dedicadas">Normalización + Redescargas + Respuestas Dedicadas</option>
-									
 								</select>
 							</div>
 						</div>
@@ -174,7 +174,7 @@
 						<div class="form-field">
 							<span class="lbl">Escenario OPI:</span>
 							<div class="input">
-								<select name="escenario_opi" id="escenario_opi_modal" class="long selectpicker">
+								<select name="escenario_opi" id="escenario_opi_modal" class="selectpicker">
 									<option value="${servicio.escenario_opi}">${servicio.escenario_opi}</option>
 									<option value="1">1</option>
 									<option value="2">2</option>

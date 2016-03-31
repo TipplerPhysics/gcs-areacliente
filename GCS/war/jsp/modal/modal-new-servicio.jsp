@@ -56,7 +56,7 @@
 						<div class="form-field">
 							<span class="lbl">Flujo:</span>
 							<div class="input">
-								<select name="flujo" id="escenario_opi" class="long selectpicker" required aria-required="false">
+								<select name="flujo" id="flujo" class="selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="B-C">B-C</option>
 									<option value="C-B">C-B</option>

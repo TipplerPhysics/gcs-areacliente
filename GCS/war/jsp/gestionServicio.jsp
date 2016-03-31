@@ -85,7 +85,7 @@
 						<div class="form-field">
 							<span class="lbl">Flujo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="flujo" id="flujo_modal" class="selectpicker selected" required aria-required="true">
+								<select name="flujo" id="flujo" class="selectpicker selected" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<option value="B-C">B-C</option>
 									<option value="C-B">C-B</option>
@@ -176,7 +176,7 @@
 						<div class="form-field">
 							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="selectpicker selected" required aria-required="true">
+								<select name="tipo_desarrollo" id="tipo_desarrollo" class="selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
 									<option value="Redescargas">Redescargas</option>
@@ -193,7 +193,7 @@
 						<div class="form-field">
 							<span class="lbl">Escenario OPI:</span>
 							<div class="input">
-								<select name="escenario_opi" id="escenario_opi_modal" class="long selectpicker">
+								<select name="escenario_opi" id="escenario_opi" class="long selectpicker">
 									<option value="default">Seleccionar</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -351,7 +351,7 @@
 					<tbody id="myTable" cellspacing="0" data-page="${page}" data-lastpage="${lastpage}" data-numpages="${numpages}">
 					
 						<c:forEach items="${servicios}" var="servicio">
-							<tr class="valid-result" id="row${servicio.key.id}" name="${servicio.key.id}">
+							<tr class="valid-result" id="row${servicio.key.id}" name="${servicio.key.id}" data-tipo-desarrollo="${servicio.tipo_desarrollo}">
 								<td><span>${servicio.cod_proyecto}</span></td>
 								<td><span>${servicio.servicio}</span></td>
 								<td><span>${servicio.estado}</span></td>										

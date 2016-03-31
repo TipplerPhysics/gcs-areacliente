@@ -55,6 +55,15 @@ public class ServicioModalAction extends Action {
 			Pais pais = paisDao.getPaisByName(s.getPais());
 			List<ServicioFile> servicios_pais = serviciosFileDao.getAllServiciosForPais(pais);
 			
+			
+			if (s.getFlujo() == null){
+				s.setFlujo("ANTIGUO");
+			}
+			
+			if (s.getTipo_desarrollo() == null){
+				s.setTipo_desarrollo("ANTIGUO");
+			}
+			
 			req.setAttribute("servicios_pais", servicios_pais);
 			req.setAttribute("servicio", s);		
 			
@@ -69,6 +78,7 @@ public class ServicioModalAction extends Action {
 			List<Formatos> formatos = formatosDao.getAllFormatos();
 			req.setAttribute("formatos", formatos);
 			
+						
 			if(!formatos.contains(s.getFormato_intermedio()) || s.getFormato_intermedio()==null ||s.getFormato_intermedio()==""){
 				if(s.getEstado().equals(exc_por_negocio)||s.getEstado().equals(exc_por_timeout)
 						||s.getEstado().equals(imp_con_ok)||s.getEstado().equals(imp_sin_ok)){
@@ -80,6 +90,8 @@ public class ServicioModalAction extends Action {
 						s.setFormato_intermedio("PENDIENTE");
 				}
 			}
+			
+			
 			
 			UserDao uDao = UserDao.getInstance();
 			
