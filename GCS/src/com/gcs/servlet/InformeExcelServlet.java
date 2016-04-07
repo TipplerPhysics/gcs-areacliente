@@ -1889,11 +1889,11 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 				hojaCost.getRow(headCoste).createCell(5).setCellValue(coste.getControl_presupuestario());
 				hojaCost.getRow(headCoste).createCell(6).setCellStyle(styleexce);
 				fechaString = coste.getStr_fecha_alta();
-				if(fechaString.indexOf("2015")>-1){
+				//if(fechaString.indexOf("2015")>-1){
 					hojaCost.getRow(headCoste).getCell(6).setCellValue(coste.getFecha_alta());
-				}else{
+				/*}else{
 					hojaCost.getRow(headCoste).getCell(6).setCellValue("");
-				}
+				}*/
 				hojaCost.getRow(headCoste).createCell(7).setCellValue(coste.getGestor_it_name());
 				hojaCost.getRow(headCoste).createCell(8).setCellValue(coste.getNum_valoracion());
 				if(!coste.getComentarios().equals("")&&coste.getComentarios()!=null)
@@ -1923,7 +1923,7 @@ styleexce.setDataFormat(format.getFormat("dd/mm/yyyy"));
 				Double horasTotales= null;
 				if(coste.getHoras_total()!=null&&!coste.getHoras_total().equals(""))horasTotales = Double.parseDouble(coste.getHoras_total().replace(",", ".").replace(" ", "").trim());
 				if(coste.getCoste_total()!=null&&!coste.getCoste_total().equals(""))costeTotal = Double.parseDouble(coste.getCoste_total().replace(",", ".").replace(" ", "").trim());
-				
+			
 				
 				if(coste.getFecha_alta().getYear()==dateNow.getYear()){
 					if(costeTotal!=null){
