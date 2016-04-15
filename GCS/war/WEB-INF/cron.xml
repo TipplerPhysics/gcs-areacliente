@@ -2,7 +2,7 @@
 <cronentries>
   <cron>
     <description>Daily Backup</description>
-    <url>/_ah/datastore_admin/backup.create?name=SheduledBackup&amp;kind=Cliente&amp;kind=Conectividad&amp;kind=Coste&amp;kind=Demanda&amp;kind=Informe&amp;kind=Proyecto&amp;kind=Servicio&amp;kind=User&amp;filesystem=blobstore</url>
+    <url>/_ah/datastore_admin/backup.create?name=SheduledBackup&amp;kind=Cliente&amp;kind=Conectividad&amp;kind=Coste&amp;kind=Demanda&amp;kind=Informe&amp;kind=Proyecto&amp;kind=Servicio&amp;kind=User&amp;filesystem=gs&amp;gs_bucket_name=gcs-areacliente.appspot.com</url>
     <schedule>every 24 hours</schedule>
     <target>ah-builtin-python-bundle</target>
   </cron>
