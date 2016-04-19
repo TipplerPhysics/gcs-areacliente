@@ -6,6 +6,7 @@
 					<h2>Nuevo Servicio</h2>
 					<hr />
 				</div>
+				
 				<div class="edit-user-form-holder">
 				<form id="new-service-form" name="new-service-form" action="/serviceServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">
