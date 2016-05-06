@@ -3899,6 +3899,12 @@ function sendEditUser(){
 	}
 }
 
+function filteringCatalogo(){
+	var $form = $("#test-header-filter");
+	var postData =  $form.serialize();
+	window.location = "./catalogo.do?"+postData;
+}
+
 function filteringUsers(){
 	var $form = $("#test-header-filter");
 	var postData =  $form.serialize();

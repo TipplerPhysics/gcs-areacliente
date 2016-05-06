@@ -78,6 +78,16 @@
 	    <url-pattern>/demandaServlet</url-pattern>
 	  </servlet-mapping>
 	  
+	  <servlet>
+	    <servlet-name>CatalogoServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.CatalogoServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>CatalogoServlet</servlet-name>
+	    <url-pattern>/catalogoServlet</url-pattern>
+	  </servlet-mapping>
+	  
 	   <servlet>
 	    <servlet-name>CosteServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.CosteServlet</servlet-class>

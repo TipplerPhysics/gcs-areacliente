@@ -1,4 +1,4 @@
-﻿<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 <div id="sidebar">
@@ -12,8 +12,9 @@
 			
 			<c:if test="${sessionScope.permiso == 1}">
 				<li><a href="/dashboard/gestionImplantaciones.do"><span class="informes">Registro</span></a></li>
-				<li><a href="/admin/auditoria.do"><span class="logs">Auditoría</span></a></li>	
+				<li><a href="/admin/auditoria.do"><span class="logs">Auditor�a</span></a></li>	
 				<li><a href="/admin/informes.do"><span class="demanda">Informes</span></a></li>
+				<li><a href="/admin/catalogo.do"><span class="catalogo">Catalogo S.</span></a></li>
 			</c:if>		
 		</ul>
 	</div>

@@ -722,6 +722,10 @@ label.ui-marmots-label-radio {
   background-position: left center;
   background-image: url('../img/gestion_white.png');
 }
+#sidebar .side-menu ul li a span.catalogo {
+  background-position: left center;
+  background-image: url('../img/service-icon-white.png');
+}
 #sidebar .side-menu ul li a span.informes {
   background-position: left center;
   background-image: url('../img/informe-white.png');

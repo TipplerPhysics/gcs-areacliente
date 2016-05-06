@@ -25,6 +25,17 @@ public class ServicioFile {
 	@Persistent
 	private ArrayList<String> extensiones;
 	
+	@Persistent
+	private String nombrePais;
+	
+	@Persistent
+	private String strPaisId;
+	
+	@Persistent
+	private String strExtensiones;
+	
+	
+	
 	public Key getKey() {
 		return key;
 	}
@@ -48,6 +59,16 @@ public class ServicioFile {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+
+	public String getNombrePais() {
+		return nombrePais;
+	}
+
+	public void setNombrePais(String nombrePais) {
+		this.nombrePais = nombrePais;
+	}
 
 	public long getPaisId() {
 		return paisId;
@@ -56,4 +77,38 @@ public class ServicioFile {
 	public void setPaisId(long id) {
 		this.paisId = id;
 	}
+	
+	private String detalle;
+	
+	public String getDetalle() {
+		return detalle;
+	}
+	
+	public void setDetalle(String det) {
+		this.detalle = det;
+	}
+
+	public String getStrPaisId() {
+		return strPaisId;
+	}
+
+	public void setStrPaisId(String strPaisId) {
+		this.strPaisId = strPaisId;
+	}
+
+	public String getStrExtensiones() {
+		return strExtensiones;
+	}
+
+	public void setStrExtensiones(String strExtensiones) {
+		this.strExtensiones = strExtensiones;
+	}
+
+	
+
+	
+	
+	
+	
+	
 }

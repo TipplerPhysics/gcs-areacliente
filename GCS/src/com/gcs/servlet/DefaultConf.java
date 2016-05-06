@@ -30,6 +30,7 @@ import com.gcs.beans.ContadorPagCliente;
 import com.gcs.beans.ContadorPagDemanda;
 import com.gcs.beans.ContadorProyecto;
 import com.gcs.beans.ContadorServicio;
+import com.gcs.beans.ContadorServicioFile;
 import com.gcs.beans.ContadorUser;
 import com.gcs.beans.Equipo;
 import com.gcs.beans.FechaCalendada;
@@ -57,6 +58,7 @@ import com.gcs.dao.ContadorPagClienteDao;
 import com.gcs.dao.ContadorPagDemandaDao;
 import com.gcs.dao.ContadorProyectoDao;
 import com.gcs.dao.ContadorServicioDao;
+import com.gcs.dao.ContadorServicioFileDao;
 import com.gcs.dao.ContadorUserDao;
 import com.gcs.dao.EquipoDao;
 import com.gcs.dao.FechaCalendadaDao;
@@ -134,6 +136,11 @@ public class DefaultConf extends HttpServlet {
 					ContadorServicio cs = new ContadorServicio(1);
 					ContadorServicioDao csDao = ContadorServicioDao.getInstance();
 					csDao.createContador(cs);	
+					json.append("success", "true");
+				}else if ("def_counter_serviciofile".equals(accion)){
+					ContadorServicioFile csf = new ContadorServicioFile(1);
+					ContadorServicioFileDao csfDao = ContadorServicioFileDao.getInstance();
+					csfDao.createContador(csf);	
 					json.append("success", "true");
 				}else if ("def_counter_coste".equals(accion)){
 					ContadorCoste ccts = new ContadorCoste(1);

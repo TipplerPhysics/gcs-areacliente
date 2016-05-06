@@ -107,6 +107,29 @@ public class PaisDao {
 		
 	}
 	
+	
+public String getSPaisById(long l) {
+		
+		String pais = "";
+		Pais s;
+		try{			
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Pais Pais_temp = pManager.getObjectById(Pais.class, l);
+
+		s = pManager.detachCopy(Pais_temp);
+		pais = s.getName();
+		pManager.close();
+
+		}catch(Exception e){
+			s=null;
+		}
+		
+		return pais;
+		
+		
+	}
+	
 	public void deleteAll(){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		PaisDao sDao = PaisDao.getInstance();

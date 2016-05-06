@@ -15,6 +15,7 @@
 		<forward name="clients" path="/clients.do" />
 		<forward name="users" path="/admin/users.do" />
 		<forward name="informes" path="/admin/informes.do" />
+		<forward name="catalogo" path="/admin/catalogo.do" />
 	</global-forwards>	
 
 	<action-mappings>	
@@ -55,6 +56,11 @@
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />		
 		</action>
 		
+		<action path="/newCatalogo" type="com.gcs.actions.modal.NewCatalogoModalAction">
+			<forward name="ok" path="/jsp/modal/modal-new-catalogo.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />		
+		</action>
+		
 		
 		
 		
@@ -71,6 +77,12 @@
 		
 		<action path="/servicioModal" type="com.gcs.actions.modal.ServicioModalAction">
 			<forward name="ok" path="/jsp/modal/modal-servicio.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
+			
+		</action>
+		
+		<action path="/catalogoModal" type="com.gcs.actions.modal.CatalogoModalAction">
+			<forward name="ok" path="/jsp/modal/modal-catalogo.jsp" />
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 			
 		</action>
@@ -153,6 +165,11 @@
 		
 		<action path="/admin/informes" type="com.gcs.actions.InformesAction">
 			<forward name="ok" path="/jsp/skeletons/informes-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
+		</action>
+		
+		<action path="/admin/catalogo" type="com.gcs.actions.GestionCatalogoAction">
+			<forward name="ok" path="/jsp/skeletons/gestionCatalogo-skeleton.jsp" />
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
 		
