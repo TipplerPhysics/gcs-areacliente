@@ -70,3 +70,4 @@ public class NewServiceModalAction extends Action {
 		return mapping.findForward("ok");
 	}
 }
+
