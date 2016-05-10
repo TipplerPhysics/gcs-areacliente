@@ -6,6 +6,7 @@
 					<h2>Nuevo Servicio</h2>
 					<hr />
 				</div>
+				
 				<div class="edit-user-form-holder">
 				<form id="new-service-form" name="new-service-form" action="/serviceServlet" method="POST" novalidate="novalidate">
 				<div class="form-container">
@@ -54,9 +55,9 @@
 						</div>
 						
 						<div class="form-field">
-							<span class="lbl">Flujo:</span>
+							<span class="lbl">Flujo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="flujo" id="flujo" class="selectpicker selected" required aria-required="true">
+								<select name="flujo" id="flujo" class="selectpicker selected" required aria-required="true" data-live-search="true">
 									<option value="default">Seleccionar</option>
 									<option value="B-C">B-C</option>
 									<option value="C-B">C-B</option>
@@ -76,15 +77,34 @@
 							</div>
 						</div>
 						
+						<div class="form-field">
+							<span class="lbl">Gestor Pruebas:</span>
+							<div class="input">
+								<select class="selectpicker" id="gestor_it_modal" name="gestor_pruebas">
+								<option value="default">${servicio.gestor_pruebas_name}</option>	
+									<c:forEach items="${gestores_it}" var="user">
+										<option value="${user.key.id}">${user.nombre} ${user.apellido1}<c:if test="${not empty user.apellido2}"> ${user.apellido2}</c:if></option>
+									</c:forEach>
+									
+								</select>
+							</div>
+						</div>
 			
 						<div class="form-field">
-							<span class="lbl">Cod. Redmine<span class="required-asterisk">*</span>:</span>
-							<input type="text" id="cod_servicio" name="cod_servicio" maxlength="25" class="long" required aria-required="true">
+							<span class="lbl">Cód. Redmine:</span>
+							<input type="text" id="cod_servicio_modal" value="${servicio.cod_servicio}" maxlength="25" name="cod_servicio" class="long">
 						</div>
 							
 						<div class="form-field">
-							<span class="lbl">Formato intermedio:</span>
-							<input type="text" id="formato_intermedio" name="formato_intermedio" maxlength="25" class="long">
+							<span class="lbl">Formato de entrada/salida<span class="required-asterisk">*</span>:</span>
+							<div class="input">
+								<select class="selectpicker selected" name="formato_intermedio" id="formato_intermedio_modal" required aria-required="true" data-live-search="true">
+									<option value="default">Seleccionar</option>
+										<c:forEach items="${formatos}" var="form">	
+										<option value="${form}">${form}</option>
+									</c:forEach>																	
+								</select>
+							</div>
 						</div>
 						
 						<div class="form-field">
@@ -119,10 +139,11 @@
 						</div> -->
 						
 						<div class="form-field">
-							<span class="lbl">Tipo Desarrollo:</span>
+							<span class="lbl">Tipo Desarrollo<span class="required-asterisk">*</span>:</span>
 							<div class="input">
-								<select name="tipo_desarrollo" id ="tipo_desarrollo" class="long selectpicker">
-									<option value="default">Seleccionar</option>
+								<select name="tipo_desarrollo" id="tipo_desarrollo" class="long selectpicker selected" required aria-required="true">
+									<option selected value="${servicio.tipo_desarrollo}">${servicio.tipo_desarrollo}</option>
+									<option value="Antiguo">Antiguo</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
 									<option value="Redescargas">Redescargas</option>
 									<option value="Normalización">Normalización</option>
@@ -203,45 +224,7 @@
 								<textarea name="observaciones"  maxlength="160" id="observaciones"></textarea>
 							</div>
 						</div>
-						
-						
-						<!-- <div class="form-field">
-							<span class="lbl">Fecha inicio operación cliente:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='fecha_inicio_op_cliente' name="fecha_inicio_op_cliente" id="fecha_inicio_op_cliente">
-							</div>
-						</div> -->
-						
-						<!-- <div class="form-field">
-							<span class="lbl">Fecha paso ANS:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='ans' name="ans" id="ans">
-							</div>
-						</div> -->
-						
-						<!-- <div class="form-field">
-							<span class="lbl">Fecha estimada pruebas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker fromTo" data-target-id='fecha_fin_pruebas' name="fecha_inicio_pruebas" id="fecha_inicio_pruebas">
-							</div>
-						</div>
-						 -->
-						<!-- <div class="form-field">
-							<span class="lbl">Fecha prevista fin pruebas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_pruebas" id="fecha_fin_pruebas">
-							</div>
-						</div>
-						 -->
-						
-						
-						<!-- <div class="form-field">
-							<span class="lbl">Fecha fin integradas:</span>
-							<div class="input">
-								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_fin_integradas" id="fecha_fin_integradas">
-							</div>
-						</div>
- -->
+											
 					</div>	
 					
 				</div>
