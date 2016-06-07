@@ -13,13 +13,16 @@
 						<span class="table-title"></span>
 					</th>
 					<th>
-						<span class="table-title">Num. de coste</span>
+						<span class="table-title">Número de coste</span>
+					</th>
+					<th>
+						<span class="table-title">Fecha solicitud valoración</span>
 					</th>
 					<th>
 						<span class="table-title">Equipo</span>
 					</th>
 					<th>
-						<span class="table-title">Nbr. proyecto</span>
+						<span class="table-title">Total coste (€)</span>
 					</th>
 				</tr>
 			</thead>
@@ -32,8 +35,9 @@
 							</label>
 						</td>
 						<td><span>${coste.num_control}</span></td> 
+						<td><span>${coste.str_fecha_solicitud_valoracion}</span></td> 
 						<td><span>${coste.equipos}</span></td>
-						<td><span>${coste.project_name}</span></td>
+						<td><span>${coste.coste_total}</span></td>
 					</tr>
 				</c:forEach>
 			</tbody>
