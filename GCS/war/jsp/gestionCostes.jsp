@@ -144,6 +144,7 @@
 									<option value="SOPORTE GNC">SOPORTE GNC</option>
 									<option value="SOPORTE SWIFT">SOPORTE SWIFT</option>									
 									<option value="TELEMÁTICOS">TELEMÁTICOS</option>
+									<option value="SOFTTEK">SOFTTEK</option>
 									
 									
 								</select>
