@@ -952,7 +952,11 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 									hoja.getRow(head).createCell(20).setCellValue(servicio.getGestor_pruebas_name());
 									hoja.getRow(head).createCell(21).setCellValue(proyecto.getFecha_alta_str());
 									hoja.getRow(head).createCell(22).setCellValue(proyecto.getClasificacion());
-									hoja.getRow(head).createCell(23).setCellValue(proyecto.getCoste());
+									hoja.getRow(head).createCell(23).setCellValue(Double.parseDouble(proyecto.getCoste().replace(",", ".").replace(" ", "").trim()));
+									if (proyecto.getCoste()!=null &&!proyecto.getCoste().equals("")){
+										hoja.getRow(head).createCell(23).setCellValue(Double.parseDouble(proyecto.getCoste().replace(",", ".").replace(" ", "").trim()));
+										
+									}								
 									if(proyecto.getUrl_doc_google_drive() != null){
 										hoja.getRow(head).createCell(24).setCellValue(proyecto.getUrl_doc_google_drive());
 									}
@@ -1017,7 +1021,10 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(20).setCellValue(servicio.getGestor_pruebas_name());
 								hoja.getRow(head).createCell(21).setCellValue(proyecto.getFecha_alta_str());
 								hoja.getRow(head).createCell(22).setCellValue(proyecto.getClasificacion());
-								hoja.getRow(head).createCell(23).setCellValue(proyecto.getCoste());
+								if (proyecto.getCoste()!=null &&!proyecto.getCoste().equals("")){
+									hoja.getRow(head).createCell(23).setCellValue(Double.parseDouble(proyecto.getCoste().replace(",", ".").replace(" ", "").trim()));
+									
+								}								
 								if(proyecto.getUrl_doc_google_drive() != null){
 									hoja.getRow(head).createCell(24).setCellValue(proyecto.getUrl_doc_google_drive());
 								}						
@@ -1083,9 +1090,12 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 								hoja.getRow(head).createCell(20).setCellValue("");//gestor_pruebas_name
 								hoja.getRow(head).createCell(21).setCellValue(proyecto.getFecha_alta_str());
 								hoja.getRow(head).createCell(22).setCellValue(proyecto.getClasificacion());
-								hoja.getRow(head).createCell(23).setCellValue(proyecto.getCoste());
+								if (proyecto.getCoste()!=null &&!proyecto.getCoste().equals("")){
+									hoja.getRow(head).createCell(23).setCellValue(Double.parseDouble(proyecto.getCoste().replace(",", ".").replace(" ", "").trim()));
+									
+								}								
 								if(proyecto.getUrl_doc_google_drive() != null){
-									hoja.getRow(head).createCell(24).setCellValue(proyecto.getUrl_doc_google_drive());
+														hoja.getRow(head).createCell(24).setCellValue(proyecto.getUrl_doc_google_drive());
 								}							
 								hoja.getRow(head).createCell(25).setCellValue("");//observaciones
 								hoja.getRow(head).createCell(26).setCellValue("");//formato intermedio
@@ -1146,7 +1156,10 @@ private void informeCartera(HttpServletRequest req, HttpServletResponse resp)thr
 							hoja.getRow(head).createCell(20).setCellValue("");//gestor_pruebas_name
 							hoja.getRow(head).createCell(21).setCellValue(proyecto.getFecha_alta_str());
 							hoja.getRow(head).createCell(22).setCellValue(proyecto.getClasificacion());
-							hoja.getRow(head).createCell(23).setCellValue(proyecto.getCoste());
+							if (proyecto.getCoste()!=null &&!proyecto.getCoste().equals("")){
+								hoja.getRow(head).createCell(23).setCellValue(Double.parseDouble(proyecto.getCoste().replace(",", ".").replace(" ", "").trim()));
+								
+							}
 							if(proyecto.getUrl_doc_google_drive() != null){
 								hoja.getRow(head).createCell(24).setCellValue(proyecto.getUrl_doc_google_drive());
 							}					
