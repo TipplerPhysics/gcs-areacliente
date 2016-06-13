@@ -16,6 +16,7 @@
 		<forward name="users" path="/admin/users.do" />
 		<forward name="informes" path="/admin/informes.do" />
 		<forward name="catalogo" path="/admin/catalogo.do" />
+		<forward name="paises" path="/admin/paises.do" />
 	</global-forwards>	
 
 	<action-mappings>	
@@ -111,7 +112,14 @@
 			<forward name="ok" path="/jsp/modal/modal-cliente.jsp" />
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
-		
+
+		<action path="/paisModal" type="com.gcs.actions.modal.PaisModalAction">
+			<forward name="ok" path="/jsp/modal/modal-pais.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
+			
+		</action>
+				
+				
 		<action path="/clientProfile" type="com.gcs.actions.ClientProfileAction">
 			<forward name="ok" path="/jsp/skeletons/clientProfile-skeleton.jsp" />
 			<forward name="ko" path="/clients.do" />
@@ -172,6 +180,13 @@
 			<forward name="ok" path="/jsp/skeletons/gestionCatalogo-skeleton.jsp" />
 			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
 		</action>
+		
+		<action path="/admin/paises" type="com.gcs.actions.GestionPaisesAction">
+			<forward name="ok" path="/jsp/skeletons/gestionPaises-skeleton.jsp" />
+			<forward name="notAllowed" path="/jsp/skeletons/notAllowed.jsp" />
+		</action>
+		
+		
 		
 		<action path="/sendMailImplantacion" type="com.gcs.actions.modal.ImplantacionModalAction">
 			<forward name="email1" path="/jsp/modal/modal-implantacion-email1.jsp" />

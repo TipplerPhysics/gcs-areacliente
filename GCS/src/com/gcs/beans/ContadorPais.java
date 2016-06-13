@@ -8,17 +8,27 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-public class Pais {
+public class ContadorPais {
+
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Key key;
-	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key key;
 	@Persistent
-	private String detalle;
-	
-	@Persistent
-	private String name;
-	
+	Integer num;
+
+	public ContadorPais(Integer num) {
+		super();
+		this.num = num;
+	}
+
+	public Integer getNum() {
+		return num;
+	}
+
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+
 	public Key getKey() {
 		return key;
 	}
@@ -26,19 +36,5 @@ public class Pais {
 	public void setKey(Key key) {
 		this.key = key;
 	}
-	
-	public String getName() {
-		return name;
-	}
 
-	public void setNme(String name) {
-		this.name = name;
-	}
-	  public String getDetalle() {
-			return detalle;
-	}
-	public void setDetalle(String det) {
-		this.detalle = det;
-	}
-	
 }

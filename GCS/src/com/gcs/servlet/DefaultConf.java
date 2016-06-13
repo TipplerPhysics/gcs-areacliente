@@ -32,6 +32,7 @@ import com.gcs.beans.ContadorProyecto;
 import com.gcs.beans.ContadorServicio;
 import com.gcs.beans.ContadorServicioFile;
 import com.gcs.beans.ContadorUser;
+import com.gcs.beans.ContadorPais;
 import com.gcs.beans.Equipo;
 import com.gcs.beans.FechaCalendada;
 import com.gcs.beans.Pais;
@@ -60,6 +61,7 @@ import com.gcs.dao.ContadorProyectoDao;
 import com.gcs.dao.ContadorServicioDao;
 import com.gcs.dao.ContadorServicioFileDao;
 import com.gcs.dao.ContadorUserDao;
+import com.gcs.dao.ContadorPaisDao;
 import com.gcs.dao.EquipoDao;
 import com.gcs.dao.FechaCalendadaDao;
 import com.gcs.dao.PaisDao;
@@ -141,6 +143,11 @@ public class DefaultConf extends HttpServlet {
 					ContadorServicioFile csf = new ContadorServicioFile(1);
 					ContadorServicioFileDao csfDao = ContadorServicioFileDao.getInstance();
 					csfDao.createContador(csf);	
+					json.append("success", "true");
+				}else if ("def_counter_pais".equals(accion)){
+					ContadorPais cp =  new ContadorPais(1);
+					ContadorPaisDao cpDao = ContadorPaisDao.getInstance();
+					cpDao.createContador(cp);	
 					json.append("success", "true");
 				}else if ("def_counter_coste".equals(accion)){
 					ContadorCoste ccts = new ContadorCoste(1);

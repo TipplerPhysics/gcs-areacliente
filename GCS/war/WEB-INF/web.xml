@@ -149,6 +149,17 @@
 	  </servlet-mapping>	  
 	  
 	  <servlet>
+	    <servlet-name>PaisesServlet</servlet-name>
+	    <servlet-class>com.gcs.servlet.PaisesServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>PaisesServlet</servlet-name>
+	    <url-pattern>/paisesServlet</url-pattern>
+	  </servlet-mapping>	  
+	  
+	  
+	  <servlet>
 	    <servlet-name>ImplantacionServlet</servlet-name>
 	    <servlet-class>com.gcs.servlet.ImplantacionServlet</servlet-class>
 	  </servlet>
