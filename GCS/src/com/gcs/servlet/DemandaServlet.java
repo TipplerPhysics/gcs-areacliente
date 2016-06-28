@@ -369,6 +369,7 @@ public class DemandaServlet extends HttpServlet {
 			s.setColumnView(13, 30);
 			s.setColumnView(14, 30);
 			s.setColumnView(15, 30);
+			s.setColumnView(16, 30);
 			s.setRowView(0, 900);
 
 			s.addCell(new Label(0, 0, "COD_PETICION", cellFormat));
@@ -387,6 +388,7 @@ public class DemandaServlet extends HttpServlet {
 			s.addCell(new Label(13, 0, "CATALOGACION DE LA PETICION",cellFormat));
 			s.addCell(new Label(14, 0, "FECHA COMUNICACION", cellFormat));
 			s.addCell(new Label(15, 0, "HORA COMUNICACION",cellFormat));
+			s.addCell(new Label(16, 0, "FECHA COMUNICACION ASIGNACION",cellFormat));
 
 			UserDao uDao = UserDao.getInstance();
 			User u = new User();
@@ -435,6 +437,7 @@ public class DemandaServlet extends HttpServlet {
 				s.addCell(new Label(13, aux, d.getCatalogacion()));
 				s.addCell(new Label(14,aux,d.getStr_fecha_comunicacion()));
 				s.addCell(new Label(15,aux,d.getHora_comunicacion_asignacion()));
+				s.addCell(new Label(16,aux,d.getStr_fecha_comunicacion_asignacion()));
 
 				aux++;
 			}
