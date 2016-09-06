@@ -86,6 +86,10 @@ public class Proyecto {
 	private String str_fecha_fin_viabilidad;
 	
 	private Date fecha_disponible_conectividad;
+
+	@Persistent
+	private String observaciones;
+	
 	
 	@Persistent
 	private String str_fecha_disponible_conectividad;
@@ -401,8 +405,16 @@ public class Proyecto {
 		return url_doc_google_drive;
 	}
 
+	public String getObservaciones() {
+		return observaciones;
+	}
+	
 	public void setUrl_doc_google_drive(String url_doc_google_drive) {
 		this.url_doc_google_drive = url_doc_google_drive;
+	}
+	
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 	
 	@Override

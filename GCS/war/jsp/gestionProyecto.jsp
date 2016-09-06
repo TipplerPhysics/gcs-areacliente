@@ -225,6 +225,13 @@
 							<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_disponible_conectividad" id="fecha_disponible_conectividad">
 						</div>
 					</div>
+
+					<div class="form-field">
+						<span class="lbl">Observaciones:</span>
+						<div class="input">
+							<textarea name="observaciones" maxlength="500" id="observaciones"></textarea>
+						</div>
+					</div>
 					
 					
 				</div>

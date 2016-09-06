@@ -2,6 +2,7 @@ package com.gcs.servlet;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -184,7 +185,10 @@ public class ProjectServlet extends HttpServlet{
 				s.addCell(new Label(4, aux, Integer.toString(p.getClasificacion())));
 				s.addCell(new Label(5, aux, p.getGestor_it_name()));
 				s.addCell(new Label(6, aux, p.getGestor_negocio_name()));
-				s.addCell(new Label(7, aux, p.getCoste() + " €"));
+
+								
+				s.addCell(new Label(7, aux, p.getCoste() ));
+				
 				s.addCell(new Label(8, aux, p.getUrl_doc_google_drive()));
 				
 				s.addCell(new Label(9, aux, p.getProducto()));
@@ -327,6 +331,7 @@ public class ProjectServlet extends HttpServlet{
 				String fecha_fin_viabilidad_str = req.getParameter("fecha_fin_viabilidad");
 				String fecha_plan_trabajo_str = req.getParameter("fecha_plan_trabajo");
 				String fecha_disponible_conectividad_str = req.getParameter("fecha_disponible_conectividad");
+				String observaciones = req.getParameter("observaciones");
 				String envioC100 = req.getParameter("envio_c100");
 				String ok_negocio = req.getParameter("ok_negocio");
 				String ok_negocio_check = req.getParameter("ok_negocio_check");
@@ -374,6 +379,7 @@ public class ProjectServlet extends HttpServlet{
 				p.setStr_fecha_fin_viabilidad(fecha_fin_viabilidad_str);
 				p.setStr_fecha_plan_trabajo(fecha_plan_trabajo_str);
 				p.setStr_fecha_disponible_conectividad(fecha_disponible_conectividad_str);
+				p.setObservaciones(observaciones);
 				p.setStr_envioC100(envioC100);
 				p.setStr_OKNegocio(ok_negocio);
 					
@@ -429,6 +435,7 @@ public class ProjectServlet extends HttpServlet{
 			String producto = req.getParameter("producto");
 			String conectividad = req.getParameter("conectividad");
 			String subtipo = req.getParameter("subtipo");
+			String observaciones = req.getParameter("observaciones");
 			
 			
 			
@@ -482,6 +489,7 @@ public class ProjectServlet extends HttpServlet{
 				p.setGestor_it(Long.parseLong(gestor_it_str));
 				p.setGestor_negocio(Long.parseLong(gestor_negocio_str));
 				p.setCoste(coste);
+				p.setObservaciones(observaciones);
 				p.setUrl_doc_google_drive(url_doc_google_drive);
 				
 				
