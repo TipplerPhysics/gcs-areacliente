@@ -146,6 +146,7 @@ public class ProjectServlet extends HttpServlet{
 		    
 		    s.setColumnView(15, 30);
 		    s.setColumnView(16, 30);
+		    s.setColumnView(17, 30);
 		    
 		    
 		    s.setRowView(0, 900);
@@ -169,6 +170,7 @@ public class ProjectServlet extends HttpServlet{
 			
 			s.addCell(new Label(15, 0, "FECHA ENVIO C100",cellFormat));
 			s.addCell(new Label(16, 0, "FECHA OK NEGOCIO",cellFormat));
+			s.addCell(new Label(17, 0, "OBSERVACIONES",cellFormat));
 			
 			
 			int aux=1;
@@ -200,6 +202,7 @@ public class ProjectServlet extends HttpServlet{
 				
 				s.addCell(new Label(15, aux, p.getStr_envioC100()));
 				s.addCell(new Label(16, aux, p.getStr_OKNegocio()));
+				s.addCell(new Label(17, aux, p.getObservaciones()));
 				aux++;
 			}		
 			
