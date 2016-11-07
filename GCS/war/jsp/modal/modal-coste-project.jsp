@@ -120,6 +120,7 @@
 									<option value="IS" <c:if test="${coste.equipos eq 'IS'}">selected</c:if>>IS</option>
 									<option value="TELEMÁTICOS" <c:if test="${coste.equipos eq 'TELEMÁTICOS'}">selected</c:if>>TELEMÁTICOS</option>
 									<option value="GESTOR IT" <c:if test="${coste.equipos eq 'GESTOR IT'}">selected</c:if>>GESTOR IT</option>	
+									<option value="SOFTTEK" <c:if test="${coste.equipos eq 'SOFTTEK'}">selected</c:if>>SOFTTEK</option>	
 								</select>
 							</div>
 						</div>
