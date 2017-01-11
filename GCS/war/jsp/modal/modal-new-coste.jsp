@@ -109,6 +109,12 @@
 								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="plazo_estimado" id="plazo_estimado">
 							</div>
 						</div>
+						<div class="form-field">
+							<span class="lbl">Componentes modificados :</span>
+							<div class="input">
+								<textarea name="componentes_modificados"  id="componentes_modificados" ></textarea>
+							</div>
+						</div>											
 					</div>
 					
 
@@ -168,8 +174,22 @@
 							<div class="input">
 								<input type="text" value=""  size="16" maxlength="25" name="control_presupuestario" id="control_presupuestario">
 							</div>
-						</div>								
+						</div>	
+						<div class="form-field">
+							<span class="lbl">Fecha implantación:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_implantacion" data-target-id='fecha_implantacion' id="fecha_implantacion">
+							</div>
+						</div>
+
+						<div class="form-field">
+							<span class="lbl">Fecha de garantía:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="readonly" readonly name="fecha_garantia" data-target-id='fecha_garantia' id="fecha_garantia">
+							</div>
+						</div>													
 					</div>	
+					
 					<div class="form-field-down">
 					
 						<span class="lbl">Horas/Fases:</span>
@@ -282,5 +302,28 @@
 		$('#total_coste').val(stringSuma.toString());
 	});
 ////////////////////////////////////
+	$('#fecha_implantacion').on('change', function(e) {	
+		var fechaImp = $('#fecha_implantacion').val();
+		var fechaImpDia = fechaImp.substr(0, 2); 
+		var fechaImpMes = fechaImp.substr(3, 2);  
+		var fechaImpAnnio = fechaImp.substr(6, 4);
+		var fechaGarantia = "";
+		var strfechaImpDia = "";
+		var strfechaImpMes = "";
+		var d = new Date(fechaImpAnnio, fechaImpMes, fechaImpDia);	
+		d.setMonth(d.getMonth() + 6);
+		fechaImpDia = d.getDate();
+		fechaImpMes = d.getMonth()+1;
+		fechaImpAnnio = d.getFullYear();
+		strfechaImpDia = fechaImpDia.toString();
+		strfechaImpMes = fechaImpMes.toString();
+		if (strfechaImpDia.length < 2) strfechaImpDia = "0"+strfechaImpDia;
+		if (strfechaImpMes.length < 2) strfechaImpMes = "0"+strfechaImpMes;
+
+		fechaGarantia = strfechaImpDia+"/"+strfechaImpMes+"/"+fechaImpAnnio.toString();
+		$('#fecha_garantia').val(fechaGarantia);
+		
+	});
+	
 	
 </script>

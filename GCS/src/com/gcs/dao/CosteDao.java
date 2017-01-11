@@ -438,8 +438,6 @@ pm.close();
 
 	
 	/* Descomentar para select y update para queries masivas en tabla Coste*/
-	
-	
 	/*public List<Coste> select() {
 
 		List<Coste> coste;
@@ -697,6 +695,26 @@ pm.close();
 			coste.setTipo_desarrollo(tipo_desarrollo);
 		}
 		
+		String componentes_modificados =  getString(entity, "componentes_modificados");
+		if(componentes_modificados != null) {
+			coste.setComponentes_modificados(componentes_modificados);
+		}
+
+		String str_fecha_garantia =  getString(entity, "str_fecha_garantia");
+		if(str_fecha_garantia != null) {
+			coste.setStr_fecha_garantia(str_fecha_garantia);
+		}
+
+		Date fecha_implantacion = getDate(entity, "fecha_implantacion");
+		if(fecha_implantacion != null) {
+			coste.setFecha_implantacion(fecha_implantacion);
+		}
+		
+		String str_fecha_implantacion =  getString(entity, "str_fecha_implantacion");
+		if(str_fecha_implantacion != null) {
+			coste.setStr_fecha_implantacion(str_fecha_implantacion);
+		}
+
 		return coste;
 		
 	}

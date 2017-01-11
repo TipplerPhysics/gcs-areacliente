@@ -71,6 +71,7 @@
 								<select name="tipo_desarrollo" id="tipo_desarrollo_modal" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="N/A">N/A</option>
+									<option value="Validaciones específicas cliente">Validaciones específicas cliente</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
 									<option value="Redescargas">Redescargas</option>
 									<option value="Normalización">Normalización</option>
@@ -103,6 +104,14 @@
 								<input type="text" value="" size="16" maxlength="25" class="datepicker" data-target-id='plazo_estimado_modal' name="plazo_estimado" id="plazo_estimado_modal" >
 							</div>
 						</div>
+
+						<div class="form-field">
+							<span class="lbl">Componentes modificados :</span>
+							<div class="input">
+								<textarea name="componentes_modificados"  id="componentes_modificados_modal">${costeMod.componentes_modificados}</textarea>
+							</div>
+						</div>	
+										
 					</div>
 					<div class="form-field-divider right">
 						<div class="form-field">
@@ -143,7 +152,7 @@
 						<div class="form-field">
 							<span class="lbl">Comentarios:</span>
 							<div class="input">
-								<textarea name="comentarios" id="comentarios_modal"></textarea>
+								<textarea name="comentarios" id="comentarios_modal">${costeMod.comentarios}</textarea>
 							</div>
 						</div>
 						<div class="form-field">
@@ -158,6 +167,20 @@
 								<input type="text"size="16" maxlength="25" name="control_presupuestario" id="control_presupuestario_modal">
 							</div>
 						</div>		
+
+						<div class="form-field">
+							<span class="lbl">Fecha implantación :</span>
+							<div class="input">
+								<input type="text" size="16" maxlength="25" class="datepicker"  name="fecha_implantacion" data-target-id='fecha_implantacion_modal' id="fecha_implantacion_modal">
+							</div>
+						</div>
+
+						<div class="form-field">
+							<span class="lbl">Fecha de garantía:</span>
+							<div class="input">
+								<input type="text" size="16" maxlength="25" class="readonly" readonly name="fecha_garantia"  id="fecha_garantia_modal">
+							</div>
+						</div>
 						
 							
 					</div>	
@@ -279,5 +302,29 @@
 		$('#total_coste_modal').val(stringSuma.toString());
 	});
 ////////////////////////////////////
+
+ 	$('#fecha_implantacion_modal').on('change', function(e) {	
+		var fechaImp = $('#fecha_implantacion_modal').val();
+		var fechaImpDia = fechaImp.substr(0, 2); 
+		var fechaImpMes = fechaImp.substr(3, 2);  
+		var fechaImpAnnio = fechaImp.substr(6, 4);
+		var fechaGarantia = "";
+		var strfechaImpDia = "";
+		var strfechaImpMes = "";
+		var d = new Date(fechaImpAnnio, fechaImpMes, fechaImpDia);	
+		d.setMonth(d.getMonth() + 6);
+		fechaImpDia = d.getDate();
+		fechaImpMes = d.getMonth()+1;
+		fechaImpAnnio = d.getFullYear();
+		strfechaImpDia = fechaImpDia.toString();
+		strfechaImpMes = fechaImpMes.toString();
+		if (strfechaImpDia.length < 2) strfechaImpDia = "0"+strfechaImpDia;
+		if (strfechaImpMes.length < 2) strfechaImpMes = "0"+strfechaImpMes;
+
+		fechaGarantia = strfechaImpDia+"/"+strfechaImpMes+"/"+fechaImpAnnio.toString();
+		$('#fecha_garantia_modal').val(fechaGarantia);
+		
+	});
+ /////////////////////////////////////
 
 </script>

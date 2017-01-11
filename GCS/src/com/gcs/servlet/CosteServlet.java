@@ -150,6 +150,9 @@ public class CosteServlet extends HttpServlet {
 			s.setColumnView(26, 10);
 			s.setColumnView(27, 10);
 			
+			s.setColumnView(28, 10);
+			s.setColumnView(29, 10);
+			s.setColumnView(30, 10);
 			
 			//s.setColumnView(15, 30);
 			//s.setRowView(0, 900);
@@ -177,6 +180,9 @@ public class CosteServlet extends HttpServlet {
 			s.mergeCells(25, 0, 26, 0);
 			s.mergeCells(27, 0, 27, 1);
 			
+			s.mergeCells(28, 0, 28, 1);
+			s.mergeCells(29, 0, 29, 1);
+			s.mergeCells(30, 0, 30, 1);
 
 			s.addCell(new Label(0, 0, "CLIENTE", cellFormat));
 			s.addCell(new Label(1, 0, "NOMBRE PROYECTO", cellFormat));
@@ -212,6 +218,9 @@ public class CosteServlet extends HttpServlet {
 			s.addCell(new Label(25, 1, "HORAS", cellFormat));
 			s.addCell(new Label(26, 1, "COSTE", cellFormat));
 			
+			s.addCell(new Label(27, 0, "COMPONENTES MODIFICADOS", cellFormat));
+			s.addCell(new Label(28, 0, "FECHA IMPLANTACIÓN", cellFormat));
+			s.addCell(new Label(29, 0, "FECHA GARANTÍA", cellFormat));
 			
 
 			////////////////////////////////////////UserDao uDao = UserDao.getInstance();
@@ -294,6 +303,10 @@ public class CosteServlet extends HttpServlet {
 					s.addCell(new Number(26, aux, Double.parseDouble(costetotal.replace(",", ".").replace(" ", "")),cellFormatRight));
 				}
 				
+
+				s.addCell(new Label(27, aux, c.getComponentes_modificados()));
+				s.addCell(new Label(28, aux, c.getStr_fecha_implantacion()));
+				s.addCell(new Label(29, aux, c.getStr_fecha_garantia()));
 				
 				aux++;
 			}
@@ -353,8 +366,11 @@ public class CosteServlet extends HttpServlet {
 			String asunto = req.getParameter("asunto");
 			String tipo_coste = req.getParameter("tipo_coste");
 			String tipo_desarrollo = req.getParameter("tipo_desarrollo");
-			String plazo_estimado = req
-					.getParameter("plazo_estimado");
+			String plazo_estimado = req.getParameter("plazo_estimado");
+			String componentes_modificados = req.getParameter("componentes_modificados");
+			String fecha_implantacion = req.getParameter("fecha_implantacion");
+			String fecha_garantia = req.getParameter("fecha_garantia");
+
 			
 
 			CosteDao cDao = CosteDao.getInstance();
@@ -397,6 +413,16 @@ public class CosteServlet extends HttpServlet {
 			c.setHoras_total(total_horas);
 			c.setAsunto(asunto);
 			c.setStr_plazo_estimado(plazo_estimado);
+			
+			c.setComponentes_modificados(componentes_modificados);
+			c.setStr_fecha_implantacion(fecha_implantacion);
+			if (!fecha_implantacion.isEmpty())
+			{
+				c.setFecha_implantacion(Utils.dateConverter(fecha_implantacion));
+			}
+			c.setStr_fecha_garantia(fecha_garantia);
+			
+			
 			if (!"default".equals(tipo_coste)) {
 			c.setTipo_coste(tipo_coste);
 			}
@@ -455,6 +481,9 @@ public class CosteServlet extends HttpServlet {
 			String asunto = req.getParameter("asunto");
 			String tipo_coste = req.getParameter("tipo_coste");
 			String tipo_desarrollo = req.getParameter("tipo_desarrollo");
+			String componentes_modificados = req.getParameter("componentes_modificados");
+			String fecha_implantacion = req.getParameter("fecha_implantacion");
+			String fecha_garantia = req.getParameter("fecha_garantia");
 			
 			ContadorCodCosteDao contDao = ContadorCodCosteDao.getInstance();
 			contDao.increaseCont();
@@ -509,6 +538,17 @@ public class CosteServlet extends HttpServlet {
 			c.setHoras_total(total_horas);
 			c.setControl_presupuestario(control_presupuestario);
 			c.setStr_plazo_estimado(plazo_estimado);
+			
+			c.setComponentes_modificados(componentes_modificados);
+			c.setStr_fecha_implantacion(fecha_implantacion);
+			if (!fecha_implantacion.isEmpty())
+			{
+				c.setFecha_implantacion(Utils.dateConverter(fecha_implantacion));
+			}
+				
+			c.setStr_fecha_garantia(fecha_garantia);
+			
+			
 			if (!"default".equals(tipo_coste))
 			c.setTipo_coste(tipo_coste);
 			
@@ -570,6 +610,9 @@ public class CosteServlet extends HttpServlet {
 			String tipo_coste = req.getParameter("tipo_coste");
 			String tipo_desarrollo = req.getParameter("tipo_desarrollo");
 			String plazo_estimado = req.getParameter("plazo_estimado");
+			String componentes_modificados = req.getParameter("componentes_modificados");
+			String fecha_implantacion = req.getParameter("fecha_implantacion");
+			String fecha_garantia = req.getParameter("fecha_garantia");
 
 			CosteDao cDao = CosteDao.getInstance();
 			ClienteDao clDao = ClienteDao.getInstance();
@@ -624,6 +667,16 @@ public class CosteServlet extends HttpServlet {
 			c.setTipo_coste(tipo_coste);
 			c.setTipo_desarrollo(tipo_desarrollo);
 			c.setStr_plazo_estimado(plazo_estimado);
+			
+			c.setComponentes_modificados(componentes_modificados);
+			c.setStr_fecha_implantacion(fecha_implantacion);
+			if (!fecha_implantacion.isEmpty())
+			{
+				c.setFecha_implantacion(Utils.dateConverter(fecha_implantacion));
+			}
+			c.setStr_fecha_garantia(fecha_garantia);
+			
+			
 
 			if (!"default".equals(num_valoracion))
 				c.setNum_valoracion(num_valoracion);

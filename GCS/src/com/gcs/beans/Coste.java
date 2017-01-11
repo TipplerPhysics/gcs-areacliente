@@ -100,6 +100,21 @@ public class Coste {
 	
 	@Persistent
 	private String detalle;
+
+
+	@Persistent
+	private String componentes_modificados;
+	
+	@Persistent
+	private Date fecha_implantacion;
+	
+	@Persistent
+	private String str_fecha_implantacion;
+	
+	@Persistent
+	private String str_fecha_garantia;
+	
+	
 	
 	@Persistent
 	private String control_presupuestario;
@@ -259,6 +274,7 @@ public class Coste {
 			String str_fecha_solicitud_valoracion) {
 		this.str_fecha_solicitud_valoracion = str_fecha_solicitud_valoracion;
 	}
+
 	
 	public Date getFecha_recepcion_valoracion() {
 		return fecha_recepcion_valoracion;
@@ -416,7 +432,41 @@ public class Coste {
 	public void setTipo_desarrollo(String tipo_desarrollo) {
 		this.tipo_desarrollo = tipo_desarrollo;
 	}
+	
+	public Date getFecha_implantacion() {
+		return fecha_implantacion;
+	}
 
+	public void setFecha_implantacion(Date fecha_implantacion) {
+		this.fecha_implantacion = fecha_implantacion;
+	}
+
+	public String getStr_fecha_implantacion() {
+		return str_fecha_implantacion;
+	}
+
+	public void setStr_fecha_implantacion(
+			String str_fecha_implantacion) {
+		this.str_fecha_implantacion = str_fecha_implantacion;
+	}
+	
+	public String getStr_fecha_garantia() {
+		return str_fecha_garantia;
+	}
+
+	public void setStr_fecha_garantia(
+			String str_fecha_garantia) {
+		this.str_fecha_garantia = str_fecha_garantia;
+	}
+	public String getComponentes_modificados() {
+		return componentes_modificados;
+	}
+
+	public void setComponentes_modificados(String componentes_modificados) {
+		this.componentes_modificados = componentes_modificados;
+	}
+	
+	
 	
 	
 	

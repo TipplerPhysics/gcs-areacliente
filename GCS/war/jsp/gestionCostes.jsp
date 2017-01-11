@@ -88,6 +88,7 @@
 								<select name="tipo_desarrollo" id="tipo_desarrollo" class="long selectpicker selected" required aria-required="true">
 									<option value="default">Seleccionar</option>
 									<option value="N/A">N/A</option>
+									<option value="Validaciones específicas cliente">Validaciones específicas cliente</option>
 									<option value="Soporte a Pruebas">Soporte a Pruebas</option>
 									<option value="Redescargas">Redescargas</option>
 									<option value="Normalización">Normalización</option>
@@ -119,6 +120,13 @@
 								<input type="text" value="" size="16" maxlength="25" class="datepicker"  name="plazo_estimado" id="plazo_estimado">
 							</div>
 						</div>
+						
+						<div class="form-field">
+							<span class="lbl">Componentes modificados :</span>
+							<div class="input">
+								<textarea name="componentes_modificados"  id="componentes_modificados" ></textarea>
+							</div>
+						</div>					
 
 					</div>
 					<div class="form-field-divider right">
@@ -183,7 +191,21 @@
 							</div>
 						</div>		
 						
-							
+
+						<div class="form-field">
+							<span class="lbl">Fecha implantación:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="datepicker" name="fecha_implantacion" data-target-id='fecha_implantacion' id="fecha_implantacion">
+							</div>
+						</div>
+
+						<div class="form-field">
+							<span class="lbl">Fecha de garantía:</span>
+							<div class="input">
+								<input type="text" value="" size="16" maxlength="25" class="readonly" readonly name="fecha_garantia" data-target-id='fecha_garantia' id="fecha_garantia">
+							</div>
+						</div>
+
 					</div>	
 					<div class="form-field-down">
 						<span class="lbl">Horas/Fases:</span>
@@ -200,7 +222,7 @@
 						<div class="form-field">
 							<span class="lbl">Diseño:</span>
 							<div class="input">
-								<input id="disenio_horas" name="diseño_horas" class="horas number calcHoras disenio_horeas"/><input id="disenio_coste" name="diseño_coste" class="coste number calcCoste"/>
+								<input id="disenio_horas" name="diseño_horas" class="horas number calcHoras disenio_horas"/><input id="disenio_coste" name="diseño_coste" class="coste number calcCoste"/>
 							</div>
 							<div class="input labels">
 								<span class="lbl">Horas</span><span class="lbl">Coste</span>
@@ -314,7 +336,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${costes}" var="coste">
-									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-control-presupuestario="${coste.control_presupuestario}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}" data-fecha-recepcion-val="${coste.str_fecha_recepcion_valoracion}" data-plazo-estimado="${coste.str_plazo_estimado}" data-tipo-coste="${coste.tipo_coste}" data-asunto="${coste.asunto}" data-tipo-desarrollo="${coste.tipo_desarrollo}" >
+									<tr class="valid-result" id="row${coste.key.id}" data-num-control="${coste.num_control}" data-control-presupuestario="${coste.control_presupuestario}" data-total-horas="${coste.horas_total}" data-total-coste="${coste.coste_total}" data-gestion-horas="${coste.horas_gestion}" data-gestion-coste="${coste.coste_gestion}" data-pruebas-horas="${coste.horas_pruebas}" data-pruebas-coste="${coste.coste_pruebas}" data-construccion-horas="${coste.horas_construccion}" data-construccion-coste="${coste.coste_construccion}" data-disenio-horas="${coste.horas_diseño}" data-disenio-coste="${coste.coste_diseño}" data-analisis-horas="${coste.horas_analisis}" data-analisis-coste="${coste.coste_analisis}" name="${coste.key.id}" data-nombre-cliente="${coste.cliente_name}" data-nombre-proyecto="${coste.project_name}" data-num-control="${coste.num_control}" data-equipo="${coste.equipos}" data-fecha-alta="${coste.str_fecha_alta}" data-gestor-it="${coste.gestor_it_key}" data-num-valoracion="${coste.num_valoracion}" data-comentarios="${coste.comentarios}" data-fecha-solicitud-val="${coste.str_fecha_solicitud_valoracion}" data-fecha-recepcion-val="${coste.str_fecha_recepcion_valoracion}" data-plazo-estimado="${coste.str_plazo_estimado}" data-tipo-coste="${coste.tipo_coste}" data-asunto="${coste.asunto}" data-tipo-desarrollo="${coste.tipo_desarrollo}" data-componentes-modificados="${coste.componentes_modificados}" data-fecha-implantacion="${coste.str_fecha_implantacion}" data-fecha-garantia="${coste.str_fecha_garantia}" >
 										<td><span>${coste.str_fecha_alta}</span></td>
 										<td><span>${coste.cliente_name}</span></td>
 										<td><span>${coste.project_name}</span></td>
@@ -371,3 +393,31 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#fecha_implantacion').on('change', function(e) {	
+		var fechaImp = $('#fecha_implantacion').val();
+		var fechaImpDia = fechaImp.substr(0, 2); 
+		var fechaImpMes = fechaImp.substr(3, 2);  
+		var fechaImpAnnio = fechaImp.substr(6, 4);
+		var fechaGarantia = "";
+		var strfechaImpDia = "";
+		var strfechaImpMes = "";
+		var d = new Date(fechaImpAnnio, fechaImpMes, fechaImpDia);	
+		d.setMonth(d.getMonth() + 6);
+		fechaImpDia = d.getDate();
+		fechaImpMes = d.getMonth()+1;
+		fechaImpAnnio = d.getFullYear();
+		strfechaImpDia = fechaImpDia.toString();
+		strfechaImpMes = fechaImpMes.toString();
+		if (strfechaImpDia.length < 2) strfechaImpDia = "0"+strfechaImpDia;
+		if (strfechaImpMes.length < 2) strfechaImpMes = "0"+strfechaImpMes;
+
+		fechaGarantia = strfechaImpDia+"/"+strfechaImpMes+"/"+fechaImpAnnio.toString();
+		$('#fecha_garantia').val(fechaGarantia);
+		
+	});
+	
+////////////////////////////////////
+	
+</script>
