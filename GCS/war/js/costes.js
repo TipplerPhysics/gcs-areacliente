@@ -246,6 +246,9 @@ function editCoste(id){
 	var plazo_estimado = $currentRow.data('plazo-estimado');
 	var tipo_coste = $currentRow.data('tipo-coste');
 	var tipo_desarrollo = $currentRow.data('tipo-desarrollo');
+	var componentes_modificados = $currentRow.data('componentes-modificados');
+	var fecha_implantacion = $currentRow.data('fecha-implantacion');
+	var fecha_garantia = $currentRow.data('fecha-garantia');
 	
 	
 	$('#cliente_modal').val(nombre_cliente);
@@ -282,8 +285,11 @@ function editCoste(id){
 	
 	$('#total_horas_modal').val(total_horas);
 	$('#total_coste_modal').val(total_coste);
-	
 
+	$('#componentes_modificados_modal').val(componentes_modificados);
+	$('#fecha_implantacion_modal').val(fecha_implantacion);
+	$('#fecha_garantia_modal').val(fecha_garantia);
+	
 	
 	showModal();
 }
